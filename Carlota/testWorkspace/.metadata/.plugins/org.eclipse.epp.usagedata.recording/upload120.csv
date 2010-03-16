@@ -1,0 +1,15 @@
+what,kind,bundleId,bundleVersion,description,time
+stopped,bundle,org.eclipse.ecf.provider.ui,1.3.0.v20081224-1728,org.eclipse.ecf.provider.ui,1255516510310
+stopped,bundle,org.eclipse.ecf.provider.bittorrent.ui,0.2.0.v20081224-1728,org.eclipse.ecf.provider.bittorrent.ui,1255516510310
+stopped,bundle,org.eclipse.ecf.filetransfer.ui,1.4.0.v20081224-1728,org.eclipse.ecf.filetransfer.ui,1255516510310
+stopped,bundle,org.eclipse.ecf.provider.irc.ui,1.3.0.v20081224-1728,org.eclipse.ecf.provider.irc.ui,1255516510310
+stopped,bundle,org.eclipse.ecf.provider.xmpp.ui,2.1.0.v20081224-1728,org.eclipse.ecf.provider.xmpp.ui,1255516510310
+stopped,bundle,org.eclipse.ecf.docshare,2.0.0.v20081224-1728,org.eclipse.ecf.docshare,1255516510310
+stopped,bundle,org.eclipse.ecf.presence.collab.ui,1.2.0.v20081224-1728,org.eclipse.ecf.presence.collab.ui,1255516510310
+stopped,bundle,org.eclipse.ecf.presence.ui,1.2.0.v20081224-1728,org.eclipse.ecf.presence.ui,1255516510310
+stopped,bundle,org.eclipse.ecf.example.collab,1.3.0.v20081224-1728,org.eclipse.ecf.example.collab,1255516510310
+stopped,bundle,org.eclipse.ecf.ui,2.0.0.v20081224-1728,org.eclipse.ecf.ui,1255516510310
+stopped,bundle,com.cea.papyrus.extensionpoints.transformation,1.11.0,com.cea.papyrus.extensionpoints.transformation,1255516510310
+stopped,bundle,org.eclipse.m2m.atl.core.ui,3.0.0.v200906220943,org.eclipse.m2m.atl.core.ui,1255516510310
+stopped,bundle,org.eclipse.ui.externaltools,3.2.0.v20080514-1542,org.eclipse.ui.externaltools,1255516510310
+stopped,bundle,org.eclipse.debug.ui,3.4.2.v20090110_r342,org.eclipse.debug.ui,1255516510310

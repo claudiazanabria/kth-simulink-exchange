@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Repository xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="md.kth.se/eastlite">
+  <functionTypes name="F1">
+    <flowPort xsi:type="OutFlowPort" name="F1_Out"/>
+  </functionTypes>
+  <functionTypes name="F2">
+    <part name="pPrimary" type="//@functionTypes.3"/>
+    <part name="pStandby" type="//@functionTypes.4"/>
+    <flowPort xsi:type="InFlowPort" name="F2_In"/>
+    <flowPort xsi:type="OutFlowPort" name="F2_Out"/>
+    <connector name="F2In_F21In" flowPort="//@functionTypes.1/@flowPort.0 //@functionTypes.3/@flowPort.0"/>
+    <connector name="F2In_F22b_In" flowPort="//@functionTypes.1/@flowPort.0 //@functionTypes.4/@flowPort.1"/>
+    <connector name="F21Out_F2Out" flowPort="//@functionTypes.3/@flowPort.1 //@functionTypes.1/@flowPort.1"/>
+    <connector name="F22Out_F2Out" flowPort="//@functionTypes.4/@flowPort.2 //@functionTypes.1/@flowPort.1"/>
+    <connector name="F21Out_F22aIn" flowPort="//@functionTypes.3/@flowPort.1 //@functionTypes.4/@flowPort.0"/>
+  </functionTypes>
+  <functionTypes name="F3">
+    <flowPort xsi:type="InFlowPort" name="F3_In"/>
+    <flowPort xsi:type="OutFlowPort" name="F3_Out"/>
+  </functionTypes>
+  <functionTypes name="primaryF21">
+    <flowPort xsi:type="InFlowPort" name="F21_In"/>
+    <flowPort xsi:type="OutFlowPort" name="F21_Out"/>
+  </functionTypes>
+  <functionTypes name="standbyF22">
+    <flowPort xsi:type="InFlowPort" name="F22a_In"/>
+    <flowPort xsi:type="InFlowPort" name="F22b_In"/>
+    <flowPort xsi:type="OutFlowPort" name="F22_out"/>
+  </functionTypes>
+  <functionTypes xsi:type="FunctionalAnalysisArchitecture" name="york">
+    <part name="pF1" type="//@functionTypes.0"/>
+    <part name="pF2" type="//@functionTypes.1"/>
+    <part name="pF3" type="//@functionTypes.2"/>
+    <connector name="F1Out_F2In" flowPort="//@functionTypes.0/@flowPort.0 //@functionTypes.3/@flowPort.0"/>
+    <connector name="F2Out_F3In" flowPort="//@functionTypes.1/@flowPort.1 //@functionTypes.2/@flowPort.0"/>
+  </functionTypes>
+</Repository>

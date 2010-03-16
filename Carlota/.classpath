@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="con" path="ch.unibe.jexample.JEXAMPLE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry kind="lib" path="C:/Documents and Settings/alesch/My Documents/Eclipsario/myLibs/org.eclipse.emf.ecore_2.5.0.v200906151043.jar"/>
+	<classpathentry kind="lib" path="C:/Documents and Settings/alesch/My Documents/Eclipsario/myLibs/org.eclipse.emf.common_2.5.0.v200906151043.jar"/>
+	<classpathentry kind="lib" path="C:/Documents and Settings/alesch/My Documents/Eclipsario/myLibs/org.eclipse.emf.ecore.xmi_2.5.0.v200906151043.jar"/>
+	<classpathentry kind="lib" path="C:/Documents and Settings/alesch/My Documents/Eclipsario/myLibs/com.cea.papyrus.umlutils_1.12.3.200912231359.jar"/>
+	<classpathentry kind="lib" path="C:/Documents and Settings/alesch/My Documents/Eclipsario/myLibs/com.cea.papyrus.uml4eastadl.extension_1.10.0.jar"/>
+	<classpathentry kind="lib" path="C:/Documents and Settings/alesch/My Documents/Eclipsario/myLibs/com.cea.papyrus.uml4sysml.extension_1.1.6.200911231247.jar"/>
+	<classpathentry kind="lib" path="F:/MyEclipsePulgins/plugins/se.kth.attest2.metamodel.Simulink_3.1.0.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
