@@ -1,0 +1,46 @@
+classdef ClassPathSetter
+    properties(Constant)
+        basePath = 'F:/Documents/MATLAB/libs';
+        files    = ClassPathSetter.jarFileNames();
+        numberOfFiles = ClassPathSetter.amountOfFiles();
+    end
+    
+    methods(Static)
+        function boolean = isBasePathReadable()
+            boolean = (exist(ClassPathSetter.basePath,'dir') == 7);
+        end
+                
+        function jars = jarFileNames()
+            jars = dir('%s/*.jar',basePath);
+        end
+
+        function checkBasePath
+            if (~ClassPathSetter.isBasePathReadable())
+                errRecord = MException('ClassPathSetter:InvalidBasePath', ...
+                    'Base path not readable: %s', ClassPathSetter.basePath);
+                throw(errRecord);
+            end
+        end
+        
+        function result = fullPathNames()
+            ClassPathSetter.checkBasePath();
+            
+            result = cell(ClassPathSetter.numberOfFiles,1);
+            for x = 1:ClassPathSetter.numberOfFiles
+                fullPath = sprintf('%s\\%s',...
+                    ClassPathSetter.basePath,...
+                    ClassPathSetter.files{x});
+                 
+                result{x} = 
+            end
+        end
+        
+        function setJarsInDynamicClassPath
+            javaaddpath( ClassPathSetter.fullPathNames() );
+        end
+        
+        function result = amountOfFiles()
+            result = size(ClassPathSetter.files,1);
+        end
+    end
+end                    
