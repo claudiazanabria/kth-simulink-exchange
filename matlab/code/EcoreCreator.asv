@@ -57,11 +57,21 @@ classdef EcoreCreator < handle
         function processSystem( self, systemName, parentSystem)
             [refMdls, mdlBlks] = find_mdlrefs(systemName, false);
             for x=1:size(refMdls,1)-1
-                name = refMdls(x);
-                instanceName = mdlBlks(x);
+                name = char(refMdls(x));
+                instanceName = char(mdlBlks(x));
                 aNewSystem = self.javaEcoreCreator.addSystem(name,...
                     parentSystem,instanceName);
+                self.addOutportsTo( aNewSystem );
                 self.processSystem(name, aNewSystem);
+            end
+        end
+        
+        function addOutportsTo( self, aSystem )
+            name = aSystem.getName();
+            ports = find_system(name,'SearchDepth',1,...
+                'BlockType','Outport');
+            for x=1:size(ports,1)
+                self.javaEcoreCreator.addOutport();
             end
         end
         
@@ -69,7 +79,8 @@ classdef EcoreCreator < handle
             topElement = self.javaEcoreCreator.getTopElement();
             self.modelManager.setTopElement( topElement );
             self.modelManager.validateIt();
-            self.modelManager.saveIt();
+            destFileName = fullfile(cd(), self.sourceFilePath);
+            self.modelManager.saveAsWithPropperExtension(destFileName);
         end
         
         function initEcoreCreationClasses(self)

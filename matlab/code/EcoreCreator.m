@@ -61,10 +61,32 @@ classdef EcoreCreator < handle
                 instanceName = char(mdlBlks(x));
                 aNewSystem = self.javaEcoreCreator.addSystem(name,...
                     parentSystem,instanceName);
+                load_system( name );
+                self.addOutportsTo( aNewSystem );
+                self.addInportsTo( aNewSystem );
                 self.processSystem(name, aNewSystem);
             end
         end
         
+        function addOutportsTo( self, aSystem )
+            name = char(aSystem.getName());
+            ports = find_system(name,'SearchDepth',1,'BlockType','Outport');
+            for x=1:size(ports,1)
+                portName = char(ports(x));
+                self.javaEcoreCreator.addOutPort(portName, aSystem);
+            end
+        end
+
+        function addInportsTo( self, aSystem )
+            name = char(aSystem.getName());
+            ports = find_system(name,'SearchDepth',1,...
+                'BlockType','Inport');
+            for x=1:size(ports,1)
+                portName = char(ports(x));
+                self.javaEcoreCreator.addInPort(portName, aSystem);
+            end
+        end
+
         function saveIt( self )
             topElement = self.javaEcoreCreator.getTopElement();
             self.modelManager.setTopElement( topElement );
