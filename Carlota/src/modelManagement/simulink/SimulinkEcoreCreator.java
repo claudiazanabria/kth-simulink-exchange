@@ -76,7 +76,7 @@ public class SimulinkEcoreCreator {
 	public System addSystem(String name, System parent, String instanceName){
 		System aSystem = obtainSystem(name);
 		SystemReference reference = factory.createSystemReference();
-		reference.setName(name);
+		reference.setName(instanceName);
 		reference.setParent(parent);
 		reference.setTarget(aSystem);
 		parent.getChildren().add(reference);

@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
+import org.apache.commons.io.FilenameUtils;
 
 /**
  * @author alesch
@@ -71,6 +72,16 @@ public class ModelManager {
 		aNewResource.save(null);
 	}
 		
+	public void saveAsWithPropperExtension(String originalPathName) throws IOException {
+		String newFileName = replaceExtension(originalPathName, fileExtension); 
+		saveAs( newFileName );
+	}
+
+	//This should be private, but I wanted a test case.
+	public String replaceExtension(String pathName, String extension) {
+		return FilenameUtils.removeExtension(pathName) + '.' + extension;
+	}
+	
 	private void setTopElementIn(Resource aResource) {
 		setTopElementIn(getTopElement(), aResource);
 	}
@@ -125,6 +136,14 @@ public class ModelManager {
 		this.model = model;
 		setResourceFactoryForFileExtension( fileExtension );
 		initMetaModel();
+	}
+
+	public String getFileExtension() {
+		return fileExtension;
+	}
+
+	protected void setFileExtension(String fileExtension) {
+		this.fileExtension = fileExtension;
 	}
 
 }

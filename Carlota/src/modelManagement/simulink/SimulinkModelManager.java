@@ -13,9 +13,6 @@ import Simulink.SimulinkPackage;
  * as it first registers the metamodel
  */
 public class SimulinkModelManager  extends ModelManager {
-
-	protected String fileExtension = "simulink";
-	
 	/*
 	 * Adds the metamodel the the global EMF registry
 	 * and initilizes the metamodel factory.
@@ -42,6 +39,7 @@ public class SimulinkModelManager  extends ModelManager {
 	}
 	
 	public SimulinkModelManager(URI model) {
+		setFileExtension("simulink");
 		init( model );
 	}
 }

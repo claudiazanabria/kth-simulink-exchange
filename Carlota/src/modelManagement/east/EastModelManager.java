@@ -13,9 +13,6 @@ import com.cea.papyrus.uml4eastadl.eastadl.EastadlPackage;
  * as it first registers the metamodel
  */
 public class EastModelManager  extends ModelManager {
-
-	protected String fileExtension = "uml";
-	
 	/*
 	 * Adds the metamodel the the global EMF registry
 	 * and initilizes the metamodel factory.
@@ -42,6 +39,7 @@ public class EastModelManager  extends ModelManager {
 	}
 	
 	public EastModelManager(URI model) {
+		setFileExtension("uml");
 		init( model );
 	}
 

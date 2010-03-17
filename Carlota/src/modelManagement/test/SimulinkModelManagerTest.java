@@ -4,8 +4,6 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-import java.io.IOException;
-
 import modelManagement.exceptions.InvalidModelException;
 import modelManagement.exceptions.InvalidURIException;
 import modelManagement.simulink.SimulinkModelManager;
@@ -39,6 +37,21 @@ public class SimulinkModelManagerTest {
 
 	@Test
 	@Given("#testInstanceCreation")
+	public SimulinkModelManager testReplacExtension(SimulinkModelManager aModelMgr) {
+		String newPath = aModelMgr.replaceExtension("test.txt", "zzz");
+		assertTrue(newPath.equalsIgnoreCase("test.zzz"));
+		return aModelMgr;	
+	}
+
+	@Test
+	@Given("#testReplacExtension(modelManagement.simulink.SimulinkModelManager)")
+	public SimulinkModelManager testExtension(SimulinkModelManager aModelMgr) {
+		assertTrue(aModelMgr.getFileExtension().equalsIgnoreCase("simulink"));
+		return aModelMgr;	
+	}
+
+	@Test
+	@Given("#testExtension(modelManagement.simulink.SimulinkModelManager)")
 	public SimulinkModelManager testMetaModelRegistration(
 			SimulinkModelManager aModelMgr) {
 		
@@ -52,7 +65,6 @@ public class SimulinkModelManagerTest {
 		
 		return aModelMgr;
 	}
-	
 	
 	@Test
 	@Given("#testMetaModelRegistration(modelManagement.simulink.SimulinkModelManager)")
@@ -82,26 +94,21 @@ public class SimulinkModelManagerTest {
 	@Given("#testGetTopElement(modelManagement.simulink.SimulinkModelManager)")
 	public void testNewModel() {
 		String pathName = "testWorkspace/deleteMe.simulink";
-		SimulinkModelManager modelMgr = new SimulinkModelManager(pathName); 
+		SimulinkModelManager modelMgr 	= new SimulinkModelManager(pathName);
+		SimulinkModelManager newMgr 	= new SimulinkModelManager(pathName);
 		SimulinkFactory factory = modelMgr.getFactory();
 		Model model = factory.createModel();
 		model.setName("Testy");
 		modelMgr.setTopElement(model);
 		try {
 			modelMgr.saveIt();
-		} catch (IOException e) {
-			e.printStackTrace();
-			fail();
-		}
-		SimulinkModelManager newMgr = new SimulinkModelManager(pathName);
-		try {
 			newMgr.LoadIt();
-		} catch (InvalidModelException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			fail();
 		}
 		Model newModel = (Model) newMgr.getTopElement();
 		assertTrue( newModel.getName().equalsIgnoreCase(model.getName()));
-		
 	}
+	
 }
