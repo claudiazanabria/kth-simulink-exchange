@@ -8,9 +8,11 @@ classdef EcoreCreator < handle
     methods (Static)
         % do not use the whole path name. CD first!
         function EC=fromFile( path2mdlFile )
+            EC=EcoreCreator();
             EcoreCreator.checkMDLFileReadable( path2mdlFile );            
             EC.sourceFilePath = path2mdlFile;
         end
+                
     end
     methods (Static, Access=private)
         function checkMDLFileReadable( mdlPath )
@@ -24,6 +26,20 @@ classdef EcoreCreator < handle
         function boolean = isMDLFileReadable( path2mdlFile )
             boolean = (exist(path2mdlFile,'file') == 4);
         end
+
+        
+%         function result = removeMyselfFromList(list, itemToRemove)
+%             listSize = size(list,1);
+%             result = cell(listSize-1,1);
+%             finalIndex = 1;
+%             for originalIndex=1:listSize 
+%                 if strcmp(list(originalIndex),itemToRemove) == 0
+%                     result(finalIndex) = list(originalIndex);
+%                     finalIndex = finalIndex + 1;
+%                 end
+%             end
+%         end
+        
     end
     methods
         function doIt(self)
@@ -31,7 +47,7 @@ classdef EcoreCreator < handle
             self.openModelInSimulink();
             modelName = self.getModelName();
             self.javaEcoreCreator.newModel( modelName );
-            rootSystem = self.javaEcoreCreator.addRootSystem('modelName');
+            rootSystem = self.javaEcoreCreator.addRootSystem( modelName );
             self.processSystem( modelName, rootSystem );
             self.saveIt();
         end
@@ -40,11 +56,12 @@ classdef EcoreCreator < handle
     methods (Access=private)
         function processSystem( self, systemName, parentSystem)
             [refMdls, mdlBlks] = find_mdlrefs(systemName, false);
-            refMdls = removeMyselfFromList(refMdls, systemName);
-            for x=1:size(refMdls,1)
-                name = refMdls(1);
-                aNewSystem = self.javaEcoreCreator.addSystem(name,parentSystem);
-                processSystem(name, aNewSystem);
+            for x=1:size(refMdls,1)-1
+                name = char(refMdls(x));
+                instanceName = char(mdlBlks(x));
+                aNewSystem = self.javaEcoreCreator.addSystem(name,...
+                    parentSystem,instanceName);
+                self.processSystem(name, aNewSystem);
             end
         end
         
@@ -52,7 +69,8 @@ classdef EcoreCreator < handle
             topElement = self.javaEcoreCreator.getTopElement();
             self.modelManager.setTopElement( topElement );
             self.modelManager.validateIt();
-            self.modelManager.saveIt();
+            destFileName = fullfile(cd(), self.sourceFilePath);
+            self.modelManager.saveAsWithPropperExtension(destFileName);
         end
         
         function initEcoreCreationClasses(self)
@@ -68,5 +86,7 @@ classdef EcoreCreator < handle
         function name=getModelName( self )
             name = bdroot();
         end
+        
+        
     end
 end
