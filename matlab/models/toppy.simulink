@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ASCII"?>
+<sim:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:sim="http:///se.kth.md.attest2/Simulink/3.0" name="toppy" root="//@parts.0">
+  <parts name="toppy">
+    <children name="toppy/Carlos" target="//@parts.1"/>
+    <children name="toppy/Juan" target="//@parts.2"/>
+    <children name="toppy/Maria" target="//@parts.5"/>
+  </parts>
+  <parts name="F1"/>
+  <parts name="F2">
+    <children name="F2/Model" target="//@parts.3"/>
+    <children name="F2/Model1" target="//@parts.4"/>
+  </parts>
+  <parts name="F21"/>
+  <parts name="F22"/>
+  <parts name="F3"/>
+</sim:Model>
