@@ -25,21 +25,7 @@ classdef EcoreCreator < handle
         
         function boolean = isMDLFileReadable( path2mdlFile )
             boolean = (exist(path2mdlFile,'file') == 4);
-        end
-
-        
-%         function result = removeMyselfFromList(list, itemToRemove)
-%             listSize = size(list,1);
-%             result = cell(listSize-1,1);
-%             finalIndex = 1;
-%             for originalIndex=1:listSize 
-%                 if strcmp(list(originalIndex),itemToRemove) == 0
-%                     result(finalIndex) = list(originalIndex);
-%                     finalIndex = finalIndex + 1;
-%                 end
-%             end
-%         end
-        
+        end        
     end
     methods
         function doIt(self)
@@ -65,6 +51,13 @@ classdef EcoreCreator < handle
                 self.addOutportsTo( aNewSystem );
                 self.addInportsTo( aNewSystem );
                 self.processSystem(name, aNewSystem);
+            end
+            self.addLines(systemName);
+        end
+        
+        function addLines( self, aSystem )
+            lines = find_system('toppy','FindAll','on','type','line');
+            for x=1:size(lines,1)
             end
         end
         

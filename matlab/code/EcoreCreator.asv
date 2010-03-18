@@ -25,21 +25,7 @@ classdef EcoreCreator < handle
         
         function boolean = isMDLFileReadable( path2mdlFile )
             boolean = (exist(path2mdlFile,'file') == 4);
-        end
-
-        
-%         function result = removeMyselfFromList(list, itemToRemove)
-%             listSize = size(list,1);
-%             result = cell(listSize-1,1);
-%             finalIndex = 1;
-%             for originalIndex=1:listSize 
-%                 if strcmp(list(originalIndex),itemToRemove) == 0
-%                     result(finalIndex) = list(originalIndex);
-%                     finalIndex = finalIndex + 1;
-%                 end
-%             end
-%         end
-        
+        end        
     end
     methods
         function doIt(self)
@@ -61,20 +47,39 @@ classdef EcoreCreator < handle
                 instanceName = char(mdlBlks(x));
                 aNewSystem = self.javaEcoreCreator.addSystem(name,...
                     parentSystem,instanceName);
+                load_system( name );
                 self.addOutportsTo( aNewSystem );
+                self.addInportsTo( aNewSystem );
                 self.processSystem(name, aNewSystem);
+            end
+            self.addLines(systemName);
+        end
+        
+        function addLines( self, aSystem )
+            lines = find_system('toppy','FindAll','on','type','line');
+            for x=1:size(lines,1)
             end
         end
         
         function addOutportsTo( self, aSystem )
-            name = aSystem.getName();
-            ports = find_system(name,'SearchDepth',1,...
-                'BlockType','Outport');
+            name = char(aSystem.getName());
+            ports = find_system(name,'SearchDepth',1,'BlockType','Outport');
             for x=1:size(ports,1)
-                self.javaEcoreCreator.addOutport();
+                portName = char(ports(x));
+                self.javaEcoreCreator.addOutPort(portName, aSystem);
             end
         end
-        
+
+        function addInportsTo( self, aSystem )
+            name = char(aSystem.getName());
+            ports = find_system(name,'SearchDepth',1,...
+                'BlockType','Inport');
+            for x=1:size(ports,1)
+                portName = char(ports(x));
+                self.javaEcoreCreator.addInPort(portName, aSystem);
+            end
+        end
+
         function saveIt( self )
             topElement = self.javaEcoreCreator.getTopElement();
             self.modelManager.setTopElement( topElement );
