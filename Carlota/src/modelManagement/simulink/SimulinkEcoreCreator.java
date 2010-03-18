@@ -5,10 +5,14 @@ package modelManagement.simulink;
 
 import java.util.HashMap;
 
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.BasicEList;
+
 import Simulink.Inport;
 import Simulink.Line;
 import Simulink.Model;
 import Simulink.Outport;
+import Simulink.Port;
 import Simulink.SimulinkFactory;
 import Simulink.System;
 import Simulink.SystemReference;
@@ -72,6 +76,63 @@ public class SimulinkEcoreCreator {
 		return systemRepository.get( name );
 	}
 
+	public Outport findOutportWithin(String portName, System aSystem) {
+		Outport port = null;
+		EList<System> targetSystems = 
+			createSystemListWithParentAndFirstLevelChldren(aSystem);
+		for (System sys : targetSystems ) {
+				port = findOutportInSystem( portName, sys );
+				if (port != null) { return port; }
+		}
+		return port;
+	}
+
+	public Inport findInportWithin(String portName, System aSystem) {
+		Inport port = null;
+		EList<System> targetSystems = 
+			createSystemListWithParentAndFirstLevelChldren(aSystem);
+		for (System sys : targetSystems ) {
+				port = findInportInSystem( portName, sys );
+				if (port != null) { return port; }
+		}
+		return port;
+	}
+
+	private EList<System> createSystemListWithParentAndFirstLevelChldren(
+			System aSystem) {
+		EList<SystemReference> childrenList = aSystem.getChildren();
+		EList<System> targetSystems = getAllTargets( childrenList );
+		targetSystems.add(aSystem);
+		return targetSystems;
+	}
+
+
+	private EList<System> getAllTargets(EList<SystemReference> childrenList) {
+		BasicEList<System> result = new BasicEList<System>( childrenList.size() );
+		for (SystemReference aRef : childrenList) {
+			result.add( aRef.getTarget() );
+		}
+		return result;
+	}
+
+
+	private Outport findOutportInSystem(String portName, System aSystem) {
+		return findPortInList( portName, aSystem.getOutports());
+	}
+
+	private Inport findInportInSystem(String portName, System aSystem) {
+		return findPortInList( portName, aSystem.getInports());
+	}
+	
+	private <IOPort extends Port> IOPort findPortInList(String portName, 
+			EList<IOPort> ports) {
+		for (IOPort aPort : ports) {
+			if (aPort.getName().equalsIgnoreCase(portName)) {
+				return aPort;
+			}
+		}
+		return null;
+	}
 
 	public System addSystem(String name, System parent, String instanceName){
 		System aSystem = obtainSystem(name);

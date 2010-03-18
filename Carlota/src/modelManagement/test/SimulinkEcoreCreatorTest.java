@@ -102,7 +102,7 @@ public class SimulinkEcoreCreatorTest {
 
 	@Test
 	@Given("#testPorts(Simulink.System)")
-	public void testLines(System parent) {
+	public System testLines(System parent) {
 		System sysA = simulinkEcoreCreator.addSystem("SysA", parent);
 		System sysB = simulinkEcoreCreator.addSystem("SysB", parent);
 		Outport src = simulinkEcoreCreator.addOutPort("A1", sysA);
@@ -112,6 +112,19 @@ public class SimulinkEcoreCreatorTest {
 		assertNotNull( lineA1B1 );
 		assertTrue( parent.getLines().size() == 1);
 		assertSame(lineA1B1, parent.getLines().get(0));
+		return parent;
 	}
 
+	@Test
+	@Given("#testLines(Simulink.System)")
+	public void testFindPorts(System aSystem) {
+		Outport out = simulinkEcoreCreator.findOutportWithin("A1", aSystem);
+		assertNotNull(out);
+		assertTrue(out.getName().equalsIgnoreCase("A1"));
+		Inport in = simulinkEcoreCreator.findInportWithin("B1", aSystem);
+		assertNotNull(in);
+		assertTrue(in.getName().equalsIgnoreCase("B1"));
+		in = simulinkEcoreCreator.findInportWithin("xxx", aSystem);
+		assertNull(in);
+	}
 }
