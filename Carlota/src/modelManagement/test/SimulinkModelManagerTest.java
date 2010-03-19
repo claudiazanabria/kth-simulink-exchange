@@ -72,7 +72,7 @@ public class SimulinkModelManagerTest {
 	throws InvalidModelException {
 		
 		try {
-			aModelMgr.LoadIt();
+			aModelMgr.loadIt();
 		}
 		catch (InvalidModelException e) {
 			e.dumpInvalidObjectsToConsole();
@@ -102,7 +102,7 @@ public class SimulinkModelManagerTest {
 		modelMgr.setTopElement(model);
 		try {
 			modelMgr.saveIt();
-			newMgr.LoadIt();
+			newMgr.loadIt();
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail();

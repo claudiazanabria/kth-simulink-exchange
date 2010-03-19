@@ -49,7 +49,7 @@ public class ModelManager {
 		init( model );
 	}
 
-	public void LoadIt() throws InvalidModelException {	
+	public void loadIt() throws InvalidModelException {	
 		resource = resourceSet.getResource(model, true);
 	}
 
