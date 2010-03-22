@@ -46,11 +46,25 @@ public class SimulinkEcoreCreator {
 
 
 	public System addRootSystem(String name) {
+		//cleanRootSystemStatus( theModel.getRoot() ); 
 		System aSystem = obtainSystem(name);
 		theModel.setRoot(aSystem);
+		//defineSimulinkNameONLYForRootSystem( aSystem );
 		return aSystem;
 	}
 
+/*	private void defineSimulinkNameONLYForRootSystem(System aSystem) {
+		aSystem.setSimulinkName( aSystem.getName() ); 
+	}
+
+	
+	private void cleanRootSystemStatus(System aSystem) {
+		if (aSystem != null) {
+			aSystem.setSimulinkName(null);
+		}
+	}
+
+*/
 	/*
 	 * If the system is not in the repository it will be created
 	 */
