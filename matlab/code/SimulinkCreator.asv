@@ -4,15 +4,16 @@ classdef SimulinkCreator < handle
         sourceFilePath;
         modelManager;
         model;
+        systemsRepository = containers.Map();
     end
     methods (Static)
         % do not use the whole path name. CD first!
         function SC=fromFile( path2ecoreFile )
             SC=SimulinkCreator();
-            SimulinkCreator.checkEcoreFileReadable( path2ecoreFile );            
+            SimulinkCreator.checkEcoreFileReadable( path2ecoreFile );
             SC.sourceFilePath = path2ecoreFile;
         end
-                
+        
     end
     methods (Static, Access=private)
         function checkEcoreFileReadable( ecorePath )
@@ -25,25 +26,34 @@ classdef SimulinkCreator < handle
         
         function boolean = isEcoreFileReadable( path2EcoreFile )
             boolean = (exist(path2EcoreFile,'file') == 2);
-        end  
-        
+        end
+
+        function boolean = isMDLFileReadable( path2mdlFile )
+            boolean = (exist(path2mdlFile,'file') == 4);
+        end        
+
         function closeFirstIfAlreadyOpen( modelName )
             sys = find_system();
-            if isNameInList(modelName, sys)
+            if SimulinkCreator.isNameInList(modelName, sys)
+                save_system( modelName );
                 close_system( modelName );
             end
         end
         
         function boolean=isNameInList( name, list )
             for x=1:size( list )
-               if strcmp(sys(x), name)
-                   boolean = true;
-                   return;
-               end
+                if strcmp(list(x), name)
+                    boolean = true;
+                    return;
+                end
             end
             boolean = false;
         end
         
+        function boolean = mightContainBehaviour( aSystem )
+            boolean = (aSystem.getChildren().size() == 0);
+        end
+   
     end
     methods
         function doIt(self)
@@ -57,33 +67,82 @@ classdef SimulinkCreator < handle
         function processSystem( self, parentSystem )
             sysRefs = parentSystem.getChildren();
             for x=1:sysRefs.size();
-                instanceName = sysRefs(x).getName();
-                targetSys = sysRefs(x).getTarget();
-                self.addSystem(targetSys, instanceName, parentSystem);
+                sysRef = sysRefs.get(x);
+                instanceName = self.computeSimulinkName( sysRef );
+                targetSys = sysRef.getTarget();
+                self.addSystem(targetSys, instanceName);
                 self.processSystem( targetSys );
             end
         end
-    
-        function addSystem( aSystem, instanceName, parentSystem )
-            if isEmpty( instanceName )
-                instanceName = [parentSystem.getName() '/' aSystem.getName()];
+        
+        function addSystem( self, aSystem, instanceName )
+            self.createSystemIfNeeded( aSystem );
+            add_block('built-in/ModelReference', instanceName,...
+                'ModelName', aSystem.getName());
+        end
+        
+        function createSystemIfNeeded( self, aSystem )
+            sysName = char(aSystem.getName());
+            if  self.systemHasNOTBeenHandled( sysName )
+                self.createSystem( aSystem );
+                self.addSystemToRepository( aSystem );
             end
-            add_block('built-in/ModelReference', ...
-                'Name',instanceName, 'ModelName', aSystem.getName());
+        end
+
+        function createSystem( self, aSystem )
+            fileExists = isMDLFileReadable();
+            containsBehaviour = mightContainBehaviour( aSystem );
+            if fileExists
+                if containsBehaviour 
+                    return
+                else
+                    %deltefile
+                end
+            end
+            self.createEmptyMDLFile( aSystem );
+        end
+        
+        function createEmptyMDLFile( aSystem )
+            name = char(aSystem.getName());
+            fileName = [name '.mdl'];
+            new_system( name, 'M );
+            
+            save_system( name, fileName );
+            handle = get_param(name, 'Handle');
+            self.systemsRepository( sysName ) = aHandle;
         end
                 
+        function boolean = systemHasNOTBeenHandled( self, sysName )
+            boolean = ~self.systemsRepository.isKey( sysName );
+        end
+                
+        function instanceName = computeSimulinkName( self, sysRef ) %#ok<MANU>
+            parentName = char(sysRef.getParent().getSimulinkName());
+            target     = sysRef.getTarget();
+            targetName = char(target.getName());
+            instanceName = [parentName '/' targetName];
+            target.setSimulinkName( instanceName );
+        end
+        
         function initEcoreReadingClasses(self)
             self.modelManager = modelManagement.simulink.SimulinkModelManager(self.sourceFilePath);
             self.modelManager.loadIt();
             self.model = self.modelManager.getTopElement();
         end
-                    
+        
         function createModelInSimulink( self )
             modelName = 'unnamed';
             SimulinkCreator.closeFirstIfAlreadyOpen( modelName )
             new_system( modelName );
             load_system( modelName );
+            self.setRootSystemName( modelName );
         end
-                
+        
+        function setRootSystemName( self, name )
+            rootSystem = self.model.getRoot();
+            rootSystem.setSimulinkName( name );
+        end
+        
     end
+    
 end
