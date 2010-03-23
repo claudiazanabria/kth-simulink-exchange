@@ -1,6 +1,6 @@
 classdef SimulinkCreator < handle
     % From ecore --> Matlab
-    properties(Access=private)
+    %properties(Access=private)
         sourceFilePath;
         modelManager;
         model;
@@ -77,8 +77,9 @@ classdef SimulinkCreator < handle
         
         function addSystem( self, aSystem, instanceName )
             self.createSystemIfNeeded( aSystem );
+            modelName = char(aSystem.getName());
             add_block('built-in/ModelReference', instanceName,...
-                'ModelName', aSystem.getName());
+                'ModelName', modelName);
         end
         
         function createSystemIfNeeded( self, aSystem )
@@ -90,28 +91,34 @@ classdef SimulinkCreator < handle
         end
 
         function createSystem( self, aSystem )
-            fileExists = isMDLFileReadable();
-            containsBehaviour = mightContainBehaviour( aSystem );
+            fileName = [char(aSystem.getName()) '.mdl'];
+            aSystem.setFilename( fileName ); 
+            fileExists = SimulinkCreator.isMDLFileReadable( fileName );
+            containsBehaviour = SimulinkCreator.mightContainBehaviour( aSystem );
             if fileExists
                 if containsBehaviour 
                     return
                 else
-                    %deltefile
+                    delete( fileName );
                 end
             end
             self.createEmptyMDLFile( aSystem );
         end
         
-        function createEmptyMDLFile( aSystem )
-            name = char(aSystem.getName());
-            fileName = [name '.mdl'];
-            new_system( name, 'M );
-            
+        function createEmptyMDLFile( self, aSystem )
+            name = char( aSystem.getName() );
+            fileName = char( aSystem.getFilename() );
+            new_system( name, 'Model');
             save_system( name, fileName );
-            handle = get_param(name, 'Handle');
-            self.systemsRepository( sysName ) = aHandle;
         end
-                
+
+        function addSystemToRepository( self, aSystem )
+            name = char(aSystem.getName());
+            load_system( name );
+            handle = get_param(name, 'Handle');
+            self.systemsRepository( name ) = handle;
+        end
+        
         function boolean = systemHasNOTBeenHandled( self, sysName )
             boolean = ~self.systemsRepository.isKey( sysName );
         end
@@ -121,7 +128,7 @@ classdef SimulinkCreator < handle
             target     = sysRef.getTarget();
             targetName = char(target.getName());
             instanceName = [parentName '/' targetName];
-            target.setSimulinkName( instanceName );
+            sysRef.setSimulinkName( instanceName );
         end
         
         function initEcoreReadingClasses(self)

@@ -1,10 +1,12 @@
 classdef SimulinkCreator < handle
     % From ecore --> Matlab
-    properties(Access=private)
+    %properties(Access=private)
+    properties
         sourceFilePath;
         modelManager;
         model;
         systemsRepository = containers.Map();
+        defaultModelName = 'unnamed';
     end
     methods (Static)
         % do not use the whole path name. CD first!
@@ -12,10 +14,18 @@ classdef SimulinkCreator < handle
             SC=SimulinkCreator();
             SimulinkCreator.checkEcoreFileReadable( path2ecoreFile );
             SC.sourceFilePath = path2ecoreFile;
+            SimulinkCreator.removeAllElementsFromMap( SC.systemsRepository );
         end
         
     end
     methods (Static, Access=private)
+        function removeAllElementsFromMap( map )
+            keys = map.keys();
+            for x=1:size(keys,2)
+                map.remove( keys(x) );
+            end            
+        end
+
         function checkEcoreFileReadable( ecorePath )
             if (~SimulinkCreator.isEcoreFileReadable( ecorePath ))
                 errRecord = MException('SimulinkCreator:EcorenotReadable', ...
@@ -60,13 +70,14 @@ classdef SimulinkCreator < handle
             self.initEcoreReadingClasses();
             self.createModelInSimulink();
             self.processSystem( self.model.getRoot() );
+            open_system( self.defaultModelName );            
         end
     end
     
     methods (Access=private)
         function processSystem( self, parentSystem )
             sysRefs = parentSystem.getChildren();
-            for x=1:sysRefs.size();
+            for x=0:sysRefs.size()-1;
                 sysRef = sysRefs.get(x);
                 instanceName = self.computeSimulinkName( sysRef );
                 targetSys = sysRef.getTarget();
@@ -77,8 +88,9 @@ classdef SimulinkCreator < handle
         
         function addSystem( self, aSystem, instanceName )
             self.createSystemIfNeeded( aSystem );
+            modelName = char(aSystem.getName());
             add_block('built-in/ModelReference', instanceName,...
-                'ModelName', aSystem.getName());
+                'ModelName', modelName);
         end
         
         function createSystemIfNeeded( self, aSystem )
@@ -92,8 +104,8 @@ classdef SimulinkCreator < handle
         function createSystem( self, aSystem )
             fileName = [char(aSystem.getName()) '.mdl'];
             aSystem.setFilename( fileName ); 
-            fileExists = isMDLFileReadable( fileName );
-            containsBehaviour = mightContainBehaviour( aSystem );
+            fileExists = SimulinkCreator.isMDLFileReadable( fileName );
+            containsBehaviour = SimulinkCreator.mightContainBehaviour( aSystem );
             if fileExists
                 if containsBehaviour 
                     return
@@ -104,18 +116,19 @@ classdef SimulinkCreator < handle
             self.createEmptyMDLFile( aSystem );
         end
         
-        function createEmptyMDLFile( aSystem )
+        function createEmptyMDLFile( self, aSystem )
             name = char( aSystem.getName() );
             fileName = char( aSystem.getFilename() );
             new_system( name, 'Model');
             save_system( name, fileName );
+            aSystem.setSimulinkName( name );
         end
 
         function addSystemToRepository( self, aSystem )
             name = char(aSystem.getName());
             load_system( name );
             handle = get_param(name, 'Handle');
-            self.systemsRepository( sysName ) = handle;
+            self.systemsRepository( name ) = handle;
         end
         
         function boolean = systemHasNOTBeenHandled( self, sysName )
@@ -124,10 +137,9 @@ classdef SimulinkCreator < handle
                 
         function instanceName = computeSimulinkName( self, sysRef ) %#ok<MANU>
             parentName = char(sysRef.getParent().getSimulinkName());
-            target     = sysRef.getTarget();
-            targetName = char(target.getName());
+            targetName = char(sysRef.getName());
             instanceName = [parentName '/' targetName];
-            target.setSimulinkName( instanceName );
+            sysRef.setSimulinkName( instanceName );
         end
         
         function initEcoreReadingClasses(self)
@@ -137,7 +149,7 @@ classdef SimulinkCreator < handle
         end
         
         function createModelInSimulink( self )
-            modelName = 'unnamed';
+            modelName = self.defaultModelName;
             SimulinkCreator.closeFirstIfAlreadyOpen( modelName )
             new_system( modelName );
             load_system( modelName );
