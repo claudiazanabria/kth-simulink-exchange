@@ -5,8 +5,8 @@ classdef SimulinkCreator < handle
         sourceFilePath;
         modelManager;
         model;
+        modelName;
         systemsRepository = containers.Map();
-        defaultModelName = 'unnamed';
     end
     methods (Static)
         % do not use the whole path name. CD first!
@@ -14,7 +14,6 @@ classdef SimulinkCreator < handle
             SC=SimulinkCreator();
             SimulinkCreator.checkEcoreFileReadable( path2ecoreFile );
             SC.sourceFilePath = path2ecoreFile;
-            SimulinkCreator.removeAllElementsFromMap( SC.systemsRepository );
         end
         
     end
@@ -65,34 +64,80 @@ classdef SimulinkCreator < handle
         end
         
         function array = posStr2Array( string )
-            array = sscanf(string ,'[%u %u %u %u]')';
+            array = sscanf(string ,'[%d %d %d %d]')';
         end
 
         function string = posArray2Str( positionArray )
-            string = sprintf('[%u %u %u %u]',positionArray);
+            string = sprintf('[%d %d %d %d]',positionArray);
         end
+        
+        function [name fileName] = computeFilename( aSystem )
+            name = char(aSystem.getName());
+            fileName = [name '.mdl'];
+            aSystem.setFilename( fileName );
+        end
+
     end
     methods
         function doIt(self)
+            SimulinkCreator.removeAllElementsFromMap( self.systemsRepository );
             self.initEcoreReadingClasses();
             self.createModelInSimulink();
             self.processSystem( self.model.getRoot() );
-            open_system( self.defaultModelName );            
+            save_system( self.modelName );
+            open_system( self.modelName );           
         end
     end
     
     methods (Access=private)
         function processSystem( self, parentSystem )
+            fprintf('About to process: %s\n',char(parentSystem.getName()));
             systemLayouter = SystemLayouter();
+            self.processInports( parentSystem, systemLayouter );                
             systemLayouter.startWithSystems();
             sysRefs = parentSystem.getChildren();
             for x=0:sysRefs.size()-1;
                 sysRef = sysRefs.get(x);
-                instanceName = self.computeSimulinkName( sysRef );
+                instanceName = self.computeSimulinkName( sysRef );              
                 targetSys = sysRef.getTarget();
-                self.addSystem(targetSys, instanceName, systemLayouter);
+                self.addSystem(targetSys, instanceName, systemLayouter);                
                 self.processSystem( targetSys );
             end
+            systemLayouter.startWithOutports();
+            self.processOutports( parentSystem, systemLayouter );                
+        end
+        
+        function processInports( self, aSystem, systemLayouter )
+            containsBehaviour = SimulinkCreator.mightContainBehaviour( aSystem );
+            if ~containsBehaviour
+                portList = aSystem.getInports();
+                self.processPorts( 'Inport', portList, systemLayouter);
+            end
+        end
+
+        function processOutports( self, aSystem, systemLayouter )
+            containsBehaviour = SimulinkCreator.mightContainBehaviour( aSystem );
+            if ~containsBehaviour
+                portList = aSystem.getOutports();
+                self.processPorts( 'Outport', portList, systemLayouter);
+            end
+        end
+        
+        function processPorts(self, type, portList, systemLayouter)
+            for x=0:portList.size()-1
+                port = portList.get(x);
+                self.createPortIfNOTPresent( port, type, systemLayouter);
+            end
+        end
+                
+        function createPortIfNOTPresent( self, port, type, systemLayouter)
+            instanceName = self.computeSimulinkName( port );
+            parentName = char(port.getParent().getName());
+            if 
+                SimulinkCreator.isNameInList()
+             blockType = ['built-in/' type];
+            position = systemLayouter.nextPort();
+            add_block(blockType, instanceName, 'Position', position);
         end
         
         function position = computeSystemPosition(self, aSystem, systemLayouter)
@@ -100,7 +145,7 @@ classdef SimulinkCreator < handle
             if posString
                 position = SimulinkCreator.posStr2Array( posString );
             else
-                position = self.systemLayouter.nextSystem();
+                position = systemLayouter.nextSystem();
                 posString = SimulinkCreator.posArray2Str( position );
                 aSystem.setPosition( posString );
             end
@@ -124,8 +169,8 @@ classdef SimulinkCreator < handle
         end
 
         function createSystem( self, aSystem )
-            fileName = [char(aSystem.getName()) '.mdl'];
-            aSystem.setFilename( fileName ); 
+            [name fileName] = SimulinkCreator.computeFilename( aSystem );
+            aSystem.setSimulinkName( name );
             fileExists = SimulinkCreator.isMDLFileReadable( fileName );
             containsBehaviour = SimulinkCreator.mightContainBehaviour( aSystem );
             if fileExists
@@ -171,18 +216,14 @@ classdef SimulinkCreator < handle
         end
         
         function createModelInSimulink( self )
-            modelName = self.defaultModelName;
-            SimulinkCreator.closeFirstIfAlreadyOpen( modelName )
-            new_system( modelName );
-            load_system( modelName );
-            self.setRootSystemName( modelName );
-        end
-        
-        function setRootSystemName( self, name )
             rootSystem = self.model.getRoot();
+            name = char(rootSystem.getName());
+            self.modelName = name;
             rootSystem.setSimulinkName( name );
-        end
-        
+            SimulinkCreator.closeFirstIfAlreadyOpen( name )
+            new_system( name );
+            load_system( name );
+        end        
     end
     
 end

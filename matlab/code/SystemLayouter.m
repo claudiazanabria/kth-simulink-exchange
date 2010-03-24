@@ -1,9 +1,9 @@
 classdef SystemLayouter < handle
     properties
-        distanceBetweenPorts    = 40;
+        distanceBetweenPorts    = 60;
         distanceBetweenSystmes  = 90;
         blockSize               = 150;
-        portSize                = 20;
+        portSize                = 30;
     end
     properties (Access=private)
         top     = 50;
@@ -27,11 +27,12 @@ classdef SystemLayouter < handle
         
         function startWithSystems(self)
             self.top    = 40;
-            self.left   = -90;
+            self.left   = -140;
         end
         
         function startWithOutports(self)
-            self.left = self.left + 30;
+            self.left = self.left + self.distanceBetweenSystmes + self.blockSize;
+            if (self.left < 0), self.left = 100; end;
             self.top = 50;
         end
         
