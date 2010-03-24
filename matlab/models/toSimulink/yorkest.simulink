@@ -5,12 +5,25 @@
     <children name="Juan" target="//@parts.2"/>
     <children name="Maria" target="//@parts.3"/>
   </parts>
-  <parts name="F1"/>
+  <parts name="F1">
+    <outports name="F1_Out"/>
+  </parts>
   <parts name="F2">
     <children name="Pedro" target="//@parts.5"/>
     <children name="Pablo" target="//@parts.4"/>
+    <inports name="F2_In"/>
+    <outports name="F2_Out"/>
   </parts>
-  <parts name="F3"/>
-  <parts name="F22"/>
-  <parts name="F21"/>
+  <parts name="F3">
+    <inports name="F3_In"/>
+  </parts>
+  <parts name="F22">
+    <inports name="F22_InA"/>
+    <inports name="F22_InB"/>
+    <outports name="F22_Out"/>
+  </parts>
+  <parts name="F21">
+    <inports name="F21_In"/>
+    <outports name="F21_Out"/>
+  </parts>
 </sim:Model>
