@@ -63,7 +63,14 @@ classdef SimulinkCreator < handle
         function boolean = mightContainBehaviour( aSystem )
             boolean = (aSystem.getChildren().size() == 0);
         end
-   
+        
+        function array = posStr2Array( string )
+            array = sscanf(string ,'[%d %d %d %d]')';
+        end
+
+        function string = posArray2Str( positionArray )
+            string = sprintf('[%d %d %d %d]',positionArray);
+        end
     end
     methods
         function doIt(self)
@@ -76,21 +83,37 @@ classdef SimulinkCreator < handle
     
     methods (Access=private)
         function processSystem( self, parentSystem )
+            fprintf('About to process: %s\n',char(parentSystem.getName()));
+            systemLayouter = SystemLayouter();
+            systemLayouter.startWithSystems();
             sysRefs = parentSystem.getChildren();
             for x=0:sysRefs.size()-1;
                 sysRef = sysRefs.get(x);
                 instanceName = self.computeSimulinkName( sysRef );
                 targetSys = sysRef.getTarget();
-                self.addSystem(targetSys, instanceName);
+                self.addSystem(targetSys, instanceName, systemLayouter);
                 self.processSystem( targetSys );
             end
         end
         
-        function addSystem( self, aSystem, instanceName )
+        function position = computeSystemPosition(self, aSystem, systemLayouter)
+            posString = aSystem.getPosition();
+            if posString
+                position = SimulinkCreator.posStr2Array( posString );
+            else
+                position = systemLayouter.nextSystem();
+                posString = SimulinkCreator.posArray2Str( position );
+                aSystem.setPosition( posString );
+            end
+            
+        end
+                
+        function addSystem( self, aSystem, instanceName, systemLayouter)
             self.createSystemIfNeeded( aSystem );
             modelName = char(aSystem.getName());
+            position = self.computeSystemPosition(aSystem, systemLayouter);
             add_block('built-in/ModelReference', instanceName,...
-                'ModelName', modelName);
+                'ModelName', modelName, 'Position', position);
         end
         
         function createSystemIfNeeded( self, aSystem )
