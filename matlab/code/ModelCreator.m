@@ -5,7 +5,8 @@ classdef ModelCreator < handle
     % 1: If a port is removed (in the ecore model) from a system that 
     %     has behaviour, the port should be removed from the simulink
     %     system as well.
-    %    
+    %  
+    % 2: Saving and closing all systems. Refreshing problem.
     properties (Access=private)
         ecoreFile;
     end
