@@ -14,8 +14,8 @@ import Simulink.Port;
 import Simulink.ProtoObject;
 import Simulink.SimulinkFactory;
 import Simulink.SimulinkPackage;
-
 import Simulink.SystemReference;
+
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
@@ -174,8 +174,35 @@ public class SimulinkPackageImpl extends EPackageImpl implements SimulinkPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getProtoObject_SimulinkName() {
+		return (EAttribute)protoObjectEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getProtoObject_Position() {
+		return (EAttribute)protoObjectEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getPort() {
 		return portEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getPort_Connections() {
+		return (EReference)portEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -201,15 +228,6 @@ public class SimulinkPackageImpl extends EPackageImpl implements SimulinkPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getInport_Connections() {
-		return (EReference)inportEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getOutport() {
 		return outportEClass;
 	}
@@ -221,15 +239,6 @@ public class SimulinkPackageImpl extends EPackageImpl implements SimulinkPackage
 	 */
 	public EReference getOutport_Parent() {
 		return (EReference)outportEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getOutport_Connections() {
-		return (EReference)outportEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -266,6 +275,24 @@ public class SimulinkPackageImpl extends EPackageImpl implements SimulinkPackage
 	 */
 	public EReference getLine_Parent() {
 		return (EReference)lineEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLine_SimuNameSrc() {
+		return (EAttribute)lineEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLine_SimuNameDst() {
+		return (EAttribute)lineEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -311,6 +338,15 @@ public class SimulinkPackageImpl extends EPackageImpl implements SimulinkPackage
 	 */
 	public EReference getSystem_Outports() {
 		return (EReference)systemEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSystem_Filename() {
+		return (EAttribute)systemEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -397,27 +433,31 @@ public class SimulinkPackageImpl extends EPackageImpl implements SimulinkPackage
 		// Create classes and their features
 		protoObjectEClass = createEClass(PROTO_OBJECT);
 		createEAttribute(protoObjectEClass, PROTO_OBJECT__NAME);
+		createEAttribute(protoObjectEClass, PROTO_OBJECT__SIMULINK_NAME);
+		createEAttribute(protoObjectEClass, PROTO_OBJECT__POSITION);
 
 		portEClass = createEClass(PORT);
+		createEReference(portEClass, PORT__CONNECTIONS);
 
 		inportEClass = createEClass(INPORT);
 		createEReference(inportEClass, INPORT__PARENT);
-		createEReference(inportEClass, INPORT__CONNECTIONS);
 
 		outportEClass = createEClass(OUTPORT);
 		createEReference(outportEClass, OUTPORT__PARENT);
-		createEReference(outportEClass, OUTPORT__CONNECTIONS);
 
 		lineEClass = createEClass(LINE);
 		createEReference(lineEClass, LINE__SOURCE);
 		createEReference(lineEClass, LINE__DESTINATION);
 		createEReference(lineEClass, LINE__PARENT);
+		createEAttribute(lineEClass, LINE__SIMU_NAME_SRC);
+		createEAttribute(lineEClass, LINE__SIMU_NAME_DST);
 
 		systemEClass = createEClass(SYSTEM);
 		createEReference(systemEClass, SYSTEM__CHILDREN);
 		createEReference(systemEClass, SYSTEM__LINES);
 		createEReference(systemEClass, SYSTEM__INPORTS);
 		createEReference(systemEClass, SYSTEM__OUTPORTS);
+		createEAttribute(systemEClass, SYSTEM__FILENAME);
 
 		modelEClass = createEClass(MODEL);
 		createEReference(modelEClass, MODEL__PARTS);
@@ -471,27 +511,31 @@ public class SimulinkPackageImpl extends EPackageImpl implements SimulinkPackage
 		// Initialize classes and features; add operations and parameters
 		initEClass(protoObjectEClass, ProtoObject.class, "ProtoObject", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getProtoObject_Name(), ecorePackage.getEString(), "name", null, 0, 1, ProtoObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getProtoObject_SimulinkName(), ecorePackage.getEString(), "simulinkName", null, 0, 1, ProtoObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getProtoObject_Position(), ecorePackage.getEString(), "position", null, 0, 1, ProtoObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(portEClass, Port.class, "Port", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getPort_Connections(), this.getLine(), this.getLine_Source(), "connections", null, 0, -1, Port.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(inportEClass, Inport.class, "Inport", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getInport_Parent(), this.getSystem(), this.getSystem_Inports(), "parent", null, 1, 1, Inport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getInport_Connections(), this.getLine(), this.getLine_Destination(), "connections", null, 0, -1, Inport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(outportEClass, Outport.class, "Outport", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getOutport_Parent(), this.getSystem(), this.getSystem_Outports(), "parent", null, 1, 1, Outport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOutport_Connections(), this.getLine(), this.getLine_Source(), "connections", null, 0, -1, Outport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(lineEClass, Line.class, "Line", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getLine_Source(), this.getOutport(), this.getOutport_Connections(), "source", null, 1, 1, Line.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getLine_Destination(), this.getInport(), this.getInport_Connections(), "destination", null, 1, 1, Line.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLine_Source(), this.getPort(), this.getPort_Connections(), "source", null, 1, 1, Line.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLine_Destination(), this.getPort(), null, "destination", null, 1, 1, Line.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLine_Parent(), this.getSystem(), this.getSystem_Lines(), "parent", null, 1, 1, Line.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLine_SimuNameSrc(), ecorePackage.getEString(), "simuNameSrc", null, 0, 1, Line.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLine_SimuNameDst(), ecorePackage.getEString(), "simuNameDst", null, 0, 1, Line.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(systemEClass, Simulink.System.class, "System", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSystem_Children(), this.getSystemReference(), this.getSystemReference_Parent(), "children", null, 0, -1, Simulink.System.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSystem_Lines(), this.getLine(), this.getLine_Parent(), "lines", null, 0, -1, Simulink.System.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSystem_Inports(), this.getInport(), this.getInport_Parent(), "inports", null, 0, -1, Simulink.System.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSystem_Outports(), this.getOutport(), this.getOutport_Parent(), "outports", null, 0, -1, Simulink.System.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSystem_Filename(), ecorePackage.getEString(), "filename", null, 0, 1, Simulink.System.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getModel_Parts(), this.getSystem(), null, "parts", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

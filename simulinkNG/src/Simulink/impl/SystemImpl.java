@@ -6,20 +6,26 @@
  */
 package Simulink.impl;
 
-import java.util.Collection;
-
-import org.eclipse.emf.common.notify.NotificationChain;
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
-import org.eclipse.emf.ecore.util.InternalEList;
-
 import Simulink.Inport;
 import Simulink.Line;
 import Simulink.Outport;
 import Simulink.SimulinkPackage;
 import Simulink.SystemReference;
+
+import java.util.Collection;
+
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
+
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -32,6 +38,7 @@ import Simulink.SystemReference;
  *   <li>{@link Simulink.impl.SystemImpl#getLines <em>Lines</em>}</li>
  *   <li>{@link Simulink.impl.SystemImpl#getInports <em>Inports</em>}</li>
  *   <li>{@link Simulink.impl.SystemImpl#getOutports <em>Outports</em>}</li>
+ *   <li>{@link Simulink.impl.SystemImpl#getFilename <em>Filename</em>}</li>
  * </ul>
  * </p>
  *
@@ -77,6 +84,26 @@ public class SystemImpl extends ProtoObjectImpl implements Simulink.System {
 	 * @ordered
 	 */
 	protected EList<Outport> outports;
+
+	/**
+	 * The default value of the '{@link #getFilename() <em>Filename</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFilename()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String FILENAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getFilename() <em>Filename</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFilename()
+	 * @generated
+	 * @ordered
+	 */
+	protected String filename = FILENAME_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -150,6 +177,27 @@ public class SystemImpl extends ProtoObjectImpl implements Simulink.System {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getFilename() {
+		return filename;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setFilename(String newFilename) {
+		String oldFilename = filename;
+		filename = newFilename;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, SimulinkPackage.SYSTEM__FILENAME, oldFilename, filename));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -202,6 +250,8 @@ public class SystemImpl extends ProtoObjectImpl implements Simulink.System {
 				return getInports();
 			case SimulinkPackage.SYSTEM__OUTPORTS:
 				return getOutports();
+			case SimulinkPackage.SYSTEM__FILENAME:
+				return getFilename();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -231,6 +281,9 @@ public class SystemImpl extends ProtoObjectImpl implements Simulink.System {
 				getOutports().clear();
 				getOutports().addAll((Collection<? extends Outport>)newValue);
 				return;
+			case SimulinkPackage.SYSTEM__FILENAME:
+				setFilename((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -255,6 +308,9 @@ public class SystemImpl extends ProtoObjectImpl implements Simulink.System {
 			case SimulinkPackage.SYSTEM__OUTPORTS:
 				getOutports().clear();
 				return;
+			case SimulinkPackage.SYSTEM__FILENAME:
+				setFilename(FILENAME_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -275,8 +331,26 @@ public class SystemImpl extends ProtoObjectImpl implements Simulink.System {
 				return inports != null && !inports.isEmpty();
 			case SimulinkPackage.SYSTEM__OUTPORTS:
 				return outports != null && !outports.isEmpty();
+			case SimulinkPackage.SYSTEM__FILENAME:
+				return FILENAME_EDEFAULT == null ? filename != null : !FILENAME_EDEFAULT.equals(filename);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (filename: ");
+		result.append(filename);
+		result.append(')');
+		return result.toString();
 	}
 
 } //SystemImpl

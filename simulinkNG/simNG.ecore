@@ -5,27 +5,30 @@
     nsURI="http:///se.kth.md.attest2/Simulink/3.0" nsPrefix="sim">
   <eClassifiers xsi:type="ecore:EClass" name="ProtoObject" abstract="true" eSuperTypes="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="simulinkName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="position" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Port" abstract="true" eSuperTypes="#//ProtoObject"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Port" abstract="true" eSuperTypes="#//ProtoObject">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="connections" upperBound="-1"
+        eType="#//Line" eOpposite="#//Line/source"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Inport" eSuperTypes="#//Port">
     <eStructuralFeatures xsi:type="ecore:EReference" name="parent" lowerBound="1"
         eType="#//System" eOpposite="#//System/inports"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="connections" upperBound="-1"
-        eType="#//Line" eOpposite="#//Line/destination"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Outport" eSuperTypes="#//Port">
     <eStructuralFeatures xsi:type="ecore:EReference" name="parent" lowerBound="1"
         eType="#//System" eOpposite="#//System/outports"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="connections" upperBound="-1"
-        eType="#//Line" eOpposite="#//Line/source"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Line" eSuperTypes="#//ProtoObject">
     <eStructuralFeatures xsi:type="ecore:EReference" name="source" unique="false"
-        lowerBound="1" eType="#//Outport" eOpposite="#//Outport/connections"/>
+        lowerBound="1" eType="#//Port" eOpposite="#//Port/connections"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="destination" unique="false"
-        lowerBound="1" eType="#//Inport" eOpposite="#//Inport/connections"/>
+        lowerBound="1" eType="#//Port"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parent" lowerBound="1"
         eType="#//System" eOpposite="#//System/lines"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="simuNameSrc" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="simuNameDst" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="System" eSuperTypes="#//ProtoObject">
     <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
@@ -36,6 +39,7 @@
         eType="#//Inport" containment="true" eOpposite="#//Inport/parent"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="outports" upperBound="-1"
         eType="#//Outport" containment="true" eOpposite="#//Outport/parent"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="filename" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Model" eSuperTypes="#//ProtoObject">
     <eStructuralFeatures xsi:type="ecore:EReference" name="parts" upperBound="-1"

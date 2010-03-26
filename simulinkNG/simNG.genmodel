@@ -9,26 +9,31 @@
   <genPackages prefix="Simulink" disposableProviderFactory="true" ecorePackage="simNG.ecore#/">
     <genClasses image="false" ecoreClass="simNG.ecore#//ProtoObject">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simNG.ecore#//ProtoObject/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simNG.ecore#//ProtoObject/simulinkName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simNG.ecore#//ProtoObject/position"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="simNG.ecore#//Port"/>
+    <genClasses image="false" ecoreClass="simNG.ecore#//Port">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference simNG.ecore#//Port/connections"/>
+    </genClasses>
     <genClasses ecoreClass="simNG.ecore#//Inport">
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference simNG.ecore#//Inport/parent"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference simNG.ecore#//Inport/connections"/>
     </genClasses>
     <genClasses ecoreClass="simNG.ecore#//Outport">
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference simNG.ecore#//Outport/parent"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference simNG.ecore#//Outport/connections"/>
     </genClasses>
     <genClasses ecoreClass="simNG.ecore#//Line">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference simNG.ecore#//Line/source"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference simNG.ecore#//Line/destination"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference simNG.ecore#//Line/parent"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simNG.ecore#//Line/simuNameSrc"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simNG.ecore#//Line/simuNameDst"/>
     </genClasses>
     <genClasses ecoreClass="simNG.ecore#//System">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference simNG.ecore#//System/children"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference simNG.ecore#//System/lines"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference simNG.ecore#//System/inports"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference simNG.ecore#//System/outports"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simNG.ecore#//System/filename"/>
     </genClasses>
     <genClasses ecoreClass="simNG.ecore#//Model">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference simNG.ecore#//Model/parts"/>

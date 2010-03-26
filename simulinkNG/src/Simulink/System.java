@@ -20,6 +20,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link Simulink.System#getLines <em>Lines</em>}</li>
  *   <li>{@link Simulink.System#getInports <em>Inports</em>}</li>
  *   <li>{@link Simulink.System#getOutports <em>Outports</em>}</li>
+ *   <li>{@link Simulink.System#getFilename <em>Filename</em>}</li>
  * </ul>
  * </p>
  *
@@ -34,7 +35,7 @@ public interface System extends ProtoObject {
 	 * It is bidirectional and its opposite is '{@link Simulink.SystemReference#getParent <em>Parent</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Children</em>' reference list isn't clear,
+	 * If the meaning of the '<em>Children</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
@@ -99,5 +100,31 @@ public interface System extends ProtoObject {
 	 * @generated
 	 */
 	EList<Outport> getOutports();
+
+	/**
+	 * Returns the value of the '<em><b>Filename</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Filename</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Filename</em>' attribute.
+	 * @see #setFilename(String)
+	 * @see Simulink.SimulinkPackage#getSystem_Filename()
+	 * @model
+	 * @generated
+	 */
+	String getFilename();
+
+	/**
+	 * Sets the value of the '{@link Simulink.System#getFilename <em>Filename</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Filename</em>' attribute.
+	 * @see #getFilename()
+	 * @generated
+	 */
+	void setFilename(String value);
 
 } // System

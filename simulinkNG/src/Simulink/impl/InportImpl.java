@@ -7,19 +7,17 @@
 package Simulink.impl;
 
 import Simulink.Inport;
-import Simulink.Line;
 import Simulink.SimulinkPackage;
 
-import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
+
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -29,23 +27,12 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * <ul>
  *   <li>{@link Simulink.impl.InportImpl#getParent <em>Parent</em>}</li>
- *   <li>{@link Simulink.impl.InportImpl#getConnections <em>Connections</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
 public class InportImpl extends PortImpl implements Inport {
-	/**
-	 * The cached value of the '{@link #getConnections() <em>Connections</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getConnections()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Line> connections;
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -111,19 +98,6 @@ public class InportImpl extends PortImpl implements Inport {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Line> getConnections() {
-		if (connections == null) {
-			connections = new EObjectWithInverseResolvingEList<Line>(Line.class, this, SimulinkPackage.INPORT__CONNECTIONS, SimulinkPackage.LINE__DESTINATION);
-		}
-		return connections;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -131,8 +105,6 @@ public class InportImpl extends PortImpl implements Inport {
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetParent((Simulink.System)otherEnd, msgs);
-			case SimulinkPackage.INPORT__CONNECTIONS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getConnections()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -147,8 +119,6 @@ public class InportImpl extends PortImpl implements Inport {
 		switch (featureID) {
 			case SimulinkPackage.INPORT__PARENT:
 				return basicSetParent(null, msgs);
-			case SimulinkPackage.INPORT__CONNECTIONS:
-				return ((InternalEList<?>)getConnections()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -177,8 +147,6 @@ public class InportImpl extends PortImpl implements Inport {
 		switch (featureID) {
 			case SimulinkPackage.INPORT__PARENT:
 				return getParent();
-			case SimulinkPackage.INPORT__CONNECTIONS:
-				return getConnections();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -188,16 +156,11 @@ public class InportImpl extends PortImpl implements Inport {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case SimulinkPackage.INPORT__PARENT:
 				setParent((Simulink.System)newValue);
-				return;
-			case SimulinkPackage.INPORT__CONNECTIONS:
-				getConnections().clear();
-				getConnections().addAll((Collection<? extends Line>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -214,9 +177,6 @@ public class InportImpl extends PortImpl implements Inport {
 			case SimulinkPackage.INPORT__PARENT:
 				setParent((Simulink.System)null);
 				return;
-			case SimulinkPackage.INPORT__CONNECTIONS:
-				getConnections().clear();
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -231,8 +191,6 @@ public class InportImpl extends PortImpl implements Inport {
 		switch (featureID) {
 			case SimulinkPackage.INPORT__PARENT:
 				return getParent() != null;
-			case SimulinkPackage.INPORT__CONNECTIONS:
-				return connections != null && !connections.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

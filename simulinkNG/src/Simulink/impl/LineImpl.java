@@ -6,17 +6,19 @@
  */
 package Simulink.impl;
 
+import Simulink.Line;
+import Simulink.Port;
+import Simulink.SimulinkPackage;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import Simulink.Inport;
-import Simulink.Line;
-import Simulink.Outport;
-import Simulink.SimulinkPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -28,6 +30,8 @@ import Simulink.SimulinkPackage;
  *   <li>{@link Simulink.impl.LineImpl#getSource <em>Source</em>}</li>
  *   <li>{@link Simulink.impl.LineImpl#getDestination <em>Destination</em>}</li>
  *   <li>{@link Simulink.impl.LineImpl#getParent <em>Parent</em>}</li>
+ *   <li>{@link Simulink.impl.LineImpl#getSimuNameSrc <em>Simu Name Src</em>}</li>
+ *   <li>{@link Simulink.impl.LineImpl#getSimuNameDst <em>Simu Name Dst</em>}</li>
  * </ul>
  * </p>
  *
@@ -42,7 +46,7 @@ public class LineImpl extends ProtoObjectImpl implements Line {
 	 * @generated
 	 * @ordered
 	 */
-	protected Outport source;
+	protected Port source;
 
 	/**
 	 * The cached value of the '{@link #getDestination() <em>Destination</em>}' reference.
@@ -52,7 +56,47 @@ public class LineImpl extends ProtoObjectImpl implements Line {
 	 * @generated
 	 * @ordered
 	 */
-	protected Inport destination;
+	protected Port destination;
+
+	/**
+	 * The default value of the '{@link #getSimuNameSrc() <em>Simu Name Src</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSimuNameSrc()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String SIMU_NAME_SRC_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getSimuNameSrc() <em>Simu Name Src</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSimuNameSrc()
+	 * @generated
+	 * @ordered
+	 */
+	protected String simuNameSrc = SIMU_NAME_SRC_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getSimuNameDst() <em>Simu Name Dst</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSimuNameDst()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String SIMU_NAME_DST_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getSimuNameDst() <em>Simu Name Dst</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSimuNameDst()
+	 * @generated
+	 * @ordered
+	 */
+	protected String simuNameDst = SIMU_NAME_DST_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -78,10 +122,10 @@ public class LineImpl extends ProtoObjectImpl implements Line {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Outport getSource() {
+	public Port getSource() {
 		if (source != null && source.eIsProxy()) {
 			InternalEObject oldSource = (InternalEObject)source;
-			source = (Outport)eResolveProxy(oldSource);
+			source = (Port)eResolveProxy(oldSource);
 			if (source != oldSource) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, SimulinkPackage.LINE__SOURCE, oldSource, source));
@@ -95,7 +139,7 @@ public class LineImpl extends ProtoObjectImpl implements Line {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Outport basicGetSource() {
+	public Port basicGetSource() {
 		return source;
 	}
 
@@ -104,8 +148,8 @@ public class LineImpl extends ProtoObjectImpl implements Line {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetSource(Outport newSource, NotificationChain msgs) {
-		Outport oldSource = source;
+	public NotificationChain basicSetSource(Port newSource, NotificationChain msgs) {
+		Port oldSource = source;
 		source = newSource;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SimulinkPackage.LINE__SOURCE, oldSource, newSource);
@@ -119,13 +163,13 @@ public class LineImpl extends ProtoObjectImpl implements Line {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSource(Outport newSource) {
+	public void setSource(Port newSource) {
 		if (newSource != source) {
 			NotificationChain msgs = null;
 			if (source != null)
-				msgs = ((InternalEObject)source).eInverseRemove(this, SimulinkPackage.OUTPORT__CONNECTIONS, Outport.class, msgs);
+				msgs = ((InternalEObject)source).eInverseRemove(this, SimulinkPackage.PORT__CONNECTIONS, Port.class, msgs);
 			if (newSource != null)
-				msgs = ((InternalEObject)newSource).eInverseAdd(this, SimulinkPackage.OUTPORT__CONNECTIONS, Outport.class, msgs);
+				msgs = ((InternalEObject)newSource).eInverseAdd(this, SimulinkPackage.PORT__CONNECTIONS, Port.class, msgs);
 			msgs = basicSetSource(newSource, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
@@ -138,10 +182,10 @@ public class LineImpl extends ProtoObjectImpl implements Line {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Inport getDestination() {
+	public Port getDestination() {
 		if (destination != null && destination.eIsProxy()) {
 			InternalEObject oldDestination = (InternalEObject)destination;
-			destination = (Inport)eResolveProxy(oldDestination);
+			destination = (Port)eResolveProxy(oldDestination);
 			if (destination != oldDestination) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, SimulinkPackage.LINE__DESTINATION, oldDestination, destination));
@@ -155,7 +199,7 @@ public class LineImpl extends ProtoObjectImpl implements Line {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Inport basicGetDestination() {
+	public Port basicGetDestination() {
 		return destination;
 	}
 
@@ -164,33 +208,11 @@ public class LineImpl extends ProtoObjectImpl implements Line {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetDestination(Inport newDestination, NotificationChain msgs) {
-		Inport oldDestination = destination;
+	public void setDestination(Port newDestination) {
+		Port oldDestination = destination;
 		destination = newDestination;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SimulinkPackage.LINE__DESTINATION, oldDestination, newDestination);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setDestination(Inport newDestination) {
-		if (newDestination != destination) {
-			NotificationChain msgs = null;
-			if (destination != null)
-				msgs = ((InternalEObject)destination).eInverseRemove(this, SimulinkPackage.INPORT__CONNECTIONS, Inport.class, msgs);
-			if (newDestination != null)
-				msgs = ((InternalEObject)newDestination).eInverseAdd(this, SimulinkPackage.INPORT__CONNECTIONS, Inport.class, msgs);
-			msgs = basicSetDestination(newDestination, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, SimulinkPackage.LINE__DESTINATION, newDestination, newDestination));
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, SimulinkPackage.LINE__DESTINATION, oldDestination, destination));
 	}
 
 	/**
@@ -239,17 +261,55 @@ public class LineImpl extends ProtoObjectImpl implements Line {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getSimuNameSrc() {
+		return simuNameSrc;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSimuNameSrc(String newSimuNameSrc) {
+		String oldSimuNameSrc = simuNameSrc;
+		simuNameSrc = newSimuNameSrc;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, SimulinkPackage.LINE__SIMU_NAME_SRC, oldSimuNameSrc, simuNameSrc));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getSimuNameDst() {
+		return simuNameDst;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSimuNameDst(String newSimuNameDst) {
+		String oldSimuNameDst = simuNameDst;
+		simuNameDst = newSimuNameDst;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, SimulinkPackage.LINE__SIMU_NAME_DST, oldSimuNameDst, simuNameDst));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case SimulinkPackage.LINE__SOURCE:
 				if (source != null)
-					msgs = ((InternalEObject)source).eInverseRemove(this, SimulinkPackage.OUTPORT__CONNECTIONS, Outport.class, msgs);
-				return basicSetSource((Outport)otherEnd, msgs);
-			case SimulinkPackage.LINE__DESTINATION:
-				if (destination != null)
-					msgs = ((InternalEObject)destination).eInverseRemove(this, SimulinkPackage.INPORT__CONNECTIONS, Inport.class, msgs);
-				return basicSetDestination((Inport)otherEnd, msgs);
+					msgs = ((InternalEObject)source).eInverseRemove(this, SimulinkPackage.PORT__CONNECTIONS, Port.class, msgs);
+				return basicSetSource((Port)otherEnd, msgs);
 			case SimulinkPackage.LINE__PARENT:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -268,8 +328,6 @@ public class LineImpl extends ProtoObjectImpl implements Line {
 		switch (featureID) {
 			case SimulinkPackage.LINE__SOURCE:
 				return basicSetSource(null, msgs);
-			case SimulinkPackage.LINE__DESTINATION:
-				return basicSetDestination(null, msgs);
 			case SimulinkPackage.LINE__PARENT:
 				return basicSetParent(null, msgs);
 		}
@@ -306,6 +364,10 @@ public class LineImpl extends ProtoObjectImpl implements Line {
 				return basicGetDestination();
 			case SimulinkPackage.LINE__PARENT:
 				return getParent();
+			case SimulinkPackage.LINE__SIMU_NAME_SRC:
+				return getSimuNameSrc();
+			case SimulinkPackage.LINE__SIMU_NAME_DST:
+				return getSimuNameDst();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -319,13 +381,19 @@ public class LineImpl extends ProtoObjectImpl implements Line {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case SimulinkPackage.LINE__SOURCE:
-				setSource((Outport)newValue);
+				setSource((Port)newValue);
 				return;
 			case SimulinkPackage.LINE__DESTINATION:
-				setDestination((Inport)newValue);
+				setDestination((Port)newValue);
 				return;
 			case SimulinkPackage.LINE__PARENT:
 				setParent((Simulink.System)newValue);
+				return;
+			case SimulinkPackage.LINE__SIMU_NAME_SRC:
+				setSimuNameSrc((String)newValue);
+				return;
+			case SimulinkPackage.LINE__SIMU_NAME_DST:
+				setSimuNameDst((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -340,13 +408,19 @@ public class LineImpl extends ProtoObjectImpl implements Line {
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case SimulinkPackage.LINE__SOURCE:
-				setSource((Outport)null);
+				setSource((Port)null);
 				return;
 			case SimulinkPackage.LINE__DESTINATION:
-				setDestination((Inport)null);
+				setDestination((Port)null);
 				return;
 			case SimulinkPackage.LINE__PARENT:
 				setParent((Simulink.System)null);
+				return;
+			case SimulinkPackage.LINE__SIMU_NAME_SRC:
+				setSimuNameSrc(SIMU_NAME_SRC_EDEFAULT);
+				return;
+			case SimulinkPackage.LINE__SIMU_NAME_DST:
+				setSimuNameDst(SIMU_NAME_DST_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -366,8 +440,30 @@ public class LineImpl extends ProtoObjectImpl implements Line {
 				return destination != null;
 			case SimulinkPackage.LINE__PARENT:
 				return getParent() != null;
+			case SimulinkPackage.LINE__SIMU_NAME_SRC:
+				return SIMU_NAME_SRC_EDEFAULT == null ? simuNameSrc != null : !SIMU_NAME_SRC_EDEFAULT.equals(simuNameSrc);
+			case SimulinkPackage.LINE__SIMU_NAME_DST:
+				return SIMU_NAME_DST_EDEFAULT == null ? simuNameDst != null : !SIMU_NAME_DST_EDEFAULT.equals(simuNameDst);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (simuNameSrc: ");
+		result.append(simuNameSrc);
+		result.append(", simuNameDst: ");
+		result.append(simuNameDst);
+		result.append(')');
+		return result.toString();
 	}
 
 } //LineImpl

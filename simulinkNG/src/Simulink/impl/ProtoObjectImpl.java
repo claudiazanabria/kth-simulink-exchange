@@ -24,6 +24,8 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link Simulink.impl.ProtoObjectImpl#getName <em>Name</em>}</li>
+ *   <li>{@link Simulink.impl.ProtoObjectImpl#getSimulinkName <em>Simulink Name</em>}</li>
+ *   <li>{@link Simulink.impl.ProtoObjectImpl#getPosition <em>Position</em>}</li>
  * </ul>
  * </p>
  *
@@ -49,6 +51,46 @@ public abstract class ProtoObjectImpl extends EObjectImpl implements ProtoObject
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getSimulinkName() <em>Simulink Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSimulinkName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String SIMULINK_NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getSimulinkName() <em>Simulink Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSimulinkName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String simulinkName = SIMULINK_NAME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getPosition() <em>Position</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPosition()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String POSITION_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getPosition() <em>Position</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPosition()
+	 * @generated
+	 * @ordered
+	 */
+	protected String position = POSITION_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -95,11 +137,57 @@ public abstract class ProtoObjectImpl extends EObjectImpl implements ProtoObject
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getSimulinkName() {
+		return simulinkName;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSimulinkName(String newSimulinkName) {
+		String oldSimulinkName = simulinkName;
+		simulinkName = newSimulinkName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, SimulinkPackage.PROTO_OBJECT__SIMULINK_NAME, oldSimulinkName, simulinkName));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getPosition() {
+		return position;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPosition(String newPosition) {
+		String oldPosition = position;
+		position = newPosition;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, SimulinkPackage.PROTO_OBJECT__POSITION, oldPosition, position));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case SimulinkPackage.PROTO_OBJECT__NAME:
 				return getName();
+			case SimulinkPackage.PROTO_OBJECT__SIMULINK_NAME:
+				return getSimulinkName();
+			case SimulinkPackage.PROTO_OBJECT__POSITION:
+				return getPosition();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -114,6 +202,12 @@ public abstract class ProtoObjectImpl extends EObjectImpl implements ProtoObject
 		switch (featureID) {
 			case SimulinkPackage.PROTO_OBJECT__NAME:
 				setName((String)newValue);
+				return;
+			case SimulinkPackage.PROTO_OBJECT__SIMULINK_NAME:
+				setSimulinkName((String)newValue);
+				return;
+			case SimulinkPackage.PROTO_OBJECT__POSITION:
+				setPosition((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -130,6 +224,12 @@ public abstract class ProtoObjectImpl extends EObjectImpl implements ProtoObject
 			case SimulinkPackage.PROTO_OBJECT__NAME:
 				setName(NAME_EDEFAULT);
 				return;
+			case SimulinkPackage.PROTO_OBJECT__SIMULINK_NAME:
+				setSimulinkName(SIMULINK_NAME_EDEFAULT);
+				return;
+			case SimulinkPackage.PROTO_OBJECT__POSITION:
+				setPosition(POSITION_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -144,6 +244,10 @@ public abstract class ProtoObjectImpl extends EObjectImpl implements ProtoObject
 		switch (featureID) {
 			case SimulinkPackage.PROTO_OBJECT__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case SimulinkPackage.PROTO_OBJECT__SIMULINK_NAME:
+				return SIMULINK_NAME_EDEFAULT == null ? simulinkName != null : !SIMULINK_NAME_EDEFAULT.equals(simulinkName);
+			case SimulinkPackage.PROTO_OBJECT__POSITION:
+				return POSITION_EDEFAULT == null ? position != null : !POSITION_EDEFAULT.equals(position);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -160,6 +264,10 @@ public abstract class ProtoObjectImpl extends EObjectImpl implements ProtoObject
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");
 		result.append(name);
+		result.append(", simulinkName: ");
+		result.append(simulinkName);
+		result.append(", position: ");
+		result.append(position);
 		result.append(')');
 		return result.toString();
 	}

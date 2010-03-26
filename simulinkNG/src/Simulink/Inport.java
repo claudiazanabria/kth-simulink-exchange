@@ -6,8 +6,6 @@
  */
 package Simulink;
 
-import org.eclipse.emf.common.util.EList;
-
 
 /**
  * <!-- begin-user-doc -->
@@ -18,7 +16,6 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * <ul>
  *   <li>{@link Simulink.Inport#getParent <em>Parent</em>}</li>
- *   <li>{@link Simulink.Inport#getConnections <em>Connections</em>}</li>
  * </ul>
  * </p>
  *
@@ -27,7 +24,6 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface Inport extends Port {
-
 	/**
 	 * Returns the value of the '<em><b>Parent</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link Simulink.System#getInports <em>Inports</em>}'.
@@ -56,21 +52,4 @@ public interface Inport extends Port {
 	 */
 	void setParent(Simulink.System value);
 
-	/**
-	 * Returns the value of the '<em><b>Connections</b></em>' reference list.
-	 * The list contents are of type {@link Simulink.Line}.
-	 * It is bidirectional and its opposite is '{@link Simulink.Line#getDestination <em>Destination</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Connections</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Connections</em>' reference list.
-	 * @see Simulink.SimulinkPackage#getInport_Connections()
-	 * @see Simulink.Line#getDestination
-	 * @model opposite="destination"
-	 * @generated
-	 */
-	EList<Line> getConnections();
 } // Inport

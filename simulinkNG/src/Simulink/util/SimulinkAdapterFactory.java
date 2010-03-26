@@ -13,8 +13,8 @@ import Simulink.Outport;
 import Simulink.Port;
 import Simulink.ProtoObject;
 import Simulink.SimulinkPackage;
-
 import Simulink.SystemReference;
+
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 

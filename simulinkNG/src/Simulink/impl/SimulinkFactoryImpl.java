@@ -12,8 +12,8 @@ import Simulink.Model;
 import Simulink.Outport;
 import Simulink.SimulinkFactory;
 import Simulink.SimulinkPackage;
-
 import Simulink.SystemReference;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;

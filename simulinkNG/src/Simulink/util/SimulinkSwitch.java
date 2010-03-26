@@ -13,8 +13,8 @@ import Simulink.Outport;
 import Simulink.Port;
 import Simulink.ProtoObject;
 import Simulink.SimulinkPackage;
-
 import Simulink.SystemReference;
+
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
