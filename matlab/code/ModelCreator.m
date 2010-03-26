@@ -1,4 +1,11 @@
 classdef ModelCreator < handle
+    %
+    %
+    % TODO:
+    % 1: If a port is removed (in the ecore model) from a system that 
+    %     has behaviour, the port should be removed from the simulink
+    %     system as well.
+    %    
     properties (Access=private)
         ecoreFile;
     end
@@ -32,6 +39,15 @@ classdef ModelCreator < handle
             portName = char( port.getSimulinkName() );
             boolean = ~Utils.isNameInList(portName, list);
         end
+
+        function boolean = isAsystem( element )
+            type = char(element.eClass().getName());
+            if strcmp(type,'System')==1
+                boolean = true;
+            else
+                boolean = false;
+            end
+        end
         
         
     end
@@ -64,9 +80,18 @@ classdef ModelCreator < handle
                     self.processInport( anElement );
                 case 'Outport'
                     self.processOutport( anElement );
+                case 'Line'
+                    self.processLine( anElement );
             end
         end
 
+        function processLine( self, aLine ) %#ok<MANU>
+            src = char( aLine.getSimuNameSrc() );
+            dst = char( aLine.getSimuNameDst() );
+            sys = char( aLine.getParent().getSimulinkName() );
+            add_line(sys, src, dst, 'autorouting' ,'on');
+        end
+        
         function processSysRef( self, aSysRef ) %#ok<MANU>
             aSystem = aSysRef.getTarget();
             modelname       = char( aSystem.getName() );
@@ -112,7 +137,20 @@ classdef ModelCreator < handle
         end
         
         function removeSystemsFromMemory( self, aList )
+            size = aList.size();
+            for x=fliplr(0:size-1)
+                element = aList.get(x);
+                %self.saveAndClose( element );
+            end
         end
+        
+        function saveAndClose( self, element ) %#ok<MANU>
+            if ModelCreator.isAsystem( element )
+                name = char( element.getSimulinkName() );
+                save_system( name );
+                close_system( name );
+            end
+        end            
     end
     
 end

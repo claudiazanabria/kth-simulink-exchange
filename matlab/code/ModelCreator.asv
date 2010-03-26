@@ -1,4 +1,11 @@
 classdef ModelCreator < handle
+    %
+    %
+    % TODO:
+    % 1: If a port is removed (in the ecore model) from a system that 
+    %     has behaviour, the port should be removed from the simulink
+    %     system as well.
+    %    
     properties (Access=private)
         ecoreFile;
     end
@@ -7,7 +14,6 @@ classdef ModelCreator < handle
         % do not use the whole path name. CD first!
         function MC=fromFile( path2ecoreFile )
             MC=ModelCreator();
-            Utils.checkEcoreFileReadable( path2ecoreFile );
             MC.ecoreFile = path2ecoreFile;
         end
         
@@ -32,6 +38,15 @@ classdef ModelCreator < handle
             list = find_system(parentName, 'BlockType', type);
             portName = char( port.getSimulinkName() );
             boolean = ~Utils.isNameInList(portName, list);
+        end
+
+        function boolean = isAsystem( element )
+            type = char(element.eClass().getName());
+            if strcmp(type,'System')==1
+                boolean = true;
+            else
+                boolean = false;
+            end
         end
         
         
@@ -68,20 +83,16 @@ classdef ModelCreator < handle
             end
         end
 
-        function processSysRef( self, aSysRef )
+        function processSysRef( self, aSysRef ) %#ok<MANU>
             aSystem = aSysRef.getTarget();
             modelname       = char( aSystem.getName() );
-            position        = char( aSys.getPosition() );
-            instanceName    = char( aSystem.getSimulinkName() );
+            position        = char( aSysRef.getPosition() );
+            instanceName    = char( aSysRef.getSimulinkName() );
             add_block('built-in/ModelReference', instanceName,...
                 'ModelName', modelname, 'Position', position);            
         end
         
-        function processSystem( self, aSystem )
-            self.createSystem( aSystem );
-        end
-        
-        function createSystem( self, aSystem ) %#ok<MANU>
+        function processSystem( self, aSystem ) %#ok<MANU>
             name            = char( aSystem.getName() );
             fileName        = char( aSystem.getFilename() );
             fileExists      = Utils.isMDLFileReadable( fileName );
@@ -95,10 +106,8 @@ classdef ModelCreator < handle
                 end
             end
             new_system( name, 'Model');
-            %save_system( name, fileName );
-            %load_system( name );
         end
-        
+                
         function processInport( self, inport )
             type = 'Inport';
             self.processPort( inport, type );
@@ -119,7 +128,15 @@ classdef ModelCreator < handle
         end
         
         function removeSystemsFromMemory( self, aList )
+            size = aList.size();
+            for x=fliplr(0:size-1)
+                element = aList.get(x);
+                if ModelCreator.isAystem( element )
+                end
+                
+            end
         end
+        
     end
     
 end
