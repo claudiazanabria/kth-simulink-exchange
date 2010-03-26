@@ -3,7 +3,8 @@ classdef SystemLayouter < handle
         distanceBetweenPorts    = 60;
         distanceBetweenSystmes  = 90;
         blockSize               = 150;
-        portSize                = 30;
+        portSizeHoriz                = 30;
+        portSizeVert                 = 14;
     end
     properties (Access=private)
         top     = 50;
@@ -42,8 +43,8 @@ classdef SystemLayouter < handle
                     self.bottom = self.top + self.blockSize;
                     self.right = self.left + self.blockSize;
                 case 'port'
-                    self.bottom = self.top + self.portSize;
-                    self.right = self.left + self.portSize;
+                    self.bottom = self.top + self.portSizeVert;
+                    self.right = self.left + self.portSizeHoriz;
             end
         end
     end
