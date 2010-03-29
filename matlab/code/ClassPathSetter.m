@@ -2,7 +2,8 @@
 classdef ClassPathSetter
     % aca tambien
     properties(Constant)
-        basePath = 'F:/Documents/MATLAB/libs';
+        %basePath = 'F:/Documents/MATLAB/libs';
+        basePath = '/Users/alex/Documents/Konsult jobb/KTH-ECS/checkout/Matlab/libs';
         jarFiles    = ClassPathSetter.jarFileNames();
         numberOfFiles = ClassPathSetter.amountOfFiles();
     end

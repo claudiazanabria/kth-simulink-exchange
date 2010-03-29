@@ -1,5 +1,5 @@
 classdef ModelCreator < handle
-    %
+    % Ecore --> Simulink 
     %
     % TODO:
     % 1: If a port is removed (in the ecore model) from a system that 
@@ -12,7 +12,6 @@ classdef ModelCreator < handle
     end
     
     methods (Static)
-        % do not use the whole path name. CD first!
         function MC=fromFile( path2ecoreFile )
             MC=ModelCreator();
             MC.ecoreFile = path2ecoreFile;
@@ -50,6 +49,30 @@ classdef ModelCreator < handle
             end
         end
         
+        function boolean = isAsystemReference( element )
+            type = char(element.eClass().getName());
+            if strcmp(type,'SystemReference')==1
+                boolean = true;
+            else
+                boolean = false;
+            end
+        end
+        
+        function refreshAndSaveSystems()
+            list = find_system('BlockDiagramType','model');
+            for x=1:size(list,1)
+                name = char( list(x) );
+                obj = get_param( name, 'Object');
+                obj.refreshModelBlocks();
+                save_system( name );
+            end
+            close_system( list );
+        end
+        
+        function openRootSystem( list )
+            file = char( list.get(0).getRoot().getFilename() );
+            open_system( file );
+        end
         
     end
     methods
@@ -59,7 +82,8 @@ classdef ModelCreator < handle
             model = modelManager.getTopElement();
             list = modelManagement.simulink.ModelProcessor.doIt(model);
             self.processList( list );
-            self.removeSystemsFromMemory( list );
+            ModelCreator.refreshAndSaveSystems();
+            ModelCreator.openRootSystem( list );
         end
         
         function processList( self, aList )
@@ -137,21 +161,7 @@ classdef ModelCreator < handle
             end
         end
         
-        function removeSystemsFromMemory( self, aList )
-            size = aList.size();
-            for x=fliplr(0:size-1)
-                element = aList.get(x);
-                %self.saveAndClose( element );
-            end
-        end
         
-        function saveAndClose( self, element ) %#ok<MANU>
-            if ModelCreator.isAsystem( element )
-                name = char( element.getSimulinkName() );
-                save_system( name );
-                close_system( name );
-            end
-        end            
     end
     
 end
