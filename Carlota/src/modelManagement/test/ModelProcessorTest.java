@@ -28,10 +28,12 @@ public class ModelProcessorTest {
 		Model model = (Model) mm.getTopElement();
 		ArrayList<ProtoObject> aList = ModelProcessor.doIt(model);
 		aList.size();
+		int x = 0;
 		for (ProtoObject obj : aList) {
 			String type = obj.eClass().getName();
-			System.out.format("%s: %s\n", type, obj);
-			//System.out.println( obj );
+			//System.out.format("%s: %s\n", type, obj);
+			System.out.format("%2d: %s, %s\n", x, type, obj.getName());
+			x = x+1;
 		}
 	}
 }

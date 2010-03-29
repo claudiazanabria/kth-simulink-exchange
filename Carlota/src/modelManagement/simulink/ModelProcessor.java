@@ -8,6 +8,7 @@ import Simulink.ProtoObject;
 public class ModelProcessor {
 	
 	Model theModel;
+	ArrayList<ProtoObject> allElements = new ArrayList<ProtoObject>();
 	
 	public static ArrayList<ProtoObject> doIt(Model aModel ) {
 		
@@ -17,15 +18,16 @@ public class ModelProcessor {
 	}
 		
 	private ArrayList<ProtoObject> process() {
-		ArrayList<ProtoObject> list = new ArrayList<ProtoObject>();
 		
 		computeSimulinkName();
 		
-		list.add( theModel );
-		list.addAll( SystemProcessor.doIt( theModel.getRoot() ));
-		return list;
+		allElements.add( theModel );
+		allElements.addAll( SystemProcessor.doIt( theModel.getRoot() ));
+		
+		ArrayList<ProtoObject> reorderedList = ListOrganizer.reorder( allElements );
+		return reorderedList;
 	}
-
+	
 	private void computeSimulinkName() {
 		theModel.setSimulinkName( theModel.getName() );	}
 }
