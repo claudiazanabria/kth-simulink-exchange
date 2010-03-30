@@ -1,55 +1,41 @@
 % Adds JARs to class path
 classdef ClassPathSetter
     % aca tambien
-    properties(Constant)
+    properties
         %basePath = 'F:/Documents/MATLAB/libs';
         basePath = '/Users/alex/Documents/Konsult jobb/KTH-ECS/checkout/Matlab/libs';
-        jarFiles    = ClassPathSetter.jarFileNames();
-        numberOfFiles = ClassPathSetter.amountOfFiles();
+        jarFiles;
+        numberOfFiles;
     end
     
     % Adds all JAR files found in basePath to Matlab's 
     % dynamic class path
     %
-    % Usage: ClassPathSetter.setJarsInDynamicClassPath()
-    methods(Static)
-        function setJarsInDynamicClassPath
-            javaaddpath( ClassPathSetter.fullPathNames() );
-        end
-        
-    end
-
+    % Usage: ClassPathSetter( <dirPath> )
+    % if dirPath is empty, basePath (defined above will be used).
     %
-    % Private methods
-    methods(Static, Access=private)
-        function boolean = isBasePathReadable()
-            boolean = (exist(ClassPathSetter.basePath,'dir') == 7);
+    methods(Static)        
+        function CPS=ClassPathSetter( path2Jars )
+            if nargin ~= 0
+                CPS.basePath = path2Jars;
+            end
+            jarsFullPathNames = CPS.fullPathNames();
+            javaaddpath( jarsFullPathNames );
+        end        
+    end
+    methods
+        
+        function result = fullPathNames( self )
+            Utils.checkDirectoryReadable( self.basePath );
+            self.jarFiles =  dir(fullfile(self.basePath,'/*.jar'));
+            self.numberOfFiles = size(self.jarFiles,1);
+            
+            result = cell(self.numberOfFiles,1);
+            for x = 1:self.numberOfFiles
+                result{x} = fullfile(self.basePath,...
+                    self.jarFiles(x).name);
+            end
         end
                 
-        function jars = jarFileNames()
-            jars = dir(fullfile(ClassPathSetter.basePath,'/*.jar'));
-        end
-
-        function checkBasePath
-            if (~ClassPathSetter.isBasePathReadable())
-                errRecord = MException('ClassPathSetter:InvalidBasePath', ...
-                    'Base path not readable: %s', ClassPathSetter.basePath);
-                throw(errRecord);
-            end
-        end
-        
-        function result = fullPathNames()
-            ClassPathSetter.checkBasePath();
-            
-            result = cell(ClassPathSetter.numberOfFiles,1);
-            for x = 1:ClassPathSetter.numberOfFiles
-                result{x} = fullfile(ClassPathSetter.basePath,...
-                    ClassPathSetter.jarFiles(x).name);
-            end
-        end
-        
-        function result = amountOfFiles()
-            result = size(ClassPathSetter.jarFiles,1);
-        end
-    end    
+    end
 end                    

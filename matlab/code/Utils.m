@@ -14,6 +14,18 @@ classdef Utils < handle
             end
             boolean = false;
         end
-        
+
+        function boolean = isDirectoryReadable( path )
+            boolean = (exist(path,'dir') == 7);
+        end
+                
+        function checkDirectoryReadable( dirPath )
+            if (~Utils.isDirectoryReadable( dirPath ))
+                errRecord = MException('Utils:InvalidDirPath', ...
+                    'Directory not readable: %s', dirPath);
+                throw(errRecord);
+            end
+        end
+
     end
 end
