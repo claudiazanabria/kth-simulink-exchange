@@ -7,9 +7,9 @@ classdef EcoreCreator < handle
     end
     methods (Static)
         % do not use the whole path name. CD first!
-        function EC=fromFile( path2mdlFile )
+        function EC=EcoreCreator( path2mdlFile )
             EC=EcoreCreator();
-            EcoreCreator.checkMDLFileReadable( path2mdlFile );            
+            Utils.isMDLFileReadable( path2mdlFile );            
             EC.sourceFilePath = path2mdlFile;
         end
                 

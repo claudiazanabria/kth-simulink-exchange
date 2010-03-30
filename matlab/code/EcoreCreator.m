@@ -6,40 +6,27 @@ classdef EcoreCreator < handle
         javaEcoreCreator;        
     end
     methods (Static)
-        % do not use the whole path name. CD first!
-        function EC=fromFile( path2mdlFile )
+        function EC=fromFile( path2mdlFile ) 
+            Utils.checkMDLFileReadable( path2mdlFile );
             EC=EcoreCreator();
-            EcoreCreator.checkMDLFileReadable( path2mdlFile );            
             EC.sourceFilePath = path2mdlFile;
+            EC.doIt();
         end
                 
-    end
-    methods (Static, Access=private)
-        function checkMDLFileReadable( mdlPath )
-            if (~EcoreCreator.isMDLFileReadable( mdlPath ))
-                errRecord = MException('EcoreCreator:MDLnotReadable', ...
-                    'MDL file is not readable: %s', mdlPath);
-                throw(errRecord);
-            end
-        end
-        
-        function boolean = isMDLFileReadable( path2mdlFile )
-            boolean = (exist(path2mdlFile,'file') == 4);
-        end        
     end
     methods
         function doIt(self)
             self.initEcoreCreationClasses();
-            self.openModelInSimulink();
-            modelName = self.getModelName();
+            modelName = self.openModelInSimulink();
             self.javaEcoreCreator.newModel( modelName );
             rootSystem = self.javaEcoreCreator.addRootSystem( modelName );
             self.processSystem( modelName, rootSystem );
             self.saveIt();
         end
+        
     end
-    
     methods (Access=private)
+        
         function processSystem( self, systemName, parentSystem)
             [refMdls, mdlBlks] = find_mdlrefs(systemName, false);
             for x=1:size(refMdls,1)-1
@@ -55,8 +42,8 @@ classdef EcoreCreator < handle
             self.addLines(systemName);
         end
         
-        function addLines( self, aSystem )
-            lines = find_system('toppy','FindAll','on','type','line');
+        function addLines( self, aSystem ) %#ok<MANU>
+            lines = find_system(aSystem,'FindAll','on','type','line');
             for x=1:size(lines,1)
             end
         end
@@ -94,14 +81,11 @@ classdef EcoreCreator < handle
             self.javaEcoreCreator = modelManagement.simulink.SimulinkEcoreCreator( factory );
         end
                     
-        function openModelInSimulink( self )
-            load_system( self.sourceFilePath );
-        end
-        
-        function name=getModelName( self )
-            name = bdroot();
-        end
-        
+        function sysName = openModelInSimulink( self )
+            fullPath = which( self.sourceFilePath );
+            load_system( fullPath );
+            sysName = char( find_system('Filename', fullPath));
+        end                
         
     end
 end

@@ -27,5 +27,13 @@ classdef Utils < handle
             end
         end
 
+        function checkMDLFileReadable( mdlFilePath )
+            if (~Utils.isMDLFileReadable( mdlFilePath ))
+                errRecord = MException('Utils:InvalidFilePath', ...
+                    'File not readable: %s', mdlFilePath);
+                throw(errRecord);
+            end
+        end
+
     end
 end
