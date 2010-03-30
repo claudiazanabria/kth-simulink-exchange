@@ -15,6 +15,7 @@ classdef ModelCreator < handle
         function MC=fromFile( path2ecoreFile )
             MC=ModelCreator();
             MC.ecoreFile = path2ecoreFile;
+            MC.doIt();
         end
         
     end
@@ -75,7 +76,7 @@ classdef ModelCreator < handle
         end
         
     end
-    methods
+    methods (Access=private)
         function doIt( self )
             modelManager = modelManagement.simulink.SimulinkModelManager( self.ecoreFile );
             modelManager.loadIt();
