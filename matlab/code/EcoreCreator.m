@@ -39,15 +39,37 @@ classdef EcoreCreator < handle
                 self.addInportsTo( aNewSystem );
                 self.processSystem(name, aNewSystem);
             end
-            self.addLines(systemName);
+            self.addLines( mdlBlks, parentSystem );
         end
         
-        function addLines( self, aSystem ) %#ok<MANU>
-            lines = find_system(aSystem,'FindAll','on','type','line');
-            for x=1:size(lines,1)
+        function addLines( self, mdlBlks, parentSystem )
+            %systemName = char( parentSystem.getName() );
+            %lineHandles = find_system(systemName,'FindAll','on','type','line');
+            for x=1:size(mdlBlks,1)
+                self.checkConnectionsForBlock( mdlBlks(x) );
             end
         end
         
+        function checkConnectionsForBlock( self, blockConnectivity )
+                get_param(char( mdlBlks(x) ),'PortConnectivity'); 
+        end
+        
+        function addLine( self, lineHandle, parentSystem)
+            name = get_param(lineHandle, 'Name');
+            srcPort = self.findSrcPort( lineHandle, parentSystem );
+            dstPort = self.findDstPort( lineHabdle, parentSystem );
+            self.javaEcoreCreator.addLine(name, srcPort, dstPort, parentSystem);
+        end
+        
+        function port=findSrcPort( self, lineHandle, parentSystem )
+            srcBlockName = get_param(lineHandle,'SrcBlock');
+            port = 0;
+        end
+
+        function port=findDstPort( self, lineHandle, parentSystem )
+            port = 0;
+        end
+
         function addOutportsTo( self, aSystem )
             name = char(aSystem.getName());
             ports = find_system(name,'SearchDepth',1,'BlockType','Outport');
