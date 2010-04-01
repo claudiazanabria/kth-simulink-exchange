@@ -57,6 +57,7 @@ classdef ExtendedPort < handle
         end
 
         function setConnectedPorts( self )
+            % here
         end
         
         function setConnectedBlockNames( self )
