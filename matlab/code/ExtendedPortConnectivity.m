@@ -33,17 +33,7 @@ classdef ExtendedPortConnectivity < handle
 %             end
 %         end
 %                 
-%         function [name aHandle]=findPortNameAndHandle(bHandle, portType, portNumber)
-%             aHandle = find_system(bHandle,'SearchDepth',1, ...
-%                 'BlockType', portType , ...
-%                 'Port', portNumber );
-%             name = get_param(aHandle, 'Name');
-%         end
 %                 
-%         function boolean = blockIsModelReference( block )
-%             bType = get_param( block, 'BlockType');
-%             boolean = strcmp(bType, 'ModelReference')==1;
-%         end
 %         
 %     end
     
@@ -60,15 +50,6 @@ classdef ExtendedPortConnectivity < handle
 %             end
 %         end
 %         
-%         function fillInData( self )
-%             self.definePortType();
-%             self.defineSrcPortNameAndHandle();
-%             if self.extendedPort.connected
-%                 self.defineConnectedBlockNames();
-%                 self.defineConnectedPorts();
-%             end
-%         end
-%                        
 %         function num = portNumberWithinBlock(self, x)
 %             if self.isInport()
 %                 num = self.originalPort.SrcPort;
@@ -94,45 +75,8 @@ classdef ExtendedPortConnectivity < handle
 %             self.extendedPort.connectedToPortHandles = portHandles;
 %         end
 %         
-%         function defineConnectedBlockNames( self )
-%             theSize = self.amountOfConnections();
-%             blockNames          = cell(1,theSize);            
-%             blockHandles        = cell(1,theSize);
-%             blockInstanceName   = cell(1,theSize);
-%             for x=1:theSize
-%                 bHandle = getConnectedBlockHandleNr( x );
-%                 blockInstanceName(1,x) = { get_param( bHandle, 'Name') };
-%                 if blockIsModelReference( bHandle )
-%                     modelName = get_param(bHandle,'ModelName');
-%                     blockNames(1,x)     = { modelName };
-%                     blockHandles(1,x)   = get_param( modelName, 'Handle'); 
-%                 else
-%                     blockNames(1,x)     = blockInstanceName(1,x);
-%                     blockHandles(1,x)   = bHandle;
-%                 end                
-%             end
-%             self.extendedPort.connectedToInstanceName   = blockInstanceName;
-%             self.extendedPort.connectedToBlockName      = blockNames;
-%             self.extendedPort.connectedToBlockHandle    = blockHandles;
-%         end
 % 
-%         function bHandle = getConnectedBlockHandleNr( self, x)
-%             if self.isInport()
-%                 bHandle = self.originalPort.SrcBlock;
-%             else
-%                 bHandle = self.originalPort.DstBlock(x);
-%             end
-%         end
 %                 
-%         function aHandle = getParentBlockHandle( self )
-%             if self.blockIsModelReference( self.blockHandle );
-%                 modelName = get_param(self.blockHandle,'ModelName');
-%                 load_system( modelName );
-%                 aHandle = get_param(modelName, 'Handle');
-%             else
-%                 aHandle = self.blockHandle;
-%             end
-%         end
 %         
 %         function defineSrcPortNameAndHandle( self )
 %             bHandle = self.getParentBlockHandle();

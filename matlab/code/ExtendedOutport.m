@@ -1,7 +1,7 @@
 classdef ExtendedOutport < ExtendedPort
     methods (Static)
-        function E=ExtendedOutport(aBlockHandle, aPortConnectivity)
-            E.doIt(aBlockHandle, aPortConnectivity);
+        function E=ExtendedOutport()
+            E.portType = 'Outport';
         end
     end    
     methods
@@ -22,8 +22,13 @@ classdef ExtendedOutport < ExtendedPort
         end
 
         function boolean = isPortConnected( self )
-            boolean = (self.originalPort.DstBlock ~= -1);
+            % DstBlock might be an array
+            boolean = any(self.originalPort.DstBlock ~= -1);
         end
 
+        function bHandle = getConnectedBlockHandleNr( self, x)
+            bHandle = self.originalPort.DstBlock(x);
+        end
+        
     end
 end

@@ -1,7 +1,7 @@
 classdef ExtendedInport < ExtendedPort
     methods (Static)
-        function E=ExtendedInport(aBlockHandle, aPortConnectivity)
-            E.doIt(aBlockHandle, aPortConnectivity);
+        function E=ExtendedInport()
+            E.portType = 'Inport';
         end
     end
     methods
@@ -23,6 +23,10 @@ classdef ExtendedInport < ExtendedPort
         
         function boolean = isPortConnected( self )
             boolean = (self.originalPort.SrcBlock ~= -1);
+        end
+        
+        function bHandle = getConnectedBlockHandleNr(self, x) %#ok<INUSD>
+            bHandle = self.originalPort.SrcBlock;
         end
         
     end

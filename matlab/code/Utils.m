@@ -35,5 +35,16 @@ classdef Utils < handle
             end
         end
 
+        function boolean = blockIsModelReference( block )
+            bType = get_param( block, 'BlockType');
+            boolean = strcmp(bType, 'ModelReference')==1;
+        end
+        
+        function [modelName handle] = getHandleForModelReference( instanceHandle )
+            modelName = get_param(instanceHandle,'ModelName');
+            load_system( modelName );
+            handle = get_param(modelName, 'Handle');            
+        end
+
     end
 end
