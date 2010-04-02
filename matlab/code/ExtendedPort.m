@@ -14,7 +14,6 @@ classdef ExtendedPort < handle
     properties (Access=protected)
         originalPort;
         parentBlockHandle;  % for ModelReferences this is the System.
-        parentBlockName;
     end
     methods (Abstract)
         boolean = isInport( self );
@@ -87,7 +86,11 @@ classdef ExtendedPort < handle
             parentName = get_param(pHandle, 'Parent');
             pName = [parentName '/' name ];            
         end
-                
+               
+%         function parentName = getParentNameRecursively(self, handleOrName)
+%             parentName = get_param(handleOrName, 'Parent');
+%         end
+        
         function setConnectedBlockNames( self )
             theSize = self.numberOfConnections();
             self.connectedToBlockNames    = cell(1,theSize);            
@@ -125,7 +128,8 @@ classdef ExtendedPort < handle
                 ExtendedPort.findPortNameAndHandle(...
                                 self.parentBlockHandle, ...
                                 self.portType, portNumberInBlock);
-            self.portName = [self.parentBlockName '/' pName];
+            parentName = get_param(self.portHandle, 'Parent');
+            self.portName = [parentName '/' pName];
         end
                 
         function setParentBlockHandle( self, instanceParentHandle )
@@ -136,8 +140,6 @@ classdef ExtendedPort < handle
             else
                 self.parentBlockHandle = instanceParentHandle;
             end
-            self.parentBlockName = get_param(...
-                self.parentBlockHandle, 'Name');
         end
         
         function asStruct = asStruct( self )
