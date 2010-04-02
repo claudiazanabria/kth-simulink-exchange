@@ -4,6 +4,7 @@ classdef ExtendedPort < handle
         portHandle               = 0;
         portType                 = '';
         connected                = false;
+        connectedToBlockType     = '';
         connectedToBlockNames    = '';
         connectedToBlockHandles  = 0;
         connectedToInstanceNames = '';
@@ -13,6 +14,7 @@ classdef ExtendedPort < handle
     properties (Access=protected)
         originalPort;
         parentBlockHandle;  % for ModelReferences this is the System.
+        parentBlockName;
     end
     methods (Abstract)
         boolean = isInport( self );
@@ -57,9 +59,35 @@ classdef ExtendedPort < handle
         end
 
         function setConnectedPorts( self )
-            % here
+            theSize = size(self.connectedToBlockHandles,2);
+            self.connectedToPortNames   = cell(1,theSize);
+            self.connectedToPortHandles = cell(1,theSize);            
+            for x=1:theSize
+                bHandle = self.connectedToBlockHandles{x};
+                nr = num2str(self.getPortNrInConnectedBlock(x)+1);
+                [pName pHandle] = self.findPortInfo( bHandle, nr );
+              self.connectedToPortNames(1,x) = { pName };
+              self.connectedToPortHandles(1,x) = { pHandle };
+            end
         end
         
+        function [pName pHandle] = findPortInfo( self, ...
+                bHandle, portNummer)
+            oposite = self.oppositePortType();
+            [name pHandle] = ExtendedPort.findPortNameAndHandle( ... 
+                bHandle, oposite, portNummer );
+            if isempty( name )
+                % port is an inport from the enclosing system.
+                name = get_param(bHandle, 'Name');
+                pHandle = bHandle;
+                self.connectedToBlockType = self.portType;
+            else
+                self.connectedToBlockType = 'Block';
+            end
+            parentName = get_param(pHandle, 'Parent');
+            pName = [parentName '/' name ];            
+        end
+                
         function setConnectedBlockNames( self )
             theSize = self.numberOfConnections();
             self.connectedToBlockNames    = cell(1,theSize);            
@@ -76,8 +104,10 @@ classdef ExtendedPort < handle
         
         function [blockName blockHandle blockInstanceName] = ...
                     connectedBlockNr( self, bHandle ) %#ok<MANU>
-                        
-            blockInstanceName = { get_param( bHandle, 'Name') };
+
+            parentName = get_param(bHandle, 'Parent');
+            temp = [parentName '/' get_param( bHandle, 'Name')];
+            blockInstanceName = { temp };
             if Utils.blockIsModelReference( bHandle )
                 [modelName handle] = ... 
                     Utils.getHandleForModelReference( bHandle );
@@ -91,10 +121,11 @@ classdef ExtendedPort < handle
         
         function setPortNameAndHandle( self )
             portNumberInBlock = self.originalPort.Type;
-            [self.portName self.portHandle] = ...
+            [pName self.portHandle] = ...
                 ExtendedPort.findPortNameAndHandle(...
                                 self.parentBlockHandle, ...
                                 self.portType, portNumberInBlock);
+            self.portName = [self.parentBlockName '/' pName];
         end
                 
         function setParentBlockHandle( self, instanceParentHandle )
@@ -103,8 +134,10 @@ classdef ExtendedPort < handle
                 Utils.getHandleForModelReference(instanceParentHandle);... 
                     %#ok<ASGLU>
             else
-                self.parentBlockHandle = self.blockHandle;
+                self.parentBlockHandle = instanceParentHandle;
             end
+            self.parentBlockName = get_param(...
+                self.parentBlockHandle, 'Name');
         end
         
         function asStruct = asStruct( self )

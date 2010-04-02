@@ -29,5 +29,8 @@ classdef ExtendedInport < ExtendedPort
             bHandle = self.originalPort.SrcBlock;
         end
         
+        function number = getPortNrInConnectedBlock(self, x)
+            number = self.originalPort.SrcPort(x);
+        end
     end
 end

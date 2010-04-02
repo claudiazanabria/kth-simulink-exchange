@@ -29,6 +29,10 @@ classdef ExtendedOutport < ExtendedPort
         function bHandle = getConnectedBlockHandleNr( self, x)
             bHandle = self.originalPort.DstBlock(x);
         end
+
+        function number = getPortNrInConnectedBlock(self, x)
+            number = self.originalPort.DstPort(x);
+        end
         
     end
 end
