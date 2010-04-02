@@ -86,11 +86,7 @@ classdef ExtendedPort < handle
             parentName = get_param(pHandle, 'Parent');
             pName = [parentName '/' name ];            
         end
-               
-%         function parentName = getParentNameRecursively(self, handleOrName)
-%             parentName = get_param(handleOrName, 'Parent');
-%         end
-        
+                      
         function setConnectedBlockNames( self )
             theSize = self.numberOfConnections();
             self.connectedToBlockNames    = cell(1,theSize);            
@@ -140,20 +136,6 @@ classdef ExtendedPort < handle
             else
                 self.parentBlockHandle = instanceParentHandle;
             end
-        end
-        
-        function asStruct = asStruct( self )
-            aStruct = struct( ...
-                'portName',     self.portName,     ...
-                'portHandle',   self.portHandle,      ...
-                'portType',     self.portType,     ...
-                'connected',    self.connected,  ...
-                ...
-                'connectedToBlockName', self.connectedToBlockName,     ...
-                'connectedToBlockHandle', self.connectedToBlockHandle,    ...
-                'connectedToInstanceName', self.connectedToInstanceName,  ...
-                'connectedToPortNames',  self.connectedToPortNames,    ...
-                'connectedToPortHandles', self.connectedToPortHandles     );
-        end                        
+        end        
     end
 end
