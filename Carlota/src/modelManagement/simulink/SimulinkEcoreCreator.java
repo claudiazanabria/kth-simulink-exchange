@@ -3,6 +3,7 @@
  */
 package modelManagement.simulink;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.eclipse.emf.common.util.EList;
@@ -46,14 +47,14 @@ public class SimulinkEcoreCreator {
 
 
 	public System addRootSystem(String name) {
-		//cleanRootSystemStatus( theModel.getRoot() ); 
+		cleanRootSystemStatus( theModel.getRoot() ); 
 		System aSystem = obtainSystem(name);
 		theModel.setRoot(aSystem);
-		//defineSimulinkNameONLYForRootSystem( aSystem );
+		defineSimulinkNameONLYForRootSystem( aSystem );
 		return aSystem;
 	}
 
-/*	private void defineSimulinkNameONLYForRootSystem(System aSystem) {
+	private void defineSimulinkNameONLYForRootSystem(System aSystem) {
 		aSystem.setSimulinkName( aSystem.getName() ); 
 	}
 
@@ -64,7 +65,7 @@ public class SimulinkEcoreCreator {
 		}
 	}
 
-*/
+
 	/*
 	 * If the system is not in the repository it will be created
 	 */
@@ -80,6 +81,7 @@ public class SimulinkEcoreCreator {
 	private System newSystem(String name) {
 		System aSystem = factory.createSystem();
 		aSystem.setName(name);
+		aSystem.setSimulinkName(name);
 		systemRepository.put(name, aSystem);
 		theModel.getParts().add(aSystem);
 		return aSystem;
@@ -90,7 +92,15 @@ public class SimulinkEcoreCreator {
 		return systemRepository.get( name );
 	}
 
-	public Outport findOutportWithin(String portName, System aSystem) {
+	public static Port findPortWithin(String portName, System aSystem) {
+		Port port = findOutportWithin(portName, aSystem);
+		if ( port == null ) {
+			port = findInportWithin(portName, aSystem);
+		}
+		return port;
+	}
+	
+	public static Outport findOutportWithin(String portName, System aSystem) {
 		Outport port = null;
 		EList<System> targetSystems = 
 			createSystemListWithParentAndFirstLevelChldren(aSystem);
@@ -101,7 +111,7 @@ public class SimulinkEcoreCreator {
 		return port;
 	}
 
-	public Inport findInportWithin(String portName, System aSystem) {
+	public static Inport findInportWithin(String portName, System aSystem) {
 		Inport port = null;
 		EList<System> targetSystems = 
 			createSystemListWithParentAndFirstLevelChldren(aSystem);
@@ -112,7 +122,7 @@ public class SimulinkEcoreCreator {
 		return port;
 	}
 
-	private EList<System> createSystemListWithParentAndFirstLevelChldren(
+	private static EList<System> createSystemListWithParentAndFirstLevelChldren(
 			System aSystem) {
 		EList<SystemReference> childrenList = aSystem.getChildren();
 		EList<System> targetSystems = getAllTargets( childrenList );
@@ -121,7 +131,7 @@ public class SimulinkEcoreCreator {
 	}
 
 
-	private EList<System> getAllTargets(EList<SystemReference> childrenList) {
+	private static EList<System> getAllTargets(EList<SystemReference> childrenList) {
 		BasicEList<System> result = new BasicEList<System>( childrenList.size() );
 		for (SystemReference aRef : childrenList) {
 			result.add( aRef.getTarget() );
@@ -130,15 +140,15 @@ public class SimulinkEcoreCreator {
 	}
 
 
-	private Outport findOutportInSystem(String portName, System aSystem) {
+	private static Outport findOutportInSystem(String portName, System aSystem) {
 		return findPortInList( portName, aSystem.getOutports());
 	}
 
-	private Inport findInportInSystem(String portName, System aSystem) {
+	private static Inport findInportInSystem(String portName, System aSystem) {
 		return findPortInList( portName, aSystem.getInports());
 	}
 	
-	private <IOPort extends Port> IOPort findPortInList(String portName, 
+	private static <IOPort extends Port> IOPort findPortInList(String portName, 
 			EList<IOPort> ports) {
 		for (IOPort aPort : ports) {
 			if (aPort.getName().equalsIgnoreCase(portName)) {
@@ -154,6 +164,7 @@ public class SimulinkEcoreCreator {
 		reference.setName(instanceName);
 		reference.setParent(parent);
 		reference.setTarget(aSystem);
+		reference.setSimulinkName(parent.getSimulinkName()+'/'+instanceName);
 		parent.getChildren().add(reference);
 		return aSystem;
 		
@@ -165,20 +176,22 @@ public class SimulinkEcoreCreator {
 	}
 
 
-	public Inport addInPort(String name, System aSystem) {
+	public Inport addInPort(String name, System parent) {
 		Inport inport = factory.createInport();
-		aSystem.getInports().add( inport );
+		parent.getInports().add( inport );
 		inport.setName(name);
-		inport.setParent(aSystem);
+		inport.setSimulinkName(parent.getSimulinkName()+'/'+name);
+		inport.setParent(parent);
 		return inport;
 	}
 
 
-	public Outport addOutPort(String name, System aSystem) {
+	public Outport addOutPort(String name, System parent) {
 		Outport outport = factory.createOutport();
-		aSystem.getOutports().add( outport );
+		parent.getOutports().add( outport );
 		outport.setName(name);
-		outport.setParent(aSystem);
+		outport.setSimulinkName(parent.getSimulinkName()+'/'+name);
+		outport.setParent(parent);
 		return outport;
 	}
 
@@ -189,7 +202,7 @@ public class SimulinkEcoreCreator {
 		return addLine(name, outport, inport, parent);
 	}
 	
-	public Line addLine(String name, Outport source, Inport destination, 
+	public Line addLine(String name, Port source, Port destination, 
 			System parent) {
 		Line line = factory.createLine();
 		line.setName(name);
@@ -197,6 +210,13 @@ public class SimulinkEcoreCreator {
 		line.setDestination(destination);
 		parent.getLines().add(line);
 		return line;
+	}
+	
+	public void addLines(ArrayList<LineInfo> lines) {
+		for ( LineInfo lineInfo : lines ) {
+			addLine( lineInfo.getName(), lineInfo.getSource(), 
+					lineInfo.getDestination(), lineInfo.getLineParent());
+		}
 	}
 
 }

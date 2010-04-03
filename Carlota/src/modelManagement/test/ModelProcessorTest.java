@@ -29,6 +29,7 @@ public class ModelProcessorTest {
 		ArrayList<ProtoObject> aList = ModelProcessor.doIt(model);
 		aList.size();
 		int x = 0;
+		System.out.println("\nFinal Version");
 		for (ProtoObject obj : aList) {
 			String type = obj.eClass().getName();
 			//System.out.format("%s: %s\n", type, obj);

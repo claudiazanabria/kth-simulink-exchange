@@ -1,6 +1,14 @@
 package modelManagement.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
+
+import java.util.ArrayList;
+
+import modelManagement.simulink.LineInfo;
 import modelManagement.simulink.SimulinkEcoreCreator;
 import modelManagement.simulink.SimulinkModelManager;
 
@@ -11,6 +19,7 @@ import Simulink.Inport;
 import Simulink.Line;
 import Simulink.Model;
 import Simulink.Outport;
+import Simulink.Port;
 import Simulink.SimulinkFactory;
 import Simulink.System;
 import Simulink.SystemReference;
@@ -117,14 +126,59 @@ public class SimulinkEcoreCreatorTest {
 
 	@Test
 	@Given("#testLines(Simulink.System)")
-	public void testFindPorts(System aSystem) {
-		Outport out = simulinkEcoreCreator.findOutportWithin("A1", aSystem);
+	public System testFindPorts(System parent) {
+		Outport out = SimulinkEcoreCreator.findOutportWithin("A1", parent);
 		assertNotNull(out);
 		assertTrue(out.getName().equalsIgnoreCase("A1"));
-		Inport in = simulinkEcoreCreator.findInportWithin("B1", aSystem);
+		Port p = SimulinkEcoreCreator.findPortWithin("A1", parent);
+		assertEquals(p, out);
+		p = SimulinkEcoreCreator.findOutportWithin("xxx", parent);
+		assertNull( p );
+		Inport in = SimulinkEcoreCreator.findInportWithin("B1", parent);
 		assertNotNull(in);
 		assertTrue(in.getName().equalsIgnoreCase("B1"));
-		in = simulinkEcoreCreator.findInportWithin("xxx", aSystem);
+		in = SimulinkEcoreCreator.findInportWithin("xxx", parent);
 		assertNull(in);
+		return parent;
+	}
+	
+	@Test
+	@Given("#testFindPorts(Simulink.System)") 
+	public System testAddLines(System parent) {
+		// Create two new ports
+		System sysA = simulinkEcoreCreator.findSystem("SysA");
+		System sysB = simulinkEcoreCreator.findSystem("SysB");
+		Outport a2 	= simulinkEcoreCreator.addOutPort("A2", sysA);
+		Inport b2 	= simulinkEcoreCreator.addInPort("B2", sysB);
+		Inport p2   = simulinkEcoreCreator.addInPort("P2", parent);
+		// Create two lines in between them
+		LineInfo line1 = new LineInfo( parent );
+		line1.setName("A2B2");
+		line1.setSrcName("A2");
+		line1.setDstName("B2");
+		LineInfo line2 = new LineInfo( parent );
+		line2.setName("P2B2");
+		line2.setSrcName("P2");
+		line2.setDstName("B2");
+		ArrayList<LineInfo> list = LineInfo.createArray();
+		list.add(line1);
+		list.add(line2);
+		simulinkEcoreCreator.addLines( list );
+		Boolean foundA2B2 = false;
+		Boolean foundP2B2 = false;
+		for (Line line : parent.getLines()) {
+			if (line.getName().equalsIgnoreCase("A2B2")) {
+				assertEquals(a2, line.getSource());
+				assertEquals(b2, line.getDestination());
+				foundA2B2 = true;
+			} else if (line.getName().equalsIgnoreCase("P2B2")) {
+				assertEquals(p2, line.getSource());
+				assertEquals(b2, line.getDestination());				
+				foundP2B2 = true;
+			}
+		}
+		assertTrue( foundA2B2 );
+		assertTrue( foundP2B2 );
+		return parent;
 	}
 }

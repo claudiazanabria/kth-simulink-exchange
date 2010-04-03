@@ -5,14 +5,14 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="con" path="ch.unibe.jexample.JEXAMPLE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
-	<classpathentry kind="lib" path="C:/Documents and Settings/alesch/My Documents/Eclipsario/myLibs/org.eclipse.emf.ecore_2.5.0.v200906151043.jar"/>
-	<classpathentry kind="lib" path="C:/Documents and Settings/alesch/My Documents/Eclipsario/myLibs/org.eclipse.emf.common_2.5.0.v200906151043.jar"/>
-	<classpathentry kind="lib" path="C:/Documents and Settings/alesch/My Documents/Eclipsario/myLibs/org.eclipse.emf.ecore.xmi_2.5.0.v200906151043.jar"/>
-	<classpathentry kind="lib" path="C:/Documents and Settings/alesch/My Documents/Eclipsario/myLibs/com.cea.papyrus.umlutils_1.12.3.200912231359.jar"/>
-	<classpathentry kind="lib" path="C:/Documents and Settings/alesch/My Documents/Eclipsario/myLibs/com.cea.papyrus.uml4eastadl.extension_1.10.0.jar"/>
-	<classpathentry kind="lib" path="C:/Documents and Settings/alesch/My Documents/Eclipsario/myLibs/com.cea.papyrus.uml4sysml.extension_1.1.6.200911231247.jar"/>
-	<classpathentry kind="lib" path="F:/MyEclipsePulgins/plugins/se.kth.attest2.metamodel.Simulink_3.1.8.jar"/>
-	<classpathentry kind="lib" path="C:/Documents and Settings/alesch/My Documents/Eclipsario/myLibs/commons-io-1.4/commons-io-1.4-javadoc.jar"/>
-	<classpathentry kind="lib" path="C:/Documents and Settings/alesch/My Documents/Eclipsario/myLibs/commons-io-1.4/commons-io-1.4.jar"/>
+	<classpathentry kind="lib" path="/Users/alex/Documents/Konsult jobb/KTH-ECS/Eclipsario/eclipse-modeling/plugins/org.eclipse.emf.ecore_2.5.0.v200906151043.jar"/>
+	<classpathentry kind="lib" path="/Users/alex/Documents/Konsult jobb/KTH-ECS/Eclipsario/eclipse-modeling/plugins/org.eclipse.emf.common_2.5.0.v200906151043.jar"/>
+	<classpathentry kind="lib" path="/Users/alex/Documents/Konsult jobb/KTH-ECS/Eclipsario/eclipse-modeling/plugins/org.eclipse.emf.ecore.xmi_2.5.0.v200906151043.jar"/>
+	<classpathentry kind="lib" path="/Users/alex/Documents/Konsult jobb/KTH-ECS/Eclipsario/eclipse-modeling/plugins/com.cea.papyrus.umlutils_1.12.3.200912231359.jar"/>
+	<classpathentry kind="lib" path="/Users/alex/Documents/Konsult jobb/KTH-ECS/Eclipsario/eclipse-modeling/plugins/com.cea.papyrus.uml4eastadl.extension_1.9.9.jar"/>
+	<classpathentry kind="lib" path="/Users/alex/Documents/Konsult jobb/KTH-ECS/Eclipsario/eclipse-modeling/plugins/com.cea.papyrus.uml4sysml.extension_1.2.0.jar"/>
+	<classpathentry kind="lib" path="/Users/alex/Documents/Konsult jobb/KTH-ECS/checkout/Matlab/libs/se.kth.attest2.metamodel.Simulink_3.1.8.jar"/>
+	<classpathentry kind="lib" path="/Users/alex/Documents/Konsult jobb/KTH-ECS/myPlugins/commons-io-1.4/commons-io-1.4-javadoc.jar"/>
+	<classpathentry kind="lib" path="/Users/alex/Documents/Konsult jobb/KTH-ECS/myPlugins/commons-io-1.4/commons-io-1.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

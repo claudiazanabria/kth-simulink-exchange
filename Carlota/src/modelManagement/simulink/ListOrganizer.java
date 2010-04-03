@@ -1,7 +1,6 @@
 package modelManagement.simulink;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import Simulink.ProtoObject;
@@ -14,7 +13,7 @@ class ListOrganizer {
 	int systemStart;
 	int systemEnd;
 	
-	public ListOrganizer(ArrayList<ProtoObject> allElements) {
+	private ListOrganizer(ArrayList<ProtoObject> allElements) {
 		originalList = allElements;
 		int size = originalList.size();
 		systemEnd 	= size;
@@ -32,18 +31,30 @@ class ListOrganizer {
 	private ArrayList<ProtoObject> doIt() {
 		
 		addTheModelElement();
+		displayReorderedElements();
 		findAllSystems();
-		findAllSystemReferences();
-		finaAllLines();
+		displayReorderedElements();
+		//findAllSystemReferences();
+		//finaAllLines();
 		
 		return reorderedElements;
 	}
 	
-	private void addTheModelElement() {
-		reorderedElements.add( originalList.get(0));
+	private void displayReorderedElements() {
+		int x = 0;
+		System.out.println("\nReordered elements");
+		for (ProtoObject obj : reorderedElements) {
+			String type = obj.eClass().getName();
+			System.out.format("%2d: %s, %s\n", x, type, obj.getName());
+			x = x+1;
+		}
 	}
 
-	private void findAllSystemReferences() {
+	private void addTheModelElement() {
+		reorderedElements.add( originalList.get(0) );
+	}
+
+/*	private void findAllSystemReferences() {
 		int type;
 		ProtoObject obj;
 		
@@ -66,7 +77,7 @@ class ListOrganizer {
 			} 
 		}
 	}
-
+*/
 	private void findAllSystems() {
 		List<ProtoObject> subList;
 		while ( findNextSystemBackwards() ) {
@@ -84,7 +95,7 @@ class ListOrganizer {
 	}
 	
 	private boolean findEndOfSystem(int start) {
-		List<ProtoObject> subList = originalList.subList(start+1, systemEnd);
+		List<ProtoObject> subList = originalList.subList(start, systemEnd);
 
 		int type;
 		ProtoObject obj;
