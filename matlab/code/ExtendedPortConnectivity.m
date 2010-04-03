@@ -1,7 +1,7 @@
 classdef ExtendedPortConnectivity < handle
     methods (Static)
         function result=fromBlockName( name )
-            aHandle = get_param( name, 'Handle');
+            aHandle = get_param( char(name), 'Handle');
             result = ExtendedPortConnectivity.fromBlockHandle( aHandle );
         end
         

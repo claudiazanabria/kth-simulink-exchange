@@ -5,20 +5,15 @@ Model {
   GraphicalInterface {
     NumRootInports	    1
     Inport {
-      Name		      "In1"
+      Name		      "F3_In"
     }
-    NumRootOutports	    1
-    Outport {
-      BusObject		      ""
-      BusOutputAsStruct	      "off"
-      Name		      "Out1"
-    }
+    NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.2"
+    ComputedModelVersion    "1.1"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
-  SavedCharacterEncoding  "windows-1252"
+  SavedCharacterEncoding  "US-ASCII"
   SaveDefaultBlockParams  on
   ScopeRefreshTime	  0.035000
   OverrideScopeRefreshTime on
@@ -27,15 +22,15 @@ Model {
   MinMaxOverflowLogging	  "UseLocalSettings"
   MinMaxOverflowArchiveMode "Overwrite"
   MaxMDLFileLineLength	  120
-  Created		  "Mon Feb 15 18:22:05 2010"
-  Creator		  "alesch"
+  Created		  "Mon Mar 29 18:52:16 2010"
+  Creator		  "alex"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "alesch"
+  LastModifiedBy	  "alex"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Mon Feb 15 18:24:36 2010"
-  RTWModifiedTimeStamp	  188159035
-  ModelVersionFormat	  "1.%<AutoIncrement:2>"
+  LastModifiedDate	  "Mon Mar 29 22:14:37 2010"
+  RTWModifiedTimeStamp	  191789536
+  ModelVersionFormat	  "1.%<AutoIncrement:1>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -193,7 +188,7 @@ Model {
 	  BlockReduction	  on
 	  BooleanDataType	  on
 	  ConditionallyExecuteInputs on
-	  InlineParams		  off
+	  InlineParams		  on
 	  UseIntDivNetSlope	  off
 	  InlineInvariantSignals  off
 	  OptimizeBlockIOStorage  on
@@ -541,7 +536,7 @@ Model {
       }
       Name		      "Configuration"
       CurrentDlgPage	      "Solver"
-      ConfigPrmDlgPosition    " [ 360, 285, 1240, 915 ] "
+      ConfigPrmDlgPosition    " [ 200, 74, 1080, 704 ] "
     }
     PropName		    "ConfigurationSets"
   }
@@ -603,69 +598,30 @@ Model {
       LatchByCopyingInsideSignal off
       Interpolate	      on
     }
-    Block {
-      BlockType		      Outport
-      Port		      "1"
-      UseBusObject	      off
-      BusObject		      "BusObject"
-      BusOutputAsStruct	      off
-      PortDimensions	      "-1"
-      VarSizeSig	      "Inherit"
-      SampleTime	      "-1"
-      OutMin		      "[]"
-      OutMax		      "[]"
-      DataType		      "auto"
-      OutDataType	      "fixdt(1,16,0)"
-      OutScaling	      "[]"
-      OutDataTypeStr	      "Inherit: auto"
-      LockScale		      off
-      SignalType	      "auto"
-      SamplingMode	      "auto"
-      SourceOfInitialOutputValue "Dialog"
-      OutputWhenDisabled      "held"
-      InitialOutput	      "[]"
-    }
   }
   System {
     Name		    "F3"
-    Location		    [680, 453, 1216, 742]
-    Open		    on
+    Location		    [70, 200, 650, 460]
+    Open		    off
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
     ScreenColor		    "white"
     PaperOrientation	    "landscape"
     PaperPositionMode	    "auto"
-    PaperType		    "A4"
-    PaperUnits		    "centimeters"
-    TiledPaperMargins	    [1.270000, 1.270000, 1.270000, 1.270000]
+    PaperType		    "usletter"
+    PaperUnits		    "inches"
+    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
     TiledPageScale	    1
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    5
+    SIDHighWatermark	    1
     Block {
       BlockType		      Inport
-      Name		      "In1"
-      SID		      5
-      Position		      [60, 113, 90, 127]
+      Name		      "F3_In"
+      SID		      1
+      Position		      [20, 108, 50, 122]
       IconDisplay	      "Port number"
-      OutDataType	      "fixdt(1, 16)"
-      OutScaling	      "2^0"
-    }
-    Block {
-      BlockType		      Outport
-      Name		      "Out1"
-      SID		      4
-      Position		      [220, 113, 250, 127]
-      IconDisplay	      "Port number"
-      OutDataType	      "fixdt(1, 16)"
-      OutScaling	      "2^0"
-    }
-    Line {
-      SrcBlock		      "In1"
-      SrcPort		      1
-      DstBlock		      "Out1"
-      DstPort		      1
     }
   }
 }

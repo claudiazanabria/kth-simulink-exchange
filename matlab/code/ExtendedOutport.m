@@ -34,5 +34,13 @@ classdef ExtendedOutport < ExtendedPort
             number = self.originalPort.DstPort(x);
         end
         
+        function name = getLineSrc(self, x)  %#ok<INUSD>
+            name = self.portName;
+        end
+        
+        function name = getLineDst(self, x)
+            name = self.connectedToPortNames{x};
+        end
+        
     end
 end

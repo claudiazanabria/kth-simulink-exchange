@@ -32,5 +32,13 @@ classdef ExtendedInport < ExtendedPort
         function number = getPortNrInConnectedBlock(self, x)
             number = self.originalPort.SrcPort(x);
         end
+        
+        function name = getLineSrc(self, x) 
+            name = self.connectedToPortNames{x};
+        end
+        
+        function name = getLineDst(self, x) %#ok<INUSD>
+            name = self.portName;
+        end
     end
 end

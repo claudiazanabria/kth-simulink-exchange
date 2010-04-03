@@ -5,20 +5,25 @@ Model {
   GraphicalInterface {
     NumRootInports	    1
     Inport {
-      Name		      "In1"
+      Name		      "F21_In"
     }
-    NumRootOutports	    1
+    NumRootOutports	    2
     Outport {
       BusObject		      ""
       BusOutputAsStruct	      "off"
-      Name		      "Out1"
+      Name		      "F21_OutA"
+    }
+    Outport {
+      BusObject		      ""
+      BusOutputAsStruct	      "off"
+      Name		      "F21_OutB"
     }
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.3"
+    ComputedModelVersion    "1.4"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
-  SavedCharacterEncoding  "windows-1252"
+  SavedCharacterEncoding  "US-ASCII"
   SaveDefaultBlockParams  on
   ScopeRefreshTime	  0.035000
   OverrideScopeRefreshTime on
@@ -27,15 +32,15 @@ Model {
   MinMaxOverflowLogging	  "UseLocalSettings"
   MinMaxOverflowArchiveMode "Overwrite"
   MaxMDLFileLineLength	  120
-  Created		  "Mon Feb 15 18:22:05 2010"
-  Creator		  "alesch"
+  Created		  "Mon Mar 29 18:52:16 2010"
+  Creator		  "alex"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "alesch"
+  LastModifiedBy	  "alex"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Mon Feb 15 18:24:59 2010"
-  RTWModifiedTimeStamp	  188159035
-  ModelVersionFormat	  "1.%<AutoIncrement:3>"
+  LastModifiedDate	  "Sat Apr  3 14:33:18 2010"
+  RTWModifiedTimeStamp	  192204556
+  ModelVersionFormat	  "1.%<AutoIncrement:4>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -193,7 +198,7 @@ Model {
 	  BlockReduction	  on
 	  BooleanDataType	  on
 	  ConditionallyExecuteInputs on
-	  InlineParams		  off
+	  InlineParams		  on
 	  UseIntDivNetSlope	  off
 	  InlineInvariantSignals  off
 	  OptimizeBlockIOStorage  on
@@ -541,7 +546,7 @@ Model {
       }
       Name		      "Configuration"
       CurrentDlgPage	      "Solver"
-      ConfigPrmDlgPosition    " [ 360, 285, 1240, 915 ] "
+      ConfigPrmDlgPosition    " [ 200, 74, 1080, 704 ] "
     }
     PropName		    "ConfigurationSets"
   }
@@ -581,6 +586,28 @@ Model {
     FontAngle		    "normal"
   }
   BlockParameterDefaults {
+    Block {
+      BlockType		      Gain
+      Gain		      "1"
+      Multiplication	      "Element-wise(K.*u)"
+      ParamMin		      "[]"
+      ParamMax		      "[]"
+      ParameterDataTypeMode   "Same as input"
+      ParameterDataType	      "fixdt(1,16,0)"
+      ParameterScalingMode    "Best Precision: Matrix-wise"
+      ParameterScaling	      "[]"
+      ParamDataTypeStr	      "Inherit: Same as input"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeMode	      "Same as input"
+      OutDataType	      "fixdt(1,16,0)"
+      OutScaling	      "[]"
+      OutDataTypeStr	      "Inherit: Same as input"
+      LockScale		      off
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	on
+      SampleTime	      "-1"
+    }
     Block {
       BlockType		      Inport
       Port		      "1"
@@ -628,43 +655,64 @@ Model {
   }
   System {
     Name		    "F21"
-    Location		    [680, 453, 1216, 742]
+    Location		    [629, 301, 1209, 561]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
     ScreenColor		    "white"
     PaperOrientation	    "landscape"
     PaperPositionMode	    "auto"
-    PaperType		    "A4"
-    PaperUnits		    "centimeters"
-    TiledPaperMargins	    [1.270000, 1.270000, 1.270000, 1.270000]
+    PaperType		    "usletter"
+    PaperUnits		    "inches"
+    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
     TiledPageScale	    1
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    5
+    SIDHighWatermark	    4
     Block {
       BlockType		      Inport
-      Name		      "In1"
-      SID		      5
-      Position		      [60, 113, 90, 127]
+      Name		      "F21_In"
+      SID		      1
+      Position		      [20, 108, 50, 122]
       IconDisplay	      "Port number"
+    }
+    Block {
+      BlockType		      Gain
+      Name		      "Gain"
+      SID		      4
+      Position		      [95, 100, 125, 130]
+      ParameterDataTypeMode   "Inherit via internal rule"
+      ParameterDataType	      "fixdt(1, 16)"
+      ParameterScaling	      "2^0"
+      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
+      OutDataTypeMode	      "Inherit via internal rule"
       OutDataType	      "fixdt(1, 16)"
       OutScaling	      "2^0"
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      SaturateOnIntegerOverflow	off
     }
     Block {
       BlockType		      Outport
-      Name		      "Out1"
-      SID		      4
-      Position		      [220, 113, 250, 127]
+      Name		      "F21_OutA"
+      SID		      2
+      Position		      [210, 68, 240, 82]
+      IconDisplay	      "Port number"
+    }
+    Block {
+      BlockType		      Outport
+      Name		      "F21_OutB"
+      SID		      3
+      Position		      [210, 178, 240, 192]
+      Port		      "2"
       IconDisplay	      "Port number"
       OutDataType	      "fixdt(1, 16)"
       OutScaling	      "2^0"
     }
     Line {
-      SrcBlock		      "In1"
+      SrcBlock		      "F21_In"
       SrcPort		      1
-      DstBlock		      "Out1"
+      DstBlock		      "Gain"
       DstPort		      1
     }
   }

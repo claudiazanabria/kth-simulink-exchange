@@ -3,7 +3,10 @@ Model {
   Version		  7.4
   MdlSubVersion		  0
   GraphicalInterface {
-    NumRootInports	    1
+    NumRootInports	    2
+    Inport {
+      Name		      "F2_In"
+    }
     Inport {
       Name		      "In1"
     }
@@ -11,20 +14,20 @@ Model {
     Outport {
       BusObject		      ""
       BusOutputAsStruct	      "off"
-      Name		      "Out1"
+      Name		      "F2_Out"
     }
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.2"
+    ComputedModelVersion    "1.8"
     NumModelReferences	    2
     ModelReference {
-      ModelRefBlockPath	      "F2/Model|F21"
+      ModelRefBlockPath	      "F2/Pablo|F22"
     }
     ModelReference {
-      ModelRefBlockPath	      "F2/Model1|F22"
+      ModelRefBlockPath	      "F2/Pedro|F21"
     }
     NumTestPointedSignals   0
   }
-  SavedCharacterEncoding  "windows-1252"
+  SavedCharacterEncoding  "US-ASCII"
   SaveDefaultBlockParams  on
   ScopeRefreshTime	  0.035000
   OverrideScopeRefreshTime on
@@ -33,15 +36,15 @@ Model {
   MinMaxOverflowLogging	  "UseLocalSettings"
   MinMaxOverflowArchiveMode "Overwrite"
   MaxMDLFileLineLength	  120
-  Created		  "Mon Feb 15 18:25:54 2010"
-  Creator		  "alesch"
+  Created		  "Mon Mar 29 22:14:37 2010"
+  Creator		  "alex"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "alesch"
+  LastModifiedBy	  "alex"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Mon Feb 15 18:28:21 2010"
-  RTWModifiedTimeStamp	  188159293
-  ModelVersionFormat	  "1.%<AutoIncrement:2>"
+  LastModifiedDate	  "Fri Apr  2 18:41:17 2010"
+  RTWModifiedTimeStamp	  192134471
+  ModelVersionFormat	  "1.%<AutoIncrement:8>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -199,7 +202,7 @@ Model {
 	  BlockReduction	  on
 	  BooleanDataType	  on
 	  ConditionallyExecuteInputs on
-	  InlineParams		  off
+	  InlineParams		  on
 	  UseIntDivNetSlope	  off
 	  InlineInvariantSignals  off
 	  OptimizeBlockIOStorage  on
@@ -547,7 +550,7 @@ Model {
       }
       Name		      "Configuration"
       CurrentDlgPage	      "Solver"
-      ConfigPrmDlgPosition    " [ 360, 285, 1240, 915 ] "
+      ConfigPrmDlgPosition    " [ 200, 74, 1080, 704 ] "
     }
     PropName		    "ConfigurationSets"
   }
@@ -641,70 +644,55 @@ Model {
   }
   System {
     Name		    "F2"
-    Location		    [439, 612, 975, 901]
+    Location		    [555, 79, 1230, 374]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
     ScreenColor		    "white"
     PaperOrientation	    "landscape"
     PaperPositionMode	    "auto"
-    PaperType		    "A4"
-    PaperUnits		    "centimeters"
-    TiledPaperMargins	    [1.270000, 1.270000, 1.270000, 1.270000]
+    PaperType		    "usletter"
+    PaperUnits		    "inches"
+    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
     TiledPageScale	    1
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    4
+    SIDHighWatermark	    13
+    Block {
+      BlockType		      Inport
+      Name		      "F2_In"
+      SID		      1
+      Position		      [20, 108, 50, 122]
+      IconDisplay	      "Port number"
+    }
     Block {
       BlockType		      Inport
       Name		      "In1"
-      SID		      4
-      Position		      [30, 123, 60, 137]
+      SID		      5
+      Position		      [20, 218, 50, 232]
+      Port		      "2"
       IconDisplay	      "Port number"
       OutDataType	      "fixdt(1, 16)"
       OutScaling	      "2^0"
     }
     Block {
       BlockType		      ModelReference
-      Name		      "Model"
-      SID		      1
-      Ports		      [1, 1]
-      Position		      [135, 108, 235, 152]
-      ModelNameDialog	      "F21"
-      SimulationMode	      "Accelerator"
-      ModelReferenceVersion   "1.3"
-      List {
-	ListType		InputPortNames
-	port0			"In1"
-      }
-      List {
-	ListType		OutputPortNames
-	port0			"Out1"
-      }
-      List {
-	ListType		OutputPortOutputBusAsStructs
-	port0			"off"
-      }
-      CopyOfModelName	      "F21"
-    }
-    Block {
-      BlockType		      ModelReference
-      Name		      "Model1"
-      SID		      2
+      Name		      "Pablo"
+      SID		      3
       Ports		      [2, 1]
-      Position		      [305, 108, 405, 152]
+      Position		      [340, 42, 490, 193]
       ModelNameDialog	      "F22"
       SimulationMode	      "Accelerator"
-      ModelReferenceVersion   "1.4"
+      ModelReferenceVersion   "1.1"
       List {
 	ListType		InputPortNames
-	port0			"In1"
-	port1			"In2"
+	port0			"F22_InA"
+	port1			"F22_InB"
       }
       List {
 	ListType		OutputPortNames
-	port0			"Out1"
+	port0			"F22_Out"
       }
       List {
 	ListType		OutputPortOutputBusAsStructs
@@ -713,40 +701,63 @@ Model {
       CopyOfModelName	      "F22"
     }
     Block {
+      BlockType		      ModelReference
+      Name		      "Pedro"
+      SID		      2
+      Ports		      [1, 2]
+      Position		      [100, 42, 250, 193]
+      ModelNameDialog	      "F21"
+      SimulationMode	      "Accelerator"
+      ModelReferenceVersion   "1.3"
+      List {
+	ListType		InputPortNames
+	port0			"F21_In"
+      }
+      List {
+	ListType		OutputPortNames
+	port0			"F21_OutA"
+	port1			"F21_OutB"
+      }
+      List {
+	ListType		OutputPortOutputBusAsStructs
+	port0			"off"
+	port1			"off"
+      }
+      CopyOfModelName	      "F21"
+    }
+    Block {
       BlockType		      Outport
-      Name		      "Out1"
-      SID		      3
-      Position		      [465, 123, 495, 137]
+      Name		      "F2_Out"
+      SID		      4
+      Position		      [580, 108, 610, 122]
       IconDisplay	      "Port number"
-      OutDataType	      "fixdt(1, 16)"
-      OutScaling	      "2^0"
+    }
+    Line {
+      SrcBlock		      "F2_In"
+      SrcPort		      1
+      Points		      [30, 0]
+      DstBlock		      "Pedro"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Pedro"
+      SrcPort		      1
+      DstBlock		      "Pablo"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Pablo"
+      SrcPort		      1
+      Points		      [35, 0; 0, -5]
+      DstBlock		      "F2_Out"
+      DstPort		      1
     }
     Line {
       SrcBlock		      "In1"
       SrcPort		      1
-      DstBlock		      "Model"
-      DstPort		      1
-    }
-    Line {
-      SrcBlock		      "Model"
-      SrcPort		      1
-      Points		      [20, 0]
-      Branch {
-	Points			[30, 0]
-	DstBlock		"Model1"
-	DstPort			1
-      }
-      Branch {
-	Points			[0, 10]
-	DstBlock		"Model1"
-	DstPort			2
-      }
-    }
-    Line {
-      SrcBlock		      "Model1"
-      SrcPort		      1
-      DstBlock		      "Out1"
-      DstPort		      1
+      Points		      [245, 0; 0, -70]
+      DstBlock		      "Pablo"
+      DstPort		      2
     }
   }
 }

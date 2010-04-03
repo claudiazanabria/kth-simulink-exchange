@@ -43,33 +43,14 @@ classdef EcoreCreator < handle
         end
         
         function addLines( self, mdlBlks, parentSystem )
-            %systemName = char( parentSystem.getName() );
-            %lineHandles = find_system(systemName,'FindAll','on','type','line');
+            lineBuilder = LineBuilder( parentSystem );
             for x=1:size(mdlBlks,1)
-                self.checkConnectionsForBlock( mdlBlks(x) );
+                ep = ExtendedPortConnectivity.fromBlockName(mdlBlks{x});
+                linesInfo = lineBuilder.process( ep );
+                self.javaEcoreCreator.addLines( linesInfo );
             end
         end
-        
-        function checkConnectionsForBlock( self, blockConnectivity )
-                get_param(char( mdlBlks(x) ),'PortConnectivity'); 
-        end
-        
-        function addLine( self, lineHandle, parentSystem)
-            name = get_param(lineHandle, 'Name');
-            srcPort = self.findSrcPort( lineHandle, parentSystem );
-            dstPort = self.findDstPort( lineHabdle, parentSystem );
-            self.javaEcoreCreator.addLine(name, srcPort, dstPort, parentSystem);
-        end
-        
-        function port=findSrcPort( self, lineHandle, parentSystem )
-            srcBlockName = get_param(lineHandle,'SrcBlock');
-            port = 0;
-        end
-
-        function port=findDstPort( self, lineHandle, parentSystem )
-            port = 0;
-        end
-
+                
         function addOutportsTo( self, aSystem )
             name = char(aSystem.getName());
             ports = find_system(name,'SearchDepth',1,'BlockType','Outport');
