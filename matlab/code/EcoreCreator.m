@@ -20,14 +20,15 @@ classdef EcoreCreator < handle
             modelName = self.openModelInSimulink();
             self.javaEcoreCreator.newModel( modelName );
             rootSystem = self.javaEcoreCreator.addRootSystem( modelName );
-            self.processSystem( modelName, rootSystem );
+            self.processSystem( rootSystem );
             self.saveIt();
         end
         
     end
     methods (Access=private)
         
-        function processSystem( self, systemName, parentSystem)
+        function processSystem( self, parentSystem )
+            systemName = char( parentSystem.getName() );
             [refMdls, mdlBlks] = find_mdlrefs(systemName, false);
             for x=1:size(refMdls,1)-1
                 name            = char(refMdls(x));
@@ -39,7 +40,7 @@ classdef EcoreCreator < handle
                 if isempty( sysAlreadyExists )
                     self.addOutportsTo( aNewSystem );
                     self.addInportsTo( aNewSystem );
-                    self.processSystem(name, aNewSystem);
+                    self.processSystem( aNewSystem );
                 end
             end
             self.addLines( mdlBlks, parentSystem );
