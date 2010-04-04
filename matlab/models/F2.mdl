@@ -5,19 +5,22 @@ Model {
   GraphicalInterface {
     NumRootInports	    2
     Inport {
+      SignalName	      "la"
       Name		      "F2_In"
     }
     Inport {
+      SignalName	      "lb"
       Name		      "In1"
     }
     NumRootOutports	    1
     Outport {
       BusObject		      ""
       BusOutputAsStruct	      "off"
+      SignalName	      "ld"
       Name		      "F2_Out"
     }
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.8"
+    ComputedModelVersion    "1.11"
     NumModelReferences	    2
     ModelReference {
       ModelRefBlockPath	      "F2/Pablo|F22"
@@ -42,9 +45,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "alex"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri Apr  2 18:41:17 2010"
-  RTWModifiedTimeStamp	  192134471
-  ModelVersionFormat	  "1.%<AutoIncrement:8>"
+  LastModifiedDate	  "Sun Apr  4 16:28:15 2010"
+  RTWModifiedTimeStamp	  192297794
+  ModelVersionFormat	  "1.%<AutoIncrement:11>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -644,7 +647,7 @@ Model {
   }
   System {
     Name		    "F2"
-    Location		    [555, 79, 1230, 374]
+    Location		    [557, 125, 1232, 420]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -663,18 +666,30 @@ Model {
       BlockType		      Inport
       Name		      "F2_In"
       SID		      1
-      Position		      [20, 108, 50, 122]
+      Position		      [20, 113, 50, 127]
       IconDisplay	      "Port number"
+      Port {
+	PortNumber		1
+	Name			"la"
+	RTWStorageClass		"Auto"
+	DataLoggingNameMode	"SignalName"
+      }
     }
     Block {
       BlockType		      Inport
       Name		      "In1"
       SID		      5
-      Position		      [20, 218, 50, 232]
+      Position		      [20, 233, 50, 247]
       Port		      "2"
       IconDisplay	      "Port number"
       OutDataType	      "fixdt(1, 16)"
       OutScaling	      "2^0"
+      Port {
+	PortNumber		1
+	Name			"lb"
+	RTWStorageClass		"Auto"
+	DataLoggingNameMode	"SignalName"
+      }
     }
     Block {
       BlockType		      ModelReference
@@ -699,6 +714,12 @@ Model {
 	port0			"off"
       }
       CopyOfModelName	      "F22"
+      Port {
+	PortNumber		1
+	Name			"ld"
+	RTWStorageClass		"Auto"
+	DataLoggingNameMode	"SignalName"
+      }
     }
     Block {
       BlockType		      ModelReference
@@ -708,7 +729,7 @@ Model {
       Position		      [100, 42, 250, 193]
       ModelNameDialog	      "F21"
       SimulationMode	      "Accelerator"
-      ModelReferenceVersion   "1.3"
+      ModelReferenceVersion   "1.4"
       List {
 	ListType		InputPortNames
 	port0			"F21_In"
@@ -724,38 +745,50 @@ Model {
 	port1			"off"
       }
       CopyOfModelName	      "F21"
+      Port {
+	PortNumber		1
+	Name			"lc"
+	RTWStorageClass		"Auto"
+	DataLoggingNameMode	"SignalName"
+      }
     }
     Block {
       BlockType		      Outport
       Name		      "F2_Out"
       SID		      4
-      Position		      [580, 108, 610, 122]
+      Position		      [575, 113, 605, 127]
       IconDisplay	      "Port number"
     }
     Line {
+      Name		      "la"
+      Labels		      [1, 0]
       SrcBlock		      "F2_In"
       SrcPort		      1
-      Points		      [30, 0]
       DstBlock		      "Pedro"
       DstPort		      1
     }
     Line {
+      Name		      "lc"
+      Labels		      [1, 0]
       SrcBlock		      "Pedro"
       SrcPort		      1
       DstBlock		      "Pablo"
       DstPort		      1
     }
     Line {
+      Name		      "ld"
+      Labels		      [1, 0]
       SrcBlock		      "Pablo"
       SrcPort		      1
-      Points		      [35, 0; 0, -5]
       DstBlock		      "F2_Out"
       DstPort		      1
     }
     Line {
+      Name		      "lb"
+      Labels		      [1, 0]
       SrcBlock		      "In1"
       SrcPort		      1
-      Points		      [245, 0; 0, -70]
+      Points		      [245, 0; 0, -85]
       DstBlock		      "Pablo"
       DstPort		      2
     }
