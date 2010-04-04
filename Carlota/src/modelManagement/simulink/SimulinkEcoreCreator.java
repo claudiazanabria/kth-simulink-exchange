@@ -6,6 +6,8 @@ package modelManagement.simulink;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import modelManagement.exceptions.PortNotFoundException;
+
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.BasicEList;
 
@@ -47,22 +49,9 @@ public class SimulinkEcoreCreator {
 
 
 	public System addRootSystem(String name) {
-		cleanRootSystemStatus( theModel.getRoot() ); 
 		System aSystem = obtainSystem(name);
 		theModel.setRoot(aSystem);
-		defineSimulinkNameONLYForRootSystem( aSystem );
 		return aSystem;
-	}
-
-	private void defineSimulinkNameONLYForRootSystem(System aSystem) {
-		aSystem.setSimulinkName( aSystem.getName() ); 
-	}
-
-	
-	private void cleanRootSystemStatus(System aSystem) {
-		if (aSystem != null) {
-			aSystem.setSimulinkName(null);
-		}
 	}
 
 
@@ -164,7 +153,6 @@ public class SimulinkEcoreCreator {
 		reference.setName(instanceName);
 		reference.setParent(parent);
 		reference.setTarget(aSystem);
-		reference.setSimulinkName(parent.getSimulinkName()+'/'+instanceName);
 		parent.getChildren().add(reference);
 		return aSystem;
 		
@@ -180,7 +168,6 @@ public class SimulinkEcoreCreator {
 		Inport inport = factory.createInport();
 		parent.getInports().add( inport );
 		inport.setName(name);
-		inport.setSimulinkName(parent.getSimulinkName()+'/'+name);
 		inport.setParent(parent);
 		return inport;
 	}
@@ -190,7 +177,6 @@ public class SimulinkEcoreCreator {
 		Outport outport = factory.createOutport();
 		parent.getOutports().add( outport );
 		outport.setName(name);
-		outport.setSimulinkName(parent.getSimulinkName()+'/'+name);
 		outport.setParent(parent);
 		return outport;
 	}
@@ -212,7 +198,7 @@ public class SimulinkEcoreCreator {
 		return line;
 	}
 	
-	public void addLines(ArrayList<LineInfo> lines) {
+	public void addLines(ArrayList<LineInfo> lines) throws PortNotFoundException {
 		for ( LineInfo lineInfo : lines ) {
 			addLine( lineInfo.getName(), lineInfo.getSource(), 
 					lineInfo.getDestination(), lineInfo.getLineParent());

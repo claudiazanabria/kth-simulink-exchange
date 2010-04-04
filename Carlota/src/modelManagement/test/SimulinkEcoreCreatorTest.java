@@ -5,9 +5,11 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
 
+import modelManagement.exceptions.PortNotFoundException;
 import modelManagement.simulink.LineInfo;
 import modelManagement.simulink.SimulinkEcoreCreator;
 import modelManagement.simulink.SimulinkModelManager;
@@ -163,7 +165,9 @@ public class SimulinkEcoreCreatorTest {
 		ArrayList<LineInfo> list = LineInfo.createArray();
 		list.add(line1);
 		list.add(line2);
-		simulinkEcoreCreator.addLines( list );
+		try {
+			simulinkEcoreCreator.addLines( list );
+		} catch (PortNotFoundException e) { fail(); }
 		Boolean foundA2B2 = false;
 		Boolean foundP2B2 = false;
 		for (Line line : parent.getLines()) {
@@ -181,4 +185,26 @@ public class SimulinkEcoreCreatorTest {
 		assertTrue( foundP2B2 );
 		return parent;
 	}
+
+	@Test
+	@Given("#testAddLines(Simulink.System)") 
+	public System testPortNotFound(System parent) {
+		LineInfo line1 = new LineInfo( parent );
+		line1.setName("aLine");
+		line1.setSrcName("wrong");
+		line1.setDstName("wrong");
+		try {
+			line1.getDestination();
+		} catch (PortNotFoundException e){};
+		
+		try {
+			line1.getSource();
+		} catch (PortNotFoundException e){
+			return parent;
+		};
+		
+		fail();
+		return parent;
+	}
+
 }

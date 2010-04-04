@@ -2,19 +2,21 @@ package modelManagement.simulink;
 
 import java.util.ArrayList;
 
+import modelManagement.exceptions.PortNotFoundException;
+
 import Simulink.Port;
 import Simulink.System;
 
 public class LineInfo {
 	
-	private String 	lineName;
-	private Port	source;
-	private Port	destination;
-	private String	srcName;
-	private String	dstName;
-//	private String	srcParentName;
-//	private String	dstParentName;
-	private System	lineParent;
+	public String 	lineName;
+	public Port	source;
+	public Port	destination;
+	public String	srcName;
+	public String	dstName;
+//	public String	srcParentName;
+//	public String	dstParentName;
+	public System	lineParent;
 	
 	
 	
@@ -46,18 +48,22 @@ public class LineInfo {
 		return lineName;
 	}
 
-	public Port getSource() {
+	public Port getSource() throws PortNotFoundException {
 		if ( this.source == null ) {
 			this.source = 
 				SimulinkEcoreCreator.findPortWithin(srcName, lineParent);
+			if ( this.source == null ) { 
+				throw new PortNotFoundException(srcName, lineParent); }
 		}
 		return source;
 	}
 
-	public Port getDestination() {
+	public Port getDestination() throws PortNotFoundException {
 		if ( this.destination == null ) {
 			this.destination = 
 				SimulinkEcoreCreator.findPortWithin(dstName, lineParent);
+			if ( this.source == null ) { 
+				throw new PortNotFoundException(srcName, lineParent); }
 		}
 		return destination;
 	}
