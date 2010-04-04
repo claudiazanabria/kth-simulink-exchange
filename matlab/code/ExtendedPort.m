@@ -14,6 +14,7 @@ classdef ExtendedPort < handle
         connectedToPortHandles   = 0;
         lineSrcPortName          = 0;
         lineDstPortName          = 0;
+        lineNames                = 0;
     end
     properties (Access=protected)
         originalPort;
