@@ -46,5 +46,10 @@ classdef Utils < handle
             handle = get_param(modelName, 'Handle');            
         end
 
+        function name = extractOnlyName( fullpath )
+             tokens = textscan(char(fullpath), '%s', 'delimiter', '/');
+             lastToken = size(tokens{1});
+             name = tokens{1}{ lastToken };
+        end
     end
 end

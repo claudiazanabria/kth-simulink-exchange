@@ -30,14 +30,17 @@ classdef EcoreCreator < handle
         function processSystem( self, systemName, parentSystem)
             [refMdls, mdlBlks] = find_mdlrefs(systemName, false);
             for x=1:size(refMdls,1)-1
-                name = char(refMdls(x));
-                instanceName = char(mdlBlks(x));
+                name            = char(refMdls(x));
+                sysAlreadyExists = self.javaEcoreCreator.findSystem(name);
+                instanceName    = Utils.extractOnlyName(mdlBlks(x));
                 aNewSystem = self.javaEcoreCreator.addSystem(name,...
                     parentSystem,instanceName);
                 load_system( name );
-                self.addOutportsTo( aNewSystem );
-                self.addInportsTo( aNewSystem );
-                self.processSystem(name, aNewSystem);
+                if isempty( sysAlreadyExists )
+                    self.addOutportsTo( aNewSystem );
+                    self.addInportsTo( aNewSystem );
+                    self.processSystem(name, aNewSystem);
+                end
             end
             self.addLines( mdlBlks, parentSystem );
         end
@@ -55,7 +58,7 @@ classdef EcoreCreator < handle
             name = char(aSystem.getName());
             ports = find_system(name,'SearchDepth',1,'BlockType','Outport');
             for x=1:size(ports,1)
-                portName = char(ports(x));
+                portName = Utils.extractOnlyName( ports(x) );
                 self.javaEcoreCreator.addOutPort(portName, aSystem);
             end
         end
@@ -65,7 +68,7 @@ classdef EcoreCreator < handle
             ports = find_system(name,'SearchDepth',1,...
                 'BlockType','Inport');
             for x=1:size(ports,1)
-                portName = char(ports(x));
+                portName = Utils.extractOnlyName( ports(x) );
                 self.javaEcoreCreator.addInPort(portName, aSystem);
             end
         end
@@ -73,7 +76,7 @@ classdef EcoreCreator < handle
         function saveIt( self )
             topElement = self.javaEcoreCreator.getTopElement();
             self.modelManager.setTopElement( topElement );
-            self.modelManager.validateIt();
+%            self.modelManager.validateIt();
             destFileName = fullfile(cd(), self.sourceFilePath);
             self.modelManager.saveAsWithPropperExtension(destFileName);
         end
