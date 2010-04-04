@@ -49,9 +49,10 @@ classdef EcoreCreator < handle
             lineBuilder = LineBuilder( parentSystem );
             for x=1:size(mdlBlks,1)
                 ep = ExtendedPortConnectivity.fromBlockName(mdlBlks{x});
-                linesInfo = lineBuilder.process( ep );
-                self.javaEcoreCreator.addLines( linesInfo );
+                lineBuilder.process( ep );
             end
+            createdLines = lineBuilder.getCreatedLines();
+            self.javaEcoreCreator.addLines( createdLines );
         end
                 
         function addOutportsTo( self, aSystem )

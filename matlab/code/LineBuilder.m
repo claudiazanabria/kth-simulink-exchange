@@ -16,7 +16,7 @@ classdef LineBuilder < handle
         end
     end
     methods
-        function lines = process( self, extendedPorts )
+        function process( self, extendedPorts )
             zize = size( extendedPorts, 2 );
             for x=1:zize
                 portName = extendedPorts{x}.portName;
@@ -24,7 +24,6 @@ classdef LineBuilder < handle
                     self.processPort( extendedPorts{x} );
                 end
             end
-            lines = self.createdLines;
         end
                 
         function processPort(self, extendedPort )
@@ -39,6 +38,10 @@ classdef LineBuilder < handle
                     self.visitedPorts.add( char(extendedPort.lineDstPortName(x)) );
                 end
             end
+        end
+        
+        function list = getCreatedLines( self )
+            list = self.createdLines;
         end
     end
 end
