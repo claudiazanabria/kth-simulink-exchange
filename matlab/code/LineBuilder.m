@@ -19,8 +19,8 @@ classdef LineBuilder < handle
         function process( self, extendedPorts )
             zize = size( extendedPorts, 2 );
             for x=1:zize
-                portName = extendedPorts{x}.portName;
-                if ~self.visitedPorts.contains( portName )
+                lineDstPortName = char(extendedPorts{x}.lineDstPortName);
+                if ~self.visitedPorts.contains( lineDstPortName )
                     self.processPort( extendedPorts{x} );
                 end
             end
