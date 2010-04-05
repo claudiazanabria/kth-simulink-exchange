@@ -20,7 +20,7 @@ Model {
       Name		      "F2_Out"
     }
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.11"
+    ComputedModelVersion    "1.13"
     NumModelReferences	    2
     ModelReference {
       ModelRefBlockPath	      "F2/Pablo|F22"
@@ -45,9 +45,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "alex"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Sun Apr  4 16:28:15 2010"
-  RTWModifiedTimeStamp	  192297794
-  ModelVersionFormat	  "1.%<AutoIncrement:11>"
+  LastModifiedDate	  "Mon Apr  5 10:39:11 2010"
+  RTWModifiedTimeStamp	  192364750
+  ModelVersionFormat	  "1.%<AutoIncrement:13>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -647,7 +647,7 @@ Model {
   }
   System {
     Name		    "F2"
-    Location		    [557, 125, 1232, 420]
+    Location		    [557, 147, 1232, 442]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -679,7 +679,7 @@ Model {
       BlockType		      Inport
       Name		      "In1"
       SID		      5
-      Position		      [20, 233, 50, 247]
+      Position		      [20, 204, 50, 246]
       Port		      "2"
       IconDisplay	      "Port number"
       OutDataType	      "fixdt(1, 16)"
@@ -696,7 +696,7 @@ Model {
       Name		      "Pablo"
       SID		      3
       Ports		      [2, 1]
-      Position		      [340, 42, 490, 193]
+      Position		      [340, 43, 530, 192]
       ModelNameDialog	      "F22"
       SimulationMode	      "Accelerator"
       ModelReferenceVersion   "1.1"
@@ -788,7 +788,7 @@ Model {
       Labels		      [1, 0]
       SrcBlock		      "In1"
       SrcPort		      1
-      Points		      [245, 0; 0, -85]
+      Points		      [245, 0; 0, -70]
       DstBlock		      "Pablo"
       DstPort		      2
     }

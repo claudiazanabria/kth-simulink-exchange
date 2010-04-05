@@ -33,9 +33,11 @@ classdef EcoreCreator < handle
             for x=1:size(refMdls,1)-1
                 name            = char(refMdls(x));
                 sysAlreadyExists = self.javaEcoreCreator.findSystem(name);
-                instanceName    = Utils.extractOnlyName(mdlBlks(x));
+                blockName = char(mdlBlks(x));
+                instanceName    = Utils.extractOnlyName(blockName);
                 aNewSystem = self.javaEcoreCreator.addSystem(name,...
                     parentSystem,instanceName);
+                self.keepPosition(aNewSystem, blockName);
                 load_system( name );
                 if isempty( sysAlreadyExists )
                     self.addOutportsTo( aNewSystem );
@@ -58,10 +60,12 @@ classdef EcoreCreator < handle
                 
         function addOutportsTo( self, aSystem )
             name = char(aSystem.getName());
-            ports = find_system(name,'SearchDepth',1,'BlockType','Outport');
-            for x=1:size(ports,1)
+            ports = find_system(name,'SearchDepth',1,...
+                'BlockType','Outport');
+            for x=1:size(ports,1)                
                 portName = Utils.extractOnlyName( ports(x) );
-                self.javaEcoreCreator.addOutPort(portName, aSystem);
+                p = self.javaEcoreCreator.addOutPort(portName, aSystem);
+                self.keepPosition(p, ports{x});
             end
         end
 
@@ -71,7 +75,8 @@ classdef EcoreCreator < handle
                 'BlockType','Inport');
             for x=1:size(ports,1)
                 portName = Utils.extractOnlyName( ports(x) );
-                self.javaEcoreCreator.addInPort(portName, aSystem);
+                p = self.javaEcoreCreator.addInPort(portName, aSystem);
+                self.keepPosition(p, ports{x});
             end
         end
 
@@ -95,5 +100,11 @@ classdef EcoreCreator < handle
             sysName = char( find_system('Filename', fullPath));
         end                
         
+        function keepPosition(self, ecoreObj, matlabObj) %#ok<MANU>
+            position = get_param(matlabObj, 'Position');
+            if ~isempty( position )
+                ecoreObj.setPosition( mat2str(position) );
+            end
+        end
     end
 end

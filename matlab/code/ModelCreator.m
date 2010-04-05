@@ -12,9 +12,11 @@ classdef ModelCreator < handle
     end
     
     methods (Static)
+        % This path is from the JVM, not matlab!
+        % use full path.
         function MC=fromFile( path2ecoreFile )
             MC=ModelCreator();
-            MC.ecoreFile = path2ecoreFile;
+            MC.ecoreFile = fullfile(cd(),path2ecoreFile);
             MC.doIt();
         end
         
