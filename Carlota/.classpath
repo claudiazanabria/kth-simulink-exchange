@@ -3,7 +3,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="con" path="ch.unibe.jexample.JEXAMPLE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry kind="lib" path="/Users/alex/Documents/Konsult jobb/KTH-ECS/Eclipsario/eclipse-modeling/plugins/org.eclipse.emf.ecore_2.5.0.v200906151043.jar"/>
 	<classpathentry kind="lib" path="/Users/alex/Documents/Konsult jobb/KTH-ECS/Eclipsario/eclipse-modeling/plugins/org.eclipse.emf.common_2.5.0.v200906151043.jar"/>
@@ -14,5 +13,6 @@
 	<classpathentry kind="lib" path="/Users/alex/Documents/Konsult jobb/KTH-ECS/checkout/Matlab/libs/se.kth.attest2.metamodel.Simulink_3.1.8.jar"/>
 	<classpathentry kind="lib" path="/Users/alex/Documents/Konsult jobb/KTH-ECS/myPlugins/commons-io-1.4/commons-io-1.4-javadoc.jar"/>
 	<classpathentry kind="lib" path="/Users/alex/Documents/Konsult jobb/KTH-ECS/myPlugins/commons-io-1.4/commons-io-1.4.jar"/>
+	<classpathentry kind="con" path="ch.unibe.jexample.JEXAMPLE_CONTAINER"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
