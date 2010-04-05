@@ -1,0 +1,27 @@
+package modelManagement.simulink;
+
+import java.util.Collection;
+
+import Simulink.Outport;
+import Simulink.Port;
+import Simulink.ProtoObject;
+import Simulink.System;
+
+public class OutportsProcessor extends PortProcessor {
+	
+	public static Collection<? extends ProtoObject> doIt(
+			System aSystem, SystemLayouter layouter) {
+				
+		OutportsProcessor pp = new OutportsProcessor();
+		pp.init(aSystem, layouter);
+		layouter.startWithOutports();
+		return pp.process( aSystem.getOutports() );		
+	}
+	
+	@Override	
+	public String getParentName(Port port) {
+		Outport outport = (Outport) port;
+		return outport.getParent().getSimulinkName();
+	}
+	
+}
