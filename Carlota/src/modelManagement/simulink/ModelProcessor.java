@@ -24,8 +24,8 @@ public class ModelProcessor {
 		allElements.add( theModel );
 		allElements.addAll( SystemProcessor.doIt( theModel.getRoot() ));
 		
-		ArrayList<ProtoObject> reorderedList = ListOrganizer.reorder( allElements );
-		return reorderedList;
+		//ArrayList<ProtoObject> reorderedList = ListOrganizer.reorder( allElements );
+		return allElements;
 	}
 	
 	private void computeSimulinkName() {

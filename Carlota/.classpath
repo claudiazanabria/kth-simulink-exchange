@@ -10,9 +10,9 @@
 	<classpathentry kind="lib" path="/Users/alex/Documents/Konsult jobb/KTH-ECS/Eclipsario/eclipse-modeling/plugins/com.cea.papyrus.umlutils_1.12.3.200912231359.jar"/>
 	<classpathentry kind="lib" path="/Users/alex/Documents/Konsult jobb/KTH-ECS/Eclipsario/eclipse-modeling/plugins/com.cea.papyrus.uml4eastadl.extension_1.9.9.jar"/>
 	<classpathentry kind="lib" path="/Users/alex/Documents/Konsult jobb/KTH-ECS/Eclipsario/eclipse-modeling/plugins/com.cea.papyrus.uml4sysml.extension_1.2.0.jar"/>
-	<classpathentry kind="lib" path="/Users/alex/Documents/Konsult jobb/KTH-ECS/checkout/Matlab/libs/se.kth.attest2.metamodel.Simulink_3.1.8.jar"/>
 	<classpathentry kind="lib" path="/Users/alex/Documents/Konsult jobb/KTH-ECS/myPlugins/commons-io-1.4/commons-io-1.4-javadoc.jar"/>
 	<classpathentry kind="lib" path="/Users/alex/Documents/Konsult jobb/KTH-ECS/myPlugins/commons-io-1.4/commons-io-1.4.jar"/>
 	<classpathentry kind="con" path="ch.unibe.jexample.JEXAMPLE_CONTAINER"/>
+	<classpathentry kind="lib" path="/Users/alex/Documents/Konsult jobb/KTH-ECS/Eclipsario/eclipse-modeling/plugins/se.kth.attest2.metamodel.Simulink_3.1.8.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
