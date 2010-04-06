@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 import modelManagement.exceptions.PortNotFoundException;
 import modelManagement.simulink.LineInfo;
+import modelManagement.simulink.PropertyList;
 import modelManagement.simulink.SimulinkEcoreCreator;
 import modelManagement.simulink.SimulinkModelManager;
 
@@ -203,6 +204,23 @@ public class SimulinkEcoreCreatorTest {
 			return parent;
 		};
 		
+		fail();
+		return parent;
+	}
+	
+	@Test
+	@Given("#testPortNotFound(Simulink.System)")
+	public System testAddSystemWithPList(System parent) {
+		PropertyList pList = new PropertyList("ale", parent, "alex");
+		pList.put("position", "[1 2 3 4]");
+		System sys = simulinkEcoreCreator.addSystem( pList );
+		assertTrue(sys.getName().equalsIgnoreCase("ale"));
+		for (SystemReference sysRef : parent.getChildren()) {
+			if ( sysRef.getName().equals("alex") ) {
+				assertTrue(sysRef.getPosition().equalsIgnoreCase("[1 2 3 4]"));
+				return parent;
+			} 
+		} 
 		fail();
 		return parent;
 	}

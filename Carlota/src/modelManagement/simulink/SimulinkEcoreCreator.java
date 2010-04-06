@@ -147,18 +147,42 @@ public class SimulinkEcoreCreator {
 		return null;
 	}
 
-	public System addSystem(String name, System parent, String instanceName){
+	
+	public System addSystem(PropertyList pList) {		
+		
+		String name 		= pList.getName();
+		String instanceName = pList.getInstanceName();
+		System parent		= pList.getParent();
+		SystemReference sysRef = addSystemInstance(name, parent, instanceName);
+		
+		sysRef.setPosition( pList.getPosition() );
+		return sysRef.getTarget();
+	}
+	
+	private SystemReference addSystemInstance(String name, System parent,
+			String instanceName) {
+		
 		System aSystem = obtainSystem(name);
 		SystemReference reference = factory.createSystemReference();
 		reference.setName(instanceName);
 		reference.setParent(parent);
 		reference.setTarget(aSystem);
 		parent.getChildren().add(reference);
-		return aSystem;
-		
+		return reference;
+	}
+
+
+	/*
+	 * comply with older API, probably unused
+	 */
+	public System addSystem(String name, System parent, String instanceName) {
+		SystemReference sysRef = addSystemInstance(name, parent, instanceName);
+		return sysRef.getTarget();
 	}
 	
-	
+	/*
+	 * name and instanceName are the same
+	 */ 
 	public System addSystem(String name, System parent) {
 		return addSystem(name, parent, name);
 	}
