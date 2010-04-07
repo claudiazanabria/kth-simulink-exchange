@@ -4,15 +4,10 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
-	<classpathentry kind="lib" path="/Users/alex/Documents/Konsult jobb/KTH-ECS/Eclipsario/eclipse-modeling/plugins/org.eclipse.emf.ecore_2.5.0.v200906151043.jar"/>
-	<classpathentry kind="lib" path="/Users/alex/Documents/Konsult jobb/KTH-ECS/Eclipsario/eclipse-modeling/plugins/org.eclipse.emf.common_2.5.0.v200906151043.jar"/>
-	<classpathentry kind="lib" path="/Users/alex/Documents/Konsult jobb/KTH-ECS/Eclipsario/eclipse-modeling/plugins/org.eclipse.emf.ecore.xmi_2.5.0.v200906151043.jar"/>
-	<classpathentry kind="lib" path="/Users/alex/Documents/Konsult jobb/KTH-ECS/Eclipsario/eclipse-modeling/plugins/com.cea.papyrus.umlutils_1.12.3.200912231359.jar"/>
-	<classpathentry kind="lib" path="/Users/alex/Documents/Konsult jobb/KTH-ECS/Eclipsario/eclipse-modeling/plugins/com.cea.papyrus.uml4eastadl.extension_1.9.9.jar"/>
-	<classpathentry kind="lib" path="/Users/alex/Documents/Konsult jobb/KTH-ECS/Eclipsario/eclipse-modeling/plugins/com.cea.papyrus.uml4sysml.extension_1.2.0.jar"/>
-	<classpathentry kind="lib" path="/Users/alex/Documents/Konsult jobb/KTH-ECS/myPlugins/commons-io-1.4/commons-io-1.4-javadoc.jar"/>
-	<classpathentry kind="lib" path="/Users/alex/Documents/Konsult jobb/KTH-ECS/myPlugins/commons-io-1.4/commons-io-1.4.jar"/>
 	<classpathentry kind="con" path="ch.unibe.jexample.JEXAMPLE_CONTAINER"/>
-	<classpathentry kind="lib" path="/Users/alex/Documents/Konsult jobb/KTH-ECS/Eclipsario/eclipse-modeling/plugins/se.kth.attest2.metamodel.Simulink_3.1.8.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Apache-commons"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/EMF"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Simulink-ecore"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/EAST-ADL"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
