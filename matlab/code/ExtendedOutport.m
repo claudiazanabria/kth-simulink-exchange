@@ -42,10 +42,6 @@ classdef ExtendedOutport < ExtendedPort
             name = self.connectedToPortNames{x};
         end
 
-        function name = getLineDstFullName(self, x)
-            name = sprintf('%s/%s',self.connectedToInstanceNames{x}, ... 
-                self.lineDstPortName{x});
-        end
 
     end
 end

@@ -37,6 +37,7 @@ classdef EcoreCreator < handle
         end
         
         function processBlock( self, blockName, parentSystem )
+            Utils.setUUIDinUserData( blockName );
             name                = get_param(blockName,'ModelName');
             instanceName        = Utils.extractOnlyName( blockName );
             sysAlreadyExists    = self.javaEcoreCreator.findSystem(name);            
@@ -53,7 +54,7 @@ classdef EcoreCreator < handle
                 self.processSystem( aNewSystem );
             end
         end
-        
+                
         function addLines( self, mdlBlks, parentSystem )
             lineBuilder = LineBuilder( parentSystem );
             for x=1:size(mdlBlks,1)
@@ -69,6 +70,7 @@ classdef EcoreCreator < handle
             ports = find_system(name,'SearchDepth',1,...
                 'BlockType','Outport');
             for x=1:size(ports,1)                
+                Utils.setUUIDinUserData( ports{x} );
                 portName = Utils.extractOnlyName( ports(x) );
                 p = self.javaEcoreCreator.addOutPort(portName, aSystem);
                 self.keepPosition(p, ports{x});
@@ -80,6 +82,7 @@ classdef EcoreCreator < handle
             ports = find_system(name,'SearchDepth',1,...
                 'BlockType','Inport');
             for x=1:size(ports,1)
+                Utils.setUUIDinUserData( ports{x} );
                 portName = Utils.extractOnlyName( ports(x) );
                 p = self.javaEcoreCreator.addInPort(portName, aSystem);
                 self.keepPosition(p, ports{x});

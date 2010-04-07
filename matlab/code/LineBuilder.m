@@ -24,11 +24,10 @@ classdef LineBuilder < handle
         end
                 
         function processExtendedPort( self, extendedPort )
-            zize = size( extendedPort.lineDstFullName, 2 );
+            zize = size( extendedPort.connectedToPortHandles, 2 );
             for x=1:zize
-                lineDstFullName = extendedPort.lineDstFullName{x};
-                fprintf('%s\n',lineDstFullName);
-                if ~self.visitedPorts.contains( lineDstFullName )
+                uuid = Utils.getUUIDfromBlock( extendedPort.fullName ); 
+                if ~self.visitedPorts.contains( uuid )
                     self.processPort( extendedPort );
                 end
             end
@@ -43,7 +42,7 @@ classdef LineBuilder < handle
                     aLine.setSrcName( char(extendedPort.lineSrcPortName(x)) );
                     aLine.setDstName( char(extendedPort.lineDstPortName(x)) );
                     self.createdLines.add( aLine );
-                    self.visitedPorts.add( char(extendedPort.lineDstFullName(x)) );
+                    self.visitedPorts.add( extendedPort.lineDstPortUUID{x} );
                 end
             end
         end

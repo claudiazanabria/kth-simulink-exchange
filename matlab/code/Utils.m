@@ -60,6 +60,15 @@ classdef Utils < handle
             str = sprintf('[%d %d %d %d]',char(posArray));
         end
         
+        function setUUIDinUserData( blockName )
+            set_param( blockName,'UserDataPersistent','on');
+            userData = modelManagement.simulink.UserData();
+            set_param( blockName, 'UserData', userData );            
+        end        
         
+        function uuid = getUUIDfromBlock( blockName )
+            userData = get_param(blockName,'UserData');
+            uuid = userData.get('UUID');
+        end
     end
 end

@@ -31,26 +31,36 @@ classdef EcoreCreator < handle
             systemName = char( parentSystem.getName() );
             [refMdls, mdlBlks] = find_mdlrefs(systemName, false);
             for x=1:size(refMdls,1)-1
-                name            = char(refMdls(x));
-                sysAlreadyExists = self.javaEcoreCreator.findSystem(name);
-                blockName = char(mdlBlks(x));
-                instanceName    = Utils.extractOnlyName(blockName);
-                pList = modelManagement.simulink.PropertyList(name, ...
-                    parentSystem,instanceName);
-                position = Utils.posArray2String(get_param(blockName,'position'));
-                pList.put('position', position);
-                aNewSystem = self.javaEcoreCreator.addSystem( pList );
-                load_system( name );
-                if isempty( sysAlreadyExists )
-                    self.addOutportsTo( aNewSystem );
-                    self.addInportsTo( aNewSystem );
-                    self.processSystem( aNewSystem );
-                end
+                self.processBlock( mdlBlks{x}, parentSystem );
             end
             self.addLines( mdlBlks, parentSystem );
         end
-
         
+        function processBlock( self, blockName, parentSystem )
+            self.setUUIDinUserData( blockName );
+            name                = get_param(blockName,'ModelName');
+            instanceName        = Utils.extractOnlyName( blockName );
+            sysAlreadyExists    = self.javaEcoreCreator.findSystem(name);            
+            pList = modelManagement.simulink.PropertyList(name, ...
+                parentSystem,instanceName);
+            posArray = get_param(blockName,'position');
+            position = Utils.posArray2String( posArray );
+            pList.put('position', position);
+            aNewSystem = self.javaEcoreCreator.addSystem( pList );
+            load_system( name );
+            if isempty( sysAlreadyExists )
+                self.addOutportsTo( aNewSystem );
+                self.addInportsTo( aNewSystem );
+                self.processSystem( aNewSystem );
+            end
+        end
+        
+        function setUUIDinUserData( self, blockName )
+            set_param(blockName,'UserDataPersistent','on');
+            userData = modelManagement.simulink.UserData();
+            set_param( blockName, ');
+            
+        end
         function addLines( self, mdlBlks, parentSystem )
             lineBuilder = LineBuilder( parentSystem );
             for x=1:size(mdlBlks,1)
