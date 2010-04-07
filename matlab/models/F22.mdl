@@ -17,7 +17,7 @@ Model {
       Name		      "F22_Out"
     }
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.1"
+    ComputedModelVersion    "1.2"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -34,11 +34,11 @@ Model {
   Creator		  "alex"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "alex"
+  LastModifiedBy	  "alesch"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Mon Mar 29 22:14:37 2010"
-  RTWModifiedTimeStamp	  191789536
-  ModelVersionFormat	  "1.%<AutoIncrement:1>"
+  LastModifiedDate	  "Wed Apr 07 11:59:37 2010"
+  RTWModifiedTimeStamp	  192542376
+  ModelVersionFormat	  "1.%<AutoIncrement:2>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -632,7 +632,7 @@ Model {
   System {
     Name		    "F22"
     Location		    [70, 200, 650, 460]
-    Open		    off
+    Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
     ScreenColor		    "white"
@@ -650,14 +650,14 @@ Model {
       BlockType		      Inport
       Name		      "F22_InA"
       SID		      1
-      Position		      [20, 108, 50, 122]
+      Position		      [40, 33, 70, 47]
       IconDisplay	      "Port number"
     }
     Block {
       BlockType		      Inport
       Name		      "F22_InB"
       SID		      2
-      Position		      [20, 168, 50, 182]
+      Position		      [40, 123, 70, 137]
       Port		      "2"
       IconDisplay	      "Port number"
     }
@@ -665,7 +665,7 @@ Model {
       BlockType		      Outport
       Name		      "F22_Out"
       SID		      3
-      Position		      [100, 108, 130, 122]
+      Position		      [220, 83, 250, 97]
       IconDisplay	      "Port number"
     }
   }

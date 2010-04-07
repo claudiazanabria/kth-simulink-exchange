@@ -6,11 +6,11 @@ Model {
     NumRootInports	    2
     Inport {
       SignalName	      "la"
-      Name		      "F2_In"
+      Name		      "F2_InA"
     }
     Inport {
       SignalName	      "lb"
-      Name		      "In1"
+      Name		      "F2_InB"
     }
     NumRootOutports	    1
     Outport {
@@ -20,7 +20,7 @@ Model {
       Name		      "F2_Out"
     }
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.13"
+    ComputedModelVersion    "1.16"
     NumModelReferences	    2
     ModelReference {
       ModelRefBlockPath	      "F2/Pablo|F22"
@@ -43,11 +43,11 @@ Model {
   Creator		  "alex"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "alex"
+  LastModifiedBy	  "alesch"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Mon Apr  5 10:39:11 2010"
-  RTWModifiedTimeStamp	  192364750
-  ModelVersionFormat	  "1.%<AutoIncrement:13>"
+  LastModifiedDate	  "Wed Apr 07 13:55:02 2010"
+  RTWModifiedTimeStamp	  192549297
+  ModelVersionFormat	  "1.%<AutoIncrement:16>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -647,7 +647,7 @@ Model {
   }
   System {
     Name		    "F2"
-    Location		    [557, 147, 1232, 442]
+    Location		    [412, 803, 1087, 1098]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -664,7 +664,7 @@ Model {
     SIDHighWatermark	    13
     Block {
       BlockType		      Inport
-      Name		      "F2_In"
+      Name		      "F2_InA"
       SID		      1
       Position		      [20, 113, 50, 127]
       IconDisplay	      "Port number"
@@ -677,7 +677,7 @@ Model {
     }
     Block {
       BlockType		      Inport
-      Name		      "In1"
+      Name		      "F2_InB"
       SID		      5
       Position		      [20, 204, 50, 246]
       Port		      "2"
@@ -696,10 +696,10 @@ Model {
       Name		      "Pablo"
       SID		      3
       Ports		      [2, 1]
-      Position		      [340, 43, 530, 192]
+      Position		      [300, 41, 530, 194]
       ModelNameDialog	      "F22"
       SimulationMode	      "Accelerator"
-      ModelReferenceVersion   "1.1"
+      ModelReferenceVersion   "1.2"
       List {
 	ListType		InputPortNames
 	port0			"F22_InA"
@@ -726,7 +726,7 @@ Model {
       Name		      "Pedro"
       SID		      2
       Ports		      [1, 2]
-      Position		      [100, 42, 250, 193]
+      Position		      [100, 41, 205, 194]
       ModelNameDialog	      "F21"
       SimulationMode	      "Accelerator"
       ModelReferenceVersion   "1.4"
@@ -762,8 +762,9 @@ Model {
     Line {
       Name		      "la"
       Labels		      [1, 0]
-      SrcBlock		      "F2_In"
+      SrcBlock		      "F2_InA"
       SrcPort		      1
+      Points		      [30, 0]
       DstBlock		      "Pedro"
       DstPort		      1
     }
@@ -786,9 +787,9 @@ Model {
     Line {
       Name		      "lb"
       Labels		      [1, 0]
-      SrcBlock		      "In1"
+      SrcBlock		      "F2_InB"
       SrcPort		      1
-      Points		      [245, 0; 0, -70]
+      Points		      [195, 0; 0, -70]
       DstBlock		      "Pablo"
       DstPort		      2
     }
