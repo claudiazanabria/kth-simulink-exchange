@@ -2,19 +2,21 @@ classdef ExtendedPort < handle
     properties
         portName                 = '';
         fullName                 = '';
+        instanceParentName       = '';
         portHandle               = 0;
         portType                 = '';
         connected                = false;                
         connectedToBlockType     = '';
-        connectedToBlockNames    = '';
+        connectedToBlockNames    = {};
         connectedToBlockHandles  = 0;
-        connectedToInstanceNames = '';
-        connectedToPortNames     = '';
-        connectedToPortFullNames = '';
-        connectedToPortHandles   = 0;
-        lineSrcPortName          = 0;
-        lineDstPortName          = 0;
-        lineNames                = 0;
+        connectedToInstanceNames = {};
+        connectedToPortNames     = {};
+        connectedToPortFullNames = {};
+        connectedToPortHandles   = {};
+        lineSrcPortName          = '';
+        lineDstPortName          = {};
+        lineNames                = {};
+        lineDstFullName          = {};
     end
     properties (Access=protected)
         originalPort;
@@ -29,6 +31,7 @@ classdef ExtendedPort < handle
         bHandle = getConnectedBlockHandleNr(self, x);
         name = getLineSrc(self, x); 
         name = getLineDst(self, x); 
+        name = getLineDstFullName(self, x);
     end
     methods (Static)
         function ep=new(aBlockHandle, aPortConnectivity )
@@ -55,6 +58,7 @@ classdef ExtendedPort < handle
     end
     methods
         function doIt(self, aBlockHandle, aPortConnectivity)
+            self.instanceParentName = get_param( aBlockHandle, 'Name');
             self.setParentBlockHandle( aBlockHandle );
             self.originalPort = aPortConnectivity;
             self.setPortNameAndHandle();
@@ -70,9 +74,11 @@ classdef ExtendedPort < handle
             theSize = self.numberOfConnections();
             self.lineSrcPortName            = cell(1,theSize);
             self.lineDstPortName            = cell(1,theSize);
+            self.lineDstFullName            = cell(1,theSize);
             for x=1:theSize
                 self.lineSrcPortName(1,x) = { self.getLineSrc(x) };
                 self.lineDstPortName(1,x) = { self.getLineDst(x) };
+                self.lineDstFullName(1,x) = { self.getLineDstFullName(x) };
             end
         end
         

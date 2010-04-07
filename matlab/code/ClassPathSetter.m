@@ -2,8 +2,8 @@
 classdef ClassPathSetter
     % aca tambien
     properties
-        %basePath = 'F:/Documents/MATLAB/libs';
-        basePath = '/Users/alex/Documents/Konsult jobb/KTH-ECS/checkout/Matlab/libs';
+        basePath = 'F:/Documents/matlab/libs';
+        %basePath = '/Users/alex/Documents/Konsult jobb/KTH-ECS/checkout/Matlab/libs';
     end
     properties (Access=protected)
         jarFiles;

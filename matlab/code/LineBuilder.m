@@ -19,23 +19,31 @@ classdef LineBuilder < handle
         function process( self, extendedPorts )
             zize = size( extendedPorts, 2 );
             for x=1:zize
-                lineDstPortName = char(extendedPorts{x}.lineDstPortName);
-                if ~self.visitedPorts.contains( lineDstPortName )
-                    self.processPort( extendedPorts{x} );
-                end
+                self.processExtendedPort( extendedPorts{x} );
             end
         end
                 
+        function processExtendedPort( self, extendedPort )
+            zize = size( extendedPort.lineDstFullName, 2 );
+            for x=1:zize
+                lineDstFullName = extendedPort.lineDstFullName{x};
+                fprintf('%s\n',lineDstFullName);
+                if ~self.visitedPorts.contains( lineDstFullName )
+                    self.processPort( extendedPort );
+                end
+            end
+        end
+        
         function processPort(self, extendedPort )
             zize = extendedPort.numberOfConnections();
             for x=1:zize
-                if extendedPort.connected(x)
+                if extendedPort.connected
                     aLine = modelManagement.simulink.LineInfo(self.parentSystem);
                     aLine.setName( 'lineName' );
                     aLine.setSrcName( char(extendedPort.lineSrcPortName(x)) );
                     aLine.setDstName( char(extendedPort.lineDstPortName(x)) );
                     self.createdLines.add( aLine );
-                    self.visitedPorts.add( char(extendedPort.lineDstPortName(x)) );
+                    self.visitedPorts.add( char(extendedPort.lineDstFullName(x)) );
                 end
             end
         end

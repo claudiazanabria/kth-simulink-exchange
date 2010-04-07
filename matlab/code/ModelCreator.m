@@ -93,6 +93,7 @@ classdef ModelCreator < handle
         
         function processElement( self, anElement )
             elementType = char(anElement.eClass().getName());
+            fprintf('%s\n',char(anElement.getName()));
             switch (elementType)
                 case 'System'
                     self.processSystem( anElement );

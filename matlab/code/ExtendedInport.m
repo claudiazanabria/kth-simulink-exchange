@@ -40,5 +40,10 @@ classdef ExtendedInport < ExtendedPort
         function name = getLineDst(self, x) %#ok<INUSD>
             name = self.portName;
         end
+        
+        function name = getLineDstFullName(self, x) %#ok<INUSD>
+            name = sprintf('%s/%s', self.instanceParentName, ...
+                self.portName);
+        end
     end
 end
