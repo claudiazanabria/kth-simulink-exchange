@@ -12,8 +12,6 @@ classdef ModelCreator < handle
     end
     
     methods (Static)
-        % This path is from the JVM, not matlab!
-        % use full path.
         function MC=fromFile( path2ecoreFile )
             MC=ModelCreator();
             MC.ecoreFile = fullfile(cd(),path2ecoreFile);
@@ -25,15 +23,6 @@ classdef ModelCreator < handle
 
         function boolean = systemContainsBehaviour( aSystem )
             boolean = (aSystem.getChildren().size() == 0);
-        end
-
-        function array = posStr2Array( string )
-            array = sscanf(string ,'[%d %d %d %d]')';
-        end
-        
-        function array = position2Array( port )
-            posString = char( port.getPosition() );
-            array = ModelCreator.posStr2Array( posString );
         end
         
         function boolean = portDoesNOTExists( port, type )
@@ -59,6 +48,11 @@ classdef ModelCreator < handle
             else
                 boolean = false;
             end
+        end
+        
+        function array = position2Array( port )
+            posString = char( port.getPosition() );
+            array = Utils.posStr2Array( posString );
         end
         
         function refreshAndSaveSystems()
@@ -123,7 +117,7 @@ classdef ModelCreator < handle
         function processSysRef( self, aSysRef ) %#ok<MANU>
             aSystem = aSysRef.getTarget();
             modelname       = char( aSystem.getName() );
-            position        = char( aSysRef.getPosition() );
+            position        = Utils.posStr2Array( aSysRef.getPosition() );
             instanceName    = char( aSysRef.getSimulinkName() );
             add_block('built-in/ModelReference', instanceName,...
                 'ModelName', modelname, 'Position', position);            

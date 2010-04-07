@@ -31,21 +31,27 @@ classdef EcoreCreator < handle
             systemName = char( parentSystem.getName() );
             [refMdls, mdlBlks] = find_mdlrefs(systemName, false);
             for x=1:size(refMdls,1)-1
-                name            = char(refMdls(x));
-                sysAlreadyExists = self.javaEcoreCreator.findSystem(name);
-                blockName = char(mdlBlks(x));
-                instanceName    = Utils.extractOnlyName(blockName);
-                aNewSystem = self.javaEcoreCreator.addSystem(name,...
-                    parentSystem,instanceName);
-                self.keepPosition(aNewSystem, blockName);
-                load_system( name );
-                if isempty( sysAlreadyExists )
-                    self.addOutportsTo( aNewSystem );
-                    self.addInportsTo( aNewSystem );
-                    self.processSystem( aNewSystem );
-                end
+                self.processBlock( mdlBlks{x}, parentSystem );
             end
             self.addLines( mdlBlks, parentSystem );
+        end
+        
+        function processBlock( self, blockName, parentSystem )
+            name                = get_param(blockName,'ModelName');
+            instanceName        = Utils.extractOnlyName( blockName );
+            sysAlreadyExists    = self.javaEcoreCreator.findSystem(name);            
+            pList = modelManagement.simulink.PropertyList(name, ...
+                parentSystem,instanceName);
+            posArray = get_param(blockName,'position');
+            position = Utils.posArray2String( posArray );
+            pList.put('position', position);
+            aNewSystem = self.javaEcoreCreator.addSystem( pList );
+            load_system( name );
+            if isempty( sysAlreadyExists )
+                self.addOutportsTo( aNewSystem );
+                self.addInportsTo( aNewSystem );
+                self.processSystem( aNewSystem );
+            end
         end
         
         function addLines( self, mdlBlks, parentSystem )

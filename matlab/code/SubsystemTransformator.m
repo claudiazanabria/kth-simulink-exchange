@@ -11,17 +11,17 @@ classdef SubsystemTransformator
     methods
         function doIt( self )
             self.fixModelSettings();
-            blocks = find_system(self.systemName,'BlockType','SubSystem');
+            blocks = find_system(self.systemName,'SearchDepth',1,'BlockType','SubSystem');
             zize = size(blocks,1);
             fprintf('Attemting to transform %d blocks.\n', zize);
             for x=1:zize
                 block = blocks{x};
-                atomic = get_param(block,'IsSubsystemVirtual');
-                if strcmp(atomic, 'off')
+                virtual = get_param(block,'IsSubsystemVirtual');
+                if strcmp(virtual, 'off')
                     fprintf('Block: %s\t',block);
                     mdlRef = Utils.extractOnlyName(block);
                     [success,mdlRefBlkH] = Simulink.SubSystem. ...
-                        convertToModelReference(block, mdlRef);
+                        convertToModelReference(block, mdlRef, 'ReplaceSubsystem',true,'Force',true); %#ok<NASGU>
                     if success
                         fprintf('succeded.\n');
                     else

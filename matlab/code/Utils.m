@@ -51,5 +51,15 @@ classdef Utils < handle
              lastToken = size(tokens{1});
              name = tokens{1}{ lastToken };
         end
+        
+        function array = posStr2Array( string )
+            array = sscanf(char(string) ,'[%d %d %d %d]')';
+        end
+        
+        function str = posArray2String( posArray )
+            str = sprintf('[%d %d %d %d]',char(posArray));
+        end
+        
+        
     end
 end
