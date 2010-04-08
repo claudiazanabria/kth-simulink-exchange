@@ -5,6 +5,7 @@ package modelManagement.simulink;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.UUID;
 
 import modelManagement.exceptions.PortNotFoundException;
 
@@ -16,6 +17,7 @@ import Simulink.Line;
 import Simulink.Model;
 import Simulink.Outport;
 import Simulink.Port;
+import Simulink.ProtoObject;
 import Simulink.SimulinkFactory;
 import Simulink.System;
 import Simulink.SystemReference;
@@ -29,17 +31,27 @@ public class SimulinkEcoreCreator {
 	protected SimulinkFactory factory;
 	protected Model theModel;
 	protected HashMap<String, System> systemRepository;
+	protected HashMap<UUID, ProtoObject> repository;
 	
 	public SimulinkEcoreCreator(SimulinkFactory aFactory) {
 		factory = aFactory;
-		systemRepository = new HashMap<String, System>();
+		systemRepository 	= new HashMap<String, System>();
+		repository 			= new HashMap<UUID, ProtoObject>();
 	}
 
 
 	public Model newModel(String modelName) {
 		theModel = factory.createModel();
 		theModel.setName( modelName );
+		this.setUUIDAndAddToRepository( theModel );
 		return theModel;
+	}
+
+
+	private void setUUIDAndAddToRepository(ProtoObject object) {
+		UUID uuid = UUID.randomUUID();
+		object.setUuid(uuid);
+		repository.put(uuid, object);
 	}
 
 
@@ -51,6 +63,7 @@ public class SimulinkEcoreCreator {
 	public System addRootSystem(String name) {
 		System aSystem = obtainSystem(name);
 		theModel.setRoot(aSystem);
+		this.setUUIDAndAddToRepository( aSystem );		
 		return aSystem;
 	}
 
@@ -73,6 +86,7 @@ public class SimulinkEcoreCreator {
 		aSystem.setSimulinkName(name);
 		systemRepository.put(name, aSystem);
 		theModel.getParts().add(aSystem);
+		this.setUUIDAndAddToRepository( aSystem );		
 		return aSystem;
 	}
 
@@ -168,6 +182,7 @@ public class SimulinkEcoreCreator {
 		reference.setParent(parent);
 		reference.setTarget(aSystem);
 		parent.getChildren().add(reference);
+		this.setUUIDAndAddToRepository( reference );		
 		return reference;
 	}
 
@@ -193,6 +208,7 @@ public class SimulinkEcoreCreator {
 		parent.getInports().add( inport );
 		inport.setName(name);
 		inport.setParent(parent);
+		this.setUUIDAndAddToRepository( inport );		
 		return inport;
 	}
 
@@ -202,6 +218,7 @@ public class SimulinkEcoreCreator {
 		parent.getOutports().add( outport );
 		outport.setName(name);
 		outport.setParent(parent);
+		this.setUUIDAndAddToRepository( outport );		
 		return outport;
 	}
 
@@ -219,6 +236,7 @@ public class SimulinkEcoreCreator {
 		line.setSource(source);
 		line.setDestination(destination);
 		parent.getLines().add(line);
+		this.setUUIDAndAddToRepository( line );
 		return line;
 	}
 	
@@ -229,4 +247,21 @@ public class SimulinkEcoreCreator {
 		}
 	}
 
+
+	public System findSystem(UUID uuid) {
+		return (System) repository.get(uuid);
+	}
+
+	public SystemReference findSystemReference(UUID uuid) {
+		return (SystemReference) repository.get(uuid);
+	}
+
+	public Port findPort(UUID uuid) {
+		return (Port) repository.get(uuid);
+	}
+		
+	public Line findLine(UUID uuid) {
+		return (Line) repository.get(uuid);
+	}
+	
 }

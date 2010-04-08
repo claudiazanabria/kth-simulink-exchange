@@ -8,6 +8,7 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 import modelManagement.exceptions.PortNotFoundException;
 import modelManagement.simulink.LineInfo;
@@ -225,4 +226,19 @@ public class SimulinkEcoreCreatorTest {
 		return parent;
 	}
 
+	@Test
+	@Given("#testAddSystemWithPList(Simulink.System)")
+	public System testFindInRepository(System parent) {
+		System sysA = simulinkEcoreCreator.findSystem("SysA");
+		UUID uuid = sysA.getUuid();
+		assertEquals(simulinkEcoreCreator.findSystem(uuid), sysA);
+		Port port = sysA.getOutports().get(0);
+		uuid = port.getUuid();
+		assertEquals(simulinkEcoreCreator.findPort(uuid), port);
+		Line line = parent.getLines().get(0);
+		uuid = line.getUuid();
+		assertEquals(simulinkEcoreCreator.findLine(uuid), line);
+		
+		return parent;
+	}
 }

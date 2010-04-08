@@ -4,8 +4,10 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
+import Simulink.Line;
 import Simulink.Model;
 import Simulink.ProtoObject;
+import Simulink.SimulinkPackage;
 
 import modelManagement.exceptions.InvalidModelException;
 import modelManagement.simulink.ModelProcessor;
@@ -17,14 +19,12 @@ public class ModelProcessorTest {
 	ModelProcessor modelProcessor = new ModelProcessor();
 	
 	@Test
-	public void testModelCreator() {
-		String file = "testWorkspace/yorkest.simulink";
+	public void testModelCreator() throws InvalidModelException {
+		
+		//String file = "testWorkspace/yorkest.simulink";
+		String file = "F:/Documents/matlab/models/kalle/sldemo_absbrake_ATESST.simulink";
 		SimulinkModelManager mm = new SimulinkModelManager( file );
-		try {
-			mm.loadIt();
-		} catch (InvalidModelException e) {
-			e.printStackTrace();
-		}
+		mm.loadIt();
 		Model model = (Model) mm.getTopElement();
 		ArrayList<ProtoObject> aList = ModelProcessor.doIt(model);
 		aList.size();
@@ -34,6 +34,14 @@ public class ModelProcessorTest {
 			String type = obj.eClass().getName();
 			//System.out.format("%s: %s\n", type, obj);
 			System.out.format("%2d: %s, %s\n", x, type, obj.getName());
+			int id = obj.eClass().getClassifierID();
+			switch (id) {
+				case SimulinkPackage.LINE: {
+					Line line = (Line) obj;
+					System.out.format("\t%s --> %s\n", 
+							line.getSimuNameSrc(), line.getSimuNameDst());
+				}
+			}
 			x = x+1;
 		}
 	}
