@@ -21,7 +21,7 @@ classdef EcoreCreator < handle
             self.javaEcoreCreator.newModel( modelName );
             rootSystem = self.javaEcoreCreator.addRootSystem( modelName );
             self.processSystem( rootSystem );
-            save_model( modelName );
+            save_system( modelName );
             self.saveIt();
         end
         

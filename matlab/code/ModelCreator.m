@@ -93,7 +93,6 @@ classdef ModelCreator < handle
         
         function processElement( self, anElement )
             elementType = char(anElement.eClass().getName());
-            fprintf('%s\n',char(anElement.getName()));
             switch (elementType)
                 case 'System'
                     self.processSystem( anElement );
@@ -112,16 +111,17 @@ classdef ModelCreator < handle
             src = char( aLine.getSimuNameSrc() );
             dst = char( aLine.getSimuNameDst() );
             sys = char( aLine.getParent().getSimulinkName() );
-            add_line(sys, src, dst, 'autorouting' ,'on');
+            handle = add_line(sys, src, dst, 'autorouting' ,'on');
         end
         
         function processSysRef( self, aSysRef ) %#ok<MANU>
             aSystem = aSysRef.getTarget();
             modelname       = char( aSystem.getName() );
             position        = Utils.posStr2Array( aSysRef.getPosition() );
-            instanceName    = char( aSysRef.getSimulinkName() );
+            instanceName    = char( aSysRef.getSimulinkName() );            
             add_block('built-in/ModelReference', instanceName,...
-                'ModelName', modelname, 'Position', position);            
+                'ModelName', modelname, 'Position', position);
+            Utils.setUUIDinUserData( aSysRef, instanceName );
         end
         
         function processSystem( self, aSystem ) %#ok<MANU>
@@ -156,6 +156,7 @@ classdef ModelCreator < handle
             if ModelCreator.portDoesNOTExists(port, type)
                 position = ModelCreator.position2Array( port );
                 add_block(blockType, instanceName, 'Position', position);
+                Utils.setUUIDinUserData( port, instanceName )
             end
         end
         

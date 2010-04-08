@@ -62,7 +62,7 @@ classdef Utils < handle
         
         function setUUIDinUserData( fromEObject, toBlockName )
             set_param( toBlockName,'UserDataPersistent','on');
-            uuidStr = char(fromEObject.getUuid().toString());
+            uuidStr = char(fromEObject.getUuid());
             userData = containers.Map({'UUID'},{uuidStr} );
             set_param( toBlockName, 'UserData', userData );            
         end        
