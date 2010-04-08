@@ -220,7 +220,7 @@ public class SimulinkEcoreCreatorTest {
 	public System testAddSystemWithPList(System parent) {
 		PropertyList pList = new PropertyList("ale", parent, "alex");
 		SystemReference sysRef = simulinkEcoreCreator.addSystem( pList );
-		assertEquals(sysRef, simulinkEcoreCreator.findSystemReference(sysRef.getUuid()));
+		assertEquals(sysRef, simulinkEcoreCreator.findSystemReference(UUID.fromString(sysRef.getUuid())));
 		System sys = sysRef.getTarget();
 		assertTrue(sys.getName().equalsIgnoreCase("ale"));		
 		return parent;
@@ -230,13 +230,13 @@ public class SimulinkEcoreCreatorTest {
 	@Given("#testAddSystemWithPList(Simulink.System)")
 	public System testFindInRepository(System parent) {
 		System sysA = simulinkEcoreCreator.findSystem("SysA");
-		UUID uuid = sysA.getUuid();
+		UUID uuid = UUID.fromString( sysA.getUuid() );
 		assertEquals(simulinkEcoreCreator.findSystem(uuid), sysA);
 		Port port = sysA.getOutports().get(0);
-		uuid = port.getUuid();
+		uuid = UUID.fromString(port.getUuid());
 		assertEquals(simulinkEcoreCreator.findPort(uuid), port);
 		Line line = parent.getLines().get(0);
-		uuid = line.getUuid();
+		uuid = UUID.fromString(line.getUuid());
 		assertEquals(simulinkEcoreCreator.findLine(uuid), line);		
 		return parent;
 	}	

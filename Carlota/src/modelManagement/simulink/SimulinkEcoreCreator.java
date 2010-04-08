@@ -50,7 +50,7 @@ public class SimulinkEcoreCreator {
 
 	private void setUUIDAndAddToRepository(ProtoObject object) {
 		UUID uuid = UUID.randomUUID();
-		object.setUuid(uuid);
+		object.setUuid(uuid.toString());
 		repository.put(uuid, object);
 	}
 

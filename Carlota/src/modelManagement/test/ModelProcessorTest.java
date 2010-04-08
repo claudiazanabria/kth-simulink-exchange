@@ -25,6 +25,7 @@ public class ModelProcessorTest {
 		String file = "F:/Documents/matlab/models/kalle/sldemo_absbrake_ATESST.simulink";
 		SimulinkModelManager mm = new SimulinkModelManager( file );
 		mm.loadIt();
+		mm.validateIt();
 		Model model = (Model) mm.getTopElement();
 		ArrayList<ProtoObject> aList = ModelProcessor.doIt(model);
 		aList.size();
