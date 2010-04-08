@@ -14,9 +14,7 @@ import Simulink.SimulinkFactory;
 import Simulink.SimulinkPackage;
 import Simulink.SystemReference;
 
-import java.util.UUID;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -84,36 +82,6 @@ public class SimulinkFactoryImpl extends EFactoryImpl implements SimulinkFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public Object createFromString(EDataType eDataType, String initialValue) {
-		switch (eDataType.getClassifierID()) {
-			case SimulinkPackage.UUID:
-				return createUUIDFromString(eDataType, initialValue);
-			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
-		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String convertToString(EDataType eDataType, Object instanceValue) {
-		switch (eDataType.getClassifierID()) {
-			case SimulinkPackage.UUID:
-				return convertUUIDToString(eDataType, instanceValue);
-			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
-		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public Inport createInport() {
 		InportImpl inport = new InportImpl();
 		return inport;
@@ -167,24 +135,6 @@ public class SimulinkFactoryImpl extends EFactoryImpl implements SimulinkFactory
 	public SystemReference createSystemReference() {
 		SystemReferenceImpl systemReference = new SystemReferenceImpl();
 		return systemReference;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public UUID createUUIDFromString(EDataType eDataType, String initialValue) {
-		return (UUID)super.createFromString(eDataType, initialValue);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertUUIDToString(EDataType eDataType, Object instanceValue) {
-		return super.convertToString(eDataType, instanceValue);
 	}
 
 	/**

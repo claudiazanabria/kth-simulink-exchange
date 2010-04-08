@@ -6,7 +6,6 @@
  */
 package Simulink;
 
-import java.util.UUID;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -116,12 +115,12 @@ public interface ProtoObject extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Uuid</em>' attribute.
-	 * @see #setUuid(UUID)
+	 * @see #setUuid(String)
 	 * @see Simulink.SimulinkPackage#getProtoObject_Uuid()
-	 * @model dataType="Simulink.UUID"
+	 * @model
 	 * @generated
 	 */
-	UUID getUuid();
+	String getUuid();
 
 	/**
 	 * Sets the value of the '{@link Simulink.ProtoObject#getUuid <em>Uuid</em>}' attribute.
@@ -131,6 +130,6 @@ public interface ProtoObject extends EObject {
 	 * @see #getUuid()
 	 * @generated
 	 */
-	void setUuid(UUID value);
+	void setUuid(String value);
 
 } // ProtoObject

@@ -9,7 +9,6 @@ package Simulink.impl;
 import Simulink.ProtoObject;
 import Simulink.SimulinkPackage;
 
-import java.util.UUID;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
@@ -102,7 +101,7 @@ public abstract class ProtoObjectImpl extends EObjectImpl implements ProtoObject
 	 * @generated
 	 * @ordered
 	 */
-	protected static final UUID UUID_EDEFAULT = null;
+	protected static final String UUID_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getUuid() <em>Uuid</em>}' attribute.
@@ -112,7 +111,7 @@ public abstract class ProtoObjectImpl extends EObjectImpl implements ProtoObject
 	 * @generated
 	 * @ordered
 	 */
-	protected UUID uuid = UUID_EDEFAULT;
+	protected String uuid = UUID_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -201,7 +200,7 @@ public abstract class ProtoObjectImpl extends EObjectImpl implements ProtoObject
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public UUID getUuid() {
+	public String getUuid() {
 		return uuid;
 	}
 
@@ -210,8 +209,8 @@ public abstract class ProtoObjectImpl extends EObjectImpl implements ProtoObject
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setUuid(UUID newUuid) {
-		UUID oldUuid = uuid;
+	public void setUuid(String newUuid) {
+		String oldUuid = uuid;
 		uuid = newUuid;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, SimulinkPackage.PROTO_OBJECT__UUID, oldUuid, uuid));
@@ -255,7 +254,7 @@ public abstract class ProtoObjectImpl extends EObjectImpl implements ProtoObject
 				setPosition((String)newValue);
 				return;
 			case SimulinkPackage.PROTO_OBJECT__UUID:
-				setUuid((UUID)newValue);
+				setUuid((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

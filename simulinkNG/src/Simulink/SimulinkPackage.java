@@ -8,7 +8,6 @@ package Simulink;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
@@ -674,17 +673,6 @@ public interface SimulinkPackage extends EPackage {
 
 
 	/**
-	 * The meta object id for the '<em>UUID</em>' data type.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see java.util.UUID
-	 * @see Simulink.impl.SimulinkPackageImpl#getUUID()
-	 * @generated
-	 */
-	int UUID = 8;
-
-
-	/**
 	 * Returns the meta object for class '{@link Simulink.ProtoObject <em>Proto Object</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -996,17 +984,6 @@ public interface SimulinkPackage extends EPackage {
 	EReference getSystemReference_Parent();
 
 	/**
-	 * Returns the meta object for data type '{@link java.util.UUID <em>UUID</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for data type '<em>UUID</em>'.
-	 * @see java.util.UUID
-	 * @model instanceClass="java.util.UUID"
-	 * @generated
-	 */
-	EDataType getUUID();
-
-	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1275,16 +1252,6 @@ public interface SimulinkPackage extends EPackage {
 		 * @generated
 		 */
 		EReference SYSTEM_REFERENCE__PARENT = eINSTANCE.getSystemReference_Parent();
-
-		/**
-		 * The meta object literal for the '<em>UUID</em>' data type.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see java.util.UUID
-		 * @see Simulink.impl.SimulinkPackageImpl#getUUID()
-		 * @generated
-		 */
-		EDataType UUID = eINSTANCE.getUUID();
 
 	}
 
