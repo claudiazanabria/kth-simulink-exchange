@@ -167,9 +167,7 @@ public class SimulinkEcoreCreator {
 		String name 		= pList.getName();
 		String instanceName = pList.getInstanceName();
 		System parent		= pList.getParent();
-		SystemReference sysRef = addSystemInstance(name, parent, instanceName);
-		
-		sysRef.setPosition( pList.getPosition() );
+		SystemReference sysRef = addSystemInstance(name, parent, instanceName);		
 		return sysRef;
 	}
 	
@@ -242,9 +240,15 @@ public class SimulinkEcoreCreator {
 	}
 	
 	public void addLines(ArrayList<LineInfo> lines) throws PortNotFoundException {
+		String name;
+		Port srcPort, dstPort;
+		System parent;
 		for ( LineInfo lineInfo : lines ) {
-			addLine( lineInfo.getName(), lineInfo.getSource(), 
-					lineInfo.getDestination(), lineInfo.getLineParent());
+			name = lineInfo.getName();
+			parent = lineInfo.getLineParent();
+			srcPort = this.findPort( lineInfo.getSrcPort() );
+			dstPort = this.findPort( lineInfo.getDstPort() );			
+			addLine( name, srcPort, dstPort, parent );
 		}
 	}
 
