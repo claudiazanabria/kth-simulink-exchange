@@ -214,11 +214,13 @@ public class SimulinkEcoreCreatorTest {
 	public System testAddSystemWithPList(System parent) {
 		PropertyList pList = new PropertyList("ale", parent, "alex");
 		pList.put("position", "[1 2 3 4]");
-		System sys = simulinkEcoreCreator.addSystem( pList );
-		assertTrue(sys.getName().equalsIgnoreCase("ale"));
-		for (SystemReference sysRef : parent.getChildren()) {
-			if ( sysRef.getName().equals("alex") ) {
-				assertTrue(sysRef.getPosition().equalsIgnoreCase("[1 2 3 4]"));
+		SystemReference sysRef = simulinkEcoreCreator.addSystem( pList );
+		assertEquals(sysRef, simulinkEcoreCreator.findSystemReference(sysRef.getUuid()));
+		System sys = sysRef.getTarget();
+		assertTrue(sys.getName().equalsIgnoreCase("ale"));		
+		for (SystemReference sRef : parent.getChildren()) {
+			if ( sRef.getName().equals("alex") ) {
+				assertTrue(sRef.getPosition().equalsIgnoreCase("[1 2 3 4]"));
 				return parent;
 			} 
 		} 
@@ -237,8 +239,7 @@ public class SimulinkEcoreCreatorTest {
 		assertEquals(simulinkEcoreCreator.findPort(uuid), port);
 		Line line = parent.getLines().get(0);
 		uuid = line.getUuid();
-		assertEquals(simulinkEcoreCreator.findLine(uuid), line);
-		
+		assertEquals(simulinkEcoreCreator.findLine(uuid), line);		
 		return parent;
-	}
+	}	
 }

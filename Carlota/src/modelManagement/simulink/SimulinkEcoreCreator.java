@@ -162,7 +162,7 @@ public class SimulinkEcoreCreator {
 	}
 
 	
-	public System addSystem(PropertyList pList) {		
+	public SystemReference addSystem(PropertyList pList) {		
 		
 		String name 		= pList.getName();
 		String instanceName = pList.getInstanceName();
@@ -170,7 +170,7 @@ public class SimulinkEcoreCreator {
 		SystemReference sysRef = addSystemInstance(name, parent, instanceName);
 		
 		sysRef.setPosition( pList.getPosition() );
-		return sysRef.getTarget();
+		return sysRef;
 	}
 	
 	private SystemReference addSystemInstance(String name, System parent,
@@ -196,6 +196,7 @@ public class SimulinkEcoreCreator {
 	}
 	
 	/*
+	 * comply with older API, probably unused
 	 * name and instanceName are the same
 	 */ 
 	public System addSystem(String name, System parent) {
