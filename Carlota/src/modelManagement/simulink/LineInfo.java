@@ -38,6 +38,10 @@ public class LineInfo {
 		return lineParent;
 	}
 
+	public void setSrcPort(String uuidStr) {
+		this.setSrcPort( UUID.fromString(uuidStr) );
+	}
+
 	public void setSrcPort(UUID srcPort) {
 		this.srcPort = srcPort;
 	}
@@ -46,6 +50,10 @@ public class LineInfo {
 		return srcPort;
 	}
 
+	public void setDstPort(String uuidStr) {
+		this.setDstPort(UUID.fromString(uuidStr)); 
+	}
+	
 	public void setDstPort(UUID dstPort) {
 		this.dstPort = dstPort;
 	}
