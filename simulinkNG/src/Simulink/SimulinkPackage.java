@@ -8,6 +8,7 @@ package Simulink;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
@@ -98,13 +99,22 @@ public interface SimulinkPackage extends EPackage {
 	int PROTO_OBJECT__POSITION = EcorePackage.EOBJECT_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROTO_OBJECT__UUID = EcorePackage.EOBJECT_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Proto Object</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROTO_OBJECT_FEATURE_COUNT = EcorePackage.EOBJECT_FEATURE_COUNT + 3;
+	int PROTO_OBJECT_FEATURE_COUNT = EcorePackage.EOBJECT_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link Simulink.impl.PortImpl <em>Port</em>}' class.
@@ -142,6 +152,15 @@ public interface SimulinkPackage extends EPackage {
 	 * @ordered
 	 */
 	int PORT__POSITION = PROTO_OBJECT__POSITION;
+
+	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PORT__UUID = PROTO_OBJECT__UUID;
 
 	/**
 	 * The feature id for the '<em><b>Connections</b></em>' reference list.
@@ -197,6 +216,15 @@ public interface SimulinkPackage extends EPackage {
 	 * @ordered
 	 */
 	int INPORT__POSITION = PORT__POSITION;
+
+	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPORT__UUID = PORT__UUID;
 
 	/**
 	 * The feature id for the '<em><b>Connections</b></em>' reference list.
@@ -263,6 +291,15 @@ public interface SimulinkPackage extends EPackage {
 	int OUTPORT__POSITION = PORT__POSITION;
 
 	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPORT__UUID = PORT__UUID;
+
+	/**
 	 * The feature id for the '<em><b>Connections</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -325,6 +362,15 @@ public interface SimulinkPackage extends EPackage {
 	 * @ordered
 	 */
 	int LINE__POSITION = PROTO_OBJECT__POSITION;
+
+	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINE__UUID = PROTO_OBJECT__UUID;
 
 	/**
 	 * The feature id for the '<em><b>Source</b></em>' reference.
@@ -418,6 +464,15 @@ public interface SimulinkPackage extends EPackage {
 	int SYSTEM__POSITION = PROTO_OBJECT__POSITION;
 
 	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM__UUID = PROTO_OBJECT__UUID;
+
+	/**
 	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -509,6 +564,15 @@ public interface SimulinkPackage extends EPackage {
 	int MODEL__POSITION = PROTO_OBJECT__POSITION;
 
 	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL__UUID = PROTO_OBJECT__UUID;
+
+	/**
 	 * The feature id for the '<em><b>Parts</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -573,6 +637,15 @@ public interface SimulinkPackage extends EPackage {
 	int SYSTEM_REFERENCE__POSITION = PROTO_OBJECT__POSITION;
 
 	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM_REFERENCE__UUID = PROTO_OBJECT__UUID;
+
+	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -598,6 +671,17 @@ public interface SimulinkPackage extends EPackage {
 	 * @ordered
 	 */
 	int SYSTEM_REFERENCE_FEATURE_COUNT = PROTO_OBJECT_FEATURE_COUNT + 2;
+
+
+	/**
+	 * The meta object id for the '<em>UUID</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see java.util.UUID
+	 * @see Simulink.impl.SimulinkPackageImpl#getUUID()
+	 * @generated
+	 */
+	int UUID = 8;
 
 
 	/**
@@ -642,6 +726,17 @@ public interface SimulinkPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getProtoObject_Position();
+
+	/**
+	 * Returns the meta object for the attribute '{@link Simulink.ProtoObject#getUuid <em>Uuid</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Uuid</em>'.
+	 * @see Simulink.ProtoObject#getUuid()
+	 * @see #getProtoObject()
+	 * @generated
+	 */
+	EAttribute getProtoObject_Uuid();
 
 	/**
 	 * Returns the meta object for class '{@link Simulink.Port <em>Port</em>}'.
@@ -901,6 +996,17 @@ public interface SimulinkPackage extends EPackage {
 	EReference getSystemReference_Parent();
 
 	/**
+	 * Returns the meta object for data type '{@link java.util.UUID <em>UUID</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>UUID</em>'.
+	 * @see java.util.UUID
+	 * @model instanceClass="java.util.UUID"
+	 * @generated
+	 */
+	EDataType getUUID();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -955,6 +1061,14 @@ public interface SimulinkPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PROTO_OBJECT__POSITION = eINSTANCE.getProtoObject_Position();
+
+		/**
+		 * The meta object literal for the '<em><b>Uuid</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROTO_OBJECT__UUID = eINSTANCE.getProtoObject_Uuid();
 
 		/**
 		 * The meta object literal for the '{@link Simulink.impl.PortImpl <em>Port</em>}' class.
@@ -1161,6 +1275,16 @@ public interface SimulinkPackage extends EPackage {
 		 * @generated
 		 */
 		EReference SYSTEM_REFERENCE__PARENT = eINSTANCE.getSystemReference_Parent();
+
+		/**
+		 * The meta object literal for the '<em>UUID</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.util.UUID
+		 * @see Simulink.impl.SimulinkPackageImpl#getUUID()
+		 * @generated
+		 */
+		EDataType UUID = eINSTANCE.getUUID();
 
 	}
 

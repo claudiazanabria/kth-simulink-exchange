@@ -6,6 +6,7 @@
  */
 package Simulink;
 
+import java.util.UUID;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -19,6 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link Simulink.ProtoObject#getName <em>Name</em>}</li>
  *   <li>{@link Simulink.ProtoObject#getSimulinkName <em>Simulink Name</em>}</li>
  *   <li>{@link Simulink.ProtoObject#getPosition <em>Position</em>}</li>
+ *   <li>{@link Simulink.ProtoObject#getUuid <em>Uuid</em>}</li>
  * </ul>
  * </p>
  *
@@ -104,5 +106,31 @@ public interface ProtoObject extends EObject {
 	 * @generated
 	 */
 	void setPosition(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Uuid</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Uuid</em>' attribute.
+	 * @see #setUuid(UUID)
+	 * @see Simulink.SimulinkPackage#getProtoObject_Uuid()
+	 * @model dataType="Simulink.UUID"
+	 * @generated
+	 */
+	UUID getUuid();
+
+	/**
+	 * Sets the value of the '{@link Simulink.ProtoObject#getUuid <em>Uuid</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Uuid</em>' attribute.
+	 * @see #getUuid()
+	 * @generated
+	 */
+	void setUuid(UUID value);
 
 } // ProtoObject

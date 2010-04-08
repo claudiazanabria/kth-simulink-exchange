@@ -7,10 +7,12 @@
     editorPluginID="se.kth.attest2.metamodel.Simulink.editor" usedGenPackages="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
   <foreignModel>simNG.ecore</foreignModel>
   <genPackages prefix="Simulink" disposableProviderFactory="true" ecorePackage="simNG.ecore#/">
+    <genDataTypes ecoreDataType="simNG.ecore#//UUID"/>
     <genClasses image="false" ecoreClass="simNG.ecore#//ProtoObject">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simNG.ecore#//ProtoObject/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simNG.ecore#//ProtoObject/simulinkName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simNG.ecore#//ProtoObject/position"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simNG.ecore#//ProtoObject/uuid"/>
     </genClasses>
     <genClasses image="false" ecoreClass="simNG.ecore#//Port">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference simNG.ecore#//Port/connections"/>

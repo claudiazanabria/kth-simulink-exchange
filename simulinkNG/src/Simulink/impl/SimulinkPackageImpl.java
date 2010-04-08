@@ -18,6 +18,7 @@ import Simulink.SystemReference;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
@@ -86,6 +87,13 @@ public class SimulinkPackageImpl extends EPackageImpl implements SimulinkPackage
 	 * @generated
 	 */
 	private EClass systemReferenceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType uuidEDataType = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -185,6 +193,15 @@ public class SimulinkPackageImpl extends EPackageImpl implements SimulinkPackage
 	 */
 	public EAttribute getProtoObject_Position() {
 		return (EAttribute)protoObjectEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getProtoObject_Uuid() {
+		return (EAttribute)protoObjectEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -408,6 +425,15 @@ public class SimulinkPackageImpl extends EPackageImpl implements SimulinkPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EDataType getUUID() {
+		return uuidEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public SimulinkFactory getSimulinkFactory() {
 		return (SimulinkFactory)getEFactoryInstance();
 	}
@@ -435,6 +461,7 @@ public class SimulinkPackageImpl extends EPackageImpl implements SimulinkPackage
 		createEAttribute(protoObjectEClass, PROTO_OBJECT__NAME);
 		createEAttribute(protoObjectEClass, PROTO_OBJECT__SIMULINK_NAME);
 		createEAttribute(protoObjectEClass, PROTO_OBJECT__POSITION);
+		createEAttribute(protoObjectEClass, PROTO_OBJECT__UUID);
 
 		portEClass = createEClass(PORT);
 		createEReference(portEClass, PORT__CONNECTIONS);
@@ -466,6 +493,9 @@ public class SimulinkPackageImpl extends EPackageImpl implements SimulinkPackage
 		systemReferenceEClass = createEClass(SYSTEM_REFERENCE);
 		createEReference(systemReferenceEClass, SYSTEM_REFERENCE__TARGET);
 		createEReference(systemReferenceEClass, SYSTEM_REFERENCE__PARENT);
+
+		// Create data types
+		uuidEDataType = createEDataType(UUID);
 	}
 
 	/**
@@ -513,6 +543,7 @@ public class SimulinkPackageImpl extends EPackageImpl implements SimulinkPackage
 		initEAttribute(getProtoObject_Name(), ecorePackage.getEString(), "name", null, 0, 1, ProtoObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProtoObject_SimulinkName(), ecorePackage.getEString(), "simulinkName", null, 0, 1, ProtoObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProtoObject_Position(), ecorePackage.getEString(), "position", null, 0, 1, ProtoObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getProtoObject_Uuid(), this.getUUID(), "uuid", null, 0, 1, ProtoObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(portEClass, Port.class, "Port", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPort_Connections(), this.getLine(), this.getLine_Source(), "connections", null, 0, -1, Port.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -544,6 +575,9 @@ public class SimulinkPackageImpl extends EPackageImpl implements SimulinkPackage
 		initEClass(systemReferenceEClass, SystemReference.class, "SystemReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSystemReference_Target(), this.getSystem(), null, "target", null, 1, 1, SystemReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSystemReference_Parent(), this.getSystem(), this.getSystem_Children(), "parent", null, 1, 1, SystemReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		// Initialize data types
+		initEDataType(uuidEDataType, java.util.UUID.class, "UUID", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

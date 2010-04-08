@@ -9,6 +9,7 @@ package Simulink.impl;
 import Simulink.ProtoObject;
 import Simulink.SimulinkPackage;
 
+import java.util.UUID;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
@@ -26,6 +27,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  *   <li>{@link Simulink.impl.ProtoObjectImpl#getName <em>Name</em>}</li>
  *   <li>{@link Simulink.impl.ProtoObjectImpl#getSimulinkName <em>Simulink Name</em>}</li>
  *   <li>{@link Simulink.impl.ProtoObjectImpl#getPosition <em>Position</em>}</li>
+ *   <li>{@link Simulink.impl.ProtoObjectImpl#getUuid <em>Uuid</em>}</li>
  * </ul>
  * </p>
  *
@@ -91,6 +93,26 @@ public abstract class ProtoObjectImpl extends EObjectImpl implements ProtoObject
 	 * @ordered
 	 */
 	protected String position = POSITION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getUuid() <em>Uuid</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUuid()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final UUID UUID_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getUuid() <em>Uuid</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUuid()
+	 * @generated
+	 * @ordered
+	 */
+	protected UUID uuid = UUID_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -179,6 +201,27 @@ public abstract class ProtoObjectImpl extends EObjectImpl implements ProtoObject
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public UUID getUuid() {
+		return uuid;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setUuid(UUID newUuid) {
+		UUID oldUuid = uuid;
+		uuid = newUuid;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, SimulinkPackage.PROTO_OBJECT__UUID, oldUuid, uuid));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -188,6 +231,8 @@ public abstract class ProtoObjectImpl extends EObjectImpl implements ProtoObject
 				return getSimulinkName();
 			case SimulinkPackage.PROTO_OBJECT__POSITION:
 				return getPosition();
+			case SimulinkPackage.PROTO_OBJECT__UUID:
+				return getUuid();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -208,6 +253,9 @@ public abstract class ProtoObjectImpl extends EObjectImpl implements ProtoObject
 				return;
 			case SimulinkPackage.PROTO_OBJECT__POSITION:
 				setPosition((String)newValue);
+				return;
+			case SimulinkPackage.PROTO_OBJECT__UUID:
+				setUuid((UUID)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -230,6 +278,9 @@ public abstract class ProtoObjectImpl extends EObjectImpl implements ProtoObject
 			case SimulinkPackage.PROTO_OBJECT__POSITION:
 				setPosition(POSITION_EDEFAULT);
 				return;
+			case SimulinkPackage.PROTO_OBJECT__UUID:
+				setUuid(UUID_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -248,6 +299,8 @@ public abstract class ProtoObjectImpl extends EObjectImpl implements ProtoObject
 				return SIMULINK_NAME_EDEFAULT == null ? simulinkName != null : !SIMULINK_NAME_EDEFAULT.equals(simulinkName);
 			case SimulinkPackage.PROTO_OBJECT__POSITION:
 				return POSITION_EDEFAULT == null ? position != null : !POSITION_EDEFAULT.equals(position);
+			case SimulinkPackage.PROTO_OBJECT__UUID:
+				return UUID_EDEFAULT == null ? uuid != null : !UUID_EDEFAULT.equals(uuid);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -268,6 +321,8 @@ public abstract class ProtoObjectImpl extends EObjectImpl implements ProtoObject
 		result.append(simulinkName);
 		result.append(", position: ");
 		result.append(position);
+		result.append(", uuid: ");
+		result.append(uuid);
 		result.append(')');
 		return result.toString();
 	}

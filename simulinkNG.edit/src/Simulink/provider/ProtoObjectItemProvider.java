@@ -68,6 +68,7 @@ public class ProtoObjectItemProvider
 			addNamePropertyDescriptor(object);
 			addSimulinkNamePropertyDescriptor(object);
 			addPositionPropertyDescriptor(object);
+			addUuidPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -139,6 +140,28 @@ public class ProtoObjectItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Uuid feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addUuidPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ProtoObject_uuid_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ProtoObject_uuid_feature", "_UI_ProtoObject_type"),
+				 SimulinkPackage.Literals.PROTO_OBJECT__UUID,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -167,6 +190,7 @@ public class ProtoObjectItemProvider
 			case SimulinkPackage.PROTO_OBJECT__NAME:
 			case SimulinkPackage.PROTO_OBJECT__SIMULINK_NAME:
 			case SimulinkPackage.PROTO_OBJECT__POSITION:
+			case SimulinkPackage.PROTO_OBJECT__UUID:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}
