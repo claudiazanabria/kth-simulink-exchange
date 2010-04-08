@@ -69,7 +69,11 @@ classdef Utils < handle
         
         function uuidStr = getUUIDfromBlock( blockName )
             userData = get_param(blockName,'UserData');
-            uuidStr = userData('UUID');
+            if isempty( userData )
+                uuidStr = '';
+            else
+                uuidStr = userData('UUID');
+            end
         end
     end
 end
