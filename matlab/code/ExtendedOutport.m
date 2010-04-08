@@ -3,7 +3,7 @@ classdef ExtendedOutport < ExtendedPort
         function E=ExtendedOutport()
             E.portType = 'Outport';
         end
-    end    
+    end
     methods
         function boolean = isInport( self ) %#ok<MANU>
             boolean = false;
@@ -20,28 +20,27 @@ classdef ExtendedOutport < ExtendedPort
         function number = numberOfConnections( self )
             number = size(self.originalPort.DstBlock,2);
         end
-
+        
         function boolean = isPortConnected( self )
             % DstBlock might be an array
             boolean = any(self.originalPort.DstBlock ~= -1);
         end
-
+        
         function bHandle = getConnectedBlockHandleNr( self, x)
             bHandle = self.originalPort.DstBlock(x);
         end
-
+        
         function number = getPortNrInConnectedBlock(self, x)
             number = self.originalPort.DstPort(x);
         end
         
-        function name = getLineSrc(self, x)  %#ok<INUSD>
-            name = self.portName;
+        function uuid = getLineDstUUID(self, x) 
+            uuid = Utils.getUUIDfromBlock(self.connectedToPortHandles{x});
         end
         
-        function name = getLineDst(self, x)
-            name = self.connectedToPortNames{x};
+        function uuid = getLineSrcUUID(self, x) %#ok<INUSD>
+            uuid = Utils.getUUIDfromBlock( self.fullName );
         end
-
-
+        
     end
 end

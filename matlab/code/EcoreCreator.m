@@ -21,6 +21,7 @@ classdef EcoreCreator < handle
             self.javaEcoreCreator.newModel( modelName );
             rootSystem = self.javaEcoreCreator.addRootSystem( modelName );
             self.processSystem( rootSystem );
+            save_model( modelName );
             self.saveIt();
         end
         
@@ -36,8 +37,7 @@ classdef EcoreCreator < handle
             self.addLines( mdlBlks, parentSystem );
         end
         
-        function processBlock( self, blockName, parentSystem )
-            Utils.setUUIDinUserData( blockName );
+        function processBlock( self, blockName, parentSystem )            
             name                = get_param(blockName,'ModelName');
             instanceName        = Utils.extractOnlyName( blockName );
             sysAlreadyExists    = self.javaEcoreCreator.findSystem(name);            
@@ -45,14 +45,17 @@ classdef EcoreCreator < handle
                 parentSystem,instanceName);
             posArray = get_param(blockName,'position');
             position = Utils.posArray2String( posArray );
-            pList.put('position', position);
-            aNewSystem = self.javaEcoreCreator.addSystem( pList );
+            aSystemRef = self.javaEcoreCreator.addSystem( pList );
+            aSystemRef.setPosition( position );
+            Utils.setUUIDinUserData( aSystemRef, blockName );
+            targetSystem = aSystemRef.getTarget();
             load_system( name );
             if isempty( sysAlreadyExists )
-                self.addOutportsTo( aNewSystem );
-                self.addInportsTo( aNewSystem );
-                self.processSystem( aNewSystem );
+                self.addOutportsTo( targetSystem );
+                self.addInportsTo( targetSystem );
+                self.processSystem( targetSystem );
             end
+            save_system( name );
         end
                 
         function addLines( self, mdlBlks, parentSystem )
@@ -69,10 +72,10 @@ classdef EcoreCreator < handle
             name = char(aSystem.getName());
             ports = find_system(name,'SearchDepth',1,...
                 'BlockType','Outport');
-            for x=1:size(ports,1)                
-                Utils.setUUIDinUserData( ports{x} );
+            for x=1:size(ports,1)                                
                 portName = Utils.extractOnlyName( ports(x) );
-                p = self.javaEcoreCreator.addOutPort(portName, aSystem);
+                p = self.javaEcoreCreator.addOutPort(portName, aSystem);                
+                Utils.setUUIDinUserData( p,  ports{x} );
                 self.keepPosition(p, ports{x});
             end
         end
@@ -82,9 +85,9 @@ classdef EcoreCreator < handle
             ports = find_system(name,'SearchDepth',1,...
                 'BlockType','Inport');
             for x=1:size(ports,1)
-                Utils.setUUIDinUserData( ports{x} );
                 portName = Utils.extractOnlyName( ports(x) );
                 p = self.javaEcoreCreator.addInPort(portName, aSystem);
+                Utils.setUUIDinUserData( p,  ports{x} );
                 self.keepPosition(p, ports{x});
             end
         end

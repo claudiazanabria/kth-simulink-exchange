@@ -26,8 +26,7 @@ classdef LineBuilder < handle
         function processExtendedPort( self, extendedPort )
             zize = size( extendedPort.connectedToPortHandles, 2 );
             for x=1:zize
-                uuid = Utils.getUUIDfromBlock( extendedPort.fullName ); 
-                if ~self.visitedPorts.contains( uuid )
+                if extendedPort.connected
                     self.processPort( extendedPort );
                 end
             end
@@ -36,16 +35,26 @@ classdef LineBuilder < handle
         function processPort(self, extendedPort )
             zize = extendedPort.numberOfConnections();
             for x=1:zize
-                if extendedPort.connected
+                dstUUIDStr = extendedPort.lineDstUUID{x};
+                %fprintf('%s\t%s\n',extendedPort.fullName, dstUUIDStr);
+                if ~self.visitedPorts.contains( dstUUIDStr )                    
                     aLine = modelManagement.simulink.LineInfo(self.parentSystem);
-                    aLine.setName( 'lineName' );
-                    aLine.setSrcName( char(extendedPort.lineSrcPortName(x)) );
-                    aLine.setDstName( char(extendedPort.lineDstPortName(x)) );
+                    aLine.setName( 'unnamed' );
+                    aLine.setSrcPort( extendedPort.lineSrcUUID{x} );
+                    aLine.setDstPort( dstUUIDStr );
                     self.createdLines.add( aLine );
-                    self.visitedPorts.add( extendedPort.lineDstPortUUID{x} );
+                    self.visitedPorts.add( dstUUIDStr );
+                    %self.printIt( extendedPort, x );
                 end
             end
         end
+        
+%         function printIt( self, ep, x) %#ok<MANU>
+%             fName = ep.fullName;
+%             pName = ep.connectedToPortFullNames{x};
+%             id = ep.lineDstUUID{x};
+%             fprintf('Adding %s \t\t connectedTo: %s \t\tAdding: %s\n', fName, pName, id );
+%         end
         
         function list = getCreatedLines( self )
             list = self.createdLines;

@@ -33,12 +33,12 @@ classdef ExtendedInport < ExtendedPort
             number = self.originalPort.SrcPort(x);
         end
         
-        function name = getLineSrc(self, x) 
-            name = self.connectedToPortNames{x};
+        function uuid = getLineSrcUUID(self, x) 
+            uuid = Utils.getUUIDfromBlock(self.connectedToPortHandles{x});
         end
         
-        function name = getLineDst(self, x) %#ok<INUSD>
-            name = self.portName;
+        function uuid = getLineDstUUID(self, x) %#ok<INUSD>
+            uuid = Utils.getUUIDfromBlock( self.fullName );
         end
         
     end
