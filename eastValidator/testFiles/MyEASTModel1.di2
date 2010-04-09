@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di2="http://www.papyrusuml.org" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML">
+  <di2:Diagram isVisible="true" fontFamily="Arial" lineStyle="solid" fontColor="255:255:255" foregroundColor="255:255:255" backgroundColor="255:255:255" borderColor="255:255:255" position="0:0" name="DefaultDiagram">
+    <owner xsi:type="di2:Uml1SemanticModelBridge">
+      <element xsi:type="uml:Model" href="MyEASTModel1.uml#_k2AkoBF9Ed-SP4oU6NeyzQ"/>
+    </owner>
+  </di2:Diagram>
+  <di2:Diagram isVisible="true" fontFamily="Arial" lineStyle="solid" fontColor="255:255:255" foregroundColor="255:255:255" backgroundColor="255:255:255" borderColor="255:255:255" position="0:0" name="Composite diagram of AnalysisArchitecture" type="CompositeStructureDiagram">
+    <contained xsi:type="di2:GraphNode" isVisible="true" fontFamily="Arial" lineStyle="solid" fontColor="0:0:0" foregroundColor="248:249:214" backgroundColor="248:249:214" borderColor="157:124:47" position="44:29" size="649:375">
+      <property key="STEREOTYPE_DISPLAY_LOCATION" value="Comment"/>
+      <property key="QUALIFIED_NAME_DEPTH" value="0"/>
+      <property key="PropStereoDisplay" value="EAST-ADL2::Structure::SystemModel::AnalysisArchitecture"/>
+      <contained xsi:type="di2:GraphNode" isVisible="true" fontFamily="Arial" lineStyle="solid" fontColor="0:0:0" foregroundColor="248:249:214" backgroundColor="248:249:214" borderColor="166:157:183" position="49:90" size="323:188">
+        <property key="STEREOTYPE_DISPLAY_LOCATION" value="Comment"/>
+        <property key="QUALIFIED_NAME_DEPTH" value="0"/>
+        <property key="custom_disp" value="56"/>
+        <property key="PropStereoDisplay" value="EAST-ADL2::Structure::FunctionModeling::ADLFunctionPrototype"/>
+        <semanticModel xsi:type="di2:Uml1SemanticModelBridge" presentation="TextIconStereotype">
+          <element xsi:type="uml:Property" href="MyEASTModel1.uml#_rSlmgBF9Ed-SP4oU6NeyzQ"/>
+        </semanticModel>
+      </contained>
+      <semanticModel xsi:type="di2:Uml1SemanticModelBridge" presentation="TextIconStereotype">
+        <element xsi:type="uml:Class" href="MyEASTModel1.uml#_k5EfsRF9Ed-SP4oU6NeyzQ"/>
+      </semanticModel>
+    </contained>
+    <owner xsi:type="di2:Uml1SemanticModelBridge">
+      <element xsi:type="uml:Class" href="MyEASTModel1.uml#_k5EfsRF9Ed-SP4oU6NeyzQ"/>
+    </owner>
+  </di2:Diagram>
+  <di2:Diagram isVisible="true" fontFamily="Arial" lineStyle="solid" fontColor="255:255:255" foregroundColor="255:255:255" backgroundColor="255:255:255" borderColor="255:255:255" position="0:0" name="Composite diagram of FunctionalAnalysisArchitecture" type="CompositeStructureDiagram">
+    <contained xsi:type="di2:GraphNode" isVisible="true" fontFamily="Arial" lineStyle="solid" fontColor="0:0:0" foregroundColor="248:249:214" backgroundColor="248:249:214" borderColor="157:124:47" position="101:57" size="654:377">
+      <property key="STEREOTYPE_DISPLAY_LOCATION" value="Comment"/>
+      <property key="QUALIFIED_NAME_DEPTH" value="0"/>
+      <property key="PropStereoDisplay" value="EAST-ADL2::Structure::FunctionModeling::FunctionalAnalysisArchitecture"/>
+      <contained xsi:type="di2:GraphNode" isVisible="true" fontFamily="Arial" lineStyle="solid" fontColor="0:0:0" foregroundColor="248:249:214" backgroundColor="248:249:214" borderColor="166:157:183" semanticChild="/2/@contained.0/@contained.3" position="20:100" size="148:135">
+        <property key="STEREOTYPE_DISPLAY_LOCATION" value="Comment"/>
+        <property key="QUALIFIED_NAME_DEPTH" value="0"/>
+        <property key="custom_disp" value="56"/>
+        <property key="PropStereoDisplay" value="EAST-ADL2::Structure::FunctionModeling::ADLFunctionPrototype"/>
+        <contained xsi:type="di2:GraphEdge" isVisible="true" fontFamily="Arial" fontSize="9" lineStyle="solid" fontColor="0:0:0" foregroundColor="0:0:0" backgroundColor="0:0:0" borderColor="0:0:0" anchor="/2/@contained.0/@contained.3/@anchorage.0 /2/@contained.0/@contained.5/@anchorage.0">
+          <property key="STEREOTYPE_DISPLAY_LOCATION" value="Comment"/>
+          <property key="QUALIFIED_NAME_DEPTH" value="0"/>
+          <property key="PropStereoDisplay" value="EAST-ADL2::Structure::FunctionModeling::ADLConnectorPrototype"/>
+          <contained xsi:type="di2:GraphNode" fontFamily="Arial" fontSize="9" lineStyle="solid" fontColor="0:0:0" foregroundColor="248:249:214" backgroundColor="248:249:214" borderColor="157:124:47" position="0:10" size="100:100">
+            <property key="STEREOTYPE_DISPLAY_LOCATION" value="Comment"/>
+            <property key="QUALIFIED_NAME_DEPTH" value="0"/>
+          </contained>
+          <contained xsi:type="di2:GraphNode" isVisible="true" fontFamily="Arial" fontSize="9" lineStyle="solid" fontColor="0:0:0" foregroundColor="248:249:214" backgroundColor="248:249:214" borderColor="157:124:47" position="0:30" size="100:100">
+            <property key="STEREOTYPE_DISPLAY_LOCATION" value="Comment"/>
+            <property key="QUALIFIED_NAME_DEPTH" value="0"/>
+          </contained>
+          <semanticModel xsi:type="di2:Uml1SemanticModelBridge" presentation="TextStereotype">
+            <element xsi:type="uml:Connector" href="MyEASTModel1.uml#_2UR84BF-Ed-SP4oU6NeyzQ"/>
+          </semanticModel>
+        </contained>
+        <semanticModel xsi:type="di2:Uml1SemanticModelBridge" presentation="TextIconStereotype">
+          <element xsi:type="uml:Property" href="MyEASTModel1.uml#_RxkN4BF-Ed-SP4oU6NeyzQ"/>
+        </semanticModel>
+      </contained>
+      <contained xsi:type="di2:GraphNode" isVisible="true" fontFamily="Arial" lineStyle="solid" fontColor="0:0:0" foregroundColor="248:249:214" backgroundColor="248:249:214" borderColor="166:157:183" semanticChild="/2/@contained.0/@contained.5" position="291:103" size="152:135">
+        <property key="STEREOTYPE_DISPLAY_LOCATION" value="Comment"/>
+        <property key="QUALIFIED_NAME_DEPTH" value="0"/>
+        <property key="custom_disp" value="56"/>
+        <property key="PropStereoDisplay" value="EAST-ADL2::Structure::FunctionModeling::ADLFunctionPrototype"/>
+        <semanticModel xsi:type="di2:Uml1SemanticModelBridge" presentation="TextIconStereotype">
+          <element xsi:type="uml:Property" href="MyEASTModel1.uml#_V30RkBF-Ed-SP4oU6NeyzQ"/>
+        </semanticModel>
+      </contained>
+      <contained xsi:type="di2:GraphNode" isVisible="true" fontFamily="Arial" lineStyle="solid" fontColor="0:0:0" foregroundColor="248:249:214" backgroundColor="248:249:214" borderColor="166:157:183" position="472:97" size="174:175">
+        <property key="STEREOTYPE_DISPLAY_LOCATION" value="Comment"/>
+        <property key="QUALIFIED_NAME_DEPTH" value="0"/>
+        <property key="custom_disp" value="56"/>
+        <property key="PropStereoDisplay" value="EAST-ADL2::Structure::FunctionModeling::ADLFunctionPrototype"/>
+        <semanticModel xsi:type="di2:Uml1SemanticModelBridge" presentation="TextIconStereotype">
+          <element xsi:type="uml:Property" href="MyEASTModel1.uml#_gksD8BF-Ed-SP4oU6NeyzQ"/>
+        </semanticModel>
+      </contained>
+      <contained xsi:type="di2:GraphNode" isVisible="true" fontFamily="Arial" lineStyle="solid" fontColor="0:0:0" foregroundColor="248:249:214" backgroundColor="248:249:214" borderColor="157:124:47" semanticParent="/2/@contained.0/@contained.0" semanticChild="/2/@contained.0/@contained.4" position="158:183" size="20:20">
+        <property key="STEREOTYPE_DISPLAY_LOCATION" value="Comment"/>
+        <property key="QUALIFIED_NAME_DEPTH" value="0"/>
+        <property key="PropStereoDisplay" value="EAST-ADL2::Structure::FunctionModeling::ADLOutFlowPort"/>
+        <semanticModel xsi:type="di2:Uml1SemanticModelBridge" presentation="IconStereotype">
+          <element xsi:type="uml:Port" href="MyEASTModel1.uml#_nXU1YBF-Ed-SP4oU6NeyzQ"/>
+        </semanticModel>
+        <anchorage position="178:199" graphEdge="/2/@contained.0/@contained.0/@contained.0"/>
+      </contained>
+      <contained xsi:type="di2:GraphNode" isVisible="true" fontFamily="Arial" lineStyle="solid" fontColor="0:0:0" foregroundColor="248:249:214" backgroundColor="248:249:214" borderColor="157:124:47" semanticParent="/2/@contained.0/@contained.3" position="173:183" size="100:100">
+        <property key="STEREOTYPE_DISPLAY_LOCATION" value="Comment"/>
+        <property key="QUALIFIED_NAME_DEPTH" value="0"/>
+        <property key="custom_disp" value="56"/>
+      </contained>
+      <contained xsi:type="di2:GraphNode" isVisible="true" fontFamily="Arial" lineStyle="solid" fontColor="0:0:0" foregroundColor="248:249:214" backgroundColor="248:249:214" borderColor="157:124:47" semanticParent="/2/@contained.0/@contained.1" semanticChild="/2/@contained.0/@contained.6" position="281:205" size="20:20">
+        <property key="STEREOTYPE_DISPLAY_LOCATION" value="Comment"/>
+        <property key="QUALIFIED_NAME_DEPTH" value="0"/>
+        <property key="PropStereoDisplay" value="EAST-ADL2::Structure::FunctionModeling::ADLInFlowPort"/>
+        <semanticModel xsi:type="di2:Uml1SemanticModelBridge" presentation="IconStereotype">
+          <element xsi:type="uml:Port" href="MyEASTModel1.uml#_zl5EABF-Ed-SP4oU6NeyzQ"/>
+        </semanticModel>
+        <anchorage position="280:212" graphEdge="/2/@contained.0/@contained.0/@contained.0"/>
+      </contained>
+      <contained xsi:type="di2:GraphNode" isVisible="true" fontFamily="Arial" lineStyle="solid" fontColor="0:0:0" foregroundColor="248:249:214" backgroundColor="248:249:214" borderColor="157:124:47" semanticParent="/2/@contained.0/@contained.5" position="296:205" size="100:100">
+        <property key="STEREOTYPE_DISPLAY_LOCATION" value="Comment"/>
+        <property key="QUALIFIED_NAME_DEPTH" value="0"/>
+        <property key="custom_disp" value="56"/>
+      </contained>
+      <semanticModel xsi:type="di2:Uml1SemanticModelBridge" presentation="TextIconStereotype">
+        <element xsi:type="uml:Class" href="MyEASTModel1.uml#_k57bURF9Ed-SP4oU6NeyzQ"/>
+      </semanticModel>
+    </contained>
+    <owner xsi:type="di2:Uml1SemanticModelBridge">
+      <element xsi:type="uml:Class" href="MyEASTModel1.uml#_k57bURF9Ed-SP4oU6NeyzQ"/>
+    </owner>
+  </di2:Diagram>
+</xmi:XMI>
