@@ -125,7 +125,8 @@ rule Lines {
 			end 	<- to_ 
 		),
 		
-		from_ : UML!ConnectorEnd ( 
+		from_ : UML!ConnectorEnd (
+			--
 			--partWithPort 	<- l.source.parent,
 			role 			<- l.source
 		),
