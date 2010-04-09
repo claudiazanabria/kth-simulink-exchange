@@ -25,7 +25,10 @@ rule Model {
 		),
 		
 		umlAA 	: UML!Class ( name <- 'AnalysisArchitecture' ),
-		umlFAA 	: UML!Class ( name <- 'FunctionAnalysisArchitecture' ),
+
+		umlFAA 	: UML!Class ( 
+				name <- 'FunctionAnalysisArchitecture'
+			),
 		
 		umlDataTypes : UML!Package ( 
 			name 			<- 'DataTypes',
@@ -45,7 +48,10 @@ rule Model {
 			functionAnalysisArchitecture <- faa
 			),
 			
-		faa : EST!FunctionalAnalysisArchitecture (base_Class <- umlFAA)
+		faa : EST!FunctionalAnalysisArchitecture (
+			base_Class <- umlFAA
+			--part <- smodel.root			
+			)
 		
 		do {
 			thisModule.GlobalPortType <- portsDataType;
