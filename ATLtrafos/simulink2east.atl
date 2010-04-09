@@ -1,0 +1,141 @@
+-- @path SIM=/simulinkNG/simNG.ecore
+-- @path UML=platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore
+-- @path EST=platform:/plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.ecore
+
+module simulink2east;
+create OUT : EST, OUT1 : UML from IN : SIM;
+
+rule Model {
+	from
+		smodel : SIM!Model
+	to
+		umlModel : UML!Model (
+			packagedElement <- umlModelClass,
+			packagedElement <- umlAnalysisLevel
+		),
+		
+		umlModelClass 	: UML!Class ( name <- smodel.name ),
+		
+		umlAnalysisLevel : UML!Package ( 
+			name 			<- 'AnalysisLevel',
+			packagedElement <- umlAA,
+			packagedElement <- umlFAA,
+			packagedElement <- smodel.parts,
+			packagedElement <- umlDataTypes
+		),
+		
+		umlAA 	: UML!Class ( name <- 'AnalysisArchitecture' ),
+		umlFAA 	: UML!Class ( name <- 'FunctionAnalysisArchitecture' ),
+		
+		umlDataTypes : UML!Package ( 
+			name 			<- 'DataTypes',
+			packagedElement <- portsDataType
+		),
+		
+		-- Generic type for ports
+		portsDataType : UML!DataType ( name <- 'SomeDataType' ),
+		
+		sm : EST!ADLSystemModel (
+			base_Class 				<- umlModelClass,
+			analysisArchitecture 	<- aa
+		),
+		
+		aa : EST!AnalysisArchitecture (
+			base_Class <- umlAA,
+			functionAnalysisArchitecture <- faa
+			),
+			
+		faa : EST!FunctionalAnalysisArchitecture (base_Class <- umlFAA)
+		
+		do {
+			thisModule.GlobalPortType <- portsDataType;
+		}
+		
+}
+
+
+rule System2FunctionType {
+	from
+		s : SIM!System
+	to
+		umlFT : UML!Class ( 
+			name <- s.name,
+			ownedAttribute <- s.children,
+			ownedAttribute <- s.inports,
+			ownedAttribute <- s.outports,
+			ownedConnector <- s.lines
+		),
+		
+		ft : EST!ADLFunctionType (base_Class <- umlFT )
+}
+
+rule SystemReferences2FunctionPrototypes {
+	from
+		s : SIM!SystemReference
+	to
+		umlAttr : UML!Property ( 
+			name 		<- s.name,
+			--visibility="public" TODO !?!
+			type <- s.target,
+			aggregation <- #composite,
+			isUnique 	<- false
+		),
+		
+		fp : EST!ADLFunctionPrototype (
+			base_Property <- umlAttr
+		)
+}
+
+-- I tried to to an abstract rule with the common parts for the Ports
+-- but it didn't work. My guess is that is becasue the from and to parts
+-- are different.
+rule OutPort {
+	from
+		s : SIM!Outport
+	to
+		umlPort : UML!Port ( 
+			name <- s.name,
+			type <- thisModule.GlobalPortType,
+			aggregation <- #composite
+		),
+		
+		op : EST!ADLOutFlowPort ( base_Port <- umlPort )
+}
+
+rule InPort {
+	from
+		s : SIM!Inport
+	to
+		umlPort : UML!Port ( 
+			name <- s.name,
+			type <- thisModule.GlobalPortType,
+			aggregation <- #composite
+		),
+		
+		op : EST!ADLInFlowPort ( base_Port <- umlPort )
+}
+
+rule Lines {
+	from
+		l : SIM!Line
+	to
+		connector : UML!Connector (
+			name 	<- l.name,
+			end 	<- from_,
+			end 	<- to_ 
+		),
+		
+		from_ : UML!ConnectorEnd ( 
+			--partWithPort 	<- l.source.parent,
+			role 			<- l.source
+		),
+
+		to_ : UML!ConnectorEnd ( 
+			--partWithPort 	<- l.destination.parent,
+			role 			<- l.destination
+		),
+		
+		cp : EST!ADLConnectorPrototype (
+			base_Connector <- connector
+		)
+}
