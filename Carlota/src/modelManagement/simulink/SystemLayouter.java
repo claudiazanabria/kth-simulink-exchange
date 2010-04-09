@@ -5,14 +5,15 @@ import static org.junit.Assert.*;
 
 public class SystemLayouter {
 
-    Integer distanceBetweenPorts    = new Integer(60);
-    Integer distanceBetweenSystmes  = new Integer(90);
-    Integer blockSize               = new Integer(150);
-    Integer portSizeHoriz           = new Integer(30);
-    Integer portSizeVert            = new Integer(14);
+    final Integer distanceBetweenPorts    	= new Integer(60);
+    final Integer distanceBetweenSystmes  	= new Integer(90);
+    final Integer blockSizeHoriz          	= new Integer(250);
+    final Integer blockSizeVert 			= new Integer(100);
+    final Integer portSizeHoriz           	= new Integer(30);
+    final Integer portSizeVert            	= new Integer(14);
 
-    private Integer top     = new Integer(50);
-    private Integer left    = new Integer(20);
+    private Integer top     = new Integer(40);
+    private Integer left    = new Integer(35);
     private Integer bottom  = new Integer(0);
     private Integer right   = new Integer(0);
 
@@ -22,7 +23,7 @@ public class SystemLayouter {
 	}
 
 	public void startWithOutports() {
-        left = left + distanceBetweenSystmes + blockSize;
+        left = left + distanceBetweenSystmes + blockSizeHoriz;
         if (left < 0) {left = 100; }
         top = 50;
 	}
@@ -36,9 +37,9 @@ public class SystemLayouter {
 	}
 
 	public String nextSystem() {
-        left = left + distanceBetweenSystmes + blockSize;
-        bottom = top + blockSize;
-        right = left + blockSize;
+        left = left + distanceBetweenSystmes + blockSizeHoriz;
+        bottom = top + blockSizeVert;
+        right = left + blockSizeHoriz;
         String position = buildPositionString();
 		return position;
 	}
