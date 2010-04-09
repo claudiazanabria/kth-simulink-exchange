@@ -8,6 +8,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Apache-commons"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/EMF"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Simulink-ecore"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/EAST-ADL"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/EAST-ADL 1.10"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
