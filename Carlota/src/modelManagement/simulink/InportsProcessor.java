@@ -23,4 +23,12 @@ public class InportsProcessor extends PortProcessor {
 		return inport.getParent().getSimulinkName();
 	}
 
+	@Override
+	protected void addTypeSuffixIfNeeded(Port port) {
+		String name = port.getName(); 
+		if ( ! name.endsWith("In") ) {
+			port.setName( name + "_In" );
+		}		
+	}
+
 }

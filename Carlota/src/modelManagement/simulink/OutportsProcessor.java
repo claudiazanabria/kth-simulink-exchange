@@ -23,5 +23,13 @@ public class OutportsProcessor extends PortProcessor {
 		Outport outport = (Outport) port;
 		return outport.getParent().getSimulinkName();
 	}
+
+	@Override
+	protected void addTypeSuffixIfNeeded(Port port) {
+		String name = port.getName(); 
+		if ( ! name.endsWith("Out") ) {
+			port.setName( name + "_Out" );
+		}		
+	}
 	
 }

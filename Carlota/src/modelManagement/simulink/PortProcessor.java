@@ -43,10 +43,13 @@ public abstract class PortProcessor {
 	
 	protected <P extends Port> void computeInstanceName(Port port) {
 		String parentName = this.getParentName( port );
+		this.addTypeSuffixIfNeeded( port );
 		String simuName = parentName + '/' + port.getName();
 		port.setSimulinkName(simuName);	
 }
 
+	protected abstract void addTypeSuffixIfNeeded(Port port);
+	
 	protected String getParentName(Port port) {
 		return "subClass responsibility";
 	}
