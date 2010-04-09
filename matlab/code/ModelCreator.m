@@ -14,7 +14,8 @@ classdef ModelCreator < handle
     methods (Static)
         function MC=fromFile( path2ecoreFile )
             MC=ModelCreator();
-            MC.ecoreFile = fullfile(cd(),path2ecoreFile);
+            %MC.ecoreFile = fullfile(cd(),path2ecoreFile);
+            MC.ecoreFile = fullfile(path2ecoreFile);
             MC.doIt();
         end
         
@@ -111,7 +112,7 @@ classdef ModelCreator < handle
             src = char( aLine.getSimuNameSrc() );
             dst = char( aLine.getSimuNameDst() );
             sys = char( aLine.getParent().getSimulinkName() );
-            handle = add_line(sys, src, dst, 'autorouting' ,'on');
+            add_line(sys, src, dst, 'autorouting' ,'on');
         end
         
         function processSysRef( self, aSysRef ) %#ok<MANU>
