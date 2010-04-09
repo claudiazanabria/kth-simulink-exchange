@@ -9,7 +9,7 @@ import org.eclipse.emf.common.util.URI;
 
 public class EastModelManagerTest {
 
-	private String modelPath 	= "../errormodel/MyEASTModel1.uml";
+	private String modelPath 	= "../ATLtrafos/testFiles/MyEASTModel1.uml";
 	private URI modelURI 		= URI.createFileURI(modelPath);
 
 	public void testValid() throws InvalidModelException {
