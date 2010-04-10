@@ -39,7 +39,7 @@ rule FunctionTypes2Subsystems {
 }
 
 
-rule FunctionPrototypes2Blocks {
+rule FunctionPrototypes2SystemReference {
 	from 
 		s : EST!ADLFunctionPrototype ( s.isConnectedToFAA() ) 
 	to
@@ -96,6 +96,11 @@ rule OutFlowPort2Port extends FlowPort2Port {
 	to 
 		t : SIM!Outport ()
 }
+
+-- Returns the Root system from the FAA
+helper context EST!ADLSystemModel def : FAArootSystem() : EST!ADLFunctionType =
+	self.analysisArchitecture.functionAnalysisArchitecture.part->first().type;
+
 -- Returns only the Inports for this FunctionType
 helper context EST!ADLFunctionType def : onlyInports() : Set(EST!ADLInFlowPort)= 
 		self.flowPort->select( aPort | aPort.oclIsKindOf(EST!ADLInFlowPort) ); 
