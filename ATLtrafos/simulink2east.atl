@@ -1,6 +1,6 @@
--- @path SIM=/simulinkNG/simNG.ecore
--- @path UML=platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore
--- @path EST=platform:/plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.ecore
+-- @path SIM=uri:http:///se.kth.md.attest2/Simulink/3.0
+-- @path UML=uri:http://www.eclipse.org/uml2/3.0.0/UML
+-- @path EST=uri:http://www.papyrusuml.org/EAST-ADL2/1
 
 module simulink2east;
 create OUT : EST, OUT1 : UML from IN : SIM;
@@ -27,7 +27,8 @@ rule Model {
 		umlAA 	: UML!Class ( name <- 'AnalysisArchitecture' ),
 
 		umlFAA 	: UML!Class ( 
-				name <- 'FunctionAnalysisArchitecture'
+				name <- 'FunctionAnalysisArchitecture',
+				ownedAttribute <- rootContainer
 			),
 		
 		umlDataTypes : UML!Package ( 
@@ -49,10 +50,22 @@ rule Model {
 			),
 			
 		faa : EST!FunctionalAnalysisArchitecture (
-			base_Class <- umlFAA
-			--part <- smodel.root			
-			)
+			base_Class 	<- umlFAA
+			--part 		<- rootContainerFP
+			),
+				
+		rootContainer : UML!Property ( 
+			name 		<- 'part',
+			--visibility="public" TODO !?!
+			type <- smodel.root,
+			aggregation <- #composite,
+			isUnique 	<- false
+		),
 		
+		rootContainerFP : EST!ADLFunctionPrototype (
+			base_Property <- rootContainer
+		)
+			
 		do {
 			thisModule.GlobalPortType <- portsDataType;
 		}
