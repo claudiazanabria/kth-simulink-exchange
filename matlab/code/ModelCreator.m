@@ -13,9 +13,13 @@ classdef ModelCreator < handle
     
     methods (Static)
         function MC=fromFile( path2ecoreFile )
-            MC=ModelCreator();
-            %MC.ecoreFile = fullfile(cd(),path2ecoreFile);
-            MC.ecoreFile = fullfile(path2ecoreFile);
+            MC=ModelCreator();            
+%             if Utils.isReadableByJava( path2ecoreFile )
+%                 MC.ecoreFile = path2ecoreFile;
+%             else
+%                 MC.ecoreFile = fullfile(cd(),path2ecoreFile);
+%             end         
+            MC.ecoreFile = path2ecoreFile;
             MC.doIt();
         end
         

@@ -75,5 +75,11 @@ classdef Utils < handle
                 uuidStr = userData('UUID');
             end
         end
+        
+%         function boolean = isReadableByJava( filePath )
+%             file = java.io.File( filePath );
+%             test = file.exists();
+%             boolean = file.canRead();
+%         end
     end
 end
