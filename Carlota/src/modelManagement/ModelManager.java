@@ -22,7 +22,7 @@ import org.apache.commons.io.FilenameUtils;
  * as it first registers the metamodel.
  * In order to write models, subclasses should define initMetaModel method.
  */
-public class ModelManager {
+public abstract class ModelManager {
 
 	protected URI model;
 	protected Resource resource;
@@ -30,12 +30,7 @@ public class ModelManager {
 	protected EPackage ePackage = null;
 	protected String fileExtension = Resource.Factory.Registry.DEFAULT_EXTENSION;
 	
-	/*
-	 * This method should be overridden by subclasses in order to save a model.
-	 */
-	protected void initMetaModel() {
-		assert(1==2);
-	}
+	protected abstract void initMetaModel();
 
 	public ModelManager() {
 		this( "unnamed.xmi" );
