@@ -1,0 +1,31 @@
+digraph G
+{
+  edge [fontname="FreeSans",fontsize="10",labelfontname="FreeSans",labelfontsize="10"];
+  node [fontname="FreeSans",fontsize="10",shape=record];
+  rankdir=LR;
+  Node1 [label="modelManagement.test.SimulinkDemoModelCreator",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node2 -> Node1 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="modelManager",fontname="FreeSans"];
+  Node2 [label="modelManagement.simulink.SimulinkModelManager",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classmodel_management_1_1simulink_1_1_simulink_model_manager.html"];
+  Node3 -> Node2 [dir=back,color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node3 [label="modelManagement.ModelManager",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classmodel_management_1_1_model_manager.html",tooltip="Resumen corto äcä."];
+  Node4 -> Node3 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="ePackage",fontname="FreeSans"];
+  Node4 [label="EPackage",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node5 -> Node3 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="resource",fontname="FreeSans"];
+  Node5 [label="Resource",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node6 -> Node3 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="resourceSet",fontname="FreeSans"];
+  Node6 [label="ResourceSet",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node7 -> Node3 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="model",fontname="FreeSans"];
+  Node7 [label="URI",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node8 -> Node1 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="simulinkEcoreCreator",fontname="FreeSans"];
+  Node8 [label="modelManagement.simulink.SimulinkEcoreCreator",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classmodel_management_1_1simulink_1_1_simulink_ecore_creator.html"];
+  Node9 -> Node8 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="repository",fontname="FreeSans"];
+  Node9 [label="HashMap\< UUID, ProtoObject \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node10 -> Node8 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="theModel",fontname="FreeSans"];
+  Node10 [label="Model",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node11 -> Node8 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="systemRepository",fontname="FreeSans"];
+  Node11 [label="HashMap\< String, System \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node12 -> Node8 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="factory",fontname="FreeSans"];
+  Node12 [label="SimulinkFactory",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node13 -> Node1 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="root",fontname="FreeSans"];
+  Node13 [label="System",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+}

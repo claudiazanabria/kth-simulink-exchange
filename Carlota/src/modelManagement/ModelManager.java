@@ -16,11 +16,13 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.apache.commons.io.FilenameUtils;
 
 /**
- * @author alesch
+ * Resumen corto aca.
  * This class can read from file, validate, and write to file
  * ecore models. It can be used in Java standalone mode, 
  * as it first registers the metamodel.
  * In order to write models, subclasses should define initMetaModel method.
+ * 
+ * \author Alex Schenkman
  */
 public abstract class ModelManager {
 
@@ -32,10 +34,18 @@ public abstract class ModelManager {
 	
 	protected abstract void initMetaModel();
 
+	/** 
+	 * Brief desc ends here. The rest is the detailed description.
+	 * or Am i wrong?
+	 * 
+	 */
 	public ModelManager() {
 		this( "unnamed.xmi" );
 	}
 	
+	/**
+	 * @param modelPath File path to a model file.
+	 */
 	public ModelManager(String modelPath) {
 		this( URI.createFileURI(modelPath) );
 	}
