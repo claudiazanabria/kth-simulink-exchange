@@ -1,4 +1,0 @@
-what,kind,bundleId,bundleVersion,description,time
-java.vm.version,sysinfo,,,"11.3-b02",1265022055055
-started,bundle,org.eclipse.epp.usagedata.ui,1.1.0.R200906100410,"org.eclipse.epp.usagedata.ui",1265022056146
-deactivated,workbench,org.eclipse.ui.workbench,3.5.1.M20090826-0800a,"",1265022057128
