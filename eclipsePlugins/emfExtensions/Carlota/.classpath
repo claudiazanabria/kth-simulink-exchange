@@ -5,10 +5,11 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry kind="con" path="ch.unibe.jexample.JEXAMPLE_CONTAINER"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Apache-commons"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/EMF"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Simulink-ecore"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/EAST-ADL 1.10"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/UML2"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Apache-Commons"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JExample"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
