@@ -1,4 +1,4 @@
-package se.kth.md.simulinkExchange;
+package se.kth.md.simulinkExchange.modelManagement;
 
 import java.io.IOException;
 
@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
 import org.apache.commons.io.FilenameUtils;
 
-import se.kth.md.simulinkExchange.exceptions.InvalidModelException;
+import se.kth.md.simulinkExchange.modelManagement.exceptions.InvalidModelException;
 
 /**
  * Resumen corto aca.

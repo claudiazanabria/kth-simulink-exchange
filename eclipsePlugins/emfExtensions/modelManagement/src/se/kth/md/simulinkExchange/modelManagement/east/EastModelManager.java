@@ -1,9 +1,9 @@
-package se.kth.md.simulinkExchange.east;
+package se.kth.md.simulinkExchange.modelManagement.east;
 
 
 import org.eclipse.emf.common.util.URI;
 
-import se.kth.md.simulinkExchange.ModelManager;
+import se.kth.md.simulinkExchange.modelManagement.ModelManager;
 
 import com.cea.papyrus.uml4eastadl.eastadl.EastadlFactory;
 import com.cea.papyrus.uml4eastadl.eastadl.EastadlPackage;

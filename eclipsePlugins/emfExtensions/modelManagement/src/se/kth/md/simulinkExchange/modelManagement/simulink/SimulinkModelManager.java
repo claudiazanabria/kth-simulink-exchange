@@ -1,9 +1,9 @@
-package se.kth.md.simulinkExchange.simulink;
+package se.kth.md.simulinkExchange.modelManagement.simulink;
 
 
 import org.eclipse.emf.common.util.URI;
 
-import se.kth.md.simulinkExchange.ModelManager;
+import se.kth.md.simulinkExchange.modelManagement.ModelManager;
 
 import Simulink.SimulinkFactory;
 import Simulink.SimulinkPackage;

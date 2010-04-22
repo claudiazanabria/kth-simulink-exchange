@@ -1,4 +1,4 @@
-package se.kth.md.simulinkExchange.exceptions;
+package se.kth.md.simulinkExchange.modelManagement.exceptions;
 
 
 import java.util.Hashtable;

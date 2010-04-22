@@ -1,4 +1,4 @@
-package se.kth.md.simulinkExchange;
+package se.kth.md.simulinkExchange.modelManagement;
 
 
 import java.util.Hashtable;
@@ -9,7 +9,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.Diagnostician;
 
-import se.kth.md.simulinkExchange.exceptions.InvalidModelException;
+import se.kth.md.simulinkExchange.modelManagement.exceptions.InvalidModelException;
 
 public class ModelValidator {
 
