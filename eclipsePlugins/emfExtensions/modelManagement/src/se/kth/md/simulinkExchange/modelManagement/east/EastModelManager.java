@@ -40,6 +40,7 @@ public class EastModelManager  extends ModelManager {
 	}
 	
 	public EastModelManager(URI model) {
+		super( model );
 		setFileExtension("uml");
 		init( model );
 	}

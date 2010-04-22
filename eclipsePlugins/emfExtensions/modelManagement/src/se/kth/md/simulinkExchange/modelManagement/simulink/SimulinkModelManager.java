@@ -40,6 +40,7 @@ public class SimulinkModelManager  extends ModelManager {
 	}
 	
 	public SimulinkModelManager(URI model) {
+		super( model );
 		setFileExtension("simulink");
 		init( model );
 	}
