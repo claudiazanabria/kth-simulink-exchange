@@ -8,7 +8,7 @@ import java.util.UUID;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.BasicEList;
 
-import se.kth.md.simulinkExchange.modelConversion.simulink.exceptions.PortNotFoundException;
+import se.kth.md.simulinkExchange.modelConversion.exceptions.PortNotFoundException;
 
 import Simulink.Inport;
 import Simulink.Line;

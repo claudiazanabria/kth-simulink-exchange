@@ -1,4 +1,4 @@
-package se.kth.md.simulinkExchange.modelConversion.simulink.exceptions;
+package se.kth.md.simulinkExchange.modelConversion.exceptions;
 
 import Simulink.System;
 
