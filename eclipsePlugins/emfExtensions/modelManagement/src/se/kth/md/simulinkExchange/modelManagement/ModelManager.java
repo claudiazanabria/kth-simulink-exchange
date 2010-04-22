@@ -2,7 +2,7 @@ package se.kth.md.simulinkExchange.modelManagement;
 
 import java.io.IOException;
 
-
+import org.apache.commons.io.FilenameUtils;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EFactory;
 import org.eclipse.emf.ecore.EObject;
@@ -11,8 +11,6 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
-
-import org.apache.commons.io.FilenameUtils;
 
 import se.kth.md.simulinkExchange.modelManagement.exceptions.InvalidModelException;
 
@@ -103,7 +101,7 @@ public abstract class ModelManager {
 		saveAs( newFileName );
 	}
 
-	private String replaceExtension(String pathName, String extension) {
+	protected String replaceExtension(String pathName, String extension) {
 		return FilenameUtils.removeExtension(pathName) + '.' + extension;
 	}
 	

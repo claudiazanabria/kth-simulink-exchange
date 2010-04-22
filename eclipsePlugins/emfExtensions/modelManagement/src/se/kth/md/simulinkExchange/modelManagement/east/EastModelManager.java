@@ -8,41 +8,50 @@ import se.kth.md.simulinkExchange.modelManagement.ModelManager;
 import com.cea.papyrus.uml4eastadl.eastadl.EastadlFactory;
 import com.cea.papyrus.uml4eastadl.eastadl.EastadlPackage;
 
-/*
- * This class can read from file, validate, and write to file
- * eastADL XMI models. It can be used in Java standalone mode, 
- * as it first registers the metamodel
+/**
+ * A ModelManager that can handle EAST-ADL models.
+ * @author Alex Schenkman
  */
 public class EastModelManager  extends ModelManager {
-	/*
-	 * Adds the metamodel the the global EMF registry
-	 * and initilizes the metamodel factory.
+	/**
+	 * Adds the metamodel the the global EMF registry and initializes the metamodel factory.
 	 */
 	@Override
 	protected void initMetaModel() {
 		ePackage = EastadlPackage.eINSTANCE;
 	}
 
+	/**
+	 * @return the factory for this metamodel.
+	 */
 	@Override
 	public EastadlFactory getFactory() {
 		return (EastadlFactory) super.getFactory();
 	}
 
-	/*
-	 * Constructors are NOT inherited in Java, so...
+	/**
+	 * Opens an empty EAST-ADL model named: "unnamed.uml".
+	 * Relies on EastModelManager(String modelPath).
 	 */
 	public EastModelManager() { 
 		this( "unnamed.uml" ); 
 	}
 	
+	/**
+	 * Opens an EAST-ADL model from file.
+	 * @param modelPath
+	 */
 	public EastModelManager(String modelPath) {
 		this( URI.createFileURI(modelPath) );
 	}
 	
+	/**
+	 * Opens an EAST-ADL model from the given URI
+	 * @param model 
+	 */
 	public EastModelManager(URI model) {
 		super( model );
 		setFileExtension("uml");
 		init( model );
 	}
-
 }

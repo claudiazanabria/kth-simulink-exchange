@@ -1,4 +1,4 @@
 <map id="G" name="G">
 <area shape="rect" id="node3" href="$classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_management_1_1_model_manager.html#af76e88cc1f0cd2e303a7e52f692bb9e5" title="getTopElement" alt="" coords="109,5,219,35"/>
-<area shape="rect" id="node5" href="$classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_management_1_1_model_manager.html#a28273bfc5a1299ec05a21a44a2ffda84" title="saveAs" alt="" coords="132,59,196,88"/>
+<area shape="rect" id="node5" href="$classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_management_1_1_model_manager.html#a28273bfc5a1299ec05a21a44a2ffda84" title="Saves the model in memory to a file with the given name." alt="" coords="132,59,196,88"/>
 </map>

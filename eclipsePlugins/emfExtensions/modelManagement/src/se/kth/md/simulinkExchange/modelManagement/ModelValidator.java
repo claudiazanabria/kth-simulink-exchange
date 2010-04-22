@@ -11,17 +11,30 @@ import org.eclipse.emf.ecore.util.Diagnostician;
 
 import se.kth.md.simulinkExchange.modelManagement.exceptions.InvalidModelException;
 
+/**
+ * Validates that a resource complies with the metamodel.
+ * An EMF file contains a resource set. In other words, there can be many models within one file.
+ * @author Alex Schenkman
+ */
 public class ModelValidator {
 
 	Resource resource;
 	Hashtable<EObject, String> invalidObjects;
 	StringBuffer strBuffer;
 	
+	/**
+	 * Creates a validator for resource.
+	 * @param resource An EMF resource.
+	 */
 	public ModelValidator(Resource resource) {
 		this.resource 	= resource;
 		invalidObjects  = new Hashtable<EObject, String>();
 	}
 	
+	/**
+	 * Starts the validation. Screen output is generated for invalid elements.
+	 * @throws InvalidModelException if the model is invalid.
+	 */
 	public void doIt() throws InvalidModelException {
 		validateEachElement();
 		
@@ -30,9 +43,6 @@ public class ModelValidator {
 		}
 	}
 
-	/**
-	 * 
-	 */
 	private void validateEachElement() {
 		for (EObject eObject : resource.getContents()) {
 			addToListIfInvalid(eObject);
@@ -68,10 +78,6 @@ public class ModelValidator {
 		}
 	}
 
-	/**
-	 * @param message
-	 * @param indent
-	 */
 	private void recordIndentedMessage(String message, String indent) {
 		strBuffer.append(indent);
 		strBuffer.append(message);

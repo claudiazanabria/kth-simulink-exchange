@@ -8,6 +8,11 @@ import org.eclipse.emf.common.util.URI;
 import se.kth.md.simulinkExchange.modelManagement.east.EastModelManager;
 import se.kth.md.simulinkExchange.modelManagement.exceptions.InvalidModelException;
 
+/**
+ * Test cases for EastModelManager.
+ * @author alesch
+ *
+ */
 public class EastModelManagerTest {
 
 	private String modelPath 	= "../ATLtrafos/testFiles/MyEASTModel1.uml";

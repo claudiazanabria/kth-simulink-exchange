@@ -23,6 +23,10 @@ import Simulink.SimulinkFactory;
 import ch.unibe.jexample.Given;
 import ch.unibe.jexample.JExample;
 
+/**
+ * Test cases for SimulinkModelManager.
+ * @author Alex Schenkman
+ */
 @RunWith(JExample.class)
 public class SimulinkModelManagerTest {
 	
@@ -39,14 +43,6 @@ public class SimulinkModelManagerTest {
 
 	@Test
 	@Given("#testInstanceCreation")
-	public SimulinkModelManager testReplacExtension(SimulinkModelManager aModelMgr) {
-		String newPath = aModelMgr.replaceExtension("test.txt", "zzz");
-		assertTrue(newPath.equalsIgnoreCase("test.zzz"));
-		return aModelMgr;	
-	}
-
-	@Test
-	@Given("#testReplacExtension(se.kth.md.simulinkExchange.simulink.SimulinkModelManager)")
 	public SimulinkModelManager testExtension(SimulinkModelManager aModelMgr) {
 		assertTrue(aModelMgr.getFileExtension().equalsIgnoreCase("simulink"));
 		return aModelMgr;	
