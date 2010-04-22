@@ -9,7 +9,7 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Simulink-ecore"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/EAST-ADL 1.10"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/UML2"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Apache-Commons"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JExample"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Apache-commons"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
