@@ -21,23 +21,35 @@ import Simulink.System;
 import Simulink.SystemReference;
 
 /**
- * @author alesch
- *
+ * This is a convenience class to easily create ecore models.
+ * It is mainly used from MATLAB, but it is useful if you want to build models programmatically
+ * for example, for testing purposes.
+ * This class keeps track of all elements it has created, with a UUID.
+ * TODO: Should it be renamed to EcoreFactory maybe?
+ * @author Alex Schenkman
  */
 public class SimulinkEcoreCreator {
 	
-	protected SimulinkFactory factory;
-	protected Model theModel;
-	protected HashMap<String, System> systemRepository;
-	protected HashMap<UUID, ProtoObject> repository;
+	protected SimulinkFactory factory; /**< The factory for the simulink metamodel. */
+	protected Model theModel;	/**< The top element. */
+	protected HashMap<String, System> systemRepository;	/**< Keeps a reference to all systems created by this class. */
+	protected HashMap<UUID, ProtoObject> repository;	/**< Keeps a reference to all elements created by this class. */
 	
+	/**
+	 * A convenience class to easily create ecore models.
+	 * @param aFactory This can be obtained from a ModelManager.
+	 */
 	public SimulinkEcoreCreator(SimulinkFactory aFactory) {
 		factory = aFactory;
 		systemRepository 	= new HashMap<String, System>();
 		repository 			= new HashMap<UUID, ProtoObject>();
 	}
 
-
+	/**
+	 * Creates a model, the top element in the metamodel.
+	 * @param modelName	Name of the model.
+	 * @return the newly created model,
+	 */
 	public Model newModel(String modelName) {
 		theModel = factory.createModel();
 		theModel.setName( modelName );
@@ -45,7 +57,11 @@ public class SimulinkEcoreCreator {
 		return theModel;
 	}
 
-
+	/**
+	 * This class keeps track of all elements it has created, with a UUID.
+	 * This allows to easily find elements given the UUID, which is stored by Simulink as well.
+	 * @param object A UUID will be set for this object.
+	 */
 	private void setUUIDAndAddToRepository(ProtoObject object) {
 		UUID uuid = UUID.randomUUID();
 		object.setUuid(uuid.toString());
@@ -53,11 +69,21 @@ public class SimulinkEcoreCreator {
 	}
 
 
+	/**
+	 * @return the model element at the top of the hierarchy. 
+	 */
 	public Model getTopElement() {
 		return theModel;
 	}
 
 
+	/**
+	 * A System is obtained and treated as the root for this model.
+	 * Note that if a system with the same name has previously been created, 
+	 * it will be reused, instead of creating a new one.  
+	 * @param name
+	 * @return
+	 */
 	public System addRootSystem(String name) {
 		System aSystem = obtainSystem(name);
 		theModel.setRoot(aSystem);
@@ -66,8 +92,9 @@ public class SimulinkEcoreCreator {
 	}
 
 
-	/*
-	 * If the system is not in the repository it will be created
+	/**
+	 * If the system is not already in the systemRepository, it will be created.
+	 * systems are identified by its name.
 	 */
 	private System obtainSystem(String name) {
 		System aSystem = findSystem( name );
@@ -78,6 +105,11 @@ public class SimulinkEcoreCreator {
 	}
 
 
+	/**
+	 * Creates a new system and ads it to the systemRepository.
+	 * @param name Name for the system to be created.
+	 * @return the newly created system.
+	 */
 	private System newSystem(String name) {
 		System aSystem = factory.createSystem();
 		aSystem.setName(name);
@@ -88,11 +120,21 @@ public class SimulinkEcoreCreator {
 		return aSystem;
 	}
 
-	
+	/**
+	 * @param name Name of the system to be found.
+	 * @return the found system or null if not found.
+	 */
 	public System findSystem(String name) {
 		return systemRepository.get( name );
 	}
 
+	/**
+	 * Find a given port within a system, and its first level children.
+	 * This is used by MATLAB when creating lines.
+	 * @param portName Name of the port.
+	 * @param aSystem Where to start looking.
+	 * @return the port if found, null otherwise.
+	 */
 	public static Port findPortWithin(String portName, System aSystem) {
 		Port port = findOutportWithin(portName, aSystem);
 		if ( port == null ) {
@@ -101,6 +143,9 @@ public class SimulinkEcoreCreator {
 		return port;
 	}
 	
+	/**
+	 * TODO: Should this be private? Is MATLAB using this one directly?
+	 */
 	public static Outport findOutportWithin(String portName, System aSystem) {
 		Outport port = null;
 		EList<System> targetSystems = 
@@ -112,6 +157,9 @@ public class SimulinkEcoreCreator {
 		return port;
 	}
 
+	/**
+	 * TODO: Should this be private? Is MATLAB using this one directly?
+	 */
 	public static Inport findInportWithin(String portName, System aSystem) {
 		Inport port = null;
 		EList<System> targetSystems = 
@@ -123,6 +171,10 @@ public class SimulinkEcoreCreator {
 		return port;
 	}
 
+	/**
+	 * @param aSystem where to start the search.
+	 * @return a list with aSystem and only, its first level children.
+	 */
 	private static EList<System> createSystemListWithParentAndFirstLevelChldren(
 			System aSystem) {
 		EList<SystemReference> childrenList = aSystem.getChildren();
@@ -160,6 +212,14 @@ public class SimulinkEcoreCreator {
 	}
 
 	
+	/**
+	 * Adds a new instance of a system to the model, in the right place.
+	 * This is implemented as ModelReferences in MATLAB, but it might change to libraries.
+	 * This is the preferred way of adding new systems, as it opens the possibility to exchange 
+	 * any given number of parameters.
+	 * @param pList the information needed to create a system instance.   
+	 * @return a newly created SystemReference.
+	 */
 	public SystemReference addSystem(PropertyList pList) {		
 		
 		String name 		= pList.getName();
@@ -169,6 +229,13 @@ public class SimulinkEcoreCreator {
 		return sysRef;
 	}
 	
+	/**
+	 * Adds a new SystemReference to this model, with all the appropriate links.
+	 * @param name of the system to instantiate.
+	 * @param parent the system that contains this instance.
+	 * @param instanceName the name this instance gets in MATLAB.
+	 * @return a newly created SystemReference.
+	 */
 	private SystemReference addSystemInstance(String name, System parent,
 			String instanceName) {
 		
@@ -183,23 +250,27 @@ public class SimulinkEcoreCreator {
 	}
 
 
-	/*
-	 * comply with older API, probably unused
-	 */
+	@Deprecated
 	public System addSystem(String name, System parent, String instanceName) {
 		SystemReference sysRef = addSystemInstance(name, parent, instanceName);
 		return sysRef.getTarget();
 	}
 	
 	/*
-	 * comply with older API, probably unused
 	 * name and instanceName are the same
-	 */ 
+	 */
+	@Deprecated
 	public System addSystem(String name, System parent) {
 		return addSystem(name, parent, name);
 	}
 
 
+	/**
+	 * Adds an Inport to the given system.
+	 * @param name of the port.
+	 * @param parent the system where this port should be added.
+	 * @return the newly created port.
+	 */
 	public Inport addInPort(String name, System parent) {
 		Inport inport = factory.createInport();
 		parent.getInports().add( inport );
@@ -209,7 +280,12 @@ public class SimulinkEcoreCreator {
 		return inport;
 	}
 
-
+	/**
+	 * Adds an Outport to the given system.
+	 * @param name of the port.
+	 * @param parent the system where this port should be added.
+	 * @return the newly created port.
+	 */
 	public Outport addOutPort(String name, System parent) {
 		Outport outport = factory.createOutport();
 		parent.getOutports().add( outport );
@@ -219,17 +295,34 @@ public class SimulinkEcoreCreator {
 		return outport;
 	}
 
-	public Line addLineBetween(String name, System source, System destination, 
+	/**
+	 * Adds a line between the first outport of source and the first inport of destination.
+	 * This is a convenience method to quickly create lines for tests. 
+	 * @param lineName 
+	 * @param source 
+	 * @param destination
+	 * @param parent the system this line belongs to.
+	 * @return the newly created line.
+	 */
+	public Line addLineBetween(String lineName, System source, System destination, 
 			System parent) {
 		Outport outport = source.getOutports().get(0);
 		Inport inport = destination.getInports().get(0);
-		return addLine(name, outport, inport, parent);
+		return addLine(lineName, outport, inport, parent);
 	}
 	
-	public Line addLine(String name, Port source, Port destination, 
+	/**
+	 * Adds a line between two ports. Useful for tests.
+	 * @param lineName
+	 * @param source
+	 * @param destination
+	 * @param parent the system this line belongs to.
+	 * @return the newly created line.
+	 */
+	public Line addLine(String lineName, Port source, Port destination, 
 			System parent) {
 		Line line = factory.createLine();
-		line.setName(name);
+		line.setName(lineName);
 		line.setSource(source);
 		line.setDestination(destination);
 		parent.getLines().add(line);
@@ -237,6 +330,13 @@ public class SimulinkEcoreCreator {
 		return line;
 	}
 	
+	/**
+	 * Adds all lines contained in lines.
+	 * This is the way MATLAB adds lines to a model.
+	 * See LineInfo for mode information.
+	 * @param lines a list of lines, prepared by MATLAB.
+	 * @throws PortNotFoundException if port not found.
+	 */
 	public void addLines(ArrayList<LineInfo> lines) throws PortNotFoundException {
 		String name;
 		Port srcPort, dstPort;

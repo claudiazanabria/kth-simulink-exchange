@@ -28,6 +28,11 @@ import Simulink.SystemReference;
 import ch.unibe.jexample.Given;
 import ch.unibe.jexample.JExample;
 
+/**
+ * Test cases for SimulinkEcoreCreator.
+ * @author Alex Schenkman
+ *
+ */
 @RunWith(JExample.class)
 public class SimulinkEcoreCreatorTest {
 

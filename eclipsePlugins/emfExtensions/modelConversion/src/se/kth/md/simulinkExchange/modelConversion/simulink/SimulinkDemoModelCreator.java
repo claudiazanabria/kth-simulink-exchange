@@ -7,6 +7,12 @@ import Simulink.Model;
 import Simulink.SimulinkFactory;
 import Simulink.System;
 
+/**
+ * A utility class to create a known model used for testing.
+ * TODO: it uses an older API:
+ * @author Alex Schenkman.
+ *
+ */
 public class SimulinkDemoModelCreator {
 
 	String pathName = "testWorkspace/demo.simulink";

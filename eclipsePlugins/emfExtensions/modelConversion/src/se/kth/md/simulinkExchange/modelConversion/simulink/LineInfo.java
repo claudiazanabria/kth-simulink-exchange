@@ -6,6 +6,11 @@ import java.util.UUID;
 
 import Simulink.System;
 
+/**
+ * Data structure used by Simulink to summarize the information needed to create a line.
+ * This is used by LinesProcessor and SimulinkEcoreCreator.
+ * @author Alex Schenkman
+ */
 public class LineInfo {
 	
 	public String 	lineName;
@@ -27,9 +32,9 @@ public class LineInfo {
 		return lineName;
 	}
 
-	/*
+	/**
 	 * Method provided for Simulink, because it is not possible to
-	 * create arrays with generics <LineInfo> there.
+	 * create arrays with generic <LineInfo> there.
 	 */
 	public static ArrayList<LineInfo> createArray() {
 		return new ArrayList<LineInfo>();
