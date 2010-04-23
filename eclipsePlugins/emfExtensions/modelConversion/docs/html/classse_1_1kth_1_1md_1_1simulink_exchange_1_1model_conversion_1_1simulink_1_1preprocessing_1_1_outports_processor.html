@@ -29,13 +29,16 @@
 </div>
 <div class="contents">
 <h1>OutportsProcessor Class Reference</h1><!-- doxytag: class="se::kth::md::simulinkExchange::modelConversion::simulink::preprocessing::OutportsProcessor" --><!-- doxytag: inherits="se::kth::md::simulinkExchange::modelConversion::simulink::preprocessing::PortProcessor" -->
+<p>Gets the outports from a system, and adds them to the list.  
+<a href="#_details">More...</a></p>
+
 <p>Inherits <a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_port_processor.html">se::kth::md::simulinkExchange::modelConversion::simulink::preprocessing::PortProcessor</a>.</p>
 <div class="dynheader">
 Collaboration diagram for OutportsProcessor:</div>
 <div class="dynsection">
 <div class="center"><img src="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_outports_processor__coll__graph.png" border="0" usemap="#_outports_processor_coll__map" alt="Collaboration graph"/></div>
 <map name="_outports_processor_coll__map" id="_outports_processor_coll__map">
-<area shape="rect" id="node2" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_port_processor.html" title="PortProcessor" alt="" coords="177,101,281,131"/><area shape="rect" id="node4" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_system_layouter.html" title="SystemLayouter" alt="" coords="5,5,123,35"/></map>
+<area shape="rect" id="node2" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_port_processor.html" title="Common functionality used by InportsProcessor and OutportsProcessor." alt="" coords="177,101,281,131"/><area shape="rect" id="node4" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_system_layouter.html" title="This class can layout Simulink elements within a System." alt="" coords="5,5,123,35"/></map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 
 <p><a href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_outports_processor-members.html">List of all members.</a></p>
@@ -47,10 +50,13 @@ Collaboration diagram for OutportsProcessor:</div>
 ProtoObject &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_outports_processor.html#aec203a646d5064351b0050efd55894ac">doIt</a> (System aSystem, <a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_system_layouter.html">SystemLayouter</a> <a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_port_processor.html#af46b1d6fd0fa784893c08089ad01a064">layouter</a>)</td></tr>
 <tr><td colspan="2"><h2>Protected Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_outports_processor.html#a19b84db5f3a653cdda082e70fd82d556">addTypeSuffixIfNeeded</a> (Port port)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">see <a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_port_processor.html#add222dca80dfa3a0020560dd4cb02f56" title="To avoid problems with ports having the same, which is possible in EAST-ADL, add...">PortProcessor.computeInstanceName()</a>  <a href="#a19b84db5f3a653cdda082e70fd82d556"></a><br/></td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
+<p>Gets the outports from a system, and adds them to the list. </p>
+<dl class="author"><dt><b>Author:</b></dt><dd>Alex Schenkman </dd></dl>
 
-<p>Definition at line <a class="el" href="_outports_processor_8java_source.html#l00011">11</a> of file <a class="el" href="_outports_processor_8java_source.html">OutportsProcessor.java</a>.</p>
+<p>Definition at line <a class="el" href="_outports_processor_8java_source.html#l00016">16</a> of file <a class="el" href="_outports_processor_8java_source.html">OutportsProcessor.java</a>.</p>
 <hr/><h2>Member Function Documentation</h2>
 <a class="anchor" id="a19b84db5f3a653cdda082e70fd82d556"></a><!-- doxytag: member="se::kth::md::simulinkExchange::modelConversion::simulink::preprocessing::OutportsProcessor::addTypeSuffixIfNeeded" ref="a19b84db5f3a653cdda082e70fd82d556" args="(Port port)" -->
 <div class="memitem">
@@ -68,9 +74,11 @@ ProtoObject &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el
 </div>
 <div class="memdoc">
 
+<p>see <a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_port_processor.html#add222dca80dfa3a0020560dd4cb02f56" title="To avoid problems with ports having the same, which is possible in EAST-ADL, add...">PortProcessor.computeInstanceName()</a> </p>
+
 <p>Implements <a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_port_processor.html#a3c0dc3cb5073f68b39b13e185ecf9b28">PortProcessor</a>.</p>
 
-<p>Definition at line <a class="el" href="_outports_processor_8java_source.html#l00029">29</a> of file <a class="el" href="_outports_processor_8java_source.html">OutportsProcessor.java</a>.</p>
+<p>Definition at line <a class="el" href="_outports_processor_8java_source.html#l00037">37</a> of file <a class="el" href="_outports_processor_8java_source.html">OutportsProcessor.java</a>.</p>
 
 </div>
 </div>
@@ -99,9 +107,9 @@ ProtoObject &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_outports_processor_8java_source.html#l00013">13</a> of file <a class="el" href="_outports_processor_8java_source.html">OutportsProcessor.java</a>.</p>
+<p>Definition at line <a class="el" href="_outports_processor_8java_source.html#l00018">18</a> of file <a class="el" href="_outports_processor_8java_source.html">OutportsProcessor.java</a>.</p>
 
-<p>References <a class="el" href="_port_processor_8java_source.html#l00019">PortProcessor.init()</a>, <a class="el" href="_port_processor_8java_source.html#l00024">PortProcessor.process()</a>, and <a class="el" href="_system_layouter_8java_source.html#l00027">SystemLayouter.startWithOutports()</a>.</p>
+<p>References <a class="el" href="_port_processor_8java_source.html#l00024">PortProcessor.init()</a>, <a class="el" href="_port_processor_8java_source.html#l00029">PortProcessor.process()</a>, and <a class="el" href="_system_layouter_8java_source.html#l00045">SystemLayouter.startWithOutports()</a>.</p>
 
 </div>
 </div>
@@ -123,7 +131,7 @@ ProtoObject &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el
 
 <p>Reimplemented from <a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_port_processor.html#acc874efb591eae215740a45a0c771acf">PortProcessor</a>.</p>
 
-<p>Definition at line <a class="el" href="_outports_processor_8java_source.html#l00023">23</a> of file <a class="el" href="_outports_processor_8java_source.html">OutportsProcessor.java</a>.</p>
+<p>Definition at line <a class="el" href="_outports_processor_8java_source.html#l00028">28</a> of file <a class="el" href="_outports_processor_8java_source.html">OutportsProcessor.java</a>.</p>
 
 </div>
 </div>
@@ -131,7 +139,7 @@ ProtoObject &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el
 <li>src/se/kth/md/simulinkExchange/modelConversion/simulink/preprocessing/<a class="el" href="_outports_processor_8java_source.html">OutportsProcessor.java</a></li>
 </ul>
 </div>
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Fri Apr 23 11:21:52 2010 for modelConversion by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Fri Apr 23 13:58:30 2010 for modelConversion by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

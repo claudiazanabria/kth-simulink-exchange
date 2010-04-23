@@ -10,6 +10,11 @@ import Simulink.Port;
 import Simulink.ProtoObject;
 import Simulink.System;
 
+/**
+ * Common functionality used by InportsProcessor and OutportsProcessor
+ * @author Alex Schenkman
+ *
+ */
 public abstract class PortProcessor {
 
 	ArrayList<ProtoObject> list = new ArrayList<ProtoObject>();
@@ -41,7 +46,12 @@ public abstract class PortProcessor {
 			port.setPosition(position);
 		}
 	}
-	
+
+	/**
+	 * To avoid problems with ports having the same, which is possible in EAST-ADL,
+	 * add a suffix (_In or _Out) to the port name.
+	 * @param port
+	 */
 	protected <P extends Port> void computeInstanceName(Port port) {
 		String parentName = this.getParentName( port );
 		this.addTypeSuffixIfNeeded( port );

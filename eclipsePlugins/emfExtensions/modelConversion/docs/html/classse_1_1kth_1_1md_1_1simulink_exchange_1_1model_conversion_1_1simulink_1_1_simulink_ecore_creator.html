@@ -28,7 +28,10 @@
   </div>
 </div>
 <div class="contents">
-<h1>SimulinkEcoreCreator Class Reference</h1><!-- doxytag: class="se::kth::md::simulinkExchange::modelConversion::simulink::SimulinkEcoreCreator" --><div class="dynheader">
+<h1>SimulinkEcoreCreator Class Reference</h1><!-- doxytag: class="se::kth::md::simulinkExchange::modelConversion::simulink::SimulinkEcoreCreator" -->
+<p>This is a convenience class to easily create ecore models.  
+<a href="#_details">More...</a></p>
+<div class="dynheader">
 Collaboration diagram for SimulinkEcoreCreator:</div>
 <div class="dynsection">
 <div class="center"><img src="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator__coll__graph.png" border="0" usemap="#_simulink_ecore_creator_coll__map" alt="Collaboration graph"/></div>
@@ -38,36 +41,56 @@ Collaboration diagram for SimulinkEcoreCreator:</div>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr><td colspan="2"><h2>Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a697a2368d6c7d15e40e8dba0541ad07e">SimulinkEcoreCreator</a> (SimulinkFactory aFactory)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">A convenience class to easily create ecore models.  <a href="#a697a2368d6c7d15e40e8dba0541ad07e"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">Model&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a996999981200105640f59344a8ec92a4">newModel</a> (String modelName)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Creates a model, the top element in the metamodel.  <a href="#a996999981200105640f59344a8ec92a4"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">Model&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a75cd5d2f46a0608ace1f94ecff997ffb">getTopElement</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">System&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a344382d7fb5e2c9acf32d99732ca7c2a">addRootSystem</a> (String name)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">A System is obtained and treated as the root for this model.  <a href="#a344382d7fb5e2c9acf32d99732ca7c2a"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">System&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a236e9935adf21bb9c8c58db68b9ee134">findSystem</a> (String name)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">SystemReference&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#ac131e7f10144fd6756fff6dfc59f3d08">addSystem</a> (<a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_property_list.html">PropertyList</a> pList)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Adds a new instance of a system to the model, in the right place.  <a href="#ac131e7f10144fd6756fff6dfc59f3d08"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">System&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a9e55308320d69ce35d1665a45403187a">addSystem</a> (String name, System parent, String instanceName)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">System&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a3887a763f3f6974a6511bae34558920f">addSystem</a> (String name, System parent)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">Inport&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a5b84097acefbe081ec05bce79c23481c">addInPort</a> (String name, System parent)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Adds an Inport to the given system.  <a href="#a5b84097acefbe081ec05bce79c23481c"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">Outport&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a7030c7c21f9d413900a8b0c06a98542b">addOutPort</a> (String name, System parent)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">Line&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a99b98970386529d449abf6444ac8c2f4">addLineBetween</a> (String name, System source, System destination, System parent)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">Line&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#af9bbcd55d1f92f7995118ffe3151c2a7">addLine</a> (String name, Port source, Port destination, System parent)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Adds an Outport to the given system.  <a href="#a7030c7c21f9d413900a8b0c06a98542b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">Line&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#adc2a16e6588bc789db11a9525cf4e231">addLineBetween</a> (String lineName, System source, System destination, System parent)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Adds a line between the first outport of source and the first inport of destination.  <a href="#adc2a16e6588bc789db11a9525cf4e231"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">Line&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a7b3ab54d71fd5a9c4b523d83f1dfde1e">addLine</a> (String lineName, Port source, Port destination, System parent)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Adds a line between two ports.  <a href="#a7b3ab54d71fd5a9c4b523d83f1dfde1e"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a33f4c2cc804110992dcdc2d5fb3ae992">addLines</a> (ArrayList&lt; <a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_line_info.html">LineInfo</a> &gt; lines)  throws PortNotFoundException </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Adds all lines contained in lines.  <a href="#a33f4c2cc804110992dcdc2d5fb3ae992"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">System&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a57ae1bbe4e98771f386b40a899ad2377">findSystem</a> (UUID uuid)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">SystemReference&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#ab161a35d1989b984e4ca40fb95fa8f40">findSystemReference</a> (UUID uuid)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">Port&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a2081e4edce7114c7d83a3c38846af3a9">findPort</a> (UUID uuid)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">Line&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a4f8aadd709d0e2386b1a041a42bcafe9">findLine</a> (UUID uuid)</td></tr>
 <tr><td colspan="2"><h2>Static Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static Port&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a9fc6e142cfcc7a9b309d6b2680ddb369">findPortWithin</a> (String portName, System aSystem)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Find a given port within a system, and its first level children.  <a href="#a9fc6e142cfcc7a9b309d6b2680ddb369"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static Outport&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#ab7fa2e65efc054f189dd17196ffe4124">findOutportWithin</a> (String portName, System aSystem)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">TODO: Should this be private? Is MATLAB using this one directly?  <a href="#ab7fa2e65efc054f189dd17196ffe4124"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static Inport&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#acf5d746f8215ef5f63872cfca66165ea">findInportWithin</a> (String portName, System aSystem)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">TODO: Should this be private? Is MATLAB using this one directly?  <a href="#acf5d746f8215ef5f63872cfca66165ea"></a><br/></td></tr>
 <tr><td colspan="2"><h2>Protected Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">SimulinkFactory&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a8dfc0c34126860427ca9650d7b0206a1">factory</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">The factory for the simulink metamodel.  <a href="#a8dfc0c34126860427ca9650d7b0206a1"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">Model&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#af75153a4f36a8e81cfefe87f1d0e158f">theModel</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">The top element.  <a href="#af75153a4f36a8e81cfefe87f1d0e158f"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">HashMap&lt; String, System &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#aca0338b7f055340a786d9655c2259bbe">systemRepository</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Keeps a reference to all systems created by this class.  <a href="#aca0338b7f055340a786d9655c2259bbe"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">HashMap&lt; UUID, ProtoObject &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a3df36d0333188f226fbefa1c0fbf9842">repository</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Keeps a reference to all elements created by this class.  <a href="#a3df36d0333188f226fbefa1c0fbf9842"></a><br/></td></tr>
 <tr><td colspan="2"><h2>Private Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#ae019b0e33015ebc0d192cf76387947b3">setUUIDAndAddToRepository</a> (ProtoObject object)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">This class keeps track of all elements it has created, with a UUID.  <a href="#ae019b0e33015ebc0d192cf76387947b3"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">System&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a330f57f5a9e1a18cfa4e90d4047d72a2">obtainSystem</a> (String name)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">If the system is not already in the systemRepository, it will be created.  <a href="#a330f57f5a9e1a18cfa4e90d4047d72a2"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">System&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#ab860d782a2c39a13c1854b5a08f6e165">newSystem</a> (String name)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Creates a new system and ads it to the systemRepository.  <a href="#ab860d782a2c39a13c1854b5a08f6e165"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">SystemReference&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a77ef8c7281563201ccdcbcb5af383262">addSystemInstance</a> (String name, System parent, String instanceName)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Adds a new SystemReference to this model, with all the appropriate links.  <a href="#a77ef8c7281563201ccdcbcb5af383262"></a><br/></td></tr>
 <tr><td colspan="2"><h2>Static Private Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static EList&lt; System &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a8b4718cadd173128024b53afe7c85c75">createSystemListWithParentAndFirstLevelChldren</a> (System aSystem)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static EList&lt; System &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a8e3b57934b7384b5421cd0f09802bc8b">getAllTargets</a> (EList&lt; SystemReference &gt; childrenList)</td></tr>
@@ -76,9 +99,11 @@ Collaboration diagram for SimulinkEcoreCreator:</div>
 <tr><td class="memItemLeft" align="right" valign="top">static&lt; IOPortextendsPort &gt; IOPort&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a5daae5d0a1216681193dea105475d8c7">findPortInList</a> (String portName, EList&lt; IOPort &gt; ports)</td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
-<dl class="author"><dt><b>Author:</b></dt><dd>alesch </dd></dl>
+<p>This is a convenience class to easily create ecore models. </p>
+<p>It is mainly used from MATLAB, but it is useful if you want to build models programmatically for example, for testing purposes. This class keeps track of all elements it has created, with a UUID. TODO: Should it be renamed to EcoreFactory maybe? </p>
+<dl class="author"><dt><b>Author:</b></dt><dd>Alex Schenkman </dd></dl>
 
-<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00027">27</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
+<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00031">31</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
 <hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a697a2368d6c7d15e40e8dba0541ad07e"></a><!-- doxytag: member="se::kth::md::simulinkExchange::modelConversion::simulink::SimulinkEcoreCreator::SimulinkEcoreCreator" ref="a697a2368d6c7d15e40e8dba0541ad07e" args="(SimulinkFactory aFactory)" -->
 <div class="memitem">
@@ -96,9 +121,17 @@ Collaboration diagram for SimulinkEcoreCreator:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00034">34</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
+<p>A convenience class to easily create ecore models. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>aFactory</em>&nbsp;</td><td>This can be obtained from a ModelManager. </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>References <a class="el" href="_simulink_ecore_creator_8java_source.html#l00029">SimulinkEcoreCreator.factory</a>, <a class="el" href="_simulink_ecore_creator_8java_source.html#l00032">SimulinkEcoreCreator.repository</a>, and <a class="el" href="_simulink_ecore_creator_8java_source.html#l00031">SimulinkEcoreCreator.systemRepository</a>.</p>
+<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00042">42</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
+
+<p>References <a class="el" href="_simulink_ecore_creator_8java_source.html#l00033">SimulinkEcoreCreator.factory</a>, <a class="el" href="_simulink_ecore_creator_8java_source.html#l00036">SimulinkEcoreCreator.repository</a>, and <a class="el" href="_simulink_ecore_creator_8java_source.html#l00035">SimulinkEcoreCreator.systemRepository</a>.</p>
 
 </div>
 </div>
@@ -128,15 +161,25 @@ Collaboration diagram for SimulinkEcoreCreator:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00203">203</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
+<p>Adds an Inport to the given system. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>name</em>&nbsp;</td><td>of the port. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>parent</em>&nbsp;</td><td>the system where this port should be added. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>the newly created port. </dd></dl>
 
-<p>References <a class="el" href="_simulink_ecore_creator_8java_source.html#l00029">SimulinkEcoreCreator.factory</a>, and <a class="el" href="_simulink_ecore_creator_8java_source.html#l00049">SimulinkEcoreCreator.setUUIDAndAddToRepository()</a>.</p>
+<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00274">274</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
 
-<p>Referenced by <a class="el" href="_simulink_demo_model_creator_8java_source.html#l00063">SimulinkDemoModelCreator.createF2Subsystems()</a>, <a class="el" href="_simulink_demo_model_creator_8java_source.html#l00057">SimulinkDemoModelCreator.createF2System()</a>, <a class="el" href="_simulink_demo_model_creator_8java_source.html#l00074">SimulinkDemoModelCreator.createF3System()</a>, <a class="el" href="_simulink_ecore_creator_test_8java_source.html#l00149">SimulinkEcoreCreatorTest.testAddLines()</a>, <a class="el" href="_simulink_ecore_creator_test_8java_source.html#l00116">SimulinkEcoreCreatorTest.testLines()</a>, and <a class="el" href="_simulink_ecore_creator_test_8java_source.html#l00101">SimulinkEcoreCreatorTest.testPorts()</a>.</p>
+<p>References <a class="el" href="_simulink_ecore_creator_8java_source.html#l00033">SimulinkEcoreCreator.factory</a>, and <a class="el" href="_simulink_ecore_creator_8java_source.html#l00065">SimulinkEcoreCreator.setUUIDAndAddToRepository()</a>.</p>
+
+<p>Referenced by <a class="el" href="_simulink_demo_model_creator_8java_source.html#l00069">SimulinkDemoModelCreator.createF2Subsystems()</a>, <a class="el" href="_simulink_demo_model_creator_8java_source.html#l00063">SimulinkDemoModelCreator.createF2System()</a>, <a class="el" href="_simulink_demo_model_creator_8java_source.html#l00080">SimulinkDemoModelCreator.createF3System()</a>, <a class="el" href="_simulink_ecore_creator_test_8java_source.html#l00154">SimulinkEcoreCreatorTest.testAddLines()</a>, <a class="el" href="_simulink_ecore_creator_test_8java_source.html#l00121">SimulinkEcoreCreatorTest.testLines()</a>, and <a class="el" href="_simulink_ecore_creator_test_8java_source.html#l00106">SimulinkEcoreCreatorTest.testPorts()</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="af9bbcd55d1f92f7995118ffe3151c2a7"></a><!-- doxytag: member="se::kth::md::simulinkExchange::modelConversion::simulink::SimulinkEcoreCreator::addLine" ref="af9bbcd55d1f92f7995118ffe3151c2a7" args="(String name, Port source, Port destination, System parent)" -->
+<a class="anchor" id="a7b3ab54d71fd5a9c4b523d83f1dfde1e"></a><!-- doxytag: member="se::kth::md::simulinkExchange::modelConversion::simulink::SimulinkEcoreCreator::addLine" ref="a7b3ab54d71fd5a9c4b523d83f1dfde1e" args="(String lineName, Port source, Port destination, System parent)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -144,7 +187,7 @@ Collaboration diagram for SimulinkEcoreCreator:</div>
           <td class="memname">Line addLine </td>
           <td>(</td>
           <td class="paramtype">String&nbsp;</td>
-          <td class="paramname"> <em>name</em>, </td>
+          <td class="paramname"> <em>lineName</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -173,15 +216,28 @@ Collaboration diagram for SimulinkEcoreCreator:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00229">229</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
+<p>Adds a line between two ports. </p>
+<p>Useful for tests. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>lineName</em>&nbsp;</td><td></td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>source</em>&nbsp;</td><td></td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>destination</em>&nbsp;</td><td></td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>parent</em>&nbsp;</td><td>the system this line belongs to. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>the newly created line. </dd></dl>
 
-<p>References <a class="el" href="_simulink_ecore_creator_8java_source.html#l00029">SimulinkEcoreCreator.factory</a>, and <a class="el" href="_simulink_ecore_creator_8java_source.html#l00049">SimulinkEcoreCreator.setUUIDAndAddToRepository()</a>.</p>
+<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00322">322</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
 
-<p>Referenced by <a class="el" href="_simulink_ecore_creator_8java_source.html#l00222">SimulinkEcoreCreator.addLineBetween()</a>, <a class="el" href="_simulink_ecore_creator_8java_source.html#l00240">SimulinkEcoreCreator.addLines()</a>, and <a class="el" href="_simulink_ecore_creator_test_8java_source.html#l00116">SimulinkEcoreCreatorTest.testLines()</a>.</p>
+<p>References <a class="el" href="_simulink_ecore_creator_8java_source.html#l00033">SimulinkEcoreCreator.factory</a>, and <a class="el" href="_simulink_ecore_creator_8java_source.html#l00065">SimulinkEcoreCreator.setUUIDAndAddToRepository()</a>.</p>
+
+<p>Referenced by <a class="el" href="_simulink_ecore_creator_8java_source.html#l00307">SimulinkEcoreCreator.addLineBetween()</a>, <a class="el" href="_simulink_ecore_creator_8java_source.html#l00340">SimulinkEcoreCreator.addLines()</a>, and <a class="el" href="_simulink_ecore_creator_test_8java_source.html#l00121">SimulinkEcoreCreatorTest.testLines()</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a99b98970386529d449abf6444ac8c2f4"></a><!-- doxytag: member="se::kth::md::simulinkExchange::modelConversion::simulink::SimulinkEcoreCreator::addLineBetween" ref="a99b98970386529d449abf6444ac8c2f4" args="(String name, System source, System destination, System parent)" -->
+<a class="anchor" id="adc2a16e6588bc789db11a9525cf4e231"></a><!-- doxytag: member="se::kth::md::simulinkExchange::modelConversion::simulink::SimulinkEcoreCreator::addLineBetween" ref="adc2a16e6588bc789db11a9525cf4e231" args="(String lineName, System source, System destination, System parent)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -189,7 +245,7 @@ Collaboration diagram for SimulinkEcoreCreator:</div>
           <td class="memname">Line addLineBetween </td>
           <td>(</td>
           <td class="paramtype">String&nbsp;</td>
-          <td class="paramname"> <em>name</em>, </td>
+          <td class="paramname"> <em>lineName</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -218,11 +274,24 @@ Collaboration diagram for SimulinkEcoreCreator:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00222">222</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
+<p>Adds a line between the first outport of source and the first inport of destination. </p>
+<p>This is a convenience method to quickly create lines for tests. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>lineName</em>&nbsp;</td><td></td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>source</em>&nbsp;</td><td></td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>destination</em>&nbsp;</td><td></td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>parent</em>&nbsp;</td><td>the system this line belongs to. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>the newly created line. </dd></dl>
 
-<p>References <a class="el" href="_simulink_ecore_creator_8java_source.html#l00229">SimulinkEcoreCreator.addLine()</a>.</p>
+<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00307">307</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
 
-<p>Referenced by <a class="el" href="_simulink_demo_model_creator_8java_source.html#l00041">SimulinkDemoModelCreator.createLines()</a>.</p>
+<p>References <a class="el" href="_simulink_ecore_creator_8java_source.html#l00322">SimulinkEcoreCreator.addLine()</a>.</p>
+
+<p>Referenced by <a class="el" href="_simulink_demo_model_creator_8java_source.html#l00047">SimulinkDemoModelCreator.createLines()</a>.</p>
 
 </div>
 </div>
@@ -242,11 +311,26 @@ Collaboration diagram for SimulinkEcoreCreator:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00240">240</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
+<p>Adds all lines contained in lines. </p>
+<p>This is the way MATLAB adds lines to a model. See <a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_line_info.html" title="Data structure used by Simulink to summarize the information needed to create a line...">LineInfo</a> for mode information. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>lines</em>&nbsp;</td><td>a list of lines, prepared by MATLAB. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl><dt><b>Exceptions:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>PortNotFoundException</em>&nbsp;</td><td>if port not found. </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>References <a class="el" href="_simulink_ecore_creator_8java_source.html#l00229">SimulinkEcoreCreator.addLine()</a>, and <a class="el" href="_simulink_ecore_creator_8java_source.html#l00262">SimulinkEcoreCreator.findPort()</a>.</p>
+<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00340">340</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
 
-<p>Referenced by <a class="el" href="_simulink_ecore_creator_test_8java_source.html#l00149">SimulinkEcoreCreatorTest.testAddLines()</a>.</p>
+<p>References <a class="el" href="_simulink_ecore_creator_8java_source.html#l00322">SimulinkEcoreCreator.addLine()</a>, and <a class="el" href="_simulink_ecore_creator_8java_source.html#l00362">SimulinkEcoreCreator.findPort()</a>.</p>
+
+<p>Referenced by <a class="el" href="_simulink_ecore_creator_test_8java_source.html#l00154">SimulinkEcoreCreatorTest.testAddLines()</a>.</p>
 
 </div>
 </div>
@@ -275,11 +359,21 @@ Collaboration diagram for SimulinkEcoreCreator:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00213">213</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
+<p>Adds an Outport to the given system. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>name</em>&nbsp;</td><td>of the port. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>parent</em>&nbsp;</td><td>the system where this port should be added. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>the newly created port. </dd></dl>
 
-<p>References <a class="el" href="_simulink_ecore_creator_8java_source.html#l00029">SimulinkEcoreCreator.factory</a>, and <a class="el" href="_simulink_ecore_creator_8java_source.html#l00049">SimulinkEcoreCreator.setUUIDAndAddToRepository()</a>.</p>
+<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00289">289</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
 
-<p>Referenced by <a class="el" href="_simulink_demo_model_creator_8java_source.html#l00052">SimulinkDemoModelCreator.createF1System()</a>, <a class="el" href="_simulink_demo_model_creator_8java_source.html#l00063">SimulinkDemoModelCreator.createF2Subsystems()</a>, <a class="el" href="_simulink_demo_model_creator_8java_source.html#l00057">SimulinkDemoModelCreator.createF2System()</a>, <a class="el" href="_simulink_demo_model_creator_8java_source.html#l00074">SimulinkDemoModelCreator.createF3System()</a>, <a class="el" href="_simulink_ecore_creator_test_8java_source.html#l00149">SimulinkEcoreCreatorTest.testAddLines()</a>, <a class="el" href="_simulink_ecore_creator_test_8java_source.html#l00116">SimulinkEcoreCreatorTest.testLines()</a>, and <a class="el" href="_simulink_ecore_creator_test_8java_source.html#l00101">SimulinkEcoreCreatorTest.testPorts()</a>.</p>
+<p>References <a class="el" href="_simulink_ecore_creator_8java_source.html#l00033">SimulinkEcoreCreator.factory</a>, and <a class="el" href="_simulink_ecore_creator_8java_source.html#l00065">SimulinkEcoreCreator.setUUIDAndAddToRepository()</a>.</p>
+
+<p>Referenced by <a class="el" href="_simulink_demo_model_creator_8java_source.html#l00058">SimulinkDemoModelCreator.createF1System()</a>, <a class="el" href="_simulink_demo_model_creator_8java_source.html#l00069">SimulinkDemoModelCreator.createF2Subsystems()</a>, <a class="el" href="_simulink_demo_model_creator_8java_source.html#l00063">SimulinkDemoModelCreator.createF2System()</a>, <a class="el" href="_simulink_demo_model_creator_8java_source.html#l00080">SimulinkDemoModelCreator.createF3System()</a>, <a class="el" href="_simulink_ecore_creator_test_8java_source.html#l00154">SimulinkEcoreCreatorTest.testAddLines()</a>, <a class="el" href="_simulink_ecore_creator_test_8java_source.html#l00121">SimulinkEcoreCreatorTest.testLines()</a>, and <a class="el" href="_simulink_ecore_creator_test_8java_source.html#l00106">SimulinkEcoreCreatorTest.testPorts()</a>.</p>
 
 </div>
 </div>
@@ -299,11 +393,21 @@ Collaboration diagram for SimulinkEcoreCreator:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00061">61</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
+<p>A System is obtained and treated as the root for this model. </p>
+<p>Note that if a system with the same name has previously been created, it will be reused, instead of creating a new one. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>name</em>&nbsp;</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd></dd></dl>
 
-<p>References <a class="el" href="_simulink_ecore_creator_8java_source.html#l00072">SimulinkEcoreCreator.obtainSystem()</a>, <a class="el" href="_simulink_ecore_creator_8java_source.html#l00049">SimulinkEcoreCreator.setUUIDAndAddToRepository()</a>, and <a class="el" href="_simulink_ecore_creator_8java_source.html#l00030">SimulinkEcoreCreator.theModel</a>.</p>
+<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00087">87</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
 
-<p>Referenced by <a class="el" href="_simulink_demo_model_creator_8java_source.html#l00080">SimulinkDemoModelCreator.getNewModelAndNewFile()</a>, and <a class="el" href="_simulink_ecore_creator_test_8java_source.html#l00055">SimulinkEcoreCreatorTest.testRootSystem()</a>.</p>
+<p>References <a class="el" href="_simulink_ecore_creator_8java_source.html#l00099">SimulinkEcoreCreator.obtainSystem()</a>, <a class="el" href="_simulink_ecore_creator_8java_source.html#l00065">SimulinkEcoreCreator.setUUIDAndAddToRepository()</a>, and <a class="el" href="_simulink_ecore_creator_8java_source.html#l00034">SimulinkEcoreCreator.theModel</a>.</p>
+
+<p>Referenced by <a class="el" href="_simulink_demo_model_creator_8java_source.html#l00086">SimulinkDemoModelCreator.getNewModelAndNewFile()</a>, and <a class="el" href="_simulink_ecore_creator_test_8java_source.html#l00060">SimulinkEcoreCreatorTest.testRootSystem()</a>.</p>
 
 </div>
 </div>
@@ -332,9 +436,9 @@ Collaboration diagram for SimulinkEcoreCreator:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00198">198</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
+<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00263">263</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
 
-<p>References <a class="el" href="_simulink_ecore_creator_8java_source.html#l00163">SimulinkEcoreCreator.addSystem()</a>.</p>
+<p>References <a class="el" href="_simulink_ecore_creator_8java_source.html#l00223">SimulinkEcoreCreator.addSystem()</a>.</p>
 
 </div>
 </div>
@@ -369,9 +473,9 @@ Collaboration diagram for SimulinkEcoreCreator:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00189">189</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
+<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00254">254</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
 
-<p>References <a class="el" href="_simulink_ecore_creator_8java_source.html#l00172">SimulinkEcoreCreator.addSystemInstance()</a>.</p>
+<p>References <a class="el" href="_simulink_ecore_creator_8java_source.html#l00239">SimulinkEcoreCreator.addSystemInstance()</a>.</p>
 
 </div>
 </div>
@@ -391,11 +495,21 @@ Collaboration diagram for SimulinkEcoreCreator:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00163">163</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
+<p>Adds a new instance of a system to the model, in the right place. </p>
+<p>This is implemented as ModelReferences in MATLAB, but it might change to libraries. This is the preferred way of adding new systems, as it opens the possibility to exchange any given number of parameters. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>pList</em>&nbsp;</td><td>the information needed to create a system instance. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>a newly created SystemReference. </dd></dl>
 
-<p>References <a class="el" href="_simulink_ecore_creator_8java_source.html#l00172">SimulinkEcoreCreator.addSystemInstance()</a>, <a class="el" href="_property_list_8java_source.html#l00029">PropertyList.getInstanceName()</a>, <a class="el" href="_property_list_8java_source.html#l00025">PropertyList.getName()</a>, and <a class="el" href="_property_list_8java_source.html#l00033">PropertyList.getParent()</a>.</p>
+<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00223">223</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
 
-<p>Referenced by <a class="el" href="_simulink_ecore_creator_8java_source.html#l00198">SimulinkEcoreCreator.addSystem()</a>, <a class="el" href="_simulink_demo_model_creator_8java_source.html#l00052">SimulinkDemoModelCreator.createF1System()</a>, <a class="el" href="_simulink_demo_model_creator_8java_source.html#l00063">SimulinkDemoModelCreator.createF2Subsystems()</a>, <a class="el" href="_simulink_demo_model_creator_8java_source.html#l00057">SimulinkDemoModelCreator.createF2System()</a>, <a class="el" href="_simulink_demo_model_creator_8java_source.html#l00074">SimulinkDemoModelCreator.createF3System()</a>, <a class="el" href="_simulink_ecore_creator_test_8java_source.html#l00218">SimulinkEcoreCreatorTest.testAddSystemWithPList()</a>, <a class="el" href="_simulink_ecore_creator_test_8java_source.html#l00071">SimulinkEcoreCreatorTest.testChild()</a>, <a class="el" href="_simulink_ecore_creator_test_8java_source.html#l00116">SimulinkEcoreCreatorTest.testLines()</a>, <a class="el" href="_simulink_ecore_creator_test_8java_source.html#l00080">SimulinkEcoreCreatorTest.testReferences()</a>, and <a class="el" href="_simulink_ecore_creator_test_8java_source.html#l00090">SimulinkEcoreCreatorTest.testSystemContainment()</a>.</p>
+<p>References <a class="el" href="_simulink_ecore_creator_8java_source.html#l00239">SimulinkEcoreCreator.addSystemInstance()</a>, <a class="el" href="_property_list_8java_source.html#l00041">PropertyList.getInstanceName()</a>, <a class="el" href="_property_list_8java_source.html#l00037">PropertyList.getName()</a>, and <a class="el" href="_property_list_8java_source.html#l00045">PropertyList.getParent()</a>.</p>
+
+<p>Referenced by <a class="el" href="_simulink_ecore_creator_8java_source.html#l00263">SimulinkEcoreCreator.addSystem()</a>, <a class="el" href="_simulink_demo_model_creator_8java_source.html#l00058">SimulinkDemoModelCreator.createF1System()</a>, <a class="el" href="_simulink_demo_model_creator_8java_source.html#l00069">SimulinkDemoModelCreator.createF2Subsystems()</a>, <a class="el" href="_simulink_demo_model_creator_8java_source.html#l00063">SimulinkDemoModelCreator.createF2System()</a>, <a class="el" href="_simulink_demo_model_creator_8java_source.html#l00080">SimulinkDemoModelCreator.createF3System()</a>, <a class="el" href="_simulink_ecore_creator_test_8java_source.html#l00223">SimulinkEcoreCreatorTest.testAddSystemWithPList()</a>, <a class="el" href="_simulink_ecore_creator_test_8java_source.html#l00076">SimulinkEcoreCreatorTest.testChild()</a>, <a class="el" href="_simulink_ecore_creator_test_8java_source.html#l00121">SimulinkEcoreCreatorTest.testLines()</a>, <a class="el" href="_simulink_ecore_creator_test_8java_source.html#l00085">SimulinkEcoreCreatorTest.testReferences()</a>, and <a class="el" href="_simulink_ecore_creator_test_8java_source.html#l00095">SimulinkEcoreCreatorTest.testSystemContainment()</a>.</p>
 
 </div>
 </div>
@@ -430,11 +544,22 @@ Collaboration diagram for SimulinkEcoreCreator:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00172">172</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
+<p>Adds a new SystemReference to this model, with all the appropriate links. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>name</em>&nbsp;</td><td>of the system to instantiate. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>parent</em>&nbsp;</td><td>the system that contains this instance. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>instanceName</em>&nbsp;</td><td>the name this instance gets in MATLAB. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>a newly created SystemReference. </dd></dl>
 
-<p>References <a class="el" href="_simulink_ecore_creator_8java_source.html#l00029">SimulinkEcoreCreator.factory</a>, <a class="el" href="_simulink_ecore_creator_8java_source.html#l00072">SimulinkEcoreCreator.obtainSystem()</a>, and <a class="el" href="_simulink_ecore_creator_8java_source.html#l00049">SimulinkEcoreCreator.setUUIDAndAddToRepository()</a>.</p>
+<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00239">239</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
 
-<p>Referenced by <a class="el" href="_simulink_ecore_creator_8java_source.html#l00163">SimulinkEcoreCreator.addSystem()</a>.</p>
+<p>References <a class="el" href="_simulink_ecore_creator_8java_source.html#l00033">SimulinkEcoreCreator.factory</a>, <a class="el" href="_simulink_ecore_creator_8java_source.html#l00099">SimulinkEcoreCreator.obtainSystem()</a>, and <a class="el" href="_simulink_ecore_creator_8java_source.html#l00065">SimulinkEcoreCreator.setUUIDAndAddToRepository()</a>.</p>
+
+<p>Referenced by <a class="el" href="_simulink_ecore_creator_8java_source.html#l00223">SimulinkEcoreCreator.addSystem()</a>.</p>
 
 </div>
 </div>
@@ -453,12 +578,19 @@ Collaboration diagram for SimulinkEcoreCreator:</div>
       </table>
 </div>
 <div class="memdoc">
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>aSystem</em>&nbsp;</td><td>where to start the search. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>a list with aSystem and only, its first level children. </dd></dl>
 
-<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00126">126</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
+<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00178">178</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
 
-<p>References <a class="el" href="_simulink_ecore_creator_8java_source.html#l00135">SimulinkEcoreCreator.getAllTargets()</a>.</p>
+<p>References <a class="el" href="_simulink_ecore_creator_8java_source.html#l00187">SimulinkEcoreCreator.getAllTargets()</a>.</p>
 
-<p>Referenced by <a class="el" href="_simulink_ecore_creator_8java_source.html#l00115">SimulinkEcoreCreator.findInportWithin()</a>, and <a class="el" href="_simulink_ecore_creator_8java_source.html#l00104">SimulinkEcoreCreator.findOutportWithin()</a>.</p>
+<p>Referenced by <a class="el" href="_simulink_ecore_creator_8java_source.html#l00163">SimulinkEcoreCreator.findInportWithin()</a>, and <a class="el" href="_simulink_ecore_creator_8java_source.html#l00149">SimulinkEcoreCreator.findOutportWithin()</a>.</p>
 
 </div>
 </div>
@@ -487,11 +619,11 @@ Collaboration diagram for SimulinkEcoreCreator:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00148">148</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
+<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00200">200</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
 
-<p>References <a class="el" href="_simulink_ecore_creator_8java_source.html#l00152">SimulinkEcoreCreator.findPortInList()</a>.</p>
+<p>References <a class="el" href="_simulink_ecore_creator_8java_source.html#l00204">SimulinkEcoreCreator.findPortInList()</a>.</p>
 
-<p>Referenced by <a class="el" href="_simulink_ecore_creator_8java_source.html#l00115">SimulinkEcoreCreator.findInportWithin()</a>.</p>
+<p>Referenced by <a class="el" href="_simulink_ecore_creator_8java_source.html#l00163">SimulinkEcoreCreator.findInportWithin()</a>.</p>
 
 </div>
 </div>
@@ -520,11 +652,13 @@ Collaboration diagram for SimulinkEcoreCreator:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00115">115</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
+<p>TODO: Should this be private? Is MATLAB using this one directly? </p>
 
-<p>References <a class="el" href="_simulink_ecore_creator_8java_source.html#l00126">SimulinkEcoreCreator.createSystemListWithParentAndFirstLevelChldren()</a>, and <a class="el" href="_simulink_ecore_creator_8java_source.html#l00148">SimulinkEcoreCreator.findInportInSystem()</a>.</p>
+<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00163">163</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
 
-<p>Referenced by <a class="el" href="_simulink_ecore_creator_8java_source.html#l00096">SimulinkEcoreCreator.findPortWithin()</a>.</p>
+<p>References <a class="el" href="_simulink_ecore_creator_8java_source.html#l00178">SimulinkEcoreCreator.createSystemListWithParentAndFirstLevelChldren()</a>, and <a class="el" href="_simulink_ecore_creator_8java_source.html#l00200">SimulinkEcoreCreator.findInportInSystem()</a>.</p>
+
+<p>Referenced by <a class="el" href="_simulink_ecore_creator_8java_source.html#l00138">SimulinkEcoreCreator.findPortWithin()</a>.</p>
 
 </div>
 </div>
@@ -544,11 +678,11 @@ Collaboration diagram for SimulinkEcoreCreator:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00266">266</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
+<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00366">366</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
 
-<p>References <a class="el" href="_simulink_ecore_creator_8java_source.html#l00032">SimulinkEcoreCreator.repository</a>.</p>
+<p>References <a class="el" href="_simulink_ecore_creator_8java_source.html#l00036">SimulinkEcoreCreator.repository</a>.</p>
 
-<p>Referenced by <a class="el" href="_simulink_ecore_creator_test_8java_source.html#l00229">SimulinkEcoreCreatorTest.testFindInRepository()</a>.</p>
+<p>Referenced by <a class="el" href="_simulink_ecore_creator_test_8java_source.html#l00234">SimulinkEcoreCreatorTest.testFindInRepository()</a>.</p>
 
 </div>
 </div>
@@ -577,11 +711,11 @@ Collaboration diagram for SimulinkEcoreCreator:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00144">144</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
+<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00196">196</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
 
-<p>References <a class="el" href="_simulink_ecore_creator_8java_source.html#l00152">SimulinkEcoreCreator.findPortInList()</a>.</p>
+<p>References <a class="el" href="_simulink_ecore_creator_8java_source.html#l00204">SimulinkEcoreCreator.findPortInList()</a>.</p>
 
-<p>Referenced by <a class="el" href="_simulink_ecore_creator_8java_source.html#l00104">SimulinkEcoreCreator.findOutportWithin()</a>.</p>
+<p>Referenced by <a class="el" href="_simulink_ecore_creator_8java_source.html#l00149">SimulinkEcoreCreator.findOutportWithin()</a>.</p>
 
 </div>
 </div>
@@ -610,11 +744,13 @@ Collaboration diagram for SimulinkEcoreCreator:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00104">104</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
+<p>TODO: Should this be private? Is MATLAB using this one directly? </p>
 
-<p>References <a class="el" href="_simulink_ecore_creator_8java_source.html#l00126">SimulinkEcoreCreator.createSystemListWithParentAndFirstLevelChldren()</a>, and <a class="el" href="_simulink_ecore_creator_8java_source.html#l00144">SimulinkEcoreCreator.findOutportInSystem()</a>.</p>
+<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00149">149</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
 
-<p>Referenced by <a class="el" href="_simulink_ecore_creator_8java_source.html#l00096">SimulinkEcoreCreator.findPortWithin()</a>.</p>
+<p>References <a class="el" href="_simulink_ecore_creator_8java_source.html#l00178">SimulinkEcoreCreator.createSystemListWithParentAndFirstLevelChldren()</a>, and <a class="el" href="_simulink_ecore_creator_8java_source.html#l00196">SimulinkEcoreCreator.findOutportInSystem()</a>.</p>
+
+<p>Referenced by <a class="el" href="_simulink_ecore_creator_8java_source.html#l00138">SimulinkEcoreCreator.findPortWithin()</a>.</p>
 
 </div>
 </div>
@@ -634,11 +770,11 @@ Collaboration diagram for SimulinkEcoreCreator:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00262">262</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
+<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00362">362</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
 
-<p>References <a class="el" href="_simulink_ecore_creator_8java_source.html#l00032">SimulinkEcoreCreator.repository</a>.</p>
+<p>References <a class="el" href="_simulink_ecore_creator_8java_source.html#l00036">SimulinkEcoreCreator.repository</a>.</p>
 
-<p>Referenced by <a class="el" href="_simulink_ecore_creator_8java_source.html#l00240">SimulinkEcoreCreator.addLines()</a>, and <a class="el" href="_simulink_ecore_creator_test_8java_source.html#l00229">SimulinkEcoreCreatorTest.testFindInRepository()</a>.</p>
+<p>Referenced by <a class="el" href="_simulink_ecore_creator_8java_source.html#l00340">SimulinkEcoreCreator.addLines()</a>, and <a class="el" href="_simulink_ecore_creator_test_8java_source.html#l00234">SimulinkEcoreCreatorTest.testFindInRepository()</a>.</p>
 
 </div>
 </div>
@@ -667,9 +803,9 @@ Collaboration diagram for SimulinkEcoreCreator:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00152">152</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
+<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00204">204</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
 
-<p>Referenced by <a class="el" href="_simulink_ecore_creator_8java_source.html#l00148">SimulinkEcoreCreator.findInportInSystem()</a>, and <a class="el" href="_simulink_ecore_creator_8java_source.html#l00144">SimulinkEcoreCreator.findOutportInSystem()</a>.</p>
+<p>Referenced by <a class="el" href="_simulink_ecore_creator_8java_source.html#l00200">SimulinkEcoreCreator.findInportInSystem()</a>, and <a class="el" href="_simulink_ecore_creator_8java_source.html#l00196">SimulinkEcoreCreator.findOutportInSystem()</a>.</p>
 
 </div>
 </div>
@@ -698,9 +834,20 @@ Collaboration diagram for SimulinkEcoreCreator:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00096">96</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
+<p>Find a given port within a system, and its first level children. </p>
+<p>This is used by MATLAB when creating lines. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>portName</em>&nbsp;</td><td>Name of the port. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>aSystem</em>&nbsp;</td><td>Where to start looking. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>the port if found, null otherwise. </dd></dl>
 
-<p>References <a class="el" href="_simulink_ecore_creator_8java_source.html#l00115">SimulinkEcoreCreator.findInportWithin()</a>, and <a class="el" href="_simulink_ecore_creator_8java_source.html#l00104">SimulinkEcoreCreator.findOutportWithin()</a>.</p>
+<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00138">138</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
+
+<p>References <a class="el" href="_simulink_ecore_creator_8java_source.html#l00163">SimulinkEcoreCreator.findInportWithin()</a>, and <a class="el" href="_simulink_ecore_creator_8java_source.html#l00149">SimulinkEcoreCreator.findOutportWithin()</a>.</p>
 
 </div>
 </div>
@@ -720,9 +867,9 @@ Collaboration diagram for SimulinkEcoreCreator:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00254">254</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
+<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00354">354</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
 
-<p>References <a class="el" href="_simulink_ecore_creator_8java_source.html#l00032">SimulinkEcoreCreator.repository</a>.</p>
+<p>References <a class="el" href="_simulink_ecore_creator_8java_source.html#l00036">SimulinkEcoreCreator.repository</a>.</p>
 
 </div>
 </div>
@@ -741,12 +888,19 @@ Collaboration diagram for SimulinkEcoreCreator:</div>
       </table>
 </div>
 <div class="memdoc">
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>name</em>&nbsp;</td><td>Name of the system to be found. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>the found system or null if not found. </dd></dl>
 
-<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00092">92</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
+<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00127">127</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
 
-<p>References <a class="el" href="_simulink_ecore_creator_8java_source.html#l00031">SimulinkEcoreCreator.systemRepository</a>.</p>
+<p>References <a class="el" href="_simulink_ecore_creator_8java_source.html#l00035">SimulinkEcoreCreator.systemRepository</a>.</p>
 
-<p>Referenced by <a class="el" href="_simulink_demo_model_creator_8java_source.html#l00063">SimulinkDemoModelCreator.createF2Subsystems()</a>, <a class="el" href="_simulink_demo_model_creator_8java_source.html#l00041">SimulinkDemoModelCreator.createLines()</a>, <a class="el" href="_simulink_ecore_creator_8java_source.html#l00072">SimulinkEcoreCreator.obtainSystem()</a>, <a class="el" href="_simulink_ecore_creator_test_8java_source.html#l00149">SimulinkEcoreCreatorTest.testAddLines()</a>, <a class="el" href="_simulink_ecore_creator_test_8java_source.html#l00229">SimulinkEcoreCreatorTest.testFindInRepository()</a>, <a class="el" href="_simulink_ecore_creator_test_8java_source.html#l00063">SimulinkEcoreCreatorTest.testFindSystem()</a>, and <a class="el" href="_simulink_ecore_creator_test_8java_source.html#l00080">SimulinkEcoreCreatorTest.testReferences()</a>.</p>
+<p>Referenced by <a class="el" href="_simulink_demo_model_creator_8java_source.html#l00069">SimulinkDemoModelCreator.createF2Subsystems()</a>, <a class="el" href="_simulink_demo_model_creator_8java_source.html#l00047">SimulinkDemoModelCreator.createLines()</a>, <a class="el" href="_simulink_ecore_creator_8java_source.html#l00099">SimulinkEcoreCreator.obtainSystem()</a>, <a class="el" href="_simulink_ecore_creator_test_8java_source.html#l00154">SimulinkEcoreCreatorTest.testAddLines()</a>, <a class="el" href="_simulink_ecore_creator_test_8java_source.html#l00234">SimulinkEcoreCreatorTest.testFindInRepository()</a>, <a class="el" href="_simulink_ecore_creator_test_8java_source.html#l00068">SimulinkEcoreCreatorTest.testFindSystem()</a>, and <a class="el" href="_simulink_ecore_creator_test_8java_source.html#l00085">SimulinkEcoreCreatorTest.testReferences()</a>.</p>
 
 </div>
 </div>
@@ -766,11 +920,11 @@ Collaboration diagram for SimulinkEcoreCreator:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00258">258</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
+<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00358">358</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
 
-<p>References <a class="el" href="_simulink_ecore_creator_8java_source.html#l00032">SimulinkEcoreCreator.repository</a>.</p>
+<p>References <a class="el" href="_simulink_ecore_creator_8java_source.html#l00036">SimulinkEcoreCreator.repository</a>.</p>
 
-<p>Referenced by <a class="el" href="_simulink_ecore_creator_test_8java_source.html#l00218">SimulinkEcoreCreatorTest.testAddSystemWithPList()</a>.</p>
+<p>Referenced by <a class="el" href="_simulink_ecore_creator_test_8java_source.html#l00223">SimulinkEcoreCreatorTest.testAddSystemWithPList()</a>.</p>
 
 </div>
 </div>
@@ -790,9 +944,9 @@ Collaboration diagram for SimulinkEcoreCreator:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00135">135</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
+<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00187">187</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
 
-<p>Referenced by <a class="el" href="_simulink_ecore_creator_8java_source.html#l00126">SimulinkEcoreCreator.createSystemListWithParentAndFirstLevelChldren()</a>.</p>
+<p>Referenced by <a class="el" href="_simulink_ecore_creator_8java_source.html#l00178">SimulinkEcoreCreator.createSystemListWithParentAndFirstLevelChldren()</a>.</p>
 
 </div>
 </div>
@@ -810,12 +964,13 @@ Collaboration diagram for SimulinkEcoreCreator:</div>
       </table>
 </div>
 <div class="memdoc">
+<dl class="return"><dt><b>Returns:</b></dt><dd>the model element at the top of the hierarchy. </dd></dl>
 
-<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00056">56</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
+<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00075">75</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
 
-<p>References <a class="el" href="_simulink_ecore_creator_8java_source.html#l00030">SimulinkEcoreCreator.theModel</a>.</p>
+<p>References <a class="el" href="_simulink_ecore_creator_8java_source.html#l00034">SimulinkEcoreCreator.theModel</a>.</p>
 
-<p>Referenced by <a class="el" href="_simulink_demo_model_creator_8java_source.html#l00028">SimulinkDemoModelCreator.save()</a>, <a class="el" href="_simulink_ecore_creator_test_8java_source.html#l00047">SimulinkEcoreCreatorTest.testNewModel()</a>, and <a class="el" href="_simulink_ecore_creator_test_8java_source.html#l00090">SimulinkEcoreCreatorTest.testSystemContainment()</a>.</p>
+<p>Referenced by <a class="el" href="_simulink_demo_model_creator_8java_source.html#l00034">SimulinkDemoModelCreator.save()</a>, <a class="el" href="_simulink_ecore_creator_test_8java_source.html#l00052">SimulinkEcoreCreatorTest.testNewModel()</a>, and <a class="el" href="_simulink_ecore_creator_test_8java_source.html#l00095">SimulinkEcoreCreatorTest.testSystemContainment()</a>.</p>
 
 </div>
 </div>
@@ -835,11 +990,20 @@ Collaboration diagram for SimulinkEcoreCreator:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00041">41</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
+<p>Creates a model, the top element in the metamodel. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>modelName</em>&nbsp;</td><td>Name of the model. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>the newly created model, </dd></dl>
 
-<p>References <a class="el" href="_simulink_ecore_creator_8java_source.html#l00029">SimulinkEcoreCreator.factory</a>, <a class="el" href="_simulink_ecore_creator_8java_source.html#l00049">SimulinkEcoreCreator.setUUIDAndAddToRepository()</a>, and <a class="el" href="_simulink_ecore_creator_8java_source.html#l00030">SimulinkEcoreCreator.theModel</a>.</p>
+<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00053">53</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
 
-<p>Referenced by <a class="el" href="_simulink_demo_model_creator_8java_source.html#l00080">SimulinkDemoModelCreator.getNewModelAndNewFile()</a>, and <a class="el" href="_simulink_ecore_creator_test_8java_source.html#l00047">SimulinkEcoreCreatorTest.testNewModel()</a>.</p>
+<p>References <a class="el" href="_simulink_ecore_creator_8java_source.html#l00033">SimulinkEcoreCreator.factory</a>, <a class="el" href="_simulink_ecore_creator_8java_source.html#l00065">SimulinkEcoreCreator.setUUIDAndAddToRepository()</a>, and <a class="el" href="_simulink_ecore_creator_8java_source.html#l00034">SimulinkEcoreCreator.theModel</a>.</p>
+
+<p>Referenced by <a class="el" href="_simulink_demo_model_creator_8java_source.html#l00086">SimulinkDemoModelCreator.getNewModelAndNewFile()</a>, and <a class="el" href="_simulink_ecore_creator_test_8java_source.html#l00052">SimulinkEcoreCreatorTest.testNewModel()</a>.</p>
 
 </div>
 </div>
@@ -859,11 +1023,20 @@ Collaboration diagram for SimulinkEcoreCreator:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00081">81</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
+<p>Creates a new system and ads it to the systemRepository. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>name</em>&nbsp;</td><td>Name for the system to be created. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>the newly created system. </dd></dl>
 
-<p>References <a class="el" href="_simulink_ecore_creator_8java_source.html#l00029">SimulinkEcoreCreator.factory</a>, <a class="el" href="_simulink_ecore_creator_8java_source.html#l00049">SimulinkEcoreCreator.setUUIDAndAddToRepository()</a>, <a class="el" href="_simulink_ecore_creator_8java_source.html#l00031">SimulinkEcoreCreator.systemRepository</a>, and <a class="el" href="_simulink_ecore_creator_8java_source.html#l00030">SimulinkEcoreCreator.theModel</a>.</p>
+<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00113">113</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
 
-<p>Referenced by <a class="el" href="_simulink_ecore_creator_8java_source.html#l00072">SimulinkEcoreCreator.obtainSystem()</a>.</p>
+<p>References <a class="el" href="_simulink_ecore_creator_8java_source.html#l00033">SimulinkEcoreCreator.factory</a>, <a class="el" href="_simulink_ecore_creator_8java_source.html#l00065">SimulinkEcoreCreator.setUUIDAndAddToRepository()</a>, <a class="el" href="_simulink_ecore_creator_8java_source.html#l00035">SimulinkEcoreCreator.systemRepository</a>, and <a class="el" href="_simulink_ecore_creator_8java_source.html#l00034">SimulinkEcoreCreator.theModel</a>.</p>
+
+<p>Referenced by <a class="el" href="_simulink_ecore_creator_8java_source.html#l00099">SimulinkEcoreCreator.obtainSystem()</a>.</p>
 
 </div>
 </div>
@@ -883,11 +1056,14 @@ Collaboration diagram for SimulinkEcoreCreator:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00072">72</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
+<p>If the system is not already in the systemRepository, it will be created. </p>
+<p>systems are identified by its name. </p>
 
-<p>References <a class="el" href="_simulink_ecore_creator_8java_source.html#l00092">SimulinkEcoreCreator.findSystem()</a>, and <a class="el" href="_simulink_ecore_creator_8java_source.html#l00081">SimulinkEcoreCreator.newSystem()</a>.</p>
+<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00099">99</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
 
-<p>Referenced by <a class="el" href="_simulink_ecore_creator_8java_source.html#l00061">SimulinkEcoreCreator.addRootSystem()</a>, and <a class="el" href="_simulink_ecore_creator_8java_source.html#l00172">SimulinkEcoreCreator.addSystemInstance()</a>.</p>
+<p>References <a class="el" href="_simulink_ecore_creator_8java_source.html#l00127">SimulinkEcoreCreator.findSystem()</a>, and <a class="el" href="_simulink_ecore_creator_8java_source.html#l00113">SimulinkEcoreCreator.newSystem()</a>.</p>
+
+<p>Referenced by <a class="el" href="_simulink_ecore_creator_8java_source.html#l00087">SimulinkEcoreCreator.addRootSystem()</a>, and <a class="el" href="_simulink_ecore_creator_8java_source.html#l00239">SimulinkEcoreCreator.addSystemInstance()</a>.</p>
 
 </div>
 </div>
@@ -907,11 +1083,20 @@ Collaboration diagram for SimulinkEcoreCreator:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00049">49</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
+<p>This class keeps track of all elements it has created, with a UUID. </p>
+<p>This allows to easily find elements given the UUID, which is stored by Simulink as well. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>object</em>&nbsp;</td><td>A UUID will be set for this object. </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>References <a class="el" href="_simulink_ecore_creator_8java_source.html#l00032">SimulinkEcoreCreator.repository</a>.</p>
+<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00065">65</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
 
-<p>Referenced by <a class="el" href="_simulink_ecore_creator_8java_source.html#l00203">SimulinkEcoreCreator.addInPort()</a>, <a class="el" href="_simulink_ecore_creator_8java_source.html#l00229">SimulinkEcoreCreator.addLine()</a>, <a class="el" href="_simulink_ecore_creator_8java_source.html#l00213">SimulinkEcoreCreator.addOutPort()</a>, <a class="el" href="_simulink_ecore_creator_8java_source.html#l00061">SimulinkEcoreCreator.addRootSystem()</a>, <a class="el" href="_simulink_ecore_creator_8java_source.html#l00172">SimulinkEcoreCreator.addSystemInstance()</a>, <a class="el" href="_simulink_ecore_creator_8java_source.html#l00041">SimulinkEcoreCreator.newModel()</a>, and <a class="el" href="_simulink_ecore_creator_8java_source.html#l00081">SimulinkEcoreCreator.newSystem()</a>.</p>
+<p>References <a class="el" href="_simulink_ecore_creator_8java_source.html#l00036">SimulinkEcoreCreator.repository</a>.</p>
+
+<p>Referenced by <a class="el" href="_simulink_ecore_creator_8java_source.html#l00274">SimulinkEcoreCreator.addInPort()</a>, <a class="el" href="_simulink_ecore_creator_8java_source.html#l00322">SimulinkEcoreCreator.addLine()</a>, <a class="el" href="_simulink_ecore_creator_8java_source.html#l00289">SimulinkEcoreCreator.addOutPort()</a>, <a class="el" href="_simulink_ecore_creator_8java_source.html#l00087">SimulinkEcoreCreator.addRootSystem()</a>, <a class="el" href="_simulink_ecore_creator_8java_source.html#l00239">SimulinkEcoreCreator.addSystemInstance()</a>, <a class="el" href="_simulink_ecore_creator_8java_source.html#l00053">SimulinkEcoreCreator.newModel()</a>, and <a class="el" href="_simulink_ecore_creator_8java_source.html#l00113">SimulinkEcoreCreator.newSystem()</a>.</p>
 
 </div>
 </div>
@@ -927,9 +1112,11 @@ Collaboration diagram for SimulinkEcoreCreator:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00029">29</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
+<p>The factory for the simulink metamodel. </p>
 
-<p>Referenced by <a class="el" href="_simulink_ecore_creator_8java_source.html#l00203">SimulinkEcoreCreator.addInPort()</a>, <a class="el" href="_simulink_ecore_creator_8java_source.html#l00229">SimulinkEcoreCreator.addLine()</a>, <a class="el" href="_simulink_ecore_creator_8java_source.html#l00213">SimulinkEcoreCreator.addOutPort()</a>, <a class="el" href="_simulink_ecore_creator_8java_source.html#l00172">SimulinkEcoreCreator.addSystemInstance()</a>, <a class="el" href="_simulink_ecore_creator_8java_source.html#l00041">SimulinkEcoreCreator.newModel()</a>, <a class="el" href="_simulink_ecore_creator_8java_source.html#l00081">SimulinkEcoreCreator.newSystem()</a>, and <a class="el" href="_simulink_ecore_creator_8java_source.html#l00034">SimulinkEcoreCreator.SimulinkEcoreCreator()</a>.</p>
+<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00033">33</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
+
+<p>Referenced by <a class="el" href="_simulink_ecore_creator_8java_source.html#l00274">SimulinkEcoreCreator.addInPort()</a>, <a class="el" href="_simulink_ecore_creator_8java_source.html#l00322">SimulinkEcoreCreator.addLine()</a>, <a class="el" href="_simulink_ecore_creator_8java_source.html#l00289">SimulinkEcoreCreator.addOutPort()</a>, <a class="el" href="_simulink_ecore_creator_8java_source.html#l00239">SimulinkEcoreCreator.addSystemInstance()</a>, <a class="el" href="_simulink_ecore_creator_8java_source.html#l00053">SimulinkEcoreCreator.newModel()</a>, <a class="el" href="_simulink_ecore_creator_8java_source.html#l00113">SimulinkEcoreCreator.newSystem()</a>, and <a class="el" href="_simulink_ecore_creator_8java_source.html#l00042">SimulinkEcoreCreator.SimulinkEcoreCreator()</a>.</p>
 
 </div>
 </div>
@@ -944,9 +1131,11 @@ Collaboration diagram for SimulinkEcoreCreator:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00032">32</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
+<p>Keeps a reference to all elements created by this class. </p>
 
-<p>Referenced by <a class="el" href="_simulink_ecore_creator_8java_source.html#l00266">SimulinkEcoreCreator.findLine()</a>, <a class="el" href="_simulink_ecore_creator_8java_source.html#l00262">SimulinkEcoreCreator.findPort()</a>, <a class="el" href="_simulink_ecore_creator_8java_source.html#l00254">SimulinkEcoreCreator.findSystem()</a>, <a class="el" href="_simulink_ecore_creator_8java_source.html#l00258">SimulinkEcoreCreator.findSystemReference()</a>, <a class="el" href="_simulink_ecore_creator_8java_source.html#l00049">SimulinkEcoreCreator.setUUIDAndAddToRepository()</a>, and <a class="el" href="_simulink_ecore_creator_8java_source.html#l00034">SimulinkEcoreCreator.SimulinkEcoreCreator()</a>.</p>
+<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00036">36</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
+
+<p>Referenced by <a class="el" href="_simulink_ecore_creator_8java_source.html#l00366">SimulinkEcoreCreator.findLine()</a>, <a class="el" href="_simulink_ecore_creator_8java_source.html#l00362">SimulinkEcoreCreator.findPort()</a>, <a class="el" href="_simulink_ecore_creator_8java_source.html#l00354">SimulinkEcoreCreator.findSystem()</a>, <a class="el" href="_simulink_ecore_creator_8java_source.html#l00358">SimulinkEcoreCreator.findSystemReference()</a>, <a class="el" href="_simulink_ecore_creator_8java_source.html#l00065">SimulinkEcoreCreator.setUUIDAndAddToRepository()</a>, and <a class="el" href="_simulink_ecore_creator_8java_source.html#l00042">SimulinkEcoreCreator.SimulinkEcoreCreator()</a>.</p>
 
 </div>
 </div>
@@ -961,9 +1150,11 @@ Collaboration diagram for SimulinkEcoreCreator:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00031">31</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
+<p>Keeps a reference to all systems created by this class. </p>
 
-<p>Referenced by <a class="el" href="_simulink_ecore_creator_8java_source.html#l00092">SimulinkEcoreCreator.findSystem()</a>, <a class="el" href="_simulink_ecore_creator_8java_source.html#l00081">SimulinkEcoreCreator.newSystem()</a>, and <a class="el" href="_simulink_ecore_creator_8java_source.html#l00034">SimulinkEcoreCreator.SimulinkEcoreCreator()</a>.</p>
+<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00035">35</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
+
+<p>Referenced by <a class="el" href="_simulink_ecore_creator_8java_source.html#l00127">SimulinkEcoreCreator.findSystem()</a>, <a class="el" href="_simulink_ecore_creator_8java_source.html#l00113">SimulinkEcoreCreator.newSystem()</a>, and <a class="el" href="_simulink_ecore_creator_8java_source.html#l00042">SimulinkEcoreCreator.SimulinkEcoreCreator()</a>.</p>
 
 </div>
 </div>
@@ -978,9 +1169,11 @@ Collaboration diagram for SimulinkEcoreCreator:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00030">30</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
+<p>The top element. </p>
 
-<p>Referenced by <a class="el" href="_simulink_ecore_creator_8java_source.html#l00061">SimulinkEcoreCreator.addRootSystem()</a>, <a class="el" href="_simulink_ecore_creator_8java_source.html#l00056">SimulinkEcoreCreator.getTopElement()</a>, <a class="el" href="_simulink_ecore_creator_8java_source.html#l00041">SimulinkEcoreCreator.newModel()</a>, and <a class="el" href="_simulink_ecore_creator_8java_source.html#l00081">SimulinkEcoreCreator.newSystem()</a>.</p>
+<p>Definition at line <a class="el" href="_simulink_ecore_creator_8java_source.html#l00034">34</a> of file <a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a>.</p>
+
+<p>Referenced by <a class="el" href="_simulink_ecore_creator_8java_source.html#l00087">SimulinkEcoreCreator.addRootSystem()</a>, <a class="el" href="_simulink_ecore_creator_8java_source.html#l00075">SimulinkEcoreCreator.getTopElement()</a>, <a class="el" href="_simulink_ecore_creator_8java_source.html#l00053">SimulinkEcoreCreator.newModel()</a>, and <a class="el" href="_simulink_ecore_creator_8java_source.html#l00113">SimulinkEcoreCreator.newSystem()</a>.</p>
 
 </div>
 </div>
@@ -988,7 +1181,7 @@ Collaboration diagram for SimulinkEcoreCreator:</div>
 <li>src/se/kth/md/simulinkExchange/modelConversion/simulink/<a class="el" href="_simulink_ecore_creator_8java_source.html">SimulinkEcoreCreator.java</a></li>
 </ul>
 </div>
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Fri Apr 23 11:21:48 2010 for modelConversion by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Fri Apr 23 13:58:30 2010 for modelConversion by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

@@ -34,7 +34,7 @@ public class LineInfo {
 
 	/**
 	 * Method provided for Simulink, because it is not possible to
-	 * create arrays with generic <LineInfo> there.
+	 * create arrays with generics there.
 	 */
 	public static ArrayList<LineInfo> createArray() {
 		return new ArrayList<LineInfo>();

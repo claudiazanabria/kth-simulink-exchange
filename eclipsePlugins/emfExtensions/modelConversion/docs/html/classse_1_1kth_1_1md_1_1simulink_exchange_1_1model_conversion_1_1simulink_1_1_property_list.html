@@ -29,6 +29,9 @@
 </div>
 <div class="contents">
 <h1>PropertyList Class Reference</h1><!-- doxytag: class="se::kth::md::simulinkExchange::modelConversion::simulink::PropertyList" --><!-- doxytag: inherits="java::util::HashMap" -->
+<p>Data structure used to accommodate arbitrary number of parameters when creating instances of Systems, i.e.  
+<a href="#_details">More...</a></p>
+
 <p>Inherits java::util::HashMap&lt; String, Object &gt;.</p>
 <div class="dynheader">
 Collaboration diagram for PropertyList:</div>
@@ -40,14 +43,18 @@ Collaboration diagram for PropertyList:</div>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr><td colspan="2"><h2>Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_property_list.html#aa72451aa5054f4264382df379a3cbd1b">PropertyList</a> (String name, System parent, String instanceName)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">The minimal information required are the arguments of this constructor.  <a href="#aa72451aa5054f4264382df379a3cbd1b"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">String&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_property_list.html#a0cc8e3fc4543d86236287679ed5be652">getPosition</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">String&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_property_list.html#a78ee178b6a73658d65ca60da4d1e6683">getName</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">String&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_property_list.html#aad1f9a2f77fbbd56a7148f852587d9d7">getInstanceName</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">System&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_property_list.html#a9e3430363d3d7e9acbefbe02a4d79a9a">getParent</a> ()</td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
+<p>Data structure used to accommodate arbitrary number of parameters when creating instances of Systems, i.e. </p>
+<p>SystemReferences.</p>
+<dl class="author"><dt><b>Author:</b></dt><dd>Alex Schenkman </dd></dl>
 
-<p>Definition at line <a class="el" href="_property_list_8java_source.html#l00009">9</a> of file <a class="el" href="_property_list_8java_source.html">PropertyList.java</a>.</p>
+<p>Definition at line <a class="el" href="_property_list_8java_source.html#l00015">15</a> of file <a class="el" href="_property_list_8java_source.html">PropertyList.java</a>.</p>
 <hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="aa72451aa5054f4264382df379a3cbd1b"></a><!-- doxytag: member="se::kth::md::simulinkExchange::modelConversion::simulink::PropertyList::PropertyList" ref="aa72451aa5054f4264382df379a3cbd1b" args="(String name, System parent, String instanceName)" -->
 <div class="memitem">
@@ -80,7 +87,17 @@ Collaboration diagram for PropertyList:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_property_list_8java_source.html#l00011">11</a> of file <a class="el" href="_property_list_8java_source.html">PropertyList.java</a>.</p>
+<p>The minimal information required are the arguments of this constructor. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>name</em>&nbsp;</td><td>of the system to be instantiated. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>parent</em>&nbsp;</td><td>where this system belongs to. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>instanceName</em>&nbsp;</td><td>Name given in Simulink to this ModelReference. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="_property_list_8java_source.html#l00023">23</a> of file <a class="el" href="_property_list_8java_source.html">PropertyList.java</a>.</p>
 
 </div>
 </div>
@@ -100,9 +117,9 @@ Collaboration diagram for PropertyList:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_property_list_8java_source.html#l00029">29</a> of file <a class="el" href="_property_list_8java_source.html">PropertyList.java</a>.</p>
+<p>Definition at line <a class="el" href="_property_list_8java_source.html#l00041">41</a> of file <a class="el" href="_property_list_8java_source.html">PropertyList.java</a>.</p>
 
-<p>Referenced by <a class="el" href="_simulink_ecore_creator_8java_source.html#l00163">SimulinkEcoreCreator.addSystem()</a>.</p>
+<p>Referenced by <a class="el" href="_simulink_ecore_creator_8java_source.html#l00223">SimulinkEcoreCreator.addSystem()</a>.</p>
 
 </div>
 </div>
@@ -121,9 +138,9 @@ Collaboration diagram for PropertyList:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_property_list_8java_source.html#l00025">25</a> of file <a class="el" href="_property_list_8java_source.html">PropertyList.java</a>.</p>
+<p>Definition at line <a class="el" href="_property_list_8java_source.html#l00037">37</a> of file <a class="el" href="_property_list_8java_source.html">PropertyList.java</a>.</p>
 
-<p>Referenced by <a class="el" href="_simulink_ecore_creator_8java_source.html#l00163">SimulinkEcoreCreator.addSystem()</a>.</p>
+<p>Referenced by <a class="el" href="_simulink_ecore_creator_8java_source.html#l00223">SimulinkEcoreCreator.addSystem()</a>.</p>
 
 </div>
 </div>
@@ -142,9 +159,9 @@ Collaboration diagram for PropertyList:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_property_list_8java_source.html#l00033">33</a> of file <a class="el" href="_property_list_8java_source.html">PropertyList.java</a>.</p>
+<p>Definition at line <a class="el" href="_property_list_8java_source.html#l00045">45</a> of file <a class="el" href="_property_list_8java_source.html">PropertyList.java</a>.</p>
 
-<p>Referenced by <a class="el" href="_simulink_ecore_creator_8java_source.html#l00163">SimulinkEcoreCreator.addSystem()</a>.</p>
+<p>Referenced by <a class="el" href="_simulink_ecore_creator_8java_source.html#l00223">SimulinkEcoreCreator.addSystem()</a>.</p>
 
 </div>
 </div>
@@ -163,7 +180,7 @@ Collaboration diagram for PropertyList:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_property_list_8java_source.html#l00021">21</a> of file <a class="el" href="_property_list_8java_source.html">PropertyList.java</a>.</p>
+<p>Definition at line <a class="el" href="_property_list_8java_source.html#l00033">33</a> of file <a class="el" href="_property_list_8java_source.html">PropertyList.java</a>.</p>
 
 </div>
 </div>
@@ -171,7 +188,7 @@ Collaboration diagram for PropertyList:</div>
 <li>src/se/kth/md/simulinkExchange/modelConversion/simulink/<a class="el" href="_property_list_8java_source.html">PropertyList.java</a></li>
 </ul>
 </div>
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Fri Apr 23 11:21:47 2010 for modelConversion by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Fri Apr 23 13:58:30 2010 for modelConversion by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

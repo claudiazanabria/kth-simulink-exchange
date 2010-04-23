@@ -28,7 +28,10 @@
   </div>
 </div>
 <div class="contents">
-<h1>ModelProcessor Class Reference</h1><!-- doxytag: class="se::kth::md::simulinkExchange::modelConversion::simulink::preprocessing::ModelProcessor" --><div class="dynheader">
+<h1>ModelProcessor Class Reference</h1><!-- doxytag: class="se::kth::md::simulinkExchange::modelConversion::simulink::preprocessing::ModelProcessor" -->
+<p>Adds the model as the first element in the list, and lets the root system continue.  
+<a href="#_details">More...</a></p>
+<div class="dynheader">
 Collaboration diagram for ModelProcessor:</div>
 <div class="dynsection">
 <div class="center"><img src="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_model_processor__coll__graph.png" border="0" usemap="#_model_processor_coll__map" alt="Collaboration graph"/></div>
@@ -38,6 +41,7 @@ Collaboration diagram for ModelProcessor:</div>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr><td colspan="2"><h2>Static Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static ArrayList&lt; ProtoObject &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_model_processor.html#aad0f4f42df6ded565090003de846603f">doIt</a> (Model aModel)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">This is the entry point for the package.  <a href="#aad0f4f42df6ded565090003de846603f"></a><br/></td></tr>
 <tr><td colspan="2"><h2>Package Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">Model&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_model_processor.html#af75153a4f36a8e81cfefe87f1d0e158f">theModel</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">ArrayList&lt; ProtoObject &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_model_processor.html#a72029016faec83cdaf7242e09b741350">allElements</a> = new ArrayList&lt;ProtoObject&gt;()</td></tr>
@@ -46,8 +50,10 @@ Collaboration diagram for ModelProcessor:</div>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_model_processor.html#a69b6cdcf061164d181236453af62c371">computeSimulinkName</a> ()</td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
+<p>Adds the model as the first element in the list, and lets the root system continue. </p>
+<dl class="author"><dt><b>Author:</b></dt><dd>Alex Schenkman </dd></dl>
 
-<p>Definition at line <a class="el" href="_model_processor_8java_source.html#l00008">8</a> of file <a class="el" href="_model_processor_8java_source.html">ModelProcessor.java</a>.</p>
+<p>Definition at line <a class="el" href="_model_processor_8java_source.html#l00023">23</a> of file <a class="el" href="_model_processor_8java_source.html">ModelProcessor.java</a>.</p>
 <hr/><h2>Member Function Documentation</h2>
 <a class="anchor" id="a69b6cdcf061164d181236453af62c371"></a><!-- doxytag: member="se::kth::md::simulinkExchange::modelConversion::simulink::preprocessing::ModelProcessor::computeSimulinkName" ref="a69b6cdcf061164d181236453af62c371" args="()" -->
 <div class="memitem">
@@ -64,11 +70,11 @@ Collaboration diagram for ModelProcessor:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_model_processor_8java_source.html#l00031">31</a> of file <a class="el" href="_model_processor_8java_source.html">ModelProcessor.java</a>.</p>
+<p>Definition at line <a class="el" href="_model_processor_8java_source.html#l00051">51</a> of file <a class="el" href="_model_processor_8java_source.html">ModelProcessor.java</a>.</p>
 
-<p>References <a class="el" href="_model_processor_8java_source.html#l00010">ModelProcessor.theModel</a>.</p>
+<p>References <a class="el" href="_model_processor_8java_source.html#l00025">ModelProcessor.theModel</a>.</p>
 
-<p>Referenced by <a class="el" href="_model_processor_8java_source.html#l00020">ModelProcessor.process()</a>.</p>
+<p>Referenced by <a class="el" href="_model_processor_8java_source.html#l00040">ModelProcessor.process()</a>.</p>
 
 </div>
 </div>
@@ -88,9 +94,18 @@ Collaboration diagram for ModelProcessor:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_model_processor_8java_source.html#l00013">13</a> of file <a class="el" href="_model_processor_8java_source.html">ModelProcessor.java</a>.</p>
+<p>This is the entry point for the package. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>aModel</em>&nbsp;</td><td>the model to be processed (flattened and completed) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>a list with all elements, ready to be parsed by MATLAB. </dd></dl>
 
-<p>References <a class="el" href="_model_processor_8java_source.html#l00020">ModelProcessor.process()</a>, and <a class="el" href="_model_processor_8java_source.html#l00010">ModelProcessor.theModel</a>.</p>
+<p>Definition at line <a class="el" href="_model_processor_8java_source.html#l00033">33</a> of file <a class="el" href="_model_processor_8java_source.html">ModelProcessor.java</a>.</p>
+
+<p>References <a class="el" href="_model_processor_8java_source.html#l00040">ModelProcessor.process()</a>, and <a class="el" href="_model_processor_8java_source.html#l00025">ModelProcessor.theModel</a>.</p>
 
 </div>
 </div>
@@ -109,11 +124,11 @@ Collaboration diagram for ModelProcessor:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_model_processor_8java_source.html#l00020">20</a> of file <a class="el" href="_model_processor_8java_source.html">ModelProcessor.java</a>.</p>
+<p>Definition at line <a class="el" href="_model_processor_8java_source.html#l00040">40</a> of file <a class="el" href="_model_processor_8java_source.html">ModelProcessor.java</a>.</p>
 
-<p>References <a class="el" href="_model_processor_8java_source.html#l00011">ModelProcessor.allElements</a>, <a class="el" href="_model_processor_8java_source.html#l00031">ModelProcessor.computeSimulinkName()</a>, and <a class="el" href="_model_processor_8java_source.html#l00010">ModelProcessor.theModel</a>.</p>
+<p>References <a class="el" href="_model_processor_8java_source.html#l00026">ModelProcessor.allElements</a>, <a class="el" href="_model_processor_8java_source.html#l00051">ModelProcessor.computeSimulinkName()</a>, and <a class="el" href="_model_processor_8java_source.html#l00025">ModelProcessor.theModel</a>.</p>
 
-<p>Referenced by <a class="el" href="_model_processor_8java_source.html#l00013">ModelProcessor.doIt()</a>.</p>
+<p>Referenced by <a class="el" href="_model_processor_8java_source.html#l00033">ModelProcessor.doIt()</a>.</p>
 
 </div>
 </div>
@@ -129,9 +144,9 @@ Collaboration diagram for ModelProcessor:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_model_processor_8java_source.html#l00011">11</a> of file <a class="el" href="_model_processor_8java_source.html">ModelProcessor.java</a>.</p>
+<p>Definition at line <a class="el" href="_model_processor_8java_source.html#l00026">26</a> of file <a class="el" href="_model_processor_8java_source.html">ModelProcessor.java</a>.</p>
 
-<p>Referenced by <a class="el" href="_model_processor_8java_source.html#l00020">ModelProcessor.process()</a>.</p>
+<p>Referenced by <a class="el" href="_model_processor_8java_source.html#l00040">ModelProcessor.process()</a>.</p>
 
 </div>
 </div>
@@ -146,9 +161,9 @@ Collaboration diagram for ModelProcessor:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_model_processor_8java_source.html#l00010">10</a> of file <a class="el" href="_model_processor_8java_source.html">ModelProcessor.java</a>.</p>
+<p>Definition at line <a class="el" href="_model_processor_8java_source.html#l00025">25</a> of file <a class="el" href="_model_processor_8java_source.html">ModelProcessor.java</a>.</p>
 
-<p>Referenced by <a class="el" href="_model_processor_8java_source.html#l00031">ModelProcessor.computeSimulinkName()</a>, <a class="el" href="_model_processor_8java_source.html#l00013">ModelProcessor.doIt()</a>, and <a class="el" href="_model_processor_8java_source.html#l00020">ModelProcessor.process()</a>.</p>
+<p>Referenced by <a class="el" href="_model_processor_8java_source.html#l00051">ModelProcessor.computeSimulinkName()</a>, <a class="el" href="_model_processor_8java_source.html#l00033">ModelProcessor.doIt()</a>, and <a class="el" href="_model_processor_8java_source.html#l00040">ModelProcessor.process()</a>.</p>
 
 </div>
 </div>
@@ -156,7 +171,7 @@ Collaboration diagram for ModelProcessor:</div>
 <li>src/se/kth/md/simulinkExchange/modelConversion/simulink/preprocessing/<a class="el" href="_model_processor_8java_source.html">ModelProcessor.java</a></li>
 </ul>
 </div>
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Fri Apr 23 11:21:51 2010 for modelConversion by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Fri Apr 23 13:58:30 2010 for modelConversion by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

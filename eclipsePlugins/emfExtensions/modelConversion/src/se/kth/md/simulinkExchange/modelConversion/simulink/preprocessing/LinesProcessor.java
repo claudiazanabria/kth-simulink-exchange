@@ -11,6 +11,11 @@ import Simulink.ProtoObject;
 import Simulink.System;
 import Simulink.SystemReference;
 
+/**
+ * Adds lines to the list. Lines are complicated in Simulink.
+ * @author Alex Schenkman
+ *
+ */
 public class LinesProcessor {
 	
 	System theSystem;
@@ -64,7 +69,6 @@ public class LinesProcessor {
 		// Hack to circumvent EMF inheritance issue:
 		// getParent is defined for Inport and Outport, 
 		// but it cannot be called from Port.
-		// In Java, you are guilty until you prove different, =(
 		System parent = null;
 		String type = port.eClass().getName();
 		if (type.equalsIgnoreCase("Inport")) {

@@ -29,13 +29,16 @@
 </div>
 <div class="contents">
 <h1>PortProcessor Class Reference</h1><!-- doxytag: class="se::kth::md::simulinkExchange::modelConversion::simulink::preprocessing::PortProcessor" -->
+<p>Common functionality used by <a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_inports_processor.html" title="Gets the inports from a system, and adds them to the list.">InportsProcessor</a> and <a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_outports_processor.html" title="Gets the outports from a system, and adds them to the list.">OutportsProcessor</a>.  
+<a href="#_details">More...</a></p>
+
 <p>Inherited by <a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_inports_processor.html">InportsProcessor</a>, and <a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_outports_processor.html">OutportsProcessor</a>.</p>
 <div class="dynheader">
 Collaboration diagram for PortProcessor:</div>
 <div class="dynsection">
 <div class="center"><img src="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_port_processor__coll__graph.png" border="0" usemap="#_port_processor_coll__map" alt="Collaboration graph"/></div>
 <map name="_port_processor_coll__map" id="_port_processor_coll__map">
-<area shape="rect" id="node2" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_system_layouter.html" title="SystemLayouter" alt="" coords="5,5,123,35"/></map>
+<area shape="rect" id="node2" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_system_layouter.html" title="This class can layout Simulink elements within a System." alt="" coords="5,5,123,35"/></map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 
 <p><a href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_port_processor-members.html">List of all members.</a></p>
@@ -51,14 +54,17 @@ Collaboration diagram for PortProcessor:</div>
 ProtoObject &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_port_processor.html#aed5f6f891c97f363b5bbd61889a6afbd">process</a> (EList&lt; P &gt; ports)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">protected&lt; P extends Port &gt; void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_port_processor.html#a0ecbb9a0846eac4a57fe92a59c015175">processPort</a> (P port)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">protected&lt; P extends Port &gt; void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_port_processor.html#add222dca80dfa3a0020560dd4cb02f56">computeInstanceName</a> (Port port)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">To avoid problems with ports having the same, which is possible in EAST-ADL, add a suffix (_In or _Out) to the port name.  <a href="#add222dca80dfa3a0020560dd4cb02f56"></a><br/></td></tr>
 <tr><td colspan="2"><h2>Package Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">ArrayList&lt; ProtoObject &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_port_processor.html#a1ec0273328c8c08d45e1acb1e3a2bdd7">list</a> = new ArrayList&lt;ProtoObject&gt;()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">System&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_port_processor.html#a19e4eb6f1e5806076b9b01c618fd5cfd">theSystem</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_system_layouter.html">SystemLayouter</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_port_processor.html#af46b1d6fd0fa784893c08089ad01a064">layouter</a></td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
+<p>Common functionality used by <a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_inports_processor.html" title="Gets the inports from a system, and adds them to the list.">InportsProcessor</a> and <a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_outports_processor.html" title="Gets the outports from a system, and adds them to the list.">OutportsProcessor</a>. </p>
+<dl class="author"><dt><b>Author:</b></dt><dd>Alex Schenkman </dd></dl>
 
-<p>Definition at line <a class="el" href="_port_processor_8java_source.html#l00013">13</a> of file <a class="el" href="_port_processor_8java_source.html">PortProcessor.java</a>.</p>
+<p>Definition at line <a class="el" href="_port_processor_8java_source.html#l00018">18</a> of file <a class="el" href="_port_processor_8java_source.html">PortProcessor.java</a>.</p>
 <hr/><h2>Member Function Documentation</h2>
 <a class="anchor" id="a3c0dc3cb5073f68b39b13e185ecf9b28"></a><!-- doxytag: member="se::kth::md::simulinkExchange::modelConversion::simulink::preprocessing::PortProcessor::addTypeSuffixIfNeeded" ref="a3c0dc3cb5073f68b39b13e185ecf9b28" args="(Port port)" -->
 <div class="memitem">
@@ -78,7 +84,7 @@ ProtoObject &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el
 
 <p>Implemented in <a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_inports_processor.html#a19b84db5f3a653cdda082e70fd82d556">InportsProcessor</a>, and <a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_outports_processor.html#a19b84db5f3a653cdda082e70fd82d556">OutportsProcessor</a>.</p>
 
-<p>Referenced by <a class="el" href="_port_processor_8java_source.html#l00045">PortProcessor.computeInstanceName()</a>.</p>
+<p>Referenced by <a class="el" href="_port_processor_8java_source.html#l00055">PortProcessor.computeInstanceName()</a>.</p>
 
 </div>
 </div>
@@ -98,11 +104,19 @@ ProtoObject &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_port_processor_8java_source.html#l00045">45</a> of file <a class="el" href="_port_processor_8java_source.html">PortProcessor.java</a>.</p>
+<p>To avoid problems with ports having the same, which is possible in EAST-ADL, add a suffix (_In or _Out) to the port name. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>port</em>&nbsp;</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>References <a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_port_processor.html#a3c0dc3cb5073f68b39b13e185ecf9b28">PortProcessor.addTypeSuffixIfNeeded()</a>, and <a class="el" href="_port_processor_8java_source.html#l00054">PortProcessor.getParentName()</a>.</p>
+<p>Definition at line <a class="el" href="_port_processor_8java_source.html#l00055">55</a> of file <a class="el" href="_port_processor_8java_source.html">PortProcessor.java</a>.</p>
 
-<p>Referenced by <a class="el" href="_port_processor_8java_source.html#l00032">PortProcessor.processPort()</a>.</p>
+<p>References <a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_port_processor.html#a3c0dc3cb5073f68b39b13e185ecf9b28">PortProcessor.addTypeSuffixIfNeeded()</a>, and <a class="el" href="_port_processor_8java_source.html#l00064">PortProcessor.getParentName()</a>.</p>
+
+<p>Referenced by <a class="el" href="_port_processor_8java_source.html#l00037">PortProcessor.processPort()</a>.</p>
 
 </div>
 </div>
@@ -122,11 +136,11 @@ ProtoObject &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_port_processor_8java_source.html#l00037">37</a> of file <a class="el" href="_port_processor_8java_source.html">PortProcessor.java</a>.</p>
+<p>Definition at line <a class="el" href="_port_processor_8java_source.html#l00042">42</a> of file <a class="el" href="_port_processor_8java_source.html">PortProcessor.java</a>.</p>
 
-<p>References <a class="el" href="_port_processor_8java_source.html#l00017">PortProcessor.layouter</a>, and <a class="el" href="_system_layouter_8java_source.html#l00033">SystemLayouter.nextPort()</a>.</p>
+<p>References <a class="el" href="_port_processor_8java_source.html#l00022">PortProcessor.layouter</a>, and <a class="el" href="_system_layouter_8java_source.html#l00055">SystemLayouter.nextPort()</a>.</p>
 
-<p>Referenced by <a class="el" href="_port_processor_8java_source.html#l00032">PortProcessor.processPort()</a>.</p>
+<p>Referenced by <a class="el" href="_port_processor_8java_source.html#l00037">PortProcessor.processPort()</a>.</p>
 
 </div>
 </div>
@@ -148,9 +162,9 @@ ProtoObject &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el
 
 <p>Reimplemented in <a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_inports_processor.html#acc874efb591eae215740a45a0c771acf">InportsProcessor</a>, and <a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_outports_processor.html#acc874efb591eae215740a45a0c771acf">OutportsProcessor</a>.</p>
 
-<p>Definition at line <a class="el" href="_port_processor_8java_source.html#l00054">54</a> of file <a class="el" href="_port_processor_8java_source.html">PortProcessor.java</a>.</p>
+<p>Definition at line <a class="el" href="_port_processor_8java_source.html#l00064">64</a> of file <a class="el" href="_port_processor_8java_source.html">PortProcessor.java</a>.</p>
 
-<p>Referenced by <a class="el" href="_port_processor_8java_source.html#l00045">PortProcessor.computeInstanceName()</a>.</p>
+<p>Referenced by <a class="el" href="_port_processor_8java_source.html#l00055">PortProcessor.computeInstanceName()</a>.</p>
 
 </div>
 </div>
@@ -179,11 +193,11 @@ ProtoObject &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_port_processor_8java_source.html#l00019">19</a> of file <a class="el" href="_port_processor_8java_source.html">PortProcessor.java</a>.</p>
+<p>Definition at line <a class="el" href="_port_processor_8java_source.html#l00024">24</a> of file <a class="el" href="_port_processor_8java_source.html">PortProcessor.java</a>.</p>
 
-<p>References <a class="el" href="_port_processor_8java_source.html#l00016">PortProcessor.theSystem</a>.</p>
+<p>References <a class="el" href="_port_processor_8java_source.html#l00021">PortProcessor.theSystem</a>.</p>
 
-<p>Referenced by <a class="el" href="_outports_processor_8java_source.html#l00013">OutportsProcessor.doIt()</a>, and <a class="el" href="_inports_processor_8java_source.html#l00013">InportsProcessor.doIt()</a>.</p>
+<p>Referenced by <a class="el" href="_outports_processor_8java_source.html#l00018">OutportsProcessor.doIt()</a>, and <a class="el" href="_inports_processor_8java_source.html#l00018">InportsProcessor.doIt()</a>.</p>
 
 </div>
 </div>
@@ -203,11 +217,11 @@ ProtoObject &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_port_processor_8java_source.html#l00024">24</a> of file <a class="el" href="_port_processor_8java_source.html">PortProcessor.java</a>.</p>
+<p>Definition at line <a class="el" href="_port_processor_8java_source.html#l00029">29</a> of file <a class="el" href="_port_processor_8java_source.html">PortProcessor.java</a>.</p>
 
-<p>References <a class="el" href="_port_processor_8java_source.html#l00015">PortProcessor.list</a>, and <a class="el" href="_port_processor_8java_source.html#l00032">PortProcessor.processPort()</a>.</p>
+<p>References <a class="el" href="_port_processor_8java_source.html#l00020">PortProcessor.list</a>, and <a class="el" href="_port_processor_8java_source.html#l00037">PortProcessor.processPort()</a>.</p>
 
-<p>Referenced by <a class="el" href="_outports_processor_8java_source.html#l00013">OutportsProcessor.doIt()</a>, and <a class="el" href="_inports_processor_8java_source.html#l00013">InportsProcessor.doIt()</a>.</p>
+<p>Referenced by <a class="el" href="_outports_processor_8java_source.html#l00018">OutportsProcessor.doIt()</a>, and <a class="el" href="_inports_processor_8java_source.html#l00018">InportsProcessor.doIt()</a>.</p>
 
 </div>
 </div>
@@ -227,11 +241,11 @@ ProtoObject &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_port_processor_8java_source.html#l00032">32</a> of file <a class="el" href="_port_processor_8java_source.html">PortProcessor.java</a>.</p>
+<p>Definition at line <a class="el" href="_port_processor_8java_source.html#l00037">37</a> of file <a class="el" href="_port_processor_8java_source.html">PortProcessor.java</a>.</p>
 
-<p>References <a class="el" href="_port_processor_8java_source.html#l00045">PortProcessor.computeInstanceName()</a>, and <a class="el" href="_port_processor_8java_source.html#l00037">PortProcessor.computePosition()</a>.</p>
+<p>References <a class="el" href="_port_processor_8java_source.html#l00055">PortProcessor.computeInstanceName()</a>, and <a class="el" href="_port_processor_8java_source.html#l00042">PortProcessor.computePosition()</a>.</p>
 
-<p>Referenced by <a class="el" href="_port_processor_8java_source.html#l00024">PortProcessor.process()</a>.</p>
+<p>Referenced by <a class="el" href="_port_processor_8java_source.html#l00029">PortProcessor.process()</a>.</p>
 
 </div>
 </div>
@@ -247,9 +261,9 @@ ProtoObject &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_port_processor_8java_source.html#l00017">17</a> of file <a class="el" href="_port_processor_8java_source.html">PortProcessor.java</a>.</p>
+<p>Definition at line <a class="el" href="_port_processor_8java_source.html#l00022">22</a> of file <a class="el" href="_port_processor_8java_source.html">PortProcessor.java</a>.</p>
 
-<p>Referenced by <a class="el" href="_port_processor_8java_source.html#l00037">PortProcessor.computePosition()</a>.</p>
+<p>Referenced by <a class="el" href="_port_processor_8java_source.html#l00042">PortProcessor.computePosition()</a>.</p>
 
 </div>
 </div>
@@ -264,9 +278,9 @@ ProtoObject &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_port_processor_8java_source.html#l00015">15</a> of file <a class="el" href="_port_processor_8java_source.html">PortProcessor.java</a>.</p>
+<p>Definition at line <a class="el" href="_port_processor_8java_source.html#l00020">20</a> of file <a class="el" href="_port_processor_8java_source.html">PortProcessor.java</a>.</p>
 
-<p>Referenced by <a class="el" href="_port_processor_8java_source.html#l00024">PortProcessor.process()</a>.</p>
+<p>Referenced by <a class="el" href="_port_processor_8java_source.html#l00029">PortProcessor.process()</a>.</p>
 
 </div>
 </div>
@@ -281,9 +295,9 @@ ProtoObject &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_port_processor_8java_source.html#l00016">16</a> of file <a class="el" href="_port_processor_8java_source.html">PortProcessor.java</a>.</p>
+<p>Definition at line <a class="el" href="_port_processor_8java_source.html#l00021">21</a> of file <a class="el" href="_port_processor_8java_source.html">PortProcessor.java</a>.</p>
 
-<p>Referenced by <a class="el" href="_port_processor_8java_source.html#l00019">PortProcessor.init()</a>.</p>
+<p>Referenced by <a class="el" href="_port_processor_8java_source.html#l00024">PortProcessor.init()</a>.</p>
 
 </div>
 </div>
@@ -291,7 +305,7 @@ ProtoObject &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el
 <li>src/se/kth/md/simulinkExchange/modelConversion/simulink/preprocessing/<a class="el" href="_port_processor_8java_source.html">PortProcessor.java</a></li>
 </ul>
 </div>
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Fri Apr 23 11:21:53 2010 for modelConversion by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Fri Apr 23 13:58:30 2010 for modelConversion by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

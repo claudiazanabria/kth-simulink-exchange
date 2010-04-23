@@ -32,60 +32,60 @@
 <a name="l00008"></a>00008 <span class="keyword">import</span> Simulink.System;
 <a name="l00009"></a>00009 <span class="keyword">import</span> Simulink.SystemReference;
 <a name="l00010"></a>00010 
-<a name="l00011"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html">00011</a> <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html">SysRefsProcessor</a> {
-<a name="l00012"></a>00012 
-<a name="l00013"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html#a1ec0273328c8c08d45e1acb1e3a2bdd7">00013</a>         ArrayList&lt;ProtoObject&gt; <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html#a1ec0273328c8c08d45e1acb1e3a2bdd7">list</a> = <span class="keyword">new</span> ArrayList&lt;ProtoObject&gt;();
-<a name="l00014"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html#a19e4eb6f1e5806076b9b01c618fd5cfd">00014</a>         System <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html#a19e4eb6f1e5806076b9b01c618fd5cfd">theSystem</a>;
-<a name="l00015"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html#af46b1d6fd0fa784893c08089ad01a064">00015</a>         <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_system_layouter.html">SystemLayouter</a> <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html#af46b1d6fd0fa784893c08089ad01a064">layouter</a>;
-<a name="l00016"></a>00016         
-<a name="l00017"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html#aec203a646d5064351b0050efd55894ac">00017</a>         <span class="keyword">public</span> <span class="keyword">static</span> Collection&lt;? extends ProtoObject&gt; <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html#aec203a646d5064351b0050efd55894ac">doIt</a>(
-<a name="l00018"></a>00018                         System aSystem, <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_system_layouter.html">SystemLayouter</a> <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html#af46b1d6fd0fa784893c08089ad01a064">layouter</a>) {
-<a name="l00019"></a>00019 
-<a name="l00020"></a>00020                 <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html">SysRefsProcessor</a> sp = <span class="keyword">new</span> <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html">SysRefsProcessor</a>();
-<a name="l00021"></a>00021                 sp.<a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html#a19e4eb6f1e5806076b9b01c618fd5cfd">theSystem</a> = aSystem;
-<a name="l00022"></a>00022                 sp.<a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html#af46b1d6fd0fa784893c08089ad01a064">layouter</a> = layouter;
-<a name="l00023"></a>00023                 
-<a name="l00024"></a>00024                 <span class="keywordflow">return</span> sp.<a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html#af7240d1b73cdb450d8b681ad81a026f3">process</a>();
-<a name="l00025"></a>00025         }
-<a name="l00026"></a>00026 
-<a name="l00027"></a>00027 
-<a name="l00028"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html#af7240d1b73cdb450d8b681ad81a026f3">00028</a>         <span class="keyword">private</span> Collection&lt;? extends ProtoObject&gt; <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html#af7240d1b73cdb450d8b681ad81a026f3">process</a>() {
-<a name="l00029"></a>00029                 <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html#af46b1d6fd0fa784893c08089ad01a064">layouter</a>.<a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_system_layouter.html#a4125976298f9dd60d67023c8385dc28e">startWithSystems</a>();
+<a name="l00015"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html">00015</a> <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html" title="Adds a SystemReference, or subsystem, or system instance to the list.">SysRefsProcessor</a> {
+<a name="l00016"></a>00016 
+<a name="l00017"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html#a1ec0273328c8c08d45e1acb1e3a2bdd7">00017</a>         ArrayList&lt;ProtoObject&gt; <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html#a1ec0273328c8c08d45e1acb1e3a2bdd7">list</a> = <span class="keyword">new</span> ArrayList&lt;ProtoObject&gt;();
+<a name="l00018"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html#a19e4eb6f1e5806076b9b01c618fd5cfd">00018</a>         System <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html#a19e4eb6f1e5806076b9b01c618fd5cfd">theSystem</a>;
+<a name="l00019"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html#af46b1d6fd0fa784893c08089ad01a064">00019</a>         <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_system_layouter.html" title="This class can layout Simulink elements within a System.">SystemLayouter</a> <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html#af46b1d6fd0fa784893c08089ad01a064">layouter</a>;
+<a name="l00020"></a>00020         
+<a name="l00021"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html#aec203a646d5064351b0050efd55894ac">00021</a>         <span class="keyword">public</span> <span class="keyword">static</span> Collection&lt;? extends ProtoObject&gt; <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html#aec203a646d5064351b0050efd55894ac">doIt</a>(
+<a name="l00022"></a>00022                         System aSystem, <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_system_layouter.html" title="This class can layout Simulink elements within a System.">SystemLayouter</a> <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html#af46b1d6fd0fa784893c08089ad01a064">layouter</a>) {
+<a name="l00023"></a>00023 
+<a name="l00024"></a>00024                 <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html" title="Adds a SystemReference, or subsystem, or system instance to the list.">SysRefsProcessor</a> sp = <span class="keyword">new</span> <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html" title="Adds a SystemReference, or subsystem, or system instance to the list.">SysRefsProcessor</a>();
+<a name="l00025"></a>00025                 sp.<a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html#a19e4eb6f1e5806076b9b01c618fd5cfd">theSystem</a> = aSystem;
+<a name="l00026"></a>00026                 sp.<a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html#af46b1d6fd0fa784893c08089ad01a064">layouter</a> = layouter;
+<a name="l00027"></a>00027                 
+<a name="l00028"></a>00028                 <span class="keywordflow">return</span> sp.<a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html#af7240d1b73cdb450d8b681ad81a026f3">process</a>();
+<a name="l00029"></a>00029         }
 <a name="l00030"></a>00030 
-<a name="l00031"></a>00031                 <span class="keywordflow">for</span> (SystemReference sysRef : <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html#a19e4eb6f1e5806076b9b01c618fd5cfd">theSystem</a>.getChildren()) {
-<a name="l00032"></a>00032                         <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html#a9025e1c857abcbedf1f6101700c10bb5">processSystemReference</a>( sysRef );
-<a name="l00033"></a>00033                 }
-<a name="l00034"></a>00034                 <span class="keywordflow">return</span> <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html#a1ec0273328c8c08d45e1acb1e3a2bdd7">list</a>;
-<a name="l00035"></a>00035         }
-<a name="l00036"></a>00036 
-<a name="l00037"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html#a9025e1c857abcbedf1f6101700c10bb5">00037</a>         <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html#a9025e1c857abcbedf1f6101700c10bb5">processSystemReference</a>(SystemReference sysRef) {
-<a name="l00038"></a>00038                 <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html#ad0afb6ba2dd7ade588934f7383bdbe6d">computeInstanceName</a>( sysRef );
-<a name="l00039"></a>00039                 <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html#a41abcb743c590207f4250ac8f99c1382">computePosition</a>( sysRef );
-<a name="l00040"></a>00040                 System aSystem = sysRef.getTarget();
-<a name="l00041"></a>00041                 <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html#a1ec0273328c8c08d45e1acb1e3a2bdd7">list</a>.addAll( <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_system_processor.html">SystemProcessor</a>.doIt( aSystem ));
-<a name="l00042"></a>00042                 <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html#a1ec0273328c8c08d45e1acb1e3a2bdd7">list</a>.add( sysRef );
-<a name="l00043"></a>00043         }
-<a name="l00044"></a>00044 
-<a name="l00045"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html#a41abcb743c590207f4250ac8f99c1382">00045</a>         <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html#a41abcb743c590207f4250ac8f99c1382">computePosition</a>(SystemReference sysRef) {
-<a name="l00046"></a>00046                 String position = sysRef.getPosition(); 
-<a name="l00047"></a>00047                 <span class="keywordflow">if</span> ( (position==null) || (position.isEmpty()) ) {
-<a name="l00048"></a>00048                         position = <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html#af46b1d6fd0fa784893c08089ad01a064">layouter</a>.<a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_system_layouter.html#ad665a33b3960abbe30a85490658b1dca">nextSystem</a>();
-<a name="l00049"></a>00049                         sysRef.setPosition(position);
-<a name="l00050"></a>00050                 }
-<a name="l00051"></a>00051         }
-<a name="l00052"></a>00052 
-<a name="l00053"></a>00053 
-<a name="l00054"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html#ad0afb6ba2dd7ade588934f7383bdbe6d">00054</a>         <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html#ad0afb6ba2dd7ade588934f7383bdbe6d">computeInstanceName</a>(SystemReference sysRef) {
-<a name="l00055"></a>00055                 String parentName = sysRef.getParent().getSimulinkName();
-<a name="l00056"></a>00056                 String instanceName = parentName + <span class="charliteral">&#39;/&#39;</span> + sysRef.getName();
-<a name="l00057"></a>00057                 sysRef.setSimulinkName(instanceName);
-<a name="l00058"></a>00058                 <span class="keywordflow">return</span>;
-<a name="l00059"></a>00059         }
-<a name="l00060"></a>00060 
-<a name="l00061"></a>00061 
-<a name="l00062"></a>00062 }
+<a name="l00031"></a>00031 
+<a name="l00032"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html#af7240d1b73cdb450d8b681ad81a026f3">00032</a>         <span class="keyword">private</span> Collection&lt;? extends ProtoObject&gt; <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html#af7240d1b73cdb450d8b681ad81a026f3">process</a>() {
+<a name="l00033"></a>00033                 <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html#af46b1d6fd0fa784893c08089ad01a064">layouter</a>.<a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_system_layouter.html#a4125976298f9dd60d67023c8385dc28e" title="Lets the layouter know that you are done laying out inports, and want to start laying...">startWithSystems</a>();
+<a name="l00034"></a>00034 
+<a name="l00035"></a>00035                 <span class="keywordflow">for</span> (SystemReference sysRef : <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html#a19e4eb6f1e5806076b9b01c618fd5cfd">theSystem</a>.getChildren()) {
+<a name="l00036"></a>00036                         <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html#a9025e1c857abcbedf1f6101700c10bb5">processSystemReference</a>( sysRef );
+<a name="l00037"></a>00037                 }
+<a name="l00038"></a>00038                 <span class="keywordflow">return</span> <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html#a1ec0273328c8c08d45e1acb1e3a2bdd7">list</a>;
+<a name="l00039"></a>00039         }
+<a name="l00040"></a>00040 
+<a name="l00041"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html#a9025e1c857abcbedf1f6101700c10bb5">00041</a>         <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html#a9025e1c857abcbedf1f6101700c10bb5">processSystemReference</a>(SystemReference sysRef) {
+<a name="l00042"></a>00042                 <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html#ad0afb6ba2dd7ade588934f7383bdbe6d">computeInstanceName</a>( sysRef );
+<a name="l00043"></a>00043                 <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html#a41abcb743c590207f4250ac8f99c1382">computePosition</a>( sysRef );
+<a name="l00044"></a>00044                 System aSystem = sysRef.getTarget();
+<a name="l00045"></a>00045                 <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html#a1ec0273328c8c08d45e1acb1e3a2bdd7">list</a>.addAll( <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_system_processor.html" title="Adds this system to the list, then it adds the following in order: 1) all of its...">SystemProcessor</a>.doIt( aSystem ));
+<a name="l00046"></a>00046                 <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html#a1ec0273328c8c08d45e1acb1e3a2bdd7">list</a>.add( sysRef );
+<a name="l00047"></a>00047         }
+<a name="l00048"></a>00048 
+<a name="l00049"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html#a41abcb743c590207f4250ac8f99c1382">00049</a>         <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html#a41abcb743c590207f4250ac8f99c1382">computePosition</a>(SystemReference sysRef) {
+<a name="l00050"></a>00050                 String position = sysRef.getPosition(); 
+<a name="l00051"></a>00051                 <span class="keywordflow">if</span> ( (position==null) || (position.isEmpty()) ) {
+<a name="l00052"></a>00052                         position = <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html#af46b1d6fd0fa784893c08089ad01a064">layouter</a>.<a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_system_layouter.html#ad665a33b3960abbe30a85490658b1dca" title="Get the position the next system.">nextSystem</a>();
+<a name="l00053"></a>00053                         sysRef.setPosition(position);
+<a name="l00054"></a>00054                 }
+<a name="l00055"></a>00055         }
+<a name="l00056"></a>00056 
+<a name="l00057"></a>00057 
+<a name="l00058"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html#ad0afb6ba2dd7ade588934f7383bdbe6d">00058</a>         <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_sys_refs_processor.html#ad0afb6ba2dd7ade588934f7383bdbe6d">computeInstanceName</a>(SystemReference sysRef) {
+<a name="l00059"></a>00059                 String parentName = sysRef.getParent().getSimulinkName();
+<a name="l00060"></a>00060                 String instanceName = parentName + <span class="charliteral">&#39;/&#39;</span> + sysRef.getName();
+<a name="l00061"></a>00061                 sysRef.setSimulinkName(instanceName);
+<a name="l00062"></a>00062                 <span class="keywordflow">return</span>;
+<a name="l00063"></a>00063         }
+<a name="l00064"></a>00064 
+<a name="l00065"></a>00065 
+<a name="l00066"></a>00066 }
 </pre></div></div>
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Fri Apr 23 11:21:22 2010 for modelConversion by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Fri Apr 23 13:58:29 2010 for modelConversion by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

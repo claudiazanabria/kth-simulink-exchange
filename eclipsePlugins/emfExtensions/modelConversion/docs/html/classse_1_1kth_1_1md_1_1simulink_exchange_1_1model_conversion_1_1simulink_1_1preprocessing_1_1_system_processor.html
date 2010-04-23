@@ -28,7 +28,10 @@
   </div>
 </div>
 <div class="contents">
-<h1>SystemProcessor Class Reference</h1><!-- doxytag: class="se::kth::md::simulinkExchange::modelConversion::simulink::preprocessing::SystemProcessor" --><div class="dynheader">
+<h1>SystemProcessor Class Reference</h1><!-- doxytag: class="se::kth::md::simulinkExchange::modelConversion::simulink::preprocessing::SystemProcessor" -->
+<p>Adds this system to the list, then it adds the following in order: 1) all of its inports 2) all of its subsystems 3) all of its ouports 4) all of its lines.  
+<a href="#_details">More...</a></p>
+<div class="dynheader">
 Collaboration diagram for SystemProcessor:</div>
 <div class="dynsection">
 <div class="center"><img src="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_system_processor__coll__graph.png" border="0" usemap="#_system_processor_coll__map" alt="Collaboration graph"/></div>
@@ -50,8 +53,11 @@ ProtoObject &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_system_processor.html#aabd4db8a76b4db69293f799346c7a011">computeFileName</a> ()</td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
+<p>Adds this system to the list, then it adds the following in order: 1) all of its inports 2) all of its subsystems 3) all of its ouports 4) all of its lines. </p>
+<p>In this way we make sure that all references are defined before they are used. The ordering of subsystems between the ports has to do with how <a class="el" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1preprocessing_1_1_system_layouter.html" title="This class can layout Simulink elements within a System.">SystemLayouter</a> works.</p>
+<dl class="author"><dt><b>Author:</b></dt><dd>Alex Schenkman </dd></dl>
 
-<p>Definition at line <a class="el" href="_system_processor_8java_source.html#l00011">11</a> of file <a class="el" href="_system_processor_8java_source.html">SystemProcessor.java</a>.</p>
+<p>Definition at line <a class="el" href="_system_processor_8java_source.html#l00023">23</a> of file <a class="el" href="_system_processor_8java_source.html">SystemProcessor.java</a>.</p>
 <hr/><h2>Member Function Documentation</h2>
 <a class="anchor" id="aabd4db8a76b4db69293f799346c7a011"></a><!-- doxytag: member="se::kth::md::simulinkExchange::modelConversion::simulink::preprocessing::SystemProcessor::computeFileName" ref="aabd4db8a76b4db69293f799346c7a011" args="()" -->
 <div class="memitem">
@@ -68,11 +74,11 @@ ProtoObject &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_system_processor_8java_source.html#l00049">49</a> of file <a class="el" href="_system_processor_8java_source.html">SystemProcessor.java</a>.</p>
+<p>Definition at line <a class="el" href="_system_processor_8java_source.html#l00061">61</a> of file <a class="el" href="_system_processor_8java_source.html">SystemProcessor.java</a>.</p>
 
-<p>References <a class="el" href="_system_processor_8java_source.html#l00013">SystemProcessor.theSystem</a>.</p>
+<p>References <a class="el" href="_system_processor_8java_source.html#l00025">SystemProcessor.theSystem</a>.</p>
 
-<p>Referenced by <a class="el" href="_system_processor_8java_source.html#l00032">SystemProcessor.createSystem()</a>.</p>
+<p>Referenced by <a class="el" href="_system_processor_8java_source.html#l00044">SystemProcessor.createSystem()</a>.</p>
 
 </div>
 </div>
@@ -91,11 +97,11 @@ ProtoObject &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_system_processor_8java_source.html#l00045">45</a> of file <a class="el" href="_system_processor_8java_source.html">SystemProcessor.java</a>.</p>
+<p>Definition at line <a class="el" href="_system_processor_8java_source.html#l00057">57</a> of file <a class="el" href="_system_processor_8java_source.html">SystemProcessor.java</a>.</p>
 
-<p>References <a class="el" href="_system_processor_8java_source.html#l00013">SystemProcessor.theSystem</a>.</p>
+<p>References <a class="el" href="_system_processor_8java_source.html#l00025">SystemProcessor.theSystem</a>.</p>
 
-<p>Referenced by <a class="el" href="_system_processor_8java_source.html#l00032">SystemProcessor.createSystem()</a>.</p>
+<p>Referenced by <a class="el" href="_system_processor_8java_source.html#l00044">SystemProcessor.createSystem()</a>.</p>
 
 </div>
 </div>
@@ -115,11 +121,11 @@ ProtoObject &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_system_processor_8java_source.html#l00032">32</a> of file <a class="el" href="_system_processor_8java_source.html">SystemProcessor.java</a>.</p>
+<p>Definition at line <a class="el" href="_system_processor_8java_source.html#l00044">44</a> of file <a class="el" href="_system_processor_8java_source.html">SystemProcessor.java</a>.</p>
 
-<p>References <a class="el" href="_system_processor_8java_source.html#l00049">SystemProcessor.computeFileName()</a>, <a class="el" href="_system_processor_8java_source.html#l00045">SystemProcessor.computeSimulinkName()</a>, and <a class="el" href="_system_processor_8java_source.html#l00013">SystemProcessor.theSystem</a>.</p>
+<p>References <a class="el" href="_system_processor_8java_source.html#l00061">SystemProcessor.computeFileName()</a>, <a class="el" href="_system_processor_8java_source.html#l00057">SystemProcessor.computeSimulinkName()</a>, and <a class="el" href="_system_processor_8java_source.html#l00025">SystemProcessor.theSystem</a>.</p>
 
-<p>Referenced by <a class="el" href="_system_processor_8java_source.html#l00022">SystemProcessor.process()</a>.</p>
+<p>Referenced by <a class="el" href="_system_processor_8java_source.html#l00034">SystemProcessor.process()</a>.</p>
 
 </div>
 </div>
@@ -139,9 +145,9 @@ ProtoObject &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_system_processor_8java_source.html#l00016">16</a> of file <a class="el" href="_system_processor_8java_source.html">SystemProcessor.java</a>.</p>
+<p>Definition at line <a class="el" href="_system_processor_8java_source.html#l00028">28</a> of file <a class="el" href="_system_processor_8java_source.html">SystemProcessor.java</a>.</p>
 
-<p>References <a class="el" href="_system_processor_8java_source.html#l00022">SystemProcessor.process()</a>, and <a class="el" href="_system_processor_8java_source.html#l00013">SystemProcessor.theSystem</a>.</p>
+<p>References <a class="el" href="_system_processor_8java_source.html#l00034">SystemProcessor.process()</a>, and <a class="el" href="_system_processor_8java_source.html#l00025">SystemProcessor.theSystem</a>.</p>
 
 </div>
 </div>
@@ -160,11 +166,11 @@ ProtoObject &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_system_processor_8java_source.html#l00022">22</a> of file <a class="el" href="_system_processor_8java_source.html">SystemProcessor.java</a>.</p>
+<p>Definition at line <a class="el" href="_system_processor_8java_source.html#l00034">34</a> of file <a class="el" href="_system_processor_8java_source.html">SystemProcessor.java</a>.</p>
 
-<p>References <a class="el" href="_system_processor_8java_source.html#l00032">SystemProcessor.createSystem()</a>, <a class="el" href="_system_processor_8java_source.html#l00014">SystemProcessor.sysRepository</a>, and <a class="el" href="_system_processor_8java_source.html#l00013">SystemProcessor.theSystem</a>.</p>
+<p>References <a class="el" href="_system_processor_8java_source.html#l00044">SystemProcessor.createSystem()</a>, <a class="el" href="_system_processor_8java_source.html#l00026">SystemProcessor.sysRepository</a>, and <a class="el" href="_system_processor_8java_source.html#l00025">SystemProcessor.theSystem</a>.</p>
 
-<p>Referenced by <a class="el" href="_system_processor_8java_source.html#l00016">SystemProcessor.doIt()</a>.</p>
+<p>Referenced by <a class="el" href="_system_processor_8java_source.html#l00028">SystemProcessor.doIt()</a>.</p>
 
 </div>
 </div>
@@ -180,9 +186,9 @@ ProtoObject &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_system_processor_8java_source.html#l00014">14</a> of file <a class="el" href="_system_processor_8java_source.html">SystemProcessor.java</a>.</p>
+<p>Definition at line <a class="el" href="_system_processor_8java_source.html#l00026">26</a> of file <a class="el" href="_system_processor_8java_source.html">SystemProcessor.java</a>.</p>
 
-<p>Referenced by <a class="el" href="_system_processor_8java_source.html#l00022">SystemProcessor.process()</a>.</p>
+<p>Referenced by <a class="el" href="_system_processor_8java_source.html#l00034">SystemProcessor.process()</a>.</p>
 
 </div>
 </div>
@@ -197,9 +203,9 @@ ProtoObject &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_system_processor_8java_source.html#l00013">13</a> of file <a class="el" href="_system_processor_8java_source.html">SystemProcessor.java</a>.</p>
+<p>Definition at line <a class="el" href="_system_processor_8java_source.html#l00025">25</a> of file <a class="el" href="_system_processor_8java_source.html">SystemProcessor.java</a>.</p>
 
-<p>Referenced by <a class="el" href="_system_processor_8java_source.html#l00049">SystemProcessor.computeFileName()</a>, <a class="el" href="_system_processor_8java_source.html#l00045">SystemProcessor.computeSimulinkName()</a>, <a class="el" href="_system_processor_8java_source.html#l00032">SystemProcessor.createSystem()</a>, <a class="el" href="_system_processor_8java_source.html#l00016">SystemProcessor.doIt()</a>, and <a class="el" href="_system_processor_8java_source.html#l00022">SystemProcessor.process()</a>.</p>
+<p>Referenced by <a class="el" href="_system_processor_8java_source.html#l00061">SystemProcessor.computeFileName()</a>, <a class="el" href="_system_processor_8java_source.html#l00057">SystemProcessor.computeSimulinkName()</a>, <a class="el" href="_system_processor_8java_source.html#l00044">SystemProcessor.createSystem()</a>, <a class="el" href="_system_processor_8java_source.html#l00028">SystemProcessor.doIt()</a>, and <a class="el" href="_system_processor_8java_source.html#l00034">SystemProcessor.process()</a>.</p>
 
 </div>
 </div>
@@ -207,7 +213,7 @@ ProtoObject &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el
 <li>src/se/kth/md/simulinkExchange/modelConversion/simulink/preprocessing/<a class="el" href="_system_processor_8java_source.html">SystemProcessor.java</a></li>
 </ul>
 </div>
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Fri Apr 23 11:21:54 2010 for modelConversion by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Fri Apr 23 13:58:31 2010 for modelConversion by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

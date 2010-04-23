@@ -8,6 +8,10 @@ import Simulink.ProtoObject;
 import Simulink.System;
 import Simulink.SystemReference;
 
+/**
+ * Adds a SystemReference, or subsystem, or system instance to the list.
+ * @author Alex Schenkman
+ */
 public class SysRefsProcessor {
 
 	ArrayList<ProtoObject> list = new ArrayList<ProtoObject>();

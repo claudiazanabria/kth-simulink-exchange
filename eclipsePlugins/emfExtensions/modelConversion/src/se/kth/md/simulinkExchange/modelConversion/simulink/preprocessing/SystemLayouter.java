@@ -5,6 +5,16 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 */
 
+/**
+ * This class can layout Simulink elements within a System.
+ * We mean layout in the sense of position in the screen.
+ * 
+ * The layout algorithm starts from the top-left corner,
+ * addind inports, in a vertical row.
+ * Then systems are added in a horizontal row.
+ * Lastly, outpots are added in a vertical row. 
+ *
+ */
 public class SystemLayouter {
 
     final Integer distanceBetweenPorts    	= new Integer(60);
@@ -19,17 +29,29 @@ public class SystemLayouter {
     private Integer bottom  = new Integer(0);
     private Integer right   = new Integer(0);
 
+    /**
+     * Lets the layouter know that you are done laying out inports, 
+     * and want to start laying out systems
+     */
 	public void startWithSystems() {
         top    = 40;
         left   = -140;
 	}
 
+    /**
+     * Lets the layouter know that you are done laying out systems, 
+     * and want to start laying out outports
+     */
 	public void startWithOutports() {
         left = left + distanceBetweenSystmes + blockSizeHoriz;
         if (left < 0) {left = 100; }
         top = 50;
 	}
 
+	/**
+	 * Get the position the next port.
+	 * @return a suitable position string for MATLAB
+	 */
 	public String nextPort() {
         top = top + distanceBetweenPorts;
         bottom = top + portSizeVert;
@@ -38,6 +60,11 @@ public class SystemLayouter {
 		return position;
 	}
 
+	
+	/**
+	 * Get the position the next system.
+	 * @return a suitable position string for MATLAB
+	 */
 	public String nextSystem() {
         left = left + distanceBetweenSystmes + blockSizeHoriz;
         bottom = top + blockSizeVert;

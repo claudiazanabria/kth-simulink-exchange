@@ -14,7 +14,11 @@ import Simulink.ProtoObject;
 import Simulink.SimulinkPackage;
 
 
-
+/**
+ * Tests for ModelProcessor
+ * @author Alex Schenkman
+ *
+ */
 public class ModelProcessorTest {
 
 	ModelProcessor modelProcessor = new ModelProcessor();

@@ -8,6 +8,18 @@ import java.util.HashSet;
 import Simulink.ProtoObject;
 import Simulink.System;
 
+/**
+ * Adds this system to the list, then it adds the following in order:
+ * 1) all of its inports
+ * 2) all of its subsystems
+ * 3) all of its ouports
+ * 4) all of its lines
+ * 
+ * In this way we make sure that all references are defined before they are used.
+ * The ordering of subsystems between the ports has to do with how SystemLayouter works.
+ *  
+ * @author Alex Schenkman
+ */
 public class SystemProcessor {
 	
 	System theSystem;

@@ -2,6 +2,11 @@ package se.kth.md.simulinkExchange.modelConversion.exceptions;
 
 import Simulink.System;
 
+/**
+ * Exception thrown mainly by code handling lines, as finding ports within models is complicated.
+ * @author Alex Schenkman
+ *
+ */
 public class PortNotFoundException extends Exception {
 
 	System parent;

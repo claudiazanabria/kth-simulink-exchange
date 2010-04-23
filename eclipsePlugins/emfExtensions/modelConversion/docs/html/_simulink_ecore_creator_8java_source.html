@@ -44,252 +44,242 @@
 <a name="l00020"></a>00020 <span class="keyword">import</span> Simulink.System;
 <a name="l00021"></a>00021 <span class="keyword">import</span> Simulink.SystemReference;
 <a name="l00022"></a>00022 
-<a name="l00027"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html">00027</a> <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html">SimulinkEcoreCreator</a> {
-<a name="l00028"></a>00028         
-<a name="l00029"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a8dfc0c34126860427ca9650d7b0206a1">00029</a>         <span class="keyword">protected</span> SimulinkFactory <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a8dfc0c34126860427ca9650d7b0206a1">factory</a>;
-<a name="l00030"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#af75153a4f36a8e81cfefe87f1d0e158f">00030</a>         <span class="keyword">protected</span> Model <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#af75153a4f36a8e81cfefe87f1d0e158f">theModel</a>;
-<a name="l00031"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#aca0338b7f055340a786d9655c2259bbe">00031</a>         <span class="keyword">protected</span> HashMap&lt;String, System&gt; <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#aca0338b7f055340a786d9655c2259bbe">systemRepository</a>;
-<a name="l00032"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a3df36d0333188f226fbefa1c0fbf9842">00032</a>         <span class="keyword">protected</span> HashMap&lt;UUID, ProtoObject&gt; <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a3df36d0333188f226fbefa1c0fbf9842">repository</a>;
-<a name="l00033"></a>00033         
-<a name="l00034"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a697a2368d6c7d15e40e8dba0541ad07e">00034</a>         <span class="keyword">public</span> <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a697a2368d6c7d15e40e8dba0541ad07e">SimulinkEcoreCreator</a>(SimulinkFactory aFactory) {
-<a name="l00035"></a>00035                 <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a8dfc0c34126860427ca9650d7b0206a1">factory</a> = aFactory;
-<a name="l00036"></a>00036                 <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#aca0338b7f055340a786d9655c2259bbe">systemRepository</a>        = <span class="keyword">new</span> HashMap&lt;String, System&gt;();
-<a name="l00037"></a>00037                 <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a3df36d0333188f226fbefa1c0fbf9842">repository</a>                      = <span class="keyword">new</span> HashMap&lt;UUID, ProtoObject&gt;();
-<a name="l00038"></a>00038         }
-<a name="l00039"></a>00039 
-<a name="l00040"></a>00040 
-<a name="l00041"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a996999981200105640f59344a8ec92a4">00041</a>         <span class="keyword">public</span> Model <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a996999981200105640f59344a8ec92a4">newModel</a>(String modelName) {
-<a name="l00042"></a>00042                 <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#af75153a4f36a8e81cfefe87f1d0e158f">theModel</a> = <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a8dfc0c34126860427ca9650d7b0206a1">factory</a>.createModel();
-<a name="l00043"></a>00043                 <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#af75153a4f36a8e81cfefe87f1d0e158f">theModel</a>.setName( modelName );
-<a name="l00044"></a>00044                 this.<a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#ae019b0e33015ebc0d192cf76387947b3">setUUIDAndAddToRepository</a>( <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#af75153a4f36a8e81cfefe87f1d0e158f">theModel</a> );
-<a name="l00045"></a>00045                 <span class="keywordflow">return</span> <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#af75153a4f36a8e81cfefe87f1d0e158f">theModel</a>;
+<a name="l00031"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html">00031</a> <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html" title="This is a convenience class to easily create ecore models.">SimulinkEcoreCreator</a> {
+<a name="l00032"></a>00032         
+<a name="l00033"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a8dfc0c34126860427ca9650d7b0206a1">00033</a>         <span class="keyword">protected</span> SimulinkFactory <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a8dfc0c34126860427ca9650d7b0206a1" title="The factory for the simulink metamodel.">factory</a>; 
+<a name="l00034"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#af75153a4f36a8e81cfefe87f1d0e158f">00034</a>         <span class="keyword">protected</span> Model <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#af75153a4f36a8e81cfefe87f1d0e158f" title="The top element.">theModel</a>;       
+<a name="l00035"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#aca0338b7f055340a786d9655c2259bbe">00035</a>         <span class="keyword">protected</span> HashMap&lt;String, System&gt; <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#aca0338b7f055340a786d9655c2259bbe" title="Keeps a reference to all systems created by this class.">systemRepository</a>;     
+<a name="l00036"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a3df36d0333188f226fbefa1c0fbf9842">00036</a>         <span class="keyword">protected</span> HashMap&lt;UUID, ProtoObject&gt; <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a3df36d0333188f226fbefa1c0fbf9842" title="Keeps a reference to all elements created by this class.">repository</a>;        
+<a name="l00042"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a697a2368d6c7d15e40e8dba0541ad07e">00042</a>         <span class="keyword">public</span> <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a697a2368d6c7d15e40e8dba0541ad07e" title="A convenience class to easily create ecore models.">SimulinkEcoreCreator</a>(SimulinkFactory aFactory) {
+<a name="l00043"></a>00043                 <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a8dfc0c34126860427ca9650d7b0206a1" title="The factory for the simulink metamodel.">factory</a> = aFactory;
+<a name="l00044"></a>00044                 <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#aca0338b7f055340a786d9655c2259bbe" title="Keeps a reference to all systems created by this class.">systemRepository</a>        = <span class="keyword">new</span> HashMap&lt;String, System&gt;();
+<a name="l00045"></a>00045                 <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a3df36d0333188f226fbefa1c0fbf9842" title="Keeps a reference to all elements created by this class.">repository</a>                      = <span class="keyword">new</span> HashMap&lt;UUID, ProtoObject&gt;();
 <a name="l00046"></a>00046         }
 <a name="l00047"></a>00047 
-<a name="l00048"></a>00048 
-<a name="l00049"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#ae019b0e33015ebc0d192cf76387947b3">00049</a>         <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#ae019b0e33015ebc0d192cf76387947b3">setUUIDAndAddToRepository</a>(ProtoObject <span class="keywordtype">object</span>) {
-<a name="l00050"></a>00050                 UUID uuid = UUID.randomUUID();
-<a name="l00051"></a>00051                 <span class="keywordtype">object</span>.setUuid(uuid.toString());
-<a name="l00052"></a>00052                 <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a3df36d0333188f226fbefa1c0fbf9842">repository</a>.put(uuid, <span class="keywordtype">object</span>);
-<a name="l00053"></a>00053         }
-<a name="l00054"></a>00054 
-<a name="l00055"></a>00055 
-<a name="l00056"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a75cd5d2f46a0608ace1f94ecff997ffb">00056</a>         <span class="keyword">public</span> Model <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a75cd5d2f46a0608ace1f94ecff997ffb">getTopElement</a>() {
-<a name="l00057"></a>00057                 <span class="keywordflow">return</span> <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#af75153a4f36a8e81cfefe87f1d0e158f">theModel</a>;
+<a name="l00053"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a996999981200105640f59344a8ec92a4">00053</a>         <span class="keyword">public</span> Model <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a996999981200105640f59344a8ec92a4" title="Creates a model, the top element in the metamodel.">newModel</a>(String modelName) {
+<a name="l00054"></a>00054                 <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#af75153a4f36a8e81cfefe87f1d0e158f" title="The top element.">theModel</a> = <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a8dfc0c34126860427ca9650d7b0206a1" title="The factory for the simulink metamodel.">factory</a>.createModel();
+<a name="l00055"></a>00055                 <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#af75153a4f36a8e81cfefe87f1d0e158f" title="The top element.">theModel</a>.setName( modelName );
+<a name="l00056"></a>00056                 this.<a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#ae019b0e33015ebc0d192cf76387947b3" title="This class keeps track of all elements it has created, with a UUID.">setUUIDAndAddToRepository</a>( <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#af75153a4f36a8e81cfefe87f1d0e158f" title="The top element.">theModel</a> );
+<a name="l00057"></a>00057                 <span class="keywordflow">return</span> <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#af75153a4f36a8e81cfefe87f1d0e158f" title="The top element.">theModel</a>;
 <a name="l00058"></a>00058         }
 <a name="l00059"></a>00059 
-<a name="l00060"></a>00060 
-<a name="l00061"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a344382d7fb5e2c9acf32d99732ca7c2a">00061</a>         <span class="keyword">public</span> System <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a344382d7fb5e2c9acf32d99732ca7c2a">addRootSystem</a>(String name) {
-<a name="l00062"></a>00062                 System aSystem = <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a330f57f5a9e1a18cfa4e90d4047d72a2">obtainSystem</a>(name);
-<a name="l00063"></a>00063                 <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#af75153a4f36a8e81cfefe87f1d0e158f">theModel</a>.setRoot(aSystem);
-<a name="l00064"></a>00064                 this.<a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#ae019b0e33015ebc0d192cf76387947b3">setUUIDAndAddToRepository</a>( aSystem );              
-<a name="l00065"></a>00065                 <span class="keywordflow">return</span> aSystem;
-<a name="l00066"></a>00066         }
-<a name="l00067"></a>00067 
-<a name="l00068"></a>00068 
-<a name="l00069"></a>00069         <span class="comment">/*</span>
-<a name="l00070"></a>00070 <span class="comment">         * If the system is not in the repository it will be created</span>
-<a name="l00071"></a>00071 <span class="comment">         */</span>
-<a name="l00072"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a330f57f5a9e1a18cfa4e90d4047d72a2">00072</a>         <span class="keyword">private</span> System <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a330f57f5a9e1a18cfa4e90d4047d72a2">obtainSystem</a>(String name) {
-<a name="l00073"></a>00073                 System aSystem = <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a236e9935adf21bb9c8c58db68b9ee134">findSystem</a>( name );
-<a name="l00074"></a>00074                 <span class="keywordflow">if</span> ( aSystem == null ) {
-<a name="l00075"></a>00075                         aSystem = <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#ab860d782a2c39a13c1854b5a08f6e165">newSystem</a>(name);
-<a name="l00076"></a>00076                 }
-<a name="l00077"></a>00077                 <span class="keywordflow">return</span> aSystem;
-<a name="l00078"></a>00078         }
+<a name="l00065"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#ae019b0e33015ebc0d192cf76387947b3">00065</a>         <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#ae019b0e33015ebc0d192cf76387947b3" title="This class keeps track of all elements it has created, with a UUID.">setUUIDAndAddToRepository</a>(ProtoObject <span class="keywordtype">object</span>) {
+<a name="l00066"></a>00066                 UUID uuid = UUID.randomUUID();
+<a name="l00067"></a>00067                 <span class="keywordtype">object</span>.setUuid(uuid.toString());
+<a name="l00068"></a>00068                 <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a3df36d0333188f226fbefa1c0fbf9842" title="Keeps a reference to all elements created by this class.">repository</a>.put(uuid, <span class="keywordtype">object</span>);
+<a name="l00069"></a>00069         }
+<a name="l00070"></a>00070 
+<a name="l00071"></a>00071 
+<a name="l00075"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a75cd5d2f46a0608ace1f94ecff997ffb">00075</a>         <span class="keyword">public</span> Model <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a75cd5d2f46a0608ace1f94ecff997ffb">getTopElement</a>() {
+<a name="l00076"></a>00076                 <span class="keywordflow">return</span> <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#af75153a4f36a8e81cfefe87f1d0e158f" title="The top element.">theModel</a>;
+<a name="l00077"></a>00077         }
+<a name="l00078"></a>00078 
 <a name="l00079"></a>00079 
-<a name="l00080"></a>00080 
-<a name="l00081"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#ab860d782a2c39a13c1854b5a08f6e165">00081</a>         <span class="keyword">private</span> System <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#ab860d782a2c39a13c1854b5a08f6e165">newSystem</a>(String name) {
-<a name="l00082"></a>00082                 System aSystem = <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a8dfc0c34126860427ca9650d7b0206a1">factory</a>.createSystem();
-<a name="l00083"></a>00083                 aSystem.setName(name);
-<a name="l00084"></a>00084                 aSystem.setSimulinkName(name);
-<a name="l00085"></a>00085                 <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#aca0338b7f055340a786d9655c2259bbe">systemRepository</a>.put(name, aSystem);
-<a name="l00086"></a>00086                 <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#af75153a4f36a8e81cfefe87f1d0e158f">theModel</a>.getParts().add(aSystem);
-<a name="l00087"></a>00087                 this.<a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#ae019b0e33015ebc0d192cf76387947b3">setUUIDAndAddToRepository</a>( aSystem );              
-<a name="l00088"></a>00088                 <span class="keywordflow">return</span> aSystem;
-<a name="l00089"></a>00089         }
-<a name="l00090"></a>00090 
-<a name="l00091"></a>00091         
-<a name="l00092"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a236e9935adf21bb9c8c58db68b9ee134">00092</a>         <span class="keyword">public</span> System <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a236e9935adf21bb9c8c58db68b9ee134">findSystem</a>(String name) {
-<a name="l00093"></a>00093                 <span class="keywordflow">return</span> <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#aca0338b7f055340a786d9655c2259bbe">systemRepository</a>.get( name );
-<a name="l00094"></a>00094         }
-<a name="l00095"></a>00095 
-<a name="l00096"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a9fc6e142cfcc7a9b309d6b2680ddb369">00096</a>         <span class="keyword">public</span> <span class="keyword">static</span> Port <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a9fc6e142cfcc7a9b309d6b2680ddb369">findPortWithin</a>(String portName, System aSystem) {
-<a name="l00097"></a>00097                 Port port = <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#ab7fa2e65efc054f189dd17196ffe4124">findOutportWithin</a>(portName, aSystem);
-<a name="l00098"></a>00098                 <span class="keywordflow">if</span> ( port == null ) {
-<a name="l00099"></a>00099                         port = <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#acf5d746f8215ef5f63872cfca66165ea">findInportWithin</a>(portName, aSystem);
-<a name="l00100"></a>00100                 }
-<a name="l00101"></a>00101                 <span class="keywordflow">return</span> port;
-<a name="l00102"></a>00102         }
-<a name="l00103"></a>00103         
-<a name="l00104"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#ab7fa2e65efc054f189dd17196ffe4124">00104</a>         <span class="keyword">public</span> <span class="keyword">static</span> Outport <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#ab7fa2e65efc054f189dd17196ffe4124">findOutportWithin</a>(String portName, System aSystem) {
-<a name="l00105"></a>00105                 Outport port = null;
-<a name="l00106"></a>00106                 EList&lt;System&gt; targetSystems = 
-<a name="l00107"></a>00107                         <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a8b4718cadd173128024b53afe7c85c75">createSystemListWithParentAndFirstLevelChldren</a>(aSystem);
-<a name="l00108"></a>00108                 <span class="keywordflow">for</span> (System sys : targetSystems ) {
-<a name="l00109"></a>00109                                 port = <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a7294ae684405e4a3ee37b780767f434e">findOutportInSystem</a>( portName, sys );
-<a name="l00110"></a>00110                                 <span class="keywordflow">if</span> (port != null) { <span class="keywordflow">return</span> port; }
-<a name="l00111"></a>00111                 }
-<a name="l00112"></a>00112                 <span class="keywordflow">return</span> port;
-<a name="l00113"></a>00113         }
-<a name="l00114"></a>00114 
-<a name="l00115"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#acf5d746f8215ef5f63872cfca66165ea">00115</a>         <span class="keyword">public</span> <span class="keyword">static</span> Inport <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#acf5d746f8215ef5f63872cfca66165ea">findInportWithin</a>(String portName, System aSystem) {
-<a name="l00116"></a>00116                 Inport port = null;
-<a name="l00117"></a>00117                 EList&lt;System&gt; targetSystems = 
-<a name="l00118"></a>00118                         <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a8b4718cadd173128024b53afe7c85c75">createSystemListWithParentAndFirstLevelChldren</a>(aSystem);
-<a name="l00119"></a>00119                 <span class="keywordflow">for</span> (System sys : targetSystems ) {
-<a name="l00120"></a>00120                                 port = <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#af829bd66d7ba613a2299fee67695b2bc">findInportInSystem</a>( portName, sys );
-<a name="l00121"></a>00121                                 <span class="keywordflow">if</span> (port != null) { <span class="keywordflow">return</span> port; }
-<a name="l00122"></a>00122                 }
-<a name="l00123"></a>00123                 <span class="keywordflow">return</span> port;
-<a name="l00124"></a>00124         }
-<a name="l00125"></a>00125 
-<a name="l00126"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a8b4718cadd173128024b53afe7c85c75">00126</a>         <span class="keyword">private</span> <span class="keyword">static</span> EList&lt;System&gt; <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a8b4718cadd173128024b53afe7c85c75">createSystemListWithParentAndFirstLevelChldren</a>(
-<a name="l00127"></a>00127                         System aSystem) {
-<a name="l00128"></a>00128                 EList&lt;SystemReference&gt; childrenList = aSystem.getChildren();
-<a name="l00129"></a>00129                 EList&lt;System&gt; targetSystems = <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a8e3b57934b7384b5421cd0f09802bc8b">getAllTargets</a>( childrenList );
-<a name="l00130"></a>00130                 targetSystems.add(aSystem);
-<a name="l00131"></a>00131                 <span class="keywordflow">return</span> targetSystems;
-<a name="l00132"></a>00132         }
-<a name="l00133"></a>00133 
-<a name="l00134"></a>00134 
-<a name="l00135"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a8e3b57934b7384b5421cd0f09802bc8b">00135</a>         <span class="keyword">private</span> <span class="keyword">static</span> EList&lt;System&gt; <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a8e3b57934b7384b5421cd0f09802bc8b">getAllTargets</a>(EList&lt;SystemReference&gt; childrenList) {
-<a name="l00136"></a>00136                 BasicEList&lt;System&gt; result = <span class="keyword">new</span> BasicEList&lt;System&gt;( childrenList.size() );
-<a name="l00137"></a>00137                 <span class="keywordflow">for</span> (SystemReference aRef : childrenList) {
-<a name="l00138"></a>00138                         result.add( aRef.getTarget() );
-<a name="l00139"></a>00139                 }
-<a name="l00140"></a>00140                 <span class="keywordflow">return</span> result;
-<a name="l00141"></a>00141         }
-<a name="l00142"></a>00142 
-<a name="l00143"></a>00143 
-<a name="l00144"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a7294ae684405e4a3ee37b780767f434e">00144</a>         <span class="keyword">private</span> <span class="keyword">static</span> Outport <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a7294ae684405e4a3ee37b780767f434e">findOutportInSystem</a>(String portName, System aSystem) {
-<a name="l00145"></a>00145                 <span class="keywordflow">return</span> <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a5daae5d0a1216681193dea105475d8c7">findPortInList</a>( portName, aSystem.getOutports());
-<a name="l00146"></a>00146         }
-<a name="l00147"></a>00147 
-<a name="l00148"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#af829bd66d7ba613a2299fee67695b2bc">00148</a>         <span class="keyword">private</span> <span class="keyword">static</span> Inport <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#af829bd66d7ba613a2299fee67695b2bc">findInportInSystem</a>(String portName, System aSystem) {
-<a name="l00149"></a>00149                 <span class="keywordflow">return</span> <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a5daae5d0a1216681193dea105475d8c7">findPortInList</a>( portName, aSystem.getInports());
-<a name="l00150"></a>00150         }
-<a name="l00151"></a>00151         
-<a name="l00152"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a5daae5d0a1216681193dea105475d8c7">00152</a>         <span class="keyword">private</span> static &lt;IOPort extends Port&gt; IOPort <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a5daae5d0a1216681193dea105475d8c7">findPortInList</a>(String portName, 
-<a name="l00153"></a>00153                         EList&lt;IOPort&gt; ports) {
-<a name="l00154"></a>00154                 <span class="keywordflow">for</span> (IOPort aPort : ports) {
-<a name="l00155"></a>00155                         <span class="keywordflow">if</span> (aPort.getName().equalsIgnoreCase(portName)) {
-<a name="l00156"></a>00156                                 <span class="keywordflow">return</span> aPort;
-<a name="l00157"></a>00157                         }
-<a name="l00158"></a>00158                 }
-<a name="l00159"></a>00159                 <span class="keywordflow">return</span> null;
-<a name="l00160"></a>00160         }
-<a name="l00161"></a>00161 
-<a name="l00162"></a>00162         
-<a name="l00163"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#ac131e7f10144fd6756fff6dfc59f3d08">00163</a>         <span class="keyword">public</span> SystemReference <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#ac131e7f10144fd6756fff6dfc59f3d08">addSystem</a>(<a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_property_list.html">PropertyList</a> pList) {          
-<a name="l00164"></a>00164                 
-<a name="l00165"></a>00165                 String name             = pList.<a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_property_list.html#a78ee178b6a73658d65ca60da4d1e6683">getName</a>();
-<a name="l00166"></a>00166                 String instanceName = pList.<a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_property_list.html#aad1f9a2f77fbbd56a7148f852587d9d7">getInstanceName</a>();
-<a name="l00167"></a>00167                 System parent           = pList.<a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_property_list.html#a9e3430363d3d7e9acbefbe02a4d79a9a">getParent</a>();
-<a name="l00168"></a>00168                 SystemReference sysRef = <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a77ef8c7281563201ccdcbcb5af383262">addSystemInstance</a>(name, parent, instanceName);         
-<a name="l00169"></a>00169                 <span class="keywordflow">return</span> sysRef;
-<a name="l00170"></a>00170         }
-<a name="l00171"></a>00171         
-<a name="l00172"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a77ef8c7281563201ccdcbcb5af383262">00172</a>         <span class="keyword">private</span> SystemReference <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a77ef8c7281563201ccdcbcb5af383262">addSystemInstance</a>(String name, System parent,
-<a name="l00173"></a>00173                         String instanceName) {
-<a name="l00174"></a>00174                 
-<a name="l00175"></a>00175                 System aSystem = <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a330f57f5a9e1a18cfa4e90d4047d72a2">obtainSystem</a>(name);
-<a name="l00176"></a>00176                 SystemReference reference = <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a8dfc0c34126860427ca9650d7b0206a1">factory</a>.createSystemReference();
-<a name="l00177"></a>00177                 reference.setName(instanceName);
-<a name="l00178"></a>00178                 reference.setParent(parent);
-<a name="l00179"></a>00179                 reference.setTarget(aSystem);
-<a name="l00180"></a>00180                 parent.getChildren().add(reference);
-<a name="l00181"></a>00181                 this.<a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#ae019b0e33015ebc0d192cf76387947b3">setUUIDAndAddToRepository</a>( reference );            
-<a name="l00182"></a>00182                 <span class="keywordflow">return</span> reference;
-<a name="l00183"></a>00183         }
-<a name="l00184"></a>00184 
+<a name="l00087"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a344382d7fb5e2c9acf32d99732ca7c2a">00087</a>         <span class="keyword">public</span> System <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a344382d7fb5e2c9acf32d99732ca7c2a" title="A System is obtained and treated as the root for this model.">addRootSystem</a>(String name) {
+<a name="l00088"></a>00088                 System aSystem = <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a330f57f5a9e1a18cfa4e90d4047d72a2" title="If the system is not already in the systemRepository, it will be created.">obtainSystem</a>(name);
+<a name="l00089"></a>00089                 <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#af75153a4f36a8e81cfefe87f1d0e158f" title="The top element.">theModel</a>.setRoot(aSystem);
+<a name="l00090"></a>00090                 this.<a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#ae019b0e33015ebc0d192cf76387947b3" title="This class keeps track of all elements it has created, with a UUID.">setUUIDAndAddToRepository</a>( aSystem );              
+<a name="l00091"></a>00091                 <span class="keywordflow">return</span> aSystem;
+<a name="l00092"></a>00092         }
+<a name="l00093"></a>00093 
+<a name="l00094"></a>00094 
+<a name="l00099"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a330f57f5a9e1a18cfa4e90d4047d72a2">00099</a>         <span class="keyword">private</span> System <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a330f57f5a9e1a18cfa4e90d4047d72a2" title="If the system is not already in the systemRepository, it will be created.">obtainSystem</a>(String name) {
+<a name="l00100"></a>00100                 System aSystem = <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a236e9935adf21bb9c8c58db68b9ee134">findSystem</a>( name );
+<a name="l00101"></a>00101                 <span class="keywordflow">if</span> ( aSystem == null ) {
+<a name="l00102"></a>00102                         aSystem = <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#ab860d782a2c39a13c1854b5a08f6e165" title="Creates a new system and ads it to the systemRepository.">newSystem</a>(name);
+<a name="l00103"></a>00103                 }
+<a name="l00104"></a>00104                 <span class="keywordflow">return</span> aSystem;
+<a name="l00105"></a>00105         }
+<a name="l00106"></a>00106 
+<a name="l00107"></a>00107 
+<a name="l00113"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#ab860d782a2c39a13c1854b5a08f6e165">00113</a>         <span class="keyword">private</span> System <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#ab860d782a2c39a13c1854b5a08f6e165" title="Creates a new system and ads it to the systemRepository.">newSystem</a>(String name) {
+<a name="l00114"></a>00114                 System aSystem = <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a8dfc0c34126860427ca9650d7b0206a1" title="The factory for the simulink metamodel.">factory</a>.createSystem();
+<a name="l00115"></a>00115                 aSystem.setName(name);
+<a name="l00116"></a>00116                 aSystem.setSimulinkName(name);
+<a name="l00117"></a>00117                 <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#aca0338b7f055340a786d9655c2259bbe" title="Keeps a reference to all systems created by this class.">systemRepository</a>.put(name, aSystem);
+<a name="l00118"></a>00118                 <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#af75153a4f36a8e81cfefe87f1d0e158f" title="The top element.">theModel</a>.getParts().add(aSystem);
+<a name="l00119"></a>00119                 this.<a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#ae019b0e33015ebc0d192cf76387947b3" title="This class keeps track of all elements it has created, with a UUID.">setUUIDAndAddToRepository</a>( aSystem );              
+<a name="l00120"></a>00120                 <span class="keywordflow">return</span> aSystem;
+<a name="l00121"></a>00121         }
+<a name="l00122"></a>00122 
+<a name="l00127"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a236e9935adf21bb9c8c58db68b9ee134">00127</a>         <span class="keyword">public</span> System <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a236e9935adf21bb9c8c58db68b9ee134">findSystem</a>(String name) {
+<a name="l00128"></a>00128                 <span class="keywordflow">return</span> <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#aca0338b7f055340a786d9655c2259bbe" title="Keeps a reference to all systems created by this class.">systemRepository</a>.get( name );
+<a name="l00129"></a>00129         }
+<a name="l00130"></a>00130 
+<a name="l00138"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a9fc6e142cfcc7a9b309d6b2680ddb369">00138</a>         <span class="keyword">public</span> <span class="keyword">static</span> Port <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a9fc6e142cfcc7a9b309d6b2680ddb369" title="Find a given port within a system, and its first level children.">findPortWithin</a>(String portName, System aSystem) {
+<a name="l00139"></a>00139                 Port port = <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#ab7fa2e65efc054f189dd17196ffe4124" title="TODO: Should this be private? Is MATLAB using this one directly?">findOutportWithin</a>(portName, aSystem);
+<a name="l00140"></a>00140                 <span class="keywordflow">if</span> ( port == null ) {
+<a name="l00141"></a>00141                         port = <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#acf5d746f8215ef5f63872cfca66165ea" title="TODO: Should this be private? Is MATLAB using this one directly?">findInportWithin</a>(portName, aSystem);
+<a name="l00142"></a>00142                 }
+<a name="l00143"></a>00143                 <span class="keywordflow">return</span> port;
+<a name="l00144"></a>00144         }
+<a name="l00145"></a>00145         
+<a name="l00149"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#ab7fa2e65efc054f189dd17196ffe4124">00149</a>         <span class="keyword">public</span> <span class="keyword">static</span> Outport <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#ab7fa2e65efc054f189dd17196ffe4124" title="TODO: Should this be private? Is MATLAB using this one directly?">findOutportWithin</a>(String portName, System aSystem) {
+<a name="l00150"></a>00150                 Outport port = null;
+<a name="l00151"></a>00151                 EList&lt;System&gt; targetSystems = 
+<a name="l00152"></a>00152                         <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a8b4718cadd173128024b53afe7c85c75">createSystemListWithParentAndFirstLevelChldren</a>(aSystem);
+<a name="l00153"></a>00153                 <span class="keywordflow">for</span> (System sys : targetSystems ) {
+<a name="l00154"></a>00154                                 port = <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a7294ae684405e4a3ee37b780767f434e">findOutportInSystem</a>( portName, sys );
+<a name="l00155"></a>00155                                 <span class="keywordflow">if</span> (port != null) { <span class="keywordflow">return</span> port; }
+<a name="l00156"></a>00156                 }
+<a name="l00157"></a>00157                 <span class="keywordflow">return</span> port;
+<a name="l00158"></a>00158         }
+<a name="l00159"></a>00159 
+<a name="l00163"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#acf5d746f8215ef5f63872cfca66165ea">00163</a>         <span class="keyword">public</span> <span class="keyword">static</span> Inport <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#acf5d746f8215ef5f63872cfca66165ea" title="TODO: Should this be private? Is MATLAB using this one directly?">findInportWithin</a>(String portName, System aSystem) {
+<a name="l00164"></a>00164                 Inport port = null;
+<a name="l00165"></a>00165                 EList&lt;System&gt; targetSystems = 
+<a name="l00166"></a>00166                         <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a8b4718cadd173128024b53afe7c85c75">createSystemListWithParentAndFirstLevelChldren</a>(aSystem);
+<a name="l00167"></a>00167                 <span class="keywordflow">for</span> (System sys : targetSystems ) {
+<a name="l00168"></a>00168                                 port = <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#af829bd66d7ba613a2299fee67695b2bc">findInportInSystem</a>( portName, sys );
+<a name="l00169"></a>00169                                 <span class="keywordflow">if</span> (port != null) { <span class="keywordflow">return</span> port; }
+<a name="l00170"></a>00170                 }
+<a name="l00171"></a>00171                 <span class="keywordflow">return</span> port;
+<a name="l00172"></a>00172         }
+<a name="l00173"></a>00173 
+<a name="l00178"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a8b4718cadd173128024b53afe7c85c75">00178</a>         <span class="keyword">private</span> <span class="keyword">static</span> EList&lt;System&gt; <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a8b4718cadd173128024b53afe7c85c75">createSystemListWithParentAndFirstLevelChldren</a>(
+<a name="l00179"></a>00179                         System aSystem) {
+<a name="l00180"></a>00180                 EList&lt;SystemReference&gt; childrenList = aSystem.getChildren();
+<a name="l00181"></a>00181                 EList&lt;System&gt; targetSystems = <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a8e3b57934b7384b5421cd0f09802bc8b">getAllTargets</a>( childrenList );
+<a name="l00182"></a>00182                 targetSystems.add(aSystem);
+<a name="l00183"></a>00183                 <span class="keywordflow">return</span> targetSystems;
+<a name="l00184"></a>00184         }
 <a name="l00185"></a>00185 
-<a name="l00186"></a>00186         <span class="comment">/*</span>
-<a name="l00187"></a>00187 <span class="comment">         * comply with older API, probably unused</span>
-<a name="l00188"></a>00188 <span class="comment">         */</span>
-<a name="l00189"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a9e55308320d69ce35d1665a45403187a">00189</a>         <span class="keyword">public</span> System <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a9e55308320d69ce35d1665a45403187a">addSystem</a>(String name, System parent, String instanceName) {
-<a name="l00190"></a>00190                 SystemReference sysRef = <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a77ef8c7281563201ccdcbcb5af383262">addSystemInstance</a>(name, parent, instanceName);
-<a name="l00191"></a>00191                 <span class="keywordflow">return</span> sysRef.getTarget();
-<a name="l00192"></a>00192         }
-<a name="l00193"></a>00193         
-<a name="l00194"></a>00194         <span class="comment">/*</span>
-<a name="l00195"></a>00195 <span class="comment">         * comply with older API, probably unused</span>
-<a name="l00196"></a>00196 <span class="comment">         * name and instanceName are the same</span>
-<a name="l00197"></a>00197 <span class="comment">         */</span> 
-<a name="l00198"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a3887a763f3f6974a6511bae34558920f">00198</a>         <span class="keyword">public</span> System <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a3887a763f3f6974a6511bae34558920f">addSystem</a>(String name, System parent) {
-<a name="l00199"></a>00199                 <span class="keywordflow">return</span> <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#ac131e7f10144fd6756fff6dfc59f3d08">addSystem</a>(name, parent, name);
-<a name="l00200"></a>00200         }
-<a name="l00201"></a>00201 
-<a name="l00202"></a>00202 
-<a name="l00203"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a5b84097acefbe081ec05bce79c23481c">00203</a>         <span class="keyword">public</span> Inport <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a5b84097acefbe081ec05bce79c23481c">addInPort</a>(String name, System parent) {
-<a name="l00204"></a>00204                 Inport inport = <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a8dfc0c34126860427ca9650d7b0206a1">factory</a>.createInport();
-<a name="l00205"></a>00205                 parent.getInports().add( inport );
-<a name="l00206"></a>00206                 inport.setName(name);
-<a name="l00207"></a>00207                 inport.setParent(parent);
-<a name="l00208"></a>00208                 this.<a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#ae019b0e33015ebc0d192cf76387947b3">setUUIDAndAddToRepository</a>( inport );               
-<a name="l00209"></a>00209                 <span class="keywordflow">return</span> inport;
-<a name="l00210"></a>00210         }
-<a name="l00211"></a>00211 
-<a name="l00212"></a>00212 
-<a name="l00213"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a7030c7c21f9d413900a8b0c06a98542b">00213</a>         <span class="keyword">public</span> Outport <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a7030c7c21f9d413900a8b0c06a98542b">addOutPort</a>(String name, System parent) {
-<a name="l00214"></a>00214                 Outport outport = <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a8dfc0c34126860427ca9650d7b0206a1">factory</a>.createOutport();
-<a name="l00215"></a>00215                 parent.getOutports().add( outport );
-<a name="l00216"></a>00216                 outport.setName(name);
-<a name="l00217"></a>00217                 outport.setParent(parent);
-<a name="l00218"></a>00218                 this.<a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#ae019b0e33015ebc0d192cf76387947b3">setUUIDAndAddToRepository</a>( outport );              
-<a name="l00219"></a>00219                 <span class="keywordflow">return</span> outport;
-<a name="l00220"></a>00220         }
-<a name="l00221"></a>00221 
-<a name="l00222"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a99b98970386529d449abf6444ac8c2f4">00222</a>         <span class="keyword">public</span> Line <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a99b98970386529d449abf6444ac8c2f4">addLineBetween</a>(String name, System source, System destination, 
-<a name="l00223"></a>00223                         System parent) {
-<a name="l00224"></a>00224                 Outport outport = source.getOutports().get(0);
-<a name="l00225"></a>00225                 Inport inport = destination.getInports().get(0);
-<a name="l00226"></a>00226                 <span class="keywordflow">return</span> <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#af9bbcd55d1f92f7995118ffe3151c2a7">addLine</a>(name, outport, inport, parent);
-<a name="l00227"></a>00227         }
-<a name="l00228"></a>00228         
-<a name="l00229"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#af9bbcd55d1f92f7995118ffe3151c2a7">00229</a>         <span class="keyword">public</span> Line <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#af9bbcd55d1f92f7995118ffe3151c2a7">addLine</a>(String name, Port source, Port destination, 
-<a name="l00230"></a>00230                         System parent) {
-<a name="l00231"></a>00231                 Line line = <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a8dfc0c34126860427ca9650d7b0206a1">factory</a>.createLine();
-<a name="l00232"></a>00232                 line.setName(name);
-<a name="l00233"></a>00233                 line.setSource(source);
-<a name="l00234"></a>00234                 line.setDestination(destination);
-<a name="l00235"></a>00235                 parent.getLines().add(line);
-<a name="l00236"></a>00236                 this.<a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#ae019b0e33015ebc0d192cf76387947b3">setUUIDAndAddToRepository</a>( line );
-<a name="l00237"></a>00237                 <span class="keywordflow">return</span> line;
-<a name="l00238"></a>00238         }
-<a name="l00239"></a>00239         
-<a name="l00240"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a33f4c2cc804110992dcdc2d5fb3ae992">00240</a>         <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a33f4c2cc804110992dcdc2d5fb3ae992">addLines</a>(ArrayList&lt;LineInfo&gt; lines) <span class="keywordflow">throws</span> <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1exceptions_1_1_port_not_found_exception.html">PortNotFoundException</a> {
-<a name="l00241"></a>00241                 String name;
-<a name="l00242"></a>00242                 Port srcPort, dstPort;
-<a name="l00243"></a>00243                 System parent;
-<a name="l00244"></a>00244                 <span class="keywordflow">for</span> ( <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_line_info.html">LineInfo</a> lineInfo : lines ) {
-<a name="l00245"></a>00245                         name = lineInfo.getName();
-<a name="l00246"></a>00246                         parent = lineInfo.getLineParent();
-<a name="l00247"></a>00247                         srcPort = this.<a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a2081e4edce7114c7d83a3c38846af3a9">findPort</a>( lineInfo.getSrcPort() );
-<a name="l00248"></a>00248                         dstPort = this.<a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a2081e4edce7114c7d83a3c38846af3a9">findPort</a>( lineInfo.getDstPort() );                       
-<a name="l00249"></a>00249                         <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#af9bbcd55d1f92f7995118ffe3151c2a7">addLine</a>( name, srcPort, dstPort, parent );
-<a name="l00250"></a>00250                 }
-<a name="l00251"></a>00251         }
+<a name="l00186"></a>00186 
+<a name="l00187"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a8e3b57934b7384b5421cd0f09802bc8b">00187</a>         <span class="keyword">private</span> <span class="keyword">static</span> EList&lt;System&gt; <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a8e3b57934b7384b5421cd0f09802bc8b">getAllTargets</a>(EList&lt;SystemReference&gt; childrenList) {
+<a name="l00188"></a>00188                 BasicEList&lt;System&gt; result = <span class="keyword">new</span> BasicEList&lt;System&gt;( childrenList.size() );
+<a name="l00189"></a>00189                 <span class="keywordflow">for</span> (SystemReference aRef : childrenList) {
+<a name="l00190"></a>00190                         result.add( aRef.getTarget() );
+<a name="l00191"></a>00191                 }
+<a name="l00192"></a>00192                 <span class="keywordflow">return</span> result;
+<a name="l00193"></a>00193         }
+<a name="l00194"></a>00194 
+<a name="l00195"></a>00195 
+<a name="l00196"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a7294ae684405e4a3ee37b780767f434e">00196</a>         <span class="keyword">private</span> <span class="keyword">static</span> Outport <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a7294ae684405e4a3ee37b780767f434e">findOutportInSystem</a>(String portName, System aSystem) {
+<a name="l00197"></a>00197                 <span class="keywordflow">return</span> <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a5daae5d0a1216681193dea105475d8c7">findPortInList</a>( portName, aSystem.getOutports());
+<a name="l00198"></a>00198         }
+<a name="l00199"></a>00199 
+<a name="l00200"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#af829bd66d7ba613a2299fee67695b2bc">00200</a>         <span class="keyword">private</span> <span class="keyword">static</span> Inport <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#af829bd66d7ba613a2299fee67695b2bc">findInportInSystem</a>(String portName, System aSystem) {
+<a name="l00201"></a>00201                 <span class="keywordflow">return</span> <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a5daae5d0a1216681193dea105475d8c7">findPortInList</a>( portName, aSystem.getInports());
+<a name="l00202"></a>00202         }
+<a name="l00203"></a>00203         
+<a name="l00204"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a5daae5d0a1216681193dea105475d8c7">00204</a>         <span class="keyword">private</span> static &lt;IOPort extends Port&gt; IOPort <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a5daae5d0a1216681193dea105475d8c7">findPortInList</a>(String portName, 
+<a name="l00205"></a>00205                         EList&lt;IOPort&gt; ports) {
+<a name="l00206"></a>00206                 <span class="keywordflow">for</span> (IOPort aPort : ports) {
+<a name="l00207"></a>00207                         <span class="keywordflow">if</span> (aPort.getName().equalsIgnoreCase(portName)) {
+<a name="l00208"></a>00208                                 <span class="keywordflow">return</span> aPort;
+<a name="l00209"></a>00209                         }
+<a name="l00210"></a>00210                 }
+<a name="l00211"></a>00211                 <span class="keywordflow">return</span> null;
+<a name="l00212"></a>00212         }
+<a name="l00213"></a>00213 
+<a name="l00214"></a>00214         
+<a name="l00223"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#ac131e7f10144fd6756fff6dfc59f3d08">00223</a>         <span class="keyword">public</span> SystemReference <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#ac131e7f10144fd6756fff6dfc59f3d08" title="Adds a new instance of a system to the model, in the right place.">addSystem</a>(<a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_property_list.html" title="Data structure used to accommodate arbitrary number of parameters when creating instances...">PropertyList</a> pList) {          
+<a name="l00224"></a>00224                 
+<a name="l00225"></a>00225                 String name             = pList.<a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_property_list.html#a78ee178b6a73658d65ca60da4d1e6683">getName</a>();
+<a name="l00226"></a>00226                 String instanceName = pList.<a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_property_list.html#aad1f9a2f77fbbd56a7148f852587d9d7">getInstanceName</a>();
+<a name="l00227"></a>00227                 System parent           = pList.<a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_property_list.html#a9e3430363d3d7e9acbefbe02a4d79a9a">getParent</a>();
+<a name="l00228"></a>00228                 SystemReference sysRef = <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a77ef8c7281563201ccdcbcb5af383262" title="Adds a new SystemReference to this model, with all the appropriate links.">addSystemInstance</a>(name, parent, instanceName);         
+<a name="l00229"></a>00229                 <span class="keywordflow">return</span> sysRef;
+<a name="l00230"></a>00230         }
+<a name="l00231"></a>00231         
+<a name="l00239"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a77ef8c7281563201ccdcbcb5af383262">00239</a>         <span class="keyword">private</span> SystemReference <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a77ef8c7281563201ccdcbcb5af383262" title="Adds a new SystemReference to this model, with all the appropriate links.">addSystemInstance</a>(String name, System parent,
+<a name="l00240"></a>00240                         String instanceName) {
+<a name="l00241"></a>00241                 
+<a name="l00242"></a>00242                 System aSystem = <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a330f57f5a9e1a18cfa4e90d4047d72a2" title="If the system is not already in the systemRepository, it will be created.">obtainSystem</a>(name);
+<a name="l00243"></a>00243                 SystemReference reference = <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a8dfc0c34126860427ca9650d7b0206a1" title="The factory for the simulink metamodel.">factory</a>.createSystemReference();
+<a name="l00244"></a>00244                 reference.setName(instanceName);
+<a name="l00245"></a>00245                 reference.setParent(parent);
+<a name="l00246"></a>00246                 reference.setTarget(aSystem);
+<a name="l00247"></a>00247                 parent.getChildren().add(reference);
+<a name="l00248"></a>00248                 this.<a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#ae019b0e33015ebc0d192cf76387947b3" title="This class keeps track of all elements it has created, with a UUID.">setUUIDAndAddToRepository</a>( reference );            
+<a name="l00249"></a>00249                 <span class="keywordflow">return</span> reference;
+<a name="l00250"></a>00250         }
+<a name="l00251"></a>00251 
 <a name="l00252"></a>00252 
-<a name="l00253"></a>00253 
-<a name="l00254"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a57ae1bbe4e98771f386b40a899ad2377">00254</a>         <span class="keyword">public</span> System <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a57ae1bbe4e98771f386b40a899ad2377">findSystem</a>(UUID uuid) {
-<a name="l00255"></a>00255                 <span class="keywordflow">return</span> (System) <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a3df36d0333188f226fbefa1c0fbf9842">repository</a>.get(uuid);
-<a name="l00256"></a>00256         }
-<a name="l00257"></a>00257 
-<a name="l00258"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#ab161a35d1989b984e4ca40fb95fa8f40">00258</a>         <span class="keyword">public</span> SystemReference <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#ab161a35d1989b984e4ca40fb95fa8f40">findSystemReference</a>(UUID uuid) {
-<a name="l00259"></a>00259                 <span class="keywordflow">return</span> (SystemReference) <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a3df36d0333188f226fbefa1c0fbf9842">repository</a>.get(uuid);
-<a name="l00260"></a>00260         }
-<a name="l00261"></a>00261 
-<a name="l00262"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a2081e4edce7114c7d83a3c38846af3a9">00262</a>         <span class="keyword">public</span> Port <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a2081e4edce7114c7d83a3c38846af3a9">findPort</a>(UUID uuid) {
-<a name="l00263"></a>00263                 <span class="keywordflow">return</span> (Port) <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a3df36d0333188f226fbefa1c0fbf9842">repository</a>.get(uuid);
-<a name="l00264"></a>00264         }
-<a name="l00265"></a>00265                 
-<a name="l00266"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a4f8aadd709d0e2386b1a041a42bcafe9">00266</a>         <span class="keyword">public</span> Line <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a4f8aadd709d0e2386b1a041a42bcafe9">findLine</a>(UUID uuid) {
-<a name="l00267"></a>00267                 <span class="keywordflow">return</span> (Line) <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a3df36d0333188f226fbefa1c0fbf9842">repository</a>.get(uuid);
-<a name="l00268"></a>00268         }
-<a name="l00269"></a>00269         
-<a name="l00270"></a>00270 }
+<a name="l00253"></a>00253         @Deprecated
+<a name="l00254"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a9e55308320d69ce35d1665a45403187a">00254</a>         <span class="keyword">public</span> System <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a9e55308320d69ce35d1665a45403187a">addSystem</a>(String name, System parent, String instanceName) {
+<a name="l00255"></a>00255                 SystemReference sysRef = <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a77ef8c7281563201ccdcbcb5af383262" title="Adds a new SystemReference to this model, with all the appropriate links.">addSystemInstance</a>(name, parent, instanceName);
+<a name="l00256"></a>00256                 <span class="keywordflow">return</span> sysRef.getTarget();
+<a name="l00257"></a>00257         }
+<a name="l00258"></a>00258         
+<a name="l00259"></a>00259         <span class="comment">/*</span>
+<a name="l00260"></a>00260 <span class="comment">         * name and instanceName are the same</span>
+<a name="l00261"></a>00261 <span class="comment">         */</span>
+<a name="l00262"></a>00262         @Deprecated
+<a name="l00263"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a3887a763f3f6974a6511bae34558920f">00263</a>         <span class="keyword">public</span> System <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a3887a763f3f6974a6511bae34558920f">addSystem</a>(String name, System parent) {
+<a name="l00264"></a>00264                 <span class="keywordflow">return</span> <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#ac131e7f10144fd6756fff6dfc59f3d08" title="Adds a new instance of a system to the model, in the right place.">addSystem</a>(name, parent, name);
+<a name="l00265"></a>00265         }
+<a name="l00266"></a>00266 
+<a name="l00267"></a>00267 
+<a name="l00274"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a5b84097acefbe081ec05bce79c23481c">00274</a>         <span class="keyword">public</span> Inport <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a5b84097acefbe081ec05bce79c23481c" title="Adds an Inport to the given system.">addInPort</a>(String name, System parent) {
+<a name="l00275"></a>00275                 Inport inport = <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a8dfc0c34126860427ca9650d7b0206a1" title="The factory for the simulink metamodel.">factory</a>.createInport();
+<a name="l00276"></a>00276                 parent.getInports().add( inport );
+<a name="l00277"></a>00277                 inport.setName(name);
+<a name="l00278"></a>00278                 inport.setParent(parent);
+<a name="l00279"></a>00279                 this.<a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#ae019b0e33015ebc0d192cf76387947b3" title="This class keeps track of all elements it has created, with a UUID.">setUUIDAndAddToRepository</a>( inport );               
+<a name="l00280"></a>00280                 <span class="keywordflow">return</span> inport;
+<a name="l00281"></a>00281         }
+<a name="l00282"></a>00282 
+<a name="l00289"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a7030c7c21f9d413900a8b0c06a98542b">00289</a>         <span class="keyword">public</span> Outport <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a7030c7c21f9d413900a8b0c06a98542b" title="Adds an Outport to the given system.">addOutPort</a>(String name, System parent) {
+<a name="l00290"></a>00290                 Outport outport = <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a8dfc0c34126860427ca9650d7b0206a1" title="The factory for the simulink metamodel.">factory</a>.createOutport();
+<a name="l00291"></a>00291                 parent.getOutports().add( outport );
+<a name="l00292"></a>00292                 outport.setName(name);
+<a name="l00293"></a>00293                 outport.setParent(parent);
+<a name="l00294"></a>00294                 this.<a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#ae019b0e33015ebc0d192cf76387947b3" title="This class keeps track of all elements it has created, with a UUID.">setUUIDAndAddToRepository</a>( outport );              
+<a name="l00295"></a>00295                 <span class="keywordflow">return</span> outport;
+<a name="l00296"></a>00296         }
+<a name="l00297"></a>00297 
+<a name="l00307"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#adc2a16e6588bc789db11a9525cf4e231">00307</a>         <span class="keyword">public</span> Line <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#adc2a16e6588bc789db11a9525cf4e231" title="Adds a line between the first outport of source and the first inport of destination...">addLineBetween</a>(String lineName, System source, System destination, 
+<a name="l00308"></a>00308                         System parent) {
+<a name="l00309"></a>00309                 Outport outport = source.getOutports().get(0);
+<a name="l00310"></a>00310                 Inport inport = destination.getInports().get(0);
+<a name="l00311"></a>00311                 <span class="keywordflow">return</span> <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a7b3ab54d71fd5a9c4b523d83f1dfde1e" title="Adds a line between two ports.">addLine</a>(lineName, outport, inport, parent);
+<a name="l00312"></a>00312         }
+<a name="l00313"></a>00313         
+<a name="l00322"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a7b3ab54d71fd5a9c4b523d83f1dfde1e">00322</a>         <span class="keyword">public</span> Line <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a7b3ab54d71fd5a9c4b523d83f1dfde1e" title="Adds a line between two ports.">addLine</a>(String lineName, Port source, Port destination, 
+<a name="l00323"></a>00323                         System parent) {
+<a name="l00324"></a>00324                 Line line = <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a8dfc0c34126860427ca9650d7b0206a1" title="The factory for the simulink metamodel.">factory</a>.createLine();
+<a name="l00325"></a>00325                 line.setName(lineName);
+<a name="l00326"></a>00326                 line.setSource(source);
+<a name="l00327"></a>00327                 line.setDestination(destination);
+<a name="l00328"></a>00328                 parent.getLines().add(line);
+<a name="l00329"></a>00329                 this.<a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#ae019b0e33015ebc0d192cf76387947b3" title="This class keeps track of all elements it has created, with a UUID.">setUUIDAndAddToRepository</a>( line );
+<a name="l00330"></a>00330                 <span class="keywordflow">return</span> line;
+<a name="l00331"></a>00331         }
+<a name="l00332"></a>00332         
+<a name="l00340"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a33f4c2cc804110992dcdc2d5fb3ae992">00340</a>         <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a33f4c2cc804110992dcdc2d5fb3ae992" title="Adds all lines contained in lines.">addLines</a>(ArrayList&lt;LineInfo&gt; lines) <span class="keywordflow">throws</span> <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1exceptions_1_1_port_not_found_exception.html" title="Exception thrown mainly by code handling lines, as finding ports within models is...">PortNotFoundException</a> {
+<a name="l00341"></a>00341                 String name;
+<a name="l00342"></a>00342                 Port srcPort, dstPort;
+<a name="l00343"></a>00343                 System parent;
+<a name="l00344"></a>00344                 <span class="keywordflow">for</span> ( <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_line_info.html" title="Data structure used by Simulink to summarize the information needed to create a line...">LineInfo</a> lineInfo : lines ) {
+<a name="l00345"></a>00345                         name = lineInfo.getName();
+<a name="l00346"></a>00346                         parent = lineInfo.getLineParent();
+<a name="l00347"></a>00347                         srcPort = this.<a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a2081e4edce7114c7d83a3c38846af3a9">findPort</a>( lineInfo.getSrcPort() );
+<a name="l00348"></a>00348                         dstPort = this.<a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a2081e4edce7114c7d83a3c38846af3a9">findPort</a>( lineInfo.getDstPort() );                       
+<a name="l00349"></a>00349                         <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a7b3ab54d71fd5a9c4b523d83f1dfde1e" title="Adds a line between two ports.">addLine</a>( name, srcPort, dstPort, parent );
+<a name="l00350"></a>00350                 }
+<a name="l00351"></a>00351         }
+<a name="l00352"></a>00352 
+<a name="l00353"></a>00353 
+<a name="l00354"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a57ae1bbe4e98771f386b40a899ad2377">00354</a>         <span class="keyword">public</span> System <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a57ae1bbe4e98771f386b40a899ad2377">findSystem</a>(UUID uuid) {
+<a name="l00355"></a>00355                 <span class="keywordflow">return</span> (System) <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a3df36d0333188f226fbefa1c0fbf9842" title="Keeps a reference to all elements created by this class.">repository</a>.get(uuid);
+<a name="l00356"></a>00356         }
+<a name="l00357"></a>00357 
+<a name="l00358"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#ab161a35d1989b984e4ca40fb95fa8f40">00358</a>         <span class="keyword">public</span> SystemReference <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#ab161a35d1989b984e4ca40fb95fa8f40">findSystemReference</a>(UUID uuid) {
+<a name="l00359"></a>00359                 <span class="keywordflow">return</span> (SystemReference) <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a3df36d0333188f226fbefa1c0fbf9842" title="Keeps a reference to all elements created by this class.">repository</a>.get(uuid);
+<a name="l00360"></a>00360         }
+<a name="l00361"></a>00361 
+<a name="l00362"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a2081e4edce7114c7d83a3c38846af3a9">00362</a>         <span class="keyword">public</span> Port <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a2081e4edce7114c7d83a3c38846af3a9">findPort</a>(UUID uuid) {
+<a name="l00363"></a>00363                 <span class="keywordflow">return</span> (Port) <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a3df36d0333188f226fbefa1c0fbf9842" title="Keeps a reference to all elements created by this class.">repository</a>.get(uuid);
+<a name="l00364"></a>00364         }
+<a name="l00365"></a>00365                 
+<a name="l00366"></a><a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a4f8aadd709d0e2386b1a041a42bcafe9">00366</a>         <span class="keyword">public</span> Line <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a4f8aadd709d0e2386b1a041a42bcafe9">findLine</a>(UUID uuid) {
+<a name="l00367"></a>00367                 <span class="keywordflow">return</span> (Line) <a class="code" href="classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_conversion_1_1simulink_1_1_simulink_ecore_creator.html#a3df36d0333188f226fbefa1c0fbf9842" title="Keeps a reference to all elements created by this class.">repository</a>.get(uuid);
+<a name="l00368"></a>00368         }
+<a name="l00369"></a>00369         
+<a name="l00370"></a>00370 }
 </pre></div></div>
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Fri Apr 23 11:21:23 2010 for modelConversion by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Fri Apr 23 13:58:29 2010 for modelConversion by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>
