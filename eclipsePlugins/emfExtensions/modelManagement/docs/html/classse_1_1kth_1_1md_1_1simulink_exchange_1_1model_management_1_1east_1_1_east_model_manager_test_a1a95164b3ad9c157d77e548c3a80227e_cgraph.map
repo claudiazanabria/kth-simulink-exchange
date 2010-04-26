@@ -1,5 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_management_1_1_model_manager.html#a34c8fb70ee7c3b4dee6d73defa05468a" title="Loads a previously opened model into memory." alt="" coords="139,5,565,35"/>
-<area shape="rect" id="node5" href="$classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_management_1_1_model_manager.html#a4b211fc41b428cbdfe3fb7b19618c711" title="Validates that the model in memory complies with the metamodel." alt="" coords="129,59,575,88"/>
-<area shape="rect" id="node7" href="$classse_1_1kth_1_1md_1_1simulink_exchange_1_1model_management_1_1_model_validator.html#a8d98139ed0187e3b12c7443871b98596" title="Starts the validation." alt="" coords="624,59,1043,88"/>
-</map>
