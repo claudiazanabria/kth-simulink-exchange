@@ -1,0 +1,205 @@
+-- @path SIM=platform:/plugin/se.kth.attest2.metamodel.Simulink/simNG.ecore
+-- @path EST=platform:/plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.ecore
+
+module east2simulink;
+create OUT : SIM from IN : EST;
+
+
+-- Missing rules (TODO):
+-- ADLInOutFlowPort
+-- ADLPortGroup
+-- ADLClientServerPort
+
+-- Possible speed improvments:
+-- The helpers find* could be implemented with a select clause 
+-- in thisModule.FAAchildren instead of allInstancesFrom('IN')
+
+rule TopLevelADLContainer {
+	from
+		s : EST!ADLSystemModel ( s = thisModule.ValidADLSystem )
+	to
+		t : SIM!Model (
+			name 		<- s.name,			
+			root 		<- s.analysisArchitecture.functionAnalysisArchitecture
+			)
+}
+
+rule FunctionTypes2Subsystems {
+	from
+		s : EST!ADLFunctionType ( s.isConnectedToFAA() )
+		
+	to	
+		aSystem : SIM!System ( 
+				name 		<- s.name,
+				children	<- s.part,
+				inports		<- s.onlyInports(),
+				outports	<- s.onlyOutports(),
+				lines		<- s.connector
+			)
+}
+
+
+rule FunctionPrototypes2SystemReference {
+	from 
+		s : EST!ADLFunctionPrototype ( s.isConnectedToFAA() ) 
+	to
+		t : SIM!SystemReference (
+				name 		<- s.name,
+				target		<- s.type
+				--parent		<-,
+				
+			)
+}
+
+	
+rule ConnectorPrototype2Lines {
+-- Lines that are misplaced in the source get empty endpoints
+-- Misplacaed in the sense that they should belong to another FunctionType
+
+	from
+		s : EST!ADLConnectorPrototype ( s.isConnectedToFAA() )
+
+	using {
+			srcPort : EST!ADLFlowPort = s.flowPort->first();
+			dstPort : EST!ADLFlowPort = s.flowPort->last();
+		}
+
+	to
+		t : SIM!Line (
+				name <- s.name,
+				source			<- srcPort,
+				destination 	<- dstPort
+				--parent		<-
+			)
+}
+
+abstract rule FlowPort2Port {
+	from
+		s : EST!ADLFlowPort ( s.isConnectedToFAA() )
+	to
+		t : SIM!Port (
+				name 		<- s.name
+				--parent
+			)
+}
+
+rule InFlowPort2Port extends FlowPort2Port {
+	from 
+		s : EST!ADLInFlowPort 
+	to 
+		t : SIM!Inport ()
+}
+
+rule OutFlowPort2Port extends FlowPort2Port {
+	from 
+		s : EST!ADLOutFlowPort 
+	to 
+		t : SIM!Outport ()
+}
+
+-- Returns the Root system from the FAA
+helper context EST!ADLSystemModel def : FAArootSystem() : EST!ADLFunctionType =
+	self.analysisArchitecture.functionAnalysisArchitecture.part->first().type;
+
+-- Returns only the Inports for this FunctionType
+helper context EST!ADLFunctionType def : onlyInports() : Set(EST!ADLInFlowPort)= 
+		self.flowPort->select( aPort | aPort.oclIsKindOf(EST!ADLInFlowPort) ); 
+
+-- Returns only the Outports for this FunctionType
+helper context EST!ADLFunctionType def : onlyOutports() : Set(EST!ADLOutFlowPort)= 
+		self.flowPort->select( aPort | aPort.oclIsKindOf(EST!ADLOutFlowPort) ); 
+
+-- Returns the FunctionPrototype containing the flowPort
+helper context EST!ADLFlowPort def : findFunctionPrototypeContainer() : 
+	EST!ADLFunctionPrototype = 
+		self.findFunctionTypeContainer().findFunctionPrototypeContainer();
+
+
+-- Return the FunctionPrototype containing the functionType
+helper context EST!ADLFunctionType def : findFunctionPrototypeContainer() :
+	EST!ADLFunctionPrototype = EST!ADLFunctionPrototype.allInstancesFrom('IN')->
+		any( aFunctionProto | aFunctionProto.type = self );
+
+
+-- Returns the FunctionType containing the flowPort
+helper context EST!ADLFunctionPrototype def : findFunctionTypeContainer() :
+	EST!ADLFunctionType = EST!ADLFunctionType.allInstancesFrom('IN')->
+	--ERROR: This function breaks if two systems include the same FunctionPrototypes !?!	
+	any( aFunctionType | aFunctionType.part->includes( self ) );
+
+
+-- Returns the FunctionType containing the flowPort
+helper context EST!ADLFlowPort def : findFunctionTypeContainer() : 
+	EST!ADLFunctionType = EST!ADLFunctionType.allInstancesFrom('IN')->
+		any( aFunctionType | aFunctionType.flowPort->includes( self ) );
+
+
+helper context EST!ADLFlowPort def : findPortNumber() : Integer =
+	-- Uses reflection to find port type.
+		self.findFunctionTypeContainer().flowPort->
+			select(aPort|aPort.oclType() = self.oclType() )->
+			indexOf(self);
+	
+
+-- Unsupported
+--rule InOutFlowPort2Port extends FlowPort2Port {
+--	from 
+--		s : EST!ADLInOutFlowPort 
+--	to 
+--		t : SIM!Port ( PortType <- 'unsupported In/Out' )
+--}
+
+	
+-- This helper will determine if the element belongs to 
+-- the FunctionalAnalysisArchitecture tree.
+helper context OclAny def : isConnectedToFAA() : Boolean =
+	thisModule.FAAchildren.includes( self );
+
+-- ------------------------------------------------------------------
+-- Below we build a list with all elements hanging from FAA
+
+-- ------------------------
+-- Module global variables
+-- ------------------------
+-- A reference to the first valid ADLSystemModel that defines an FAA
+helper def : ValidADLSystem : EST!ADLSystemModel = 
+	-- Find all system models available, even though there should only be one
+	EST!ADLSystemModel.allInstancesFrom('IN')->any( model | model.hasFAA() );
+
+
+-- True if the model has FunctionAnalysisArchitecture defined
+helper context EST!ADLSystemModel def : hasFAA() : Boolean =
+	not self.analysisArchitecture.functionAnalysisArchitecture.oclIsUndefined();
+
+		
+-- A flat Set with all the sub-elements from the FAA
+helper def : FAAchildren : Set(OclAny) =
+	thisModule.ValidADLSystem.analysisArchitecture
+		.functionAnalysisArchitecture.expanded();
+	 	
+-- --------------------------------
+-- Expander methods below:
+-- Expand all of self sub-elements
+-- Returns a flattened list will all sub-elements, including itself.
+-- -------------------------------
+helper context EST!ADLFunctionPrototype def : expanded() : Set(OclAny) =
+	Set{
+		self,
+		self.type.expanded()
+	}.flatten();
+
+	
+helper context EST!ADLConnectorPrototype def : expanded() : Set(OclAny) =
+	Set{
+		self,
+		self.flowPort
+	}.flatten();
+	
+	
+helper context EST!ADLFunctionType def : expanded() : Set(OclAny) =
+	Set{
+		self,
+		self.part		->collect( aPart		| aPart.expanded() 		).flatten(),
+		self.connector	->collect( aConnection	| aConnection.expanded()).flatten(),
+		self.flowPort 
+	}.flatten();

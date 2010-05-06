@@ -1,0 +1,161 @@
+-- @path SIM=uri:http:///se.kth.md.attest2/Simulink/3.0
+-- @path UML=uri:http://www.eclipse.org/uml2/3.0.0/UML
+-- @path EST=uri:http://www.papyrusuml.org/EAST-ADL2/1
+
+module simulink2east;
+create OUT : EST, OUT1 : UML from IN : SIM;
+
+rule Model {
+	from
+		smodel : SIM!Model
+	to
+		umlModel : UML!Model (
+			packagedElement <- umlModelClass,
+			packagedElement <- umlAnalysisLevel
+		),
+		
+		umlModelClass 	: UML!Class ( name <- smodel.name ),
+		
+		umlAnalysisLevel : UML!Package ( 
+			name 			<- 'AnalysisLevel',
+			packagedElement <- umlAA,
+			packagedElement <- umlFAA,
+			packagedElement <- smodel.parts,
+			packagedElement <- umlDataTypes
+		),
+		
+		umlAA 	: UML!Class ( name <- 'AnalysisArchitecture' ),
+
+		umlFAA 	: UML!Class ( 
+				name <- 'FunctionAnalysisArchitecture',
+				ownedAttribute <- rootContainer
+			),
+		
+		umlDataTypes : UML!Package ( 
+			name 			<- 'DataTypes',
+			packagedElement <- portsDataType
+		),
+		
+		-- Generic type for ports
+		portsDataType : UML!DataType ( name <- 'SomeDataType' ),
+		
+		sm : EST!ADLSystemModel (
+			base_Class 				<- umlModelClass,
+			analysisArchitecture 	<- aa
+		),
+		
+		aa : EST!AnalysisArchitecture (
+			base_Class <- umlAA,
+			functionAnalysisArchitecture <- faa
+			),
+			
+		faa : EST!FunctionalAnalysisArchitecture (
+			base_Class 	<- umlFAA
+			--part 		<- rootContainerFP
+			),
+				
+		rootContainer : UML!Property ( 
+			name 		<- 'part',
+			--visibility="public" TODO !?!
+			type <- smodel.root,
+			aggregation <- #composite,
+			isUnique 	<- false
+		),
+		
+		rootContainerFP : EST!ADLFunctionPrototype (
+			base_Property <- rootContainer
+		)
+			
+		do {
+			thisModule.GlobalPortType <- portsDataType;
+		}
+		
+}
+
+
+rule System2FunctionType {
+	from
+		s : SIM!System
+	to
+		umlFT : UML!Class ( 
+			name <- s.name,
+			ownedAttribute <- s.children,
+			ownedAttribute <- s.inports,
+			ownedAttribute <- s.outports,
+			ownedConnector <- s.lines
+		),
+		
+		ft : EST!ADLFunctionType (base_Class <- umlFT )
+}
+
+rule SystemReferences2FunctionPrototypes {
+	from
+		s : SIM!SystemReference
+	to
+		umlAttr : UML!Property ( 
+			name 		<- s.name,
+			--visibility="public" TODO !?!
+			type <- s.target,
+			aggregation <- #composite,
+			isUnique 	<- false
+		),
+		
+		fp : EST!ADLFunctionPrototype (
+			base_Property <- umlAttr
+		)
+}
+
+-- I tried to to an abstract rule with the common parts for the Ports
+-- but it didn't work. My guess is that is becasue the from and to parts
+-- are different.
+rule OutPort {
+	from
+		s : SIM!Outport
+	to
+		umlPort : UML!Port ( 
+			name <- s.name,
+			type <- thisModule.GlobalPortType,
+			aggregation <- #composite
+		),
+		
+		op : EST!ADLOutFlowPort ( base_Port <- umlPort )
+}
+
+rule InPort {
+	from
+		s : SIM!Inport
+	to
+		umlPort : UML!Port ( 
+			name <- s.name,
+			type <- thisModule.GlobalPortType,
+			aggregation <- #composite
+		),
+		
+		op : EST!ADLInFlowPort ( base_Port <- umlPort )
+}
+
+rule Lines {
+	from
+		l : SIM!Line
+	to
+		connector : UML!Connector (
+			name 	<- l.name,
+			end 	<- from_,
+			end 	<- to_ 
+		),
+		
+		from_ : UML!ConnectorEnd (
+			--
+			--partWithPort 	<- l.source.parent,
+			role 			<- l.source
+		),
+
+		to_ : UML!ConnectorEnd ( 
+			--partWithPort 	<- l.destination.parent,
+			role 			<- l.destination
+		),
+		
+		cp : EST!ADLConnectorPrototype (
+			base_Connector <- connector
+		)
+}
