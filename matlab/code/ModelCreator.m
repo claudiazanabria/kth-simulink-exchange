@@ -79,10 +79,12 @@ classdef ModelCreator < handle
     end
     methods (Access=private)
         function doIt( self )
-            modelManager = modelManagement.simulink.SimulinkModelManager( self.ecoreFile );
+            import se.kth.md.simulinkExchange.modelManagement.simulink.SimulinkModelManager;
+            import se.kth.md.simulinkExchange.modelConversion.simulink.preprocessing.ModelProcessor;
+            modelManager = SimulinkModelManager( self.ecoreFile );
             modelManager.loadIt();
             model = modelManager.getTopElement();
-            list = modelManagement.simulink.ModelProcessor.doIt(model);
+            list = ModelProcessor.doIt(model);
             self.processList( list );
             ModelCreator.refreshAndSaveSystems();
             ModelCreator.openRootSystem( list );

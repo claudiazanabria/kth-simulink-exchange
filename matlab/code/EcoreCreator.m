@@ -101,9 +101,11 @@ classdef EcoreCreator < handle
         end
         
         function initEcoreCreationClasses(self)
-            self.modelManager = modelManagement.simulink.SimulinkModelManager();
+            import se.kth.md.simulinkExchange.modelManagement.simulink.SimulinkModelManager;
+            import se.kth.md.simulinkExchange.modelConversion.simulink.SimulinkEcoreCreator;
+            self.modelManager = SimulinkModelManager();
             factory = self.modelManager.getFactory();
-            self.javaEcoreCreator = modelManagement.simulink.SimulinkEcoreCreator( factory );
+            self.javaEcoreCreator = SimulinkEcoreCreator( factory );
         end
                     
         function sysName = openModelInSimulink( self )
