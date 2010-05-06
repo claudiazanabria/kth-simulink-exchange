@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:FunctionModeling="http://www.papyrusuml.org/EAST-ADL2/Structure/FunctionModeling/1" xmlns:SystemModel="http://www.papyrusuml.org/EAST-ADL2/Structure/SystemModel/1" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" xsi:schemaLocation="http://www.papyrusuml.org/EAST-ADL2/Structure/FunctionModeling/1 http://www.papyrusuml.org/EAST-ADL2/1#//structure/functionmodeling http://www.papyrusuml.org/EAST-ADL2/Structure/SystemModel/1 http://www.papyrusuml.org/EAST-ADL2/1#//structure/systemmodel">
+  <uml:Model xmi:id="_ibrnAEYREd-IJ5mn9XJyFA">
+    <packagedElement xmi:type="uml:Class" xmi:id="_ibrnAUYREd-IJ5mn9XJyFA" name="sldemo_absbrake_ATESST"/>
+    <packagedElement xmi:type="uml:Package" xmi:id="_ibrnAkYREd-IJ5mn9XJyFA" name="AnalysisLevel">
+      <packagedElement xmi:type="uml:Class" xmi:id="_ibrnA0YREd-IJ5mn9XJyFA" name="AnalysisArchitecture"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_ibrnBEYREd-IJ5mn9XJyFA" name="FunctionAnalysisArchitecture"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_ibrnCkYREd-IJ5mn9XJyFA" name="sldemo_absbrake_ATESST">
+        <ownedAttribute xmi:id="_ibrnIEYREd-IJ5mn9XJyFA" name="ABS" type="_ibrnDEYREd-IJ5mn9XJyFA" isUnique="false" aggregation="composite"/>
+        <ownedAttribute xmi:id="_ibrnIkYREd-IJ5mn9XJyFA" name="BrakeCalculator" type="_ibrnDkYREd-IJ5mn9XJyFA" isUnique="false" aggregation="composite"/>
+        <ownedAttribute xmi:id="_ibrnJEYREd-IJ5mn9XJyFA" name="BrakeController" type="_ibrnEEYREd-IJ5mn9XJyFA" isUnique="false" aggregation="composite"/>
+        <ownedAttribute xmi:id="_ibrnJkYREd-IJ5mn9XJyFA" name="BrakePedal1" type="_ibrnEkYREd-IJ5mn9XJyFA" isUnique="false" aggregation="composite"/>
+        <ownedAttribute xmi:id="_ibrnKEYREd-IJ5mn9XJyFA" name="BrakePedalSensor" type="_ibrnFEYREd-IJ5mn9XJyFA" isUnique="false" aggregation="composite"/>
+        <ownedAttribute xmi:id="_ibxtoEYREd-IJ5mn9XJyFA" name="Juan" type="_ibrnFkYREd-IJ5mn9XJyFA" isUnique="false" aggregation="composite"/>
+        <ownedAttribute xmi:id="_ibxtokYREd-IJ5mn9XJyFA" name="Model" type="_ibrnGEYREd-IJ5mn9XJyFA" isUnique="false" aggregation="composite"/>
+        <ownedAttribute xmi:id="_ibxtpEYREd-IJ5mn9XJyFA" name="Prius" type="_ibrnGkYREd-IJ5mn9XJyFA" isUnique="false" aggregation="composite"/>
+        <ownedAttribute xmi:id="_ibxtpkYREd-IJ5mn9XJyFA" name="VehicleSpeedSensor" type="_ibrnHEYREd-IJ5mn9XJyFA" isUnique="false" aggregation="composite"/>
+        <ownedAttribute xmi:id="_ibxtqEYREd-IJ5mn9XJyFA" name="WheelSpeedSensor" type="_ibrnHkYREd-IJ5mn9XJyFA" isUnique="false" aggregation="composite"/>
+        <ownedConnector xmi:id="_icEBgEYREd-IJ5mn9XJyFA" name="unnamed">
+          <end xmi:id="_icEBgUYREd-IJ5mn9XJyFA" role="_ibxtrkYREd-IJ5mn9XJyFA"/>
+          <end xmi:id="_icEBgkYREd-IJ5mn9XJyFA" role="_ibxtvkYREd-IJ5mn9XJyFA"/>
+        </ownedConnector>
+        <ownedConnector xmi:id="_icEBhEYREd-IJ5mn9XJyFA" name="unnamed">
+          <end xmi:id="_icEBhUYREd-IJ5mn9XJyFA" role="_ibxtukYREd-IJ5mn9XJyFA"/>
+          <end xmi:id="_icEBhkYREd-IJ5mn9XJyFA" role="_ibxtwEYREd-IJ5mn9XJyFA"/>
+        </ownedConnector>
+        <ownedConnector xmi:id="_icEBiEYREd-IJ5mn9XJyFA" name="unnamed">
+          <end xmi:id="_icEBiUYREd-IJ5mn9XJyFA" role="_ibxtvEYREd-IJ5mn9XJyFA"/>
+          <end xmi:id="_icEBikYREd-IJ5mn9XJyFA" role="_ibxtwkYREd-IJ5mn9XJyFA"/>
+        </ownedConnector>
+        <ownedConnector xmi:id="_icEBjEYREd-IJ5mn9XJyFA" name="unnamed">
+          <end xmi:id="_icEBjUYREd-IJ5mn9XJyFA" role="_ibxtqkYREd-IJ5mn9XJyFA"/>
+          <end xmi:id="_icEBjkYREd-IJ5mn9XJyFA" role="_ibxtzkYREd-IJ5mn9XJyFA"/>
+        </ownedConnector>
+        <ownedConnector xmi:id="_icEBkEYREd-IJ5mn9XJyFA" name="unnamed">
+          <end xmi:id="_icEBkUYREd-IJ5mn9XJyFA" role="_ibxtskYREd-IJ5mn9XJyFA"/>
+          <end xmi:id="_icEBkkYREd-IJ5mn9XJyFA" role="_ibxtxEYREd-IJ5mn9XJyFA"/>
+        </ownedConnector>
+        <ownedConnector xmi:id="_icEBlEYREd-IJ5mn9XJyFA" name="unnamed">
+          <end xmi:id="_icEBlUYREd-IJ5mn9XJyFA" role="_ibxtrEYREd-IJ5mn9XJyFA"/>
+          <end xmi:id="_icEBlkYREd-IJ5mn9XJyFA" role="_ibxtxkYREd-IJ5mn9XJyFA"/>
+        </ownedConnector>
+        <ownedConnector xmi:id="_icEBmEYREd-IJ5mn9XJyFA" name="unnamed">
+          <end xmi:id="_icEBmUYREd-IJ5mn9XJyFA" role="_ibxtsEYREd-IJ5mn9XJyFA"/>
+          <end xmi:id="_icEBmkYREd-IJ5mn9XJyFA" role="_ibxtyEYREd-IJ5mn9XJyFA"/>
+        </ownedConnector>
+        <ownedConnector xmi:id="_icEBnEYREd-IJ5mn9XJyFA" name="unnamed">
+          <end xmi:id="_icEBnUYREd-IJ5mn9XJyFA" role="_ibxttkYREd-IJ5mn9XJyFA"/>
+          <end xmi:id="_icEBnkYREd-IJ5mn9XJyFA" role="_ibxtykYREd-IJ5mn9XJyFA"/>
+        </ownedConnector>
+        <ownedConnector xmi:id="_icEBoEYREd-IJ5mn9XJyFA" name="unnamed">
+          <end xmi:id="_icEBoUYREd-IJ5mn9XJyFA" role="_ibxtuEYREd-IJ5mn9XJyFA"/>
+          <end xmi:id="_icEBokYREd-IJ5mn9XJyFA" role="_ibxtzEYREd-IJ5mn9XJyFA"/>
+        </ownedConnector>
+        <ownedConnector xmi:id="_icEBpEYREd-IJ5mn9XJyFA" name="unnamed">
+          <end xmi:id="_icEBpUYREd-IJ5mn9XJyFA" role="_ibxttEYREd-IJ5mn9XJyFA"/>
+          <end xmi:id="_icEBpkYREd-IJ5mn9XJyFA" role="_ibxt0EYREd-IJ5mn9XJyFA"/>
+        </ownedConnector>
+        <ownedConnector xmi:id="_icEBqEYREd-IJ5mn9XJyFA" name="unnamed">
+          <end xmi:id="_icEBqUYREd-IJ5mn9XJyFA" role="_ibxttkYREd-IJ5mn9XJyFA"/>
+          <end xmi:id="_icEBqkYREd-IJ5mn9XJyFA" role="_ibxt1EYREd-IJ5mn9XJyFA"/>
+        </ownedConnector>
+        <ownedConnector xmi:id="_icEBrEYREd-IJ5mn9XJyFA" name="unnamed">
+          <end xmi:id="_icEBrUYREd-IJ5mn9XJyFA" role="_ibxtuEYREd-IJ5mn9XJyFA"/>
+          <end xmi:id="_icEBrkYREd-IJ5mn9XJyFA" role="_ibxt0kYREd-IJ5mn9XJyFA"/>
+        </ownedConnector>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_ibrnDEYREd-IJ5mn9XJyFA" name="ABS">
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_ibxtvkYREd-IJ5mn9XJyFA" name="brakeReference" type="_ibrnBkYREd-IJ5mn9XJyFA" aggregation="composite"/>
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_ibxtwEYREd-IJ5mn9XJyFA" name="VehicleSpeed" type="_ibrnBkYREd-IJ5mn9XJyFA" aggregation="composite"/>
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_ibxtwkYREd-IJ5mn9XJyFA" name="WheelSpeed" type="_ibrnBkYREd-IJ5mn9XJyFA" aggregation="composite"/>
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_ibxtqkYREd-IJ5mn9XJyFA" name="BrakeForceout" type="_ibrnBkYREd-IJ5mn9XJyFA" aggregation="composite"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_ibrnDkYREd-IJ5mn9XJyFA" name="BrakeCalculator">
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_ibxtxEYREd-IJ5mn9XJyFA" name="BrakePedalPosition" type="_ibrnBkYREd-IJ5mn9XJyFA" aggregation="composite"/>
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_ibxtrEYREd-IJ5mn9XJyFA" name="RequestedBrakeTorqueOut" type="_ibrnBkYREd-IJ5mn9XJyFA" aggregation="composite"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_ibrnEEYREd-IJ5mn9XJyFA" name="BrakeController">
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_ibxtxkYREd-IJ5mn9XJyFA" name="RequestedBrakeTorque" type="_ibrnBkYREd-IJ5mn9XJyFA" aggregation="composite"/>
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_ibxtrkYREd-IJ5mn9XJyFA" name="BrakeReferenceOut" type="_ibrnBkYREd-IJ5mn9XJyFA" aggregation="composite"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_ibrnEkYREd-IJ5mn9XJyFA" name="BrakePedal">
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_ibxtsEYREd-IJ5mn9XJyFA" name="BrakePedalPosition" type="_ibrnBkYREd-IJ5mn9XJyFA" aggregation="composite"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_ibrnFEYREd-IJ5mn9XJyFA" name="BrakePedalSensor">
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_ibxtyEYREd-IJ5mn9XJyFA" name="BrakePedalPosition_in" type="_ibrnBkYREd-IJ5mn9XJyFA" aggregation="composite"/>
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_ibxtskYREd-IJ5mn9XJyFA" name="BrakePedalPosition_out" type="_ibrnBkYREd-IJ5mn9XJyFA" aggregation="composite"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_ibrnFkYREd-IJ5mn9XJyFA" name="ABS_speeds">
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_ibxtykYREd-IJ5mn9XJyFA" name="In1" type="_ibrnBkYREd-IJ5mn9XJyFA" aggregation="composite"/>
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_ibxtzEYREd-IJ5mn9XJyFA" name="In2" type="_ibrnBkYREd-IJ5mn9XJyFA" aggregation="composite"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_ibrnGEYREd-IJ5mn9XJyFA" name="BrakeActuator">
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_ibxtzkYREd-IJ5mn9XJyFA" name="In1" type="_ibrnBkYREd-IJ5mn9XJyFA" aggregation="composite"/>
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_ibxttEYREd-IJ5mn9XJyFA" name="Brake torque" type="_ibrnBkYREd-IJ5mn9XJyFA" aggregation="composite"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_ibrnGkYREd-IJ5mn9XJyFA" name="Vehiclemodel">
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_ibxt0EYREd-IJ5mn9XJyFA" name="Brake Torque" type="_ibrnBkYREd-IJ5mn9XJyFA" aggregation="composite"/>
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_ibxttkYREd-IJ5mn9XJyFA" name="Wheel Speed" type="_ibrnBkYREd-IJ5mn9XJyFA" aggregation="composite"/>
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_ibxtuEYREd-IJ5mn9XJyFA" name="Vehicle Speed" type="_ibrnBkYREd-IJ5mn9XJyFA" aggregation="composite"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_ibrnHEYREd-IJ5mn9XJyFA" name="VehicleSpeedSensor">
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_ibxt0kYREd-IJ5mn9XJyFA" name="Vehicle speed_in" type="_ibrnBkYREd-IJ5mn9XJyFA" aggregation="composite"/>
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_ibxtukYREd-IJ5mn9XJyFA" name="Vehicle speed_out" type="_ibrnBkYREd-IJ5mn9XJyFA" aggregation="composite"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_ibrnHkYREd-IJ5mn9XJyFA" name="WheelSpeedSensor">
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_ibxt1EYREd-IJ5mn9XJyFA" name="Wheel Speed_in" type="_ibrnBkYREd-IJ5mn9XJyFA" aggregation="composite"/>
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_ibxtvEYREd-IJ5mn9XJyFA" name="Wheel Speed_out" type="_ibrnBkYREd-IJ5mn9XJyFA" aggregation="composite"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_ibrnBUYREd-IJ5mn9XJyFA" name="DataTypes">
+        <packagedElement xmi:type="uml:DataType" xmi:id="_ibrnBkYREd-IJ5mn9XJyFA" name="SomeDataType"/>
+      </packagedElement>
+    </packagedElement>
+  </uml:Model>
+  <SystemModel:ADLSystemModel xmi:id="_ibrnB0YREd-IJ5mn9XJyFA" base_Class="_ibrnAUYREd-IJ5mn9XJyFA">
+    <analysisArchitecture xmi:id="_ibrnCEYREd-IJ5mn9XJyFA" base_Class="_ibrnA0YREd-IJ5mn9XJyFA">
+      <functionAnalysisArchitecture xmi:id="_ibrnCUYREd-IJ5mn9XJyFA" base_Class="_ibrnBEYREd-IJ5mn9XJyFA"/>
+    </analysisArchitecture>
+  </SystemModel:ADLSystemModel>
+  <FunctionModeling:ADLFunctionType xmi:id="_ibrnC0YREd-IJ5mn9XJyFA" base_Class="_ibrnCkYREd-IJ5mn9XJyFA"/>
+  <FunctionModeling:ADLFunctionType xmi:id="_ibrnDUYREd-IJ5mn9XJyFA" base_Class="_ibrnDEYREd-IJ5mn9XJyFA"/>
+  <FunctionModeling:ADLFunctionType xmi:id="_ibrnD0YREd-IJ5mn9XJyFA" base_Class="_ibrnDkYREd-IJ5mn9XJyFA"/>
+  <FunctionModeling:ADLFunctionType xmi:id="_ibrnEUYREd-IJ5mn9XJyFA" base_Class="_ibrnEEYREd-IJ5mn9XJyFA"/>
+  <FunctionModeling:ADLFunctionType xmi:id="_ibrnE0YREd-IJ5mn9XJyFA" base_Class="_ibrnEkYREd-IJ5mn9XJyFA"/>
+  <FunctionModeling:ADLFunctionType xmi:id="_ibrnFUYREd-IJ5mn9XJyFA" base_Class="_ibrnFEYREd-IJ5mn9XJyFA"/>
+  <FunctionModeling:ADLFunctionType xmi:id="_ibrnF0YREd-IJ5mn9XJyFA" base_Class="_ibrnFkYREd-IJ5mn9XJyFA"/>
+  <FunctionModeling:ADLFunctionType xmi:id="_ibrnGUYREd-IJ5mn9XJyFA" base_Class="_ibrnGEYREd-IJ5mn9XJyFA"/>
+  <FunctionModeling:ADLFunctionType xmi:id="_ibrnG0YREd-IJ5mn9XJyFA" base_Class="_ibrnGkYREd-IJ5mn9XJyFA"/>
+  <FunctionModeling:ADLFunctionType xmi:id="_ibrnHUYREd-IJ5mn9XJyFA" base_Class="_ibrnHEYREd-IJ5mn9XJyFA"/>
+  <FunctionModeling:ADLFunctionType xmi:id="_ibrnH0YREd-IJ5mn9XJyFA" base_Class="_ibrnHkYREd-IJ5mn9XJyFA"/>
+  <FunctionModeling:ADLFunctionPrototype xmi:id="_ibrnIUYREd-IJ5mn9XJyFA" base_Property="_ibrnIEYREd-IJ5mn9XJyFA"/>
+  <FunctionModeling:ADLFunctionPrototype xmi:id="_ibrnI0YREd-IJ5mn9XJyFA" base_Property="_ibrnIkYREd-IJ5mn9XJyFA"/>
+  <FunctionModeling:ADLFunctionPrototype xmi:id="_ibrnJUYREd-IJ5mn9XJyFA" base_Property="_ibrnJEYREd-IJ5mn9XJyFA"/>
+  <FunctionModeling:ADLFunctionPrototype xmi:id="_ibrnJ0YREd-IJ5mn9XJyFA" base_Property="_ibrnJkYREd-IJ5mn9XJyFA"/>
+  <FunctionModeling:ADLFunctionPrototype xmi:id="_ibrnKUYREd-IJ5mn9XJyFA" base_Property="_ibrnKEYREd-IJ5mn9XJyFA"/>
+  <FunctionModeling:ADLFunctionPrototype xmi:id="_ibxtoUYREd-IJ5mn9XJyFA" base_Property="_ibxtoEYREd-IJ5mn9XJyFA"/>
+  <FunctionModeling:ADLFunctionPrototype xmi:id="_ibxto0YREd-IJ5mn9XJyFA" base_Property="_ibxtokYREd-IJ5mn9XJyFA"/>
+  <FunctionModeling:ADLFunctionPrototype xmi:id="_ibxtpUYREd-IJ5mn9XJyFA" base_Property="_ibxtpEYREd-IJ5mn9XJyFA"/>
+  <FunctionModeling:ADLFunctionPrototype xmi:id="_ibxtp0YREd-IJ5mn9XJyFA" base_Property="_ibxtpkYREd-IJ5mn9XJyFA"/>
+  <FunctionModeling:ADLFunctionPrototype xmi:id="_ibxtqUYREd-IJ5mn9XJyFA" base_Property="_ibxtqEYREd-IJ5mn9XJyFA"/>
+  <FunctionModeling:ADLOutFlowPort xmi:id="_ibxtq0YREd-IJ5mn9XJyFA" base_Port="_ibxtqkYREd-IJ5mn9XJyFA"/>
+  <FunctionModeling:ADLOutFlowPort xmi:id="_ibxtrUYREd-IJ5mn9XJyFA" base_Port="_ibxtrEYREd-IJ5mn9XJyFA"/>
+  <FunctionModeling:ADLOutFlowPort xmi:id="_ibxtr0YREd-IJ5mn9XJyFA" base_Port="_ibxtrkYREd-IJ5mn9XJyFA"/>
+  <FunctionModeling:ADLOutFlowPort xmi:id="_ibxtsUYREd-IJ5mn9XJyFA" base_Port="_ibxtsEYREd-IJ5mn9XJyFA"/>
+  <FunctionModeling:ADLOutFlowPort xmi:id="_ibxts0YREd-IJ5mn9XJyFA" base_Port="_ibxtskYREd-IJ5mn9XJyFA"/>
+  <FunctionModeling:ADLOutFlowPort xmi:id="_ibxttUYREd-IJ5mn9XJyFA" base_Port="_ibxttEYREd-IJ5mn9XJyFA"/>
+  <FunctionModeling:ADLOutFlowPort xmi:id="_ibxtt0YREd-IJ5mn9XJyFA" base_Port="_ibxttkYREd-IJ5mn9XJyFA"/>
+  <FunctionModeling:ADLOutFlowPort xmi:id="_ibxtuUYREd-IJ5mn9XJyFA" base_Port="_ibxtuEYREd-IJ5mn9XJyFA"/>
+  <FunctionModeling:ADLOutFlowPort xmi:id="_ibxtu0YREd-IJ5mn9XJyFA" base_Port="_ibxtukYREd-IJ5mn9XJyFA"/>
+  <FunctionModeling:ADLOutFlowPort xmi:id="_ibxtvUYREd-IJ5mn9XJyFA" base_Port="_ibxtvEYREd-IJ5mn9XJyFA"/>
+  <FunctionModeling:ADLInFlowPort xmi:id="_ibxtv0YREd-IJ5mn9XJyFA" base_Port="_ibxtvkYREd-IJ5mn9XJyFA"/>
+  <FunctionModeling:ADLInFlowPort xmi:id="_ibxtwUYREd-IJ5mn9XJyFA" base_Port="_ibxtwEYREd-IJ5mn9XJyFA"/>
+  <FunctionModeling:ADLInFlowPort xmi:id="_ibxtw0YREd-IJ5mn9XJyFA" base_Port="_ibxtwkYREd-IJ5mn9XJyFA"/>
+  <FunctionModeling:ADLInFlowPort xmi:id="_ibxtxUYREd-IJ5mn9XJyFA" base_Port="_ibxtxEYREd-IJ5mn9XJyFA"/>
+  <FunctionModeling:ADLInFlowPort xmi:id="_ibxtx0YREd-IJ5mn9XJyFA" base_Port="_ibxtxkYREd-IJ5mn9XJyFA"/>
+  <FunctionModeling:ADLInFlowPort xmi:id="_ibxtyUYREd-IJ5mn9XJyFA" base_Port="_ibxtyEYREd-IJ5mn9XJyFA"/>
+  <FunctionModeling:ADLInFlowPort xmi:id="_ibxty0YREd-IJ5mn9XJyFA" base_Port="_ibxtykYREd-IJ5mn9XJyFA"/>
+  <FunctionModeling:ADLInFlowPort xmi:id="_ibxtzUYREd-IJ5mn9XJyFA" base_Port="_ibxtzEYREd-IJ5mn9XJyFA"/>
+  <FunctionModeling:ADLInFlowPort xmi:id="_ibxtz0YREd-IJ5mn9XJyFA" base_Port="_ibxtzkYREd-IJ5mn9XJyFA"/>
+  <FunctionModeling:ADLInFlowPort xmi:id="_ibxt0UYREd-IJ5mn9XJyFA" base_Port="_ibxt0EYREd-IJ5mn9XJyFA"/>
+  <FunctionModeling:ADLInFlowPort xmi:id="_ibxt00YREd-IJ5mn9XJyFA" base_Port="_ibxt0kYREd-IJ5mn9XJyFA"/>
+  <FunctionModeling:ADLInFlowPort xmi:id="_ibxt1UYREd-IJ5mn9XJyFA" base_Port="_ibxt1EYREd-IJ5mn9XJyFA"/>
+  <FunctionModeling:ADLConnectorPrototype xmi:id="_icEBg0YREd-IJ5mn9XJyFA" base_Connector="_icEBgEYREd-IJ5mn9XJyFA"/>
+  <FunctionModeling:ADLConnectorPrototype xmi:id="_icEBh0YREd-IJ5mn9XJyFA" base_Connector="_icEBhEYREd-IJ5mn9XJyFA"/>
+  <FunctionModeling:ADLConnectorPrototype xmi:id="_icEBi0YREd-IJ5mn9XJyFA" base_Connector="_icEBiEYREd-IJ5mn9XJyFA"/>
+  <FunctionModeling:ADLConnectorPrototype xmi:id="_icEBj0YREd-IJ5mn9XJyFA" base_Connector="_icEBjEYREd-IJ5mn9XJyFA"/>
+  <FunctionModeling:ADLConnectorPrototype xmi:id="_icEBk0YREd-IJ5mn9XJyFA" base_Connector="_icEBkEYREd-IJ5mn9XJyFA"/>
+  <FunctionModeling:ADLConnectorPrototype xmi:id="_icEBl0YREd-IJ5mn9XJyFA" base_Connector="_icEBlEYREd-IJ5mn9XJyFA"/>
+  <FunctionModeling:ADLConnectorPrototype xmi:id="_icEBm0YREd-IJ5mn9XJyFA" base_Connector="_icEBmEYREd-IJ5mn9XJyFA"/>
+  <FunctionModeling:ADLConnectorPrototype xmi:id="_icEBn0YREd-IJ5mn9XJyFA" base_Connector="_icEBnEYREd-IJ5mn9XJyFA"/>
+  <FunctionModeling:ADLConnectorPrototype xmi:id="_icEBo0YREd-IJ5mn9XJyFA" base_Connector="_icEBoEYREd-IJ5mn9XJyFA"/>
+  <FunctionModeling:ADLConnectorPrototype xmi:id="_icEBp0YREd-IJ5mn9XJyFA" base_Connector="_icEBpEYREd-IJ5mn9XJyFA"/>
+  <FunctionModeling:ADLConnectorPrototype xmi:id="_icEBq0YREd-IJ5mn9XJyFA" base_Connector="_icEBqEYREd-IJ5mn9XJyFA"/>
+  <FunctionModeling:ADLConnectorPrototype xmi:id="_icEBr0YREd-IJ5mn9XJyFA" base_Connector="_icEBrEYREd-IJ5mn9XJyFA"/>
+</xmi:XMI>
