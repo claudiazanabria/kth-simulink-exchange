@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.UUID;
 
 /**
+ * OBS: I think this Data structure is not used any longer !
+ * 
  * Data structure used to store arbitrary data within elements in Simulink.
  * Simulink allows the user to attach an arbitrary object (even Java) to an element. 
  * This object is then preserved along with the simulink element.
