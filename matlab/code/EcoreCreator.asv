@@ -21,6 +21,7 @@ classdef EcoreCreator < handle
             self.javaEcoreCreator.newModel( modelName );
             rootSystem = self.javaEcoreCreator.addRootSystem( modelName );
             self.processSystem( rootSystem );
+            save_system( modelName );
             self.saveIt();
         end
         
@@ -39,7 +40,8 @@ classdef EcoreCreator < handle
         function processBlock( self, blockName, parentSystem )            
             name                = get_param(blockName,'ModelName');
             instanceName        = Utils.extractOnlyName( blockName );
-            sysAlreadyExists    = self.javaEcoreCreator.findSystem(name);            
+            sysAlreadyExists    = self.javaEcoreCreator.findSystem(name);
+            
             pList = modelManagement.simulink.PropertyList(name, ...
                 parentSystem,instanceName);
             posArray = get_param(blockName,'position');
@@ -54,7 +56,7 @@ classdef EcoreCreator < handle
                 self.addInportsTo( targetSystem );
                 self.processSystem( targetSystem );
             end
-            
+            save_system( name );
         end
                 
         function addLines( self, mdlBlks, parentSystem )
@@ -100,9 +102,11 @@ classdef EcoreCreator < handle
         end
         
         function initEcoreCreationClasses(self)
-            self.modelManager = modelManagement.simulink.SimulinkModelManager();
+            import se.kth.md.simulinkExchange.modelManagement.simulink.SimulinkModelManager;
+            import se.kth.md.simulinkExchange.modelConversion.simulink.SimulinkEcoreCreator;
+            self.modelManager = SimulinkModelManager();
             factory = self.modelManager.getFactory();
-            self.javaEcoreCreator = modelManagement.simulink.SimulinkEcoreCreator( factory );
+            self.javaEcoreCreator = SimulinkEcoreCreator( factory );
         end
                     
         function sysName = openModelInSimulink( self )

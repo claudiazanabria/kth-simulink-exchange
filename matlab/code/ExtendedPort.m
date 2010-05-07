@@ -61,6 +61,7 @@ classdef ExtendedPort < handle
             if self.connected
                 self.setConnectedBlockNames();
                 self.setConnectedPorts();
+                fprintf('%s\n',self.fullName);
                 self.setLineEndings();
             end
         end

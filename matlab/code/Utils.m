@@ -61,19 +61,20 @@ classdef Utils < handle
         end
         
         function setUUIDinUserData( fromEObject, toBlockName )
-            set_param( toBlockName,'UserDataPersistent','on');
             uuidStr = char(fromEObject.getUuid());
-            userData = containers.Map({'UUID'},{uuidStr} );
-            set_param( toBlockName, 'UserData', userData );            
+            Utils.createUUIDinBlock( uuidStr, toBlockName );            
         end        
         
         function uuidStr = getUUIDfromBlock( blockName )
             userData = get_param(blockName,'UserData');
-            if isempty( userData )
-                uuidStr = '';
-            else
+            if ~isempty( userData )
                 uuidStr = userData('UUID');
+                if ~isempty( uuidStr )
+                    return
+                end
             end
+            uuidStr = char( java.util.UUID.randomUUID() );
+            Utils.createUUIDinBlock( uuidStr, blockName );
         end
         
 %         function boolean = isReadableByJava( filePath )
@@ -81,5 +82,13 @@ classdef Utils < handle
 %             test = file.exists();
 %             boolean = file.canRead();
 %         end
+    end
+    methods (Static, Access=private)
+        function createUUIDinBlock( uuidStr, block )
+            % FIXME: This function will overwrite the contents of the Map
+            set_param( block,'UserDataPersistent','on');            
+            userData = containers.Map({'UUID'},{uuidStr} );
+            set_param( block, 'UserData', userData );            
+        end
     end
 end

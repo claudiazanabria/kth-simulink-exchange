@@ -40,9 +40,9 @@ classdef EcoreCreator < handle
         function processBlock( self, blockName, parentSystem )            
             name                = get_param(blockName,'ModelName');
             instanceName        = Utils.extractOnlyName( blockName );
-            sysAlreadyExists    = self.javaEcoreCreator.findSystem(name);            
-            pList = modelManagement.simulink.PropertyList(name, ...
-                parentSystem,instanceName);
+            sysAlreadyExists    = self.javaEcoreCreator.findSystem(name);
+            import se.kth.md.simulinkExchange.modelConversion.simulink.PropertyList;
+            pList = PropertyList(name, parentSystem, instanceName);
             posArray = get_param(blockName,'position');
             position = Utils.posArray2String( posArray );
             aSystemRef = self.javaEcoreCreator.addSystem( pList );
