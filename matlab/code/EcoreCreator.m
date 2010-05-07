@@ -95,7 +95,8 @@ classdef EcoreCreator < handle
         function saveIt( self )
             topElement = self.javaEcoreCreator.getTopElement();
             self.modelManager.setTopElement( topElement );
-            self.modelManager.validateIt();
+            % FIXME: the output of the validating cannot be seen.
+            % self.modelManager.validateIt();
             destFileName = fullfile(cd(), self.sourceFilePath);
             self.modelManager.saveAsWithPropperExtension(destFileName);
         end
