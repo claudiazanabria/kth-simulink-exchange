@@ -1,28 +1,33 @@
 classdef EcoreCreator < handle
     % From Matlab --> ecore
     properties(Access=private)
-        sourceFilePath;
+        sourceSystem;
         modelManager;
         javaEcoreCreator;        
     end
     methods (Static)
-        function EC=fromFile( path2mdlFile ) 
-            Utils.checkMDLFileReadable( path2mdlFile );
+        %TODO Rename fromFile to fromSystem
+        function EC=fromFile( systemName , destFileName)
+            %If destFileName is omitted
+            if (nargin == 1) 
+                destFileName = fullfile(cd(), systemName);
+            end    
+            Utils.checkMDLFileReadable( systemName );
             EC=EcoreCreator();
-            EC.sourceFilePath = path2mdlFile;
-            EC.doIt();
-        end
-                
+            EC.sourceSystem = systemName;
+            EC.doIt(destFileName);
+        end        
     end
+    
     methods
-        function doIt(self)
+        function doIt(self , destFileName)
             self.initEcoreCreationClasses();
             modelName = self.openModelInSimulink();
             self.javaEcoreCreator.newModel( modelName );
             rootSystem = self.javaEcoreCreator.addRootSystem( modelName );
             self.processSystem( rootSystem );
             save_system( modelName );
-            self.saveIt();
+            self.saveIt(destFileName);
         end
         
     end
@@ -92,12 +97,12 @@ classdef EcoreCreator < handle
             end
         end
 
-        function saveIt( self )
+        function saveIt( self , destFileName)
             topElement = self.javaEcoreCreator.getTopElement();
             self.modelManager.setTopElement( topElement );
             % FIXME: the output of the validating cannot be seen.
             % self.modelManager.validateIt();
-            destFileName = fullfile(cd(), self.sourceFilePath);
+            % destFileName = fullfile(cd(), destFileName);
             self.modelManager.saveAsWithPropperExtension(destFileName);
         end
         
@@ -110,7 +115,7 @@ classdef EcoreCreator < handle
         end
                     
         function sysName = openModelInSimulink( self )
-            fullPath = which( self.sourceFilePath );
+            fullPath = which( self.sourceSystem );
             load_system( fullPath );
             sysName = char( find_system('Filename', fullPath));
         end                
