@@ -1,5 +1,5 @@
 function sl_customization2(cm)
-%See Simlink docks how to use NOT FINISHED/CJS
+%Use sl_refresh_customizations to apply NOT FINISHED/CJS
   %% Register custom menu function.
   cm.addCustomMenuFcn('Simulink:FileMenu', @getMyMenuItems);
 end
@@ -29,6 +29,7 @@ function schema = SaveEcore(callbackInfo)
   schema.callback = @FileSelectSave; 
 end
 
-function myCallback2(callbackInfo)
-  disp(uiputfile({'*.simulink','Simulink Ecore (*.simulink)'}))
+function FileSelectSave(callbackInfo)
+%NOT WORKING
+  EcoreCreator.fromFile(uiputfile({'*.simulink','Simulink Ecore (*.simulink)'}))
 end
