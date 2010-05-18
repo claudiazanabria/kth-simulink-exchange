@@ -23,7 +23,7 @@ public class EastModelLoaderTest {
 
 
 
-	private String modelPath = "testFiles/simpleEAST.uml";
+	private String modelPath = "testFiles/demo.uml";
 	private URI model = URI.createFileURI(modelPath);
 
 	@Test

@@ -32,7 +32,7 @@ public class EastModelLoader {
 	
 	/*
 	 * Adds the metamodel the the global EMF registry
-	 * and initilizes the metamodel factory.
+	 * and initializes the metamodel factory.
 	 * After this call the package is ready to be used.
 	 */
 	private void initMetaModel() {
