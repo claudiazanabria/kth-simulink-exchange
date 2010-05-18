@@ -3,7 +3,7 @@
 -- @path EST=uri:http://www.papyrusuml.org/EAST-ADL2/1
 
 module simulink2east;
-create OUT : EST, OUT1 : UML from IN : SIM;
+create OUT1 : EST, OUT2 : UML from IN1 : SIM;
 
 rule Model {
 	from

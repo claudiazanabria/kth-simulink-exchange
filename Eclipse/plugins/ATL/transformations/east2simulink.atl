@@ -2,7 +2,7 @@
 -- @path EST=platform:/plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.ecore
 
 module east2simulink;
-create OUT : SIM from IN : EST;
+create OUT1 : SIM from IN1 : EST;
 
 
 -- Missing rules (TODO):
@@ -12,7 +12,7 @@ create OUT : SIM from IN : EST;
 
 -- Possible speed improvments:
 -- The helpers find* could be implemented with a select clause 
--- in thisModule.FAAchildren instead of allInstancesFrom('IN')
+-- in thisModule.FAAchildren instead of allInstancesFrom('IN1')
 
 rule TopLevelADLContainer {
 	from
@@ -117,20 +117,20 @@ helper context EST!ADLFlowPort def : findFunctionPrototypeContainer() :
 
 -- Return the FunctionPrototype containing the functionType
 helper context EST!ADLFunctionType def : findFunctionPrototypeContainer() :
-	EST!ADLFunctionPrototype = EST!ADLFunctionPrototype.allInstancesFrom('IN')->
+	EST!ADLFunctionPrototype = EST!ADLFunctionPrototype.allInstancesFrom('IN1')->
 		any( aFunctionProto | aFunctionProto.type = self );
 
 
 -- Returns the FunctionType containing the flowPort
 helper context EST!ADLFunctionPrototype def : findFunctionTypeContainer() :
-	EST!ADLFunctionType = EST!ADLFunctionType.allInstancesFrom('IN')->
+	EST!ADLFunctionType = EST!ADLFunctionType.allInstancesFrom('IN1')->
 	--ERROR: This function breaks if two systems include the same FunctionPrototypes !?!	
 	any( aFunctionType | aFunctionType.part->includes( self ) );
 
 
 -- Returns the FunctionType containing the flowPort
 helper context EST!ADLFlowPort def : findFunctionTypeContainer() : 
-	EST!ADLFunctionType = EST!ADLFunctionType.allInstancesFrom('IN')->
+	EST!ADLFunctionType = EST!ADLFunctionType.allInstancesFrom('IN1')->
 		any( aFunctionType | aFunctionType.flowPort->includes( self ) );
 
 
@@ -164,7 +164,7 @@ helper context OclAny def : isConnectedToFAA() : Boolean =
 -- A reference to the first valid ADLSystemModel that defines an FAA
 helper def : ValidADLSystem : EST!ADLSystemModel = 
 	-- Find all system models available, even though there should only be one
-	EST!ADLSystemModel.allInstancesFrom('IN')->any( model | model.hasFAA() );
+	EST!ADLSystemModel.allInstancesFrom('IN1')->any( model | model.hasFAA() );
 
 
 -- True if the model has FunctionAnalysisArchitecture defined
