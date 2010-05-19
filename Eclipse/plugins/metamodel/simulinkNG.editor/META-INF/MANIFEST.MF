@@ -1,19 +1,19 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Simulink ecore Metamodel Editor
-Bundle-SymbolicName: se.kth.attest2.metamodel.Simulink.editor;singleton:=true
-Bundle-Version: 3.1.9
+Bundle-SymbolicName: se.kth.md.simulinkExchange.metamodel.Simulink.editor;singleton:=true
+Bundle-Version: 3.2.2
 Bundle-ClassPath: .
 Bundle-Activator: Simulink.presentation.SimNGEditorPlugin$Implementation
 Bundle-Vendor: KTH Mechatronics
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: Simulink.presentation
-Require-Bundle: org.eclipse.core.runtime,
- org.eclipse.core.resources;visibility:=reexport,
- se.kth.attest2.metamodel.Simulink.edit;visibility:=reexport,
- org.eclipse.emf.ecore.xmi;visibility:=reexport,
- org.eclipse.emf.edit.ui;visibility:=reexport,
- org.eclipse.ui.ide;visibility:=reexport,
- org.eclipse.emf.ecore.edit;visibility:=reexport
 Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.core.resources;bundle-version="3.5.1",
+ org.eclipse.core.runtime;bundle-version="3.5.0",
+ org.eclipse.ui.ide,
+ org.eclipse.emf.ecore.xmi,
+ org.eclipse.emf.edit.ui,
+ se.kth.md.simulinkExchange.metamodel.Simulink;bundle-version="3.2.2",
+ se.kth.md.simulinkExchange.metamodel.Simulink.edit
