@@ -2,7 +2,7 @@ package se.kth.md.simulinkExchange.modelConversion.simulink;
 
 import se.kth.md.simulinkExchange.modelManagement.exceptions.InvalidModelException;
 import se.kth.md.simulinkExchange.modelManagement.simulink.SimulinkModelManager;
-
+       
 import Simulink.Model;
 import Simulink.SimulinkFactory;
 import Simulink.System;
