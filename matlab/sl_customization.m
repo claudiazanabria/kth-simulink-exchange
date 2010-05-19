@@ -1,16 +1,41 @@
 function sl_customization(cm)
 %Use sl_refresh_customizations to apply NOT FINISHED/CJS
   %% Register custom menu function.
-  cm.addCustomMenuFcn('Simulink:FileMenu', @getMyMenuItems);
+  cm.addCustomMenuFcn('Simulink:FileMenu', @getFileMenuItems);
+  cm.addCustomMenuFcn('Simulink:ContextMenu', @getContextMenuItems);
 end
 
 %% Define the custom menu function.
-function schemaFcns = getMyMenuItems(callbackInfo) 
+function schemaFcns = getFileMenuItems(callbackInfo) 
   schemaFcns = {@OpenEcore,...
 						@SaveEcore};
 end
 
+
+function schemaFcns = getContextMenuItems(callbackInfo) 
+  schemaFcns = {@ToggleEAST};
+end
+
 %% Define the schema function for first menu item.
+function schema = ToggleEAST(callbackInfo)
+   schema = sl_toggle_schema;
+  schema.label = 'EAST';
+  tmp=get_param(gcb, 'ForegroundColor')
+  if strcmp(tmp, 'red') == 1
+    schema.checked = 'checked';
+  else
+    schema.checked = 'unchecked';
+  end
+  schema.callback = @ToggleEASTAction; 
+end
+
+function ToggleEASTAction(callbackInfo)
+    if strcmp(get_param(gcb, 'ForegroundColor'), 'red') == 0
+        set_param(gcb, 'ForegroundColor', 'red');
+    else
+        set_param(gcb, 'ForegroundColor', 'white');
+    end
+end
 function schema = OpenEcore(callbackInfo)
   schema = sl_action_schema;
   schema.label = 'Open .simulink file...';
