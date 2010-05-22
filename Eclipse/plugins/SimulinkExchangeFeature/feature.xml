@@ -2,7 +2,7 @@
 <feature
       id="se.kth.md.simulinkExchange.feature"
       label="Simulink Exchange Bundle"
-      version="3.0"
+      version="3.1"
       provider-name="KTH Mechatronics">
 
    <description url="http://www.example.com/description">
@@ -21,12 +21,10 @@
       <import plugin="org.junit4" version="4.5.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.emf.ecore"/>
       <import plugin="org.eclipse.emf.ecore.edit"/>
-      <import plugin="se.kth.md.simulinkExchange.metamodel.Simulink" version="3.2.1" match="greaterOrEqual"/>
       <import plugin="org.eclipse.core.runtime" version="3.5.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.ui.ide"/>
       <import plugin="org.eclipse.emf.ecore.xmi"/>
       <import plugin="org.eclipse.emf.edit.ui"/>
-      <import plugin="se.kth.md.simulinkExchange.metamodel.Simulink" version="3.2.2" match="greaterOrEqual"/>
       <import plugin="org.eclipse.core.resources" version="3.5.0" match="greaterOrEqual"/>
    </requires>
 
