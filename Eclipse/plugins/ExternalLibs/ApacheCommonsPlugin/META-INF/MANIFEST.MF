@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Apache Commons IO
 Bundle-SymbolicName: apache.commons.io
-Bundle-Version: 1.0.0
+Bundle-Version: 1.0.1
 Bundle-Vendor: KTH Mechatronics
 Export-Package: org.apache.commons.io,
  org.apache.commons.io.comparator,
