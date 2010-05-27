@@ -13,20 +13,62 @@ end
 
 
 function schemaFcns = getContextMenuItems(callbackInfo) 
-  schemaFcns = {@ToggleEAST};
+  schemaFcns = {@ToggleEAST,@AddToEASTLib};
+
 end
 
 %% Define the schema function for first menu item.
 function schema = ToggleEAST(callbackInfo)
    schema = sl_toggle_schema;
   schema.label = 'EAST';
-  tmp=get_param(gcb, 'ForegroundColor')
+  tmp=get_param(gcb, 'ForegroundColor');
   if strcmp(tmp, 'red') == 1
     schema.checked = 'checked';
   else
     schema.checked = 'unchecked';
   end
   schema.callback = @ToggleEASTAction; 
+end
+
+function schema = AddToEASTLib(callbackInfo)
+  schema = sl_toggle_schema;
+  schema.label = 'Add to EAST library';   
+  schema.callback = @AddToEAST; 
+end
+
+function AddToEAST(callbackInfo)
+%BROKEN FOR (SOME) BLOCKS THAT EXIST
+    FunctionTypesFile='FunctionTypes';
+%Somewhat of hard-code, but the user can either use the library file in the
+%/code directory (which is in the path), or a personal FunctionTypes.mdl 
+%located in the CD
+   name=get_param(gcb,'name');
+   oldName=gcb;
+   oldSystem=gcs;
+   newName=[FunctionTypesFile '/' name]
+   open_system(FunctionTypesFile); 
+   set_param(FunctionTypesFile,'Lock','off');
+   existingBlocks=find_system(FunctionTypesFile, 'SearchDepth', 1,'name', name);
+   if (size(existingBlocks,1) > 0) 
+   choice = questdlg(['Block exists in FunctionType library: ', name ], ...
+	'Warning', 'Overwrite','Rename','Cancel','Cancel');
+% Handle response
+        switch choice
+            case 'Overwrite'
+                delete_block(newName)
+                add_block(oldName, newName)
+            case 'Rename'
+                newHandle=add_block(oldName, newName, 'MakeNameUnique', 'on');
+                %'Ugly method, but it should work?
+                newName=[get_param(newHandle,'Parent') '/' get_param(newHandle,'Name')];
+            case 'Cancel'
+                 return
+        end
+   else
+       add_block(oldName, newName)    
+   end
+  set_param(newName, 'BackgroundColor', 'lightblue'); 
+  replace_block(oldSystem, 'Handle', get_param(oldName,'Handle'), newName, 'noprompt')
 end
 
 function ToggleEASTAction(callbackInfo)
