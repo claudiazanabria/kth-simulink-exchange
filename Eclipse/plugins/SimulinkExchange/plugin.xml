@@ -17,7 +17,7 @@
             </separator>
          </menu>
          <action
-               class="se.kth.md.simulinkExchange.popup.actions.ATLdispatcher2EAST"
+               class="se.kth.md.simulinkExchange.popup.actions.atl.Dispatcher2EAST"
                enablesFor="1"
                id="se.kth.md.simulinkExchange.newAction1"
                label="Transform into EAST-ADL"
@@ -25,6 +25,16 @@
                state="true"
                style="push"
                tooltip="Transform into UML">
+         </action>
+         <action
+               class="se.kth.md.simulinkExchange.popup.actions.validation.Dispatcher4simulink"
+               enablesFor="1"
+               id="se.kth.md.simulinkExchange.newAction3"
+               label="Validate"
+               menubarPath="se.kth.md.simulinkExchange.menuSIM/group1"
+               state="true"
+               style="push"
+               tooltip="Validate model">
          </action>
       </objectContribution>
       <objectContribution
@@ -40,7 +50,7 @@
             </separator>
          </menu>
          <action
-               class="se.kth.md.simulinkExchange.popup.actions.ATLdispatcher2Simulink"
+               class="se.kth.md.simulinkExchange.popup.actions.atl.Dispatcher2Simulink"
                enablesFor="1"
                id="se.kth.md.simulinkExchange.newAction2"
                label="Transform into Simulink"
@@ -48,6 +58,16 @@
                state="true"
                style="push"
                tooltip="Transform into simulink">
+         </action>
+         <action
+               class="se.kth.md.simulinkExchange.popup.actions.validation.Dispatcher4east"
+               enablesFor="1"
+               id="se.kth.md.simulinkExchange.newAction4"
+               label="Validate"
+               menubarPath="se.kth.md.simulinkExchange.menuUML/group1"
+               state="true"
+               style="push"
+               tooltip="Validate model">
          </action>
       </objectContribution>
    </extension>

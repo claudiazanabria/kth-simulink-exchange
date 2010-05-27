@@ -78,10 +78,8 @@ public class ATLrunConfiguration {
 	}
 
 	
-	public URI getCompiledTransformationAsURI() {
-		// TODO: Ugly hack to create a copy...
-		URI temp = URI.createURI( transformationSource.toString() );
-		return temp.trimFileExtension().appendFileExtension("asm"); 
+	public URI getCompiledTransformationAsURI() {		
+		return transformationSource.trimFileExtension().appendFileExtension("asm"); 
 	}
 	
 	public InputStream getCompiledTransformationAsStream() throws FileNotFoundException {
