@@ -104,6 +104,6 @@ function FileSelectSave(callbackInfo)
 %using get_param(gcs,'FileName')?
   [filename, pathname] = uiputfile({'*.simulink','Simulink Ecore (*.simulink)'},'Save Ecore file' , gcs);
   if ~(isequal(filename,0) || isequal(pathname,0))   
-    EcoreCreator.fromFile(gcs, fullfile(pathname,filename))
+    EcoreCreatorRef.fromModel(gcs, fullfile(pathname,filename))
   end
  end
