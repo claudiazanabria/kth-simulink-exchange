@@ -99,9 +99,14 @@ classdef Utils < handle
         function setUUIDinUserData( fromEObject, toBlockName )
             uuidStr = char(fromEObject.getUuid());
             Utils.setUserData(toBlockName, 'UUID', uuidStr);            
-        end        
+        end 
         
-        function uuidStr = getUUIDfromBlock( blockName )
+        function setUUID( BlockName )
+            uuidStr = char( java.util.UUID.randomUUID() );
+            Utils.setUserData(BlockName, 'UUID', uuidStr);            
+        end       
+        
+        function uuidStr = getUUIDfromBlock(blockName)
             uuidStr = Utils.getUserData(blockName, 'UUID');
                 if ~isempty( uuidStr )
                     return
