@@ -6,19 +6,14 @@ module east2simulink;
 create OUT1 : SIM from IN1 : EST;
 
 
--- Missing rules (TODO):
--- ADLInOutFlowPort
--- ADLPortGroup
--- ADLClientServerPort
-
-
 -- NOTES:
--- A SystemReference for FAA is unecesarily generated, 
--- and ignored further down the chain.
+-- The following elements are created at the top level but are NOT needed.
+-- SystemReference for FAA.
+-- Inports and Outports are duplicated.
+-- All these can be safely ignored.
 
 rule TopLevelADLContainer {
 	from
-		--s : EST!ADLSystemModel ( s = thisModule.ValidADLSystem )
 		s : EST!Model	-- Model is a UML class
 	to
 		t : SIM!Model (
@@ -46,8 +41,8 @@ rule FunctionTypes2Subsystems {
 				name 		<- s.base_Class.name,
 				children	<- s.part,
 				inports		<- s.convertInports(),
-				outports 	<- s.convertOutports()
---				lines		<- s.connector
+				outports 	<- s.convertOutports(),
+				lines		<- s.connector
 			)
 }
 
@@ -99,66 +94,16 @@ helper context EST!FunctionFlowPort def : isInport() : Boolean =
 	not self.isOutport();
 
 
---rule ConnectorPrototype2Lines {
----- Lines that are misplaced in the source get empty endpoints
----- Misplacaed in the sense that they should belong to another FunctionType
---
---	from
---		s : EST!ADLConnectorPrototype ( s.isConnectedToFAA() )
---
---	using {
---			srcPort : EST!ADLFlowPort = s.flowPort->first();
---			dstPort : EST!ADLFlowPort = s.flowPort->last();
---		}
---
---	to
---		t : SIM!Line (
---				name <- s.name,
---				source			<- srcPort,
---				destination 	<- dstPort
---				--parent		<-
---			)
---}
---
---lazy abstract rule FlowPorts {
---	from
---		s : EST!FunctionFlowPort
---	to
---		t : SIM!Port (
---				name 	<- s.base_Port.name,
---				parent	<- s.refImmediateComposite()
---			)
---}
+rule Connector2Lines {
+-- Lines that are misplaced in the source get empty endpoints
+-- Misplacaed in the sense that they should belong to another FunctionType
 
----- Returns the FunctionPrototype containing the flowPort
---helper context EST!ADLFlowPort def : findFunctionPrototypeContainer() : 
---	EST!ADLFunctionPrototype = 
---		self.findFunctionTypeContainer().findFunctionPrototypeContainer();
---
---
----- Return the FunctionPrototype containing the functionType
---helper context EST!ADLFunctionType def : findFunctionPrototypeContainer() :
---	EST!ADLFunctionPrototype = EST!ADLFunctionPrototype.allInstancesFrom('IN1')->
---		any( aFunctionProto | aFunctionProto.type = self );
---
---
----- Returns the FunctionType containing the flowPort
---helper context EST!ADLFunctionPrototype def : findFunctionTypeContainer() :
---	EST!ADLFunctionType = EST!ADLFunctionType.allInstancesFrom('IN1')->
---	--ERROR: This function breaks if two systems include the same FunctionPrototypes !?!	
---	any( aFunctionType | aFunctionType.part->includes( self ) );
---
---
----- Returns the FunctionType containing the flowPort
---helper context EST!ADLFlowPort def : findFunctionTypeContainer() : 
---	EST!ADLFunctionType = EST!ADLFunctionType.allInstancesFrom('IN1')->
---		any( aFunctionType | aFunctionType.flowPort->includes( self ) );
---
---
---helper context EST!ADLFlowPort def : findPortNumber() : Integer =
---	-- Uses reflection to find port type.
---		self.findFunctionTypeContainer().flowPort->
---			select(aPort|aPort.oclType() = self.oclType() )->
---			indexOf(self);
---	
---
+	from
+		s : EST!FunctionConnector
+	to
+		t : SIM!Line (
+				name 		<- s.base_Connector.name,
+				source		<- thisModule.Inports( s.port->first() ),
+				destination <- thisModule.Outports( s.port->last() )
+			)
+}
