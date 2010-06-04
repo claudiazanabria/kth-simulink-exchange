@@ -34,13 +34,16 @@ rule TopLevelADLContainer {
 rule FunctionTypes2Subsystems {
 	from
 		s : EST!AnalysisFunctionType
-		
+	using {
+		inports  : Set(EST!FunctionFlowPort) = s.port->select( aPort | aPort.isInport()  );
+		outports : Set(EST!FunctionFlowPort) = s.port->select( aPort | aPort.isOutport() );
+	}
 	to	
 		aSystem : SIM!System ( 
 				name 		<- s.base_Class.name,
 				children	<- s.part,
-				inports		<- s.convertInports(),
-				outports 	<- s.convertOutports(),
+				inports		<- inports ->collect( aPort | thisModule.Inports(aPort)  ),
+				outports 	<- outports->collect( aPort | thisModule.Outports(aPort) ),
 				lines		<- s.connector
 			)
 }
@@ -75,14 +78,6 @@ unique lazy rule Outports {
 			)
 }
 
-
-helper context EST!AnalysisFunctionType def : convertInports() : Set(SIM!Inport) = 
-	self.port->select( aPort | aPort.isInport() )
-		->collect( aPort | thisModule.Inports(aPort) );
-
-helper context EST!AnalysisFunctionType def : convertOutports() : Set(SIM!Outport) = 
-	self.port->select( aPort | aPort.isOutport() )
-		->collect( aPort | thisModule.Outports(aPort) );
 
 helper context EST!FunctionFlowPort def : isOutport() : Boolean = 
 	self.direction = #out;
