@@ -14,23 +14,22 @@ create OUT1 : SIM from IN1 : EST;
 
 rule TopLevelADLContainer {
 	from
-		s : EST!Model	-- Model is a UML class
+		s : EST!Model	-- Model is a UML class	
+	using {
+		rootSys : EST!AnalysisFunctionType = 
+			EST!AnalysisLevel.allInstancesFrom('IN1')->first()
+				.functionalAnalysisArchitecture.type;
+
+		allFunctionTypes : Set(EST!AnalysisFunctionType) =
+			EST!AnalysisFunctionType.allInstancesFrom('IN1');
+	}		
 	to
 		t : SIM!Model (
 			name   	<- s.name,
-			root	<- thisModule.findRootSystem(), 
-			parts	<- thisModule.findAllFunctionTypes()
+			root	<- rootSys, 
+			parts	<- allFunctionTypes
 			)
-}
-	
-
-helper def : findAllFunctionTypes() : Set(EST!AnalysisFunctionType) =
-	EST!AnalysisFunctionType.allInstancesFrom('IN1');
-
-helper def : findRootSystem() : EST!AnalysisFunctionType =
-	EST!AnalysisLevel.allInstancesFrom('IN1')->first()
-		.functionalAnalysisArchitecture.type;
-
+}	
 
 rule FunctionTypes2Subsystems {
 	from
