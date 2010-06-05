@@ -1,0 +1,1440 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Adding Your Own Toolboxes to the Development Environment
+:: GUI Reference for Desktop Tools and Development Environment (MATLAB®)</title>
+
+<link rel="stylesheet" href="docstyle.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.52.2">
+<meta name="description" content="Instructions for adding collections of files you have
+created, such as toolboxes, to the Start button, Help browser, and
+Demos.">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<script language="JavaScript" src="docscripts.js"></script>
+</head>
+
+<body>
+<a name="top_of_page"></a>
+<p style="font-size: 1px;">&nbsp;</p>
+<table class="nav" summary="Navigation aid" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody>
+<tr>
+<td valign="baseline"><b>MATLAB<sup>®</sup></b></td>
+<td align="right" valign="baseline"></td>
+</tr>
+</tbody>
+</table>
+<table class="feedbacklinktop" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody>
+<tr>
+<td>&nbsp;</td>
+<td align="right">
+<script type="text/javascript" language="JavaScript">
+writeDocFeedbackSurveyLink();
+</script>&nbsp;
+</td>
+</tr>
+</tbody>
+</table>
+<a name="Docroot"></a>
+<h2 class="title" id="Docroot">The Simulink &lt;-&gt; Ecore exchange plugin</h2>
+<a name="start_button_config"></a>
+<table class="pagenavtable" border="0" cellpadding="4" cellspacing="0">
+<tbody>
+<tr>
+<th>On this page…</th>
+</tr>
+<tr>
+<td>
+<p><a href="Docroot.html#brdufaf">Overview</a></p>
+<p><a href="Docroot.html#f3-40448">Adding
+Your Own Toolboxes to the Start Button</a></p>
+<p><a href="Docroot.html#f3-40511">Adding
+HTML Help Files for Your Own Toolbox</a></p>
+<p><a href="Docroot.html#f3-40519">Adding
+Demos for Your Own Toolboxes</a></p>
+<p><a href="Docroot.html#bq5u_c4-1">Validation
+Errors for info.xml Files</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<a name="brdufaf"></a>
+<h3 class="title" id="brdufaf">Overview</h3>
+<p>This plugin generates Ecore files, based on a meta-model defined using the other&nbsp;</p>
+<p>See the <a href="f9-6232.html">Using M-File
+Reports</a> for tools
+that are useful when preparing a collection of M-files.</p>
+<a name="f3-40448"></a>
+<p class="pagenavlink">
+<script language="Javascript">updateSectionId("f3-40448");</script>
+<script language="Javascript">addTopOfPageButtons();</script><a href="#top_of_page">Back to Top</a></p>
+<h3 class="title" id="f3-40448">Quick start</h3>
+<a name="brdu1l8"></a><br>If you are reading this file, you probably already have run the <span style="font-family: monospace;">ecore_init.m </span>file. This must be done every time you start MATLAB and want to use Ecore exchange, so you should consider putting it into your <span style="font-family: monospace;">startup.m</span> file. 
+<h4 class="title" id="brdu1l8">The FunctionTypes library</h4>
+<a class="indexterm" name="zmw57dd0e50259"></a><a class="indexterm" name="zmw57dd0e50264"></a><a class="indexterm" name="zmw57dd0e50269"></a><p>The exchange mechanism uses the library mechanism of MATLAB/Simulink.</p>
+<a name="brdu1g5"></a>
+<h4 class="title" id="brdu1g5">Procedure for Adding
+Your Own Toolbox to the Start Button</h4>
+<p><img style="width: 496px; height: 658px;" alt="test" src="Add_to_EAST.PNG"></p><p>To accompany the following instructions, an example file is
+provided that adds the SpecSim (Example) Toolbox to the <b>Start</b>
+button.
+Use the example <tt>startinfo.xml file</tt> as a basis for
+creating an <tt>info.xml</tt> file for your own toolbox.</p>
+<a name="bqrliaa"></a>
+<ol type="1">
+<li>
+<p>Copy the example file <tt><i><tt>matlabroot</tt></i>/help/techdoc/matlab_env/examples/startinfo.xml</tt>
+to
+a directory for which you have write access.</p>
+</li>
+<li>
+<p>In that directory, rename <tt>startinfo.xml</tt>
+to <tt>info.xml</tt>.</p>
+</li>
+<li>
+<p>Add the directory containing the <tt>info.xml</tt>
+file
+to the search path for MATLAB.</p>
+</li>
+<li>
+<p><a name="f3-42334"></a>To see what the
+example <tt>info.xml</tt> file
+does, perform these steps:</p>
+<ol type="1">
+<li>
+<p><a name="brdutvk-1"></a>Select <b>Start</b>
+&gt; <b>Desktop Tools </b> &gt; <b>View
+Start Button
+Configuration Files</b>.</p>
+<p>The Start Button Configuration Files dialog box opens.
+Click <b>Refresh
+Start Button</b> Perform this step whenever you want to see
+changes to <tt>info.xml</tt> files reflected in the <b>Start</b>
+button.</p>
+<p class="listimage"><img src="startbutton_configure.gif" alt="Image of Start Button Configuration Files dialog box, highlighting the SpecSim (Example) item." height="245" width="477"></p>
+</li>
+<li>
+<p>In the desktop, view the item in the <b>Start</b>
+button.
+For the example, select <b>Start</b> &gt; <b>Toolboxes</b>
+&gt; <b>SpecSim (Example)</b>.</p>
+</li>
+</ol>
+<p><img src="example_start_button.gif" alt="Image of Start button, highlighting the SpecSim (Example) item." height="272" width="437"></p>
+</li>
+<li>
+<p>In the Start Button Configuration Files dialog box, select
+the <tt>info.xml</tt> file you want to edit. In this
+example,
+select <tt>SpecSim (Example) Toolbox</tt>. Click the <b>Open</b>
+button.</p>
+<p>The <tt>info.xml</tt> file for the selected
+product
+opens in the Editor.</p>
+</li>
+<li><a class="indexterm" name="zmw57dd0e50434"></a><a class="indexterm" name="zmw57dd0e50440"></a>
+<p><a name="f3-6395"></a>In the Editor,
+change the entries in the <tt>info.xml</tt> file so they
+pertain to your toolbox. For details, see the sample code and table
+shown after the last step.</p>
+<p>The schema for the <tt>info.xml</tt> file is
+at <i><tt>matlabroot</tt></i><tt>/sys/namespace/info/v1/info.xsd</tt>.
+Consult the schema if you need more information about the <tt>info.xml</tt>
+file
+structure.</p>
+</li>
+<li>
+<p><a name="f3-54172"></a>In the Editor,
+select <b>File</b> &gt; <b>Save</b> to
+save the changes.</p>
+</li>
+<li>
+<p><a name="f3-54173"></a>To see the
+results of the changes to the <tt>info.xml</tt> file,
+in the Start Button Configuration Files dialog box click <b>Refresh
+Start Button</b>, and the view the <b>Start</b>
+button.</p>
+<p>MATLAB automatically validates your <tt>info.xml</tt>
+file
+against the schema. If there is an invalid construct, MATLAB displays
+an error in the Command Window.</p>
+<p>Use the message in the error to isolate the problem or use
+any
+validator. One validator you can use is from the W3C<sup>®</sup>
+at <tt><a href="http://www.w3.org/2001/03/webdata/xsv" target="_top">http://www.w3.org/2001/03/webdata/xsv</a></tt>.</p>
+</li>
+</ol>
+<a name="brdu1el"></a>
+<h4 class="title" id="brdu1el">Description of
+info.xml File for Adding Your Own Toolbox to
+the Start Button</h4>
+<p>This is the example file provided with MATLAB.</p>
+<p><img src="start_button_info_xml.gif" alt="Image of info.xml file opened in the Editor. The file adds SpecSim to the Start button." height="730" width="588"></p>
+<p>This table provides details about the example <tt>info.xml</tt>
+file.</p>
+<table class="body" border="2" cellpadding="4" cellspacing="0">
+<colgroup><col width="14%"><col width="23%"><col width="27%"><col width="36%"></colgroup><thead><tr valign="top">
+<th>
+<p>Line</p>
+</th>
+<th>
+<p>XML Tag</p>
+</th>
+<th>
+<p>Value for Example</p>
+</th>
+<th>
+<p>Notes</p>
+</th>
+</tr>
+</thead><tbody>
+<tr valign="top">
+<td>
+<p><a name="f3-54040"></a><tt>6</tt></p>
+</td>
+<td>
+<p><a name="f3-54042"></a><tt>&lt;matlabrelease&gt;</tt></p>
+</td>
+<td>
+<p><a name="f3-54044"></a><tt>R2008b</tt></p>
+</td>
+<td>
+<p>Release of MATLAB. Not currently used.</p>
+</td>
+</tr>
+<tr valign="top">
+<td>
+<p><a name="f3-54048"></a><tt>7</tt></p>
+</td>
+<td>
+<p><a name="f3-54050"></a><tt>&lt;name&gt;</tt></p>
+</td>
+<td>
+<p><a name="f3-54052"></a><tt>SpecSim
+(Example)</tt></p>
+</td>
+<td>
+<p>Name of the toolbox.</p>
+</td>
+</tr>
+<tr valign="top">
+<td>
+<p><a name="f3-54056"></a><tt>8</tt></p>
+</td>
+<td>
+<p><a name="f3-54058"></a><tt>&lt;type&gt;</tt></p>
+</td>
+<td>
+<p><a name="f3-54060"></a><tt>toolbox</tt></p>
+</td>
+<td>
+<p>The product type. Allowable values are <tt>matlab</tt>,
+<tt>simulink,
+toolbox</tt>, <tt>blockset</tt>, <tt>links_targets</tt>,
+<tt>other</tt>.
+This determines where the entry appears in the <b>Start</b>
+button. <b>SpecSim
+(Example)</b> appears under <b>Start</b> &gt; <b>Toolboxes</b>.
+Within a type,
+entries are shown in alphabetical order.</p>
+</td>
+</tr>
+<tr valign="top">
+<td>
+<p><a name="f3-54064"></a><tt>9</tt></p>
+</td>
+<td>
+<p><a name="f3-54066"></a><tt>&lt;icon&gt;</tt></p>
+</td>
+<td>
+<p><a name="f3-54068"></a><tt>$docroot/techdoc/matlab_env/examples/specsimicon.gif</tt></p>
+</td>
+<td>
+<p>Shows an icon for your toolbox. You can specify a
+relative
+path, that is, relative to the location of the <tt>info.xml</tt>
+file.
+In this example, <tt>specsimicon.gif</tt> is located in
+the <tt>examples</tt> directory provided with the
+documentation.</p>
+</td>
+</tr>
+<tr valign="top">
+<td>
+<p><a name="f3-54072"></a><tt>10</tt></p>
+</td>
+<td>
+<p><a name="f3-54074"></a><tt>&lt;help_location&gt;</tt></p>
+</td>
+<td>None</td>
+<td>
+<p>Location of HTML help files you provide for the toolbox.
+For details, see <a href="Docroot.html#f3-40511">Adding
+HTML Help Files for Your Own Toolbox</a>. Specify a
+relative path, that is, relative to the location of the <tt>info.xml</tt>
+file.
+In this example, there are no help files, so the entry has no value.</p>
+</td>
+</tr>
+<tr valign="top">
+<td>
+<p><a name="f3-54083"></a><tt>12
+to 15</tt></p>
+</td>
+<td>
+<p><a name="f3-54085"></a><tt>&lt;list&gt;<br>
+</tt><tt>&lt;listitem&gt;<br>
+</tt><tt>&lt;label&gt;<br>
+</tt></p>
+</td>
+<td>
+<p><a name="f3-54087"></a><tt>SpecSim
+Viewer (Example GUI)</tt></p>
+</td>
+<td>
+<p>Name of a tool in your toolbox. You must have at least
+one <tt>list-listitem-label</tt> set of tags for the
+toolbox
+to appear in the <b>Start</b> button.</p>
+</td>
+</tr>
+<tr valign="top">
+<td>
+<p><a name="f3-54091"></a><tt>16</tt></p>
+</td>
+<td>
+<p><a name="f3-54093"></a><tt>&lt;callback&gt;</tt></p>
+</td>
+<td>
+<p><a name="f3-54095"></a><tt>specsim_viewer_example</tt></p>
+</td>
+<td>
+<p>This is the function that runs when you select the item
+from the <b>Start</b> button. You must have at
+least one <tt>callback</tt> for the toolbox to appear in
+the <b>Start</b> button. In this example, <tt>specsim_viewer_example</tt>
+is
+a function that starts the SpecSim Viewer GUI when you select <b>Start</b>
+&gt; <b>Toolboxes</b> &gt; <b>SpecSim
+(Example)</b> &gt; <b>SpecSim Viewer
+(Example GUI)</b>. (This example file is not
+actually provided.)</p>
+</td>
+</tr>
+<tr valign="top">
+<td>
+<p><a name="f3-54099"></a><tt>17</tt></p>
+</td>
+<td>
+<p><a name="f3-54101"></a><tt>&lt;icon&gt;</tt></p>
+</td>
+<td>
+<p><a name="f3-54103"></a><tt>$docroot/techdoc/matlab_env/examples/guiicon.gif</tt></p>
+</td>
+<td>
+<p>Shows an icon for your <tt>callback</tt>.
+You
+can specify a relative path, that is, relative to the location of
+the <tt>info.xml</tt> file. In this example, <tt>guiicon.gif</tt>
+is
+located in the <tt>examples</tt> directory provided with
+the documentation.</p>
+</td>
+</tr>
+<tr valign="top">
+<td>
+<p><a name="f3-54107"></a><tt>21</tt></p>
+</td>
+<td>
+<p><a name="f3-54109"></a><tt>&lt;label&gt;</tt></p>
+</td>
+<td>
+<p><a name="f3-54111"></a><tt>Demos
+(SpecSim Example)</tt></p>
+</td>
+<td>
+<p>For examples you provide with the toolbox.</p>
+</td>
+</tr>
+<tr valign="top">
+<td>
+<p><a name="f3-54115"></a><tt>22</tt></p>
+</td>
+<td>
+<p><tt>&lt;callback&gt;</tt></p>
+</td>
+<td>
+<p><a name="f3-54119"></a><tt>specsim_demos_example</tt></p>
+</td>
+<td>
+<p>This is the function that runs when you select the item
+from the <b>Start</b> button. In this example, <tt>specsim_demos_example</tt>
+is
+an example that runs when you select <b>Start</b> &gt;
+<b>Toolboxes</b> &gt; <b>SpecSim (Example)</b>
+&gt; <b>Demos (SpecSim Example)</b>. (This
+example file is not actually provided.)</p>
+</td>
+</tr>
+<tr valign="top">
+<td>
+<p><a name="f3-54123"></a><tt>23</tt></p>
+</td>
+<td>
+<p><a name="f3-54125"></a><tt>&lt;icon&gt;</tt></p>
+</td>
+<td>
+<p><a name="f3-54127"></a><tt>$docroot/techdoc/matlab_env/examples/demoicon.gif</tt></p>
+</td>
+<td>
+<p>Shows an icon for your demos. You can specify a relative
+path, that is, relative to the location of the <tt>info.xml</tt>
+file.
+In this example, <tt>demoimicon.gif</tt> is located in the
+<tt>examples</tt> directory
+provided with the documentation.</p>
+</td>
+</tr>
+<tr valign="top">
+<td>
+<p><a name="f3-54131"></a><tt>27</tt></p>
+</td>
+<td>
+<p><a name="f3-54133"></a><tt>&lt;label&gt;</tt></p>
+</td>
+<td>
+<p><a name="f3-54135"></a><tt>Web
+Site (SpecSim Example)</tt></p>
+</td>
+<td>
+<p>For a link to your toolbox Web site.</p>
+</td>
+</tr>
+<tr valign="top">
+<td>
+<p><a name="f3-54139"></a><tt>28</tt></p>
+</td>
+<td>
+<p><a name="f3-54141"></a><tt>&lt;callback&gt;</tt></p>
+</td>
+<td>
+<p><a name="f3-54143"></a><tt>web
+web http://www.specsimexample.com
+-browser;</tt></p>
+</td>
+<td>
+<p>This is the statement that runs when you select the item
+from the <b>Start</b> button. In this example,
+it displays the Web site for the SpecSim (Example) Toolbox in the
+system browser. when hen you select <b>Start</b> &gt; <b>Toolboxes</b>
+&gt; <b>SpecSim (Example)</b> &gt; <b>Web
+Site (SpecSim Example)</b>.
+(This URL is intentionally invalid.)</p>
+</td>
+</tr>
+<tr valign="top">
+<td>
+<p><a name="f3-54147"></a><tt>30</tt>
+to <tt>34</tt></p>
+</td>
+<td>
+<p><a name="f3-54149"></a><tt>&lt;/listitem&gt;</tt></p>
+<p><a name="f54150"></a><tt>&lt;/list&gt;
+</tt><tt>&lt;/productinfo&gt;</tt></p>
+</td>
+<td>
+<p>None</p>
+</td>
+<td>
+<p>Designates end of <tt>list</tt> and <tt>productinfo</tt>
+entries
+in the <b>Start</b> button for the toolbox.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<a name="f3-40511"></a>
+<p class="pagenavlink">
+<script language="Javascript">updateSectionId("f3-40511");</script>
+<script language="Javascript">addTopOfPageButtons();</script><a href="#top_of_page">Back to Top</a></p>
+<h3 class="title" id="f3-40511">Adding HTML Help
+Files for Your Own Toolbox</h3>
+<ul>
+<li>
+<p><a href="Docroot.html#brdu1aw">Overview of
+Providing HTML Help Files for Your Own Toolbox</a></p>
+</li>
+<li>
+<p><a href="Docroot.html#brdu0_k">Adding HTML
+Help Files for Your Own Toolbox to the Help Browser</a></p>
+</li>
+<li>
+<p><a href="Docroot.html#brdu0qk">Description
+of info.xml File for Adding HTML Help Files for
+Your Toolbox</a></p>
+</li>
+<li>
+<p><a href="Docroot.html#bq35kdh">Creating a
+Searchable Database</a></p>
+</li>
+</ul>
+<a name="matlab_env_addownhelp"></a><a name="brdu1aw"></a>
+<h4 class="title" id="brdu1aw">Overview of
+Providing HTML Help Files for Your Own Toolbox</h4>
+<p>If you offer a collection of files for use with MATLAB and
+related products (referred to here as a toolbox) to other users, you
+can provide HTML help files for your toolbox and provide access to
+them from the MATLAB Help browser. This form of help can supplement
+the M-file help you provide for functions you create, allowing you
+to include figures, illustrations, screen captures and equations.
+For background information about the Help browser and other forms
+of help supported by MATLAB, see <a href="f4-6010.html">Help
+and Related Resources</a> .</p>
+<p>You can use the MATLAB Editor or any tool to create your
+HTML help files. To use syntax highlighting and indenting features
+for HTML and related files in the Editor, select <b>File</b>
+&gt; <b>Preferences</b> &gt; <b>Editor/Debugger</b>
+&gt; <b>Language</b>, and choose <tt>HTML</tt>.</p>
+<p>To view an HTML help file you created in a browser in MATLAB,
+use the <a href="file:../../techdoc/ref/web.html"><tt>web</tt></a>
+function. For example,
+to display <tt>my_help_file</tt> in the MATLAB Web
+browser, run</p>
+<pre class="programlisting">web('I:\my_matlab_files\my_help_file.html')</pre>
+<p>Using the <tt>web</tt> function with the <tt>-helpbrowser</tt>
+options
+displays the HTML page in the Help browser:</p>
+<pre class="programlisting">web('<i><tt>fullpath</tt></i>/<i><tt>filename</tt></i>.html', '-helpbrowser')</pre>
+<p>You
+can include a link to the HTML help for a function within the M-file
+help for the function. M-files provided with MATLAB include such
+a link to the HTML reference page for the function. To create this
+link in the M-file help, use a <a href="file:../../techdoc/ref/matlabcolon.html"><tt>matlabcolon</tt></a>
+(<tt>matlab:</tt>)
+statement in conjunction with the <tt>web</tt> statement.
+The <tt>doc</tt> function does <span class="emphasis"><em>not</em></span>
+support
+user-created HTML files.</p>
+<p>You can add the HTML help files for your own toolbox, as well
+as provide a search database for the help files so that you and others
+can access the HTML help from the Help browser using the contents
+listing and search features. For details, see <a href="Docroot.html#brdu0_k">Adding HTML Help Files for Your
+Own Toolbox to the Help Browser</a> and <a href="Docroot.html#bq35kdh">Creating a Searchable Database</a>.</p>
+<a name="brdu0_k"></a>
+<h4 class="title" id="brdu0_k">Adding HTML Help
+Files for Your Own Toolbox to the Help Browser</h4>
+<p>MATLAB determines what information to display in the Help
+browser using <tt>info.xml</tt> files that reside on the
+search path or in the current directory. You create an <tt>info.xml</tt>
+file
+for your toolbox, which includes a pointer to your HTML help files.</p>
+<p>You provide the <tt>info.xml</tt> to users, along
+with the other help files for your toolbox. With the <tt>info.xml</tt>
+file
+on their search path or in their current directory, users can access
+your HTML help files from the Help browser <b>Contents</b>
+pane. </p>
+<p>If you also want your toolbox to appear on the <b>Start</b>
+button,
+put the Help browser and <b>Start</b> button information
+into a single <tt>info.xml</tt> file (see <a href="Docroot.html#f3-40448">Adding Your Own Toolboxes to
+the Start Button</a>).</p>
+<p>To accompany the following instructions, example files are
+provided
+that add HTML help files for the SpecSim (Example) Toolbox to the
+Help browser. This example assumes you want to add HTML help files
+to the Help browser, but do not want to add any entries for the help
+files on the <b>Start</b> button. Use the example <tt>helpinfo.xml</tt>
+file
+as a basis for creating an <tt>info.xml</tt> file to add
+HTML help files for your own toolbox.</p>
+<a name="brdu1ak-1"></a>
+<ol type="1">
+<li>
+<p>Follow these steps to create the <tt>info.xml</tt>
+file:</p>
+<ol type="1">
+<li>
+<p>Choose a directory for which you have write access
+and add it to the search path. (The directory cannot be the current
+directory when you add it to the path). For this example, create <tt>specsim_example</tt>.</p>
+</li>
+<li>
+<p>Copy <tt><i><tt>matlabroot</tt></i>/help/techdoc/matlab_env/examples/helpinfo.xml</tt>
+to
+the directory you just created (for the example, copy to <tt>specsim_example</tt>).</p>
+</li>
+<li>
+<p>Rename <tt>specsim_example/helpinfo.xml</tt>
+to <tt>info.xml</tt>.</p>
+</li>
+</ol>
+</li>
+<li>
+<p>Follow these steps to establish the Help contents listing
+and HTML files in a valid location:</p>
+<ol type="1">
+<li>
+<p>In the directory containing your newly-created <tt>info.xml</tt>
+file,
+create a subdirectory for your help files. For the example, in <tt>specsim_example</tt>,
+create a directory called <tt>specsim_example_helpfiles</tt>.</p>
+</li>
+<li>
+<p>Copy <tt><i><tt>matlabroot</tt></i>/help/techdoc/matlab_env/examples/helptoc.xml</tt>
+to
+the directory you just created. For the example, copy <tt>helptoc.xml</tt>
+to <tt>specsim_example_helpfiles</tt>.</p>
+</li>
+<li>
+<p>Put your HTML help files in the same directory. For
+the example, copy the set of <tt>specsim_..._example.html files</tt>
+from <tt><i><tt>matlabroot</tt></i>/help/techdoc/matlab_env/examples</tt>
+to <tt>specsim_example_helpfiles</tt>.</p>
+</li>
+</ol>
+</li>
+<li>
+<p>To see the example HTML help files in the Help browser
+perform these steps:</p>
+<ol type="1">
+<li>
+<p>Select <b>Start</b> &gt; <b>Desktop
+Tools</b> &gt; <b>View Start Button
+Configuration Files</b>.</p>
+</li>
+<li>
+<p>In the resulting Start Button Configuration Files
+dialog box, click <b>Refresh Start Button</b>. This
+refreshes <tt>info.xml</tt> files for MATLAB.</p>
+</li>
+<li>
+<p>Open the Help browser to see the entries for the
+SpecSim
+(Example) Toolbox. Be sure to disable the product filter, or select
+the <tt>SpecSim (Example) Toolbox</tt> in the product
+filter
+if the product filter is enabled. Use <b>Preferences</b>
+&gt; <b>Help</b> to access the product
+filter.</p>
+</li>
+</ol>
+<p><img src="addhelp.gif" alt="Image of Help browser showing SpecSim (Example) Toolbox selected in the Contents pane and displaying an HTML page of the SpecSim (Example) documentation in the display pane." height="519" width="611"></p>
+</li>
+<li>
+<p>In the Editor, open and modify the <tt>info.xml</tt>
+and <tt>helptoc.xml</tt> files
+for your toolbox. Save the files. For the example, the files are <tt>specsim_example/info.xml</tt>
+and <tt>specsim_example/specsim_example_helpfiles/helptoc.xml</tt>.
+You can also include:</p>
+<ul type="disc">
+<li>
+<p>A <tt>helpindex.xml</tt> file to provide
+entries for your toolbox in the Help browser <b>Index</b>
+pane.</p>
+</li>
+<li>
+<p>A <tt>helpsearch</tt> directory and
+search
+database files, allowing users to include the content of your toolbox
+HTML help files when they perform searches using the Help browser.</p>
+</li>
+</ul>
+<p>For details, see <a href="Docroot.html#brdu0qk">Description
+of info.xml File for Adding HTML Help Files for
+Your Toolbox</a>.</p>
+</li>
+<li>
+<p>Refresh the Help browser by selecting <b>Start</b>
+&gt; <b>Desktop Tools</b> &gt; <b>View
+Start Button Configuration Files</b>, and then click <b>Refresh
+Start</b> Button
+in the dialog box.</p>
+</li>
+</ol>
+<a name="brdu0qk"></a>
+<h4 class="title" id="brdu0qk">Description of
+info.xml File for Adding HTML Help Files for
+Your Toolbox</h4>
+<ul>
+<li>
+<p><a href="Docroot.html#brdu0tx">Content of
+the info.xml File</a></p>
+</li>
+<li>
+<p><a href="Docroot.html#brdu0xh-1">Help Files
+for &lt;help_location&gt; in the info.xml File</a></p>
+</li>
+<li>
+<p><a href="Docroot.html#brdu0t8-1">More
+Examples of info.xml Files</a></p>
+</li>
+</ul>
+<p><b><a name="brdu0tx"></a>Content of
+the info.xml File.&nbsp;&nbsp; </b>The content of the <tt>info.xml</tt>
+file adds the
+HTML help files to the Help browser. This is the content of the <tt>info.xml</tt>
+file
+for the SpecSim (Example) Toolbox, with an explanation of each entry
+in the following table:</p>
+<pre class="programlisting">&lt;productinfo<br> xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"<br> xsi:noNamespaceSchemaLocation="optional"&gt;<br>&lt;?xml-stylesheet type="text/xsl" href="optional"?&gt;<br><br>&lt;matlabrelease&gt;R2008b&lt;/matlabrelease&gt;<br>&lt;name&gt;SpecSim (Example)&lt;/name&gt;<br>&lt;type&gt;toolbox&lt;/type&gt;<br>&lt;icon&gt;&lt;/icon&gt;<br>&lt;help_location&gt;specsim_example_helpfiles&lt;/help_location&gt;<br><br>&lt;/productinfo&gt;<br></pre>
+<table class="body" border="2" cellpadding="4" cellspacing="0" width="100%">
+<colgroup><col width="25%"><col width="25%"><col width="25%"><col width="25%"></colgroup><thead><tr valign="top">
+<th bgcolor="#b2b2b2">
+<p>XML Tag</p>
+</th>
+<th bgcolor="#b2b2b2">
+<p>Description</p>
+</th>
+<th bgcolor="#b2b2b2">
+<p>Value in Example</p>
+</th>
+<th bgcolor="#b2b2b2">
+<p>Notes</p>
+</th>
+</tr>
+</thead><tbody>
+<tr valign="top">
+<td bgcolor="#f2f2f2">
+<p><a name="f3-41673"></a><tt>&lt;matlabrelease&gt;</tt></p>
+</td>
+<td bgcolor="#f2f2f2">
+<p><a name="f3-41675"></a>Release of
+MATLAB.</p>
+</td>
+<td bgcolor="#f2f2f2">
+<p><a name="f3-41677"></a><tt>14</tt></p>
+</td>
+<td bgcolor="#f2f2f2">
+<p>Not currently used.</p>
+</td>
+</tr>
+<tr valign="top">
+<td bgcolor="#f2f2f2">
+<p><a name="f3-41681"></a><tt>&lt;name&gt;</tt></p>
+</td>
+<td bgcolor="#f2f2f2">
+<p>Title of toolbox</p>
+</td>
+<td bgcolor="#f2f2f2">
+<p><a name="f3-41685"></a><tt>SpecSim
+(Example)</tt></p>
+</td>
+<td bgcolor="#f2f2f2">
+<p>The name of your toolbox as it will appear in the Help
+browser <b>Contents</b> pane.</p>
+</td>
+</tr>
+<tr valign="top">
+<td bgcolor="#f2f2f2">
+<p><a name="f3-41689"></a><tt>&lt;type&gt;</tt></p>
+</td>
+<td bgcolor="#f2f2f2">
+<p><a name="f3-41691"></a>Determines
+where the toolbox is located
+in the Help browser<b>Contents</b> pane, appends a type
+to the entry, and assigns a colored book icon.</p>
+</td>
+<td bgcolor="#f2f2f2">
+<p><a name="f3-41693"></a><tt>toolbox</tt></p>
+</td>
+<td bgcolor="#f2f2f2">
+<p>Types are presented in the order shown here: <tt>matlab</tt>,
+<tt>toolbox</tt>, <tt>simulink</tt>, <tt>blockset</tt>,
+<tt>links_targets</tt>, <tt>other</tt>.
+Within a type, items are presented alphabetically. For the example,
+SpecSim (Example) Toolbox will appear with other toolboxes and with
+an orange book icon, which is the standard for toolboxes.</p>
+</td>
+</tr>
+<tr valign="top">
+<td bgcolor="#f2f2f2">
+<p><a name="f3-41697"></a><tt>&lt;icon&gt;</tt></p>
+</td>
+<td bgcolor="#f2f2f2">
+<p>Icon for help for your toolbox in the <b>Start</b>
+button.</p>
+</td>
+<td bgcolor="#f2f2f2">
+<p><a name="f3-41703"></a>None</p>
+</td>
+<td bgcolor="#f2f2f2">
+<p>Use an icon for your help files. In this example, the <b>Start</b>
+button
+is not used. See also the <tt>&lt;list&gt;</tt>
+entry, below.</p>
+</td>
+</tr>
+<tr valign="top">
+<td bgcolor="#f2f2f2">
+<p><a name="f3-41738"></a><tt>&lt;help_location&gt;</tt></p>
+</td>
+<td bgcolor="#f2f2f2">
+<p>Location of help files</p>
+</td>
+<td bgcolor="#f2f2f2">
+<p><a name="f3-41742"></a><tt>specsim_example_helpfiles</tt></p>
+</td>
+<td bgcolor="#f2f2f2">
+<p>Location of <tt>helptoc.xml</tt> and HTML
+help
+files you provide for your toolbox. Specify a relative path, that
+is, relative to the location of the <tt>info.xml</tt>
+file.
+If you provide HTML help files for multiple toolboxes, each directory
+name must be unique.</p>
+</td>
+</tr>
+<tr valign="top">
+<td bgcolor="#f2f2f2">
+<p><a name="f3-43435"></a><tt>&lt;list&gt;
+</tt></p>
+<p><tt>&lt;listitem&gt;
+...</tt></p>
+</td>
+<td bgcolor="#f2f2f2">
+<p>Entries for <b>Start</b> button</p>
+</td>
+<td bgcolor="#f2f2f2">
+<p>None</p>
+</td>
+<td bgcolor="#f2f2f2">
+<p>If you also want your toolbox to appear in the <b>Start</b>
+button,
+add at least one <tt>listitem</tt>. For details, see <a href="Docroot.html#f3-40448">Adding Your Own Toolboxes to
+the Start Button</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<p><b><a name="brdu0xh-1"></a>Help Files
+for &lt;help_location&gt; in the info.xml
+File.&nbsp;&nbsp; </b><a name="f3-40545"></a>Put
+these help files into the directory you specified
+for <tt>help_location</tt> in the <tt>info.xml</tt>
+file:</p>
+<table class="body" border="2" cellpadding="4" cellspacing="0">
+<colgroup><col width="27%"><col width="27%"><col width="46%"></colgroup><thead><tr valign="top">
+<th bgcolor="#b2b2b2">
+<p>Filename</p>
+</th>
+<th bgcolor="#b2b2b2">
+<p>Required
+or Optional</p>
+</th>
+<th bgcolor="#b2b2b2">
+<p>Description&nbsp;</p>
+</th>
+</tr>
+</thead><tbody>
+<tr valign="top">
+<td bgcolor="#f2f2f2">
+<p><a name="f3-41913"></a><tt>helptoc.xml</tt></p>
+</td>
+<td bgcolor="#f2f2f2">
+<p>Required</p>
+</td>
+<td bgcolor="#f2f2f2">
+<p>The file the Help browser displays hierarchical entries
+in the <b>Contents</b> pane for your toolbox. It
+references
+your HTML help files. A <tt>helptoc.xml</tt> file is
+provided
+for the example, which illustrates the structure. If you include icons,
+provide them in a directory within <tt>matlabroot/help</tt>
+and
+specify their pathname using <tt>$help/...</tt>, as shown
+in the example. You can also use <tt>$toolbox /...</tt> to
+reference icons in a <tt><i><tt>matlabroot</tt></i>/toolbox</tt>
+directory;
+see <tt><i><tt>matlabroot</tt></i>/toolbox/matlab/icons</tt>
+for
+icons provided with MATLAB. You can also specify a full path.</p>
+</td>
+</tr>
+<tr valign="top">
+<td bgcolor="#f2f2f2">
+<p><a name="f3-41919"></a><tt>helpindex.xml</tt></p>
+</td>
+<td bgcolor="#f2f2f2">
+<p>Optional</p>
+</td>
+<td bgcolor="#f2f2f2">
+<p>Provides entries for the <b>Index</b> pane
+in the Help browser. View the <tt>helpindex.xml</tt> file
+for any MathWorks product you installed to see how
+you can create a similar file for your own toolbox. The top-level
+entries in the <tt>helpindex.xml</tt> file must be in
+case-sensitive
+alphabetical order .</p>
+</td>
+</tr>
+<tr valign="top">
+<td bgcolor="#f2f2f2">
+<p><tt>helpsearch</tt> directory containing
+search
+database files</p>
+</td>
+<td bgcolor="#f2f2f2">
+<p>Optional</p>
+</td>
+<td bgcolor="#f2f2f2">
+<p>Allows the content of your HTML help files to be
+included
+in Help browser searches, providing entries for the <b>Search
+Results</b> in the Help browser. For details on creating this
+directory and its contents, see <a href="Docroot.html#bq35kdh">Creating
+a Searchable Database</a>.</p>
+</td>
+</tr>
+<tr valign="top">
+<td bgcolor="#f2f2f2">
+<p>HTML help files</p>
+</td>
+<td bgcolor="#f2f2f2">
+<p>Required</p>
+</td>
+<td bgcolor="#f2f2f2">
+<p>HTML files containing the help for your toolbox. At
+least
+one of these is referenced by <tt>helptoc.xml</tt>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<p><b><a name="brdu0t8-1"></a>More
+Examples of info.xml Files.&nbsp;&nbsp; </b><a name="f3-57122"></a>For additional examples, see the <tt>info.xml</tt>
+files
+for MathWorks products:</p>
+<ol type="1">
+<li>
+<p>Select <b>Start</b> &gt; <b>Desktop
+Tools</b> &gt; <b>View Start Button
+Configuration Files</b> files. </p>
+</li>
+<li>
+<p>From the resulting Start Button Configuration Files
+dialog box, select a product.</p>
+</li>
+<li>
+<p>Click <b>Open</b> to view its <tt>info.xml</tt>
+file.</p>
+</li>
+</ol>
+<a name="bq35kdh"></a>
+<h4 class="title" id="bq35kdh">Creating a
+Searchable Database</h4>
+<p>The <a href="file:../../techdoc/ref/builddocsearchdb.html"><tt>builddocsearchdb</tt></a>
+function
+creates a searchable database that allows you to search HTML help
+files you created, and to display the search results in the <b>Search
+Results</b> tab of the Help browser. This example assumes you
+have created an <tt>info.xml</tt> file for the SpecSim
+(Example)
+files, and that the <tt>help_location</tt> for the SpecSim
+(Example) files is <tt>I:\my_matlab_files\specsim_example_helpfiles</tt>.
+</p>
+<ol type="1">
+<li>
+<p>Create an <tt>info.xml</tt> that has a valid
+entry for <tt>&lt;help_location&gt;</tt>, which
+contains
+HTML files. Add to the search path the directory containing the <tt>info.xml</tt>
+file.
+(Do not add it when the directory is the current directory.)</p>
+</li>
+<li>
+<p>Create a searchable database by running <tt>builddocsearchdb('<i><tt>full_path
+to_help_location</tt></i>')</tt>. For the example, run</p>
+<pre class="programlisting">builddocsearchdb ('I:\my_matlab_files\specsim_example\specsim_example_helpfiles')</pre>
+<p>This
+creates a directory named <tt>helpsearch</tt> in <i><tt>help_location_dir_name</tt></i>
+(for
+the example, <tt>I:\my_matlab_files\specsim_example_helpfiles</tt>),
+and creates three files in <tt>helpsearch</tt> that are
+used when searching the documentation. MATLAB creates the <tt>deletable</tt>
+and <tt>segments</tt> filenames
+each time you run <tt>builddocsearchdb</tt>. The name
+of the third file varies, but always uses the <tt>cfs</tt>
+extension.</p>
+</li>
+<li>
+<p>From <b>File</b> &gt; <b>Preferences</b>
+&gt; <b>Help</b>, set the product filter to search
+only your toolbox.
+Use the <b>Search for:</b> field in the Help browser
+to search for any words in the HTML help files you provided in <i><tt>help_location_dir_name</tt></i>.
+This example shows a search of SpecSim HTML help files for the term <tt>specsim
+gui</tt>.</p>
+<p class="listimage"><img src="specsimsearch.gif" alt="" height="519" width="611"></p>
+</li>
+</ol>
+<a name="f3-40519"></a>
+<p class="pagenavlink">
+<script language="Javascript">updateSectionId("f3-40519");</script>
+<script language="Javascript">addTopOfPageButtons();</script><a href="#top_of_page">Back to Top</a></p>
+<h3 class="title" id="f3-40519">Adding Demos for
+Your Own Toolboxes</h3>
+<ul>
+<li>
+<p><a href="Docroot.html#brdu3_4">About Adding
+Demos for Your Own Toolboxes</a></p>
+</li>
+<li>
+<p><a href="Docroot.html#brdu395">Procedure for
+Adding Demos for Your Own Toolboxes</a></p>
+</li>
+</ul>
+<a name="brdu3_4"></a>
+<h4 class="title" id="brdu3_4">About Adding Demos
+for Your Own Toolboxes</h4>
+<p>If you offer a collection of files for use with MATLAB and
+related products (referred to here as a toolbox) to other users, you
+can include demo files for your toolbox and provide access to them
+from the MATLAB Help browser <b>Demos</b> pane.
+(For background information about demos, see <a href="f4-46533.html">Viewing
+and Running Demos</a>.)</p>
+<p>You can include demos and related files of any file type. The
+cell-publishing feature, available in the Editor, provides a convenient
+way to create demos as files that run in MATLAB and also display
+as HTML files. For more information, see <a href="f6-14058.html">Overview
+of Publishing M-Files</a>.</p>
+<p>MATLAB determines what demos to display in the Help browser
+using <tt>demos.xml</tt> files that reside on the search
+path or in the current directory. To add demos for your toolbox, you
+create a <tt>demos.xml</tt> file that includes pointers
+to your demo files. You provide the <tt>demos.xml</tt>
+file
+to users, along with the demos files for your toolbox. With the files
+on their search path, users can access your demos from the Help browser
+<b>Demos</b> pane
+or by using the <a href="file:../../techdoc/ref/demo.html"><tt>demo</tt></a>
+function
+with the full path to a demo type.</p>
+<p>You can also put your toolbox on the <b>Start</b>
+button—see <a href="Docroot.html#f3-40448">Adding Your
+Own Toolboxes to the Start Button</a>).</p>
+<a name="brdu395"></a>
+<h4 class="title" id="brdu395">Procedure for Adding
+Demos for Your Own Toolboxes</h4>
+<p>To accompany the following instructions, an example <tt>demos.xml</tt>
+file
+is provided that adds demos for the SpecSim (Example) Toolbox to the
+Help browser. Use the example file as a basis for creating a <tt>demos.xml</tt>
+file
+to add demos for your own toolbox.</p>
+<ol type="1">
+<li>
+<p>Copy <tt><i><tt>matlabroot</tt></i>/help/techdoc/matlab_env/examples/demos.xml</tt>
+to
+a directory for which you have write access and add it to the search
+path. This example uses <tt>I:/my_matlab_files</tt>.</p>
+</li>
+<li>
+<p>To see how the <tt>demos.xml</tt> file looks
+in the Help browser, open the Help browser and click the <b>Demos</b>
+tab
+to see the entries for the SpecSim (Example) Toolbox under <tt>Toolboxes</tt>.
+Be sure to disable the product filter, or select the <tt>SpecSim
+(Example) Toolbox</tt> in the product filter if the product
+filter
+is enabled. Use <b>Preferences</b> &gt; <b>Help</b>
+to access the product
+filter.</p>
+</li>
+<li>
+<p><a name="brdvwcw-1"></a>In the Editor,
+open <tt>I:/my_matlab_files/demos.xml</tt> </p>
+<p class="listimage"><img src="demos_adding_example.gif" alt="" height="731" width="651"></p>
+</li>
+<li>
+<p><a name="brdu3_k-2"></a>Modify the <tt>demos.xml</tt>
+file
+for your toolbox.</p>
+<p>The root tag is <tt>&lt;demos&gt;</tt>
+and it includes <tt>&lt;name&gt;</tt>, <tt>&lt;type&gt;</tt>,
+<tt>&lt;icon&gt;</tt>and <tt>&lt;description&gt;</tt>
+for
+your toolbox demos.</p>
+<p>Add a &lt;<tt>demoitem</tt>&gt; or <tt>&lt;demosection&gt;</tt>
+containing <tt>&lt;demoitem&gt;</tt> s,
+where each <tt>&lt;demoitem&gt;</tt> is for a demo.</p>
+<p>Within one <tt>demos.xml</tt> file, every <tt>&lt;demoitem&gt;</tt>
+must
+either be a direct child of <tt>&lt;demos&gt;</tt>,
+or all
+must all be within <tt>&lt;demosection&gt;</tt>
+tags. That
+is, you cannot have a <tt>&lt;demoitem&gt;</tt> as
+a child
+of <tt>&lt;demos&gt;</tt> and another <tt>demoitem</tt>
+in <tt>demosection</tt>.</p>
+<p>Save the <tt>demos.xml</tt> file.</p>
+<table class="body" border="2" cellpadding="4" cellspacing="0" width="100%">
+<colgroup><col width="25%"><col width="25%"><col width="25%"><col width="25%"></colgroup><thead><tr valign="top">
+<th bgcolor="#b2b2b2">
+<p>Line</p>
+</th>
+<th bgcolor="#b2b2b2">
+<p>XML Tag</p>
+</th>
+<th bgcolor="#b2b2b2">
+<p>Value for Example</p>
+</th>
+<th bgcolor="#b2b2b2">
+<p>Notes&nbsp;</p>
+</th>
+</tr>
+</thead><tbody>
+<tr valign="top">
+<td bgcolor="#f2f2f2"><tt>2</tt></td>
+<td bgcolor="#f2f2f2">
+<p><a name="brdu3_k-4"></a><tt>&lt;demos&gt;</tt></p>
+</td>
+<td bgcolor="#f2f2f2">
+<p>No value</p>
+</td>
+<td bgcolor="#f2f2f2">
+<p>The root element for a <tt>demos.xml</tt>
+file.</p>
+</td>
+</tr>
+<tr valign="top">
+<td bgcolor="#f2f2f2"><tt>4</tt></td>
+<td bgcolor="#f2f2f2">
+<p><a name="brdu3_k-6"></a><tt>&lt;name&gt;</tt></p>
+</td>
+<td bgcolor="#f2f2f2">
+<p><a name="brdu3_k-7"></a><tt>SpecSim
+(Example) Toolbox</tt></p>
+</td>
+<td bgcolor="#f2f2f2">
+<p>Name of your toolbox.</p>
+</td>
+</tr>
+<tr valign="top">
+<td bgcolor="#f2f2f2"><tt>5</tt></td>
+<td bgcolor="#f2f2f2">
+<p><a name="brdu3_k-9"></a><tt>&lt;type&gt;</tt></p>
+</td>
+<td bgcolor="#f2f2f2">
+<p><a name="brdu3_k-10"></a><tt>toolbox</tt></p>
+</td>
+<td bgcolor="#f2f2f2">
+<p>The product type. Allowable values are <tt>matlab</tt>,
+<tt>simulink</tt>, <tt>toolbox</tt>,
+<tt>blockset</tt>, <tt>links_targets</tt>,
+<tt>other</tt>.
+This determines where your entry appears in the <b>Demos</b>
+pane.
+Setting this to <tt>toolbox</tt> makes<tt> SpecSim
+(Example) Toolbox</tt> appear in <b>Demos</b>
+&gt; <b> Toolboxes</b>. Within a type,
+entries are displayed in alphabetical order.</p>
+</td>
+</tr>
+<tr valign="top">
+<td bgcolor="#f2f2f2">
+<p><a name="brdu3_k-11"></a><tt>6</tt></p>
+</td>
+<td bgcolor="#f2f2f2">
+<p><a name="brdu3_k-12"></a><tt>&lt;icon&gt;</tt></p>
+</td>
+<td bgcolor="#f2f2f2">
+<p><a name="brdu3_k-13"></a><tt>$toolbox/matlab/icons/matlabicon.gif</tt></p>
+</td>
+<td bgcolor="#f2f2f2">
+<p>Use an icon for your demo. You can specify a
+relative
+path, that is, relative to the location of the <tt>info.xml</tt>
+file.
+This example uses <tt>$toolbox /...</tt> to reference
+icons
+in a <tt><i><tt>matlabroot</tt></i>/toolbox</tt>
+directory;
+see <tt><i><tt>matlabroot</tt></i>/toolbox/matlab/icons</tt>
+for
+icons provided with MATLAB.</p>
+</td>
+</tr>
+<tr valign="top">
+<td bgcolor="#f2f2f2">
+<p><a name="brdu3_k-14"></a><tt>7</tt></p>
+</td>
+<td bgcolor="#f2f2f2">
+<p><a name="brdu3_k-15"></a><tt>&lt;description&gt;</tt></p>
+</td>
+<td bgcolor="#f2f2f2"><tt>SpecSim
+(Example) Toolbox is ...</tt></td>
+<td bgcolor="#f2f2f2">
+<p>The description that appears in the Help browser
+display
+pane, on the main page for your demo. To show </p>
+</td>
+</tr>
+<tr valign="top">
+<td bgcolor="#f2f2f2">
+<p><tt>11</tt> and <tt>12</tt></p>
+</td>
+<td bgcolor="#f2f2f2">
+<p><tt>&lt;website&gt;<br>
+&lt;a href=<br>
+"url"&lt;/a&gt;<br>
+&lt;/website&gt;</tt></p>
+</td>
+<td bgcolor="#f2f2f2">
+<p><tt>http://www.mathworks.com/access/helpdesk/help/techdoc/matlab_env/Docroot.html"&gt;
+For more information, see...</tt> </p>
+</td>
+<td bgcolor="#f2f2f2">
+<p>Links to a Web site. For example, MATLAB and related
+product demos include this link near the top, on the right: <tt>Product
+page at mathworks.com</tt>. This tag can appear anywhere before
+the <tt>&lt;/demos&gt;</tt> tag. For the example,
+displays
+this help page at The MathWorks Web site.</p>
+</td>
+</tr>
+<tr valign="top">
+<td bgcolor="#f2f2f2">
+<p><a name="brdu3_k-17"></a><tt>14</tt></p>
+</td>
+<td bgcolor="#f2f2f2">
+<p><a name="brdu3_k-18"></a><tt>&lt;demosection&gt;</tt></p>
+</td>
+<td bgcolor="#f2f2f2">
+<p><a name="brdu3_k-19"></a>No value</p>
+</td>
+<td bgcolor="#f2f2f2">
+<p>Begins a section of individual demos: <tt>&lt;label&gt;</tt>,
+<tt>&lt;description&gt;</tt>,
+and <tt>&lt;demoitem&gt;</tt> for each demo you
+want in
+the section.</p>
+</td>
+</tr>
+<tr valign="top">
+<td bgcolor="#f2f2f2">
+<p><a name="brdu3_k-20"></a><tt>15</tt></p>
+</td>
+<td bgcolor="#f2f2f2">
+<p><a name="brdu3_k-21"></a><tt>&lt;label&gt;</tt></p>
+</td>
+<td bgcolor="#f2f2f2">
+<p><a name="brdu3_k-22"></a><tt>SpecSim
+(Example) Functions</tt></p>
+</td>
+<td bgcolor="#f2f2f2">
+<p>Title shown for a <tt>&lt;demosection&gt;</tt>
+or <tt>&lt;demoitem&gt;</tt>.
+For <tt>&lt;demoitem</tt>&gt;, <tt>&lt;label&gt;</tt>
+is
+required.</p>
+</td>
+</tr>
+<tr valign="top">
+<td bgcolor="#f2f2f2">
+<p><a name="brdu3_k-23"></a><tt>16</tt></p>
+</td>
+<td bgcolor="#f2f2f2">
+<p><a name="brdu3_k-24"></a><tt>&lt;demoitem&gt;</tt></p>
+</td>
+<td bgcolor="#f2f2f2">&nbsp;</td>
+<td bgcolor="#f2f2f2">
+<p> Contains<tt>&lt;label&gt;</tt>
+and <tt>&lt;callback&gt;, </tt>and/or <tt>&lt;file&gt;
+</tt>.
+One <tt>&lt;demoitem&gt;</tt> per demo.</p>
+</td>
+</tr>
+<tr valign="top">
+<td bgcolor="#f2f2f2">
+<p><a name="brdu3_k-26"></a><tt>17</tt></p>
+</td>
+<td bgcolor="#f2f2f2">
+<p><a name="brdu3_k-27"></a><tt>&lt;label&gt;</tt></p>
+</td>
+<td bgcolor="#f2f2f2">
+<p><a name="brdu3_k-28"></a><tt>SpecSim
+function1 demo (example)...</tt></p>
+</td>
+<td bgcolor="#f2f2f2">
+<p>Title shown for <tt>demoitem</tt>.</p>
+</td>
+</tr>
+<tr valign="top">
+<td bgcolor="#f2f2f2">
+<p>None</p>
+</td>
+<td bgcolor="#f2f2f2">
+<p><a name="brdu3_k-29"></a><tt>&lt;type&gt;</tt></p>
+</td>
+<td bgcolor="#f2f2f2">
+<p>Not shown</p>
+</td>
+<td bgcolor="#f2f2f2">
+<p>The type of demo. This causes the icon for that type
+to appear with the demo in the list of demos for your toolbox.
+Allowable
+values are: <tt>M-file</tt>, <tt>model</tt>, <tt>M-GUI</tt>,
+<tt>video</tt>,
+or <tt>other</tt>. Note that if you include <tt>&lt;type&gt;</tt>,
+MATLAB does
+not automatically create headers in the demo pages.</p>
+</td>
+</tr>
+<tr valign="top">
+<td bgcolor="#f2f2f2">
+<p><a name="brdu3_k-30"></a><tt>18</tt></p>
+</td>
+<td bgcolor="#f2f2f2">
+<p><a name="brdu3_k-31"></a><tt>&lt;callback&gt;</tt></p>
+</td>
+<td bgcolor="#f2f2f2">
+<p><tt>demoone</tt> (file not actually
+provide,
+only an example)</p>
+</td>
+<td bgcolor="#f2f2f2">
+<p>The callback runs when you double-click the demo
+icon
+or click the title text for the demo item in the display pane.</p>
+</td>
+</tr>
+<tr valign="top">
+<td bgcolor="#f2f2f2">
+<p><a name="brdu3_k-32"></a><tt>22</tt></p>
+</td>
+<td bgcolor="#f2f2f2">
+<p><a name="brdu3_k-33"></a><tt>&lt;file&gt;</tt></p>
+</td>
+<td bgcolor="#f2f2f2">
+<p><a name="brdu3_k-34"></a><tt>html/demotwo.html</tt></p>
+</td>
+<td bgcolor="#f2f2f2">
+<p>The HTML file displays in the Help browser when you
+click
+the demo in the list. Specify a relative path from the location of <tt>demos.xml</tt>.</p>
+</td>
+</tr>
+<tr valign="top">
+<td bgcolor="#f2f2f2">
+<p>None</p>
+</td>
+<td bgcolor="#f2f2f2">
+<p><a name="brdu3_k-35"></a><tt>&lt;dependency&gt;</tt></p>
+</td>
+<td bgcolor="#f2f2f2">
+<p>Not shown</p>
+</td>
+<td bgcolor="#f2f2f2">
+<p>Optional. Specifies other products, such as another
+toolbox,
+required to run the demo. The text must match a product name specified
+in an <tt>info.xml</tt> file on the search path or in the
+current directory.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+</li>
+<li>
+<p><a name="brdu3_k-37"></a>In the Help
+browser, right-click in
+the list of demos and from the context menu, select <b>Refresh</b>
+to
+be sure the Help browser is including the changes to your <tt>demos.xml</tt>
+file.
+Your demos should now appear in the <b>Demos</b> pane.</p>
+</li>
+</ol>
+<p>For additional examples, look at other <tt>demos.xml</tt>
+files
+for MathWorks products.</p>
+<a name="bq5u_c4-1"></a>
+<p class="pagenavlink">
+<script language="Javascript">updateSectionId("bq5u_c4-1");</script>
+<script language="Javascript">addTopOfPageButtons();</script><a href="#top_of_page">Back to Top</a></p>
+<h3 class="title" id="bq5u_c4-1">Validation Errors
+for info.xml Files</h3>
+<p><a class="indexterm" name="zmw57dd0e52237"></a><a class="indexterm" name="zmw57dd0e52240"></a>When
+MATLAB finds an <tt>info.xml</tt> file
+on the search path or in the current directory, it assumes the file
+is intended to add information to the <b>Start</b> button
+or the Help browser, and automatically validates the file against
+the supported schema. If there is an invalid construct in the <tt>info.xml</tt>
+file, MATLAB displays
+an error in the Command Window. The error is typically of the form</p>
+<pre class="programlisting">XML-file failed validation against schema located in<br>...<br>XML-file name: full path to...\info.xml </pre>
+<p>and might appear when you start MATLAB, press the <b>Start</b>
+button,
+or in other situations.</p>
+<p>These are some reasons why you might see the XML file
+validation
+error and what you should do as a result:</p>
+<ul type="disc">
+<li>
+<p><a href="Docroot.html#bq5u_8f">Outdated
+info.xml File for MATLAB Product</a></p>
+</li>
+<li>
+<p><a href="Docroot.html#bq5u_8y-1">info.xml
+File Unrelated to MATLAB Product</a></p>
+</li>
+<li>
+<p><a href="Docroot.html#bq5u_9f-1">info.xml
+File Intended for Use with MATLAB Software Contains
+Invalid Constructs</a></p>
+</li>
+</ul>
+<a name="bq5u_8f"></a>
+<h4 class="title" id="bq5u_8f">Outdated info.xml
+File for MATLAB Product</h4>
+<p>If you have an <tt>info.xml</tt> file from an old
+version of MATLAB, it might contain constructs that are no longer
+valid. In these cases, the full path to the <tt>info.xml</tt>
+file
+usually indicates an old version of MATLAB, for example, <tt>...\MATLAB\R14\...</tt>
+.
+In this case, the error is not actually causing any problems and you
+could safely ignore it. To ensure the error does not occur, move or
+remove the offending <tt>info.xml</tt> file, assuming you
+no longer use that version of MATLAB. If you do use it, remove
+the directory from the search path and do not make it the current
+directory in the new version of MATLAB.</p>
+<a name="bq5u_8y-1"></a>
+<h4 class="title" id="bq5u_8y-1">info.xml File
+Unrelated to MATLAB Product</h4>
+<p>If the <tt>info.xml</tt> exists for reasons other
+than adding information to the <b>Start</b> button or
+Help browser, the validation MATLAB attempts to perform is irrelevant.
+In this case, the error is not actually causing any problems and you
+could safely ignore it. To ensure the error does not occur, one option
+is to rename the offending <tt>info.xml</tt> file.
+Another option is to move the offending <tt>info.xml</tt>
+file
+to a directory that is not on the search path and is unlikely to be
+used as the current directory in MATLAB.</p>
+<a name="bq5u_9f-1"></a>
+<h4 class="title" id="bq5u_9f-1">info.xml File
+Intended for Use with MATLAB Software Contains
+Invalid Constructs</h4>
+<p>If the <tt>info.xml</tt> file is intended for
+adding
+information to the <b>Start</b> button or Help browser,
+you need to correct the reported problem. Use the message in the error
+to isolate the problem or use any validator. One validator you can
+use is from the W3C at <tt><a href="http://www.w3.org/2001/03/webdata/xsv" target="_top">http://www.w3.org/2001/03/webdata/xsv</a></tt>.
+The schema for the <tt>info.xml</tt> file for MATLAB is
+at <i><tt>matlabroot</tt></i><tt>/sys/namespace/info/v1/info.xsd</tt>.
+Consult the schema if you need more information about the structure
+of your <tt>info.xml</tt> file.</p>
+<a name="bottom_of_page"></a>
+<p class="pagenavlink">
+<script language="Javascript">updateSectionId("bottom_of_page");</script>
+<script language="Javascript">addTopOfPageButtons();</script><a href="#top_of_page">Back to Top</a></p>
+</body></html>
