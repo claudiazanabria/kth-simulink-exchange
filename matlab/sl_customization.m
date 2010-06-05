@@ -1,5 +1,5 @@
 function sl_customization(cm)
-%Use sl_refresh_customizations to apply NOT FINISHED/CJS
+%Use sl_refresh_customizations to apply 
   %% Register custom menu function.
   cm.addCustomMenuFcn('Simulink:FileMenu', @getFileMenuItems);
   cm.addCustomMenuFcn('Simulink:ContextMenu', @getContextMenuItems);
@@ -7,18 +7,17 @@ end
 
 %% Define the custom menu function.
 function schemaFcns = getFileMenuItems(callbackInfo) 
-  schemaFcns = {@OpenEcore,...
+  schemaFcns = {@OpenEcoreLib,@OpenEcore,...
 						@SaveEcore};
 end
 
 
 function schemaFcns = getContextMenuItems(callbackInfo) 
-  schemaFcns = {@ToggleEAST,@AddToEASTLib};
+  schemaFcns = {@AddToEASTLib};
 
 end
 
-%% Define the schema function for first menu item.
-function schema = ToggleEAST(callbackInfo)
+function schema = ToggleTest(callbackInfo)
    schema = sl_toggle_schema;
   schema.label = 'EAST';
   tmp=get_param(gcb, 'ForegroundColor');
@@ -45,7 +44,7 @@ function AddToEAST(callbackInfo)
    name=get_param(gcb,'name');
    oldName=gcb;
    oldSystem=gcs;
-   newName=[FunctionTypesFile '/' name]
+   newName=[FunctionTypesFile '/' name];
    open_system(FunctionTypesFile); 
    set_param(FunctionTypesFile,'Lock','off');
    existingBlocks=find_system(FunctionTypesFile, 'SearchDepth', 1,'name', name);
@@ -67,8 +66,56 @@ function AddToEAST(callbackInfo)
    else
        add_block(oldName, newName)    
    end
-  set_param(newName, 'BackgroundColor', 'lightblue'); 
+  set_param(newName, 'BackgroundColor', 'lightblue');
+ 
+  
+  %Inports = find_system(gcb, 'FollowLinks', 'On','BlockType', 'Inport');
+  %for x=1:size(Inports)
+  %    Portname=char(get_param(Inports(x),'Name'));
+  %    if (regexp(Portname,'_In$')>0)
+  %        return
+  %    else
+  %        set_param([newName '/' Portname],'Name',strcat(Portname,'_In'));
+  %    end        
+  %end
+  
+%   Outports = find_system(gcb, 'FollowLinks', 'On','BlockType', 'Outport');
+% 
+%   for x=1:size(Outports)
+%       Portname=char(get_param(Outports(x),'Name'));
+%       if (regexp(Portname,'_Out$')>0)
+%           return
+%       else
+%           set_param([newName '/' Portname],'Name',strcat(Portname,'_Out'));
+%       end        
+%   end
+
+  processPorts(newName);  
+  Utils.setUUID(newName);
   replace_block(oldSystem, 'Handle', get_param(oldName,'Handle'), newName, 'noprompt')
+end
+
+function processPorts(Block)
+%%To be used for all porttypes in future versions (8 today)
+%
+% Extensions are added to ports. Otherwise duplicate ports will be generated
+% in the transformation back.
+    fixPorts(Block,'Inport','_In');
+    fixPorts(Block,'Outport','_Out');
+end
+
+function fixPorts(Block,Porttype,suffix)
+%%Changes suffix and sets UUID of a port
+Ports = find_system(Block, 'FollowLinks', 'On','BlockType', Porttype);
+  for x=1:size(Ports)
+      Utils.setUUID(char(Ports(x)));
+      Portname=char(get_param(Ports(x),'Name'));
+      if (regexp(Portname,[suffix '$'])>0)
+          return
+      else
+          set_param([Block '/' Portname],'Name',strcat(Portname,suffix));
+      end
+  end
 end
 
 function ToggleEASTAction(callbackInfo)
@@ -78,6 +125,19 @@ function ToggleEASTAction(callbackInfo)
         set_param(gcb, 'ForegroundColor', 'white');
     end
 end
+
+function schema = OpenEcoreLib(callbackInfo)
+  schema = sl_action_schema;
+  schema.label = 'Open Ecore library';
+  schema.userdata = 'item one';	
+  schema.callback = @OpenEcoreLibrary; 
+end
+
+function OpenEcoreLibrary(callbackInfo)
+   open_system('FunctionTypes')
+end
+
+
 function schema = OpenEcore(callbackInfo)
   schema = sl_action_schema;
   schema.label = 'Open .simulink file...';
@@ -88,7 +148,7 @@ end
 function FileSelectOpen(callbackInfo)
   [filename, pathname] = uigetfile({'*.simulink','Simulink Ecore (*.simulink)'},'Open Ecore file');
   if ~(isequal(filename,0) || isequal(pathname,0))   
-    ModelCreator.fromFile(fullfile(pathname,filename))
+    ModelCreatorRef.fromFile(fullfile(pathname,filename))
   end
 end
 
@@ -106,4 +166,5 @@ function FileSelectSave(callbackInfo)
   if ~(isequal(filename,0) || isequal(pathname,0))   
     EcoreCreatorRef.fromModel(gcs, fullfile(pathname,filename))
   end
- end
+end
+
