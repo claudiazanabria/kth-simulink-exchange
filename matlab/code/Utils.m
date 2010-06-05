@@ -19,8 +19,15 @@ classdef Utils < handle
         end
         
         function char = getUserData(block, parameter)
-        %A safe method to get a single UserData value as string from
-        %containers.Map objects stored in UserData
+            char='';
+            if (iscell(block))
+                if (block{1}=='/')
+                   char ='Error';
+                   return
+                end
+            end
+            %A safe method to get a single UserData value as string from
+            %containers.Map objects stored in UserData
             userData = get_param(block,'UserData');
             if strcmp(class(userData),'containers.Map')     
                 if userData.isKey(parameter)
@@ -34,8 +41,9 @@ classdef Utils < handle
                     , class(userData), block)
                     char= '';
                 end
-            end      
+            end
         end
+ 
         
         function boolean = isMDLFileReadable( path2mdlFile )
             boolean = (exist(path2mdlFile,'file') == 4);
@@ -108,6 +116,9 @@ classdef Utils < handle
         
         function uuidStr = getUUIDfromBlock(blockName)
             uuidStr = Utils.getUserData(blockName, 'UUID');
+                if (strcmp(uuidStr,'Error'))
+                    uuidStr ='ffffffff-2e7d-4364-b715-4b0828f0a54b';
+                end    
                 if ~isempty( uuidStr )
                     return
                 end
