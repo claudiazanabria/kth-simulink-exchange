@@ -1,6 +1,6 @@
 classdef EcoreCreatorRef < handle
     % From Matlab --> ecore using Library mechanism
-    % All old code left as comments
+    % Some old code left as comments
     properties(Access=private)
         sourceSystem;
         modelManager;
@@ -25,7 +25,7 @@ classdef EcoreCreatorRef < handle
             self.initEcoreCreationClasses();
             %modelName = self.openModelInSimulink();
             self.javaEcoreCreator.newModel( modelName );
-            rootSystem = self.javaEcoreCreator.addRootSystem( modelName );
+            rootSystem = self.javaEcoreCreator.addRootSystem(modelName);
             self.processSystem( rootSystem );
             %save_system( modelName );
             self.saveIt(destFileName);
@@ -60,18 +60,15 @@ classdef EcoreCreatorRef < handle
             position = Utils.posArray2String( posArray );
             aSystemRef = self.javaEcoreCreator.addSystem( pList );
             aSystemRef.setPosition( position );
-            %Utils.setUUIDinUserData( aSystemRef, blockName );
-            notUsed = Utils.getUUIDfromBlock( aSystemRef, blockName );
-            %getUUIDfromBlock sets UUID if empty, it could be set already,
-            %e.g. for existing blocks.
+            Utils.setUUIDinUserData( aSystemRef, blockName );
+            %This will change the UUID of the block to the new one created
+            %in Java. This is subject to change in a future release.
             targetSystem = aSystemRef.getTarget();
-            %load_system( name );
             if isempty( sysAlreadyExists )
                 self.addOutportsTo( targetSystem );
                 self.addInportsTo( targetSystem );
                 self.processSystem( targetSystem );
             end
-            %save_system( name );
         end
                 
         function addLines( self, mdlBlks, parentSystem )
