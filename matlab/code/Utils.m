@@ -1,7 +1,7 @@
 classdef Utils < handle
     methods (Static)
         function setUserData(block, parameter, value)
-        %A safe method to set UserData properties using containers.Map
+        %A method to set UserData properties using containers.Map
         %object
             set_param( block,'UserDataPersistent','on');
             userData = get_param(block,'UserData');
@@ -26,7 +26,7 @@ classdef Utils < handle
                    return
                 end
             end
-            %A safe method to get a single UserData value as string from
+            %A method to get a single UserData value as string from
             %containers.Map objects stored in UserData
             userData = get_param(block,'UserData');
             if strcmp(class(userData),'containers.Map')     
@@ -116,9 +116,6 @@ classdef Utils < handle
         
         function uuidStr = getUUIDfromBlock(blockName)
             uuidStr = Utils.getUserData(blockName, 'UUID');
-                if (strcmp(uuidStr,'Error'))
-                    uuidStr ='ffffffff-2e7d-4364-b715-4b0828f0a54b';
-                end    
                 if ~isempty( uuidStr )
                     return
                 end

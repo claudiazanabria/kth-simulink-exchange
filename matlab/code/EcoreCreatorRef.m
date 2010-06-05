@@ -27,6 +27,7 @@ classdef EcoreCreatorRef < handle
             self.javaEcoreCreator.newModel( modelName );
             rootSystem = self.javaEcoreCreator.addRootSystem(modelName);
             self.processSystem( rootSystem );
+            %Maybe nice to save system
             %save_system( modelName );
             self.saveIt(destFileName);
         end
@@ -40,15 +41,10 @@ classdef EcoreCreatorRef < handle
             for x=1:size(mdlBlks)
                 self.processBlock( mdlBlks{x}, parentSystem );
             end
-            %[refMdls, mdlBlks] = find_mdlrefs(systemName, false);
-            %for x=1:size(refMdls,1)-1
-            %    self.processBlock( mdlBlks{x}, parentSystem );
-            %end
             self.addLines( mdlBlks, parentSystem );
         end
         
         function processBlock( self, blockName, parentSystem )            
-            %name                = get_param(blockName,'ModelName');
             name                = get_param(blockName,'ReferenceBlock');
             %Will remove the FunctionTypes/ from the blockname, and remove
             %library structure. Perhaps a subject for deletion.
@@ -62,7 +58,8 @@ classdef EcoreCreatorRef < handle
             aSystemRef.setPosition( position );
             Utils.setUUIDinUserData( aSystemRef, blockName );
             %This will change the UUID of the block to the new one created
-            %in Java. This is subject to change in a future release.
+            %in Java. This is subject to change in a future release, Java
+            %should not change UUID for the block (?)
             targetSystem = aSystemRef.getTarget();
             if isempty( sysAlreadyExists )
                 self.addOutportsTo( targetSystem );
