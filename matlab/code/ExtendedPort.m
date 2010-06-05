@@ -43,11 +43,10 @@ classdef ExtendedPort < handle
     end
     methods (Static, Access=private)
         function [name aHandle]=findPortNameAndHandle( ...
-                bHandle, portType, portNumber)
-            
+              bHandle, portType, portNumber)       
             aHandle = find_system(bHandle,'SearchDepth',1, ...
-                'BlockType', portType , ...
-                'Port', portNumber );
+        'FollowLinks', 'On',...        
+        'BlockType', portType ,'Port', portNumber );
             name = get_param(aHandle, 'Name');
         end
         
@@ -61,7 +60,7 @@ classdef ExtendedPort < handle
             if self.connected
                 self.setConnectedBlockNames();
                 self.setConnectedPorts();
-                fprintf('%s\n',self.fullName);
+%                fprintf('%s\n',self.fullName);
                 self.setLineEndings();
             end
         end

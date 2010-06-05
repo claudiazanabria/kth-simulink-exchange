@@ -84,7 +84,7 @@ classdef EcoreCreatorRef < handle
         function addOutportsTo( self, aSystem )
             name = char(aSystem.getName());
             ports = find_system(name,'SearchDepth',1,...
-                'BlockType','Outport');
+                'FollowLinks','On','BlockType','Outport');
             for x=1:size(ports,1)                                
                 portName = Utils.extractOnlyName( ports(x) );
                 p = self.javaEcoreCreator.addOutPort(portName, aSystem);                
@@ -96,7 +96,7 @@ classdef EcoreCreatorRef < handle
         function addInportsTo( self, aSystem )
             name = char(aSystem.getName());
             ports = find_system(name,'SearchDepth',1,...
-                'BlockType','Inport');
+                'FollowLinks','On','BlockType','Inport');
             for x=1:size(ports,1)
                 portName = Utils.extractOnlyName( ports(x) );
                 p = self.javaEcoreCreator.addInPort(portName, aSystem);
