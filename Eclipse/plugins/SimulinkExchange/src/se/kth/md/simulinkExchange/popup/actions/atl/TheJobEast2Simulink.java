@@ -8,9 +8,9 @@ import se.kth.md.simulinkExchange.atl.URInotFound;
 
 public class TheJobEast2Simulink extends TheJob {
 
-	public TheJobEast2Simulink(IPath aPath) {
+	public TheJobEast2Simulink(IPath aPath)  {
 		super("Converting to Simlink", aPath);
-		atlSource = URI.createFileURI("./resources/ATL/east2simulink.atl");
+		this.initJob("./resources/ATL/east2simulink.atl");
 	}
 
 	public void addSources(ATLrunConfiguration config) throws URInotFound {

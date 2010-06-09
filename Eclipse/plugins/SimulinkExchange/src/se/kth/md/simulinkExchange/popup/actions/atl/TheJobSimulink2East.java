@@ -11,9 +11,9 @@ import se.kth.md.simulinkExchange.atl.URInotFound;
 
 public class TheJobSimulink2East extends TheJob {
 
-	public TheJobSimulink2East(IPath aPath) {
+	public TheJobSimulink2East(IPath aPath)  {
 		super("Converting to EAST-ADL", aPath);
-		atlSource = URI.createFileURI("./resources/ATL/simulink2east.atl");
+		this.initJob("./resources/ATL/simulink2east.atl");
 	}
 
 	public void addSources(ATLrunConfiguration config) throws URInotFound {
@@ -27,4 +27,5 @@ public class TheJobSimulink2East extends TheJob {
 		config.addDestination(umlModel, ATLrunConfiguration.eastMetaModel);
 		
 	}
+	
 }
