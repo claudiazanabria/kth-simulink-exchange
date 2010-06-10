@@ -45,6 +45,14 @@ classdef ClassPathSetter
             if nargin ~= 0
                 CPS.basePath = path2Jars;
             end
+            dpath = javaclasspath;
+            for x=1:size(dpath,2)
+       
+                if (cellfun('isempty',strfind(dpath(x),'se.kth'))==0)
+                    disp('Classpath already set')
+                    return
+                end
+            end    
             jarsFullPathNames = CPS.fullPathNames();
             javaaddpath( jarsFullPathNames );
         end        
