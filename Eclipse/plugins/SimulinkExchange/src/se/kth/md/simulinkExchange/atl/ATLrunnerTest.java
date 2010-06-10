@@ -1,7 +1,7 @@
 package se.kth.md.simulinkExchange.atl;
 
 
-import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.m2m.atl.core.ATLCoreException;
@@ -15,12 +15,14 @@ public class ATLrunnerTest {
 	protected ATLrunner runner;
 
 	private final URI umlModel      = URI.createFileURI("./Resources/testing/demo.uml");
-	private final URI simulinkModel = URI.createFileURI("./Resources/testing/deleteme.simulink");	
-	private final URI atlSource 	= URI.createFileURI("./Resources/testing/east2simulink.atl");	
+	private final URI simulinkModel = URI.createFileURI("./Resources/testing/deleteme.simulink");
+	
+	private final URI atlSource 	= URI.createFileURI("./Resources/testing/east2simulink.atl");
+	private final URI atlCompiled 	= URI.createFileURI("./Resources/testing/east2simulink.asm");
 	
 	@Before
 	public void setUp() throws Exception {
-		config = new ATLrunConfiguration( atlSource );
+		config = new ATLrunConfiguration( atlSource, atlCompiled );
 		runner = new ATLrunner();		
 	}
 
@@ -31,8 +33,7 @@ public class ATLrunnerTest {
 	}
 
 	@Test
-	public void testRunWith() throws NullPointerException, FileNotFoundException, 
-									ATLCoreException, URInotFound {
+	public void testRunWith() throws NullPointerException, ATLCoreException, URInotFound, IOException {
 		
 		config.addSource(umlModel, ATLrunConfiguration.umlMetaModel);
 		config.addSource(umlModel, ATLrunConfiguration.eastMetaModel);

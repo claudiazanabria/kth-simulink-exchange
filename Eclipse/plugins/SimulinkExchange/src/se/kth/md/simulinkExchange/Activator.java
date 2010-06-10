@@ -1,7 +1,15 @@
 package se.kth.md.simulinkExchange;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.net.URL;
+import java.util.Collections;
+
+import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.ILog;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
@@ -36,6 +44,7 @@ public class Activator extends AbstractUIPlugin {
 		plugin = this;
 		symbolicName = this.getBundle().getSymbolicName();
 		log = plugin.getLog();
+		log("Plugin started", Status.OK);
 	}
 
 	/*
@@ -74,6 +83,22 @@ public class Activator extends AbstractUIPlugin {
 
 	public void log(String message , int status, Throwable e ){
 		log.log(new Status(status, symbolicName, message, e) );
+	}
+
+	public URI locateFile(String path) throws IOException {
+		Path aPath = new Path( path ); 
+		URL urlWithBundleProtocol 	= FileLocator.find(this.getBundle(), aPath, Collections.EMPTY_MAP);
+		if ( urlWithBundleProtocol == null ) {
+			throw new FileNotFoundException( path );
+		}
+		URL urlWithFileProtocol 	= FileLocator.toFileURL( urlWithBundleProtocol );
+		String fileURLAsString 		= urlWithFileProtocol.getFile();
+		URI result = URI.createFileURI( fileURLAsString );
+		return result;
+	}
+
+	public URI locateFile(URI fileURI) throws IOException {
+		return locateFile( fileURI.toFileString() );		
 	}
 
 }

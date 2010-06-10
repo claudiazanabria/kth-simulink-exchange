@@ -10,7 +10,9 @@ public class TheJobEast2Simulink extends TheJob {
 
 	public TheJobEast2Simulink(IPath aPath)  {
 		super("Converting to Simlink", aPath);
-		this.initJob("./resources/ATL/east2simulink.atl");
+		String atlPath = "./resources/ATL/east2simulink.atl";
+		String asmPath = "./resources/ATL/east2simulink.asm";
+		this.initJob(atlPath, asmPath);
 	}
 
 	public void addSources(ATLrunConfiguration config) throws URInotFound {

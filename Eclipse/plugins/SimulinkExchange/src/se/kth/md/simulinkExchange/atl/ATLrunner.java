@@ -1,6 +1,6 @@
 package se.kth.md.simulinkExchange.atl;
 
-import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.Collections;
 import java.util.HashMap;
@@ -17,14 +17,14 @@ public class ATLrunner {
 	protected ATLrunConfiguration config;
 	
 	public static void with(ATLrunConfiguration config) 
-		throws NullPointerException, FileNotFoundException, ATLCoreException {
+		throws NullPointerException, ATLCoreException, IOException {
 		
 		ATLrunner runner = new ATLrunner();
 		runner.runWith(config);
 	}
 		
 	public void runWith(ATLrunConfiguration config) 
-		throws NullPointerException, ATLCoreException, FileNotFoundException {
+		throws NullPointerException, ATLCoreException, IOException {
 	
 		this.config = config;
 		
@@ -45,7 +45,7 @@ public class ATLrunner {
 	}
 
 
-	protected InputStream[] compiledTransformations() throws FileNotFoundException {
+	protected InputStream[] compiledTransformations() throws IOException {
 		InputStream[] modules = new InputStream[1];
 		modules[0] = config.getCompiledTransformationAsStream();
 		return modules;

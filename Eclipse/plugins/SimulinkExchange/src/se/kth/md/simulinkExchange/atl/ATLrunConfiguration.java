@@ -1,7 +1,7 @@
 package se.kth.md.simulinkExchange.atl;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.Collections;
 import java.util.HashMap;
@@ -20,10 +20,12 @@ public class ATLrunConfiguration {
 	protected ModelTowerList sourceList      = new ModelTowerList();
 	protected ModelTowerList destinationList = new ModelTowerList();
 	protected URI transformationSource;
+	protected URI transformationCompiled;
 	
 	
-	public ATLrunConfiguration( URI atlSource ) {
-		this.transformationSource = atlSource;
+	public ATLrunConfiguration( URI atlSource, URI atlCompiled ) {
+		this.transformationSource 	= atlSource;
+		this.transformationCompiled = atlCompiled;
 	}
 
 	
@@ -77,13 +79,9 @@ public class ATLrunConfiguration {
 		return ( !sourceList.isEmpty() && !destinationList.isEmpty() );
 	}
 
-	
-	public URI getCompiledTransformationAsURI() {		
-		return transformationSource.trimFileExtension().appendFileExtension("asm"); 
-	}
-	
-	public InputStream getCompiledTransformationAsStream() throws FileNotFoundException {
-		String path = this.getCompiledTransformationAsURI().toFileString(); 
+		
+	public InputStream getCompiledTransformationAsStream() throws IOException {
+		String path = transformationCompiled.toFileString(); 
 		return new FileInputStream( path );
 	}
 

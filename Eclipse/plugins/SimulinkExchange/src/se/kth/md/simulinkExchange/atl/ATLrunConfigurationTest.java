@@ -3,7 +3,9 @@
  */
 package se.kth.md.simulinkExchange.atl;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Map;
 
@@ -25,27 +27,23 @@ public class ATLrunConfigurationTest {
 		
 	private final URI umlModel      = URI.createFileURI("./Resources/testing/demo.uml");
 	private final URI simulinkModel = URI.createFileURI("./Resources/testing/demo.simulink");	
-	private final URI atlSource 	= URI.createFileURI("./Resources/testing/east2simulink.atl");	
+	private final URI atlSource 	= URI.createFileURI("./Resources/testing/east2simulink.atl");
+	private final URI atlCompiled 	= URI.createFileURI("./Resources/testing/east2simulink.asm");
 	private final URI wrongURI 		= URI.createURI("thisShouldFail");
 	
 	private ATLrunConfiguration config = null;
 	
 	@Before 
 	public void setUp() {
-		config = new ATLrunConfiguration( atlSource );
+		config = new ATLrunConfiguration( atlSource, atlCompiled );
 	}
 	
 	@After
     public void tearDown() {
         config = null;
     }	
-	
-	@Test
-	public void getCompiledTransformationAsURI() {
-		URI compiledURI = URI.createURI("./Resources/testing/east2simulink.asm");
-		assertEquals(compiledURI, config.getCompiledTransformationAsURI());		
-	}
 
+	
 	@Test
 	public void testConfigurationIsComplete() throws URInotFound {
 		addSources();

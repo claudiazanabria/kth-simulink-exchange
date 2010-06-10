@@ -4,13 +4,10 @@
 package se.kth.md.simulinkExchange.popup.actions.atl;
 
 import java.io.IOException;
-import java.net.URL;
 
-import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.common.util.URI;
@@ -34,6 +31,7 @@ public abstract class TheJob extends Job {
 	protected Bundle pluginBundle;
 	
 	protected URI atlSource;
+	protected URI atlCompiled;
 	protected URI umlModel;
 	protected URI simulinkModel;
 	
@@ -46,13 +44,10 @@ public abstract class TheJob extends Job {
 
 	}
 
-	protected void initJob(String atlSourcePath) {
+	protected void initJob(String atlSourcePath, String atlCompiledPath) {
 		try {
-			Path atlPath = new Path( atlSourcePath ); 
-			URL urlWithBundleProtocol 	= FileLocator.find(pluginBundle, atlPath, null);
-			URL urlWithFileProtocol 	= FileLocator.toFileURL( urlWithBundleProtocol );
-			String fileURLAsString 		= urlWithFileProtocol.getFile();
-			atlSource = URI.createFileURI( fileURLAsString );
+			atlSource 	= plugin.locateFile( atlSourcePath );
+			atlCompiled = plugin.locateFile( atlCompiledPath );
 		} catch (IOException e) {
 			plugin.log("Internal error: ATL source not bundled within plugin.", Status.ERROR, e);
 			Status status = new Status(IStatus.ERROR, Activator.PLUGIN_ID, "ATL source not found. See Error log for details.");
@@ -97,7 +92,7 @@ public abstract class TheJob extends Job {
 	}
 
 	protected ATLrunConfiguration configureTransformation() throws URInotFound {
-		ATLrunConfiguration config = new ATLrunConfiguration( atlSource );
+		ATLrunConfiguration config = new ATLrunConfiguration( atlSource, atlCompiled );
 		addSources(config);
 		addDestination(config);
 		return config;
