@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Simulink Exchange
 Bundle-SymbolicName: se.kth.md.simulinkExchange; singleton:=true
-Bundle-Version: 3.0.23
+Bundle-Version: 3.0.24
 Bundle-Activator: se.kth.md.simulinkExchange.Activator
 Bundle-Vendor: KTH Mechatronics
 Require-Bundle: org.eclipse.ui,
