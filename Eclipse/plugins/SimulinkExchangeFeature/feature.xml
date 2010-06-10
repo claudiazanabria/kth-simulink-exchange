@@ -2,7 +2,7 @@
 <feature
       id="se.kth.md.simulinkExchange.feature"
       label="Simulink Exchange Bundle"
-      version="3.1.6"
+      version="3.1.7"
       provider-name="KTH Mechatronics">
 
    <description url="http://www.example.com/description">
@@ -10,22 +10,43 @@
    </description>
 
    <copyright url="http://www.example.com/copyright">
-      Disclaimer of warranty
-Covered code is provided under this license on an &quot;as is&quot; basis,
-without warranty of any kind, either expressed or implied, including,
-without limitation, warranties that the covered code is free
-of defects, merchantable, fit for a particular purpose or non-infringing.
-The entire risk as to the quality and performance of the covered
-code is with you. Should any covered code prove defective in
-any respect, you (not the initial developer or any other contributor)
-assume the cost of any necessary servicing, repair or correction.
-This disclaimer of warranty constitutes an essential part of
-this license. No use of any covered code is authorized hereunder
-except under this disclaimer.
+      Copyright (c) 2010, KTH, Machine Design, Embedded Control Systems
+group
+All rights reserved.
    </copyright>
 
    <license url="http://www.example.com/license">
-      [Enter license Description here.]
+      Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions
+are met:
+* Redistributions of source code must retain the above copyright
+notice, this list of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the above copyright
+notice, this list of conditions and the following disclaimer
+in the
+documentation and/or other materials provided with the distribution.
+* Neither the name KTH nor the names of its contributors may
+be used 
+to endorse or promote products derived from this software without
+specific prior written permission.
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+&quot;AS IS&quot; AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
+TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL &lt;COPYRIGHT HOLDER&gt; BE LIABLE
+FOR
+ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND
+ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+OUT OF
+THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY
+OF SUCH DAMAGE.
    </license>
 
    <requires>
