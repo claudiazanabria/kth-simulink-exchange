@@ -36,7 +36,6 @@ public class Activator extends AbstractUIPlugin {
 		plugin = this;
 		symbolicName = this.getBundle().getSymbolicName();
 		log = plugin.getLog();
-		log("Plugin started", Status.INFO);		
 	}
 
 	/*
@@ -44,7 +43,6 @@ public class Activator extends AbstractUIPlugin {
 	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext)
 	 */
 	public void stop(BundleContext context) throws Exception {
-		log("Plugin stopped", Status.INFO);		
 		plugin = null;
 		log = null;
 		super.stop(context);

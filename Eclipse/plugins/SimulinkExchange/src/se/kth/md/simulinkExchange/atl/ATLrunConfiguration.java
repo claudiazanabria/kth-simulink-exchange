@@ -14,8 +14,8 @@ public class ATLrunConfiguration {
 	// FIXME: Hard-coded values !?!
 	private Map<URI, String> hardcodedIDs = this.createHardcodedIDs();	
 	public static URI eastMetaModel 	  = URI.createURI("http://www.papyrusuml.org/EAST-ADL2/1");
-	public static URI umlMetaModel      = URI.createURI("http://www.eclipse.org/uml2/2.1.0/UML");
-	public static URI simulinkMetaModel = URI.createURI("http:///se.kth.md.attest2/Simulink/3.0");
+	public static URI umlMetaModel        = URI.createURI("http://www.eclipse.org/uml2/2.1.0/UML");
+	public static URI simulinkMetaModel   = URI.createURI("http:///se.kth.md.attest2/Simulink/3.0");
 
 	protected ModelTowerList sourceList      = new ModelTowerList();
 	protected ModelTowerList destinationList = new ModelTowerList();
