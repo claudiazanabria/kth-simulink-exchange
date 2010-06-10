@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="ASCII"?>
 <sim:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:sim="http:///se.kth.md.attest2/Simulink/3.0" name="York" uuid="f122fa0a-0c72-4abd-96b4-9c83a07b395d" root="//@parts.0">
   <parts name="RootSys" simulinkName="RootSys" uuid="c2b67e0a-d420-4dfa-87a0-f815bdb9acd5">
-    <children name="F1" uuid="3b980c2b-7349-4289-983f-333d6a4b58b3" target="//@parts.1"/>
-    <children name="F2" uuid="c60e9a4a-ba29-4161-97b9-c1eb45259d07" target="//@parts.2"/>
-    <children name="F3" uuid="ca49e2f8-17aa-415d-b37e-cd22689d4042" target="//@parts.3"/>
+    <children name="refF1" uuid="3b980c2b-7349-4289-983f-333d6a4b58b3" target="//@parts.1"/>
+    <children name="refF2" uuid="c60e9a4a-ba29-4161-97b9-c1eb45259d07" target="//@parts.2"/>
+    <children name="refF3" uuid="ca49e2f8-17aa-415d-b37e-cd22689d4042" target="//@parts.3"/>
     <lines name="L1" uuid="b947a123-388d-4a16-99b4-92ab471372d9" source="//@parts.1/@outports.0" destination="//@parts.2/@inports.0"/>
     <lines name="L2" uuid="d5d40ac0-9eff-4009-9346-1d40300ebc3d" source="//@parts.2/@outports.0" destination="//@parts.3/@inports.0"/>
   </parts>
@@ -11,8 +11,8 @@
     <outports name="F1Out" uuid="ce9bacf8-c294-43d6-a955-a0273d00a83b" connections="//@parts.0/@lines.0"/>
   </parts>
   <parts name="F2" simulinkName="F2" uuid="5e76123d-f5f1-4494-9d32-41274f6f0021">
-    <children name="F21" uuid="ceaf88e0-2bbc-42bc-ac2b-c7dd498dc9b1" target="//@parts.4"/>
-    <children name="F22" uuid="151b7a91-b63e-43fe-a1a6-328c757ad8c2" target="//@parts.5"/>
+    <children name="refF21" uuid="ceaf88e0-2bbc-42bc-ac2b-c7dd498dc9b1" target="//@parts.4"/>
+    <children name="refF22" uuid="151b7a91-b63e-43fe-a1a6-328c757ad8c2" target="//@parts.5"/>
     <lines name="L3" uuid="f4a76ee7-5290-442e-a50c-1208835a691f" source="//@parts.4/@outports.0" destination="//@parts.5/@inports.0"/>
     <inports name="F2In" uuid="35fb0b37-a6e3-4708-b63f-63b3fe4ce891"/>
     <outports name="F2Out" uuid="d44902a8-61ad-4a27-b945-911473588046" connections="//@parts.0/@lines.1"/>
