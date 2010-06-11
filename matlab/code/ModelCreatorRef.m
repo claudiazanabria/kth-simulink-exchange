@@ -167,7 +167,7 @@ classdef ModelCreatorRef < handle
         
         function processSystem( self, aSystem ) %#ok<MANU>
              name            = char( aSystem.getName() );
-%             fileName        = char( aSystem.getFilename() );
+             fileName        = char( aSystem.getFilename() );
 %             fileExists      = Utils.isMDLFileReadable( fileName );
 %             containsBehaviour = ModelCreatorRef.systemContainsBehaviour( aSystem );
 %             if fileExists
