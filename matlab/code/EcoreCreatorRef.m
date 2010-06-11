@@ -51,7 +51,7 @@ classdef EcoreCreatorRef < handle
             %modelName = self.openModelInSimulink();
             self.javaEcoreCreator.newModel( modelName );
             rootSystem = self.javaEcoreCreator.addRootSystem(modelName);
-            self.processSystem( rootSystem );
+            self.processSystem( rootSystem , 1);
             %Maybe nice to save system
             %save_system( modelName );
             self.saveIt(destFileName);
@@ -60,8 +60,11 @@ classdef EcoreCreatorRef < handle
     end
     methods (Access=private)
         
-        function processSystem( self, parentSystem )
+        function processSystem( self, parentSystem ,isroot)
             systemName = char( parentSystem.getName() );
+            if ~(isroot)
+                systemName = ['FunctionTypes/' systemName];
+            end                  
             mdlBlks = find_system(systemName, 'regexp', 'on', 'SearchDepth',1, 'ReferenceBlock', 'FunctionTypes/' );
             for x=1:size(mdlBlks)
                 self.processBlock( mdlBlks{x}, parentSystem );
@@ -70,13 +73,13 @@ classdef EcoreCreatorRef < handle
         end
         
         function processBlock( self, blockName, parentSystem )            
-            name                = get_param(blockName,'ReferenceBlock');
-            %Will remove the FunctionTypes/ from the blockname, and remove
-            %library structure. Perhaps a subject for deletion.
+            referenceBlockName = get_param(blockName,'ReferenceBlock');
+            %Remove the FunctionTypes/ from the name
+            referenceBlockName  = Utils.extractOnlyName( referenceBlockName );
             instanceName        = Utils.extractOnlyName( blockName );
-            sysAlreadyExists    = self.javaEcoreCreator.findSystem(name);
+            sysAlreadyExists    = self.javaEcoreCreator.findSystem(referenceBlockName);
             import se.kth.md.simulinkExchange.modelConversion.simulink.PropertyList;
-            pList = PropertyList(name, parentSystem, instanceName);
+            pList = PropertyList(referenceBlockName, parentSystem, instanceName);
             posArray = get_param(blockName,'position');
             position = Utils.posArray2String( posArray );
             aSystemRef = self.javaEcoreCreator.addSystem( pList );
@@ -88,8 +91,8 @@ classdef EcoreCreatorRef < handle
             targetSystem = aSystemRef.getTarget();
             if isempty( sysAlreadyExists )
                 self.addOutportsTo( targetSystem );
-                self.addInportsTo( targetSystem );
-                self.processSystem( targetSystem );
+                self.addInportsTo( targetSystem );    
+                self.processSystem( targetSystem,0);
             end
         end
                 
@@ -104,7 +107,7 @@ classdef EcoreCreatorRef < handle
         end
                 
         function addOutportsTo( self, aSystem )
-            name = char(aSystem.getName());
+            name = ['FunctionTypes/' char(aSystem.getName())];
             ports = find_system(name,'SearchDepth',1,...
                 'FollowLinks','On','BlockType','Outport');
             for x=1:size(ports,1)                                
@@ -116,7 +119,7 @@ classdef EcoreCreatorRef < handle
         end
 
         function addInportsTo( self, aSystem )
-            name = char(aSystem.getName());
+            name = ['FunctionTypes/' char(aSystem.getName())];
             ports = find_system(name,'SearchDepth',1,...
                 'FollowLinks','On','BlockType','Inport');
             for x=1:size(ports,1)
