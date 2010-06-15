@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>The KTH MATLAB/Simulink &lt;-&gt; Ecore exchange tool user guide</title>
+
+<link rel="stylesheet" href="docstyle.css" type="text/css">
+<meta name="description" content="Instructions for adding collections of files you have
+created, such as toolboxes, to the Start button, Help browser, and
+Demos.">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<script language="JavaScript" src="docscripts.js"></script>
+</head>
+<body>
+<a name="top_of_page"></a>
+<p style="font-size: 1px;">&nbsp;</p>
+<table class="nav" summary="Navigation aid" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody>
+<tr>
+<td valign="baseline"><b>KTH to
+MATLAB/Simulink &lt;-&gt; Ecore exchange plugin<sup>&nbsp;</sup></b></td>
+<td align="right" valign="baseline"></td>
+</tr>
+</tbody>
+</table>
+<table class="feedbacklinktop" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody>
+<tr>
+<td>&nbsp;</td>
+<td align="right">
+<script type="text/javascript" language="JavaScript">
+writeDocFeedbackSurveyLink();
+</script>&nbsp;
+</td>
+</tr>
+</tbody>
+</table>
+<a name="Docroot"></a>
+<h2 class="title" id="Docroot">The Simulink
+&lt;-&gt; Ecore exchange plugin</h2>
+<a name="start_button_config"></a>
+<table class="pagenavtable" border="0" cellpadding="4" cellspacing="0">
+<tbody>
+<tr>
+<th>On this page…</th>
+</tr>
+<tr>
+<td>
+<p><a href="Docroot.html#Overview">Overview</a></p>
+<p><a href="Docroot.html#Installation">Installation</a></p>
+<p><a href="Docroot.html#FTypes">The FunctionTypes.mdl library</a></p><p><a href="#The_Add_to_EAST_library_menu">The Add to EAST library menu</a></p>
+<p><a href="Docroot.html#Save">Using the Save .simulink file... menu</a></p>
+<p><a href="Docroot.html#Open">Using the Open .simulink file... menu</a></p><p><a href="#Conclusions">Concluding remarks</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<a name="Overview"></a><br><h3 class="title">Introduction</h3>This tool
+was created by KTH during the ATESST2 project. It enables
+MATLAB/Simulink to save and load files in Ecore format, conforming to a
+meta-model defined in Ecore. This enables the use of model
+transformation languages to transform the model into other models. In
+our case, the target has been UML models, with the EAST-ADL2 profile
+applied.<a name="Overview"></a>
+<h3 class="title" id="brdufaf">Overview</h3>
+<p>This tool loads and saves Simulink Ecore files, conforming to
+a meta-model defined in Eclipse. The file extension for this filetype is
+<span style="font-family: monospace;">.simulink</span>
+. The tool only consider blocks that has been selected by the user,
+using the <span style="font-style: italic;">Add to EAST
+library</span> mechanism, described <a href="#The_Add_to_EAST_library_menu">below</a>.
+The tool was
+originally designed to generate an Ecore representation that could be
+translated into a UML file, as in the picture below, but it should be
+possible to use it for other transformations as well. Having simulink
+model files described in Ecore allows transformation using many
+different model transformation languages.</p><p>In
+this case, the ATL - Atlas Transformation Langugage is used for the
+transformation to uml, see (1) in the picture below. This is carried
+out in Eclipse, using a plug-in that is installed separetly. From the
+simulink ecore metamodel that is defined by us, code is generated.
+There is also some Preprocessing Java code, that is linked
+into&nbsp;MATLAB. </p>
+<p><img style="width: 785px; height: 242px;" alt="Overview" src="Overview.png"></p><a name="Installation"></a><h3 class="title">Installation</h3>
+<br>
+If you are reading this file, you probably already have run the <span style="font-family: monospace;">ecore_init.m </span>file.
+This must be done every time you start MATLAB and want to use Ecore
+exchange, so you could consider putting it into your <span style="font-family: monospace;">startup.m</span> file. <br><a href="Docroot.html#top_of_page">Back to Top</a><br><a name="FTypes"></a>
+<h3 class="title">The Function Types
+library</h3>
+
+<p>The exchange mechanism uses the library mechanism of
+MATLAB/Simulink. However, you can not use any library, the tool is
+today "hard-coded" to use the FunctionTypes.mdl library. Moreover, the
+blocks in the library must be added using the&nbsp;<span style="font-style: italic;">Add to EAST library&nbsp;</span>context
+menu. MATLAB will use the <span style="font-family: monospace;">FunctionTypes.mdl</span>
+file availabe on the path, a sample file is provided in the <span style="font-family: monospace;">/code</span>
+directory, which is used if there is no such file available e.g. in the
+current directory. This way, you should be able to use a common <span style="font-family: monospace;">FunctionTypes.mdl</span>
+file for many different models, which also could be placed in different
+directories.</p><p><a href="Docroot.html#top_of_page">Back to Top</a></p>
+
+<h3 class="title"><a name="The_Add_to_EAST_library_menu"></a>The Add to EAST
+library menu</h3>
+As mentioned earlier, the Add to EAST library context menu option is
+important. When clicking it, many things will happen:<br>
+<ol>
+<li>The <span style="font-family: monospace;">FunctionTypes.mdl</span>
+library file is opened.</li>
+<li>The block is added to the library</li>
+<li>The block gets a unique ID (UUID).</li>
+<li>The ports get a suffix (e.g. _in for Inports), and UUIDs
+are also assigned to ports.</li>
+<li>The original block is then replaced by this new block. To
+show that this conversion has worked out fine, the colour of the block
+is changed to light-blue.</li>
+</ol>
+<p><img style="width: 496px; height: 658px;" alt="test" src="Add_to_EAST.PNG"></p>
+The resulting block in the FunctionTypes library. Note the added
+extensions to the ports (and the light blue colour).
+<br>
+<p><img style="width: 460px; height: 432px;" alt="Function Types" src="FunctionTypes.PNG"></p><p>This is today only validated for subsystem blocks.</p><p><a href="Docroot.html#top_of_page">Back to Top</a></p>
+
+<a name="Save"></a>
+<h3 class="title">Using the Save .simulink file... menu</h3>
+<p>In the picture below, two empty subsystems are created as described
+above, and connected using lines. They can be saved using the Save
+.simulink file... menu option, which is added by the tool. After the
+filename is entered,&nbsp;</p><ol><li>Only blocks that belongs to a <span style="font-family: monospace;">FunctionTypes.mdl </span>library file are considered.&nbsp;</li><li>Only
+lines that are connected to at least one port of a FunctionTypes.mdl
+library block are saved. The graphical information of the line (i.e.
+the routing) is not saved.</li><li>The model parameters,&nbsp;e.g. solver parameters, are <span style="font-style: italic;">not</span> saved.</li></ol><p><img style="width: 404px; height: 457px;" alt="Saving an Ecore (.simulink) file" src="SaveFile.PNG"></p><p><a href="Docroot.html#top_of_page">Back to Top</a></p>
+<h3><a name="Open"></a></h3><h3 class="title">Using the Open .simulink file... menu</h3>The Open .simulink file... menu loads a .simulink file into memory. Some things are to be noted:<br><ol><li>As
+mentioned above, model parameters and routing are not transformed back.
+Default parameters and line autorouting are applied to the model</li><li>The position of the blocks are saved. Newly added blocks will be layouted using a basic scheme</li><li>The name of the created model will be the same&nbsp;name as the original model which in this example is <span style="font-style: italic;">Untitled</span>,
+and not the filename of the .simulink model. If&nbsp; a model with that
+name already exist in memory (e.g. your old model), it will fail to
+load.</li></ol><img style="width: 461px; height: 431px;" alt="Open .simulink file" src="OpenFile.PNG"><br><a href="Docroot.html#top_of_page">Back to Top</a><br><h3><a name="Conclusions"></a></h3><h3 class="title">Concluding remarks</h3>This
+is to be considered as prototype software, which means that
+some&nbsp;checks of , and may give cryptic error messages. It is
+open-sourced, which allows potential users to improve the code, and
+adapt it to fit their purposes. The major conclusions that can be drawn
+from this tool are:<br><ul><li>We have shown how the library mechanism,
+combined with the use of UUID tags can be used to identify blocks in
+both EAST-ADL and Simulink, and succesfully round-trip transformation.</li><li>The
+user can alter the Ecore meta model to fit their purposes, if e.g. more
+detailed versions of blocks is needed, or non-library blocks
+will&nbsp;be used. For instance,parameters of the library block are not stored today, this could be changed in a future version, to allow parameterized blocks. </li></ul>
+<p class="pagenavlink">
+<script language="Javascript">updateSectionId("bottom_of_page");</script>&nbsp;<a href="#top_of_page"></a></p>
+</body></html>
