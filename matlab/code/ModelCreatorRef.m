@@ -56,9 +56,9 @@ classdef ModelCreatorRef < handle
         end
         
         function boolean = portDoesNOTExists( port, type )
-            parentName = ['FunctionTypes/' char( port.getParent().getSimulinkName() )];
+            parentName = Utils.getLibraryName(char( port.getParent().getSimulinkName() ));
             list = find_system(parentName, 'FollowLinks','on','BlockType', type);
-            portName = ['FunctionTypes/' char( port.getSimulinkName() )];
+            portName = Utils.getLibraryName(char( port.getSimulinkName() ));
             boolean = ~Utils.isNameInList(portName, list);
         end
 
@@ -157,27 +157,31 @@ classdef ModelCreatorRef < handle
         function processSysRef( self, aSysRef ) %#ok<MANU>
         %Inputs a System
             aSystem = aSysRef.getTarget();
-            modelname       = ['FunctionTypes/' char( aSystem.getName() )];
+            modelname       = Utils.getLibraryName( char( aSystem.getName() ));
             position        = Utils.posStr2Array( aSysRef.getPosition() );
             instanceName    = char( aSysRef.getSimulinkName() );            
             add_block(modelname, instanceName,...
-                'Position', position);
+                 'Position', position);
             Utils.setUUIDinUserData( aSysRef, instanceName );
         end
         
         function processSystem( self, aSystem ) %#ok<MANU>
              name            = char( aSystem.getName() );
-             fileName        = char( aSystem.getFilename() );
-%             fileExists      = Utils.isMDLFileReadable( fileName );
-%             containsBehaviour = ModelCreatorRef.systemContainsBehaviour( aSystem );
-%             if fileExists
-%                 if containsBehaviour
+%            fileName        = char( aSystem.getFilename() );
+%            fileExists      = Utils.isMDLFileReadable( fileName );
+             containsBehaviour = ModelCreatorRef.systemContainsBehaviour( aSystem );
+             existingBlocks=find_system(Utils.getLibraryName(), 'SearchDepth', 1,'name', name);
+             blockExists = size(existingBlocks) > 0;
+             if blockExists 
+                 if containsBehaviour
 %                     load_system( name );
-%                     return
-%                 else
+                     return
+                 else
 %                     delete( fileName );
-%                 end
-%             end
+                 end
+             else
+                 add_block('built-in/SubSystem',Utils.getLibraryName(name));
+             end
 %             new_system( name, 'Model');
         end
                 
@@ -193,11 +197,11 @@ classdef ModelCreatorRef < handle
         
         function processPort( self, port, type ) %#ok<MANU>
             portType = ['built-in/' type];
-            blockName =  char( port.getSimulinkName() );
+            portName =  Utils.getLibraryName(char( port.getSimulinkName() ));
             if ModelCreatorRef.portDoesNOTExists(port, type)
                 position = ModelCreatorRef.position2Array( port );
-                add_block(portType, ['FunctionTypes/' blockName], 'Position', position);
-                Utils.setUUIDinUserData( port, blockName )
+                add_block(portType, portName, 'Position', position);
+                Utils.setUUIDinUserData( port, portName )
             end
         end
         

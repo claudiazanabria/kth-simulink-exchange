@@ -1,3 +1,6 @@
+%% Ecore creator using library blocks
+% Creates a .simulink file, by recursively navigating a loaded model
+%%
 % Copyright (c) 2010, KTH, Machine Design, Embedded Control Systems group
 % All rights reserved.
 % 
@@ -24,8 +27,6 @@
 % SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 classdef EcoreCreatorRef < handle
-    % From Matlab --> ecore using Library mechanism
-    % Some old code left as comments
     properties(Access=private)
         sourceSystem;
         modelManager;
@@ -63,9 +64,9 @@ classdef EcoreCreatorRef < handle
         function processSystem( self, parentSystem ,isroot)
             systemName = char( parentSystem.getName() );
             if ~(isroot)
-                systemName = ['FunctionTypes/' systemName];
+                systemName = Utils.getLibraryName(systemName);
             end                  
-            mdlBlks = find_system(systemName, 'regexp', 'on', 'SearchDepth',1, 'ReferenceBlock', 'FunctionTypes/' );
+            mdlBlks = find_system(systemName, 'regexp', 'on', 'SearchDepth',1, 'ReferenceBlock', Utils.getLibraryName('') );
             for x=1:size(mdlBlks)
                 self.processBlock( mdlBlks{x}, parentSystem );
             end
@@ -74,7 +75,7 @@ classdef EcoreCreatorRef < handle
         
         function processBlock( self, blockName, parentSystem )            
             referenceBlockName = get_param(blockName,'ReferenceBlock');
-            %Remove the FunctionTypes/ from the name
+            %Remove the LibraryName/ from the name
             referenceBlockName  = Utils.extractOnlyName( referenceBlockName );
             instanceName        = Utils.extractOnlyName( blockName );
             sysAlreadyExists    = self.javaEcoreCreator.findSystem(referenceBlockName);
@@ -107,7 +108,7 @@ classdef EcoreCreatorRef < handle
         end
                 
         function addOutportsTo( self, aSystem )
-            name = ['FunctionTypes/' char(aSystem.getName())];
+            name = Utils.getLibraryName( char(aSystem.getName()));
             ports = find_system(name,'SearchDepth',1,...
                 'FollowLinks','On','BlockType','Outport');
             for x=1:size(ports,1)                                
@@ -119,7 +120,7 @@ classdef EcoreCreatorRef < handle
         end
 
         function addInportsTo( self, aSystem )
-            name = ['FunctionTypes/' char(aSystem.getName())];
+            name = Utils.getLibraryName(char(aSystem.getName()));
             ports = find_system(name,'SearchDepth',1,...
                 'FollowLinks','On','BlockType','Inport');
             for x=1:size(ports,1)

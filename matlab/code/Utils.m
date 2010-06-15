@@ -129,6 +129,22 @@ classdef Utils < handle
             str = sprintf('[%d %d %d %d]',char(posArray));
         end
         
+        function str = getLibraryName( objectName )
+        %Finds the object in the library, and adds a pathname to it
+        
+            libraryName='FunctionTypes';
+            %Somewhat of hard-code, but the user can either use the library file in the
+            %/code directory (which is in the path), or a personal FunctionTypes.mdl 
+            %located in the CD
+            if (nargin == 0)
+                str=libraryName;
+            else
+            %Returns with path    
+               str = [libraryName '/' objectName]; 
+            end
+            
+        end
+        
         function setUUIDinUserData( fromEObject, toBlockName )
             uuidStr = char(fromEObject.getUuid());
             Utils.setUserData(toBlockName, 'UUID', uuidStr);            
