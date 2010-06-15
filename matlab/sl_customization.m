@@ -36,20 +36,15 @@ function schema = AddToEASTLib(callbackInfo)
 end
 
 function AddToEAST(callbackInfo)
-%BROKEN FOR (SOME) BLOCKS THAT EXIST
-    FunctionTypesFile='FunctionTypes';
-%Somewhat of hard-code, but the user can either use the library file in the
-%/code directory (which is in the path), or a personal FunctionTypes.mdl 
-%located in the CD
    name=get_param(gcb,'name');
    oldName=gcb;
    oldSystem=gcs;
-   newName=[FunctionTypesFile '/' name];
-   open_system(FunctionTypesFile); 
-   set_param(FunctionTypesFile,'Lock','off');
-   existingBlocks=find_system(FunctionTypesFile, 'SearchDepth', 1,'name', name);
+   newName=Utils.getLibraryName(name);
+   open_system(Utils.getLibraryName()); 
+   set_param(Utils.getLibraryName(),'Lock','off');
+   existingBlocks=find_system(Utils.getLibraryName(), 'SearchDepth', 1,'name', name);
    if (size(existingBlocks,1) > 0) 
-   choice = questdlg(['Block exists in FunctionType library: ', name ], ...
+   choice = questdlg(['Block exists in' Utils.getLibraryName() 'library: ', name ], ...
 	'Warning', 'Overwrite','Rename','Cancel','Cancel');
 % Handle response
         switch choice
@@ -67,29 +62,6 @@ function AddToEAST(callbackInfo)
        add_block(oldName, newName)    
    end
   set_param(newName, 'BackgroundColor', 'lightblue');
- 
-  
-  %Inports = find_system(gcb, 'FollowLinks', 'On','BlockType', 'Inport');
-  %for x=1:size(Inports)
-  %    Portname=char(get_param(Inports(x),'Name'));
-  %    if (regexp(Portname,'_In$')>0)
-  %        return
-  %    else
-  %        set_param([newName '/' Portname],'Name',strcat(Portname,'_In'));
-  %    end        
-  %end
-  
-%   Outports = find_system(gcb, 'FollowLinks', 'On','BlockType', 'Outport');
-% 
-%   for x=1:size(Outports)
-%       Portname=char(get_param(Outports(x),'Name'));
-%       if (regexp(Portname,'_Out$')>0)
-%           return
-%       else
-%           set_param([newName '/' Portname],'Name',strcat(Portname,'_Out'));
-%       end        
-%   end
-
   processPorts(newName);  
   Utils.setUUID(newName);
   replace_block(oldSystem, 'Handle', get_param(oldName,'Handle'), newName, 'noprompt')
@@ -134,7 +106,7 @@ function schema = OpenEcoreLib(callbackInfo)
 end
 
 function OpenEcoreLibrary(callbackInfo)
-   open_system('FunctionTypes')
+   open_system(Utils.getLibraryName());
 end
 
 
