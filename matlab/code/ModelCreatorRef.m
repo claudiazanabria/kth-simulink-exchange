@@ -106,6 +106,8 @@ classdef ModelCreatorRef < handle
         function doIt( self )
             import se.kth.md.simulinkExchange.modelManagement.simulink.SimulinkModelManager;            
             import se.kth.md.simulinkExchange.modelConversion.simulink.preprocessing.ModelProcessor;
+            open_system(Utils.getLibraryName()); 
+            set_param(Utils.getLibraryName(),'Lock','off');
             modelManager = SimulinkModelManager( self.ecoreFile );
             modelManager.loadIt();
             model = modelManager.getTopElement();
@@ -113,6 +115,9 @@ classdef ModelCreatorRef < handle
             self.processList( list );
             ModelCreatorRef.refreshAndSaveSystems();
             ModelCreatorRef.openRootSystem( list );
+            %The library needs to be opened, so that blocks can be found
+            open_system(Utils.getLibraryName()); 
+            set_param(Utils.getLibraryName(),'Lock','off');
         end
         
         function processList( self, aList )
