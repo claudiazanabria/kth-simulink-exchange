@@ -5,28 +5,15 @@ function sl_customization(cm)
   cm.addCustomMenuFcn('Simulink:ContextMenu', @getContextMenuItems);
 end
 
-%% Define the custom menu function.
+%% Define the custom file menu function.
 function schemaFcns = getFileMenuItems(callbackInfo) 
   schemaFcns = {@OpenEcoreLib,@OpenEcore,...
 						@SaveEcore};
 end
 
-
+%% Define the custom context menu function.
 function schemaFcns = getContextMenuItems(callbackInfo) 
   schemaFcns = {@AddToEASTLib};
-
-end
-
-function schema = ToggleTest(callbackInfo)
-   schema = sl_toggle_schema;
-  schema.label = 'EAST';
-  tmp=get_param(gcb, 'ForegroundColor');
-  if strcmp(tmp, 'red') == 1
-    schema.checked = 'checked';
-  else
-    schema.checked = 'unchecked';
-  end
-  schema.callback = @ToggleEASTAction; 
 end
 
 function schema = AddToEASTLib(callbackInfo)
@@ -44,7 +31,7 @@ function AddToEAST(callbackInfo)
    set_param(Utils.getLibraryName(),'Lock','off');
    existingBlocks=find_system(Utils.getLibraryName(), 'SearchDepth', 1,'name', name);
    if (size(existingBlocks,1) > 0) 
-   choice = questdlg(['Block exists in' Utils.getLibraryName() 'library: ', name ], ...
+   choice = questdlg(['Block exists in ' Utils.getLibraryName() ' library: ', name ], ...
 	'Warning', 'Overwrite','Rename','Cancel','Cancel');
 % Handle response
         switch choice
@@ -53,7 +40,6 @@ function AddToEAST(callbackInfo)
                 add_block(oldName, newName)
             case 'Rename'
                 newHandle=add_block(oldName, newName, 'MakeNameUnique', 'on');
-                %'Ugly method, but it should work?
                 newName=[get_param(newHandle,'Parent') '/' get_param(newHandle,'Name')];
             case 'Cancel'
                  return
@@ -88,14 +74,6 @@ Ports = find_system(Block, 'FollowLinks', 'On','BlockType', Porttype);
           set_param([Block '/' Portname],'Name',strcat(Portname,suffix));
       end
   end
-end
-
-function ToggleEASTAction(callbackInfo)
-    if strcmp(get_param(gcb, 'ForegroundColor'), 'red') == 0
-        set_param(gcb, 'ForegroundColor', 'red');
-    else
-        set_param(gcb, 'ForegroundColor', 'white');
-    end
 end
 
 function schema = OpenEcoreLib(callbackInfo)
