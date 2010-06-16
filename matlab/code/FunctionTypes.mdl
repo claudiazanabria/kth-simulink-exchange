@@ -14,9 +14,9 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "carlj"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Wed Jun 09 10:00:22 2010"
+  LastModifiedDate	  "Wed Jun 16 23:33:30 2010"
   RTWModifiedTimeStamp	  0
-  ModelVersionFormat	  "1.%<AutoIncrement:6>"
+  ModelVersionFormat	  "1.%<AutoIncrement:13>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -525,7 +525,7 @@ Library {
   }
   System {
     Name		    "FunctionTypes"
-    Location		    [627, 344, 1075, 670]
+    Location		    [64, 174, 512, 500]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
