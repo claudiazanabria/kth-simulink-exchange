@@ -147,7 +147,9 @@ classdef Utils < handle
         
         function setUUIDinUserData( fromEObject, toBlockName )
             uuidStr = char(fromEObject.getUuid());
-            Utils.setUserData(toBlockName, 'UUID', uuidStr);            
+            if ~(strcmp('',uuidStr))
+                Utils.setUserData(toBlockName, 'UUID', uuidStr);
+            end
         end 
         
         function setUUID( BlockName )
