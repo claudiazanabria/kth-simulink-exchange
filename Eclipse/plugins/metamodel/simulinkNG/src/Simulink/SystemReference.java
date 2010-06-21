@@ -64,7 +64,7 @@ public interface SystemReference extends ProtoObject {
 	 * @see #setParent(Simulink.System)
 	 * @see Simulink.SimulinkPackage#getSystemReference_Parent()
 	 * @see Simulink.System#getChildren
-	 * @model opposite="children" required="true" transient="false"
+	 * @model opposite="children" transient="false"
 	 * @generated
 	 */
 	Simulink.System getParent();

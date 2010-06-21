@@ -95,7 +95,7 @@ public interface Line extends ProtoObject {
 	 * @see #setParent(Simulink.System)
 	 * @see Simulink.SimulinkPackage#getLine_Parent()
 	 * @see Simulink.System#getLines
-	 * @model opposite="lines" required="true" transient="false"
+	 * @model opposite="lines" transient="false"
 	 * @generated
 	 */
 	Simulink.System getParent();
