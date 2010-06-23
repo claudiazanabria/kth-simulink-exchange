@@ -121,6 +121,11 @@ classdef Utils < handle
              name = tokens{1}{ lastToken };
         end
         
+        function name = extractOnlyRootname( fullpath )
+             tokens = textscan(char(fullpath), '%s', 'delimiter', '/');
+             name = tokens{1}{ 1 };
+        end       
+        
         function array = posStr2Array( string )
             array = sscanf(char(string) ,'[%d %d %d %d]')';
         end
@@ -152,9 +157,9 @@ classdef Utils < handle
             end
         end 
         
-        function setUUID( BlockName )
+        function setUUID( blockName )
             uuidStr = char( java.util.UUID.randomUUID() );
-            Utils.setUserData(BlockName, 'UUID', uuidStr);            
+            Utils.setUserData(blockName, 'UUID', uuidStr);            
         end       
         
         function uuidStr = getUUIDfromBlock(blockName)
@@ -165,6 +170,42 @@ classdef Utils < handle
             uuidStr = char( java.util.UUID.randomUUID() );
             Utils.setUserData(blockName,'UUID', uuidStr);
         end
+        
+        function checkSystem (systemName)
+            containsBlocks = false; containsReferenceBlocks = false;
+            faultyBlocks = '';
+            mdlBlks = find_system(systemName, 'SearchDepth',1 );
+            for x=1:size(mdlBlks)
+               if ~(strcmp(mdlBlks(x),systemName))%Not root system
+                   blockType = get_param(mdlBlks(x), 'Blocktype');
+                   switch char(blockType)
+                        case 'SubSystem'
+                            referenceBlockName = get_param(mdlBlks(x),'ReferenceBlock');
+                            if ~isempty(char(referenceBlockName))
+                                if strcmp(Utils.getLibraryName(),Utils.extractOnlyRootname(referenceBlockName))
+                                    containsReferenceBlocks = true;
+                                    Utils.checkSystem(mdlBlks);
+                                else
+                                    containsBlocks=true;
+                                    faultyBlocks = [faultyBlocks mdlBlks(x)];
+                                end
+                            else
+                                containsBlocks=true;
+                                faultyBlocks = [faultyBlocks mdlBlks(x)];
+                            end    
+                        case {'Inport','Outport'}
+                            return
+                        otherwise
+                             containsBlocks = true;
+                             faultyBlocks = [faultyBlocks mdlBlks(x)];
+                    end
+               end
+            end
+            if (containsBlocks && containsReferenceBlocks)
+                warndlg(['System' systemName 'contains orphan blocks' faultyBlocks])
+            end
+        end
+        
         
 %         function boolean = isReadableByJava( filePath )
 %             file = java.io.File( filePath );
