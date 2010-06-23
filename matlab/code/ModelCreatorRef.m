@@ -104,8 +104,8 @@ classdef ModelCreatorRef < handle
     end
     methods (Access=private)
         function doIt( self )
-            import se.kth.md.simulinkExchange.modelManagement.simulink.SimulinkModelManager;            
-            import se.kth.md.simulinkExchange.modelConversion.simulink.preprocessing.ModelProcessor;
+            import se.kth.md.simulinkExchange.management.simulink.SimulinkModelManager;            
+            import se.kth.md.simulinkExchange.conversion.simulink.preprocessing.ModelProcessor;
             open_system(Utils.getLibraryName()); 
             set_param(Utils.getLibraryName(),'Lock','off');
             modelManager = SimulinkModelManager( self.ecoreFile );

@@ -37,7 +37,7 @@ classdef LineBuilder < handle
         function LB=LineBuilder( parentSystem )
             LB.parentSystem = parentSystem;
             LB.visitedPorts = java.util.LinkedHashSet();
-            import se.kth.md.simulinkExchange.modelConversion.simulink.LineInfo;
+            import se.kth.md.simulinkExchange.conversion.simulink.LineInfo;
             LB.createdLines = LineInfo.createArray();            
         end
     end
@@ -59,7 +59,7 @@ classdef LineBuilder < handle
         end
         
         function processPort(self, extendedPort )
-            import se.kth.md.simulinkExchange.modelConversion.simulink.LineInfo;
+            import se.kth.md.simulinkExchange.conversion.simulink.LineInfo;
             zize = extendedPort.numberOfConnections();
             for x=1:zize
                 dstUUIDStr = extendedPort.lineDstUUID{x};
