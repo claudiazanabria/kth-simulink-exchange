@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Simulink ecore Metamodel
+Bundle-SymbolicName: se.kth.md.simulinkExchange.metamodel.Simulink;singleton:=true
+Bundle-Version: 3.2.5
+Bundle-ClassPath: .
+Bundle-Vendor: KTH Mechatronics
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: Simulink,
+ Simulink.impl,
+ Simulink.util
+Require-Bundle: org.eclipse.emf.ecore;visibility:=reexport
