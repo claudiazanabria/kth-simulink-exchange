@@ -191,4 +191,9 @@ public abstract class ModelManager {
 		this.fileExtension = fileExtension;
 	}
 
+	public void traverseWith(Traverser traverser) {		
+		traverser.doIt( this );
+		
+	}
+
 }
