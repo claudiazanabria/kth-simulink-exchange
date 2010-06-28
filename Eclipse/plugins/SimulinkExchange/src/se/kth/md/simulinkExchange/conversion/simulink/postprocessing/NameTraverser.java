@@ -25,6 +25,7 @@ public class NameTraverser implements se.kth.md.simulinkExchange.management.Trav
 	}
 	
 	private void visit(Simulink.System system) {
+		java.lang.System.out.format("%s\n", system.getName());
 		computeGenericSimulinkName( system );
 		computeSystemFileName( system );
 		visitChildren	( system.getChildren() 	);
@@ -160,7 +161,8 @@ public class NameTraverser implements se.kth.md.simulinkExchange.management.Trav
 	
 	@Test
 	public void testMain() throws InvalidModelException, IOException {
-		String demoFile = "./resources/testFiles/demo.simulink";
+		String demoFile = "F:/CheckOut/trunk/Eclipse/Demo Project/startingFromEAST/york2135.simulink";
+		//String demoFile = "./resources/testFiles/demo.simulink";
 		SimulinkModelManager manager = new SimulinkModelManager(demoFile);
 		manager.loadIt();
 		manager.traverseWith( new NameTraverser() );
