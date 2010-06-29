@@ -36,10 +36,10 @@ classdef EcoreCreatorRef < handle
         function EC=fromModel( modelName , destFileName)
             %If destFileName is omitted [testcases
             if (nargin == 1) 
-                destFileName = fullfile(cd(), systemName);
+                destFileName = fullfile(cd(), modelName);
             end
             %Next line commented out - not needed?
-            %Utils.checkMDLFileReadable( systemName );
+            %Utils.checkMDLFileReadable( modelName );
             EC=EcoreCreatorRef();
             EC.sourceSystem = modelName;
             EC.doIt(modelName, destFileName);

@@ -49,8 +49,14 @@ classdef ModelCreatorRef < handle
         end
         
     end
-    methods (Static, Access=private)
-
+    methods (Static, Access=public)
+        
+        function boolean = systemIsLoaded( modelName )
+            %Checks if the system is already in memory
+            find_system(modelName,'type','block_diagram')
+            
+        end
+        
         function boolean = systemContainsBehaviour( aSystem )
             boolean = (aSystem.getChildren().size() == 0);
         end
