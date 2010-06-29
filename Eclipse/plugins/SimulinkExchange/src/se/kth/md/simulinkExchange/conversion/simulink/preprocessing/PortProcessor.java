@@ -26,7 +26,9 @@ public abstract class PortProcessor {
 		this.layouter = layouter;
 	}
 
-	protected <P extends Port> Collection<? extends ProtoObject> process(EList<P> ports) {
+	protected <P extends Port> Collection<? extends ProtoObject> 
+		process(EList<P> ports) {
+		
 		for (P port : ports ) {
 			processPort( port );
 			list.add( port );
@@ -48,7 +50,8 @@ public abstract class PortProcessor {
 	}
 
 	/**
-	 * To avoid problems with ports having the same, which is possible in EAST-ADL,
+	 * To avoid problems with ports having the same name, 
+	 * which is possible in EAST-ADL,
 	 * add a suffix (_In or _Out) to the port name.
 	 * @param port
 	 */

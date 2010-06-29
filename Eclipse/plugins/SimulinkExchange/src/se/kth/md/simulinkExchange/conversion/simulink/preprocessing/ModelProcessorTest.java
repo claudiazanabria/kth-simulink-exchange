@@ -15,7 +15,7 @@ import Simulink.SimulinkPackage;
 
 
 /**
- * Tests for ModelProcessor
+ * This is not really a test, it just dumps the created list.
  * @author Alex Schenkman
  *
  */
