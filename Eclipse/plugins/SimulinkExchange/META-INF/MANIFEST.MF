@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Simulink Exchange
 Bundle-SymbolicName: se.kth.md.simulinkExchange; singleton:=true
-Bundle-Version: 3.0.27
+Bundle-Version: 3.0.28.qualifier
 Bundle-Activator: se.kth.md.simulinkExchange.Activator
 Bundle-Vendor: KTH Mechatronics
 Require-Bundle: org.eclipse.ui,
@@ -22,9 +22,9 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Export-Package: se.kth.md.simulinkExchange,
  se.kth.md.simulinkExchange.atl,
+ se.kth.md.simulinkExchange.conversion.ToSimulink,
+ se.kth.md.simulinkExchange.conversion.ToSimulink.preprocessing,
  se.kth.md.simulinkExchange.conversion.exceptions,
- se.kth.md.simulinkExchange.conversion.simulink,
- se.kth.md.simulinkExchange.conversion.simulink.preprocessing,
  se.kth.md.simulinkExchange.management,
  se.kth.md.simulinkExchange.management.east,
  se.kth.md.simulinkExchange.management.exceptions,
