@@ -2,17 +2,23 @@
 <feature
       id="se.kth.md.simulinkExchange.feature"
       label="Simulink Exchange Bundle"
-      version="3.1.14"
+      version="3.1.19.qualifier"
       provider-name="KTH Mechatronics">
 
    <description url="http://www.example.com/description">
-      [Enter Feature Description here.]
+      Popup menu additions to convert to/from simulink.
    </description>
 
    <copyright url="http://www.example.com/copyright">
-      Copyright (c) 2010, KTH, Machine Design, Embedded Control Systems
-group
-All rights reserved.
+      /**************************************************************************
+ * Copyright (c) 2010 KTH, Mechatronics group and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0,
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors: KTH, Mechatronics group
+ **************************************************************************/
    </copyright>
 
    <license url="http://www.example.com/license">
@@ -52,25 +58,29 @@ Redistribution and use in source and binary forms, with or without modification,
          id="se.kth.md.simulinkExchange.JExample"
          download-size="0"
          install-size="0"
-         version="0.0.0"/>
+         version="0.0.0"
+         unpack="false"/>
 
    <plugin
          id="se.kth.md.simulinkExchange.metamodel.Simulink"
          download-size="0"
          install-size="0"
-         version="0.0.0"/>
+         version="0.0.0"
+         unpack="false"/>
 
    <plugin
          id="se.kth.md.simulinkExchange.metamodel.Simulink.edit"
          download-size="0"
          install-size="0"
-         version="0.0.0"/>
+         version="0.0.0"
+         unpack="false"/>
 
    <plugin
          id="se.kth.md.simulinkExchange.metamodel.Simulink.editor"
          download-size="0"
          install-size="0"
-         version="0.0.0"/>
+         version="0.0.0"
+         unpack="false"/>
 
    <plugin
          id="se.kth.md.simulinkExchange"
