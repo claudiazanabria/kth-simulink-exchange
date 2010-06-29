@@ -1,6 +1,15 @@
 -- @path SIM=http:///se.kth.md.attest2/Simulink/3.0
 -- @path EST=http://www.papyrusuml.org/EAST-ADL2/1
 
+--/**************************************************************************
+-- * Copyright (c) 2010 KTH, Mechatronics group and others.
+-- * All rights reserved. This program and the accompanying materials
+-- * are made available under the terms of the Eclipse Public License v1.0,
+-- * which accompanies this distribution, and is available at
+-- * http://www.eclipse.org/legal/epl-v10.html
+-- * 
+-- * Contributors: KTH, Mechatronics group
+-- **************************************************************************/
 
 module east2simulink;
 create OUT1 : SIM from IN1 : EST;
@@ -41,22 +50,22 @@ rule FunctionTypes2Subsystems {
 	to	
 		aSystem : SIM!System ( 
 				name 		<- s.base_Class.name,
-				children	<- s.part,
+				children	<- s.part->collect(aPart| thisModule.FunctionPrototypes2SystemReference(aPart)),
 				inports		<- inports ->collect( aPort | thisModule.Inports(aPort)  ),
-				outports 	<- outports->collect( aPort | thisModule.Outports(aPort) ),
-				lines		<- s.connector
+				outports 	<- outports->collect( aPort | thisModule.Outports(aPort) )
+				--lines		<- s.connector->collect(aLine|thisModule.Connector2Lines(aLine))
 			)
 }
 
 
-rule FunctionPrototypes2SystemReference {
+unique lazy rule FunctionPrototypes2SystemReference {
 	from 
 		s : EST!AnalysisFunctionPrototype
 	to
 		t : SIM!SystemReference (
 				name 		<- s.base_Property.name,
 				target		<- s.type
-				--parent is not set. It can be calculates later on.
+				--parent is not set. It can be calculated later on.
 			)
 }
 
@@ -88,16 +97,20 @@ helper context EST!FunctionFlowPort def : isInport() : Boolean =
 	not self.isOutport();
 
 
-rule Connector2Lines {
+unique lazy rule Connector2Lines {
 -- Lines that are misplaced in the source get empty endpoints
 -- Misplacaed in the sense that they should belong to another FunctionType
 
 	from
 		s : EST!FunctionConnector
+	using { 
+			source : EST!FunctionFlowPort = s.port->first();
+			dest   : EST!FunctionFlowPort = s.port->last();
+		}
 	to
 		t : SIM!Line (
-				name 		<- s.base_Connector.name,
-				source		<- thisModule.Inports( s.port->first() ),
-				destination <- thisModule.Outports( s.port->last() )
+				name 		<- s.base_Connector.name
+				--source		<- thisModule.Inports( source ),
+				--destination <- thisModule.Outports( dest )
 			)
 }
