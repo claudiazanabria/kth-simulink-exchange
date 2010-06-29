@@ -1,4 +1,4 @@
-package se.kth.md.simulinkExchange.conversion.simulink;
+package se.kth.md.simulinkExchange.conversion.ToSimulink;
 
 import se.kth.md.simulinkExchange.management.exceptions.InvalidModelException;
 import se.kth.md.simulinkExchange.management.simulink.SimulinkModelManager;

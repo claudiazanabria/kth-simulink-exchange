@@ -1,4 +1,4 @@
-package se.kth.md.simulinkExchange.conversion.simulink;
+package se.kth.md.simulinkExchange.conversion.ToSimulink;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;

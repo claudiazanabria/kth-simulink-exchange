@@ -18,7 +18,8 @@ import se.kth.md.simulinkExchange.Activator;
 import se.kth.md.simulinkExchange.atl.ATLrunConfiguration;
 import se.kth.md.simulinkExchange.atl.ATLrunner;
 import se.kth.md.simulinkExchange.atl.URInotFound;
-import se.kth.md.simulinkExchange.conversion.simulink.postprocessing.NameTraverser;
+import se.kth.md.simulinkExchange.conversion.ToSimulink.postprocessing.NameTraverser;
+import se.kth.md.simulinkExchange.conversion.ToSimulink.postprocessing.ParentTraverser;
 import se.kth.md.simulinkExchange.management.simulink.SimulinkModelManager;
 
 
@@ -63,8 +64,9 @@ public abstract class TheJob extends Job {
 	@Override
 	protected IStatus run(IProgressMonitor monitor) {
 		ATLrunConfiguration config;
-		int activitiesTotal = 3;
+		int activitiesTotal = 4;
 		int scale = 100;
+		SimulinkModelManager manager;
 		
 		plugin.log("started job", Status.INFO);
 		try {
@@ -82,17 +84,22 @@ public abstract class TheJob extends Job {
 			monitor.worked(1*scale);
 			plugin.log("ATL run done", Status.INFO);
 
+			manager = new SimulinkModelManager( simulinkModel );
+
 			if (monitor.isCanceled()) return Status.CANCEL_STATUS;
-			monitor.subTask("Post-processing file");
-			SimulinkModelManager manager = new SimulinkModelManager( simulinkModel );
+			monitor.subTask("Post-processing, setting parents");
+			manager.traverseWith( new ParentTraverser() );
+			monitor.worked(1*scale);
+			plugin.log("Setting parents done", Status.INFO);
+
+			if (monitor.isCanceled()) return Status.CANCEL_STATUS;
+			monitor.subTask("Post-processing, setting names");
 			manager.traverseWith( new NameTraverser() );
 			monitor.worked(1*scale);
-			plugin.log("Post-processing done", Status.INFO);
+			plugin.log("Setting names done", Status.INFO);
 			
 		} catch (Exception e) {
 			plugin.log("exception thrown", Status.ERROR, e);
-			e.printStackTrace();
-			
 		} finally {
 			monitor.done();
 		}

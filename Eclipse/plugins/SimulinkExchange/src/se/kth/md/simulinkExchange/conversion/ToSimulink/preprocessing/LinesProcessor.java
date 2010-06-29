@@ -1,4 +1,4 @@
-package se.kth.md.simulinkExchange.conversion.simulink.preprocessing;
+package se.kth.md.simulinkExchange.conversion.ToSimulink.preprocessing;
 
 import java.util.ArrayList;
 import java.util.Collection;

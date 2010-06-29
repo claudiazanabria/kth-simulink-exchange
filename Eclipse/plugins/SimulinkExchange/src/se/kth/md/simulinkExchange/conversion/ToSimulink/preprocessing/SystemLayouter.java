@@ -1,4 +1,4 @@
-package se.kth.md.simulinkExchange.conversion.simulink.preprocessing;
+package se.kth.md.simulinkExchange.conversion.ToSimulink.preprocessing;
 
 /*
 import org.junit.Test;

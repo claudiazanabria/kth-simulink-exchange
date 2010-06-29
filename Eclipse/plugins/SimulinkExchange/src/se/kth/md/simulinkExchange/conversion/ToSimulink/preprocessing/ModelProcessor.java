@@ -1,7 +1,7 @@
-package se.kth.md.simulinkExchange.conversion.simulink.preprocessing;
+package se.kth.md.simulinkExchange.conversion.ToSimulink.preprocessing;
 
 /**
- * \package se.kth.md.simulinkExchange.conversion.simulink.preprocessing
+ * \package se.kth.md.simulinkExchange.conversion.ToSimulink.preprocessing
  * This package contains classes that process ecore models to be easily parsed by MATLAB.
  * The hierarchical model is translated into a flat list, with elements ordered in such a way
  * that they can added by MATLAB sequentially.

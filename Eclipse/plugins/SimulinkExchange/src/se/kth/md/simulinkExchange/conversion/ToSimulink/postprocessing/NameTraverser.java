@@ -1,4 +1,4 @@
-package se.kth.md.simulinkExchange.conversion.simulink.postprocessing;
+package se.kth.md.simulinkExchange.conversion.ToSimulink.postprocessing;
 
 import java.io.IOException;
 
