@@ -18,7 +18,7 @@ end
 
 function schema = AddToEASTLib(callbackInfo)
   schema = sl_toggle_schema;
-  schema.label = 'Add to EAST library';   
+  schema.label = 'Add to Ecore library';   
   schema.callback = @AddToEAST; 
 end
 
