@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Simulink ecore Metamodel Edit
 Bundle-SymbolicName: se.kth.md.simulinkExchange.metamodel.Simulink.edit;singleton:=true
-Bundle-Version: 3.2.5
+Bundle-Version: 3.2.7.qualifier
 Bundle-ClassPath: .
 Bundle-Activator: Simulink.provider.SimNGEditPlugin$Implementation
 Bundle-Vendor: KTH Mechatronics
