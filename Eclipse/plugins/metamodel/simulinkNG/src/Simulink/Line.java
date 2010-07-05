@@ -30,7 +30,6 @@ package Simulink;
 public interface Line extends ProtoObject {
 	/**
 	 * Returns the value of the '<em><b>Source</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link Simulink.Port#getConnections <em>Connections</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Source</em>' reference isn't clear,
@@ -40,8 +39,7 @@ public interface Line extends ProtoObject {
 	 * @return the value of the '<em>Source</em>' reference.
 	 * @see #setSource(Port)
 	 * @see Simulink.SimulinkPackage#getLine_Source()
-	 * @see Simulink.Port#getConnections
-	 * @model opposite="connections" required="true"
+	 * @model required="true"
 	 * @generated
 	 */
 	Port getSource();
@@ -95,7 +93,7 @@ public interface Line extends ProtoObject {
 	 * @see #setParent(Simulink.System)
 	 * @see Simulink.SimulinkPackage#getLine_Parent()
 	 * @see Simulink.System#getLines
-	 * @model opposite="lines" transient="false"
+	 * @model opposite="lines" required="true" transient="false"
 	 * @generated
 	 */
 	Simulink.System getParent();

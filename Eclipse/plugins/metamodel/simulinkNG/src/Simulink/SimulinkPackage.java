@@ -162,22 +162,13 @@ public interface SimulinkPackage extends EPackage {
 	int PORT__UUID = PROTO_OBJECT__UUID;
 
 	/**
-	 * The feature id for the '<em><b>Connections</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PORT__CONNECTIONS = PROTO_OBJECT_FEATURE_COUNT + 0;
-
-	/**
 	 * The number of structural features of the '<em>Port</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PORT_FEATURE_COUNT = PROTO_OBJECT_FEATURE_COUNT + 1;
+	int PORT_FEATURE_COUNT = PROTO_OBJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link Simulink.impl.InportImpl <em>Inport</em>}' class.
@@ -224,15 +215,6 @@ public interface SimulinkPackage extends EPackage {
 	 * @ordered
 	 */
 	int INPORT__UUID = PORT__UUID;
-
-	/**
-	 * The feature id for the '<em><b>Connections</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INPORT__CONNECTIONS = PORT__CONNECTIONS;
 
 	/**
 	 * The feature id for the '<em><b>Parent</b></em>' container reference.
@@ -297,15 +279,6 @@ public interface SimulinkPackage extends EPackage {
 	 * @ordered
 	 */
 	int OUTPORT__UUID = PORT__UUID;
-
-	/**
-	 * The feature id for the '<em><b>Connections</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OUTPORT__CONNECTIONS = PORT__CONNECTIONS;
 
 	/**
 	 * The feature id for the '<em><b>Parent</b></em>' container reference.
@@ -737,17 +710,6 @@ public interface SimulinkPackage extends EPackage {
 	EClass getPort();
 
 	/**
-	 * Returns the meta object for the reference list '{@link Simulink.Port#getConnections <em>Connections</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Connections</em>'.
-	 * @see Simulink.Port#getConnections()
-	 * @see #getPort()
-	 * @generated
-	 */
-	EReference getPort_Connections();
-
-	/**
 	 * Returns the meta object for class '{@link Simulink.Inport <em>Inport</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1056,14 +1018,6 @@ public interface SimulinkPackage extends EPackage {
 		 * @generated
 		 */
 		EClass PORT = eINSTANCE.getPort();
-
-		/**
-		 * The meta object literal for the '<em><b>Connections</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PORT__CONNECTIONS = eINSTANCE.getPort_Connections();
 
 		/**
 		 * The meta object literal for the '{@link Simulink.impl.InportImpl <em>Inport</em>}' class.

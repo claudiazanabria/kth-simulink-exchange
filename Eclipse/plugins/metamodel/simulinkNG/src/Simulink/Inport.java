@@ -37,7 +37,7 @@ public interface Inport extends Port {
 	 * @see #setParent(Simulink.System)
 	 * @see Simulink.SimulinkPackage#getInport_Parent()
 	 * @see Simulink.System#getInports
-	 * @model opposite="inports" transient="false"
+	 * @model opposite="inports" required="true" transient="false"
 	 * @generated
 	 */
 	Simulink.System getParent();

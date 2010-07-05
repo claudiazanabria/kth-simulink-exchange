@@ -148,33 +148,11 @@ public class LineImpl extends ProtoObjectImpl implements Line {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetSource(Port newSource, NotificationChain msgs) {
+	public void setSource(Port newSource) {
 		Port oldSource = source;
 		source = newSource;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SimulinkPackage.LINE__SOURCE, oldSource, newSource);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setSource(Port newSource) {
-		if (newSource != source) {
-			NotificationChain msgs = null;
-			if (source != null)
-				msgs = ((InternalEObject)source).eInverseRemove(this, SimulinkPackage.PORT__CONNECTIONS, Port.class, msgs);
-			if (newSource != null)
-				msgs = ((InternalEObject)newSource).eInverseAdd(this, SimulinkPackage.PORT__CONNECTIONS, Port.class, msgs);
-			msgs = basicSetSource(newSource, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, SimulinkPackage.LINE__SOURCE, newSource, newSource));
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, SimulinkPackage.LINE__SOURCE, oldSource, source));
 	}
 
 	/**
@@ -306,10 +284,6 @@ public class LineImpl extends ProtoObjectImpl implements Line {
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case SimulinkPackage.LINE__SOURCE:
-				if (source != null)
-					msgs = ((InternalEObject)source).eInverseRemove(this, SimulinkPackage.PORT__CONNECTIONS, Port.class, msgs);
-				return basicSetSource((Port)otherEnd, msgs);
 			case SimulinkPackage.LINE__PARENT:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -326,8 +300,6 @@ public class LineImpl extends ProtoObjectImpl implements Line {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case SimulinkPackage.LINE__SOURCE:
-				return basicSetSource(null, msgs);
 			case SimulinkPackage.LINE__PARENT:
 				return basicSetParent(null, msgs);
 		}

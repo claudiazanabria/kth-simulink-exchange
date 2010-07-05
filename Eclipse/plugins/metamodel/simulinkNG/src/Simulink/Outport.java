@@ -37,7 +37,7 @@ public interface Outport extends Port {
 	 * @see #setParent(Simulink.System)
 	 * @see Simulink.SimulinkPackage#getOutport_Parent()
 	 * @see Simulink.System#getOutports
-	 * @model opposite="outports" transient="false"
+	 * @model opposite="outports" required="true" transient="false"
 	 * @generated
 	 */
 	Simulink.System getParent();
