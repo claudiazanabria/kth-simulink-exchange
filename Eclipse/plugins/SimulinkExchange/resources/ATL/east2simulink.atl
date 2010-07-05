@@ -50,10 +50,12 @@ rule FunctionTypes2Subsystems {
 	to	
 		aSystem : SIM!System ( 
 				name 		<- s.base_Class.name,
-				children	<- s.part->collect(aPart| thisModule.FunctionPrototypes2SystemReference(aPart)),
+				children	<- s.part->
+					collect(aPart| thisModule.FunctionPrototypes2SystemReference(aPart)),
 				inports		<- inports ->collect( aPort | thisModule.Inports(aPort)  ),
 				outports 	<- outports->collect( aPort | thisModule.Outports(aPort) )
-				--lines		<- s.connector->collect(aLine|thisModule.Connector2Lines(aLine))
+				--lines		<- s.connector->
+				--		collect(aLine | thisModule.Connector2Lines(aLine))
 			)
 }
 
@@ -69,6 +71,8 @@ unique lazy rule FunctionPrototypes2SystemReference {
 			)
 }
 
+-- These port rules are lazy because otherwise, I cannot determine the 
+-- output type: Inport or Outport
 unique lazy rule Inports {
 	from
 		s : EST!FunctionFlowPort
@@ -97,7 +101,7 @@ helper context EST!FunctionFlowPort def : isInport() : Boolean =
 	not self.isOutport();
 
 
-unique lazy rule Connector2Lines {
+lazy rule Connector2Lines {
 -- Lines that are misplaced in the source get empty endpoints
 -- Misplacaed in the sense that they should belong to another FunctionType
 
@@ -106,11 +110,12 @@ unique lazy rule Connector2Lines {
 	using { 
 			source : EST!FunctionFlowPort = s.port->first();
 			dest   : EST!FunctionFlowPort = s.port->last();
+
 		}
 	to
 		t : SIM!Line (
-				name 		<- s.base_Connector.name
-				--source		<- thisModule.Inports( source ),
-				--destination <- thisModule.Outports( dest )
+				name 		<- s.base_Connector.name,
+				source		<- thisModule.Inports( source ),
+				destination <- thisModule.Outports( dest )
 			)
 }
