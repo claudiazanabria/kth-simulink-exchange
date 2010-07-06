@@ -30,9 +30,9 @@ import Simulink.SystemReference;
 public class NameTraverser implements se.kth.md.simulinkExchange.management.Traverser {
 	
 	private void visit(Model model) {
+		renameFAA( model );
 		computeGenericSimulinkName( model );
 		visit( model.getRoot() );
-		renameFAA(model);
 	}
 	
 	private void renameFAA(Model model) {
