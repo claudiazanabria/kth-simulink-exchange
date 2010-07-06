@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ASCII"?>
+<sim:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:sim="http:///se.kth.md.attest2/Simulink/3.0" name="TestModel" uuid="cb6de747-045d-4258-bf93-aa6f9e4b5144" root="//@parts.0">
+  <parts name="TestModel" simulinkName="TestModel" uuid="0481faad-97f1-40fd-842c-2b6cb275e01b">
+    <children name="pA" position="[200 40 450 140]" uuid="da6f64bf-a52b-4f75-b9ce-b10c9a156ac6" target="//@parts.1"/>
+    <children name="pB" position="[540 40 790 140]" uuid="226427f0-6cf5-48ea-b0b3-6d546cd0b977" target="//@parts.2"/>
+  </parts>
+  <parts name="A" simulinkName="A" uuid="52b89ec0-36cd-42e2-97a6-c29a2723f086">
+    <outports name="A_Out" position="[200 108 230 122]" uuid="4274ef86-84ce-40e2-be77-95c1d1b97782"/>
+  </parts>
+  <parts name="B" simulinkName="B" uuid="7f4c6758-bd90-4e66-964c-f5d342dd4af3">
+    <inports name="B_In" position="[35 98 65 112]" uuid="a47ff525-6ac5-4317-a70c-c8ba5f57de99"/>
+  </parts>
+</sim:Model>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<sim:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:sim="http:///se.kth.md.attest2/Simulink/3.0" name="SimpleSimulink" simulinkName="SimpleSimulink" root="//@parts.0">
+  <parts name="__root__system__" simulinkName="FunctionalAnalysisArchitecture" filename="FunctionalAnalysisArchitecture.mdl"/>
+  <parts name="Class_0">
+    <inports name="Port_0"/>
+    <outports name="Port_1"/>
+  </parts>
+  <parts name="Class_1">
+    <inports name="Port_0"/>
+    <outports name="Port_1"/>
+  </parts>
+  <parts name="SimpleSimulink"/>
+</sim:Model>
