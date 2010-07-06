@@ -26,6 +26,7 @@ import se.kth.md.simulinkExchange.management.Traverser;
 import se.kth.md.simulinkExchange.management.exceptions.InvalidModelException;
 import se.kth.md.simulinkExchange.management.simulink.SimulinkModelManager;
 
+@Deprecated
 public class ParentTraverser implements Traverser {
 
 	@Override
