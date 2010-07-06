@@ -87,8 +87,8 @@ classdef ModelCreatorRef < handle
             close_system( list );
         end
         
-        function openRootSystem( list )
-            file = char( list.get(0).getRoot().getFilename() );
+        function openRootSystem( system )
+            file = char( system.getFilename() );
             open_system( file );
         end
         
@@ -96,7 +96,7 @@ classdef ModelCreatorRef < handle
     methods (Access=private)
         function doIt( self )
             import se.kth.md.simulinkExchange.management.simulink.SimulinkModelManager;            
-            import se.kth.md.simulinkExchange.conversion.simulink.preprocessing.ModelProcessor;
+            import se.kth.md.simulinkExchange.conversion.ToSimulink.preprocessing.ModelProcessor;
             open_system(Utils.getLibraryName()); 
             set_param(Utils.getLibraryName(),'Lock','off');
             modelManager = SimulinkModelManager( self.ecoreFile );
@@ -105,7 +105,7 @@ classdef ModelCreatorRef < handle
             list = ModelProcessor.doIt(model);
             self.processList( list );
             ModelCreatorRef.refreshAndSaveSystems();
-            ModelCreatorRef.openRootSystem( list );
+            ModelCreatorRef.openRootSystem( model.getRoot() );
             %The library needs to be opened, so that blocks can be found
             open_system(Utils.getLibraryName()); 
             set_param(Utils.getLibraryName(),'Lock','off');
