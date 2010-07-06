@@ -22,7 +22,6 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Export-Package: se.kth.md.simulinkExchange,
  se.kth.md.simulinkExchange.atl,
- se.kth.md.simulinkExchange.conversion.ToSimulink,
  se.kth.md.simulinkExchange.conversion.ToSimulink.preprocessing,
  se.kth.md.simulinkExchange.conversion.exceptions,
  se.kth.md.simulinkExchange.management,
