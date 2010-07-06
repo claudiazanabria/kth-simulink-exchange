@@ -65,7 +65,7 @@ classdef EcoreCreatorRef < handle
             referenceBlockName  = Utils.extractOnlyName( referenceBlockName );
             instanceName        = Utils.extractOnlyName( blockName );
             sysAlreadyExists    = self.javaEcoreCreator.findSystem(referenceBlockName);
-            import se.kth.md.simulinkExchange.conversion.simulink.PropertyList;
+            import se.kth.md.simulinkExchange.conversion.ToEast.PropertyList;
             pList = PropertyList(referenceBlockName, parentSystem, instanceName);
             posArray = get_param(blockName,'position');
             position = Utils.posArray2String( posArray );
@@ -128,7 +128,7 @@ classdef EcoreCreatorRef < handle
         
         function initEcoreCreationClasses(self)
             import se.kth.md.simulinkExchange.management.simulink.SimulinkModelManager;
-            import se.kth.md.simulinkExchange.conversion.simulink.SimulinkEcoreCreator;
+            import se.kth.md.simulinkExchange.conversion.ToEast.SimulinkEcoreCreator;
             self.modelManager = SimulinkModelManager();
             factory = self.modelManager.getFactory();
             self.javaEcoreCreator = SimulinkEcoreCreator( factory );
