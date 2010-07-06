@@ -1,11 +1,14 @@
 %add code directory to path based on current path
-path([pwd,'\code'], path);
+addpath( fullfile(pwd,'code') );
+
 %Run ClassPathSetter 
-ClassPathSetter([pwd,'\libs']);
+ClassPathSetter( fullfile(pwd,'libs') );
+
 %Register the Ecore menus using sl_customization.m
 %(to unregister, run sl_refresh_customizations in a folder not containing sl_customization.m)
 sl_refresh_customizations;
-docPath =[pwd '\code\html\'];
+
+docPath = fullfile(pwd, '/code/html/');
 disp('Welcome to the Simulink to Ecore exchange plugin, developed by KTH in the ATESST2 project.')
 disp(['It is licenced under the <a href="matlab: web(' char(39) docPath 'epl-v10.html' char(39) ')">Eclipse Public License 1.0</a>.'])
 
