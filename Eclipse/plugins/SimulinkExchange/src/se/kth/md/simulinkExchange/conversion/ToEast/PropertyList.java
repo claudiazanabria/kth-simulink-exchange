@@ -8,7 +8,7 @@
  * Contributors: KTH, Mechatronics group
  **************************************************************************/
 
-package se.kth.md.simulinkExchange.conversion.ToSimulink;
+package se.kth.md.simulinkExchange.conversion.ToEast;
 
 
 import java.util.HashMap;
