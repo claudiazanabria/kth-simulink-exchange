@@ -16,10 +16,10 @@ create OUT1 : SIM from IN1 : EST;
 
 
 -- NOTES:
--- The following elements are created at the top level but are NOT needed.
--- SystemReference for FAA.
--- Inports and Outports are duplicated.
--- All these can be safely ignored.
+-- Lines are not supported at the moment becuase there is an 
+-- issue with duplicated ports. See issue 18 on Google code.
+--
+-- FunctionPowerPorts are not supported
 
 rule TopLevelADLContainer {
 	from
@@ -39,6 +39,7 @@ rule TopLevelADLContainer {
 			parts	<- allFunctionTypes
 			)
 }	
+
 
 rule FunctionTypes2Subsystems {
 	from
@@ -92,13 +93,21 @@ unique lazy rule Outports {
 }
 
 
+helper context EST!FunctionFlowPort def : isInOutport() : Boolean = 
+	self.direction = #inout;
+
 helper context EST!FunctionFlowPort def : isOutport() : Boolean = 
 	self.direction = #out;
+		
 
 -- ATL does not support the symbol #in, 
 -- so to check for #in we use oposite of #out
 helper context EST!FunctionFlowPort def : isInport() : Boolean = 
-	not self.isOutport();
+	if self.isInOutport() or self.isOutport() then
+		false
+	else
+		true
+	endif;
 
 
 lazy rule Connector2Lines {
