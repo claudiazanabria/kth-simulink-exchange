@@ -32,10 +32,14 @@ public class NameTraverser implements se.kth.md.simulinkExchange.management.Trav
 	private void visit(Model model) {
 		computeGenericSimulinkName( model );
 		visit( model.getRoot() );
+		renameFAA(model);
 	}
 	
+	private void renameFAA(Model model) {
+		model.getRoot().setName( "__root__system__" );
+	}
+
 	private void visit(Simulink.System system) {
-		java.lang.System.out.format("%s\n", system.getName());
 		computeGenericSimulinkName( system );
 		computeSystemFileName( system );
 		visitChildren	( system.getChildren() 	);
