@@ -54,21 +54,10 @@ public class SystemProcessor {
 	private void createSystem(ArrayList<ProtoObject> list) {
 		SystemLayouter layouter = new SystemLayouter();
 		
-		computeFileName();
-		computeSimulinkName();
-		
 		list.add( theSystem );
 		list.addAll( InportsProcessor.doIt( theSystem, layouter ));
 		list.addAll( SysRefsProcessor.doIt( theSystem, layouter ));
 		list.addAll( OutportsProcessor.doIt( theSystem, layouter ));
 		list.addAll( LinesProcessor.doIt( theSystem ));
-	}
-
-	private void computeSimulinkName() {
-		theSystem.setSimulinkName( theSystem.getName() );
-	}
-
-	private void computeFileName() {
-		theSystem.setFilename( theSystem.getName() + ".mdl" );
 	}
 }

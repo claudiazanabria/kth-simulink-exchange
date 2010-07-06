@@ -49,7 +49,6 @@ public class SysRefsProcessor {
 	}
 
 	private void processSystemReference(SystemReference sysRef) {
-		computeInstanceName( sysRef );
 		computePosition( sysRef );
 		System aSystem = sysRef.getTarget();
 		list.addAll( SystemProcessor.doIt( aSystem ));
@@ -63,14 +62,5 @@ public class SysRefsProcessor {
 			sysRef.setPosition(position);
 		}
 	}
-
-
-	private void computeInstanceName(SystemReference sysRef) {
-		String parentName = sysRef.getParent().getSimulinkName();
-		String instanceName = parentName + '/' + sysRef.getName();
-		sysRef.setSimulinkName(instanceName);
-		return;
-	}
-
 
 }

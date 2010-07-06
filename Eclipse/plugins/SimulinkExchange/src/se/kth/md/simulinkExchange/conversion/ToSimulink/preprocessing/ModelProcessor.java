@@ -48,9 +48,7 @@ public class ModelProcessor {
 	}
 		
 	private ArrayList<ProtoObject> process() {
-		
-		computeSimulinkName();
-		
+				
 		allElements.add( theModel );
 		allElements.addAll( SystemProcessor.doIt( theModel.getRoot() ));
 		
@@ -58,6 +56,4 @@ public class ModelProcessor {
 		return allElements;
 	}
 	
-	private void computeSimulinkName() {
-		theModel.setSimulinkName( theModel.getName() );	}
 }

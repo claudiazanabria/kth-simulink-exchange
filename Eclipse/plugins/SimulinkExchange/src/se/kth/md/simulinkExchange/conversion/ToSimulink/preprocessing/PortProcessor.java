@@ -47,7 +47,6 @@ public abstract class PortProcessor {
 	}
 
 	protected <P extends Port> void processPort(P port) {
-		computeInstanceName( port );
 		computePosition( port );
 	}
 
@@ -58,23 +57,5 @@ public abstract class PortProcessor {
 			port.setPosition(position);
 		}
 	}
-
-	/**
-	 * To avoid problems with ports having the same name, 
-	 * which is possible in EAST-ADL,
-	 * add a suffix (_In or _Out) to the port name.
-	 * @param port
-	 */
-	protected <P extends Port> void computeInstanceName(Port port) {
-		String parentName = this.getParentName( port );
-		this.addTypeSuffixIfNeeded( port );
-		String simuName = parentName + '/' + port.getName();
-		port.setSimulinkName(simuName);	
-}
-
-	protected abstract void addTypeSuffixIfNeeded(Port port);
 	
-	protected String getParentName(Port port) {
-		return "subClass responsibility";
-	}
 }
