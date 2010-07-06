@@ -36,7 +36,7 @@ public class NameTraverser implements se.kth.md.simulinkExchange.management.Trav
 	}
 	
 	private void renameFAA(Model model) {
-		model.getRoot().setName( "__root__system__" );
+		model.getRoot().setName( model.getName() );
 	}
 
 	private void visit(Simulink.System system) {
