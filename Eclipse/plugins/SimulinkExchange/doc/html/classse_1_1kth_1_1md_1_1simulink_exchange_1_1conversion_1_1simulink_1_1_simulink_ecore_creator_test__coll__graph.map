@@ -1,5 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node2" href="$classse_1_1kth_1_1md_1_1simulink_exchange_1_1conversion_1_1simulink_1_1_simulink_ecore_creator.html" title="This is a convenience class to easily create ecore models." alt="" coords="592,112,739,141"/>
-<area shape="rect" id="node12" href="$classse_1_1kth_1_1md_1_1simulink_exchange_1_1management_1_1simulink_1_1_simulink_model_manager.html" title="A ModelManager that can handle simulink&#45;ecore models." alt="" coords="587,189,744,219"/>
-<area shape="rect" id="node14" href="$classse_1_1kth_1_1md_1_1simulink_exchange_1_1management_1_1_model_manager.html" title="Reads, writes and validates models from memory and files." alt="" coords="275,219,381,248"/>
-</map>
