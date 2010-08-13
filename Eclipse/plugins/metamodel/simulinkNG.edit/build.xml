@@ -16,7 +16,7 @@
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.emf.common_2.5.0.v200906151043.jar"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.emf.edit_2.5.0.v200906151043.jar"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.emf.ecore.change_2.5.0.v200906151043.jar"/>
-        <pathelement location="../../../../../../../../../../../simulinkNG"/>
+        <pathelement location="../simulinkNG/bin"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.core.runtime_3.5.0.v20090525.jar"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.osgi_3.5.2.R35x_v20100126.jar"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/javax.transaction_1.1.1.v201002111330.jar"/>
@@ -47,12 +47,18 @@
     </target>
     <target depends="clean" name="cleanall"/>
     <target depends="build-subprojects,build-project" name="build"/>
-    <target name="build-subprojects"/>
+	
+    <target name="build-subprojects">
+    	<!-- Why /metamodel/ is needed here? /-->
+		<ant antfile="../metamodel/simulinkNG/build.xml" target="build"></ant>
+	</target>
+	
     <target depends="init" name="build-project">
         <echo message="${ant.project.name}: ${ant.file}"/>
         <javac debug="true" debuglevel="${debuglevel}" destdir="bin" source="${source}" target="${target}">
             <src path="src"/>
             <classpath refid="simulinkNG.edit.classpath"/>
+            <classpath refid="../simulinkNG.classpath"/>
         </javac>
     </target>
     <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
