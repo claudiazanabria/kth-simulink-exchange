@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/se.kth.md.simulinkExchange.feature_3.1.19.201007061617.jar" id="se.kth.md.simulinkExchange.feature" version="3.1.19.201007061617">
+      <category name="simulink.excahnge"/>
+   </feature>
+   <category-def name="simulink.excahnge" label="Simulink Exchange"/>
+</site>

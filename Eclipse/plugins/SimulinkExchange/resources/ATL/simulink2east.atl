@@ -1,0 +1,168 @@
+-- @path SIM=http:///se.kth.md.attest2/Simulink/3.0
+-- @path UML=http://www.eclipse.org/uml2/3.0.0/UML
+-- @path EST=http://www.papyrusuml.org/EAST-ADL2/1
+
+--/**************************************************************************
+-- * Copyright (c) 2010 KTH, Mechatronics group and others.
+-- * All rights reserved. This program and the accompanying materials
+-- * are made available under the terms of the Eclipse Public License v1.0,
+-- * which accompanies this distribution, and is available at
+-- * http://www.eclipse.org/legal/epl-v10.html
+-- * 
+-- * Contributors: KTH, Mechatronics group
+-- **************************************************************************/
+
+module simulink2east;
+create OUT1 : UML, OUT2 : EST from IN1 : SIM;
+
+rule Model {
+	from
+		smodel : SIM!Model
+	to
+		umlModel : UML!Model (
+			name			<- smodel.name,
+			packagedElement <- umlSystemModel,
+			packagedElement <- umlAnalysisLevel,
+			-- FIXME:
+			-- root system gets its name from Simulink instead of 
+			-- the string "FunctionalAnalysisArchitecture'
+			-- Solution: Use a lazy rule just for the root system?
+			packagedElement <- smodel.root,
+			packagedElement <- umlFunctionalComponents,
+			packagedElement <- umlDatatypes
+		),
+		
+		umlSystemModel 	: UML!Class ( name <- 'SystemModel' ),
+		
+		umlAnalysisLevel : UML!Class ( 
+			name 			<- 'AnalysisLevel',
+			ownedAttribute  <- faaPrototype
+		),
+
+		faaPrototype : UML!Property ( 
+			name <- 'faa',
+			type <- smodel.root
+		),
+		
+						
+		umlFunctionalComponents : UML!Package (
+			name <- 'FunctionalComponents',
+			packagedElement <- smodel.parts
+		),
+	
+		umlDatatypes : UML!Package ( 
+			name 			<- 'Datatypes',
+			packagedElement <- portsDataType
+		),
+		
+		-- Generic type for ports
+		portsDataType : UML!DataType ( name <- 'DataType_0' ),
+		
+--		sm : EST!SystemModel (
+--			--base_Class 		<- umlSystemModel
+--			--analysisLevel 	<- analysisLevel
+--		),
+		
+		analysisLevel : EST!AnalysisLevel (
+			base_Class 						<- umlAnalysisLevel,
+			functionalAnalysisArchitecture 	<- faa
+			),
+			
+		faa : EST!AnalysisFunctionPrototype (
+			base_Property 	<- faaPrototype
+			)
+			
+		do {
+			thisModule.GlobalPortType <- portsDataType;
+		}
+		
+}
+
+
+rule System2FunctionType {
+	from
+		s : SIM!System
+	to
+		umlFT : UML!Class ( 
+			name 			<- s.name,
+			ownedAttribute 	<- s.children,
+			ownedAttribute 	<- s.inports,
+			ownedAttribute 	<- s.outports,
+			ownedConnector 	<- s.lines
+		),
+		
+		ft : EST!AnalysisFunctionType ( base_Class <- umlFT )
+}
+
+rule SystemReferences2FunctionPrototypes {
+	from
+		s : SIM!SystemReference
+	to
+		umlAttr : UML!Property ( 
+			name 		<- s.name,
+			type 		<- s.target,
+			aggregation <- #composite,
+			isUnique 	<- false
+		),
+		
+		fp : EST!AnalysisFunctionPrototype (
+			base_Property <- umlAttr
+		)
+}
+
+rule OutPort {
+	from
+		s : SIM!Outport
+	to
+		umlPort : UML!Port ( 
+			name <- s.name,
+			type <- thisModule.GlobalPortType,
+			aggregation <- #composite
+		),
+		
+		op : EST!FunctionFlowPort ( 
+			base_Port <- umlPort,
+			direction <- 'out'
+		)
+}
+
+rule InPort {
+	from
+		s : SIM!Inport
+	to
+		umlPort : UML!Port ( 
+			name <- s.name,
+			type <- thisModule.GlobalPortType,
+			aggregation <- #composite
+		),
+		
+		op : EST!FunctionFlowPort ( 
+			base_Port <- umlPort,
+			direction <- 'in'
+		)
+}
+
+rule Lines {
+	from
+		l : SIM!Line
+	to
+		connector : UML!Connector (
+			name 	<- l.name,
+			end 	<- from_,
+			end 	<- to_ 
+		),
+		
+		from_ : UML!ConnectorEnd (
+			--partWithPort 	<- l.source.parent,
+			role 			<- l.source
+		),
+
+		to_ : UML!ConnectorEnd ( 
+			--partWithPort 	<- l.destination.parent,
+			role 			<- l.destination
+		),
+		
+		cp : EST!FunctionConnector (
+			base_Connector <- connector
+		)
+}
