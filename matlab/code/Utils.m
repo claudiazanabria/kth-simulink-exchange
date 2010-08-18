@@ -191,6 +191,60 @@ classdef Utils < handle
             end
         end
         
+        function AddToEcoreLibrary(blockName)
+               name=get_param(blockName,'name');
+               oldName=blockName;
+               oldSystem=get_param(oldName,'Parent');
+               newName=Utils.getLibraryName(name);
+               open_system(Utils.getLibraryName()); 
+               set_param(Utils.getLibraryName(),'Lock','off');
+               existingBlocks=find_system(Utils.getLibraryName(), 'SearchDepth', 1,'name', name);
+               if (size(existingBlocks,1) > 0) 
+               choice = questdlg(['Block exists in ' Utils.getLibraryName() ' library: ', name ], ...
+                'Warning', 'Overwrite','Rename','Cancel','Cancel');
+            % Handle response
+                    switch choice
+                        case 'Overwrite'
+                            delete_block(newName)
+                            add_block(oldName, newName)
+                        case 'Rename'
+                            newHandle=add_block(oldName, newName, 'MakeNameUnique', 'on');
+                            newName=[get_param(newHandle,'Parent') '/' get_param(newHandle,'Name')];
+                        case 'Cancel'
+                             return
+                    end
+               else
+                   add_block(oldName, newName)    
+               end
+              set_param(newName, 'BackgroundColor', 'lightblue');
+              Utils.processPorts(newName);  
+              Utils.setUUID(newName);
+              save_system(Utils.getLibraryName);
+              replace_block(oldSystem, 'Handle', get_param(oldName,'Handle'), newName, 'noprompt')
+        end
+        
+        function processPorts(blockName)
+        %%To be used for all porttypes in future versions (8 in 2009a))
+        %
+        % Extensions are added to ports. Otherwise duplicate ports will be generated
+        % in the transformation back.
+            Utils.fixPorts(blockName,'Inport','_In');
+            Utils.fixPorts(blockName,'Outport','_Out');
+        end
+
+        function fixPorts(Block,Porttype,suffix)
+        %%Changes suffix and sets UUID of a port
+        Ports = find_system(Block, 'FollowLinks', 'On','BlockType', Porttype);
+          for x=1:size(Ports)
+              Utils.setUUID(char(Ports(x)));
+              Portname=char(get_param(Ports(x),'Name'));
+              if (regexp(Portname,[suffix '$'])>0)
+                  return
+              else
+                  set_param([Block '/' Portname],'Name',strcat(Portname,suffix));
+              end
+          end
+        end
         
 %         function boolean = isReadableByJava( filePath )
 %             file = java.io.File( filePath );

@@ -24,33 +24,7 @@ end
 
 function AddToEAST(callbackInfo)
    name=get_param(gcb,'name');
-   oldName=gcb;
-   oldSystem=gcs;
-   newName=Utils.getLibraryName(name);
-   open_system(Utils.getLibraryName()); 
-   set_param(Utils.getLibraryName(),'Lock','off');
-   existingBlocks=find_system(Utils.getLibraryName(), 'SearchDepth', 1,'name', name);
-   if (size(existingBlocks,1) > 0) 
-   choice = questdlg(['Block exists in ' Utils.getLibraryName() ' library: ', name ], ...
-	'Warning', 'Overwrite','Rename','Cancel','Cancel');
-% Handle response
-        switch choice
-            case 'Overwrite'
-                delete_block(newName)
-                add_block(oldName, newName)
-            case 'Rename'
-                newHandle=add_block(oldName, newName, 'MakeNameUnique', 'on');
-                newName=[get_param(newHandle,'Parent') '/' get_param(newHandle,'Name')];
-            case 'Cancel'
-                 return
-        end
-   else
-       add_block(oldName, newName)    
-   end
-  set_param(newName, 'BackgroundColor', 'lightblue');
-  processPorts(newName);  
-  Utils.setUUID(newName);
-  replace_block(oldSystem, 'Handle', get_param(oldName,'Handle'), newName, 'noprompt')
+   Utils.AddToEcoreLibrary(name);
 end
 
 function processPorts(Block)
