@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project name="Compile se.kth.md.simulinkExchange.feature" default="main">
-	<target name="main">
-		<ant antfile="build.xml" dir="../../../../../../Eclipsario/eclipse-modeling/plugins/apache.commons.io_1.0.1" target="build.jars"/>
-	</target>
-</project>
