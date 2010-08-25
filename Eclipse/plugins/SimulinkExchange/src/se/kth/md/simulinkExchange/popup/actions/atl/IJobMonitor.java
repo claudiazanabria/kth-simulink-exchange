@@ -7,6 +7,6 @@ public interface IJobMonitor {
 
 	public void beginTaskList(String name, int taskCount);
 
-	public void taskStarted(IConverterTask aTask);
-	public void taskCompleted(IConverterTask aTask);
+	public void taskStarted(ITask aTask);
+	public void taskCompleted(ITask aTask);
 }

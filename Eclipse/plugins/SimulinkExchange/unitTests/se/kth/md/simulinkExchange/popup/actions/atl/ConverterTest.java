@@ -18,11 +18,11 @@ import org.junit.runner.RunWith;
 public class ConverterTest {
 
 	private static final int RESULT = 2;
-	ITasksExecutor aConverter 	= new Converter();;
+	ITasksExecutor aConverter 	= new TasksExecutor();;
 	Mockery context 		= new JUnit4Mockery();;
 
 	IJobMonitor jobMonitorMock 	= context.mock(IJobMonitor.class); 
-	IConverterTask taskMock 	= context.mock(IConverterTask.class);
+	ITask taskMock 	= context.mock(ITask.class);
 	Sequence aSequence 			= context.sequence("aSequence");
 
 	@Test

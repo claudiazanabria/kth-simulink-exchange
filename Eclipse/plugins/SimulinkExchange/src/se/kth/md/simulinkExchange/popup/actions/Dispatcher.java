@@ -19,6 +19,16 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 
+import se.kth.md.simulinkExchange.popup.actions.atl.BackgroundJob;
+import se.kth.md.simulinkExchange.popup.actions.atl.ITasksExecutor;
+
+/**
+ * This class keeps track of which file is selected in the Workspace,
+ * and will start a background job when a menu option is selected.
+ * 
+ * @author alex
+ *
+ */
 public abstract class Dispatcher implements IObjectActionDelegate {
 
 	protected Shell shell;
@@ -58,4 +68,9 @@ public abstract class Dispatcher implements IObjectActionDelegate {
 		return filen.getLocation();
 	}
 
+	protected void runInBackground(IAction action, ITasksExecutor executor) {
+		BackgroundJob aJob = new BackgroundJob( executor );
+		aJob.setUser(true);
+		aJob.schedule();		
+	}
 }

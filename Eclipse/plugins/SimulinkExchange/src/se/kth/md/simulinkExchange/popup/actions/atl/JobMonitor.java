@@ -25,7 +25,7 @@ public class JobMonitor implements IJobMonitor {
 	}
 
 	@Override
-	public void taskCompleted(IConverterTask aTask) {
+	public void taskCompleted(ITask aTask) {
 		monitor.worked(1*SCALE);
 	}
 
@@ -35,7 +35,7 @@ public class JobMonitor implements IJobMonitor {
 	}
 
 	@Override
-	public void taskStarted(IConverterTask aTask) {
+	public void taskStarted(ITask aTask) {
 		monitor.subTask( aTask.name() );
 		
 	}

@@ -15,25 +15,22 @@ package se.kth.md.simulinkExchange.popup.actions.atl.simulink2east;
 
 import org.eclipse.jface.action.IAction;
 
-import se.kth.md.simulinkExchange.popup.actions.atl.TheJob;
-import se.kth.md.simulinkExchange.popup.actions.atl.TheJobSimulink2East;
+import se.kth.md.simulinkExchange.popup.actions.atl.ITasksExecutor;
 
 /**
+ * This class will choose the appropriate executor builder a Simulink to EAST conversion,
+ * and start an Eclipse background job to execute them.
+ *
  * @author alesch
  *
  */
 public class Dispatcher 
 	extends se.kth.md.simulinkExchange.popup.actions.Dispatcher {
 
-	/* (non-Javadoc)
-	 * @see se.kth.md.simulinkExchange.popup.actions.ATLdispatcher#run(org.eclipse.jface.action.IAction)
-	 */
 	@Override
 	public void run(IAction action) {
-		//FIXME this is old version
-		TheJob aJob = new TheJobSimulink2East( this.selectedFilename() );
-		aJob.setUser(true);
-		aJob.schedule();		
+		ITasksExecutor executor = ExecutorBuilder.doIt( this.selectedFilename() );
+		this.runInBackground(action, executor);
 	}
 
 }

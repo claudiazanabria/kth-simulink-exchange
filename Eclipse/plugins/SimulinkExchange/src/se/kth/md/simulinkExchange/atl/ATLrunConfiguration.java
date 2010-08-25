@@ -128,4 +128,11 @@ public class ATLrunConfiguration {
 		return null;
 	}
 
+
+	public URI getFirstDestinationFileName() {
+		// FIXME: get the simulink filename from the destination list.
+		// FIXME: a better name
+		return null;
+	}
+
 }

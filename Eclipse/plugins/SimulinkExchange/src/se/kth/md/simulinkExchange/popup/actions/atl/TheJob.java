@@ -38,6 +38,7 @@ import se.kth.md.simulinkExchange.management.simulink.SimulinkModelManager;
  * @author alesch
  *
  */
+
 public abstract class TheJob extends Job {
 
 	protected IPath inModelPath;

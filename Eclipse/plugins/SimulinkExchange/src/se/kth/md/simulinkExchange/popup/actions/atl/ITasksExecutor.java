@@ -14,9 +14,9 @@ public interface ITasksExecutor {
 
 	String name();
 
-	List<IConverterTask> tasks();
+	List<ITask> tasks();
 
-	void addTask(IConverterTask taskOneMock);
+	void addTask(ITask taskOneMock);
 
 	IStatus executeAllTasksNotifyingMonitor(IJobMonitor jobMonitor) throws Exception;
 

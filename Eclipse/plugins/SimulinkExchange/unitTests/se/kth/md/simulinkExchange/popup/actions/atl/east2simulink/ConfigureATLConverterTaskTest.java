@@ -5,11 +5,11 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import se.kth.md.simulinkExchange.popup.actions.atl.IConverterTask;
+import se.kth.md.simulinkExchange.popup.actions.atl.ITask;
 
 public class ConfigureATLConverterTaskTest {
 
-	IConverterTask aTask;
+	ITask aTask;
 	@Before
 	public void setUp() throws Exception {
 	}
