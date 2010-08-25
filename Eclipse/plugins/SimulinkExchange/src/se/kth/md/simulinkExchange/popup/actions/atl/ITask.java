@@ -1,6 +1,11 @@
 package se.kth.md.simulinkExchange.popup.actions.atl;
 
-public interface IConverterTask {
+/**
+ * This class represents a single task executed by a TaskExector
+ * @author alex
+ *
+ */
+public interface ITask {
 
 	String finalMessage();
 

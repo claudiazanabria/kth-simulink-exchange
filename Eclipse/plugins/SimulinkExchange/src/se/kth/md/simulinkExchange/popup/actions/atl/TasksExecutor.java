@@ -6,12 +6,12 @@ import java.util.List;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 
-public class Converter implements ITasksExecutor {
+public class TasksExecutor implements ITasksExecutor {
 
-	List<IConverterTask> taskList;
+	List<ITask> taskList;
 	
-	public Converter() {
-		taskList = new ArrayList<IConverterTask>();
+	public TasksExecutor() {
+		taskList = new ArrayList<ITask>();
 	}
 	
 	@Override
@@ -20,12 +20,12 @@ public class Converter implements ITasksExecutor {
 	}
 
 	@Override
-	public List<IConverterTask> tasks() {
+	public List<ITask> tasks() {
 		return taskList;
 	}
 
 	@Override
-	public void addTask(IConverterTask aTask) {
+	public void addTask(ITask aTask) {
 		taskList.add( aTask );
 	}
 
@@ -35,7 +35,7 @@ public class Converter implements ITasksExecutor {
 		jobMonitor.beginTaskList(this.name(), this.taskCount());
 		
 		Object result = null;
-		for (IConverterTask aTask : taskList) {
+		for (ITask aTask : taskList) {
 			
 			if ( jobMonitor.operationHasBeenCanceled() ) { 
 				return Status.CANCEL_STATUS; }

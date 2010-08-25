@@ -7,12 +7,18 @@ import org.eclipse.core.runtime.jobs.Job;
 
 import se.kth.md.simulinkExchange.Activator;
 
-public class ConverterJob extends Job {
+/**
+ * This class will execute tasks in the background, through a tasksExecutor.
+ * 
+ * @author alex
+ *
+ */
+public class BackgroundJob extends Job {
 
 	protected ITasksExecutor converter;
 	protected Activator plugin;
 	
-	public ConverterJob(ITasksExecutor converter) {
+	public BackgroundJob(ITasksExecutor converter) {
 		super( converter.name() );
 		this.converter = converter;
 		plugin = Activator.getDefault();

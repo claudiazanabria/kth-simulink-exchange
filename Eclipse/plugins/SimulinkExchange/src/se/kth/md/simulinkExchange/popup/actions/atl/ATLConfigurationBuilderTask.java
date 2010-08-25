@@ -6,20 +6,25 @@ import se.kth.md.simulinkExchange.PluginServices;
 import se.kth.md.simulinkExchange.atl.ATLrunConfiguration;
 import se.kth.md.simulinkExchange.atl.URInotFound;
 
-public abstract class ConfigureATLConverterTask {
+/**
+ * This task builds an ATL configuration by creating 
+ * a new ATLConfigurationObject, with proper src and dst references.
+ * 
+ * @author alex
+ */
+public abstract class ATLConfigurationBuilderTask {
 
 	protected String ATL_SOURCE;
 	protected String ATL_BINARY;
 	
 	protected URI srcModel;
 	
-	public ConfigureATLConverterTask(URI clickedFile) {
+	public ATLConfigurationBuilderTask(URI clickedFile) {
 		this.srcModel = clickedFile;
 	}
 	
 	public String finalMessage() {
-		// TODO Auto-generated method stub
-		return null;
+		return name() + " completed.";
 	}
 
 	public String name() {

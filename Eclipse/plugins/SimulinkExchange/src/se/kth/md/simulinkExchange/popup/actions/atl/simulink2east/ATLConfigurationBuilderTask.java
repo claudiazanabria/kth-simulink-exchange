@@ -4,13 +4,13 @@ import org.eclipse.emf.common.util.URI;
 
 import se.kth.md.simulinkExchange.atl.ATLrunConfiguration;
 import se.kth.md.simulinkExchange.atl.URInotFound;
-import se.kth.md.simulinkExchange.popup.actions.atl.IConverterTask;
+import se.kth.md.simulinkExchange.popup.actions.atl.ITask;
 
-public class ConfigureATLConverterTask 	
-	extends se.kth.md.simulinkExchange.popup.actions.atl.ConfigureATLConverterTask 
-	implements IConverterTask {
+public class ATLConfigurationBuilderTask 	
+	extends se.kth.md.simulinkExchange.popup.actions.atl.ATLConfigurationBuilderTask 
+	implements ITask {
 	
-	public ConfigureATLConverterTask(URI clickedFile) {
+	public ATLConfigurationBuilderTask(URI clickedFile) {
 		super(clickedFile);
 		ATL_BINARY = "./resources/ATL/simulink2east.asm";
 		ATL_SOURCE = "./resources/ATL/simulink2east.atl";
