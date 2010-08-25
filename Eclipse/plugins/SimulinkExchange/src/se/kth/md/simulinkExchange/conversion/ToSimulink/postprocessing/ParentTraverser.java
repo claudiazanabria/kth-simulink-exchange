@@ -21,7 +21,7 @@ import Simulink.Model;
 import Simulink.Outport;
 import Simulink.System;
 import Simulink.SystemReference;
-import se.kth.md.simulinkExchange.management.ModelManager;
+import se.kth.md.simulinkExchange.management.IModelManager;
 import se.kth.md.simulinkExchange.management.Traverser;
 import se.kth.md.simulinkExchange.management.exceptions.InvalidModelException;
 import se.kth.md.simulinkExchange.management.simulink.SimulinkModelManager;
@@ -30,7 +30,7 @@ import se.kth.md.simulinkExchange.management.simulink.SimulinkModelManager;
 public class ParentTraverser implements Traverser {
 
 	@Override
-	public void doIt(ModelManager manager) {
+	public void doIt(IModelManager manager) {
 		Model model = (Model) manager.getTopElement();
 		visit( model );
 	}

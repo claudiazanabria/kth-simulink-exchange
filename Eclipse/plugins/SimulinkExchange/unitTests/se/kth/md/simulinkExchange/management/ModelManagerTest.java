@@ -44,7 +44,7 @@ public abstract class ModelManagerTest {
 	static protected String deleteMe;
 	static protected URI model;
 	
-	protected ModelManager modelManager;
+	protected IModelManager modelManager;
 	
 	@Before
 	public abstract void setUp() throws InvalidURIException;

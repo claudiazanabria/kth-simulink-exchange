@@ -15,7 +15,7 @@ import java.io.IOException;
 import org.eclipse.emf.common.util.EList;
 import org.junit.Test;
 
-import se.kth.md.simulinkExchange.management.ModelManager;
+import se.kth.md.simulinkExchange.management.IModelManager;
 import se.kth.md.simulinkExchange.management.exceptions.InvalidModelException;
 import se.kth.md.simulinkExchange.management.simulink.SimulinkModelManager;
 import Simulink.Inport;
@@ -184,7 +184,7 @@ public class NameTraverser implements se.kth.md.simulinkExchange.management.Trav
 	}
 
 	@Override
-	public void doIt(ModelManager manager) {
+	public void doIt(IModelManager manager) {
 		Model model = (Model) manager.getTopElement();
 		visit( model );
 	}

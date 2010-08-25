@@ -18,14 +18,14 @@ import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.ui.statushandlers.StatusManager;
 
 import se.kth.md.simulinkExchange.Activator;
-import se.kth.md.simulinkExchange.management.ModelManager;
+import se.kth.md.simulinkExchange.management.IModelManager;
 import se.kth.md.simulinkExchange.management.exceptions.InvalidModelException;
 
 public abstract class TheJob extends Job {
 
 	protected IPath inModelPath;
 	protected Activator plugin;
-	protected ModelManager modelManager;
+	protected IModelManager modelManager;
 
 	protected TheJob(String name, IPath aPath) {
 		super(name);

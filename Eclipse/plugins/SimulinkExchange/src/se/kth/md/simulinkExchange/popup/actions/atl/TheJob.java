@@ -29,6 +29,8 @@ import se.kth.md.simulinkExchange.atl.ATLrunConfiguration;
 import se.kth.md.simulinkExchange.atl.ATLrunner;
 import se.kth.md.simulinkExchange.atl.URInotFound;
 import se.kth.md.simulinkExchange.conversion.ToSimulink.postprocessing.NameTraverser;
+import se.kth.md.simulinkExchange.management.IModelManager;
+import se.kth.md.simulinkExchange.management.exceptions.InvalidModelException;
 import se.kth.md.simulinkExchange.management.simulink.SimulinkModelManager;
 
 
@@ -40,7 +42,7 @@ public abstract class TheJob extends Job {
 
 	protected IPath inModelPath;
 	protected Activator plugin;
-	protected Bundle pluginBundle;
+	//protected Bundle pluginBundle;
 	
 	protected URI atlSource;
 	protected URI atlCompiled;
@@ -52,19 +54,11 @@ public abstract class TheJob extends Job {
 		super(name);
 		this.inModelPath = aPath;
 		plugin = Activator.getDefault();
-		pluginBundle = plugin.getBundle();
+		//pluginBundle = plugin.getBundle();
 
 	}
 
 	protected void initJob(String atlSourcePath, String atlCompiledPath) {
-		try {
-			atlSource 	= plugin.locateFile( atlSourcePath );
-			atlCompiled = plugin.locateFile( atlCompiledPath );
-		} catch (IOException e) {
-			plugin.log("Internal error: ATL source not bundled within plugin.", Status.ERROR, e);
-			Status status = new Status(IStatus.ERROR, Activator.PLUGIN_ID, "ATL source not found. See Error log for details.");
-			StatusManager.getManager().handle(status, StatusManager.SHOW);
-		}
 	}
 
 	/* (non-Javadoc)
@@ -75,7 +69,6 @@ public abstract class TheJob extends Job {
 		ATLrunConfiguration config;
 		int activitiesTotal = 4;
 		int scale = 100;
-		SimulinkModelManager manager;
 		
 		plugin.log("started job", Status.INFO);
 		try {
@@ -92,30 +85,9 @@ public abstract class TheJob extends Job {
 			ATLrunner.with( config );		
 			monitor.worked(1*scale);
 			plugin.log("ATL run done", Status.INFO);
-
-//			if (monitor.isCanceled()) return Status.CANCEL_STATUS;
-//			monitor.subTask("Post-processing, setting parents");
-//			manager.traverseWith( new ParentTraverser() );
-//			monitor.worked(1*scale);
-//			plugin.log("Setting parents done", Status.INFO);
-
-			if (monitor.isCanceled()) return Status.CANCEL_STATUS;
-			monitor.subTask("Post-processing, setting names");
-			manager = new SimulinkModelManager( simulinkModel );
-			manager.loadIt();			
-			manager.traverseWith( new NameTraverser() );
-			manager.saveIt();
-			monitor.worked(1*scale);
-			plugin.log("Setting names done", Status.INFO);
-
-//			if (monitor.isCanceled()) return Status.CANCEL_STATUS;
-//			monitor.subTask("Post-processing, saving model file");
-//			monitor.worked(1*scale);
-//			plugin.log("Saving model done", Status.INFO);
-
 			
 		} catch (Exception e) {
-			plugin.log("exception thrown", Status.ERROR, e);
+			plugin.log(e.getMessage(), Status.ERROR, e);
 		} finally {
 			monitor.done();
 		}
@@ -123,13 +95,19 @@ public abstract class TheJob extends Job {
 		return Status.OK_STATUS;
 	}
 
-	protected ATLrunConfiguration configureTransformation() throws URInotFound {
-		ATLrunConfiguration config = new ATLrunConfiguration( atlSource, atlCompiled );
-		addSources(config);
-		addDestination(config);
-		return config;
+	protected URI lookUpAbsolutePathWithinPlugin(String relativePath) {
+		URI absolutePath = null;
+		try {
+			absolutePath = plugin.locateFile( relativePath );
+		} catch (IOException e) {
+			plugin.log("Internal error: ATL source not bundled within plugin.", Status.ERROR, e);
+			Status status = new Status(IStatus.ERROR, Activator.PLUGIN_ID, "ATL source not found. See Error log for details.");
+			StatusManager.getManager().handle(status, StatusManager.SHOW);
+		}
+		return absolutePath;
 	}
-
+	
+	abstract ATLrunConfiguration configureTransformation() throws URInotFound;
 	abstract void addDestination(ATLrunConfiguration config) throws URInotFound;
 	abstract void addSources(ATLrunConfiguration config) throws URInotFound;
 

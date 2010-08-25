@@ -81,4 +81,10 @@ public class TheJobSimulink2East extends TheJob {
 		}
 		return Status.OK_STATUS;
 	}
+
+	@Override
+	ATLrunConfiguration configureTransformation() throws URInotFound {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

@@ -32,7 +32,7 @@ import se.kth.md.simulinkExchange.management.exceptions.InvalidModelException;
  * 
  * \author Alex Schenkman
  */
-public abstract class ModelManager {
+public abstract class ModelManager implements IModelManager {
 
 	protected URI model;
 	protected Resource resource;
@@ -59,17 +59,15 @@ public abstract class ModelManager {
 		init( model );
 	}
 
-	/**
-	 * Loads a previously opened model into memory.
-	 * Models are opened with this class' constructor.
-	 * @throws InvalidModelException If the model does not complies with the registered metamodel.
+	/* (non-Javadoc)
+	 * @see se.kth.md.simulinkExchange.management.IModelManager#loadIt()
 	 */
 	public void loadIt() throws InvalidModelException {	
 		resource = resourceSet.getResource(model, true);
 	}
 
-	/**
-	 * Saves the model in memory to a file.
+	/* (non-Javadoc)
+	 * @see se.kth.md.simulinkExchange.management.IModelManager#saveIt()
 	 */
 	public void saveIt() throws IOException {
 		if ( resource == null ) {
@@ -79,20 +77,16 @@ public abstract class ModelManager {
 		resource.save(null);
 	}
 	
-	/** 
-	 * Saves the model in memory to a file with the given name.
-	 * @param pathname File name where to save the model.
-	 * @throws IOException
+	/* (non-Javadoc)
+	 * @see se.kth.md.simulinkExchange.management.IModelManager#saveAs(java.lang.String)
 	 */
 	public void saveAs(String pathname) throws IOException {
 		URI modelURI = URI.createFileURI(pathname);
 		saveAs(modelURI);		
 	}
 
-	/** 
-	 * Saves the model in memory to a URI with the given name.
-	 * @param modelURI URI where to save the model.
-	 * @throws IOException
+	/* (non-Javadoc)
+	 * @see se.kth.md.simulinkExchange.management.IModelManager#saveAs(org.eclipse.emf.common.util.URI)
 	 */
 	public void saveAs(URI modelURI) throws IOException {
 		Resource aNewResource = createNewResource(modelURI);
@@ -100,11 +94,8 @@ public abstract class ModelManager {
 		aNewResource.save(null);
 	}
 		
-	/**
-	 * Saves the model to a file, replacing the original extension.
-	 * Extensions are specific for each metamodel, and defined by subclasses.
-	 * @param originalPathName Original file name.
-	 * @throws IOException
+	/* (non-Javadoc)
+	 * @see se.kth.md.simulinkExchange.management.IModelManager#saveAsWithPropperExtension(java.lang.String)
 	 */
 	public void saveAsWithPropperExtension(String originalPathName) throws IOException {
 		String newFileName = replaceExtension(originalPathName, fileExtension); 
@@ -123,10 +114,8 @@ public abstract class ModelManager {
 		aResource.getContents().add( topElement );		
 	}
 
-	/**
-	 * Validates that the model in memory complies with the metamodel.
-	 * It uses ModelValidator to achieve this.
-	 * @throws InvalidModelException
+	/* (non-Javadoc)
+	 * @see se.kth.md.simulinkExchange.management.IModelManager#validateIt()
 	 */
 	public void validateIt() throws InvalidModelException {
 		assert(resource != null);
@@ -134,8 +123,8 @@ public abstract class ModelManager {
 		aModelValidator.doIt();
 	}
 
-	/**
-	 * @return the top element from the model.
+	/* (non-Javadoc)
+	 * @see se.kth.md.simulinkExchange.management.IModelManager#getTopElement()
 	 */
 	public EObject getTopElement() {
 		EObject result = ( resource == null )? 
@@ -143,9 +132,8 @@ public abstract class ModelManager {
 		return result;
 	}
 
-	/**
-	 * Sets topElement at the top if the model hierarchy.
-	 * @param topElement
+	/* (non-Javadoc)
+	 * @see se.kth.md.simulinkExchange.management.IModelManager#setTopElement(org.eclipse.emf.ecore.EObject)
 	 */
 	public void setTopElement(EObject topElement ) {
 		if ( resource == null ) {
@@ -158,16 +146,15 @@ public abstract class ModelManager {
 		return resourceSet.createResource( modelURI );
 	}
 
-	/**
-	 * @return the string that identifies this metamodel: NsURI.
+	/* (non-Javadoc)
+	 * @see se.kth.md.simulinkExchange.management.IModelManager#getNsURI()
 	 */
 	public String getNsURI() {
 		return ePackage.getNsURI();
 	}
 
-	/**
-	 * The factory is used to create elements from this metamodel.
-	 * @return the factory class for this metamodel.
+	/* (non-Javadoc)
+	 * @see se.kth.md.simulinkExchange.management.IModelManager#getFactory()
 	 */
 	public EFactory getFactory() {
 		return ePackage.getEFactoryInstance();
@@ -190,8 +177,8 @@ public abstract class ModelManager {
 		initMetaModel();
 	}
 
-	/**
-	 * @return the file extension used by this metamodel.
+	/* (non-Javadoc)
+	 * @see se.kth.md.simulinkExchange.management.IModelManager#getFileExtension()
 	 */
 	public String getFileExtension() {
 		return fileExtension;
@@ -201,6 +188,9 @@ public abstract class ModelManager {
 		this.fileExtension = fileExtension;
 	}
 
+	/* (non-Javadoc)
+	 * @see se.kth.md.simulinkExchange.management.IModelManager#traverseWith(se.kth.md.simulinkExchange.management.Traverser)
+	 */
 	public void traverseWith(Traverser traverser) {		
 		traverser.doIt( this );
 		

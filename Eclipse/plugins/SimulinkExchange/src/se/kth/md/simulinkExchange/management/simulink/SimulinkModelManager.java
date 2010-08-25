@@ -25,7 +25,7 @@ import Simulink.SimulinkPackage;
  * A ModelManager that can handle simulink-ecore models.
  * @author Alex Schenkman
  */
-public class SimulinkModelManager  extends ModelManager {
+public class SimulinkModelManager extends ModelManager {
 	/**
 	 * Adds the metamodel the the global EMF registry and initializes the metamodel factory.
 	 */

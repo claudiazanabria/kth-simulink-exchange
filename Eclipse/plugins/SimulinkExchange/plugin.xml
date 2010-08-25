@@ -17,7 +17,7 @@
             </separator>
          </menu>
          <action
-               class="se.kth.md.simulinkExchange.popup.actions.atl.Dispatcher2EAST"
+               class="se.kth.md.simulinkExchange.popup.actions.atl.simulink2east.Dispatcher"
                enablesFor="1"
                id="se.kth.md.simulinkExchange.newAction1"
                label="Transform into EAST-ADL"
@@ -50,7 +50,7 @@
             </separator>
          </menu>
          <action
-               class="se.kth.md.simulinkExchange.popup.actions.atl.Dispatcher2Simulink"
+               class="se.kth.md.simulinkExchange.popup.actions.atl.east2simulink.Dispatcher"
                enablesFor="1"
                id="se.kth.md.simulinkExchange.newAction2"
                label="Transform into Simulink"
