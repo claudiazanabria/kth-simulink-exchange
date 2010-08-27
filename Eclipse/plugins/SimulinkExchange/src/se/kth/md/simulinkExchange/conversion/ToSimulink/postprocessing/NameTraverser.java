@@ -10,14 +10,9 @@
 
 package se.kth.md.simulinkExchange.conversion.ToSimulink.postprocessing;
 
-import java.io.IOException;
-
 import org.eclipse.emf.common.util.EList;
-import org.junit.Test;
 
-import se.kth.md.simulinkExchange.management.IModelManager;
-import se.kth.md.simulinkExchange.management.exceptions.InvalidModelException;
-import se.kth.md.simulinkExchange.management.simulink.SimulinkModelManager;
+import se.kth.md.simulinkExchange.management.IModelVisitor;
 import Simulink.Inport;
 import Simulink.Line;
 import Simulink.Model;
@@ -27,19 +22,26 @@ import Simulink.ProtoObject;
 import Simulink.System;
 import Simulink.SystemReference;
 
-public class NameTraverser implements se.kth.md.simulinkExchange.management.Traverser {
+/**
+ * This class will traverse the whole model and fix names so they
+ * are ready for simulink.
+ * @author alex
+ *
+ */
+public class NameTraverser 
+	implements IModelVisitor {
 	
-	private void visit(Model model) {
+	protected void visit(Model model) {
 		renameFAA( model );
 		computeGenericSimulinkName( model );
 		visit( model.getRoot() );
 	}
 	
-	private void renameFAA(Model model) {
+	protected void renameFAA(Model model) {
 		model.getRoot().setName( model.getName() );
 	}
 
-	private void visit(Simulink.System system) {
+	protected void visit(Simulink.System system) {
 		computeGenericSimulinkName( system );
 		computeSystemFileName( system );
 		visitChildren	( system.getChildren() 	);
@@ -48,14 +50,14 @@ public class NameTraverser implements se.kth.md.simulinkExchange.management.Trav
 		visitLines		( system.getLines() 	);
 	}
 	
-	private void visitLines(EList<Line> lines) {
+	protected void visitLines(EList<Line> lines) {
 		for(Line line : lines) {
 			visit( line );
 		}
 	}
 	
 	
-	private void visit(Line line) {
+	protected void visit(Line line) {
 		String simulinkName = null;
 		simulinkName = processPort(line, line.getSource());
 		line.setSimuNameSrc(simulinkName);
@@ -63,7 +65,7 @@ public class NameTraverser implements se.kth.md.simulinkExchange.management.Trav
 		line.setSimuNameDst(simulinkName);
 	}
 
-	private String processPort(Line aLine, Port port) {
+	protected String processPort(Line aLine, Port port) {
 		String simuName = null;
 		System portParentSys = obtainPortParent( port );
 		if ( portBelongsToSubsystem(aLine, portParentSys) ) {
@@ -75,7 +77,7 @@ public class NameTraverser implements se.kth.md.simulinkExchange.management.Trav
 		return simuName;
 	}
 
-	private Integer findPosInBlock(System aSystem, Port port) {
+	protected Integer findPosInBlock(System aSystem, Port port) {
 		int index = aSystem.getInports().indexOf(port);
 		if ( index == -1 ) {
 			index = aSystem.getOutports().indexOf(port);
@@ -83,7 +85,7 @@ public class NameTraverser implements se.kth.md.simulinkExchange.management.Trav
 		return index+1;
 	}
 
-	private System obtainPortParent(Port port) {
+	protected System obtainPortParent(Port port) {
 		// Hack to circumvent EMF inheritance issue:
 		// getParent is defined for Inport and Outport, 
 		// but it cannot be called from Port.
@@ -97,7 +99,7 @@ public class NameTraverser implements se.kth.md.simulinkExchange.management.Trav
 		return parent;
 	}
 
-	private SystemReference findBlockNameWithinReferences(Line aLine, System portParentSys) {
+	protected SystemReference findBlockNameWithinReferences(Line aLine, System portParentSys) {
 		for (SystemReference sysRef : aLine.getParent().getChildren()) {
 			if ( sysRef.getTarget() == portParentSys ) {
 				return sysRef; 
@@ -106,27 +108,27 @@ public class NameTraverser implements se.kth.md.simulinkExchange.management.Trav
 		return null;
 	}
 
-	private boolean portBelongsToSubsystem(Line aLine, System portParentSys) {
+	protected boolean portBelongsToSubsystem(Line aLine, System portParentSys) {
 		if ( aLine.getParent() == portParentSys ) { 
 			return false;}
 		else { 
 			return true; }
 	}
 
-	private void visitChildren(EList<SystemReference> children) {
+	protected void visitChildren(EList<SystemReference> children) {
 		for (SystemReference systemReference : children) {
 			visit( systemReference );
 		}
 	}
 
-	private void visit(SystemReference systemReference) {
+	protected void visit(SystemReference systemReference) {
 		String parentName = systemReference.getParent().getSimulinkName();
 		computeEnclosingSimulinkName( systemReference, parentName );
 		visit( systemReference.getTarget() );
 	}
 
 	
-	private void visitOutports(EList<Outport> outports) {
+	protected void visitOutports(EList<Outport> outports) {
 		String parentName;
 		for (Outport outport : outports) {
 			parentName = outport.getParent().getSimulinkName();
@@ -136,7 +138,7 @@ public class NameTraverser implements se.kth.md.simulinkExchange.management.Trav
 		
 	}
 
-	private void visitInports(EList<Inport> inports) {
+	protected void visitInports(EList<Inport> inports) {
 		String parentName;
 		for (Inport inport : inports) {
 			parentName = inport.getParent().getSimulinkName();
@@ -145,22 +147,22 @@ public class NameTraverser implements se.kth.md.simulinkExchange.management.Trav
 		}
 	}
 
-	private void visit(Port port, String parentName) {
+	protected void visit(Port port, String parentName) {
 		computeEnclosingSimulinkName(port, parentName);	
 	}
 
-	private void addTypeSuffixIfNeeded(Port port, String suffix) {
+	protected void addTypeSuffixIfNeeded(Port port, String suffix) {
 		String name = port.getName(); 
 		if ( ! name.endsWith(suffix) ) {
 			port.setName( name + suffix );
 		}				
 	}
 
-	private void computeGenericSimulinkName(ProtoObject pObject) {
+	protected void computeGenericSimulinkName(ProtoObject pObject) {
 		pObject.setSimulinkName( pObject.getName() );
 	}
 
-	private void computeEnclosingSimulinkName(
+	protected void computeEnclosingSimulinkName(
 			ProtoObject pObject, String parentName) {
 		
 		String simulinkName = parentName + '/' + pObject.getName();
@@ -168,24 +170,14 @@ public class NameTraverser implements se.kth.md.simulinkExchange.management.Trav
 	}
 
 	
-	private void computeSystemFileName(Simulink.System system) {
+	protected void computeSystemFileName(Simulink.System system) {
 		system.setFilename( system.getName() + ".mdl" );
 	}
 	
 	
-	@Test
-	public void testMain() throws InvalidModelException, IOException {
-		String demoFile = "F:/CheckOut/trunk/Eclipse/Demo Project/startingFromEAST/york2135.simulink";
-		//String demoFile = "./resources/testFiles/demo.simulink";
-		SimulinkModelManager manager = new SimulinkModelManager(demoFile);
-		manager.loadIt();
-		manager.traverseWith( new NameTraverser() );
-		manager.saveIt();
-	}
-
 	@Override
-	public void doIt(IModelManager manager) {
-		Model model = (Model) manager.getTopElement();
-		visit( model );
+	public void visit(Object anObject) {
+		//You should not be here
+		assert( false );
 	}
 }

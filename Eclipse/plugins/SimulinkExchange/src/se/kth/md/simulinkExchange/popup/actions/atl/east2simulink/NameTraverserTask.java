@@ -28,8 +28,9 @@ public class NameTraverserTask implements ITask {
 	@Override
 	public Object run(Object simulinkModel) throws Exception {
 		IModelManager manager = new SimulinkModelManager( (URI) simulinkModel );
-		manager.loadIt();			
-		manager.traverseWith( new NameTraverser() );
+		manager.loadIt();
+		manager.acceptVisitor( new NameTraverser() );
+		//manager.traverseWith( new NameTraverser() );
 		manager.saveIt();
 		return null;
 	}

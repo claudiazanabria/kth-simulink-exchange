@@ -11,6 +11,6 @@
 package se.kth.md.simulinkExchange.management;
 
 
-public interface Traverser {
+public interface ITraverser {
 	public void doIt(IModelManager manager);
 }

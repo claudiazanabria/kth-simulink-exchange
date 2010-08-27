@@ -29,10 +29,12 @@ import org.junit.Test;
  * We test a configuration for a transformation from east to simulink,
  * with two meta-models as input and one as output.
  * 
- * This test should be run as JUnit Plug-in Test, because it need an initialized EMF registry.
+ * This test should be run as JUnit Plug-in Test, because it needs an initialized EMF registry.
  * @author Alex Schenkman
  *
  */
+
+//FIXME this test is broken
 public class ATLrunConfigurationTest {
 		
 	private final URI umlModel      = URI.createFileURI("./Resources/testing/demo.uml");
@@ -134,4 +136,5 @@ public class ATLrunConfigurationTest {
 		config.addDestination(wrongURI, ATLrunConfiguration.simulinkMetaModel);
 	}
 
+	//FIXME test getSimulinkFileNameHack
 }

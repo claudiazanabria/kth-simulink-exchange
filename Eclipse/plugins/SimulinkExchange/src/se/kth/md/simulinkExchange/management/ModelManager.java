@@ -191,9 +191,13 @@ public abstract class ModelManager implements IModelManager {
 	/* (non-Javadoc)
 	 * @see se.kth.md.simulinkExchange.management.IModelManager#traverseWith(se.kth.md.simulinkExchange.management.Traverser)
 	 */
-	public void traverseWith(Traverser traverser) {		
+	//FIXME this method should be removed
+	public void traverseWith(ITraverser traverser) {		
 		traverser.doIt( this );
 		
 	}
-
+	
+	public void acceptVisitor(IModelVisitor aVisitor) {
+		aVisitor.visit( this.getTopElement() );
+	}
 }

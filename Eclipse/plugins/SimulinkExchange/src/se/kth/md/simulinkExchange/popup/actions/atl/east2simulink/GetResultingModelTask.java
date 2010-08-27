@@ -20,7 +20,7 @@ public class GetResultingModelTask implements ITask {
 	@Override
 	public Object run(Object argument) throws Exception {
 		ATLrunConfiguration config = (ATLrunConfiguration) argument;
-		URI simulinkModel = config.getFirstDestinationFileName();
+		URI simulinkModel = config.getSimulinkFileNameHack();
 		return simulinkModel;
 	}
 

@@ -15,26 +15,26 @@ public interface IModelManager {
 	 * Models are opened with this class' constructor.
 	 * @throws InvalidModelException If the model does not complies with the registered metamodel.
 	 */
-	public abstract void loadIt() throws InvalidModelException;
+	public void loadIt() throws InvalidModelException;
 
 	/**
 	 * Saves the model in memory to a file.
 	 */
-	public abstract void saveIt() throws IOException;
+	public void saveIt() throws IOException;
 
 	/** 
 	 * Saves the model in memory to a file with the given name.
 	 * @param pathname File name where to save the model.
 	 * @throws IOException
 	 */
-	public abstract void saveAs(String pathname) throws IOException;
+	public void saveAs(String pathname) throws IOException;
 
 	/** 
 	 * Saves the model in memory to a URI with the given name.
 	 * @param modelURI URI where to save the model.
 	 * @throws IOException
 	 */
-	public abstract void saveAs(URI modelURI) throws IOException;
+	public void saveAs(URI modelURI) throws IOException;
 
 	/**
 	 * Saves the model to a file, replacing the original extension.
@@ -42,7 +42,7 @@ public interface IModelManager {
 	 * @param originalPathName Original file name.
 	 * @throws IOException
 	 */
-	public abstract void saveAsWithPropperExtension(String originalPathName)
+	public void saveAsWithPropperExtension(String originalPathName)
 			throws IOException;
 
 	/**
@@ -50,35 +50,38 @@ public interface IModelManager {
 	 * It uses ModelValidator to achieve this.
 	 * @throws InvalidModelException
 	 */
-	public abstract void validateIt() throws InvalidModelException;
+	public void validateIt() throws InvalidModelException;
 
 	/**
 	 * @return the top element from the model.
 	 */
-	public abstract EObject getTopElement();
+	public EObject getTopElement();
 
 	/**
 	 * Sets topElement at the top if the model hierarchy.
 	 * @param topElement
 	 */
-	public abstract void setTopElement(EObject topElement);
+	public void setTopElement(EObject topElement);
 
 	/**
 	 * @return the string that identifies this metamodel: NsURI.
 	 */
-	public abstract String getNsURI();
+	public String getNsURI();
 
 	/**
 	 * The factory is used to create elements from this metamodel.
 	 * @return the factory class for this metamodel.
 	 */
-	public abstract EFactory getFactory();
+	public EFactory getFactory();
 
 	/**
 	 * @return the file extension used by this metamodel.
 	 */
-	public abstract String getFileExtension();
+	public String getFileExtension();
 
-	public abstract void traverseWith(Traverser traverser);
+	@Deprecated
+	public void traverseWith(ITraverser traverser);
+
+	public void acceptVisitor(IModelVisitor visitor);
 
 }

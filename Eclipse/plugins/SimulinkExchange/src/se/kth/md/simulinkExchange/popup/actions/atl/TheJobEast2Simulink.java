@@ -72,7 +72,7 @@ public class TheJobEast2Simulink extends TheJob {
 	throws InvalidModelException, IOException {
 
 		manager.loadIt();			
-		manager.traverseWith( new NameTraverser() );
+		//manager.traverseWith( new NameTraverser() );
 		manager.saveIt();
 	}
 

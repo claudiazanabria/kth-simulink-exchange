@@ -19,6 +19,13 @@ import java.util.Map;
 
 import org.eclipse.emf.common.util.URI;
 
+/**
+ * This class builds three Java Maps needed for the Eclipse service
+ * that launches ATL transformations.
+ * TODO Check this description
+ * @author alex
+ *
+ */
 public class ATLrunConfiguration {
 
 	// FIXME: Hard-coded values !?!
@@ -129,10 +136,10 @@ public class ATLrunConfiguration {
 	}
 
 
-	public URI getFirstDestinationFileName() {
-		// FIXME: get the simulink filename from the destination list.
-		// FIXME: a better name
-		return null;
+	public URI getSimulinkFileNameHack() {
+		Map<String, String> pMap = this.getPathsMap();
+		String simulinkPath = pMap.get("OUT1"); 
+		return URI.createFileURI(simulinkPath);		
 	}
 
 }

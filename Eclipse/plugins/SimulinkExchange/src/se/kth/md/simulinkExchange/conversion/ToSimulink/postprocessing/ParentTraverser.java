@@ -22,12 +22,12 @@ import Simulink.Outport;
 import Simulink.System;
 import Simulink.SystemReference;
 import se.kth.md.simulinkExchange.management.IModelManager;
-import se.kth.md.simulinkExchange.management.Traverser;
+import se.kth.md.simulinkExchange.management.ITraverser;
 import se.kth.md.simulinkExchange.management.exceptions.InvalidModelException;
 import se.kth.md.simulinkExchange.management.simulink.SimulinkModelManager;
 
 @Deprecated
-public class ParentTraverser implements Traverser {
+public class ParentTraverser implements ITraverser {
 
 	@Override
 	public void doIt(IModelManager manager) {
