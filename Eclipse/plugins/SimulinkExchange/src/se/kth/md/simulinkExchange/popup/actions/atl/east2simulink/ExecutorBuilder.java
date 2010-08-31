@@ -20,9 +20,9 @@ public class ExecutorBuilder {
 		TasksExecutor executor = new TasksExecutor();
 		executor.addTask( new ATLConfigurationBuilderTask( umlModel ) );
 		executor.addTask( new RunATLTask() );
-		executor.addTask( new GetResultingModelTask() );
+		executor.addTask( new GetModelManagerTask() );
 		executor.addTask( new NameTraverserTask() );
-		
+		executor.addTask( new ModelLayouterTask(  ) );
 		return executor;
 	}
 

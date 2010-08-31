@@ -5,7 +5,9 @@ import org.junit.runners.Suite;
  
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-	ConfigureATLConverterTaskTest.class
+	ConfigureATLConverterTaskTest.class,
+	NameTraverserTaskTest.class,
+	ModelLayouterTaskTest.class
 }
  )
 public class AllTests {

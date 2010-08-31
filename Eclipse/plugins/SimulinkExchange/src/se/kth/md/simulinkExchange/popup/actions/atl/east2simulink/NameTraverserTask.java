@@ -1,10 +1,8 @@
 package se.kth.md.simulinkExchange.popup.actions.atl.east2simulink;
 
-import org.eclipse.emf.common.util.URI;
-
-import se.kth.md.simulinkExchange.conversion.ToSimulink.postprocessing.NameTraverser;
+import se.kth.md.simulinkExchange.conversion.ToSimulink.postprocessing.NameTraverserDelegate;
+import se.kth.md.simulinkExchange.conversion.ToSimulink.postprocessing.TraverseChildrenBeforeInportsStrategy;
 import se.kth.md.simulinkExchange.management.IModelManager;
-import se.kth.md.simulinkExchange.management.simulink.SimulinkModelManager;
 import se.kth.md.simulinkExchange.popup.actions.atl.ITask;
 
 /**
@@ -13,12 +11,7 @@ import se.kth.md.simulinkExchange.popup.actions.atl.ITask;
  * @author alex
  *
  */
-public class NameTraverserTask implements ITask {
-
-	@Override
-	public String finalMessage() {
-		return name() + ", completed.";
-	}
+public class NameTraverserTask extends StrategyBasedTraversalTask implements ITask {
 
 	@Override
 	public String name() {
@@ -26,13 +19,11 @@ public class NameTraverserTask implements ITask {
 	}
 
 	@Override
-	public Object run(Object simulinkModel) throws Exception {
-		IModelManager manager = new SimulinkModelManager( (URI) simulinkModel );
-		manager.loadIt();
-		manager.acceptVisitor( new NameTraverser() );
-		//manager.traverseWith( new NameTraverser() );
-		manager.saveIt();
-		return null;
+	public Object run(Object modelManager) throws Exception {
+		TraverseChildrenBeforeInportsStrategy traverser = new TraverseChildrenBeforeInportsStrategy();
+		NameTraverserDelegate delegate = new NameTraverserDelegate();
+
+		return runAfterInit((IModelManager) modelManager, traverser, delegate);
 	}
 
 }

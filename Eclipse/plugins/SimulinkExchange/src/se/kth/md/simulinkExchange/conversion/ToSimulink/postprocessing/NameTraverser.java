@@ -28,6 +28,7 @@ import Simulink.SystemReference;
  * @author alex
  *
  */
+@Deprecated
 public class NameTraverser 
 	implements IModelVisitor {
 	
