@@ -6,31 +6,23 @@ import org.junit.Before;
 import org.junit.runner.RunWith;
 
 @RunWith(JMock.class)
-public class TraverseChildrenBeforeInportsStrategyTest extends
+public class TraverseChildrenAfterInportsStrategyTest extends
 		TraverseStrategyBasicTest {
-
 	@Before
 	public void setUp() {
-		traverseStrategy = new TraverseChildrenBeforeInportsStrategy();
+		traverseStrategy = new TraverseChildrenAfterInportsStrategy();
 	}
 
 	@Override
 	public void sequenceTest() {
-		childrenInportsOutportsLineSequenceTest();
+		inportsChildrenOutportsLineSequenceTest();
 	}
 
-	private void childrenInportsOutportsLineSequenceTest() {
+	private void inportsChildrenOutportsLineSequenceTest() {
 		
 		context.checking(new Expectations() {{ 
 			
 			oneOf (delegateMock).doIt(systemMock);
-				inSequence(aSequence);
-
-			oneOf (systemMock).getChildren();
-				will(returnValue( asEList(systemReferenceMock) ));
-				inSequence(aSequence);
-
-			oneOf (delegateMock).doIt(systemReferenceMock);
 				inSequence(aSequence);
 
 			oneOf (systemMock).getInports();
@@ -38,6 +30,13 @@ public class TraverseChildrenBeforeInportsStrategyTest extends
 				inSequence(aSequence);
 
 			oneOf (delegateMock).doIt(inportMock);
+				inSequence(aSequence);
+
+			oneOf (systemMock).getChildren();
+				will(returnValue( asEList(systemReferenceMock) ));
+				inSequence(aSequence);
+
+			oneOf (delegateMock).doIt(systemReferenceMock);
 				inSequence(aSequence);
 				
 			oneOf (systemMock).getOutports();

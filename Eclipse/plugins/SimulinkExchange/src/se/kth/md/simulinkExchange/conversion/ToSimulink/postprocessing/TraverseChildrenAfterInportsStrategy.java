@@ -7,7 +7,7 @@ import Simulink.Outport;
 import Simulink.System;
 import Simulink.SystemReference;
 
-public class TraverseChildrenBeforeInportsStrategy implements ITraverserStrategy {
+public class TraverseChildrenAfterInportsStrategy implements ITraverserStrategy {
 
 	public void doIt(Model model, ITraverserDelegate delegate) {
 		delegate.doIt(model);
@@ -16,12 +16,12 @@ public class TraverseChildrenBeforeInportsStrategy implements ITraverserStrategy
 
 	public void doIt(System system, ITraverserDelegate delegate) {
 		delegate.doIt(system);
-		for (SystemReference sysRef : system.getChildren()) {
-			doIt( sysRef, delegate );
-		}		
 		for (Inport inport : system.getInports()) {
 			delegate.doIt( inport );
 		}
+		for (SystemReference sysRef : system.getChildren()) {
+			doIt( sysRef, delegate );
+		}		
 		for (Outport outport : system.getOutports()) {
 			delegate.doIt( outport );
 		}
@@ -37,5 +37,4 @@ public class TraverseChildrenBeforeInportsStrategy implements ITraverserStrategy
 		delegate.doIt( systemReference );
 		doIt( systemReference.getTarget(), delegate );
 	}
-
 }
