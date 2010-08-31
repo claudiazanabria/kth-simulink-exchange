@@ -52,13 +52,13 @@ public class NameTraverserDelegate implements ITraverserDelegate {
 	@Override
 	public void doIt(Line line) {
 		String simulinkName = null;
-		simulinkName = processPort(line, line.getSource());
+		simulinkName = computeNameForLineEndpoint(line, line.getSource());
 		line.setSimuNameSrc(simulinkName);
-		simulinkName = processPort(line, line.getDestination());
+		simulinkName = computeNameForLineEndpoint(line, line.getDestination());
 		line.setSimuNameDst(simulinkName);
 	}
 
-	protected String processPort(Line aLine, Port port) {
+	protected String computeNameForLineEndpoint(Line aLine, Port port) {
 		String simuName = null;
 		if ( lineAndPortHaveTheSameParent(aLine, port) ) {
 			simuName = port.getName() + "/1";  
@@ -90,7 +90,6 @@ public class NameTraverserDelegate implements ITraverserDelegate {
 	}
 	
 
-	// TODO test
 	protected SystemReference findSysRefWhosTargetIsGivenSystem(System lineParent, System portsParent) {
 		for (SystemReference sysRef : lineParent.getChildren()) {
 			if ( sysRef.getTarget() == portsParent ) {

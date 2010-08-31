@@ -3,33 +3,27 @@ package se.kth.md.simulinkExchange.conversion.ToSimulink.postprocessing;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
 
 import org.junit.Before;
 import org.junit.Test;
 
 import se.kth.md.simulinkExchange.management.simulink.SimulinkModelManager;
 import Simulink.Inport;
+import Simulink.Line;
 import Simulink.Model;
 import Simulink.Outport;
 import Simulink.Port;
 import Simulink.SimulinkFactory;
 import Simulink.System;
+import Simulink.SystemReference;
 
 public class NameTraverserDelegateTest {
 
 	private static final String NAME = "Charly";
+	private static final String SYSREF_NAME = "Pelle";
 	private static final String FILENAME = "Charly.mdl";
 	
-/*	Mockery context 		= new JUnit4Mockery();
-	Model	modelMock	= context.mock(Model.class);
-	System  systemMock  = context.mock(System.class);
-	SystemReference systemReferenceMock = context.mock(SystemReference.class);
-	Inport inportMock = context.mock(Inport.class);
-	Outport outportMock = context.mock(Outport.class);
-	Line lineMock = context.mock(Line.class);
-	
-	Sequence aSequence 	= context.sequence("aSequence");
-*/
 	SimulinkModelManager manager = new SimulinkModelManager();
 	SimulinkFactory factory = manager.getFactory();
 
@@ -126,6 +120,69 @@ public class NameTraverserDelegateTest {
 	@Test
 	public void positionWithinSystemNotFoundShouldReturnZeroTest() {
 		assertEquals(new Integer(0),traverser.findPositionWithinSystem(rootSystem, inport));
+	}
+	
+	@Test
+	public void findSysRefWhosTargetIsGivenSystemPositiveTest() {
+		SystemReference sysRef = factory.createSystemReference();
+		System targetSystem = factory.createSystem();
+		sysRef.setTarget(targetSystem);
+		rootSystem.getChildren().add( sysRef );
+		SystemReference result = traverser.findSysRefWhosTargetIsGivenSystem(rootSystem, targetSystem);
+		assertEquals(sysRef, result);
+	}
+
+	@Test
+	public void findSysRefWhosTargetIsGivenSystemNegativeest() {
+		SystemReference sysRef = factory.createSystemReference();
+		System anotherSystem = factory.createSystem();
+		System targetSystem = factory.createSystem();
+		sysRef.setTarget(targetSystem);
+		rootSystem.getChildren().add( sysRef );
+		SystemReference result = traverser.findSysRefWhosTargetIsGivenSystem(rootSystem, anotherSystem);
+		assertNull( result );
+	}
+
+	@Test
+	public void processPortWithSameParentTest() {
+		// TODO refactor this with our own model creation wrapper
+		System sysA = factory.createSystem();
+		SystemReference sysRefA = factory.createSystemReference();
+		sysRefA.setTarget(sysA);
+		rootSystem.getChildren().add(sysRefA);
+		Outport srcPort = factory.createOutport();
+		sysA.getOutports().add( srcPort );
+		Outport dstPort = factory.createOutport();
+		dstPort.setName(NAME);
+		rootSystem.getOutports().add( dstPort );
+		Line line = factory.createLine();
+		rootSystem.getLines().add(line);
+		line.setSource(srcPort);
+		line.setDestination(dstPort);
+		
+		String result = traverser.computeNameForLineEndpoint(line, dstPort);
+		assertEquals(NAME+"/1", result);
+	}
+
+	@Test
+	public void processPortWithDifferentParentTest() {
+		System sysA = factory.createSystem();
+		SystemReference sysRefA = factory.createSystemReference();
+		sysRefA.setTarget(sysA);
+		sysRefA.setName(SYSREF_NAME);
+		rootSystem.getChildren().add(sysRefA);
+		Outport srcPort = factory.createOutport();
+		sysA.getOutports().add( srcPort );
+		Outport dstPort = factory.createOutport();
+		srcPort.setName(NAME);
+		rootSystem.getOutports().add( dstPort );
+		Line line = factory.createLine();
+		rootSystem.getLines().add(line);
+		line.setSource(srcPort);
+		line.setDestination(dstPort);
+		
+		String result = traverser.computeNameForLineEndpoint(line, srcPort);
+		assertEquals(SYSREF_NAME+"/1", result);
 	}
 
 }
