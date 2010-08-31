@@ -1,14 +1,11 @@
-package se.kth.md.simulinkExchange.atl;
+package se.kth.md.simulinkExchange.popup.actions.atl.east2simulink;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
  
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-	//ATLrunConfigurationTest.class,
-	//ATLrunnerTest.class,
-	//ModelTowerListTest.class,
-	//UtilsTest.class
+	ConfigureATLConverterTaskTest.class
 }
  )
 public class AllTests {
