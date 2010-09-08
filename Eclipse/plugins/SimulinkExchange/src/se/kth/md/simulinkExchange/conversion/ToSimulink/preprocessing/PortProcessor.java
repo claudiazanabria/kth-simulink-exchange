@@ -25,13 +25,14 @@ import Simulink.System;
  * @author Alex Schenkman
  *
  */
+@Deprecated
 public abstract class PortProcessor {
 
 	ArrayList<ProtoObject> list = new ArrayList<ProtoObject>();
 	System theSystem;
-	SystemLayouter layouter;
+	ISystemLayouter layouter;
 
-	protected void init(System aSystem, SystemLayouter layouter) {
+	protected void init(System aSystem, ISystemLayouter layouter) {
 		this.theSystem = aSystem;
 		this.layouter = layouter;
 	}
@@ -53,7 +54,7 @@ public abstract class PortProcessor {
 	protected void computePosition(Port port) {
 		String position = port.getPosition(); 
 		if ( (position==null) || (position.isEmpty()) ) {
-			position = layouter.nextPort();
+			position = layouter.nextPortPosition();
 			port.setPosition(position);
 		}
 	}

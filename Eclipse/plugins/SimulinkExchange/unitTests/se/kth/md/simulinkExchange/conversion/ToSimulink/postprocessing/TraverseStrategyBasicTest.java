@@ -1,7 +1,9 @@
 package se.kth.md.simulinkExchange.conversion.ToSimulink.postprocessing;
 
 import static java.util.Arrays.asList;
+import static org.junit.Assert.*;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.common.util.BasicEList;
@@ -47,15 +49,13 @@ public abstract class TraverseStrategyBasicTest {
 	public abstract void sequenceTest();
 	
 	@Test
-	public void allPartsAreVisitedTest() {
+	public void delegateCalledForModelAndRootSystemTest() {
 		
 		context.checking(new Expectations() {{
-			
-			oneOf (delegateMock).doIt(with(modelMock));
-				inSequence(aSequence);
-
 			oneOf (modelMock).getRoot();
 				will(returnValue( systemMock ));
+			
+			oneOf (delegateMock).doIt(with(modelMock));
 				inSequence(aSequence);
 				
 			oneOf (delegateMock).doIt(with(systemMock));
@@ -69,15 +69,13 @@ public abstract class TraverseStrategyBasicTest {
 	}
 
 	@Test
-	public void systemVisitsItsChildrenTest() {
+	public void delegateCalledForAllChildrenTest() {
 		
 		context.checking(new Expectations() {{
-			
-			oneOf (delegateMock).doIt(with(systemMock));
-				inSequence(aSequence);
-
 			oneOf (systemMock).getChildren();
 				will(returnValue(asEList(systemReferenceMock,systemReferenceMock)));
+			
+			oneOf (delegateMock).doIt(with(systemMock));
 				inSequence(aSequence);
 				
 			exactly(2).of (delegateMock).doIt(with(systemReferenceMock));
@@ -92,13 +90,8 @@ public abstract class TraverseStrategyBasicTest {
 	}
 
 	@Test
-	public void systemReferenceVisitItsTargetTest() {
-		
+	public void delegateCalledForChildrenBeforeSystemReferenceTest() {
 		context.checking(new Expectations() {{
-			
-			oneOf (delegateMock).doIt(with(systemReferenceMock));
-				inSequence(aSequence);
-
 			oneOf (systemReferenceMock).getTarget();
 				will(returnValue( systemMock ));
 				inSequence(aSequence);
@@ -106,9 +99,10 @@ public abstract class TraverseStrategyBasicTest {
 			oneOf (delegateMock).doIt(with(systemMock));
 				inSequence(aSequence);
 
+			oneOf (delegateMock).doIt(with(systemReferenceMock));
+				inSequence(aSequence);
+
 			ignoring (systemMock);
-			ignoring (systemReferenceMock);
-			ignoring (delegateMock);
 		}} );		
 		
 		traverseStrategy.doIt(systemReferenceMock, delegateMock);
@@ -116,25 +110,26 @@ public abstract class TraverseStrategyBasicTest {
 	
 	
 	@Test
-	public void systemVisistItsPorts() {
-		
+	public void delegateCalledForInportsBeforeOutportsTest() {
 		context.checking(new Expectations() {{
-			
 			oneOf (systemMock).getInports();
 				will(returnValue(asEList(inportMock,inportMock)));
-				inSequence(aSequence);
-				
-			exactly(2).of (delegateMock).doIt(with(inportMock));
-				inSequence(aSequence);
 
 			oneOf (systemMock).getOutports();
 				will(returnValue(asEList(outportMock,outportMock)));
-				inSequence(aSequence);
-				
-			exactly(2).of (delegateMock).doIt(with(outportMock));
-				inSequence(aSequence);
 
 			ignoring (systemMock);
+			ignoring (inportMock);
+			ignoring (outportMock);
+		}} );
+
+		context.checking(new Expectations() {{	
+			exactly(2).of (delegateMock).doIt(with(inportMock));
+			inSequence(aSequence);
+
+			exactly(2).of (delegateMock).doIt(with(outportMock));
+			inSequence(aSequence);
+
 			ignoring (delegateMock);
 		}} );		
 		
@@ -142,13 +137,12 @@ public abstract class TraverseStrategyBasicTest {
 	}
 
 	@Test
-	public void systemVisistItsLines() {
+	public void delegateCalledForLines() {
 		
 		context.checking(new Expectations() {{
 			
 			oneOf (systemMock).getLines();
 				will(returnValue(asEList(lineMock,lineMock)));
-				inSequence(aSequence);
 				
 			exactly(2).of (delegateMock).doIt(with(lineMock));
 				inSequence(aSequence);
@@ -164,5 +158,16 @@ public abstract class TraverseStrategyBasicTest {
 	public static <T> EList<T> asEList(T... a) {
 		List<T> aList = asList(a);
 		return new BasicEList<T>(aList);
+	}
+	
+	public static <T> EList<T> emptyEListWithType(Class<T> unused) {
+		List<T> aList = Collections.emptyList();
+		return new BasicEList<T>(aList);
+	}
+
+	@Test
+	public void emptyListTest() {
+		EList<System> aList = emptyEListWithType(System.class);
+		assertTrue( aList.isEmpty() );
 	}
 }

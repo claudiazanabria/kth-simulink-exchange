@@ -15,6 +15,8 @@ public class ATLConfigurationBuilderTask
 	extends se.kth.md.simulinkExchange.popup.actions.atl.ATLConfigurationBuilderTask 
 	implements ITask {
 
+	//TODO this class is not tested
+	
 	public ATLConfigurationBuilderTask(URI clickedFile) {
 		super(clickedFile);
 		ATL_BINARY = "./resources/ATL/east2simulink.asm";

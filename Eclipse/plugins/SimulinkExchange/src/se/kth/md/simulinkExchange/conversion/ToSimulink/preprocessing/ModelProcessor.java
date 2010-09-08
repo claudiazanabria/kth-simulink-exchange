@@ -30,6 +30,7 @@ import Simulink.ProtoObject;
  * @author Alex Schenkman
  *
  */
+@Deprecated
 public class ModelProcessor {
 	
 	Model theModel;

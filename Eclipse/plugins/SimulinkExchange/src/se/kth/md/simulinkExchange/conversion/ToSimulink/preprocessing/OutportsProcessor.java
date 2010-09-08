@@ -21,10 +21,11 @@ import Simulink.System;
  * @author Alex Schenkman
  *
  */
+@Deprecated
 public class OutportsProcessor extends PortProcessor {
 	
 	public static Collection<? extends ProtoObject> doIt(
-			System aSystem, SystemLayouter layouter) {
+			System aSystem, ISystemLayouter layouter) {
 				
 		OutportsProcessor pp = new OutportsProcessor();
 		pp.init(aSystem, layouter);

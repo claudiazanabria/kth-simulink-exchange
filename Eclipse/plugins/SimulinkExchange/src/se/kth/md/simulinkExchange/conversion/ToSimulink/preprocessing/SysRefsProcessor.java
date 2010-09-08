@@ -22,14 +22,15 @@ import Simulink.SystemReference;
  * Adds a SystemReference, or subsystem, or system instance to the list.
  * @author Alex Schenkman
  */
+@Deprecated
 public class SysRefsProcessor {
 
 	ArrayList<ProtoObject> list = new ArrayList<ProtoObject>();
 	System theSystem;
-	SystemLayouter layouter;
+	ISystemLayouter layouter;
 	
 	public static Collection<? extends ProtoObject> doIt(
-			System aSystem, SystemLayouter layouter) {
+			System aSystem, ISystemLayouter layouter) {
 
 		SysRefsProcessor sp = new SysRefsProcessor();
 		sp.theSystem = aSystem;

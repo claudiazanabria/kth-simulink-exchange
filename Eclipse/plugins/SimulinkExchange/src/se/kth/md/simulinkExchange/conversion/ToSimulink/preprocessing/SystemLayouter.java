@@ -25,8 +25,10 @@ import static org.junit.Assert.*;
  * Lastly, outpots are added in a vertical row. 
  *
  */
-public class SystemLayouter {
+public class SystemLayouter implements ISystemLayouter {
 
+	//TODO this class is not tested. Is it worth testing it?
+	
     final Integer distanceBetweenPorts    	= new Integer(60);
     final Integer distanceBetweenSystmes  	= new Integer(90);
     final Integer blockSizeHoriz          	= new Integer(250);
@@ -39,30 +41,27 @@ public class SystemLayouter {
     private Integer bottom  = new Integer(0);
     private Integer right   = new Integer(0);
 
-    /**
-     * Lets the layouter know that you are done laying out inports, 
-     * and want to start laying out systems
-     */
+    /* (non-Javadoc)
+	 * @see se.kth.md.simulinkExchange.conversion.ToSimulink.preprocessing.ISystemLayouter#startWithSystems()
+	 */
 	public void startWithSystems() {
         top    = 40;
         left   = -140;
 	}
 
-    /**
-     * Lets the layouter know that you are done laying out systems, 
-     * and want to start laying out outports
-     */
+    /* (non-Javadoc)
+	 * @see se.kth.md.simulinkExchange.conversion.ToSimulink.preprocessing.ISystemLayouter#startWithOutports()
+	 */
 	public void startWithOutports() {
         left = left + distanceBetweenSystmes + blockSizeHoriz;
         if (left < 0) {left = 100; }
         top = 50;
 	}
 
-	/**
-	 * Get the position the next port.
-	 * @return a suitable position string for MATLAB
+	/* (non-Javadoc)
+	 * @see se.kth.md.simulinkExchange.conversion.ToSimulink.preprocessing.ISystemLayouter#nextPortPosition()
 	 */
-	public String nextPort() {
+	public String nextPortPosition() {
         top = top + distanceBetweenPorts;
         bottom = top + portSizeVert;
         right = left + portSizeHoriz;
@@ -71,9 +70,8 @@ public class SystemLayouter {
 	}
 
 	
-	/**
-	 * Get the position the next system.
-	 * @return a suitable position string for MATLAB
+	/* (non-Javadoc)
+	 * @see se.kth.md.simulinkExchange.conversion.ToSimulink.preprocessing.ISystemLayouter#nextSystem()
 	 */
 	public String nextSystem() {
         left = left + distanceBetweenSystmes + blockSizeHoriz;
@@ -83,7 +81,7 @@ public class SystemLayouter {
 		return position;
 	}
 
-	private String buildPositionString() {
+	protected String buildPositionString() {
 		String format = "[%d %d %d %d]";
 		String position = String.format(format, left, top, right, bottom);
 		return position;

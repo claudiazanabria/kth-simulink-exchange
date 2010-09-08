@@ -34,8 +34,9 @@ public class TraverseChildrenBeforeInportsStrategy implements ITraverserStrategy
 	public void doIt(SystemReference systemReference,
 			ITraverserDelegate delegate) {
 
-		delegate.doIt( systemReference );
 		doIt( systemReference.getTarget(), delegate );
+		delegate.doIt( systemReference );
+
 	}
 
 }

@@ -9,16 +9,15 @@ import Simulink.SystemReference;
 
 public interface ITraverserDelegate {
 
-	void doIt(SystemReference with);
+	void doIt(SystemReference sysRef);
 
-	void doIt(System with);
+	void doIt(System system);
 
-	void doIt(Model with);
+	void doIt(Model model);
 
-	void doIt(Inport with);
+	void doIt(Inport inport);
 
-	void doIt(Outport with);
+	void doIt(Outport outport);
 
-	void doIt(Line with);
-
+	void doIt(Line line);
 }

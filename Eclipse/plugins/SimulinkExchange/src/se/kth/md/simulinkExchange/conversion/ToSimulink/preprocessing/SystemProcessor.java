@@ -30,6 +30,7 @@ import Simulink.System;
  *  
  * @author Alex Schenkman
  */
+@Deprecated
 public class SystemProcessor {
 	
 	System theSystem;
@@ -52,7 +53,7 @@ public class SystemProcessor {
 	}
 
 	private void createSystem(ArrayList<ProtoObject> list) {
-		SystemLayouter layouter = new SystemLayouter();
+		ISystemLayouter layouter = new SystemLayouter();
 		
 		list.add( theSystem );
 		list.addAll( InportsProcessor.doIt( theSystem, layouter ));

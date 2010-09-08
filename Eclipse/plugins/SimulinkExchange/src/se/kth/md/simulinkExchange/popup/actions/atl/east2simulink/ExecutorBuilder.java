@@ -22,7 +22,7 @@ public class ExecutorBuilder {
 		executor.addTask( new RunATLTask() );
 		executor.addTask( new GetModelManagerTask() );
 		executor.addTask( new NameTraverserTask() );
-		executor.addTask( new ModelLayouterTask(  ) );
+		executor.addTask( new ModelLayouterTask() );
 		return executor;
 	}
 

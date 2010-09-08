@@ -21,6 +21,7 @@ import Simulink.System;
  * @author Alex Schenkman
  *
  */
+@Deprecated
 public class LinesProcessor {
 	
 	System theSystem;

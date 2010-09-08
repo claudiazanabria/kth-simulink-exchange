@@ -5,6 +5,8 @@ import se.kth.md.simulinkExchange.atl.ATLrunner;
 
 public class RunATLTask implements ITask {
 
+	//TODO this class is not tested
+	
 	@Override
 	public String finalMessage() {
 		return name() + ", completed.";

@@ -6,8 +6,8 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
   TraverseChildrenBeforeInportsStrategyTest.class,
-  TraverseChildrenAfterInportsStrategyTest.class,
-  NameTraverserDelegateTest.class
+  TraversalForLayoutStrategyTest.class,
+  NameTraverserDelegateTest.class,
 })
 
 public class AllTests {

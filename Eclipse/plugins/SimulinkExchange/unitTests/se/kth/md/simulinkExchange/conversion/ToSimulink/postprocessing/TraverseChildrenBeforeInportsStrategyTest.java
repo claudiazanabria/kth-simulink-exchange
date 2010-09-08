@@ -20,45 +20,43 @@ public class TraverseChildrenBeforeInportsStrategyTest extends
 	}
 
 	private void childrenInportsOutportsLineSequenceTest() {
-		
+
 		context.checking(new Expectations() {{ 
-			
-			oneOf (delegateMock).doIt(systemMock);
-				inSequence(aSequence);
-
 			oneOf (systemMock).getChildren();
-				will(returnValue( asEList(systemReferenceMock) ));
-				inSequence(aSequence);
-
-			oneOf (delegateMock).doIt(systemReferenceMock);
-				inSequence(aSequence);
+			will(returnValue( asEList(systemReferenceMock) ));
 
 			oneOf (systemMock).getInports();
-				will(returnValue( asEList(inportMock) ));
-				inSequence(aSequence);
+			will(returnValue( asEList(inportMock) ));
 
-			oneOf (delegateMock).doIt(inportMock);
-				inSequence(aSequence);
-				
 			oneOf (systemMock).getOutports();
-				will(returnValue( asEList(outportMock) ));
-				inSequence(aSequence);
+			will(returnValue( asEList(outportMock) ));
 
-			oneOf (delegateMock).doIt(outportMock);
-				inSequence(aSequence);
-				
 			oneOf (systemMock).getLines();
-				will(returnValue( asEList(lineMock) ));
-				inSequence(aSequence);
-
-			oneOf (delegateMock).doIt(lineMock);
-				inSequence(aSequence);
+			will(returnValue( asEList(lineMock) ));
 
 			ignoring (systemMock);
-			ignoring (delegateMock);
 			ignoring (systemReferenceMock);
+		}} );
+
+		context.checking(new Expectations() {{ 
+			oneOf (delegateMock).doIt(systemMock);
+			inSequence(aSequence);
+
+			oneOf (delegateMock).doIt(systemReferenceMock);
+			inSequence(aSequence);
+
+			oneOf (delegateMock).doIt(inportMock);
+			inSequence(aSequence);
+
+			oneOf (delegateMock).doIt(outportMock);
+			inSequence(aSequence);
+
+			oneOf (delegateMock).doIt(lineMock);
+			inSequence(aSequence);
+
+			ignoring (delegateMock);
 		}});
-		
+
 		traverseStrategy.doIt(systemMock, delegateMock);
 	}
 
