@@ -1,0 +1,1 @@
+This directory contains a proposed new version of accessing the MATLAB/Simulink API. It is under development, and not to be used by any end-user.

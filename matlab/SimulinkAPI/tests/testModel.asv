@@ -1,0 +1,36 @@
+classdef TestModel < TestCase
+
+    properties
+        model;
+    end
+    properties(Constant)
+        NAMESTRING='name';
+    end
+    methods
+        function self = TestModel(name)
+            self = self@TestCase(name);
+        end
+
+        function setUp(self)
+            self.model = Factory.newModel();
+        end
+
+      %  function tearDown(self)
+            %self.model = null;
+       % end
+
+        function testNaming(self)
+            model.setName(NAMESTRING); %#ok<CPROP>
+            assertEqual(NAMESTRING,model.getName());
+        end
+        % STRUCTURE
+        %Model cannot directly containt ports
+        %Model should contain lines
+        %Ports should match
+        % BEHAVIOR
+        
+        function testPointer(self)
+            assertEqual(get(self.fh, 'Pointer'), 'arrow');
+        end
+    end
+end
