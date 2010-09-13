@@ -23,8 +23,7 @@ function schema = AddToEASTLib(callbackInfo)
 end
 
 function AddToEAST(callbackInfo)
-   name=get_param(gcb,'name');
-   Utils.AddToEcoreLibrary(name);
+   Utils.AddToEcoreLibrary(gcb);
 end
 
 function processPorts(Block)
