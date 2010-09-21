@@ -1,28 +1,34 @@
-classdef testModel < TestCase
+classdef TestModel < TestCase
 
     properties
-        fh
+        t
     end
-
+    
+    properties(Constant)
+        modelName = 'systemundertest';
+    end
+    
     methods
-        function self = TestUsingTestCase(name)
+        function self = TestModel(name)
             self = self@TestCase(name);
         end
 
         function setUp(self)
-            self.fh = figure;
+            new_system(self.modelName);
+            self.t = Model(self.modelName);
         end
 
         function tearDown(self)
-            delete(self.fh);
+            close_system(self.modelName,0);
         end
 
-        function testColormapColumns(self)
-            assertEqual(size(get(self.fh, 'Colormap'), 2), 3);
+        function testModelHandle(self)
+            assertEqual(get_param(self.modelName,'handle'),self.t.handle)
         end
-
-        function testPointer(self)
-            assertEqual(get(self.fh, 'Pointer'), 'arrow');
+        
+        function testUnknownModel(self)
+            assertExceptionThrown(Model('noname'));
         end
-    end
+            
+    end    
 end
