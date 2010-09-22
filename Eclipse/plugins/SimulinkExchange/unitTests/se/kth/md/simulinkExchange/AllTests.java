@@ -8,7 +8,7 @@ import org.junit.runners.Suite;
 	//se.kth.md.simulinkExchange.atl.AllTests.class,
 	se.kth.md.simulinkExchange.conversion.ToSimulink.postprocessing.AllTests.class,
 	se.kth.md.simulinkExchange.popup.actions.atl.AllTests.class,
-	se.kth.md.simulinkExchange.popup.actions.atl.east2simulink.AllTests.class,
+	se.kth.md.simulinkExchange.popup.actions.east2simulink.AllTests.class,
 })
 
 public class AllTests {

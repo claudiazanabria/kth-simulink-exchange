@@ -8,7 +8,6 @@ import org.junit.runner.RunWith;
 
 import Simulink.SystemReference;
 
-import se.kth.md.simulinkExchange.conversion.ToSimulink.preprocessing.ISystemLayouter;
 
 @RunWith(JMock.class)
 public class TraversalForLayoutStrategyTest extends
