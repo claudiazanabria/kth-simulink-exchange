@@ -11,6 +11,7 @@
 package se.kth.md.simulinkExchange.management;
 
 
+@Deprecated
 public interface ITraverser {
 	public void doIt(IModelManager manager);
 }
