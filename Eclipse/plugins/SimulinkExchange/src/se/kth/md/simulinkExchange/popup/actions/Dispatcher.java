@@ -19,8 +19,6 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 
-import se.kth.md.simulinkExchange.popup.actions.atl.BackgroundJob;
-import se.kth.md.simulinkExchange.popup.actions.atl.ITasksExecutor;
 
 /**
  * This class keeps track of which file is selected in the Workspace,
