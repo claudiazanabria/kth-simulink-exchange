@@ -1,7 +1,7 @@
 package se.kth.md.simulinkExchange.popup.actions.atl;
 
-import se.kth.md.simulinkExchange.atl.ATLrunConfiguration;
-import se.kth.md.simulinkExchange.atl.ATLrunner;
+import se.kth.md.simulinkExchange.atlHelper.ATLrunConfiguration;
+import se.kth.md.simulinkExchange.atlHelper.ATLrunner;
 
 public class RunATLTask implements ITask {
 

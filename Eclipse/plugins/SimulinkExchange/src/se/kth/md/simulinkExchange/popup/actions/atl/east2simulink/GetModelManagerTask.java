@@ -2,7 +2,7 @@ package se.kth.md.simulinkExchange.popup.actions.atl.east2simulink;
 
 import org.eclipse.emf.common.util.URI;
 
-import se.kth.md.simulinkExchange.atl.ATLrunConfiguration;
+import se.kth.md.simulinkExchange.atlHelper.ATLrunConfiguration;
 import se.kth.md.simulinkExchange.management.IModelManager;
 import se.kth.md.simulinkExchange.management.simulink.SimulinkModelManager;
 import se.kth.md.simulinkExchange.popup.actions.atl.ITask;

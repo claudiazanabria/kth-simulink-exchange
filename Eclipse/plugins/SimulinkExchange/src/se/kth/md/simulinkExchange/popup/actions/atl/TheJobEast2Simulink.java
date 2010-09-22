@@ -18,14 +18,13 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.URI;
 
-import se.kth.md.simulinkExchange.atl.ATLrunConfiguration;
-import se.kth.md.simulinkExchange.atl.URInotFound;
-import se.kth.md.simulinkExchange.atl.XmlCombiner;
-import se.kth.md.simulinkExchange.conversion.ToSimulink.postprocessing.NameTraverser;
+import se.kth.md.simulinkExchange.atlHelper.ATLrunConfiguration;
+import se.kth.md.simulinkExchange.atlHelper.URInotFound;
 import se.kth.md.simulinkExchange.management.IModelManager;
 import se.kth.md.simulinkExchange.management.exceptions.InvalidModelException;
 import se.kth.md.simulinkExchange.management.simulink.SimulinkModelManager;
 
+@Deprecated
 public class TheJobEast2Simulink extends TheJob {
 
 	public TheJobEast2Simulink(IPath aPath)  {

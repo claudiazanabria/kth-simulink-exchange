@@ -3,8 +3,8 @@ package se.kth.md.simulinkExchange.popup.actions.atl;
 import org.eclipse.emf.common.util.URI;
 
 import se.kth.md.simulinkExchange.PluginServices;
-import se.kth.md.simulinkExchange.atl.ATLrunConfiguration;
-import se.kth.md.simulinkExchange.atl.URInotFound;
+import se.kth.md.simulinkExchange.atlHelper.ATLrunConfiguration;
+import se.kth.md.simulinkExchange.atlHelper.URInotFound;
 
 /**
  * This task builds an ATL configuration by creating 
@@ -35,7 +35,7 @@ public abstract class ATLConfigurationBuilderTask {
 		URI atlSource 	= PluginServices.lookUpAbsolutePathWithinPlugin(ATL_SOURCE);
 		URI atlCompiled = PluginServices.lookUpAbsolutePathWithinPlugin(ATL_BINARY);
 
-		ATLrunConfiguration config = new ATLrunConfiguration( atlSource, atlCompiled );
+		 ATLrunConfiguration config = new ATLrunConfiguration( atlSource, atlCompiled );
 		addSources(config);
 		addDestination(config);		
 		return config;

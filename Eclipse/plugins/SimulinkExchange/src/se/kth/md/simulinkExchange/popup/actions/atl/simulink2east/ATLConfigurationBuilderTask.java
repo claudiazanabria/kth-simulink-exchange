@@ -2,8 +2,8 @@ package se.kth.md.simulinkExchange.popup.actions.atl.simulink2east;
 
 import org.eclipse.emf.common.util.URI;
 
-import se.kth.md.simulinkExchange.atl.ATLrunConfiguration;
-import se.kth.md.simulinkExchange.atl.URInotFound;
+import se.kth.md.simulinkExchange.atlHelper.ATLrunConfiguration;
+import se.kth.md.simulinkExchange.atlHelper.URInotFound;
 import se.kth.md.simulinkExchange.popup.actions.atl.ITask;
 
 public class ATLConfigurationBuilderTask 	

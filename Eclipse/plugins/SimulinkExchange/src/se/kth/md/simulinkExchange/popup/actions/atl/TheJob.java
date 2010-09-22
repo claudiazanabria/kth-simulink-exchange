@@ -22,16 +22,11 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.ui.statushandlers.StatusManager;
-import org.osgi.framework.Bundle;
 
 import se.kth.md.simulinkExchange.Activator;
-import se.kth.md.simulinkExchange.atl.ATLrunConfiguration;
-import se.kth.md.simulinkExchange.atl.ATLrunner;
-import se.kth.md.simulinkExchange.atl.URInotFound;
-import se.kth.md.simulinkExchange.conversion.ToSimulink.postprocessing.NameTraverser;
-import se.kth.md.simulinkExchange.management.IModelManager;
-import se.kth.md.simulinkExchange.management.exceptions.InvalidModelException;
-import se.kth.md.simulinkExchange.management.simulink.SimulinkModelManager;
+import se.kth.md.simulinkExchange.atlHelper.ATLrunConfiguration;
+import se.kth.md.simulinkExchange.atlHelper.ATLrunner;
+import se.kth.md.simulinkExchange.atlHelper.URInotFound;
 
 
 /**
@@ -39,6 +34,7 @@ import se.kth.md.simulinkExchange.management.simulink.SimulinkModelManager;
  *
  */
 
+@Deprecated
 public abstract class TheJob extends Job {
 
 	protected IPath inModelPath;

@@ -21,10 +21,11 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.URI;
 
-import se.kth.md.simulinkExchange.atl.ATLrunConfiguration;
-import se.kth.md.simulinkExchange.atl.URInotFound;
+import se.kth.md.simulinkExchange.atlHelper.ATLrunConfiguration;
+import se.kth.md.simulinkExchange.atlHelper.URInotFound;
 import se.kth.md.simulinkExchange.atl.XmlCombiner;
 
+@Deprecated
 public class TheJobSimulink2East extends TheJob {
 
 	/**

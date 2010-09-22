@@ -32,3 +32,4 @@ Export-Package: se.kth.md.simulinkExchange,
  se.kth.md.simulinkExchange.popup.actions,
  se.kth.md.simulinkExchange.popup.actions.atl,
  se.kth.md.simulinkExchange.popup.actions.validation
+Import-Package: se.kth.md.simulinkExchange.atlHelper
