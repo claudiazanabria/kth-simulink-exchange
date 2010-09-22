@@ -17,7 +17,8 @@ Require-Bundle: org.eclipse.ui,
  se.kth.md.simulinkExchange.JExample,
  org.eclipse.m2m.atl.common,
  org.eclipse.m2m.atl.core,
- se.kth.md.simulinkExchange.metamodel.Simulink;bundle-version="3.2.7"
+ se.kth.md.simulinkExchange.metamodel.Simulink;bundle-version="3.2.7",
+ org.jmock_2.5.1;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Export-Package: se.kth.md.simulinkExchange,
