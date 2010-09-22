@@ -79,9 +79,4 @@ public interface IModelManager {
 	 */
 	public String getFileExtension();
 
-	@Deprecated
-	public void traverseWith(ITraverser traverser);
-
-	public void acceptVisitor(IModelVisitor visitor);
-
 }

@@ -187,17 +187,5 @@ public abstract class ModelManager implements IModelManager {
 	protected void setFileExtension(String fileExtension) {
 		this.fileExtension = fileExtension;
 	}
-
-	/* (non-Javadoc)
-	 * @see se.kth.md.simulinkExchange.management.IModelManager#traverseWith(se.kth.md.simulinkExchange.management.Traverser)
-	 */
-	//FIXME this method should be removed
-	public void traverseWith(ITraverser traverser) {		
-		traverser.doIt( this );
-		
-	}
 	
-	public void acceptVisitor(IModelVisitor aVisitor) {
-		aVisitor.visit( this.getTopElement() );
-	}
 }
