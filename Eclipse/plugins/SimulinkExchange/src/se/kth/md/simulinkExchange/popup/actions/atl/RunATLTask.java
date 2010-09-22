@@ -23,4 +23,7 @@ public class RunATLTask implements ITask {
 		return config;
 	}
 
+	void alex() {
+		//Transformation.
+	}
 }
