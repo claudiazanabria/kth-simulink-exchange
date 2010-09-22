@@ -1,7 +1,5 @@
 package se.kth.md.simulinkExchange.conversion.ToSimulink.postprocessing;
 
-import se.kth.md.simulinkExchange.conversion.ToSimulink.preprocessing.ISystemLayouter;
-import se.kth.md.simulinkExchange.conversion.ToSimulink.preprocessing.SystemLayouter;
 import Simulink.Inport;
 import Simulink.Line;
 import Simulink.Model;
