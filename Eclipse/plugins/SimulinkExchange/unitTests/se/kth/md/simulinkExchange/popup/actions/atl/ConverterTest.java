@@ -14,6 +14,11 @@ import org.jmock.integration.junit4.JUnit4Mockery;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import se.kth.md.simulinkExchange.popup.actions.IJobMonitor;
+import se.kth.md.simulinkExchange.popup.actions.ITask;
+import se.kth.md.simulinkExchange.popup.actions.ITasksExecutor;
+import se.kth.md.simulinkExchange.popup.actions.TasksExecutor;
+
 @RunWith(JMock.class)
 public class ConverterTest {
 
