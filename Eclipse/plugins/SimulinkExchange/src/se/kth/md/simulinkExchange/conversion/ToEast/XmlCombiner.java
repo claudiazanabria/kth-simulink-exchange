@@ -11,7 +11,7 @@
 /**
  * 
  */
-package se.kth.md.simulinkExchange.atl;
+package se.kth.md.simulinkExchange.conversion.ToEast;
 
 import java.io.File;
 import java.io.FileNotFoundException;

@@ -23,7 +23,7 @@ import org.eclipse.emf.common.util.URI;
 
 import se.kth.md.simulinkExchange.atlHelper.ATLrunConfiguration;
 import se.kth.md.simulinkExchange.atlHelper.URInotFound;
-import se.kth.md.simulinkExchange.atl.XmlCombiner;
+import se.kth.md.simulinkExchange.conversion.ToEast.XmlCombiner;
 
 @Deprecated
 public class TheJobSimulink2East  {
