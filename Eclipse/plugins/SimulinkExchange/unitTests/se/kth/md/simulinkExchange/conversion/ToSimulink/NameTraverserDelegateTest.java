@@ -1,4 +1,4 @@
-package se.kth.md.simulinkExchange.conversion.ToSimulink.postprocessing;
+package se.kth.md.simulinkExchange.conversion.ToSimulink;
 
 
 import static org.junit.Assert.assertEquals;
@@ -8,6 +8,7 @@ import static org.junit.Assert.assertNull;
 import org.junit.Before;
 import org.junit.Test;
 
+import se.kth.md.simulinkExchange.conversion.ToSimulink.NameTraverserDelegate;
 import se.kth.md.simulinkExchange.management.simulink.SimulinkModelManager;
 import Simulink.Inport;
 import Simulink.Line;

@@ -1,4 +1,4 @@
-package se.kth.md.simulinkExchange.conversion.ToSimulink.postprocessing;
+package se.kth.md.simulinkExchange.conversion.ToSimulink;
 
 import static java.util.Arrays.asList;
 import static org.junit.Assert.*;
@@ -15,6 +15,9 @@ import org.jmock.integration.junit4.JMock;
 import org.jmock.integration.junit4.JUnit4Mockery;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import se.kth.md.simulinkExchange.conversion.ToSimulink.ITraverserDelegate;
+import se.kth.md.simulinkExchange.conversion.ToSimulink.ITraverserStrategy;
 
 import Simulink.Inport;
 import Simulink.Line;

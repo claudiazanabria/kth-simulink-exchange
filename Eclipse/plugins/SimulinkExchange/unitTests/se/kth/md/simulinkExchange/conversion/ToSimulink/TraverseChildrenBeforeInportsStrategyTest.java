@@ -1,9 +1,11 @@
-package se.kth.md.simulinkExchange.conversion.ToSimulink.postprocessing;
+package se.kth.md.simulinkExchange.conversion.ToSimulink;
 
 import org.jmock.Expectations;
 import org.jmock.integration.junit4.JMock;
 import org.junit.Before;
 import org.junit.runner.RunWith;
+
+import se.kth.md.simulinkExchange.conversion.ToSimulink.TraverseChildrenBeforeInportsStrategy;
 
 @RunWith(JMock.class)
 public class TraverseChildrenBeforeInportsStrategyTest extends
