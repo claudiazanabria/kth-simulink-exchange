@@ -1,4 +1,4 @@
-package se.kth.md.simulinkExchange.conversion.tasks.ToEast;
+package se.kth.md.simulinkExchange.conversion.ToEast.tasks;
 
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.emf.common.util.URI;

@@ -15,8 +15,8 @@ package se.kth.md.simulinkExchange.popup.actions.ToSimulink;
 
 import org.eclipse.jface.action.IAction;
 
+import se.kth.md.simulinkExchange.conversion.ToSimulink.tasks.ExecutorBuilder;
 import se.kth.md.simulinkExchange.conversion.tasks.ITasksExecutor;
-import se.kth.md.simulinkExchange.conversion.tasks.ToSimulink.ExecutorBuilder;
 
 /**
  * This class will created appropiate tasks for an EAST to Simulink conversion,

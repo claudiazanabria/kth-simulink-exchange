@@ -22,13 +22,12 @@ Require-Bundle: org.eclipse.ui,
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Export-Package: se.kth.md.simulinkExchange,
- se.kth.md.simulinkExchange.atl,
  se.kth.md.simulinkExchange.conversion.exceptions,
+ se.kth.md.simulinkExchange.conversion.tasks,
  se.kth.md.simulinkExchange.management,
  se.kth.md.simulinkExchange.management.east,
  se.kth.md.simulinkExchange.management.exceptions,
  se.kth.md.simulinkExchange.management.simulink,
  se.kth.md.simulinkExchange.popup.actions,
- se.kth.md.simulinkExchange.popup.actions.atl,
  se.kth.md.simulinkExchange.popup.actions.validation
 Import-Package: se.kth.md.simulinkExchange.atlHelper

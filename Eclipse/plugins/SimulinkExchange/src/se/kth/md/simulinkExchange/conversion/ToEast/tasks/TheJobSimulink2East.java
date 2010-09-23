@@ -11,7 +11,7 @@
 /**
  * 
  */
-package se.kth.md.simulinkExchange.conversion.tasks.ToEast;
+package se.kth.md.simulinkExchange.conversion.ToEast.tasks;
 
 import java.io.IOException;
 

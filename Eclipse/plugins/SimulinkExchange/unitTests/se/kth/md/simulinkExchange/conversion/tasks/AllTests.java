@@ -1,11 +1,11 @@
-package se.kth.md.simulinkExchange.popup.actions.atl;
+package se.kth.md.simulinkExchange.conversion.tasks;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
  
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-	ConverterTest.class
+	TasksExecutorTest.class
 })
 
 public class AllTests {

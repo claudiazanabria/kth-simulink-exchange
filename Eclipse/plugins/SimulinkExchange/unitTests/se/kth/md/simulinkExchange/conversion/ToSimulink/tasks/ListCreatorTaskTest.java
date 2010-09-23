@@ -1,8 +1,8 @@
-package se.kth.md.simulinkExchange.popup.actions.east2simulink;
+package se.kth.md.simulinkExchange.conversion.ToSimulink.tasks;
 
 import org.junit.Before;
 
-import se.kth.md.simulinkExchange.popup.actions.east2simulink.ListCreatorTask;
+import se.kth.md.simulinkExchange.conversion.ToSimulink.tasks.ListCreatorTask;
 
 
 public class ListCreatorTaskTest extends StrategyBasedTraversalTaskTest {

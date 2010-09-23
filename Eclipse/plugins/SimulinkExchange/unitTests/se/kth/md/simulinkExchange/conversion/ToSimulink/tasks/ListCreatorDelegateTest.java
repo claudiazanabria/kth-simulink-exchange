@@ -1,4 +1,4 @@
-package se.kth.md.simulinkExchange.popup.actions.east2simulink;
+package se.kth.md.simulinkExchange.conversion.ToSimulink.tasks;
 
 
 import static org.junit.Assert.*;
@@ -8,7 +8,7 @@ import org.jmock.integration.junit4.JUnit4Mockery;
 import org.junit.Before;
 import org.junit.Test;
 
-import se.kth.md.simulinkExchange.popup.actions.east2simulink.ListCreatorDelegate;
+import se.kth.md.simulinkExchange.conversion.ToSimulink.tasks.ListCreatorDelegate;
 
 import Simulink.Inport;
 import Simulink.Line;

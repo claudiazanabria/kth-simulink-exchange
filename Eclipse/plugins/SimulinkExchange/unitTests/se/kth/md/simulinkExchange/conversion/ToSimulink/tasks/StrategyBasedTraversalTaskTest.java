@@ -1,4 +1,4 @@
-package se.kth.md.simulinkExchange.popup.actions.east2simulink;
+package se.kth.md.simulinkExchange.conversion.ToSimulink.tasks;
 
 
 import static org.junit.Assert.assertEquals;
@@ -15,9 +15,9 @@ import org.junit.runner.RunWith;
 
 import se.kth.md.simulinkExchange.conversion.ToSimulink.ITraverserDelegate;
 import se.kth.md.simulinkExchange.conversion.ToSimulink.ITraverserStrategy;
+import se.kth.md.simulinkExchange.conversion.ToSimulink.tasks.StrategyBasedTraversalTask;
 import se.kth.md.simulinkExchange.management.IModelManager;
 import se.kth.md.simulinkExchange.management.exceptions.InvalidModelException;
-import se.kth.md.simulinkExchange.popup.actions.east2simulink.StrategyBasedTraversalTask;
 import Simulink.Model;
 
 @RunWith(JMock.class)

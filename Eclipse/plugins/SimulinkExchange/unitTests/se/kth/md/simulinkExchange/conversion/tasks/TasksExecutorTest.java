@@ -1,4 +1,4 @@
-package se.kth.md.simulinkExchange.popup.actions.atl;
+package se.kth.md.simulinkExchange.conversion.tasks;
 
 
 import static org.junit.Assert.assertEquals;
@@ -14,20 +14,20 @@ import org.jmock.integration.junit4.JUnit4Mockery;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import se.kth.md.simulinkExchange.conversion.tasks.ITask;
+import se.kth.md.simulinkExchange.conversion.tasks.ITasksExecutor;
+import se.kth.md.simulinkExchange.conversion.tasks.TasksExecutor;
 import se.kth.md.simulinkExchange.popup.actions.IJobMonitor;
-import se.kth.md.simulinkExchange.popup.actions.ITask;
-import se.kth.md.simulinkExchange.popup.actions.ITasksExecutor;
-import se.kth.md.simulinkExchange.popup.actions.TasksExecutor;
 
 @RunWith(JMock.class)
-public class ConverterTest {
+public class TasksExecutorTest {
 
 	private static final int RESULT = 2;
 	ITasksExecutor aConverter 	= new TasksExecutor();
 	Mockery context 			= new JUnit4Mockery();
 
 	IJobMonitor jobMonitorMock 	= context.mock(IJobMonitor.class); 
-	ITask taskMock 	= context.mock(ITask.class);
+	ITask taskMock 				= context.mock(ITask.class);
 	Sequence aSequence 			= context.sequence("aSequence");
 
 	@Test

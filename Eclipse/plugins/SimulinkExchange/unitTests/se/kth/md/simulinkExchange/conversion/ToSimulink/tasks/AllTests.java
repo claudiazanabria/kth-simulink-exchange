@@ -1,4 +1,4 @@
-package se.kth.md.simulinkExchange.popup.actions.east2simulink;
+package se.kth.md.simulinkExchange.conversion.ToSimulink.tasks;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;

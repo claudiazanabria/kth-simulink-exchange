@@ -1,4 +1,4 @@
-package se.kth.md.simulinkExchange.conversion.tasks.ToSimulink;
+package se.kth.md.simulinkExchange.conversion.ToSimulink.tasks;
 
 import java.io.IOException;
 
