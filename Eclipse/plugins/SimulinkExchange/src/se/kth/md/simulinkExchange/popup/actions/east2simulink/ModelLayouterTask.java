@@ -1,7 +1,7 @@
 package se.kth.md.simulinkExchange.popup.actions.east2simulink;
 
 
-import se.kth.md.simulinkExchange.conversion.ToSimulink.postprocessing.TraversalForLayoutStrategy;
+import se.kth.md.simulinkExchange.conversion.ToSimulink.TraversalForLayoutStrategy;
 import se.kth.md.simulinkExchange.management.IModelManager;
 import se.kth.md.simulinkExchange.popup.actions.ITask;
 

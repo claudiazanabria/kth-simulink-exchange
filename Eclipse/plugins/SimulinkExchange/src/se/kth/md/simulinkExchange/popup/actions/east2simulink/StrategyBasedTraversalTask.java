@@ -3,8 +3,8 @@ package se.kth.md.simulinkExchange.popup.actions.east2simulink;
 import java.io.IOException;
 
 import Simulink.Model;
-import se.kth.md.simulinkExchange.conversion.ToSimulink.postprocessing.ITraverserDelegate;
-import se.kth.md.simulinkExchange.conversion.ToSimulink.postprocessing.ITraverserStrategy;
+import se.kth.md.simulinkExchange.conversion.ToSimulink.ITraverserDelegate;
+import se.kth.md.simulinkExchange.conversion.ToSimulink.ITraverserStrategy;
 import se.kth.md.simulinkExchange.management.IModelManager;
 import se.kth.md.simulinkExchange.management.exceptions.InvalidModelException;
 import se.kth.md.simulinkExchange.popup.actions.ITask;

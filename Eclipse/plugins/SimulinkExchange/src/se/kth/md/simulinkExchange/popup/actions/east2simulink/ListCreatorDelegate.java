@@ -9,7 +9,7 @@ import Simulink.Outport;
 import Simulink.ProtoObject;
 import Simulink.System;
 import Simulink.SystemReference;
-import se.kth.md.simulinkExchange.conversion.ToSimulink.postprocessing.ITraverserDelegate;
+import se.kth.md.simulinkExchange.conversion.ToSimulink.ITraverserDelegate;
 
 public class ListCreatorDelegate implements ITraverserDelegate {
 

@@ -2,8 +2,8 @@ package se.kth.md.simulinkExchange.popup.actions.east2simulink;
 
 import java.util.ArrayList;
 
-import se.kth.md.simulinkExchange.conversion.ToSimulink.postprocessing.ITraverserStrategy;
-import se.kth.md.simulinkExchange.conversion.ToSimulink.postprocessing.TraverseChildrenBeforeInportsStrategy;
+import se.kth.md.simulinkExchange.conversion.ToSimulink.ITraverserStrategy;
+import se.kth.md.simulinkExchange.conversion.ToSimulink.TraverseChildrenBeforeInportsStrategy;
 import se.kth.md.simulinkExchange.management.IModelManager;
 import se.kth.md.simulinkExchange.popup.actions.ITask;
 import Simulink.ProtoObject;
