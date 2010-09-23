@@ -8,7 +8,7 @@
  * Contributors: KTH, Mechatronics group
  **************************************************************************/
 
-package se.kth.md.simulinkExchange.conversion.ToSimulink.postprocessing;
+package se.kth.md.simulinkExchange.conversion.ToSimulink;
 
 
 /*

@@ -1,4 +1,4 @@
-package se.kth.md.simulinkExchange.conversion.ToSimulink.postprocessing;
+package se.kth.md.simulinkExchange.conversion.ToSimulink;
 
 public interface ISystemLayouter {
 
