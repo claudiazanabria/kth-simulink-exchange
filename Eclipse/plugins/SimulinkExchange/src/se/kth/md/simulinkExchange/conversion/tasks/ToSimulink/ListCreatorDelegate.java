@@ -1,4 +1,4 @@
-package se.kth.md.simulinkExchange.popup.actions.east2simulink;
+package se.kth.md.simulinkExchange.conversion.tasks.ToSimulink;
 
 import java.util.ArrayList;
 

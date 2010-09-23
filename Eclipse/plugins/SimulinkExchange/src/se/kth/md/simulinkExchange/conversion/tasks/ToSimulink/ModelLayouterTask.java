@@ -1,9 +1,9 @@
-package se.kth.md.simulinkExchange.popup.actions.east2simulink;
+package se.kth.md.simulinkExchange.conversion.tasks.ToSimulink;
 
 
 import se.kth.md.simulinkExchange.conversion.ToSimulink.TraversalForLayoutStrategy;
+import se.kth.md.simulinkExchange.conversion.tasks.ITask;
 import se.kth.md.simulinkExchange.management.IModelManager;
-import se.kth.md.simulinkExchange.popup.actions.ITask;
 
 public class ModelLayouterTask extends StrategyBasedTraversalTask implements ITask {
 

@@ -1,4 +1,4 @@
-package se.kth.md.simulinkExchange.popup.actions;
+package se.kth.md.simulinkExchange.conversion.tasks;
 
 import org.eclipse.emf.common.util.URI;
 

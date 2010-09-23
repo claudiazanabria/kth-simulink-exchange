@@ -19,6 +19,8 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 
+import se.kth.md.simulinkExchange.conversion.tasks.ITasksExecutor;
+
 
 /**
  * This class keeps track of which file is selected in the Workspace,

@@ -6,6 +6,7 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 
 import se.kth.md.simulinkExchange.Activator;
+import se.kth.md.simulinkExchange.conversion.tasks.ITasksExecutor;
 
 /**
  * This class will execute tasks in the background, through a tasksExecutor.

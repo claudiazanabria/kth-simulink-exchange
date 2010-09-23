@@ -1,11 +1,11 @@
-package se.kth.md.simulinkExchange.popup.actions.east2simulink;
+package se.kth.md.simulinkExchange.conversion.tasks.ToSimulink;
 
 import org.eclipse.emf.common.util.URI;
 
 import se.kth.md.simulinkExchange.atlHelper.ATLrunConfiguration;
+import se.kth.md.simulinkExchange.conversion.tasks.ITask;
 import se.kth.md.simulinkExchange.management.IModelManager;
 import se.kth.md.simulinkExchange.management.simulink.SimulinkModelManager;
-import se.kth.md.simulinkExchange.popup.actions.ITask;
 
 public class GetModelManagerTask implements ITask {
 

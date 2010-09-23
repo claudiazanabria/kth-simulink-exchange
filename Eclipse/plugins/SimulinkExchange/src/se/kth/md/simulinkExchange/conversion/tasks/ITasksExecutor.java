@@ -1,8 +1,10 @@
-package se.kth.md.simulinkExchange.popup.actions;
+package se.kth.md.simulinkExchange.conversion.tasks;
 
 import java.util.List;
 
 import org.eclipse.core.runtime.IStatus;  
+
+import se.kth.md.simulinkExchange.popup.actions.IJobMonitor;
 
 /**
  * An IConverter can execute all its tasks.

@@ -1,10 +1,10 @@
-package se.kth.md.simulinkExchange.popup.actions.simulink2east;
+package se.kth.md.simulinkExchange.conversion.tasks.ToEast;
 
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.emf.common.util.URI;
 
-import se.kth.md.simulinkExchange.popup.actions.RunATLTask;
-import se.kth.md.simulinkExchange.popup.actions.TasksExecutor;
+import se.kth.md.simulinkExchange.conversion.tasks.RunATLTask;
+import se.kth.md.simulinkExchange.conversion.tasks.TasksExecutor;
 
 /**
  * This class builds an executor, with all tasks needed 

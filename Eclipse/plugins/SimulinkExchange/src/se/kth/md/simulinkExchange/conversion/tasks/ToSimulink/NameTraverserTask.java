@@ -1,9 +1,9 @@
-package se.kth.md.simulinkExchange.popup.actions.east2simulink;
+package se.kth.md.simulinkExchange.conversion.tasks.ToSimulink;
 
 import se.kth.md.simulinkExchange.conversion.ToSimulink.NameTraverserDelegate;
 import se.kth.md.simulinkExchange.conversion.ToSimulink.TraverseChildrenBeforeInportsStrategy;
+import se.kth.md.simulinkExchange.conversion.tasks.ITask;
 import se.kth.md.simulinkExchange.management.IModelManager;
-import se.kth.md.simulinkExchange.popup.actions.ITask;
 
 /**
  * This task will run the name traverser on the given filename (model).

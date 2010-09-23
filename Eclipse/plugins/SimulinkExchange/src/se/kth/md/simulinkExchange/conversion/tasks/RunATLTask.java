@@ -1,4 +1,4 @@
-package se.kth.md.simulinkExchange.popup.actions;
+package se.kth.md.simulinkExchange.conversion.tasks;
 
 import se.kth.md.simulinkExchange.atlHelper.ATLrunConfiguration;
 import se.kth.md.simulinkExchange.atlHelper.ATLrunner;

@@ -1,13 +1,13 @@
-package se.kth.md.simulinkExchange.popup.actions.east2simulink;
+package se.kth.md.simulinkExchange.conversion.tasks.ToSimulink;
 
 import java.io.IOException;
 
 import Simulink.Model;
 import se.kth.md.simulinkExchange.conversion.ToSimulink.ITraverserDelegate;
 import se.kth.md.simulinkExchange.conversion.ToSimulink.ITraverserStrategy;
+import se.kth.md.simulinkExchange.conversion.tasks.ITask;
 import se.kth.md.simulinkExchange.management.IModelManager;
 import se.kth.md.simulinkExchange.management.exceptions.InvalidModelException;
-import se.kth.md.simulinkExchange.popup.actions.ITask;
 
 public abstract class StrategyBasedTraversalTask implements ITask {
 

@@ -2,6 +2,8 @@ package se.kth.md.simulinkExchange.popup.actions;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 
+import se.kth.md.simulinkExchange.conversion.tasks.ITask;
+
 /**
  * This is a simple wrapper for an Eclipse job monitor.
  * It does not actually adds lots of functionality, only easier names.

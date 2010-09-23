@@ -11,17 +11,18 @@
 /**
  * 
  */
-package se.kth.md.simulinkExchange.popup.actions.simulink2east;
+package se.kth.md.simulinkExchange.popup.actions.ToSimulink;
 
 import org.eclipse.jface.action.IAction;
 
-import se.kth.md.simulinkExchange.popup.actions.ITasksExecutor;
+import se.kth.md.simulinkExchange.conversion.tasks.ITasksExecutor;
+import se.kth.md.simulinkExchange.conversion.tasks.ToSimulink.ExecutorBuilder;
 
 /**
- * This class will choose the appropriate executor builder a Simulink to EAST conversion,
- * and start an Eclipse background job to execute them.
- *
- * @author alesch
+ * This class will created appropiate tasks for an EAST to Simulink conversion,
+ * and start en Eclipse background job to execute them.
+ * 
+ * @author Alex Schenkman
  *
  */
 public class Dispatcher 

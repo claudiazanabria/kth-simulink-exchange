@@ -1,10 +1,10 @@
-package se.kth.md.simulinkExchange.popup.actions.east2simulink;
+package se.kth.md.simulinkExchange.conversion.tasks.ToSimulink;
 
 import org.eclipse.emf.common.util.URI;
 
 import se.kth.md.simulinkExchange.atlHelper.URInotFound;
 import se.kth.md.simulinkExchange.atlHelper.ATLrunConfiguration;
-import se.kth.md.simulinkExchange.popup.actions.ITask;
+import se.kth.md.simulinkExchange.conversion.tasks.ITask;
 
 /**
  * 
@@ -12,7 +12,7 @@ import se.kth.md.simulinkExchange.popup.actions.ITask;
  *
  */
 public class ATLConfigurationBuilderTask 
-	extends se.kth.md.simulinkExchange.popup.actions.ATLConfigurationBuilderTask 
+	extends se.kth.md.simulinkExchange.conversion.tasks.ATLConfigurationBuilderTask 
 	implements ITask {
 
 	//TODO this class is not tested
