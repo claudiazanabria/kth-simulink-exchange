@@ -16,7 +16,7 @@ import static org.junit.Assert.assertTrue;
 import org.eclipse.emf.common.util.URI;
 import org.junit.Test;
 
-import se.kth.md.simulinkExchange.management.ModelManager;
+import se.kth.md.management.ModelManager;
 
 import Simulink.SimulinkFactory;
 import Simulink.SimulinkPackage;

@@ -3,7 +3,7 @@ package se.kth.md.simulinkExchange.conversion.ToSimulink.tasks;
 import se.kth.md.simulinkExchange.conversion.ToSimulink.NameTraverserDelegate;
 import se.kth.md.simulinkExchange.conversion.ToSimulink.TraverseChildrenBeforeInportsStrategy;
 import se.kth.md.simulinkExchange.conversion.tasks.ITask;
-import se.kth.md.simulinkExchange.management.IModelManager;
+import se.kth.md.management.IModelManager;
 
 /**
  * This task will run the name traverser on the given filename (model).

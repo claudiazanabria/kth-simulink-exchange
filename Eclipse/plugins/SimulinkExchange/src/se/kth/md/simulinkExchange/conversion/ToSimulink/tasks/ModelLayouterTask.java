@@ -3,7 +3,7 @@ package se.kth.md.simulinkExchange.conversion.ToSimulink.tasks;
 
 import se.kth.md.simulinkExchange.conversion.ToSimulink.TraversalForLayoutStrategy;
 import se.kth.md.simulinkExchange.conversion.tasks.ITask;
-import se.kth.md.simulinkExchange.management.IModelManager;
+import se.kth.md.management.IModelManager;
 
 public class ModelLayouterTask extends StrategyBasedTraversalTask implements ITask {
 

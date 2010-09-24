@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import se.kth.md.simulinkExchange.conversion.ToSimulink.ITraverserStrategy;
 import se.kth.md.simulinkExchange.conversion.ToSimulink.TraverseChildrenBeforeInportsStrategy;
 import se.kth.md.simulinkExchange.conversion.tasks.ITask;
-import se.kth.md.simulinkExchange.management.IModelManager;
+import se.kth.md.management.IModelManager;
 import Simulink.ProtoObject;
 
 /**

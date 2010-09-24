@@ -10,7 +10,7 @@
 
 package se.kth.md.simulinkExchange.conversion.ToEast;
 
-import se.kth.md.simulinkExchange.management.exceptions.InvalidModelException;
+import se.kth.md.management.exceptions.InvalidModelException;
 import se.kth.md.simulinkExchange.management.simulink.SimulinkModelManager;
        
 import Simulink.Model;
