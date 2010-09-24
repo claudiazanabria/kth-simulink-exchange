@@ -6,6 +6,9 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: ecoremodelwrapper.Activator
 Bundle-Vendor: KTH Mechatronics
 Require-Bundle: org.eclipse.ui,
- org.eclipse.core.runtime
+ org.eclipse.core.runtime,
+ org.eclipse.emf.ecore;bundle-version="2.5.0",
+ apache.commons.io;bundle-version="1.0.1"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
+Import-Package: org.eclipse.emf.ecore.xmi.impl
