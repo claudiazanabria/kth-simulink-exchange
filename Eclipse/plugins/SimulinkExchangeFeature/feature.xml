@@ -88,4 +88,10 @@ Redistribution and use in source and binary forms, with or without modification,
          install-size="0"
          version="0.0.0"/>
 
+   <plugin
+         id="org.jmock_2.5.1"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
 </feature>
