@@ -16,7 +16,7 @@ classdef TestModel < TestCase
         RF1Name = 'RF1';
         F2Name = 'F2';
         wrongName = 'I do not exists';
-        line1UUID
+        line1UUID = UUID.newRandom();
     end
     
     methods
@@ -26,6 +26,7 @@ classdef TestModel < TestCase
 
         function setUp(self)
             new_system(self.modelName);
+            % Check that this produces a york model.
             open_system(self.modelName);
             add_block('built-in/subsystem', [self.modelName '/Subsystem']);
             add_block('built-in/Inport', [self.modelName '/Subsystem/Inport1']);
