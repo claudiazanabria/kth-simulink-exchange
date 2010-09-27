@@ -6,8 +6,8 @@ import Simulink.Model;
 import se.kth.md.simulinkExchange.conversion.ToSimulink.ITraverserDelegate;
 import se.kth.md.simulinkExchange.conversion.ToSimulink.ITraverserStrategy;
 import se.kth.md.simulinkExchange.conversion.tasks.ITask;
-import se.kth.md.management.IModelManager;
-import se.kth.md.management.exceptions.InvalidModelException;
+import se.kth.md.model.management.IModelManager;
+import se.kth.md.model.management.exceptions.InvalidModelException;
 
 public abstract class StrategyBasedTraversalTask implements ITask {
 

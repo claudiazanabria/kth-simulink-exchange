@@ -15,7 +15,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 
 import se.kth.md.simulinkExchange.management.ModelManagerTest;
-import se.kth.md.management.exceptions.InvalidURIException;
+import se.kth.md.model.management.exceptions.InvalidURIException;
 
 /**
  * Test cases for EastModelManager.

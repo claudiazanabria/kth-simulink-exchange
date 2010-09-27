@@ -24,9 +24,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import se.kth.md.management.IModelManager;
-import se.kth.md.management.exceptions.InvalidModelException;
-import se.kth.md.management.exceptions.InvalidURIException;
+import se.kth.md.model.management.IModelManager;
+import se.kth.md.model.management.exceptions.InvalidModelException;
+import se.kth.md.model.management.exceptions.InvalidURIException;
 import se.kth.md.simulinkExchange.management.simulink.SimulinkModelManager;
 
 import Simulink.Model;

@@ -13,7 +13,7 @@ package se.kth.md.simulinkExchange.management.east;
 
 import org.eclipse.emf.common.util.URI;
 
-import se.kth.md.management.ModelManager;
+import se.kth.md.model.management.ModelManager;
 
 import com.cea.papyrus.uml4eastadl.eastadl.EastadlFactory;
 import com.cea.papyrus.uml4eastadl.eastadl.EastadlPackage;

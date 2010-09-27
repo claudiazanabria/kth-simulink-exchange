@@ -18,8 +18,8 @@ import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.ui.statushandlers.StatusManager;
 
 import se.kth.md.simulinkExchange.Activator;
-import se.kth.md.management.IModelManager;
-import se.kth.md.management.exceptions.InvalidModelException;
+import se.kth.md.model.management.IModelManager;
+import se.kth.md.model.management.exceptions.InvalidModelException;
 
 public abstract class TheJob extends Job {
 

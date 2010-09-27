@@ -13,21 +13,19 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.emf.ecore,
  org.eclipse.emf.ecore.xmi,
  com.cea.papyrus.uml4eastadl.extension,
- org.jmock_2.5.1;bundle-version="1.0.0",
  org.junit4,
  se.kth.md.simulinkExchange.JExample,
  org.eclipse.m2m.atl.common,
  org.eclipse.m2m.atl.core,
  se.kth.md.simulinkExchange.metamodel.Simulink;bundle-version="3.2.7",
- se.kth.md.EcoreModelWrapper;bundle-version="1.0.0"
+ se.kth.md.EcoreModelWrapper;bundle-version="1.0.0",
+ org.jmock_2.5.1;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Export-Package: se.kth.md.simulinkExchange,
  se.kth.md.simulinkExchange.conversion.exceptions,
  se.kth.md.simulinkExchange.conversion.tasks,
- se.kth.md.simulinkExchange.management,
  se.kth.md.simulinkExchange.management.east,
- se.kth.md.simulinkExchange.management.exceptions,
  se.kth.md.simulinkExchange.management.simulink,
  se.kth.md.simulinkExchange.popup.actions,
  se.kth.md.simulinkExchange.popup.actions.validation

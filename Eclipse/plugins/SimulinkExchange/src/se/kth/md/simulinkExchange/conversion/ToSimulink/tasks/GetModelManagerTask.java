@@ -4,7 +4,7 @@ import org.eclipse.emf.common.util.URI;
 
 import se.kth.md.simulinkExchange.atlHelper.ATLrunConfiguration;
 import se.kth.md.simulinkExchange.conversion.tasks.ITask;
-import se.kth.md.management.IModelManager;
+import se.kth.md.model.management.IModelManager;
 import se.kth.md.simulinkExchange.management.simulink.SimulinkModelManager;
 
 public class GetModelManagerTask implements ITask {
