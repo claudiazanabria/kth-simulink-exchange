@@ -33,7 +33,7 @@ public abstract class Dispatcher implements IObjectActionDelegate {
 
 	protected Shell shell;
 	protected ISelection selection;
-
+	protected IPath selectedFilename = null;
 	
 	/**
 	 * Constructor for Action1.
@@ -42,6 +42,15 @@ public abstract class Dispatcher implements IObjectActionDelegate {
 		super();
 	}
 
+	/**
+	 * Used for testing.
+	 * @param selectedFilename
+	 */
+	protected Dispatcher(IPath selectedFilename) {
+		this();
+		this.selectedFilename = selectedFilename;
+	}
+	
 	/**
 	 * @see IObjectActionDelegate#setActivePart(IAction, IWorkbenchPart)
 	 */
@@ -62,10 +71,14 @@ public abstract class Dispatcher implements IObjectActionDelegate {
 	}
 
 	protected IPath selectedFilename() {
-		//Cast to StructuredSelection
-		StructuredSelection aSelection = (StructuredSelection) this.selection;
-		IFile filen = (IFile) aSelection.getFirstElement();
-		return filen.getLocation();
+		if (selectedFilename == null) {
+			//Cast to StructuredSelection
+			StructuredSelection aSelection = (StructuredSelection) this.selection;
+			IFile filen = (IFile) aSelection.getFirstElement();
+			selectedFilename = null;
+			return filen.getLocation(); }
+		else { 
+			return selectedFilename; }
 	}
 
 	protected void runInBackground(IAction action, ITasksExecutor executor) {
