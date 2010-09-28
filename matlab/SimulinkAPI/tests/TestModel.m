@@ -12,11 +12,12 @@ classdef TestModel < TestCase
     
     properties(Constant)
         % Use consistent case
-        modelName = 'yorkDummy';
+        libraryName = timeStamp('Library');
+        modelName = timeStamp('yorkDummy');
         RF1Name = 'RF1';
         F2Name = 'F2';
         wrongName = 'I do not exists';
-        line1UUID = UUID.newRandom();
+        line1UUID = char( java.util.UUID.randomUUID() );
     end
     
     methods
@@ -25,26 +26,45 @@ classdef TestModel < TestCase
         end
 
         function setUp(self)
+            %close all systems
+            sysList = find_system();
+            for x=1:size(sysList)
+                close_system( sysList(x), 0 );
+            end
+            %Setup system and library
+            new_system(self.libraryName,'Library');
+            open_system(self.libraryName);
             new_system(self.modelName);
-            % Check that this produces a york model.
             open_system(self.modelName);
-            add_block('built-in/subsystem', [self.modelName '/Subsystem']);
-            add_block('built-in/Inport', [self.modelName '/Subsystem/Inport1']);
-            add_block('built-in/Outport', [self.modelName '/Subsystem/Outport1']);
-            
-            add_block('built-in/subsystem', [self.modelName '/Subsystem1']);
-            add_block('built-in/Inport', [self.modelName '/Subsystem1/Inport1']);
-            add_block('built-in/Outport', [self.modelName '/Subsystem1/Outport1']);
-            add_line(self.modelName,'Subsystem/1','Subsystem1/1')
-            add_line(self.modelName,'Subsystem1/1','Subsystem/1')
-            add_block('built-in/subsystem', [self.modelName '/Subsystem2']);
-            add_block('built-in/Inport', [self.modelName '/Subsystem2/Inport1']);
-            add_block('built-in/Outport', [self.modelName '/Subsystem2/Outport1']);
-            add_block('built-in/subsystem', [self.modelName '/Subsystem2/Subsystem3']);
-            add_block('built-in/Inport', [self.modelName '/Subsystem2/Subsystem3/Inport1']);
-            add_block('built-in/Outport', [self.modelName '/Subsystem2/Subsystem3/Outport1']);
-            self.RF1OutportHandle = 2323; % ports have two handles!?!
-            self.aModel = Model.recreateFromModel(self.modelName);
+            set_param(self.libraryName,'Lock','off');
+            %Setup F1
+            add_block('built-in/subsystem', [self.modelName '/F1']);
+            add_block('built-in/Inport', [self.modelName '/F1/Inport1']);
+            add_block('built-in/Outport', [self.modelName '/F1/Outport1']);
+            add_block([self.modelName '/F1'], [self.libraryName '/rF1']);
+            save_system(self.libraryName);
+            replace_block(self.modelName, 'Handle', get_param([self.libraryName '/rF1'],'Handle'), [self.modelName '/F1'], 'noprompt')
+            %Setup F2
+            add_block('built-in/subsystem', [self.modelName '/F2']);
+            add_block('built-in/Inport', [self.modelName '/F2/Inport1']);
+            add_block('built-in/Outport', [self.modelName '/F2/Outport1']);
+            add_block('built-in/Outport', [self.modelName '/F2/Outport2']);
+            %setup F21
+            add_block('built-in/subsystem', [self.modelName '/F2/F21']);
+            add_block('built-in/Inport', [self.modelName '/F2/F21/Inport1']);
+            add_block('built-in/Outport', [self.modelName '/F2/F21/Outport1']);
+            %setup F22: A reference block (!)
+            add_block([self.libraryName '/rF1'], [self.modelName '/F2/F22']);
+            %add lines inside F2
+            add_line([self.modelName '/F2'],'Inport1/1','F21/1');
+            add_line([self.modelName '/F2'],'Inport1/1','F22/1');
+            add_line([self.modelName '/F2'],'F21/1','Outport1/1');
+            add_line([self.modelName '/F2'],'F22/1','Outport2/1');
+            %setup Gainblock F3
+            add_block('built-in/Gain', [self.modelName '/F3']);
+            %add lines in root model
+            add_line(self.modelName,'F1/1','F2/1');
+            add_line(self.modelName,'F2/1','F3/1');
         end
 
         function tearDown(self)

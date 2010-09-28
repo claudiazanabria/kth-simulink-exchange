@@ -1,4 +1,4 @@
-classdef Block
+classdef Block < HandleObject
     %BLOCK Phantom class for Simulink blocks
     %   Detailed explanation goes here
     
