@@ -94,4 +94,18 @@ Redistribution and use in source and binary forms, with or without modification,
          install-size="0"
          version="0.0.0"/>
 
+   <plugin
+         id="ATLRunner"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="se.kth.md.EcoreModelWrapper"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
 </feature>

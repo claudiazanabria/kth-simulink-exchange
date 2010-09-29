@@ -19,5 +19,7 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface Port extends ProtoObject {
+	
+	Simulink.System getParent();
 
 } // Port
