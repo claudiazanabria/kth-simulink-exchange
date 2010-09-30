@@ -1,115 +1,142 @@
 classdef TestModel < TestCase
-
+    
     properties
         aModel;
         refBloc;
-        Block;
-        GainBlock;
         RF1OutportHandle;
         F2Inport;
-        line1;
     end
     
     properties(Constant)
-        % Use consistent case
-        libraryName = timeStamp('Library');
-        modelName = timeStamp('yorkDummy');
+        libraryName = BasicElements.SimulinkEntityName('Library').timeStamped();
+        modelName = BasicElements.SimulinkEntityName('yorkDummy').timeStamped();
         RF1Name = 'RF1';
         F2Name = 'F2';
         wrongName = 'I do not exists';
         line1UUID = char( java.util.UUID.randomUUID() );
     end
     
-    methods
-        function self = TestModel(name)
-            self = self@TestCase(name);
-        end
-
-        function setUp(self)
-            %close all systems
+    methods (Static)
+        function closeAllSystems()
             sysList = find_system();
             for x=1:size(sysList)
                 close_system( sysList(x), 0 );
             end
-            %Setup system and library
+        end     
+    end
+    
+    methods
+        function self = TestModel(name)
+            self = self@TestCase(name);
+            disp('---- Constructor ----');
+        end
+
+        function setupLibrary( self )
             new_system(self.libraryName,'Library');
-            open_system(self.libraryName);
-            new_system(self.modelName);
-            open_system(self.modelName);
+            load_system(self.libraryName);
             set_param(self.libraryName,'Lock','off');
-            %Setup F1
+        end
+        
+        function setupF1( self )
             add_block('built-in/subsystem', [self.modelName '/F1']);
             add_block('built-in/Inport', [self.modelName '/F1/Inport1']);
             add_block('built-in/Outport', [self.modelName '/F1/Outport1']);
-            add_block([self.modelName '/F1'], [self.libraryName '/rF1']);
-            save_system(self.libraryName);
-            replace_block(self.modelName, 'Handle', get_param([self.libraryName '/rF1'],'Handle'), [self.modelName '/F1'], 'noprompt')
-            %Setup F2
+            self.replaceSystemWithSysReferenceFromLibrary([self.modelName '/F1'], '/rF1');
+        end
+        
+        function setupF2( self )
             add_block('built-in/subsystem', [self.modelName '/F2']);
             add_block('built-in/Inport', [self.modelName '/F2/Inport1']);
             add_block('built-in/Outport', [self.modelName '/F2/Outport1']);
-            add_block('built-in/Outport', [self.modelName '/F2/Outport2']);
-            %setup F21
+            add_block('built-in/Outport', [self.modelName '/F2/Outport2']);            
+        end
+        
+        function setupF21( self )
             add_block('built-in/subsystem', [self.modelName '/F2/F21']);
             add_block('built-in/Inport', [self.modelName '/F2/F21/Inport1']);
             add_block('built-in/Outport', [self.modelName '/F2/F21/Outport1']);
-            %setup F22: A reference block (!)
+        end
+        
+        function setupF22( self )
+            % A reference block (!)
             add_block([self.libraryName '/rF1'], [self.modelName '/F2/F22']);
-            %add lines inside F2
-            add_line([self.modelName '/F2'],'Inport1/1','F21/1');
-            add_line([self.modelName '/F2'],'Inport1/1','F22/1');
-            add_line([self.modelName '/F2'],'F21/1','Outport1/1');
-            add_line([self.modelName '/F2'],'F22/1','Outport2/1');
-            %setup Gainblock F3
+        end
+        
+        function addLinesInsideF22( self )
+            f2Name = [self.modelName '/F2'];
+            add_line(f2Name, 'Inport1/1','F21/1');
+            add_line(f2Name, 'Inport1/1','F22/1');
+            add_line(f2Name, 'F21/1','Outport1/1');
+            add_line(f2Name, 'F22/1','Outport2/1');
+        end
+        
+        function setupF2GainBlock( self) 
             add_block('built-in/Gain', [self.modelName '/F3']);
-            %add lines in root model
+        end
+        
+        function addLinesInRootModel( self )
             add_line(self.modelName,'F1/1','F2/1');
             add_line(self.modelName,'F2/1','F3/1');
         end
+        
+        % This should be part of an EAST-ADL layer, not model.
+        function replaceSystemWithSysReferenceFromLibrary(self, source, destination)
+            self.copySystemToLibrary(source, destination);
+            save_system( self.libraryName );
+            sysRefHandle = get_param([self.libraryName destination],'Handle');
+            replace_block(self.modelName, 'Handle', sysRefHandle, source, 'noprompt')            
+        end
+        
+        function copySystemToLibrary(self, source, destination)
+            add_block(source, [self.libraryName destination]);
+        end
+        
+        function setUp( self )
+            TestModel.closeAllSystems();
+            self.setupLibrary();
+            new_system(self.modelName,'Model');
+            load_system(self.modelName);
+            self.setupF1();
+            self.setupF2();
+            self.setupF21();
+            self.setupF22();
+            self.addLinesInsideF22();
+            self.setupF2GainBlock();
+            self.addLinesInRootModel();
+            self.aModel = BasicElements.Model( self.modelName );
+        end
 
-        function tearDown(self)
-            close_system(self.modelName,0);
+        function tearDown(self) %#ok<MANU>
+            %close_system(self.modelName,0);
         end
 
         function testGetChildren(self)
+            import BasicElements.*;
             children = self.aModel.children;
             assertEqual(3,children.size );            
-            assertEqual(1,aModel.numberOfChildrenOfType( GainBlock.class ) );
-            assertEqual(1,aModel.numberOfChildrenOfType( Block.class ) );
-            assertEqual(1,aModel.numberOfChildrenOfType( refBlock.class ) );
+            assertEqual(1,self.aModel.numberOfChildrenOfType( GainBlock.class() ));
+            assertEqual(1,self.aModel.numberOfChildrenOfType( Block.class() ));
+            assertEqual(1,self.aModel.numberOfChildrenOfType( RefBlock.class() ));
         end
         
         function testModelContainmentWithName( self )
-            assertTrue( aModel.contains( self.F2Name ) );
-            assertFalse( aModel.contains( self.wrongName ));
-            block = aModel.child( self.F2Name );
+            assertTrue( self.aModel.contains( self.F2Name ) );
+            assertFalse( self.aModel.contains( self.wrongName ));
+            block = self.aModel.child( self.F2Name );
             assertEquals(self.F2UUID, block.UUID());
         end
         
         function testModelContainmentWithUUID( self )
-            assertTrue( aModel.contains( self.F2UUID ) );
-            assertFalse( aModel.contains( self.UUID ));
-            block = aModel.child( self.F2UUID );
+            assertTrue( self.aModel.contains( self.F2UUID ) );
+            assertFalse( self.aModel.contains( self.UUID ));
+            block = self.aModel.child( self.F2UUID );
             assertEquals(self.F2Name, block.name());            
         end
         
         function testLines(self)
             line1 = self.aModel.lines( self.line1UUID );
             assertEqual(self.RF1OutportHandle, line1.source.handle);
-            
-
         end
-        
-        
-        function testModelHandle(self)
-            assertEqual(get_param(self.modelName,'handle'),self.t.handle)
-            
-            
-        end
-        
-        function testUnknownModel(self)
-            assertExceptionThrown(Model('noname'));
-        end
-            
+                        
     end    
 end
