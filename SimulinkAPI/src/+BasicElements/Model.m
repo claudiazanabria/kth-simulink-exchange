@@ -6,9 +6,6 @@ classdef Model < ProtoObject
         lines;
     end
     methods (Static)
-        function result = class()
-            result = 'BasicElemen.Model';
-        end
         
         function checkModelIsLoaded( modelName )
             if ( ~ bdisloaded(modeName) )
@@ -23,7 +20,7 @@ classdef Model < ProtoObject
         function self = Model(modelName)
             % Model(rootName) constructs a Model object
             BasicElements.Model.checkModelIsLoaded( modelName );
-            self = self@ProtoObject( modelName );
+            %self = self@ProtoObject( modelName );
         end        
        
         function getlines(self)

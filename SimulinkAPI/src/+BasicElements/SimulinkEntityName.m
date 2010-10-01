@@ -1,5 +1,5 @@
-classdef SimulinkEntityName
-    properties (Access = private)
+classdef SimulinkEntityName < handle
+    properties %(Access = private)
         string;
     end
    
@@ -16,5 +16,8 @@ classdef SimulinkEntityName
             result = [self.string '_' dateStringNow];
         end
 
+        function getstring(self)
+            self.string = 'ale';
+        end
     end
 end

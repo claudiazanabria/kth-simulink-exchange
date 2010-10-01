@@ -5,11 +5,11 @@ classdef TestModel < TestCase
         refBloc;
         RF1OutportHandle;
         F2Inport;
+        libraryName;
+        modelName;
     end
     
     properties(Constant)
-        libraryName = BasicElements.SimulinkEntityName('Library').timeStamped();
-        modelName = BasicElements.SimulinkEntityName('yorkDummy').timeStamped();
         RF1Name = 'RF1';
         F2Name = 'F2';
         wrongName = 'I do not exists';
@@ -92,6 +92,10 @@ classdef TestModel < TestCase
         end
         
         function setUp( self )
+            disp('\nentering setup');
+            self.libraryName = BasicElements.SimulinkEntityName('Library').timeStamped();
+            self.modelName = BasicElements.SimulinkEntityName('yorkDummy').timeStamped();
+
             TestModel.closeAllSystems();
             self.setupLibrary();
             new_system(self.modelName,'Model');
@@ -104,13 +108,17 @@ classdef TestModel < TestCase
             self.setupF2GainBlock();
             self.addLinesInRootModel();
             self.aModel = BasicElements.Model( self.modelName );
+            disp('\nending setup');
         end
 
-        function tearDown(self) %#ok<MANU>
-            %close_system(self.modelName,0);
+        function tearDown(self) 
+            disp('teardown');
+            close_system(self.modelName,0);
+            delete([self.libraryName '.mdl']);
         end
 
         function testGetChildren(self)
+            disp('test1')
             import BasicElements.*;
             children = self.aModel.children;
             assertEqual(3,children.size );            

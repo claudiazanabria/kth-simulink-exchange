@@ -13,7 +13,7 @@ classdef ProtoObject < handle
     
     methods
         function self = ProtoObject( name )
-            self.entityName = SimulinkEntityName( name );
+            self.entityName = BasicElements.SimulinkEntityName( name );
             self.name = self.entityName.string;
             self.handle = get_param(name,'Handle');            
         end        
