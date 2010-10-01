@@ -19,7 +19,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.m2m.atl.core,
  se.kth.md.simulinkExchange.metamodel.Simulink;bundle-version="3.2.7",
  se.kth.md.EcoreModelWrapper;bundle-version="1.0.0",
- org.jmock_2.5.1;bundle-version="1.0.0"
+ org.jmock_2.5.1;bundle-version="1.0.0",
+ org.eclipse.pde.junit.runtime;bundle-version="3.4.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Export-Package: se.kth.md.simulinkExchange,
@@ -30,3 +31,18 @@ Export-Package: se.kth.md.simulinkExchange,
  se.kth.md.simulinkExchange.popup.actions,
  se.kth.md.simulinkExchange.popup.actions.validation
 Import-Package: se.kth.md.simulinkExchange.atlHelper
+Eclipse-LazyStart: true
+Eclipse-BuddyPolicy: registered
+Bundle-ClassPath: bsh-core-2.0b4.jar,
+ cglib-2.1_3-src.jar,
+ cglib-nodep-2.1_3.jar,
+ hamcrest-core-1.1.jar,
+ hamcrest-library-1.1.jar,
+ jmock-2.5.1.jar,
+ jmock-junit3-2.5.1.jar,
+ jmock-junit4-2.5.1.jar,
+ jmock-legacy-2.5.1.jar,
+ jmock-script-2.5.1.jar,
+ objenesis-1.0.jar,
+ .
+ 

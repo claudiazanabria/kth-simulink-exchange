@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Datatypes="http://www.papyrusuml.org/EAST-ADL2/Infrastructure/Datatypes/1" xmlns:FunctionModeling="http://www.papyrusuml.org/EAST-ADL2/Structure/FunctionModeling/1" xmlns:HardwareModeling="http://www.papyrusuml.org/EAST-ADL2/Structure/HardwareModeling/1" xmlns:SystemModeling="http://www.papyrusuml.org/EAST-ADL2/Structure/SystemModeling/1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xsi:schemaLocation="http://www.papyrusuml.org/EAST-ADL2/Infrastructure/Datatypes/1 http://www.papyrusuml.org/EAST-ADL2/1#//infrastructure/datatypes http://www.papyrusuml.org/EAST-ADL2/Structure/FunctionModeling/1 http://www.papyrusuml.org/EAST-ADL2/1#//structure/functionmodeling http://www.papyrusuml.org/EAST-ADL2/Structure/HardwareModeling/1 http://www.papyrusuml.org/EAST-ADL2/1#//structure/hardwaremodeling http://www.papyrusuml.org/EAST-ADL2/Structure/SystemModeling/1 http://www.papyrusuml.org/EAST-ADL2/1#//structure/systemmodeling">
+  <uml:Model xmi:id="_fYlkcHmNEd-f74mnxArL6w" name="SimpleSimulink">
+    <packageImport xmi:id="_fYlkcXmNEd-f74mnxArL6w">
+      <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:Class" xmi:id="_fZKMMHmNEd-f74mnxArL6w" name="SystemModel"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_fZotUXmNEd-f74mnxArL6w" name="AnalysisLevel">
+      <ownedAttribute xmi:id="_fbix0XmNEd-f74mnxArL6w" name="faa" visibility="public" type="_falvkXmNEd-f74mnxArL6w">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_zkKxUMVaEd-YObwfdkX5oA" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_zkBnYMVaEd-YObwfdkX5oA" value="1"/>
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_zkKxUcVaEd-YObwfdkX5oA">
+          <value xsi:nil="true"/>
+        </defaultValue>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_fZ7BMXmNEd-f74mnxArL6w" name="DesignLevel">
+      <ownedAttribute xmi:id="_fb1FsXmNEd-f74mnxArL6w" name="fda" type="_fa4DcXmNEd-f74mnxArL6w"/>
+      <ownedAttribute xmi:id="_fcNgMXmNEd-f74mnxArL6w" name="hda" type="_fbQd8XmNEd-f74mnxArL6w"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_faNVEXmNEd-f74mnxArL6w" name="ImplementationLevel"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_falvkXmNEd-f74mnxArL6w" name="FunctionalAnalysisArchitecture">
+      <ownedAttribute xmi:id="_DCEpwMVbEd-YObwfdkX5oA" name="ssFaa" visibility="public" type="_w8TS0HmNEd-f74mnxArL6w" isUnique="false" aggregation="composite">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_E0EL0cVbEd-YObwfdkX5oA" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_E0EL0MVbEd-YObwfdkX5oA" value="1"/>
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_E0EL0sVbEd-YObwfdkX5oA">
+          <value xsi:nil="true"/>
+        </defaultValue>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_fa4DcXmNEd-f74mnxArL6w" name="FunctionalDesignArchitecture"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_fbQd8XmNEd-f74mnxArL6w" name="HardwareDesignArchitecture"/>
+    <packagedElement xmi:type="uml:Package" xmi:id="_hoaSAHmNEd-f74mnxArL6w" name="Package_0">
+      <packagedElement xmi:type="uml:Class" xmi:id="_j_4fsHmNEd-f74mnxArL6w" name="Class_0">
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_BPU1YHmOEd-f74mnxArL6w" name="Port_0" type="_72vAEHmNEd-f74mnxArL6w" aggregation="composite"/>
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_B3PxAHmOEd-f74mnxArL6w" name="Port_1" type="_72vAEHmNEd-f74mnxArL6w" aggregation="composite"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_kzK90HmNEd-f74mnxArL6w" name="Class_1">
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_CpefMHmOEd-f74mnxArL6w" name="Port_0" type="_72vAEHmNEd-f74mnxArL6w" aggregation="composite"/>
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_DXajQHmOEd-f74mnxArL6w" name="Port_1" type="_72vAEHmNEd-f74mnxArL6w" aggregation="composite"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_72vAEHmNEd-f74mnxArL6w" name="DataType_0"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_w8TS0HmNEd-f74mnxArL6w" name="SimpleSimulink">
+        <ownedAttribute xmi:id="_SXf0gL_dEd-4krfZK-1f8A" name="Property_0" visibility="public" type="_j_4fsHmNEd-f74mnxArL6w" isUnique="false" aggregation="composite">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_qfsjkb_dEd-4krfZK-1f8A" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qfsjkL_dEd-4krfZK-1f8A" value="1"/>
+          <defaultValue xmi:type="uml:LiteralString" xmi:id="_qf2UkL_dEd-4krfZK-1f8A">
+            <value xsi:nil="true"/>
+          </defaultValue>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_TP-UoL_dEd-4krfZK-1f8A" name="Property_1" type="_kzK90HmNEd-f74mnxArL6w" isUnique="false" aggregation="composite"/>
+        <ownedConnector xmi:id="_vEQB4MWFEd-YObwfdkX5oA" name="Port_1Port_0connector">
+          <end xmi:id="_vEZy4MWFEd-YObwfdkX5oA" role="_B3PxAHmOEd-f74mnxArL6w" partWithPort="_SXf0gL_dEd-4krfZK-1f8A"/>
+          <end xmi:id="_vEZy4cWFEd-YObwfdkX5oA" role="_CpefMHmOEd-f74mnxArL6w" partWithPort="_TP-UoL_dEd-4krfZK-1f8A"/>
+        </ownedConnector>
+        <ownedConnector xmi:id="_vfE8sMWFEd-YObwfdkX5oA" name="Port_0Port_1connector">
+          <end xmi:id="_vfOGoMWFEd-YObwfdkX5oA" role="_BPU1YHmOEd-f74mnxArL6w" partWithPort="_SXf0gL_dEd-4krfZK-1f8A"/>
+          <end xmi:id="_vfOGocWFEd-YObwfdkX5oA" role="_DXajQHmOEd-f74mnxArL6w" partWithPort="_TP-UoL_dEd-4krfZK-1f8A"/>
+        </ownedConnector>
+      </packagedElement>
+    </packagedElement>
+    <profileApplication xmi:id="_fYlkcnmNEd-f74mnxArL6w">
+      <eAnnotations xmi:id="_fYlkc3mNEd-f74mnxArL6w" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/uml2/schemas/Standard/1#/"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
+    </profileApplication>
+    <profileApplication xmi:id="_fYlkdHmNEd-f74mnxArL6w">
+      <eAnnotations xmi:id="_fYlkdXmNEd-f74mnxArL6w" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.papyrusuml.org/EAST-ADL2/1#//variability"/>
+      </eAnnotations>
+      <appliedProfile href="platform:/plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_i-WL-TxIEdyqfK4bFJstMQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_fYlkdnmNEd-f74mnxArL6w">
+      <eAnnotations xmi:id="_fYlkd3mNEd-f74mnxArL6w" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.papyrusuml.org/EAST-ADL2/1#//behavior"/>
+      </eAnnotations>
+      <appliedProfile href="platform:/plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_i-WMfjxIEdyqfK4bFJstMQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_fYlkeHmNEd-f74mnxArL6w">
+      <eAnnotations xmi:id="_fYlkeXmNEd-f74mnxArL6w" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.papyrusuml.org/EAST-ADL2/1#//requirements"/>
+      </eAnnotations>
+      <appliedProfile href="platform:/plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_i-WLPzxIEdyqfK4bFJstMQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_fYlkenmNEd-f74mnxArL6w">
+      <eAnnotations xmi:id="_fYlke3mNEd-f74mnxArL6w" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.papyrusuml.org/EAST-ADL2/1#//requirements/verificationvalidation"/>
+      </eAnnotations>
+      <appliedProfile href="platform:/plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_i-WKtDxIEdyqfK4bFJstMQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_fYlkfHmNEd-f74mnxArL6w">
+      <eAnnotations xmi:id="_fYlkfXmNEd-f74mnxArL6w" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.papyrusuml.org/EAST-ADL2/1#//structure/functionmodeling"/>
+      </eAnnotations>
+      <appliedProfile href="platform:/plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_i-WP9DxIEdyqfK4bFJstMQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_fYlkfnmNEd-f74mnxArL6w">
+      <eAnnotations xmi:id="_fYlkf3mNEd-f74mnxArL6w" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.papyrusuml.org/EAST-ADL2/1#//structure/featuremodeling"/>
+      </eAnnotations>
+      <appliedProfile href="platform:/plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_i-f62DxIEdyqfK4bFJstMQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_fYlkgHmNEd-f74mnxArL6w">
+      <eAnnotations xmi:id="_fYlkgXmNEd-f74mnxArL6w" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.papyrusuml.org/EAST-ADL2/1#//structure/systemmodeling"/>
+      </eAnnotations>
+      <appliedProfile href="platform:/plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_i-f8CzxIEdyqfK4bFJstMQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_fYlkgnmNEd-f74mnxArL6w">
+      <eAnnotations xmi:id="_fYlkg3mNEd-f74mnxArL6w" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.papyrusuml.org/EAST-ADL2/1#//structure/hardwaremodeling"/>
+      </eAnnotations>
+      <appliedProfile href="platform:/plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_V5LXIHJVEdyx6oOkwavytg"/>
+    </profileApplication>
+    <profileApplication xmi:id="_fYlkhHmNEd-f74mnxArL6w">
+      <eAnnotations xmi:id="_fYlkhXmNEd-f74mnxArL6w" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.papyrusuml.org/EAST-ADL2/1#//structure/vehiclefeaturemodeling"/>
+      </eAnnotations>
+      <appliedProfile href="platform:/plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_VtDYsNl5EdyxEqZvsyllRw"/>
+    </profileApplication>
+    <profileApplication xmi:id="_fYlkhnmNEd-f74mnxArL6w">
+      <eAnnotations xmi:id="_fYlkh3mNEd-f74mnxArL6w" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.papyrusuml.org/EAST-ADL2/1#//infrastructure/datatypes"/>
+      </eAnnotations>
+      <appliedProfile href="platform:/plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_i-WNLTxIEdyqfK4bFJstMQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_fYlkiHmNEd-f74mnxArL6w">
+      <eAnnotations xmi:id="_fYlkiXmNEd-f74mnxArL6w" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.papyrusuml.org/EAST-ADL2/1#//infrastructure/elements"/>
+      </eAnnotations>
+      <appliedProfile href="platform:/plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_i-WNZjxIEdyqfK4bFJstMQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_fYlkinmNEd-f74mnxArL6w">
+      <eAnnotations xmi:id="_fYlki3mNEd-f74mnxArL6w" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.papyrusuml.org/EAST-ADL2/1#//infrastructure/userattributes"/>
+      </eAnnotations>
+      <appliedProfile href="platform:/plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_2M5XsNu0EdyN-KVwISucrA"/>
+    </profileApplication>
+    <profileApplication xmi:id="_fYlkjHmNEd-f74mnxArL6w">
+      <eAnnotations xmi:id="_fYlkjXmNEd-f74mnxArL6w" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.papyrusuml.org/EAST-ADL2/1#//timing"/>
+      </eAnnotations>
+      <appliedProfile href="platform:/plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_N7DvcNjgEd6wXIBypQTswA"/>
+    </profileApplication>
+    <profileApplication xmi:id="_fYlkjnmNEd-f74mnxArL6w">
+      <eAnnotations xmi:id="_fYlkj3mNEd-f74mnxArL6w" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.papyrusuml.org/EAST-ADL2/1#//timing/timingconstraints"/>
+      </eAnnotations>
+      <appliedProfile href="platform:/plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_a_kcsNjiEd6wXIBypQTswA"/>
+    </profileApplication>
+    <profileApplication xmi:id="_fYlkkHmNEd-f74mnxArL6w">
+      <eAnnotations xmi:id="_fYlkkXmNEd-f74mnxArL6w" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.papyrusuml.org/EAST-ADL2/1#//timing/events"/>
+      </eAnnotations>
+      <appliedProfile href="platform:/plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_KfvdINj2Ed6rlulM-6rbhg"/>
+    </profileApplication>
+    <profileApplication xmi:id="_fYlkknmNEd-f74mnxArL6w">
+      <eAnnotations xmi:id="_fYlkk3mNEd-f74mnxArL6w" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.papyrusuml.org/EAST-ADL2/1#//interchange"/>
+      </eAnnotations>
+      <appliedProfile href="platform:/plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_f0woANj4Ed6rlulM-6rbhg"/>
+    </profileApplication>
+    <profileApplication xmi:id="_fYlklHmNEd-f74mnxArL6w">
+      <eAnnotations xmi:id="_fYlklXmNEd-f74mnxArL6w" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.papyrusuml.org/EAST-ADL2/1#//environment"/>
+      </eAnnotations>
+      <appliedProfile href="platform:/plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_i-f77zxIEdyqfK4bFJstMQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_fYlklnmNEd-f74mnxArL6w">
+      <eAnnotations xmi:id="_fYlkl3mNEd-f74mnxArL6w" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.papyrusuml.org/EAST-ADL2/1#//dependability"/>
+      </eAnnotations>
+      <appliedProfile href="platform:/plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_LJxzMEn1Ed-CwvH3DORXbA"/>
+    </profileApplication>
+    <profileApplication xmi:id="_fYlkmHmNEd-f74mnxArL6w">
+      <eAnnotations xmi:id="_fYlkmXmNEd-f74mnxArL6w" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.papyrusuml.org/EAST-ADL2/1#//dependability/errormodel"/>
+      </eAnnotations>
+      <appliedProfile href="platform:/plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_i-WMfzxIEdyqfK4bFJstMQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_fYlkmnmNEd-f74mnxArL6w">
+      <eAnnotations xmi:id="_fYlkm3mNEd-f74mnxArL6w" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.papyrusuml.org/EAST-ADL2/1#//dependability/safetyrequirement"/>
+      </eAnnotations>
+      <appliedProfile href="platform:/plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_ZNvgwN4lEdyW6f_GAa5b1w"/>
+    </profileApplication>
+    <profileApplication xmi:id="_fYlknHmNEd-f74mnxArL6w">
+      <eAnnotations xmi:id="_fYlknXmNEd-f74mnxArL6w" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.papyrusuml.org/EAST-ADL2/1#//dependability/safetycase"/>
+      </eAnnotations>
+      <appliedProfile href="platform:/plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_Tb650N4qEdyW6f_GAa5b1w"/>
+    </profileApplication>
+    <profileApplication xmi:id="_fYlknnmNEd-f74mnxArL6w">
+      <eAnnotations xmi:id="_fYlkn3mNEd-f74mnxArL6w" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.papyrusuml.org/EAST-ADL2/1#//dependability/safetyconstraints"/>
+      </eAnnotations>
+      <appliedProfile href="platform:/plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_bEdtYErpEd-899EX5XYvlQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_fYlkoHmNEd-f74mnxArL6w">
+      <eAnnotations xmi:id="_fYlkoXmNEd-f74mnxArL6w" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.papyrusuml.org/EAST-ADL2/1#//annex/needs"/>
+      </eAnnotations>
+      <appliedProfile href="platform:/plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_OTomkErmEd-squZ2Pzs1Iw"/>
+    </profileApplication>
+    <profileApplication xmi:id="_fYlkonmNEd-f74mnxArL6w">
+      <eAnnotations xmi:id="_fYlko3mNEd-f74mnxArL6w" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.papyrusuml.org/EAST-ADL2/1#//genericconstraints"/>
+      </eAnnotations>
+      <appliedProfile href="platform:/plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_tZKz0ErpEd-899EX5XYvlQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_fYlkpHmNEd-f74mnxArL6w">
+      <eAnnotations xmi:id="_fYlkpXmNEd-f74mnxArL6w" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.papyrusuml.org/SysML/1#//blocks"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://SysML_PROFILES/SysML.profile.uml#_fSw28LX7EduFmqQsrNB9lw"/>
+    </profileApplication>
+  </uml:Model>
+  <SystemModeling:SystemModel xmi:id="_fZotUHmNEd-f74mnxArL6w" implementationLevel="_falvkHmNEd-f74mnxArL6w" analysisLevel="_fZ7BMHmNEd-f74mnxArL6w" designLevel="_faNVEHmNEd-f74mnxArL6w" base_Class="_fZKMMHmNEd-f74mnxArL6w"/>
+  <SystemModeling:AnalysisLevel xmi:id="_fZ7BMHmNEd-f74mnxArL6w" base_Class="_fZotUXmNEd-f74mnxArL6w" functionalAnalysisArchitecture="_fb1FsHmNEd-f74mnxArL6w"/>
+  <SystemModeling:DesignLevel xmi:id="_faNVEHmNEd-f74mnxArL6w" base_Class="_fZ7BMXmNEd-f74mnxArL6w" functionalDesignArchitecture="_fcNgMHmNEd-f74mnxArL6w" hardwareDesignArchitecture="_fcf0EHmNEd-f74mnxArL6w"/>
+  <SystemModeling:ImplementationLevel xmi:id="_falvkHmNEd-f74mnxArL6w" base_Class="_faNVEXmNEd-f74mnxArL6w"/>
+  <FunctionModeling:AnalysisFunctionType xmi:id="_fa4DcHmNEd-f74mnxArL6w" base_Class="_falvkXmNEd-f74mnxArL6w"/>
+  <FunctionModeling:DesignFunctionType xmi:id="_fbQd8HmNEd-f74mnxArL6w" base_Class="_fa4DcXmNEd-f74mnxArL6w"/>
+  <HardwareModeling:HardwareComponentType xmi:id="_fbix0HmNEd-f74mnxArL6w" base_Class="_fbQd8XmNEd-f74mnxArL6w"/>
+  <FunctionModeling:AnalysisFunctionPrototype xmi:id="_fb1FsHmNEd-f74mnxArL6w" base_Property="_fbix0XmNEd-f74mnxArL6w"/>
+  <FunctionModeling:DesignFunctionPrototype xmi:id="_fcNgMHmNEd-f74mnxArL6w" base_Property="_fb1FsXmNEd-f74mnxArL6w"/>
+  <HardwareModeling:HardwareComponentPrototype xmi:id="_fcf0EHmNEd-f74mnxArL6w" base_Property="_fcNgMXmNEd-f74mnxArL6w"/>
+  <FunctionModeling:AnalysisFunctionType xmi:id="_kGYJQHmNEd-f74mnxArL6w" base_Class="_j_4fsHmNEd-f74mnxArL6w"/>
+  <FunctionModeling:AnalysisFunctionType xmi:id="_kzvlkHmNEd-f74mnxArL6w" base_Class="_kzK90HmNEd-f74mnxArL6w"/>
+  <FunctionModeling:AnalysisFunctionType xmi:id="_w8xz8HmNEd-f74mnxArL6w" base_Class="_w8TS0HmNEd-f74mnxArL6w"/>
+  <Datatypes:EAFloat xmi:id="_95GgcHmNEd-f74mnxArL6w" base_DataType="_72vAEHmNEd-f74mnxArL6w"/>
+  <FunctionModeling:FunctionFlowPort xmi:id="_BP_jwHmOEd-f74mnxArL6w" base_Port="_BPU1YHmOEd-f74mnxArL6w" direction="in"/>
+  <FunctionModeling:FunctionFlowPort xmi:id="_B4AmAHmOEd-f74mnxArL6w" base_Port="_B3PxAHmOEd-f74mnxArL6w" direction="out"/>
+  <FunctionModeling:FunctionFlowPort xmi:id="_CqJNkHmOEd-f74mnxArL6w" base_Port="_CpefMHmOEd-f74mnxArL6w" direction="in"/>
+  <FunctionModeling:FunctionFlowPort xmi:id="_DYRe4HmOEd-f74mnxArL6w" base_Port="_DXajQHmOEd-f74mnxArL6w" direction="out"/>
+  <FunctionModeling:AnalysisFunctionPrototype xmi:id="_SYGRcL_dEd-4krfZK-1f8A" base_Property="_SXf0gL_dEd-4krfZK-1f8A"/>
+  <FunctionModeling:AnalysisFunctionPrototype xmi:id="_TQRPkL_dEd-4krfZK-1f8A" base_Property="_TP-UoL_dEd-4krfZK-1f8A"/>
+  <FunctionModeling:AnalysisFunctionPrototype xmi:id="_DChVsMVbEd-YObwfdkX5oA" base_Property="_DCEpwMVbEd-YObwfdkX5oA"/>
+  <FunctionModeling:FunctionConnector xmi:id="_xyS8gMWFEd-YObwfdkX5oA" base_Connector="_vEQB4MWFEd-YObwfdkX5oA"/>
+  <FunctionModeling:FunctionConnector xmi:id="_y_CccMWFEd-YObwfdkX5oA" base_Connector="_vfE8sMWFEd-YObwfdkX5oA"/>
+</xmi:XMI>

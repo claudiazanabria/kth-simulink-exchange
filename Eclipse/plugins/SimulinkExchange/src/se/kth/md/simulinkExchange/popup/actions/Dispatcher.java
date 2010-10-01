@@ -42,14 +42,6 @@ public abstract class Dispatcher implements IObjectActionDelegate {
 		super();
 	}
 
-	/**
-	 * Used for testing.
-	 * @param selectedFilename
-	 */
-	protected Dispatcher(IPath selectedFilename) {
-		this();
-		this.selectedFilename = selectedFilename;
-	}
 	
 	/**
 	 * @see IObjectActionDelegate#setActivePart(IAction, IWorkbenchPart)

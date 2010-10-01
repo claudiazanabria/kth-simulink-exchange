@@ -1,0 +1,24 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: JMockPlugin
+Bundle-SymbolicName: org.jmock_2.5.1
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: jmock.Activator
+Bundle-Vendor: KTH Mechatronics
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.junit4
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: bsh-core-2.0b4.jar,
+ cglib-2.1_3-src.jar,
+ cglib-nodep-2.1_3.jar,
+ hamcrest-core-1.1.jar,
+ hamcrest-library-1.1.jar,
+ jmock-2.5.1.jar,
+ jmock-junit3-2.5.1.jar,
+ jmock-junit4-2.5.1.jar,
+ jmock-legacy-2.5.1.jar,
+ jmock-script-2.5.1.jar,
+ objenesis-1.0.jar
+
