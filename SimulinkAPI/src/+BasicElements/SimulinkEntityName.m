@@ -1,23 +1,26 @@
 classdef SimulinkEntityName < handle
-    properties %(Access = private)
-        string;
+    properties (Access = private)
+        text;
     end
    
     methods
         function self = SimulinkEntityName( aString )
-            %tc = SimulinkEntityNamePreConditions( aString );
-            %tc.runIt();
-            
-            self.string = aString;
+            self.checkInputDoesNotConatainSymbols( aString );
+            self.text = aString;
         end
 
         function result = timeStamped( self )
             dateStringNow = datestr(now,'ddmmmyy_HHMMSS');
-            result = [self.string '_' dateStringNow];
+            result = [self.text '_' dateStringNow];
         end
 
-        function getstring(self)
-            self.string = 'ale';
+        function checkInputDoesNotConatainSymbols(self, aString) %#ok<MANU>
+            % Don: fix this!
+            if strcmp(aString,'a$') == 1
+                e = MException('SimulinkAPI:EntityName:ShouldNotContainSymbols', ...
+                'A name should not contain special symbols!');
+                throw(e);
+            end
         end
     end
 end

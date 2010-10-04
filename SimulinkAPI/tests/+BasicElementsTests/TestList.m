@@ -1,5 +1,6 @@
 classdef TestList < TestCase
 
+    % check constructin with empty array.
     properties
         aList;
     end
@@ -25,6 +26,7 @@ classdef TestList < TestCase
         
         function testAccesingAnElement(self)
             assertEqual( 1,self.aList.at(1) );
+            assertEqual(1, strcmp('alex',self.aList.at(3)) );
         end
     end    
 end

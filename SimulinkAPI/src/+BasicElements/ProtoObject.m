@@ -1,22 +1,28 @@
 classdef ProtoObject < handle
     %PROTOOBJECT the base class for all Simulink objects with handle
     %   
-    
-    properties (Access = private)
-        entityName
-    end
-    
+        
     properties
-        name; % syntax sugar, only for convenice.
-        handle;
+        identity;
+        children;
+        mask;
     end
     
     methods
         function self = ProtoObject( name )
-            self.entityName = BasicElements.SimulinkEntityName( name );
-            self.name = self.entityName.string;
-            self.handle = get_param(name,'Handle');            
-        end        
+            self.identity = BasicElements.SimulinkEntityName( name );
+        end  
+        
+        % Syntax sugar: p.identity.handle = p.handle
+        function h = handle(self)
+            h = self.identity.handle;
+        end
+        
+        % Syntax sugar: p.identity.name = p.name
+        function n = name(self)
+            n = self.identity.name;
+        end
+        
     end
 end
 

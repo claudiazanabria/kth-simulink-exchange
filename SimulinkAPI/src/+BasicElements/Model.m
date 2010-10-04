@@ -3,8 +3,8 @@ classdef Model < ProtoObject
     %   
     
     properties
-        lines;
     end
+    
     methods (Static)
         
         function checkModelIsLoaded( modelName )
@@ -17,17 +17,13 @@ classdef Model < ProtoObject
     end
     
     methods
-        function self = Model(modelName)
+        function self = Model( modelName )
             % Model(rootName) constructs a Model object
-            BasicElements.Model.checkModelIsLoaded( modelName );
-            %self = self@ProtoObject( modelName );
+            %BasicElements.Model.checkModelIsLoaded( modelName );
+            self = self@ProtoObject( modelName );
+            self.children = ChildrenSupport( self );
         end        
        
-        function getlines(self)
-            if self.lines == null
-                self.lines = 5;
-            end
-        end
     end
     
 end
