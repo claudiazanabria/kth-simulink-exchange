@@ -112,18 +112,18 @@
 		<constant value="53"/>
 		<constant value="aSystem"/>
 		<constant value="System"/>
-		<constant value="47:42-47:43"/>
-		<constant value="47:42-47:48"/>
-		<constant value="47:66-47:71"/>
-		<constant value="47:66-47:82"/>
-		<constant value="47:42-47:85"/>
 		<constant value="48:42-48:43"/>
 		<constant value="48:42-48:48"/>
 		<constant value="48:66-48:71"/>
-		<constant value="48:66-48:83"/>
+		<constant value="48:66-48:82"/>
 		<constant value="48:42-48:85"/>
-		<constant value="51:13-51:23"/>
-		<constant value="51:3-57:5"/>
+		<constant value="49:42-49:43"/>
+		<constant value="49:42-49:48"/>
+		<constant value="49:66-49:71"/>
+		<constant value="49:66-49:83"/>
+		<constant value="49:42-49:85"/>
+		<constant value="52:13-52:23"/>
+		<constant value="52:3-60:5"/>
 		<constant value="aPort"/>
 		<constant value="__applyFunctionTypes2Subsystems"/>
 		<constant value="base_Class"/>
@@ -133,29 +133,29 @@
 		<constant value="children"/>
 		<constant value="J.Inports(J):J"/>
 		<constant value="J.Outports(J):J"/>
-		<constant value="52:15-52:16"/>
-		<constant value="52:15-52:27"/>
-		<constant value="52:15-52:32"/>
-		<constant value="52:5-52:32"/>
-		<constant value="53:17-53:18"/>
-		<constant value="53:17-53:23"/>
-		<constant value="53:40-53:50"/>
-		<constant value="53:86-53:91"/>
-		<constant value="53:40-53:92"/>
-		<constant value="53:17-53:93"/>
-		<constant value="53:5-53:93"/>
-		<constant value="54:17-54:24"/>
-		<constant value="54:44-54:54"/>
-		<constant value="54:63-54:68"/>
-		<constant value="54:44-54:69"/>
-		<constant value="54:17-54:72"/>
-		<constant value="54:5-54:72"/>
-		<constant value="55:18-55:26"/>
-		<constant value="55:45-55:55"/>
-		<constant value="55:65-55:70"/>
-		<constant value="55:45-55:71"/>
-		<constant value="55:18-55:73"/>
-		<constant value="55:5-55:73"/>
+		<constant value="53:15-53:16"/>
+		<constant value="53:15-53:27"/>
+		<constant value="53:15-53:32"/>
+		<constant value="53:5-53:32"/>
+		<constant value="54:17-54:18"/>
+		<constant value="54:17-54:23"/>
+		<constant value="55:21-55:31"/>
+		<constant value="55:67-55:72"/>
+		<constant value="55:21-55:73"/>
+		<constant value="54:17-55:74"/>
+		<constant value="54:5-55:74"/>
+		<constant value="56:17-56:24"/>
+		<constant value="56:44-56:54"/>
+		<constant value="56:63-56:68"/>
+		<constant value="56:44-56:69"/>
+		<constant value="56:17-56:72"/>
+		<constant value="56:5-56:72"/>
+		<constant value="57:18-57:26"/>
+		<constant value="57:45-57:55"/>
+		<constant value="57:65-57:70"/>
+		<constant value="57:45-57:71"/>
+		<constant value="57:18-57:73"/>
+		<constant value="57:5-57:73"/>
 		<constant value="aPart"/>
 		<constant value="FunctionPrototypes2SystemReference"/>
 		<constant value="MEST!AnalysisFunctionPrototype;"/>
@@ -165,64 +165,86 @@
 		<constant value="SystemReference"/>
 		<constant value="base_Property"/>
 		<constant value="target"/>
-		<constant value="66:15-66:16"/>
-		<constant value="66:15-66:30"/>
-		<constant value="66:15-66:35"/>
-		<constant value="66:5-66:35"/>
-		<constant value="67:16-67:17"/>
-		<constant value="67:16-67:22"/>
-		<constant value="67:5-67:22"/>
-		<constant value="65:3-69:5"/>
+		<constant value="69:15-69:16"/>
+		<constant value="69:15-69:30"/>
+		<constant value="69:15-69:35"/>
+		<constant value="69:5-69:35"/>
+		<constant value="70:16-70:17"/>
+		<constant value="70:16-70:22"/>
+		<constant value="70:5-70:22"/>
+		<constant value="68:3-72:5"/>
 		<constant value="Inports"/>
 		<constant value="MEST!FunctionFlowPort;"/>
 		<constant value="43"/>
 		<constant value="Inport"/>
 		<constant value="base_Port"/>
-		<constant value="77:12-77:13"/>
-		<constant value="77:12-77:23"/>
-		<constant value="77:12-77:28"/>
-		<constant value="77:4-77:28"/>
-		<constant value="76:3-78:5"/>
+		<constant value="82:12-82:13"/>
+		<constant value="82:12-82:23"/>
+		<constant value="82:12-82:28"/>
+		<constant value="82:4-82:28"/>
+		<constant value="81:3-83:5"/>
 		<constant value="Outports"/>
 		<constant value="Outport"/>
-		<constant value="86:13-86:14"/>
-		<constant value="86:13-86:24"/>
-		<constant value="86:13-86:29"/>
-		<constant value="86:4-86:29"/>
-		<constant value="85:3-87:5"/>
-		<constant value="isOutport"/>
+		<constant value="91:13-91:14"/>
+		<constant value="91:13-91:24"/>
+		<constant value="91:13-91:29"/>
+		<constant value="91:4-91:29"/>
+		<constant value="90:3-92:5"/>
+		<constant value="isInOutport"/>
 		<constant value="0"/>
 		<constant value="direction"/>
 		<constant value="EnumLiteral"/>
-		<constant value="out"/>
+		<constant value="inout"/>
 		<constant value="J.=(J):J"/>
-		<constant value="92:2-92:6"/>
-		<constant value="92:2-92:16"/>
-		<constant value="92:19-92:23"/>
-		<constant value="92:2-92:23"/>
+		<constant value="97:2-97:6"/>
+		<constant value="97:2-97:16"/>
+		<constant value="97:19-97:25"/>
+		<constant value="97:2-97:25"/>
+		<constant value="isOutport"/>
+		<constant value="out"/>
+		<constant value="100:2-100:6"/>
+		<constant value="100:2-100:16"/>
+		<constant value="100:19-100:23"/>
+		<constant value="100:2-100:23"/>
 		<constant value="isInport"/>
-		<constant value="J.not():J"/>
-		<constant value="97:6-97:10"/>
-		<constant value="97:6-97:22"/>
-		<constant value="97:2-97:22"/>
+		<constant value="J.isInOutport():J"/>
+		<constant value="J.or(J):J"/>
+		<constant value="8"/>
+		<constant value="9"/>
+		<constant value="106:5-106:9"/>
+		<constant value="106:5-106:23"/>
+		<constant value="106:27-106:31"/>
+		<constant value="106:27-106:43"/>
+		<constant value="106:5-106:43"/>
+		<constant value="109:3-109:7"/>
+		<constant value="107:3-107:8"/>
+		<constant value="106:2-110:7"/>
 		<constant value="Connector2Lines"/>
 		<constant value="MEST!FunctionConnector;"/>
-		<constant value="51"/>
 		<constant value="J.last():J"/>
 		<constant value="Line"/>
 		<constant value="base_Connector"/>
-		<constant value="107:36-107:37"/>
-		<constant value="107:36-107:42"/>
-		<constant value="107:36-107:51"/>
-		<constant value="108:36-108:37"/>
-		<constant value="108:36-108:42"/>
-		<constant value="108:36-108:50"/>
-		<constant value="112:15-112:16"/>
-		<constant value="112:15-112:31"/>
-		<constant value="112:15-112:36"/>
-		<constant value="112:5-112:36"/>
-		<constant value="111:3-115:5"/>
 		<constant value="source"/>
+		<constant value="destination"/>
+		<constant value="120:36-120:37"/>
+		<constant value="120:36-120:42"/>
+		<constant value="120:36-120:51"/>
+		<constant value="121:36-121:37"/>
+		<constant value="121:36-121:42"/>
+		<constant value="121:36-121:50"/>
+		<constant value="126:15-126:16"/>
+		<constant value="126:15-126:31"/>
+		<constant value="126:15-126:36"/>
+		<constant value="126:5-126:36"/>
+		<constant value="127:16-127:26"/>
+		<constant value="127:36-127:42"/>
+		<constant value="127:16-127:44"/>
+		<constant value="127:5-127:44"/>
+		<constant value="128:20-128:30"/>
+		<constant value="128:41-128:45"/>
+		<constant value="128:20-128:47"/>
+		<constant value="128:5-128:47"/>
+		<constant value="125:3-129:5"/>
 		<constant value="dest"/>
 	</cp>
 	<field name="1" type="2"/>
@@ -959,42 +981,67 @@
 		</parameters>
 		<code>
 			<load arg="190"/>
-			<call arg="107"/>
-			<call arg="200"/>
+			<get arg="191"/>
+			<push arg="192"/>
+			<push arg="8"/>
+			<new/>
+			<dup/>
+			<push arg="200"/>
+			<set arg="38"/>
+			<call arg="194"/>
 		</code>
 		<linenumbertable>
 			<lne id="201" begin="0" end="0"/>
 			<lne id="202" begin="0" end="1"/>
-			<lne id="203" begin="0" end="2"/>
+			<lne id="203" begin="2" end="7"/>
+			<lne id="204" begin="0" end="8"/>
 		</linenumbertable>
 		<localvariabletable>
-			<lve slot="0" name="17" begin="0" end="2"/>
+			<lve slot="0" name="17" begin="0" end="8"/>
 		</localvariabletable>
 	</operation>
-	<operation name="204">
-		<context type="6"/>
+	<operation name="205">
+		<context type="173"/>
 		<parameters>
-			<parameter name="19" type="205"/>
 		</parameters>
 		<code>
-			<getasm/>
-			<get arg="1"/>
-			<push arg="204"/>
-			<load arg="19"/>
-			<call arg="158"/>
-			<dup/>
-			<call arg="23"/>
-			<if arg="159"/>
-			<load arg="19"/>
-			<call arg="25"/>
-			<goto arg="206"/>
+			<load arg="190"/>
+			<call arg="206"/>
+			<load arg="190"/>
+			<call arg="107"/>
+			<call arg="207"/>
+			<if arg="208"/>
+			<pusht/>
+			<goto arg="209"/>
+			<pushf/>
+		</code>
+		<linenumbertable>
+			<lne id="210" begin="0" end="0"/>
+			<lne id="211" begin="0" end="1"/>
+			<lne id="212" begin="2" end="2"/>
+			<lne id="213" begin="2" end="3"/>
+			<lne id="214" begin="0" end="4"/>
+			<lne id="215" begin="6" end="6"/>
+			<lne id="216" begin="8" end="8"/>
+			<lne id="217" begin="0" end="8"/>
+		</linenumbertable>
+		<localvariabletable>
+			<lve slot="0" name="17" begin="0" end="8"/>
+		</localvariabletable>
+	</operation>
+	<operation name="218">
+		<context type="6"/>
+		<parameters>
+			<parameter name="19" type="219"/>
+		</parameters>
+		<code>
 			<getasm/>
 			<get arg="1"/>
 			<push arg="53"/>
 			<push arg="8"/>
 			<new/>
 			<dup/>
-			<push arg="204"/>
+			<push arg="218"/>
 			<call arg="54"/>
 			<dup/>
 			<push arg="55"/>
@@ -1006,11 +1053,11 @@
 			<store arg="29"/>
 			<load arg="19"/>
 			<get arg="101"/>
-			<call arg="207"/>
+			<call arg="220"/>
 			<store arg="66"/>
 			<dup/>
 			<push arg="67"/>
-			<push arg="208"/>
+			<push arg="221"/>
 			<push arg="68"/>
 			<new/>
 			<dup/>
@@ -1022,32 +1069,54 @@
 			<dup/>
 			<getasm/>
 			<load arg="19"/>
-			<get arg="209"/>
+			<get arg="222"/>
 			<get arg="38"/>
 			<call arg="30"/>
 			<set arg="38"/>
+			<dup/>
+			<getasm/>
+			<getasm/>
+			<load arg="29"/>
+			<call arg="130"/>
+			<call arg="30"/>
+			<set arg="223"/>
+			<dup/>
+			<getasm/>
+			<getasm/>
+			<load arg="66"/>
+			<call arg="131"/>
+			<call arg="30"/>
+			<set arg="224"/>
 			<pop/>
 			<load arg="87"/>
 		</code>
 		<linenumbertable>
-			<lne id="210" begin="23" end="23"/>
-			<lne id="211" begin="23" end="24"/>
-			<lne id="212" begin="23" end="25"/>
-			<lne id="213" begin="27" end="27"/>
-			<lne id="214" begin="27" end="28"/>
-			<lne id="215" begin="27" end="29"/>
-			<lne id="216" begin="44" end="44"/>
-			<lne id="217" begin="44" end="45"/>
-			<lne id="218" begin="44" end="46"/>
-			<lne id="219" begin="42" end="48"/>
-			<lne id="220" begin="41" end="49"/>
+			<lne id="225" begin="12" end="12"/>
+			<lne id="226" begin="12" end="13"/>
+			<lne id="227" begin="12" end="14"/>
+			<lne id="228" begin="16" end="16"/>
+			<lne id="229" begin="16" end="17"/>
+			<lne id="230" begin="16" end="18"/>
+			<lne id="231" begin="33" end="33"/>
+			<lne id="232" begin="33" end="34"/>
+			<lne id="233" begin="33" end="35"/>
+			<lne id="234" begin="31" end="37"/>
+			<lne id="235" begin="40" end="40"/>
+			<lne id="236" begin="41" end="41"/>
+			<lne id="237" begin="40" end="42"/>
+			<lne id="238" begin="38" end="44"/>
+			<lne id="239" begin="47" end="47"/>
+			<lne id="240" begin="48" end="48"/>
+			<lne id="241" begin="47" end="49"/>
+			<lne id="242" begin="45" end="51"/>
+			<lne id="243" begin="30" end="52"/>
 		</linenumbertable>
 		<localvariabletable>
-			<lve slot="4" name="67" begin="37" end="50"/>
-			<lve slot="2" name="221" begin="26" end="50"/>
-			<lve slot="3" name="222" begin="30" end="50"/>
-			<lve slot="0" name="17" begin="0" end="50"/>
-			<lve slot="1" name="55" begin="0" end="50"/>
+			<lve slot="4" name="67" begin="26" end="53"/>
+			<lve slot="2" name="223" begin="15" end="53"/>
+			<lve slot="3" name="244" begin="19" end="53"/>
+			<lve slot="0" name="17" begin="0" end="53"/>
+			<lve slot="1" name="55" begin="0" end="53"/>
 		</localvariabletable>
 	</operation>
 </asm>

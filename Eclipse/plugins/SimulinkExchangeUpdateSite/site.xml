@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/se.kth.md.simulinkExchange.feature_3.1.19.201009291154.jar" id="se.kth.md.simulinkExchange.feature" version="3.1.19.201009291154">
+   <feature url="features/se.kth.md.simulinkExchange.feature_3.1.19.201010011517.jar" id="se.kth.md.simulinkExchange.feature" version="3.1.19.201010011517">
       <category name="simulink.excahnge"/>
    </feature>
    <category-def name="simulink.excahnge" label="Simulink Exchange"/>

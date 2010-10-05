@@ -6,7 +6,7 @@ import org.osgi.framework.BundleContext;
 public class Activator extends AbstractUIPlugin {
 
 	// The plug-in ID
-	public static final String PLUGIN_ID = "ATLRunner";
+	public static final String PLUGIN_ID = "org.jmock_2.5.1";
 
 	// The shared instance
 	private static Activator plugin;
