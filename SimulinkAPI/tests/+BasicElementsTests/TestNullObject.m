@@ -5,7 +5,7 @@ classdef TestNullObject < TestCase
         end
         
         function testInitialiseAsListIfEmpty(self) %#ok<MANU>
-            n = Null();
+            n = BasicElements.Null();
             array = [1 2 3];
             n.initialiseAsListIfEmpty( array );
             assertTrue(lentgth(array), n.size);

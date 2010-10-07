@@ -14,7 +14,7 @@ classdef TestList < TestCase
         end
 
         function setUp(self)
-            self.aList = List([1 2 'alex' ]);
+            self.aList = BasicElements.List([1 2 'alex' ]);
         end
 
         function tearDown(self)

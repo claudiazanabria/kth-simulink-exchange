@@ -5,21 +5,21 @@ classdef SimulinkEntityNameTest < TestCase
         end
         
         function testInputShouldNotStartWithANumber(self) %#ok<MANU>
-            import BasicElements.SimulinkEntityName;
+% % %             import BasicElements.SimulinkEntityName;
             exceptionName = 'SimulinkAPI:EntityName:ShouldNotStartWithNumber';
-            assertExceptionThrown(SimulinkEntityName('1aNme'), exceptionName);
+            assertExceptionThrown(BasicElements.SimulinkEntityName('1aNme'), exceptionName);
         end
         
         function testInputShouldNotContainSpaces(self)  %#ok<MANU>
-            import BasicElements.SimulinkEntityName;            
+% % %             import BasicElements.SimulinkEntityName;            
             exceptionName = 'SimulinkAPI:EntityName:ShouldNotContainSpaces';
-            assertExceptionThrown(SimulinkEntityName('a Name'), exceptionName);
+            assertExceptionThrown(BasicElements.SimulinkEntityName('a Name'), exceptionName);
         end
         
         function testInputShouldNotContainSymbols(self)  %#ok<MANU>
-            import BasicElements.SimulinkEntityName;            
+% % %             import BasicElements.SimulinkEntityName;            
             exceptionName = 'SimulinkAPI:EntityName:ShouldNotContainSymbols';
-            f = @() SimulinkEntityName('a$');
+            f = @() BasicElements.SimulinkEntityName('a$');
             assertExceptionThrown(f, exceptionName);
             %assertExceptionThrown(SimulinkEntityName('-a'), exceptionName);
             %assertExceptionThrown(SimulinkEntityName('+a'), exceptionName);
