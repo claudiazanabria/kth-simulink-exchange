@@ -4,15 +4,16 @@ classdef ProtoObject < handle
         
     properties
         identity;
-        children;
         mask;
     end
     
-    methods
-        function self = ProtoObject( name )
-            self.identity = BasicElements.SimulinkEntityName( name );
+    methods (Access=protected)
+        function self = ProtoObject( identity )
+            self.identity = identity;
         end  
-        
+    end
+    
+    methods
         % Syntax sugar: p.identity.handle = p.handle
         function h = handle(self)
             h = self.identity.handle;

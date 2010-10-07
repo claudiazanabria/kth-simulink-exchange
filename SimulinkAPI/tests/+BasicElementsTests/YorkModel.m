@@ -44,11 +44,11 @@ classdef YorkModel < handle
         end
         
         function closeModel( self )
-            close_system( self.modelName );
+            close_system( self.modelName, 0 );
         end
         
         function closeLibrary( self )
-            close_system( self.libraryName );
+            close_system( self.libraryName, 0 );
         end
 
         function loadAll( self )
@@ -64,6 +64,11 @@ classdef YorkModel < handle
             load_system( self.libraryName );
         end
 
+        function deleteFiles( self )
+            self.closeAll();
+            delete([self.modelName '.mdl']);            
+            delete([self.libraryName '.mdl']);            
+        end
     end
     methods (Access=private)
     

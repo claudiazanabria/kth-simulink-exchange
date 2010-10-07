@@ -8,7 +8,7 @@ classdef List < handle
             self.elements = aList;
         end
         
-        function initialiseAsListIfEmpty( aList ) %#ok<MANU>
+        function self=initialiseAsListIfEmpty( self, aList ) %#ok<INUSD>
         end
         
         function result = size( self )

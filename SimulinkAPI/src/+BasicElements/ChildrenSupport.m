@@ -6,11 +6,11 @@ classdef ChildrenSupport < handle
     methods
         function self = ChildrenSupport( parent )
             self.parent = parent;
-            self.list = Null();
+            self.list = BasicElements.Null();
         end
         
         function result = size( self )
-            self.list.initialiseAsListIfEmpty( self.childrenOfParent() );
+            self.list = self.list.initialiseAsListIfEmpty( self.childrenOfParent() );
             result = self.list.size;
         end
     end
@@ -18,8 +18,10 @@ classdef ChildrenSupport < handle
     methods (Access=private)
         function children = childrenOfParent( self )
             handle = self.parent.handle;
-            %TODO: fine tune this command!
-            children = find_system(handle);
+            blocks = BasicElements.SimulinkEnv.findAllBlocksWithin(handle);
+            lines = BasicElements.SimulinkEnv.findAllLinesWithin(handle);
+            children = [blocks ; lines];
         end
+        
     end
 end
