@@ -1,11 +1,14 @@
 classdef GainBlock < ProtoObject
     
     methods
-        function self = GainBlock()
-            self = self@ProtoObject();
-            self.children = ChildrenNOTSupported();
+        function self = GainBlock( identity )
+            self = self@ProtoObject( identity );
         end        
        
+        function selectGainBlocks( self, aList )
+            aList.add( self );            
+        end
+
     end
     
 end

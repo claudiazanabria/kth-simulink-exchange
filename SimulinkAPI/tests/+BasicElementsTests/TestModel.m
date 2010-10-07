@@ -11,7 +11,6 @@ classdef TestModel < TestCase
         end
    
         function setUp( self )            
-            %BasicElementsTests.SimulinkEnv.closeAllSystems();   
             import BasicElements.Model;
             self.yorkModel = BasicElementsTests.YorkModel();
             self.yorkModel.loadModel();
@@ -19,7 +18,6 @@ classdef TestModel < TestCase
         end
 
         function tearDown(self) 
-            disp('Teardown');
             self.yorkModel.deleteFiles();
         end
 

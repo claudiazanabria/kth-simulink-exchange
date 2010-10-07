@@ -14,10 +14,8 @@ classdef TestList < TestCase
         end
 
         function setUp(self)
-            self.aList = BasicElements.List([1 2 'alex' ]);
-        end
-
-        function tearDown(self)
+            aCell = {1 2 'alex'};
+            self.aList = BasicElements.List( aCell );
         end
 
         function testSize(self)
@@ -26,7 +24,23 @@ classdef TestList < TestCase
         
         function testAccesingAnElement(self)
             assertEqual( 1,self.aList.at(1) );
-            assertEqual(1, strcmp('alex',self.aList.at(3)) );
+            assertEqual('alex',self.aList.at(3) );
+        end
+        
+        function testAt(self)
+            assertEqual(1, self.aList.at(1));
+            assertEqual(2, self.aList.at(2));
+            assertEqual('alex', self.aList.at(3));            
+        end
+        
+        function testAtWithWorngIndex( self )         
+            f = @() self.list.at(5);
+            assertExceptionThrown(f, 'MATLAB:noSuchMethodOrField');
+        end
+        
+        function testAdd(self)
+            self.aList.add(42);
+            assertEqual(42,self.aList.at(4));
         end
     end    
 end

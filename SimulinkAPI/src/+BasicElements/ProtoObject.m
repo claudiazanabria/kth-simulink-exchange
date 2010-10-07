@@ -24,6 +24,8 @@ classdef ProtoObject < handle
             n = self.identity.name;
         end
         
+        function selectGainBlocks( self, aList ) %#ok<INUSD,MANU>
+        end
     end
 end
 
