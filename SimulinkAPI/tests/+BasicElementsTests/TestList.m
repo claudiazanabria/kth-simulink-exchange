@@ -34,8 +34,8 @@ classdef TestList < TestCase
         end
         
         function testAtWithWorngIndex( self )         
-            f = @() self.list.at(5);
-            assertExceptionThrown(f, 'MATLAB:noSuchMethodOrField');
+            f = @() self.aList.at(5);
+            assertExceptionThrown(f, 'MATLAB:badsubscript');
         end
         
         function testAdd(self)
