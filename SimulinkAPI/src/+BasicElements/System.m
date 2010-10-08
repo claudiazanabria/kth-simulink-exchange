@@ -1,11 +1,11 @@
-classdef GainBlock < BasicElements.ProtoObject
+classdef System < BasicElements.ProtoObject
     
     properties
         parent
     end
     
     methods
-        function self = GainBlock( identity, parent )
+        function self = System( identity, parent )
             self = self@BasicElements.ProtoObject( identity );
             self.parent = parent;
         end        
@@ -16,7 +16,7 @@ classdef GainBlock < BasicElements.ProtoObject
         
         function str = asString( self )
             %FIXME: part of this str shuld be built by the superclass.
-            str = sprintf('Gain:\t %s (%g)',self.name, self.handle);
+            str = sprintf('System:\t %s (%g)',self.name, self.handle);
         end
 
     end

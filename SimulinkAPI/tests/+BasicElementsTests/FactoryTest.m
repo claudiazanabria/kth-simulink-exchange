@@ -16,6 +16,9 @@ classdef FactoryTest < TestCase
 
         function tearDown(self) 
             self.yorkModel.deleteFiles();
-        end                        
+        end
+        
+        function testNewGainBlock( self )
+        end
     end    
 end

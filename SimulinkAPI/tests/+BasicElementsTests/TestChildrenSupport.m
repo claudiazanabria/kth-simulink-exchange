@@ -1,29 +1,32 @@
-classdef ChildrenSupportTest < TestCase
+classdef TestChildrenSupport < TestCase
     
     properties (Access=private)
         yorkModel;
+        children;
     end
         
     methods
-        function self = ChildrenSupportTest(name)
+        function self = TestChildrenSupport(name)
             self = self@TestCase(name);   
         end
    
-        function setUp( self )            
+        function setUp( self )  
+            import BasicElements.Model;
             self.yorkModel = BasicElementsTests.YorkModel();
             self.yorkModel.loadModel();
+            aModel = Model.from( self.yorkModel.modelName );
+            self.children = aModel.children;
         end
 
         function tearDown(self) 
             self.yorkModel.deleteFiles();
         end
 
-        function testGetChildren( self )
-            children = self.aModel.children;
-            assertEqual(5,children.size );            
-            assertEqual(1,children.ofTypeGainBlock );
-            assertEqual(1,children.ofTypeSystem );
-            assertEqual(1,children.ofTypeRefBlock );
+        function testGetChildren( self )            
+            assertEqual(5, self.children.size );            
+            assertEqual(1,self.children.ofTypeGainBlock.size );
+            assertEqual(1,self.children.ofTypeSystem.size );
+%            assertEqual(1,self.children.ofTypeRefBlock.size );
         end
         
 %         function testModelContainmentWithName( self )

@@ -42,6 +42,12 @@ classdef List < handle
                 result.atPut(i, aFunction( self.at(i) ));
             end            
         end
+
+        function do( self, aFunction )
+            for i = 1:self.size;
+                aFunction( self.at(i) );
+            end            
+        end
         
         function cells = asCells( self )
             cells = cell(1,self.size);
@@ -57,6 +63,10 @@ classdef List < handle
             end
         end
         
+        function dump( self )
+            f = @(each) each.dump;
+            self.do( f );
+        end
     end
     
     methods (Static, Access=private)

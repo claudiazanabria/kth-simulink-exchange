@@ -15,7 +15,7 @@ classdef ChildrenSupport < handle
         function list = get.list( self )
             import BasicElements.Factory;
             handlelist = BasicElements.List( self.childrenHandleList );
-            convertHandleToObjects = @(each) Factory.newChildFromHandle( self.parent, each );
+            convertHandleToObjects = @(each) Factory.newChildFromHandle(each, self.parent);
             list = handlelist.collect( convertHandleToObjects );
         end
         
@@ -24,14 +24,29 @@ classdef ChildrenSupport < handle
         end
         
         function result = ofTypeGainBlock( self )
-            result = BasicElements.List( [] );
             f = @(list, element) element.ifGainBlockAddToList(list); 
-            self.list.injectInto(result, f);
+            result = self.injectInto( f );
         end
         
+        function result = ofTypeSystem( self )
+            f = @(list, element) element.ifSystemAddToList(list); 
+            result = self.injectInto( f );
+        end
+
+        function result = ofTypeRefBlock( self )
+            f = @(list, element) element.ifRefBlockAddToList(list); 
+            result = self.injectInto( f );
+        end
+
     end
     
     methods (Access=private)
+
+        function result = injectInto( self, aFunction )
+            result = BasicElements.List( {} );
+            self.list.injectInto(result, aFunction);
+        end
+        
         function children = childrenHandleList( self )
             handle = self.parent.handle;
             blocks = BasicElements.SimulinkEnv.findAllBlocksWithin(handle);

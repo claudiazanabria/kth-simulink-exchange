@@ -9,11 +9,21 @@ classdef ProtoObject < handle
     
     methods (Access=protected)
         function self = ProtoObject( identityOrHandleOrName )
-            self.identity = BasicElements.Identity(identityOrHandleOrName);
+            import BasicElements.Identity;
+            self.identity = Identity.from(identityOrHandleOrName);
         end  
     end
     
     methods
+        
+        function str = asString( self )
+            str = sprintf('%s (%s)',self.name, self.handle);
+        end
+        
+        function dump( self )
+            disp(self.asString);
+        end
+        
         % Syntax sugar: p.identity.handle = p.handle
         function h = handle(self)
             h = self.identity.handle;
@@ -24,7 +34,13 @@ classdef ProtoObject < handle
             n = self.identity.name;
         end
         
-        function ifGainBlockAddToList( self, aList ) %#ok<INUSD,MANU>
+        function aList = ifGainBlockAddToList( self, aList ) %#ok<INUSD,MANU>
+        end
+        
+        function aList = ifSystemAddToList( self, aList )  %#ok<INUSD,MANU>
+        end
+        
+        function aList = ifRefBlockAddToList( self, aList )  %#ok<INUSD,MANU>
         end
     end
 end
