@@ -24,7 +24,7 @@ classdef ProtoObject < handle
             n = self.identity.name;
         end
         
-        function selectGainBlocks( self, aList ) %#ok<INUSD,MANU>
+        function ifGainBlockAddToList( self, aList ) %#ok<INUSD,MANU>
         end
     end
 end

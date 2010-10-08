@@ -1,13 +1,6 @@
-classdef Factory
-    %FACTORY Factory class to create new Simulink objects
-    %   Detailed explanation goes here
-    
-    properties
+classdef Factory < handle
+    methods (Static)
+        function object = newChildFromHandle( parent, handle )
+        end
     end
-    
-    methods
-        newModel()
-    end
-    
 end
-

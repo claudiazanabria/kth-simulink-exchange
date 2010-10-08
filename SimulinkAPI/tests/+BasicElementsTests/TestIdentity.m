@@ -46,8 +46,7 @@ classdef TestIdentity < TestCase
             handle = get_param(self.yorkModel.modelName, 'Handle');
             identity1 = BasicElements.Identity.from( handle );
             identity2 = BasicElements.Identity.from( identity1 );
-            assertEqual(identity1, identity2);
-            %FIX are they the same element?
+            assertTrue(identity1 == identity2);
         end
     end    
 end

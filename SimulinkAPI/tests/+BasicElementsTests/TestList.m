@@ -42,5 +42,47 @@ classdef TestList < TestCase
             assertEqual(42, self.aList.at(2));
             assertEqual(3, self.aList.size);
         end
+        
+        function testInjectIntoOne( self ) %#ok<MANU>
+            list =  BasicElements.List( {2 3 5} );
+            sum = 0;
+            formula = @(subTotal, element) subTotal + element;
+            sum = list.injectInto(sum, formula);
+            assertEqual(10,sum);            
+        end
+
+        function testInjectIntoTwo( self ) %#ok<MANU>
+            list =  BasicElements.List( {'a' 'b' 'c'} );
+            text = '';
+            concatenateString = @(line, element) strcat(line,element);
+            text = list.injectInto(text, concatenateString );
+            assertEqual('abc',text);            
+        end
+
+        function testAsCells( self )
+            assertEqual({1 2 'alex'}, self.aList.asCells);
+        end
+        
+        function testCollect( self ) %#ok<MANU>
+            list =  BasicElements.List( {2 6 8} );
+            addOne = @(element) element + 1;
+            result = list.collect( addOne );
+            assertEqual({3 7 9},result.asCells);            
+        end
+        
+        function testEmptyListCreation( self ) %#ok<MANU>
+            list = BasicElements.List( {} );
+            assertEqual(0, list.size);            
+        end
+        
+        function testEmptyListCreationFromArray( self ) %#ok<MANU>
+            list = BasicElements.List( [] );
+            assertEqual(0, list.size);    
+        end
+        
+        function testListCreationFromArray( self ) %#ok<MANU>
+            list = BasicElements.List( [1 4 6] );
+            assertEqual(3, list.size);                    
+        end
     end    
 end

@@ -3,10 +3,20 @@ classdef List < handle
         elements;
     end
     
+    methods (Static)
+        function list = newWithSize( size )
+            list = BasicElements.List( cell(1,size) );
+        end        
+    end
+    
     methods
         function self=List( aList )
-            %FIXME: Case where aList is a []
-            self.elements = aList;
+            import BasicElements.List;
+            if iscell( aList )
+                self.elements = aList;
+            else
+                self.elements = List.cellsFomArray( aList );
+            end
         end
                 
         function result = size( self )
@@ -26,10 +36,35 @@ classdef List < handle
             self.atPut(position, newElement);
         end
         
-        function result = selectGainBlocks( self )
-            result = BasicElements.List( [] );
-            for i=1:self.elements.size
-                self.elements(i).selectGainBlock( result );
+        function result = collect( self, aFunction )
+            result = BasicElements.List.newWithSize( self.size );
+            for i = 1:self.size;
+                result.atPut(i, aFunction( self.at(i) ));
+            end            
+        end
+        
+        function cells = asCells( self )
+            cells = cell(1,self.size);
+            for i = 1:self.size;
+                cells{i} = self.at(i);
+            end            
+        end
+        
+        function result = injectInto(self, startValue, aFunction)
+            result = startValue;
+            for i = 1:self.size;
+                result = aFunction(result, self.at(i));
+            end
+        end
+        
+    end
+    
+    methods (Static, Access=private)
+        function cells = cellsFomArray( array )
+            size = length(array);
+            cells = cell( 1,size );
+            for i=1:size
+                cells{i} = array(i);
             end
         end
     end

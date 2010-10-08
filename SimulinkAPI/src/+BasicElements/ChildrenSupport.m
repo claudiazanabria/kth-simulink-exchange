@@ -13,7 +13,10 @@ classdef ChildrenSupport < handle
         end
 
         function list = get.list( self )
-            list = BasicElements.List( self.childrenHandleList );
+            import BasicElements.Factory;
+            handlelist = BasicElements.List( self.childrenHandleList );
+            convertHandleToObjects = @(each) Factory.newChildFromHandle( self.parent, each );
+            list = handlelist.collect( convertHandleToObjects );
         end
         
         function result = size( self )
@@ -21,8 +24,11 @@ classdef ChildrenSupport < handle
         end
         
         function result = ofTypeGainBlock( self )
-            result = self.list.selectGainBlocks();
+            result = BasicElements.List( [] );
+            f = @(list, element) element.ifGainBlockAddToList(list); 
+            self.list.injectInto(result, f);
         end
+        
     end
     
     methods (Access=private)

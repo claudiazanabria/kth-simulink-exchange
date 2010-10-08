@@ -5,7 +5,7 @@ classdef GainBlock < ProtoObject
             self = self@ProtoObject( identity );
         end        
        
-        function selectGainBlocks( self, aList )
+        function ifGainBlockAddToList( self, aList )
             aList.add( self );            
         end
 
