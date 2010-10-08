@@ -8,8 +8,8 @@ classdef ProtoObject < handle
     end
     
     methods (Access=protected)
-        function self = ProtoObject( identity )
-            self.identity = identity;
+        function self = ProtoObject( identityOrHandleOrName )
+            self.identity = BasicElements.Identity(identityOrHandleOrName);
         end  
     end
     

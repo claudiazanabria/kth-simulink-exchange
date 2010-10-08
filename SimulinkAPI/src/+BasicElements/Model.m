@@ -11,8 +11,7 @@ classdef Model < BasicElements.ProtoObject
         function model=from( loadedModelName )
             import BasicElements.Model;
             Model.checkModelIsLoaded( loadedModelName );
-            identity = BasicElements.Identity( loadedModelName );
-            model = Model( identity );
+            model = Model( loadedModelName );
         end
         
         function checkModelIsLoaded( modelName )
@@ -25,8 +24,8 @@ classdef Model < BasicElements.ProtoObject
     end
     
     methods (Access=private)
-        function self = Model( identity )
-            self = self@BasicElements.ProtoObject( identity );
+        function self = Model( identityOrHandleOrName )
+            self = self@BasicElements.ProtoObject(identityOrHandleOrName);
             self.children = BasicElements.ChildrenSupport( self );
         end        
        

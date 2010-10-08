@@ -23,16 +23,10 @@ classdef TestList < TestCase
         end
         
         function testAccesingAnElement(self)
-            assertEqual( 1,self.aList.at(1) );
-            assertEqual('alex',self.aList.at(3) );
+            assertEqual( 1, self.aList.at(1) );
+            assertEqual('alex', self.aList.at(3) );
         end
-        
-        function testAt(self)
-            assertEqual(1, self.aList.at(1));
-            assertEqual(2, self.aList.at(2));
-            assertEqual('alex', self.aList.at(3));            
-        end
-        
+                
         function testAtWithWorngIndex( self )         
             f = @() self.aList.at(5);
             assertExceptionThrown(f, 'MATLAB:badsubscript');
@@ -40,7 +34,13 @@ classdef TestList < TestCase
         
         function testAdd(self)
             self.aList.add(42);
-            assertEqual(42,self.aList.at(4));
+            assertEqual(42, self.aList.at(4));
+        end
+        
+        function testAtPut( self )
+            self.aList.atPut(2,42);
+            assertEqual(42, self.aList.at(2));
+            assertEqual(3, self.aList.size);
         end
     end    
 end
