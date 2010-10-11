@@ -23,6 +23,10 @@ classdef ChildrenSupport < handle
             result = self.list.size;
         end
         
+        function dump( self )
+            self.list.dump;
+        end
+        
         function result = ofTypeGainBlock( self )
             f = @(list, element) element.ifGainBlockAddToList(list); 
             result = self.injectInto( f );

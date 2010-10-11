@@ -39,7 +39,7 @@ classdef Identity < handle
         end
     end
     
-    methods (Access=private)
+    methods (Access=protected)
         function self = Identity( aHandle )
             self.handle = aHandle;
         end

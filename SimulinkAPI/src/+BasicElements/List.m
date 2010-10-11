@@ -6,7 +6,12 @@ classdef List < handle
     methods (Static)
         function list = newWithSize( size )
             list = BasicElements.List( cell(1,size) );
+        end  
+        
+        function list = newEmptyList()
+            list = BasicElements.List({});
         end        
+        
     end
     
     methods
@@ -66,6 +71,7 @@ classdef List < handle
         function dump( self )
             f = @(each) each.dump;
             self.do( f );
+            fprintf('%i %s\n', self.size, ' elements.');
         end
     end
     

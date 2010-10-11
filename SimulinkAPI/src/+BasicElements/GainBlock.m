@@ -10,7 +10,7 @@ classdef GainBlock < BasicElements.ProtoObject
             self.parent = parent;
         end        
        
-        function  aList = ifSystemAddToList( self, aList )
+        function  aList = ifGainBlockAddToList( self, aList )
             aList.add( self );            
         end
         

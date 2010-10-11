@@ -84,5 +84,10 @@ classdef TestList < TestCase
             list = BasicElements.List( [1 4 6] );
             assertEqual(3, list.size);                    
         end
+        
+        function testNewEmptyList( self )
+            list = BasicElements.List.newEmptyList();
+            assertEqual(0, list.size);
+        end
     end    
 end
