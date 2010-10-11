@@ -15,8 +15,8 @@ classdef GainBlock < BasicElements.ProtoObject
         end
         
         function str = asString( self )
-            %FIXME: part of this str shuld be built by the superclass.
-            str = sprintf('Gain:\t %s (%g)',self.name, self.handle);
+            str = sprintf('Gain:\t%s', ...
+                asString@BasicElements.ProtoObject(self));
         end
 
     end
