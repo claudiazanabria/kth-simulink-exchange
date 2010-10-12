@@ -4,6 +4,28 @@ classdef GainBlock < BasicElements.ProtoObject
         parent
     end
     
+    methods (Static)
+        function result = findWithin( parent )
+            import BasicElements.GainBlock;
+            import BasicElements.List;
+            handleList = GainBlock.findCommand( parent.handle);
+            list = List( handleList );
+            result = list.collect( @GainBlock.convertHandleToClass );
+        end
+        
+        function list = findCommand( ParentHandle )
+            list = find_system( ParentHandle, ...
+            'SearchDepth',1, ...
+            'FollowLinks','on', ...
+            'BlockType','Gain');
+        end
+        
+        function gainBlockClass = convertHandleToClass( handle )
+            import BasicElements.GainBlock;
+            gainBlockClass = GainBlock(handle, %parent !?!)
+        end
+    end
+    
     methods
         function self = GainBlock( identity, parent )
             self = self@BasicElements.ProtoObject( identity );

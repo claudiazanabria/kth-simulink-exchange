@@ -27,9 +27,12 @@ classdef ChildrenSupport < handle
             self.list.dump;
         end
         
+        %All these functions can be implemented simpler
+        %becuase we do not need to get all elements types
+        % in self.list !?!
+        
         function result = ofTypeGainBlock( self )
-            f = @(list, element) element.ifGainBlockAddToList(list); 
-            result = self.injectInto( f );
+            result = GainBlock.findWithin( self.parent );
         end
         
         function result = ofTypeSystem( self )
