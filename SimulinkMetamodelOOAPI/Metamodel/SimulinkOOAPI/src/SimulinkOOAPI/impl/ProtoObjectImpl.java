@@ -8,7 +8,8 @@ package SimulinkOOAPI.impl;
 
 import SimulinkOOAPI.Identity;
 import SimulinkOOAPI.ProtoObject;
-import SimulinkOOAPI.SimulinkOOOAPIPackage;
+import SimulinkOOAPI.ReflectionList;
+import SimulinkOOAPI.SimulinkOOAPIPackage;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -45,10 +46,15 @@ public abstract class ProtoObjectImpl extends EObjectImpl implements ProtoObject
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected ProtoObjectImpl() {
+		throw new UnsupportedOperationException();
+	}
+	
+	protected ProtoObjectImpl(Identity identity) {
 		super();
+		this.identity = identity;
 	}
 
 	/**
@@ -58,7 +64,7 @@ public abstract class ProtoObjectImpl extends EObjectImpl implements ProtoObject
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return SimulinkOOOAPIPackage.Literals.PROTO_OBJECT;
+		return SimulinkOOAPIPackage.Literals.PROTO_OBJECT;
 	}
 
 	/**
@@ -72,7 +78,7 @@ public abstract class ProtoObjectImpl extends EObjectImpl implements ProtoObject
 			identity = (Identity)eResolveProxy(oldIdentity);
 			if (identity != oldIdentity) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, SimulinkOOOAPIPackage.PROTO_OBJECT__IDENTITY, oldIdentity, identity));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, SimulinkOOAPIPackage.PROTO_OBJECT__IDENTITY, oldIdentity, identity));
 			}
 		}
 		return identity;
@@ -96,7 +102,7 @@ public abstract class ProtoObjectImpl extends EObjectImpl implements ProtoObject
 		Identity oldIdentity = identity;
 		identity = newIdentity;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, SimulinkOOOAPIPackage.PROTO_OBJECT__IDENTITY, oldIdentity, identity));
+			eNotify(new ENotificationImpl(this, Notification.SET, SimulinkOOAPIPackage.PROTO_OBJECT__IDENTITY, oldIdentity, identity));
 	}
 
 	/**
@@ -107,7 +113,7 @@ public abstract class ProtoObjectImpl extends EObjectImpl implements ProtoObject
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case SimulinkOOOAPIPackage.PROTO_OBJECT__IDENTITY:
+			case SimulinkOOAPIPackage.PROTO_OBJECT__IDENTITY:
 				if (resolve) return getIdentity();
 				return basicGetIdentity();
 		}
@@ -122,7 +128,7 @@ public abstract class ProtoObjectImpl extends EObjectImpl implements ProtoObject
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case SimulinkOOOAPIPackage.PROTO_OBJECT__IDENTITY:
+			case SimulinkOOAPIPackage.PROTO_OBJECT__IDENTITY:
 				setIdentity((Identity)newValue);
 				return;
 		}
@@ -137,7 +143,7 @@ public abstract class ProtoObjectImpl extends EObjectImpl implements ProtoObject
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case SimulinkOOOAPIPackage.PROTO_OBJECT__IDENTITY:
+			case SimulinkOOAPIPackage.PROTO_OBJECT__IDENTITY:
 				setIdentity((Identity)null);
 				return;
 		}
@@ -152,10 +158,13 @@ public abstract class ProtoObjectImpl extends EObjectImpl implements ProtoObject
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case SimulinkOOOAPIPackage.PROTO_OBJECT__IDENTITY:
+			case SimulinkOOAPIPackage.PROTO_OBJECT__IDENTITY:
 				return identity != null;
 		}
 		return super.eIsSet(featureID);
 	}
+	
+	@Override
+	public void addInListIfGainBlock(ReflectionList<ProtoObject> list) {}
 
 } //ProtoObjectImpl

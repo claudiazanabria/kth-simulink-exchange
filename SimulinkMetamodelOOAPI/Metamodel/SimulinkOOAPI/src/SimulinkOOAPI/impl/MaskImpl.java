@@ -7,7 +7,7 @@
 package SimulinkOOAPI.impl;
 
 import SimulinkOOAPI.Mask;
-import SimulinkOOAPI.SimulinkOOOAPIPackage;
+import SimulinkOOAPI.SimulinkOOAPIPackage;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -39,7 +39,7 @@ public class MaskImpl extends EObjectImpl implements Mask {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return SimulinkOOOAPIPackage.Literals.MASK;
+		return SimulinkOOAPIPackage.Literals.MASK;
 	}
 
 } //MaskImpl

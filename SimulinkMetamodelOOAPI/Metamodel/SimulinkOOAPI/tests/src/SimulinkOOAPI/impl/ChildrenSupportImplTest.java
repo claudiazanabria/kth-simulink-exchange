@@ -14,16 +14,16 @@ public class ChildrenSupportImplTest {
 	public void setUp(){
 		childrenSupport = new ChildrenSupportImpl();
 		assertNotNull(childrenSupport.getChildren());
-		childrenSupport.addChild(new SystemImpl());
-		childrenSupport.addChild(new SystemImpl());
-		childrenSupport.addChild(new GainBlockImpl());
-		childrenSupport.addChild(new GainBlockImpl());
+		childrenSupport.addChild(new SystemImpl(new IdentityImpl()));
+		childrenSupport.addChild(new SystemImpl(new IdentityImpl()));
+		childrenSupport.addChild(new GainBlockImpl(new IdentityImpl()));
+		childrenSupport.addChild(new GainBlockImpl(new IdentityImpl()));
 	}
 	
 	@Test
 	public void testAddChild(){
 		assertEquals(4, childrenSupport.getNumberOfChildren());
-		childrenSupport.addChild(new SystemImpl());
+		childrenSupport.addChild(new SystemImpl(new IdentityImpl()));
 		assertEquals(5, childrenSupport.getNumberOfChildren());
 	}
 	

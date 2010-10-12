@@ -7,7 +7,7 @@
 package SimulinkOOAPI.impl;
 
 import SimulinkOOAPI.Library;
-import SimulinkOOAPI.SimulinkOOOAPIPackage;
+import SimulinkOOAPI.SimulinkOOAPIPackage;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -37,7 +37,7 @@ public class LibraryImpl extends ProtoObjectImpl implements Library {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return SimulinkOOOAPIPackage.Literals.LIBRARY;
+		return SimulinkOOAPIPackage.Literals.LIBRARY;
 	}
 
 } //LibraryImpl

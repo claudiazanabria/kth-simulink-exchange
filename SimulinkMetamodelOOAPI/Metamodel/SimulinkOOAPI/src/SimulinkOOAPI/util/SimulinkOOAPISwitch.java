@@ -15,7 +15,7 @@ import SimulinkOOAPI.Mask;
 import SimulinkOOAPI.Model;
 import SimulinkOOAPI.Port;
 import SimulinkOOAPI.ProtoObject;
-import SimulinkOOAPI.SimulinkOOOAPIPackage;
+import SimulinkOOAPI.SimulinkOOAPIPackage;
 
 import java.util.List;
 
@@ -32,17 +32,17 @@ import org.eclipse.emf.ecore.EObject;
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
- * @see SimulinkOOAPI.SimulinkOOOAPIPackage
+ * @see SimulinkOOAPI.SimulinkOOAPIPackage
  * @generated
  */
-public class SimulinkOOOAPISwitch<T> {
+public class SimulinkOOAPISwitch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static SimulinkOOOAPIPackage modelPackage;
+	protected static SimulinkOOAPIPackage modelPackage;
 
 	/**
 	 * Creates an instance of the switch.
@@ -50,9 +50,9 @@ public class SimulinkOOOAPISwitch<T> {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SimulinkOOOAPISwitch() {
+	public SimulinkOOAPISwitch() {
 		if (modelPackage == null) {
-			modelPackage = SimulinkOOOAPIPackage.eINSTANCE;
+			modelPackage = SimulinkOOAPIPackage.eINSTANCE;
 		}
 	}
 
@@ -96,66 +96,66 @@ public class SimulinkOOOAPISwitch<T> {
 	 */
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case SimulinkOOOAPIPackage.PROTO_OBJECT: {
+			case SimulinkOOAPIPackage.PROTO_OBJECT: {
 				ProtoObject protoObject = (ProtoObject)theEObject;
 				T result = caseProtoObject(protoObject);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case SimulinkOOOAPIPackage.LIBRARY: {
+			case SimulinkOOAPIPackage.LIBRARY: {
 				Library library = (Library)theEObject;
 				T result = caseLibrary(library);
 				if (result == null) result = caseProtoObject(library);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case SimulinkOOOAPIPackage.IDENTITY: {
+			case SimulinkOOAPIPackage.IDENTITY: {
 				Identity identity = (Identity)theEObject;
 				T result = caseIdentity(identity);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case SimulinkOOOAPIPackage.MASK: {
+			case SimulinkOOAPIPackage.MASK: {
 				Mask mask = (Mask)theEObject;
 				T result = caseMask(mask);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case SimulinkOOOAPIPackage.CHILDREN_SUPPORT: {
+			case SimulinkOOAPIPackage.CHILDREN_SUPPORT: {
 				ChildrenSupport childrenSupport = (ChildrenSupport)theEObject;
 				T result = caseChildrenSupport(childrenSupport);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case SimulinkOOOAPIPackage.GAIN_BLOCK: {
+			case SimulinkOOAPIPackage.GAIN_BLOCK: {
 				GainBlock gainBlock = (GainBlock)theEObject;
 				T result = caseGainBlock(gainBlock);
 				if (result == null) result = caseProtoObject(gainBlock);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case SimulinkOOOAPIPackage.PORT: {
+			case SimulinkOOAPIPackage.PORT: {
 				Port port = (Port)theEObject;
 				T result = casePort(port);
 				if (result == null) result = caseProtoObject(port);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case SimulinkOOOAPIPackage.LINE: {
+			case SimulinkOOAPIPackage.LINE: {
 				Line line = (Line)theEObject;
 				T result = caseLine(line);
 				if (result == null) result = caseProtoObject(line);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case SimulinkOOOAPIPackage.SYSTEM: {
+			case SimulinkOOAPIPackage.SYSTEM: {
 				SimulinkOOAPI.System system = (SimulinkOOAPI.System)theEObject;
 				T result = caseSystem(system);
 				if (result == null) result = caseProtoObject(system);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case SimulinkOOOAPIPackage.MODEL: {
+			case SimulinkOOAPIPackage.MODEL: {
 				Model model = (Model)theEObject;
 				T result = caseModel(model);
 				if (result == null) result = caseProtoObject(model);
@@ -331,4 +331,4 @@ public class SimulinkOOOAPISwitch<T> {
 		return null;
 	}
 
-} //SimulinkOOOAPISwitch
+} //SimulinkOOAPISwitch

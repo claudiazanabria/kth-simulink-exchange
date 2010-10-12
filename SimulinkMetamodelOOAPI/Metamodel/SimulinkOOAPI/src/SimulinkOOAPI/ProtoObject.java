@@ -8,6 +8,7 @@ package SimulinkOOAPI;
 
 import org.eclipse.emf.ecore.EObject;
 
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Proto Object</b></em>'.
@@ -20,7 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  * </p>
  *
- * @see SimulinkOOAPI.SimulinkOOOAPIPackage#getProtoObject()
+ * @see SimulinkOOAPI.SimulinkOOAPIPackage#getProtoObject()
  * @model abstract="true"
  * @generated
  */
@@ -35,7 +36,7 @@ public interface ProtoObject extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Identity</em>' reference.
 	 * @see #setIdentity(Identity)
-	 * @see SimulinkOOAPI.SimulinkOOOAPIPackage#getProtoObject_Identity()
+	 * @see SimulinkOOAPI.SimulinkOOAPIPackage#getProtoObject_Identity()
 	 * @model required="true"
 	 * @generated
 	 */
@@ -50,5 +51,7 @@ public interface ProtoObject extends EObject {
 	 * @generated
 	 */
 	void setIdentity(Identity value);
+	
+	public void addInListIfGainBlock(ReflectionList<ProtoObject> list);
 
 } // ProtoObject

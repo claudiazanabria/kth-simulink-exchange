@@ -7,7 +7,7 @@
 package SimulinkOOAPI.impl;
 
 import SimulinkOOAPI.Port;
-import SimulinkOOAPI.SimulinkOOOAPIPackage;
+import SimulinkOOAPI.SimulinkOOAPIPackage;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -37,7 +37,7 @@ public class PortImpl extends ProtoObjectImpl implements Port {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return SimulinkOOOAPIPackage.Literals.PORT;
+		return SimulinkOOAPIPackage.Literals.PORT;
 	}
 
 } //PortImpl

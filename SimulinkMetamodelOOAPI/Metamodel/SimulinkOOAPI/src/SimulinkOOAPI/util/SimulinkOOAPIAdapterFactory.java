@@ -15,7 +15,7 @@ import SimulinkOOAPI.Mask;
 import SimulinkOOAPI.Model;
 import SimulinkOOAPI.Port;
 import SimulinkOOAPI.ProtoObject;
-import SimulinkOOAPI.SimulinkOOOAPIPackage;
+import SimulinkOOAPI.SimulinkOOAPIPackage;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
@@ -29,17 +29,17 @@ import org.eclipse.emf.ecore.EObject;
  * The <b>Adapter Factory</b> for the model.
  * It provides an adapter <code>createXXX</code> method for each class of the model.
  * <!-- end-user-doc -->
- * @see SimulinkOOAPI.SimulinkOOOAPIPackage
+ * @see SimulinkOOAPI.SimulinkOOAPIPackage
  * @generated
  */
-public class SimulinkOOOAPIAdapterFactory extends AdapterFactoryImpl {
+public class SimulinkOOAPIAdapterFactory extends AdapterFactoryImpl {
 	/**
 	 * The cached model package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static SimulinkOOOAPIPackage modelPackage;
+	protected static SimulinkOOAPIPackage modelPackage;
 
 	/**
 	 * Creates an instance of the adapter factory.
@@ -47,9 +47,9 @@ public class SimulinkOOOAPIAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SimulinkOOOAPIAdapterFactory() {
+	public SimulinkOOAPIAdapterFactory() {
 		if (modelPackage == null) {
-			modelPackage = SimulinkOOOAPIPackage.eINSTANCE;
+			modelPackage = SimulinkOOAPIPackage.eINSTANCE;
 		}
 	}
 
@@ -78,8 +78,8 @@ public class SimulinkOOOAPIAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected SimulinkOOOAPISwitch<Adapter> modelSwitch =
-		new SimulinkOOOAPISwitch<Adapter>() {
+	protected SimulinkOOAPISwitch<Adapter> modelSwitch =
+		new SimulinkOOAPISwitch<Adapter>() {
 			@Override
 			public Adapter caseProtoObject(ProtoObject object) {
 				return createProtoObjectAdapter();
@@ -292,4 +292,4 @@ public class SimulinkOOOAPIAdapterFactory extends AdapterFactoryImpl {
 		return null;
 	}
 
-} //SimulinkOOOAPIAdapterFactory
+} //SimulinkOOAPIAdapterFactory

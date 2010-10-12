@@ -6,13 +6,15 @@
  */
 package SimulinkOOAPI.impl;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
 import SimulinkOOAPI.ChildrenSupport;
+import SimulinkOOAPI.SimulinkOOAPIPackage;
 import SimulinkOOAPI.GainBlock;
 import SimulinkOOAPI.ProtoObject;
-import SimulinkOOAPI.SimulinkOOOAPIPackage;
+import SimulinkOOAPI.ReflectionList;
 
-import org.eclipse.emf.common.util.BasicEList;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.EObjectImpl;
@@ -28,7 +30,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  */
 public class ChildrenSupportImpl extends EObjectImpl implements ChildrenSupport {
 	
-	private EList<ProtoObject> children = new BasicEList<ProtoObject>();
+	private ReflectionList<ProtoObject> children = new ReflectionListImpl<ProtoObject>();
 	
 	/**
 	 * <!-- begin-user-doc -->
@@ -46,22 +48,39 @@ public class ChildrenSupportImpl extends EObjectImpl implements ChildrenSupport 
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return SimulinkOOOAPIPackage.Literals.CHILDREN_SUPPORT;
+		return SimulinkOOAPIPackage.Literals.CHILDREN_SUPPORT;
 	}
 	
     /**
      * @generated NOT
      */
 	@Override
-	public EList<GainBlock> getChildrenOfTypeGainBlock() {
+	public ReflectionList<GainBlock> getChildrenOfTypeGainBlock() {
 		
-		EList<GainBlock> result = new BasicEList<GainBlock>();
-		for (ProtoObject child: this.children){
-			if (child instanceof GainBlock) {
-				result.add((GainBlock) child);				
-			}
-		}		
-		return result;
+		ReflectionList<GainBlock> result = new ReflectionListImpl<GainBlock>();
+		//result.apply(method)
+		//for (ProtoObject child: this.children){
+			//Class.forName("")
+			//new Method().invoke(obj, args)
+			//child.addInListIfGainBlock(result);			
+	//	}		
+		try {
+			return result.collect("addInListIfGainBlock");
+		} catch (IllegalArgumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NoSuchMethodException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			return null;
+		}
 	}
 
 	/**
@@ -76,7 +95,7 @@ public class ChildrenSupportImpl extends EObjectImpl implements ChildrenSupport 
      * @generated NOT
      */
 	@Override
-	public EList<ProtoObject> getChildren() {		
+	public ReflectionList<ProtoObject> getChildren() {		
 		return this.children;
 	}
 

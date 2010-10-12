@@ -14,8 +14,8 @@ import SimulinkOOAPI.Line;
 import SimulinkOOAPI.Mask;
 import SimulinkOOAPI.Model;
 import SimulinkOOAPI.Port;
-import SimulinkOOAPI.SimulinkOOOAPIFactory;
-import SimulinkOOAPI.SimulinkOOOAPIPackage;
+import SimulinkOOAPI.SimulinkOOAPIFactory;
+import SimulinkOOAPI.SimulinkOOAPIPackage;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -31,24 +31,24 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
  * <!-- end-user-doc -->
  * @generated
  */
-public class SimulinkOOOAPIFactoryImpl extends EFactoryImpl implements SimulinkOOOAPIFactory {
+public class SimulinkOOAPIFactoryImpl extends EFactoryImpl implements SimulinkOOAPIFactory {
 	/**
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static SimulinkOOOAPIFactory init() {
+	public static SimulinkOOAPIFactory init() {
 		try {
-			SimulinkOOOAPIFactory theSimulinkOOOAPIFactory = (SimulinkOOOAPIFactory)EPackage.Registry.INSTANCE.getEFactory("http:///se.kth.md.attest3/SimulinkOOAPI/1.0"); 
-			if (theSimulinkOOOAPIFactory != null) {
-				return theSimulinkOOOAPIFactory;
+			SimulinkOOAPIFactory theSimulinkOOAPIFactory = (SimulinkOOAPIFactory)EPackage.Registry.INSTANCE.getEFactory("http:///se.kth.md.attest3/SimulinkOOAPI/1.0"); 
+			if (theSimulinkOOAPIFactory != null) {
+				return theSimulinkOOAPIFactory;
 			}
 		}
 		catch (Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
-		return new SimulinkOOOAPIFactoryImpl();
+		return new SimulinkOOAPIFactoryImpl();
 	}
 
 	/**
@@ -57,7 +57,7 @@ public class SimulinkOOOAPIFactoryImpl extends EFactoryImpl implements SimulinkO
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SimulinkOOOAPIFactoryImpl() {
+	public SimulinkOOAPIFactoryImpl() {
 		super();
 	}
 
@@ -69,15 +69,15 @@ public class SimulinkOOOAPIFactoryImpl extends EFactoryImpl implements SimulinkO
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case SimulinkOOOAPIPackage.LIBRARY: return createLibrary();
-			case SimulinkOOOAPIPackage.IDENTITY: return createIdentity();
-			case SimulinkOOOAPIPackage.MASK: return createMask();
-			case SimulinkOOOAPIPackage.CHILDREN_SUPPORT: return createChildrenSupport();
-			case SimulinkOOOAPIPackage.GAIN_BLOCK: return createGainBlock();
-			case SimulinkOOOAPIPackage.PORT: return createPort();
-			case SimulinkOOOAPIPackage.LINE: return createLine();
-			case SimulinkOOOAPIPackage.SYSTEM: return createSystem();
-			case SimulinkOOOAPIPackage.MODEL: return createModel();
+			case SimulinkOOAPIPackage.LIBRARY: return createLibrary();
+			case SimulinkOOAPIPackage.IDENTITY: return createIdentity();
+			case SimulinkOOAPIPackage.MASK: return createMask();
+			case SimulinkOOAPIPackage.CHILDREN_SUPPORT: return createChildrenSupport();
+			case SimulinkOOAPIPackage.GAIN_BLOCK: return createGainBlock();
+			case SimulinkOOAPIPackage.PORT: return createPort();
+			case SimulinkOOAPIPackage.LINE: return createLine();
+			case SimulinkOOAPIPackage.SYSTEM: return createSystem();
+			case SimulinkOOAPIPackage.MODEL: return createModel();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -178,8 +178,8 @@ public class SimulinkOOOAPIFactoryImpl extends EFactoryImpl implements SimulinkO
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SimulinkOOOAPIPackage getSimulinkOOOAPIPackage() {
-		return (SimulinkOOOAPIPackage)getEPackage();
+	public SimulinkOOAPIPackage getSimulinkOOAPIPackage() {
+		return (SimulinkOOAPIPackage)getEPackage();
 	}
 
 	/**
@@ -189,8 +189,8 @@ public class SimulinkOOOAPIFactoryImpl extends EFactoryImpl implements SimulinkO
 	 * @generated
 	 */
 	@Deprecated
-	public static SimulinkOOOAPIPackage getPackage() {
-		return SimulinkOOOAPIPackage.eINSTANCE;
+	public static SimulinkOOAPIPackage getPackage() {
+		return SimulinkOOAPIPackage.eINSTANCE;
 	}
 
-} //SimulinkOOOAPIFactoryImpl
+} //SimulinkOOAPIFactoryImpl

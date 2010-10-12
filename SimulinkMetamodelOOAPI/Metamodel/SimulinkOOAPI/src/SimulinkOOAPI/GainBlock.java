@@ -19,7 +19,7 @@ package SimulinkOOAPI;
  * </ul>
  * </p>
  *
- * @see SimulinkOOAPI.SimulinkOOOAPIPackage#getGainBlock()
+ * @see SimulinkOOAPI.SimulinkOOAPIPackage#getGainBlock()
  * @model
  * @generated
  */
@@ -34,7 +34,7 @@ public interface GainBlock extends ProtoObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Gain</em>' attribute.
 	 * @see #setGain(int)
-	 * @see SimulinkOOAPI.SimulinkOOOAPIPackage#getGainBlock_Gain()
+	 * @see SimulinkOOAPI.SimulinkOOAPIPackage#getGainBlock_Gain()
 	 * @model
 	 * @generated
 	 */

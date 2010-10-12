@@ -8,7 +8,7 @@ package SimulinkOOAPI.impl;
 
 import SimulinkOOAPI.Line;
 import SimulinkOOAPI.Port;
-import SimulinkOOAPI.SimulinkOOOAPIPackage;
+import SimulinkOOAPI.SimulinkOOAPIPackage;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -68,7 +68,7 @@ public class LineImpl extends ProtoObjectImpl implements Line {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return SimulinkOOOAPIPackage.Literals.LINE;
+		return SimulinkOOAPIPackage.Literals.LINE;
 	}
 
 	/**
@@ -82,7 +82,7 @@ public class LineImpl extends ProtoObjectImpl implements Line {
 			source = (Port)eResolveProxy(oldSource);
 			if (source != oldSource) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, SimulinkOOOAPIPackage.LINE__SOURCE, oldSource, source));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, SimulinkOOAPIPackage.LINE__SOURCE, oldSource, source));
 			}
 		}
 		return source;
@@ -106,7 +106,7 @@ public class LineImpl extends ProtoObjectImpl implements Line {
 		Port oldSource = source;
 		source = newSource;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, SimulinkOOOAPIPackage.LINE__SOURCE, oldSource, source));
+			eNotify(new ENotificationImpl(this, Notification.SET, SimulinkOOAPIPackage.LINE__SOURCE, oldSource, source));
 	}
 
 	/**
@@ -120,7 +120,7 @@ public class LineImpl extends ProtoObjectImpl implements Line {
 			destination = (Port)eResolveProxy(oldDestination);
 			if (destination != oldDestination) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, SimulinkOOOAPIPackage.LINE__DESTINATION, oldDestination, destination));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, SimulinkOOAPIPackage.LINE__DESTINATION, oldDestination, destination));
 			}
 		}
 		return destination;
@@ -144,7 +144,7 @@ public class LineImpl extends ProtoObjectImpl implements Line {
 		Port oldDestination = destination;
 		destination = newDestination;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, SimulinkOOOAPIPackage.LINE__DESTINATION, oldDestination, destination));
+			eNotify(new ENotificationImpl(this, Notification.SET, SimulinkOOAPIPackage.LINE__DESTINATION, oldDestination, destination));
 	}
 
 	/**
@@ -155,10 +155,10 @@ public class LineImpl extends ProtoObjectImpl implements Line {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case SimulinkOOOAPIPackage.LINE__SOURCE:
+			case SimulinkOOAPIPackage.LINE__SOURCE:
 				if (resolve) return getSource();
 				return basicGetSource();
-			case SimulinkOOOAPIPackage.LINE__DESTINATION:
+			case SimulinkOOAPIPackage.LINE__DESTINATION:
 				if (resolve) return getDestination();
 				return basicGetDestination();
 		}
@@ -173,10 +173,10 @@ public class LineImpl extends ProtoObjectImpl implements Line {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case SimulinkOOOAPIPackage.LINE__SOURCE:
+			case SimulinkOOAPIPackage.LINE__SOURCE:
 				setSource((Port)newValue);
 				return;
-			case SimulinkOOOAPIPackage.LINE__DESTINATION:
+			case SimulinkOOAPIPackage.LINE__DESTINATION:
 				setDestination((Port)newValue);
 				return;
 		}
@@ -191,10 +191,10 @@ public class LineImpl extends ProtoObjectImpl implements Line {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case SimulinkOOOAPIPackage.LINE__SOURCE:
+			case SimulinkOOAPIPackage.LINE__SOURCE:
 				setSource((Port)null);
 				return;
-			case SimulinkOOOAPIPackage.LINE__DESTINATION:
+			case SimulinkOOAPIPackage.LINE__DESTINATION:
 				setDestination((Port)null);
 				return;
 		}
@@ -209,9 +209,9 @@ public class LineImpl extends ProtoObjectImpl implements Line {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case SimulinkOOOAPIPackage.LINE__SOURCE:
+			case SimulinkOOAPIPackage.LINE__SOURCE:
 				return source != null;
-			case SimulinkOOOAPIPackage.LINE__DESTINATION:
+			case SimulinkOOAPIPackage.LINE__DESTINATION:
 				return destination != null;
 		}
 		return super.eIsSet(featureID);

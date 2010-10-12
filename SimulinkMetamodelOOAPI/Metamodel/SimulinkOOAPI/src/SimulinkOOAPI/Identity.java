@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  * </p>
  *
- * @see SimulinkOOAPI.SimulinkOOOAPIPackage#getIdentity()
+ * @see SimulinkOOAPI.SimulinkOOAPIPackage#getIdentity()
  * @model
  * @generated
  */
@@ -35,7 +35,7 @@ public interface Identity extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Uuid</em>' attribute.
 	 * @see #setUuid(String)
-	 * @see SimulinkOOAPI.SimulinkOOOAPIPackage#getIdentity_Uuid()
+	 * @see SimulinkOOAPI.SimulinkOOAPIPackage#getIdentity_Uuid()
 	 * @model
 	 * @generated
 	 */

@@ -19,7 +19,7 @@ package SimulinkOOAPI;
  * </ul>
  * </p>
  *
- * @see SimulinkOOAPI.SimulinkOOOAPIPackage#getSystem()
+ * @see SimulinkOOAPI.SimulinkOOAPIPackage#getSystem()
  * @model
  * @generated
  */
@@ -34,7 +34,7 @@ public interface System extends ProtoObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Children</em>' reference.
 	 * @see #setChildren(ChildrenSupport)
-	 * @see SimulinkOOAPI.SimulinkOOOAPIPackage#getSystem_Children()
+	 * @see SimulinkOOAPI.SimulinkOOAPIPackage#getSystem_Children()
 	 * @model
 	 * @generated
 	 */

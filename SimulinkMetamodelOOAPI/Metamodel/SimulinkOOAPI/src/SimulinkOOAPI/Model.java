@@ -21,7 +21,7 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  * </p>
  *
- * @see SimulinkOOAPI.SimulinkOOOAPIPackage#getModel()
+ * @see SimulinkOOAPI.SimulinkOOAPIPackage#getModel()
  * @model
  * @generated
  */
@@ -35,23 +35,50 @@ public interface Model extends ProtoObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Children</em>' reference.
+	 * @see #isSetChildren()
+	 * @see #unsetChildren()
 	 * @see #setChildren(ChildrenSupport)
-	 * @see SimulinkOOAPI.SimulinkOOOAPIPackage#getModel_Children()
-	 * @model
+	 * @see SimulinkOOAPI.SimulinkOOAPIPackage#getModel_Children()
+	 * @model unsettable="true" volatile="true"
 	 * @generated
 	 */
-	ChildrenSupport getChildren();
+	 ChildrenSupport getChildren();
 
 	/**
 	 * Sets the value of the '{@link SimulinkOOAPI.Model#getChildren <em>Children</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Children</em>' reference.
+	 * @see #isSetChildren()
+	 * @see #unsetChildren()
 	 * @see #getChildren()
 	 * @generated
 	 */
 	void setChildren(ChildrenSupport value);
 	
+	/**
+	 * Unsets the value of the '{@link SimulinkOOAPI.Model#getChildren <em>Children</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSetChildren()
+	 * @see #getChildren()
+	 * @see #setChildren(ChildrenSupport)
+	 * @generated
+	 */
+	void unsetChildren();
+
+	/**
+	 * Returns whether the value of the '{@link SimulinkOOAPI.Model#getChildren <em>Children</em>}' reference is set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return whether the value of the '<em>Children</em>' reference is set.
+	 * @see #unsetChildren()
+	 * @see #getChildren()
+	 * @see #setChildren(ChildrenSupport)
+	 * @generated
+	 */
+	boolean isSetChildren();
+
 	/**
 	 * Adds a ProtoObject to children list.
 	 * 
@@ -71,13 +98,13 @@ public interface Model extends ProtoObject {
 	 * 
 	 * @generated NOT
 	 */
-	public EList<ProtoObject> getAllChildren();
+	public ReflectionList<ProtoObject> getAllChildren();
 	
 	/**
 	 * Returns EList of children of GainBlock type.
 	 * 
 	 * @generated NOT
 	 */
-	public EList<GainBlock> getChildrenOfTypeGainBlock();
+	public ReflectionList<GainBlock> getChildrenOfTypeGainBlock();
 
 } // Model

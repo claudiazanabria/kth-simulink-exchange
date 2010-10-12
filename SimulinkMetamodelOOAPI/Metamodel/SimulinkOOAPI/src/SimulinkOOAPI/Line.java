@@ -20,7 +20,7 @@ package SimulinkOOAPI;
  * </ul>
  * </p>
  *
- * @see SimulinkOOAPI.SimulinkOOOAPIPackage#getLine()
+ * @see SimulinkOOAPI.SimulinkOOAPIPackage#getLine()
  * @model
  * @generated
  */
@@ -35,7 +35,7 @@ public interface Line extends ProtoObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Source</em>' reference.
 	 * @see #setSource(Port)
-	 * @see SimulinkOOAPI.SimulinkOOOAPIPackage#getLine_Source()
+	 * @see SimulinkOOAPI.SimulinkOOAPIPackage#getLine_Source()
 	 * @model required="true"
 	 * @generated
 	 */
@@ -61,7 +61,7 @@ public interface Line extends ProtoObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Destination</em>' reference.
 	 * @see #setDestination(Port)
-	 * @see SimulinkOOAPI.SimulinkOOOAPIPackage#getLine_Destination()
+	 * @see SimulinkOOAPI.SimulinkOOAPIPackage#getLine_Destination()
 	 * @model required="true"
 	 * @generated
 	 */

@@ -13,7 +13,7 @@ package SimulinkOOAPI;
  * <!-- end-user-doc -->
  *
  *
- * @see SimulinkOOAPI.SimulinkOOOAPIPackage#getLibrary()
+ * @see SimulinkOOAPI.SimulinkOOAPIPackage#getLibrary()
  * @model
  * @generated
  */

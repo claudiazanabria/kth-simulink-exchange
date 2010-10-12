@@ -1,12 +1,17 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: SimulinkOOAPI
-Bundle-SymbolicName: SimulinkOOAPI
-Bundle-Version: 1.0.0.qualifier
-Bundle-Activator: se.kth.md.Activator
-Bundle-Vendor: KTH Mechatronics
-Require-Bundle: org.eclipse.ui,
- org.eclipse.core.runtime,
- org.junit4
+Bundle-Name: %pluginName
+Bundle-SymbolicName: SimulinkOOAPI;singleton:=true
+Bundle-Version: 1.0.0
+Bundle-ClassPath: .
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: SimulinkOOAPI,
+ SimulinkOOAPI.impl,
+ SimulinkOOAPI.util
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.emf.ecore;visibility:=reexport,
+ org.eclipse.ui;bundle-version="3.5.2",
+ org.junit4;bundle-version="4.5.0"
 Bundle-ActivationPolicy: lazy

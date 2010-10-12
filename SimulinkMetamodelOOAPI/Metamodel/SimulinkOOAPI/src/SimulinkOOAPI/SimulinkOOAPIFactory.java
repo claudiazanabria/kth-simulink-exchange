@@ -13,17 +13,17 @@ import org.eclipse.emf.ecore.EFactory;
  * The <b>Factory</b> for the model.
  * It provides a create method for each non-abstract class of the model.
  * <!-- end-user-doc -->
- * @see SimulinkOOAPI.SimulinkOOOAPIPackage
+ * @see SimulinkOOAPI.SimulinkOOAPIPackage
  * @generated
  */
-public interface SimulinkOOOAPIFactory extends EFactory {
+public interface SimulinkOOAPIFactory extends EFactory {
 	/**
 	 * The singleton instance of the factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	SimulinkOOOAPIFactory eINSTANCE = SimulinkOOAPI.impl.SimulinkOOOAPIFactoryImpl.init();
+	SimulinkOOAPIFactory eINSTANCE = SimulinkOOAPI.impl.SimulinkOOAPIFactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>Library</em>'.
@@ -113,6 +113,6 @@ public interface SimulinkOOOAPIFactory extends EFactory {
 	 * @return the package supported by this factory.
 	 * @generated
 	 */
-	SimulinkOOOAPIPackage getSimulinkOOOAPIPackage();
+	SimulinkOOAPIPackage getSimulinkOOAPIPackage();
 
-} //SimulinkOOOAPIFactory
+} //SimulinkOOAPIFactory

@@ -6,7 +6,8 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
 	ChildrenSupportImplTest.class,
-	ModelImplTest.class
+	ModelImplTest.class,
+	ReflectionListImplTest.class
 })
 
 public class AllTests {}

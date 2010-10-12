@@ -15,8 +15,8 @@ import SimulinkOOAPI.Mask;
 import SimulinkOOAPI.Model;
 import SimulinkOOAPI.Port;
 import SimulinkOOAPI.ProtoObject;
-import SimulinkOOAPI.SimulinkOOOAPIFactory;
-import SimulinkOOAPI.SimulinkOOOAPIPackage;
+import SimulinkOOAPI.SimulinkOOAPIFactory;
+import SimulinkOOAPI.SimulinkOOAPIPackage;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -32,7 +32,7 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
  * <!-- end-user-doc -->
  * @generated
  */
-public class SimulinkOOOAPIPackageImpl extends EPackageImpl implements SimulinkOOOAPIPackage {
+public class SimulinkOOAPIPackageImpl extends EPackageImpl implements SimulinkOOAPIPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -114,12 +114,12 @@ public class SimulinkOOOAPIPackageImpl extends EPackageImpl implements SimulinkO
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
-	 * @see SimulinkOOAPI.SimulinkOOOAPIPackage#eNS_URI
+	 * @see SimulinkOOAPI.SimulinkOOAPIPackage#eNS_URI
 	 * @see #init()
 	 * @generated
 	 */
-	private SimulinkOOOAPIPackageImpl() {
-		super(eNS_URI, SimulinkOOOAPIFactory.eINSTANCE);
+	private SimulinkOOAPIPackageImpl() {
+		super(eNS_URI, SimulinkOOAPIFactory.eINSTANCE);
 	}
 
 	/**
@@ -132,7 +132,7 @@ public class SimulinkOOOAPIPackageImpl extends EPackageImpl implements SimulinkO
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
 	 * 
-	 * <p>This method is used to initialize {@link SimulinkOOOAPIPackage#eINSTANCE} when that field is accessed.
+	 * <p>This method is used to initialize {@link SimulinkOOAPIPackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -141,11 +141,11 @@ public class SimulinkOOOAPIPackageImpl extends EPackageImpl implements SimulinkO
 	 * @see #initializePackageContents()
 	 * @generated
 	 */
-	public static SimulinkOOOAPIPackage init() {
-		if (isInited) return (SimulinkOOOAPIPackage)EPackage.Registry.INSTANCE.getEPackage(SimulinkOOOAPIPackage.eNS_URI);
+	public static SimulinkOOAPIPackage init() {
+		if (isInited) return (SimulinkOOAPIPackage)EPackage.Registry.INSTANCE.getEPackage(SimulinkOOAPIPackage.eNS_URI);
 
 		// Obtain or create and register package
-		SimulinkOOOAPIPackageImpl theSimulinkOOOAPIPackage = (SimulinkOOOAPIPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof SimulinkOOOAPIPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new SimulinkOOOAPIPackageImpl());
+		SimulinkOOAPIPackageImpl theSimulinkOOAPIPackage = (SimulinkOOAPIPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof SimulinkOOAPIPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new SimulinkOOAPIPackageImpl());
 
 		isInited = true;
 
@@ -153,18 +153,18 @@ public class SimulinkOOOAPIPackageImpl extends EPackageImpl implements SimulinkO
 		EcorePackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
-		theSimulinkOOOAPIPackage.createPackageContents();
+		theSimulinkOOAPIPackage.createPackageContents();
 
 		// Initialize created meta-data
-		theSimulinkOOOAPIPackage.initializePackageContents();
+		theSimulinkOOAPIPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
-		theSimulinkOOOAPIPackage.freeze();
+		theSimulinkOOAPIPackage.freeze();
 
   
 		// Update the registry and return the package
-		EPackage.Registry.INSTANCE.put(SimulinkOOOAPIPackage.eNS_URI, theSimulinkOOOAPIPackage);
-		return theSimulinkOOOAPIPackage;
+		EPackage.Registry.INSTANCE.put(SimulinkOOAPIPackage.eNS_URI, theSimulinkOOAPIPackage);
+		return theSimulinkOOAPIPackage;
 	}
 
 	/**
@@ -325,8 +325,8 @@ public class SimulinkOOOAPIPackageImpl extends EPackageImpl implements SimulinkO
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SimulinkOOOAPIFactory getSimulinkOOOAPIFactory() {
-		return (SimulinkOOOAPIFactory)getEFactoryInstance();
+	public SimulinkOOAPIFactory getSimulinkOOAPIFactory() {
+		return (SimulinkOOAPIFactory)getEFactoryInstance();
 	}
 
 	/**
@@ -443,10 +443,10 @@ public class SimulinkOOOAPIPackageImpl extends EPackageImpl implements SimulinkO
 		initEReference(getSystem_Children(), this.getChildrenSupport(), null, "children", null, 0, 1, SimulinkOOAPI.System.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getModel_Children(), this.getChildrenSupport(), null, "children", null, 0, 1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getModel_Children(), this.getChildrenSupport(), null, "children", null, 0, 1, Model.class, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
 	}
 
-} //SimulinkOOOAPIPackageImpl
+} //SimulinkOOAPIPackageImpl

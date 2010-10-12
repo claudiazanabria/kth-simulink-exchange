@@ -7,7 +7,7 @@
 package SimulinkOOAPI.impl;
 
 import SimulinkOOAPI.Identity;
-import SimulinkOOAPI.SimulinkOOOAPIPackage;
+import SimulinkOOAPI.SimulinkOOAPIPackage;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -66,7 +66,7 @@ public class IdentityImpl extends EObjectImpl implements Identity {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return SimulinkOOOAPIPackage.Literals.IDENTITY;
+		return SimulinkOOAPIPackage.Literals.IDENTITY;
 	}
 
 	/**
@@ -87,7 +87,7 @@ public class IdentityImpl extends EObjectImpl implements Identity {
 		String oldUuid = uuid;
 		uuid = newUuid;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, SimulinkOOOAPIPackage.IDENTITY__UUID, oldUuid, uuid));
+			eNotify(new ENotificationImpl(this, Notification.SET, SimulinkOOAPIPackage.IDENTITY__UUID, oldUuid, uuid));
 	}
 
 	/**
@@ -98,7 +98,7 @@ public class IdentityImpl extends EObjectImpl implements Identity {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case SimulinkOOOAPIPackage.IDENTITY__UUID:
+			case SimulinkOOAPIPackage.IDENTITY__UUID:
 				return getUuid();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -112,7 +112,7 @@ public class IdentityImpl extends EObjectImpl implements Identity {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case SimulinkOOOAPIPackage.IDENTITY__UUID:
+			case SimulinkOOAPIPackage.IDENTITY__UUID:
 				setUuid((String)newValue);
 				return;
 		}
@@ -127,7 +127,7 @@ public class IdentityImpl extends EObjectImpl implements Identity {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case SimulinkOOOAPIPackage.IDENTITY__UUID:
+			case SimulinkOOAPIPackage.IDENTITY__UUID:
 				setUuid(UUID_EDEFAULT);
 				return;
 		}
@@ -142,7 +142,7 @@ public class IdentityImpl extends EObjectImpl implements Identity {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case SimulinkOOOAPIPackage.IDENTITY__UUID:
+			case SimulinkOOAPIPackage.IDENTITY__UUID:
 				return UUID_EDEFAULT == null ? uuid != null : !UUID_EDEFAULT.equals(uuid);
 		}
 		return super.eIsSet(featureID);

@@ -7,7 +7,10 @@
 package SimulinkOOAPI.impl;
 
 import SimulinkOOAPI.GainBlock;
-import SimulinkOOAPI.SimulinkOOOAPIPackage;
+import SimulinkOOAPI.Identity;
+import SimulinkOOAPI.ProtoObject;
+import SimulinkOOAPI.ReflectionList;
+import SimulinkOOAPI.SimulinkOOAPIPackage;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -57,6 +60,15 @@ public class GainBlockImpl extends ProtoObjectImpl implements GainBlock {
 	protected GainBlockImpl() {
 		super();
 	}
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected GainBlockImpl(Identity identity) {
+		super(identity);
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -65,7 +77,7 @@ public class GainBlockImpl extends ProtoObjectImpl implements GainBlock {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return SimulinkOOOAPIPackage.Literals.GAIN_BLOCK;
+		return SimulinkOOAPIPackage.Literals.GAIN_BLOCK;
 	}
 
 	/**
@@ -86,7 +98,7 @@ public class GainBlockImpl extends ProtoObjectImpl implements GainBlock {
 		int oldGain = gain;
 		gain = newGain;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, SimulinkOOOAPIPackage.GAIN_BLOCK__GAIN, oldGain, gain));
+			eNotify(new ENotificationImpl(this, Notification.SET, SimulinkOOAPIPackage.GAIN_BLOCK__GAIN, oldGain, gain));
 	}
 
 	/**
@@ -97,7 +109,7 @@ public class GainBlockImpl extends ProtoObjectImpl implements GainBlock {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case SimulinkOOOAPIPackage.GAIN_BLOCK__GAIN:
+			case SimulinkOOAPIPackage.GAIN_BLOCK__GAIN:
 				return getGain();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -111,7 +123,7 @@ public class GainBlockImpl extends ProtoObjectImpl implements GainBlock {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case SimulinkOOOAPIPackage.GAIN_BLOCK__GAIN:
+			case SimulinkOOAPIPackage.GAIN_BLOCK__GAIN:
 				setGain((Integer)newValue);
 				return;
 		}
@@ -126,7 +138,7 @@ public class GainBlockImpl extends ProtoObjectImpl implements GainBlock {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case SimulinkOOOAPIPackage.GAIN_BLOCK__GAIN:
+			case SimulinkOOAPIPackage.GAIN_BLOCK__GAIN:
 				setGain(GAIN_EDEFAULT);
 				return;
 		}
@@ -141,7 +153,7 @@ public class GainBlockImpl extends ProtoObjectImpl implements GainBlock {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case SimulinkOOOAPIPackage.GAIN_BLOCK__GAIN:
+			case SimulinkOOAPIPackage.GAIN_BLOCK__GAIN:
 				return gain != GAIN_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
@@ -161,6 +173,11 @@ public class GainBlockImpl extends ProtoObjectImpl implements GainBlock {
 		result.append(gain);
 		result.append(')');
 		return result.toString();
+	}
+
+	@Override
+	public void addInListIfGainBlock(ReflectionList<ProtoObject> list) {
+		list.add(this);		
 	}
 
 } //GainBlockImpl

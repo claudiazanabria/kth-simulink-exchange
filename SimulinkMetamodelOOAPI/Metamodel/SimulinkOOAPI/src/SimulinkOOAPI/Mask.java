@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * <!-- end-user-doc -->
  *
  *
- * @see SimulinkOOAPI.SimulinkOOOAPIPackage#getMask()
+ * @see SimulinkOOAPI.SimulinkOOAPIPackage#getMask()
  * @model
  * @generated
  */

@@ -23,11 +23,11 @@ import org.eclipse.emf.ecore.EcorePackage;
  *   <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * @see SimulinkOOAPI.SimulinkOOOAPIFactory
+ * @see SimulinkOOAPI.SimulinkOOAPIFactory
  * @model kind="package"
  * @generated
  */
-public interface SimulinkOOOAPIPackage extends EPackage {
+public interface SimulinkOOAPIPackage extends EPackage {
 	/**
 	 * The package name.
 	 * <!-- begin-user-doc -->
@@ -58,14 +58,14 @@ public interface SimulinkOOOAPIPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	SimulinkOOOAPIPackage eINSTANCE = SimulinkOOAPI.impl.SimulinkOOOAPIPackageImpl.init();
+	SimulinkOOAPIPackage eINSTANCE = SimulinkOOAPI.impl.SimulinkOOAPIPackageImpl.init();
 
 	/**
 	 * The meta object id for the '{@link SimulinkOOAPI.impl.ProtoObjectImpl <em>Proto Object</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see SimulinkOOAPI.impl.ProtoObjectImpl
-	 * @see SimulinkOOAPI.impl.SimulinkOOOAPIPackageImpl#getProtoObject()
+	 * @see SimulinkOOAPI.impl.SimulinkOOAPIPackageImpl#getProtoObject()
 	 * @generated
 	 */
 	int PROTO_OBJECT = 0;
@@ -93,7 +93,7 @@ public interface SimulinkOOOAPIPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see SimulinkOOAPI.impl.LibraryImpl
-	 * @see SimulinkOOAPI.impl.SimulinkOOOAPIPackageImpl#getLibrary()
+	 * @see SimulinkOOAPI.impl.SimulinkOOAPIPackageImpl#getLibrary()
 	 * @generated
 	 */
 	int LIBRARY = 1;
@@ -121,7 +121,7 @@ public interface SimulinkOOOAPIPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see SimulinkOOAPI.impl.IdentityImpl
-	 * @see SimulinkOOAPI.impl.SimulinkOOOAPIPackageImpl#getIdentity()
+	 * @see SimulinkOOAPI.impl.SimulinkOOAPIPackageImpl#getIdentity()
 	 * @generated
 	 */
 	int IDENTITY = 2;
@@ -149,7 +149,7 @@ public interface SimulinkOOOAPIPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see SimulinkOOAPI.impl.MaskImpl
-	 * @see SimulinkOOAPI.impl.SimulinkOOOAPIPackageImpl#getMask()
+	 * @see SimulinkOOAPI.impl.SimulinkOOAPIPackageImpl#getMask()
 	 * @generated
 	 */
 	int MASK = 3;
@@ -168,7 +168,7 @@ public interface SimulinkOOOAPIPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see SimulinkOOAPI.impl.ChildrenSupportImpl
-	 * @see SimulinkOOAPI.impl.SimulinkOOOAPIPackageImpl#getChildrenSupport()
+	 * @see SimulinkOOAPI.impl.SimulinkOOAPIPackageImpl#getChildrenSupport()
 	 * @generated
 	 */
 	int CHILDREN_SUPPORT = 4;
@@ -187,7 +187,7 @@ public interface SimulinkOOOAPIPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see SimulinkOOAPI.impl.GainBlockImpl
-	 * @see SimulinkOOAPI.impl.SimulinkOOOAPIPackageImpl#getGainBlock()
+	 * @see SimulinkOOAPI.impl.SimulinkOOAPIPackageImpl#getGainBlock()
 	 * @generated
 	 */
 	int GAIN_BLOCK = 5;
@@ -224,7 +224,7 @@ public interface SimulinkOOOAPIPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see SimulinkOOAPI.impl.PortImpl
-	 * @see SimulinkOOAPI.impl.SimulinkOOOAPIPackageImpl#getPort()
+	 * @see SimulinkOOAPI.impl.SimulinkOOAPIPackageImpl#getPort()
 	 * @generated
 	 */
 	int PORT = 6;
@@ -252,7 +252,7 @@ public interface SimulinkOOOAPIPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see SimulinkOOAPI.impl.LineImpl
-	 * @see SimulinkOOAPI.impl.SimulinkOOOAPIPackageImpl#getLine()
+	 * @see SimulinkOOAPI.impl.SimulinkOOAPIPackageImpl#getLine()
 	 * @generated
 	 */
 	int LINE = 7;
@@ -298,7 +298,7 @@ public interface SimulinkOOOAPIPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see SimulinkOOAPI.impl.SystemImpl
-	 * @see SimulinkOOAPI.impl.SimulinkOOOAPIPackageImpl#getSystem()
+	 * @see SimulinkOOAPI.impl.SimulinkOOAPIPackageImpl#getSystem()
 	 * @generated
 	 */
 	int SYSTEM = 8;
@@ -335,7 +335,7 @@ public interface SimulinkOOOAPIPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see SimulinkOOAPI.impl.ModelImpl
-	 * @see SimulinkOOAPI.impl.SimulinkOOOAPIPackageImpl#getModel()
+	 * @see SimulinkOOAPI.impl.SimulinkOOAPIPackageImpl#getModel()
 	 * @generated
 	 */
 	int MODEL = 9;
@@ -552,7 +552,7 @@ public interface SimulinkOOOAPIPackage extends EPackage {
 	 * @return the factory that creates the instances of the model.
 	 * @generated
 	 */
-	SimulinkOOOAPIFactory getSimulinkOOOAPIFactory();
+	SimulinkOOAPIFactory getSimulinkOOAPIFactory();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -572,7 +572,7 @@ public interface SimulinkOOOAPIPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see SimulinkOOAPI.impl.ProtoObjectImpl
-		 * @see SimulinkOOAPI.impl.SimulinkOOOAPIPackageImpl#getProtoObject()
+		 * @see SimulinkOOAPI.impl.SimulinkOOAPIPackageImpl#getProtoObject()
 		 * @generated
 		 */
 		EClass PROTO_OBJECT = eINSTANCE.getProtoObject();
@@ -590,7 +590,7 @@ public interface SimulinkOOOAPIPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see SimulinkOOAPI.impl.LibraryImpl
-		 * @see SimulinkOOAPI.impl.SimulinkOOOAPIPackageImpl#getLibrary()
+		 * @see SimulinkOOAPI.impl.SimulinkOOAPIPackageImpl#getLibrary()
 		 * @generated
 		 */
 		EClass LIBRARY = eINSTANCE.getLibrary();
@@ -600,7 +600,7 @@ public interface SimulinkOOOAPIPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see SimulinkOOAPI.impl.IdentityImpl
-		 * @see SimulinkOOAPI.impl.SimulinkOOOAPIPackageImpl#getIdentity()
+		 * @see SimulinkOOAPI.impl.SimulinkOOAPIPackageImpl#getIdentity()
 		 * @generated
 		 */
 		EClass IDENTITY = eINSTANCE.getIdentity();
@@ -618,7 +618,7 @@ public interface SimulinkOOOAPIPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see SimulinkOOAPI.impl.MaskImpl
-		 * @see SimulinkOOAPI.impl.SimulinkOOOAPIPackageImpl#getMask()
+		 * @see SimulinkOOAPI.impl.SimulinkOOAPIPackageImpl#getMask()
 		 * @generated
 		 */
 		EClass MASK = eINSTANCE.getMask();
@@ -628,7 +628,7 @@ public interface SimulinkOOOAPIPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see SimulinkOOAPI.impl.ChildrenSupportImpl
-		 * @see SimulinkOOAPI.impl.SimulinkOOOAPIPackageImpl#getChildrenSupport()
+		 * @see SimulinkOOAPI.impl.SimulinkOOAPIPackageImpl#getChildrenSupport()
 		 * @generated
 		 */
 		EClass CHILDREN_SUPPORT = eINSTANCE.getChildrenSupport();
@@ -638,7 +638,7 @@ public interface SimulinkOOOAPIPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see SimulinkOOAPI.impl.GainBlockImpl
-		 * @see SimulinkOOAPI.impl.SimulinkOOOAPIPackageImpl#getGainBlock()
+		 * @see SimulinkOOAPI.impl.SimulinkOOAPIPackageImpl#getGainBlock()
 		 * @generated
 		 */
 		EClass GAIN_BLOCK = eINSTANCE.getGainBlock();
@@ -656,7 +656,7 @@ public interface SimulinkOOOAPIPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see SimulinkOOAPI.impl.PortImpl
-		 * @see SimulinkOOAPI.impl.SimulinkOOOAPIPackageImpl#getPort()
+		 * @see SimulinkOOAPI.impl.SimulinkOOAPIPackageImpl#getPort()
 		 * @generated
 		 */
 		EClass PORT = eINSTANCE.getPort();
@@ -666,7 +666,7 @@ public interface SimulinkOOOAPIPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see SimulinkOOAPI.impl.LineImpl
-		 * @see SimulinkOOAPI.impl.SimulinkOOOAPIPackageImpl#getLine()
+		 * @see SimulinkOOAPI.impl.SimulinkOOAPIPackageImpl#getLine()
 		 * @generated
 		 */
 		EClass LINE = eINSTANCE.getLine();
@@ -692,7 +692,7 @@ public interface SimulinkOOOAPIPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see SimulinkOOAPI.impl.SystemImpl
-		 * @see SimulinkOOAPI.impl.SimulinkOOOAPIPackageImpl#getSystem()
+		 * @see SimulinkOOAPI.impl.SimulinkOOAPIPackageImpl#getSystem()
 		 * @generated
 		 */
 		EClass SYSTEM = eINSTANCE.getSystem();
@@ -710,7 +710,7 @@ public interface SimulinkOOOAPIPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see SimulinkOOAPI.impl.ModelImpl
-		 * @see SimulinkOOAPI.impl.SimulinkOOOAPIPackageImpl#getModel()
+		 * @see SimulinkOOAPI.impl.SimulinkOOAPIPackageImpl#getModel()
 		 * @generated
 		 */
 		EClass MODEL = eINSTANCE.getModel();
@@ -725,4 +725,4 @@ public interface SimulinkOOOAPIPackage extends EPackage {
 
 	}
 
-} //SimulinkOOOAPIPackage
+} //SimulinkOOAPIPackage

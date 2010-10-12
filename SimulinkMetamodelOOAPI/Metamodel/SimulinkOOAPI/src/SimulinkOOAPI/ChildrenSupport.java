@@ -6,7 +6,6 @@
  */
 package SimulinkOOAPI;
 
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -15,7 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * <!-- end-user-doc -->
  *
  *
- * @see SimulinkOOAPI.SimulinkOOOAPIPackage#getChildrenSupport()
+ * @see SimulinkOOAPI.SimulinkOOAPIPackage#getChildrenSupport()
  * @model
  * @generated
  */
@@ -40,13 +39,13 @@ public interface ChildrenSupport extends EObject {
 	 * 
 	 * @generated NOT
 	 */
-	public EList<ProtoObject> getChildren();
+	public ReflectionList<ProtoObject> getChildren();
 	
 	/**
 	 * Returns EList of children of GainBlock type.
 	 * 
 	 * @generated NOT
 	 */
-	public EList<GainBlock> getChildrenOfTypeGainBlock();
+	public ReflectionList<GainBlock> getChildrenOfTypeGainBlock();
 	
 } // ChildrenSupport
