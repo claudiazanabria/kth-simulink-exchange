@@ -69,7 +69,14 @@ classdef TestList < TestCase
             result = list.collect( addOne );
             assertEqual({3 7 9},result.asCells);            
         end
-        
+
+        function testCollectWith( self ) %#ok<MANU>
+            list =  BasicElements.List( {2 6 8} );
+            addOne = @(element, arg1) element + arg1;
+            result = list.collectWith( addOne, 3 );
+            assertEqual({5 9 11},result.asCells);            
+        end
+
         function testEmptyListCreation( self ) %#ok<MANU>
             list = BasicElements.List( {} );
             assertEqual(0, list.size);            

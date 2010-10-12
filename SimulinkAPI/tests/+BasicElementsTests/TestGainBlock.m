@@ -12,9 +12,10 @@ classdef TestGainBlock < BasicElementsTests.TestProtoObject
             self.list = BasicElements.List.newEmptyList();
         end
 
-        function testIfGainBlockAddToList( self )
-            self.proto.ifGainBlockAddToList( self.list );
-            assertEqual(1, self.list.size);
-        end
+% Unused !?!        
+%         function testIfGainBlockAddToList( self )
+%             self.proto.ifGainBlockAddToList( self.list );
+%             assertEqual(1, self.list.size);
+%         end
     end
 end

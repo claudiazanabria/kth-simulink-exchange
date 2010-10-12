@@ -48,6 +48,13 @@ classdef List < handle
             end            
         end
 
+        function result = collectWith( self, aFunction, arg1 )
+            result = BasicElements.List.newWithSize( self.size );
+            for i = 1:self.size;
+                result.atPut(i, aFunction( self.at(i), arg1 ));
+            end            
+        end
+
         function do( self, aFunction )
             for i = 1:self.size;
                 aFunction( self.at(i) );

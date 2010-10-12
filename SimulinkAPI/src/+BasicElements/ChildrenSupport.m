@@ -26,23 +26,17 @@ classdef ChildrenSupport < handle
         function dump( self )
             self.list.dump;
         end
-        
-        %All these functions can be implemented simpler
-        %becuase we do not need to get all elements types
-        % in self.list !?!
-        
+                
         function result = ofTypeGainBlock( self )
-            result = GainBlock.findWithin( self.parent );
+            result = BasicElements.GainBlock.findWithin( self.parent );
         end
         
         function result = ofTypeSystem( self )
-            f = @(list, element) element.ifSystemAddToList(list); 
-            result = self.injectInto( f );
+            result = BasicElements.System.findWithin( self.parent );
         end
-
-        function result = ofTypeRefBlock( self )
-            f = @(list, element) element.ifRefBlockAddToList(list); 
-            result = self.injectInto( f );
+        
+        function result = ofTypeSystemReference( self )
+            result = BasicElements.SystemReference.findWithin( self.parent );
         end
 
     end

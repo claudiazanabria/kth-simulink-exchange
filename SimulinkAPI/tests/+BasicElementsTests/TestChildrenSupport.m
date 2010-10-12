@@ -24,9 +24,10 @@ classdef TestChildrenSupport < TestCase
 
         function testGetChildren( self )            
 %            assertEqual(5, self.children.size );            
+% Lines are missing!
             assertEqual(1,self.children.ofTypeGainBlock.size );
-%            assertEqual(1,self.children.ofTypeSystem.size );
-%            assertEqual(1,self.children.ofTypeRefBlock.size );
+            assertEqual(1,self.children.ofTypeSystem.size );
+            assertEqual(1,self.children.ofTypeSystemReference.size );
         end
         
 %         function testModelContainmentWithName( self )
