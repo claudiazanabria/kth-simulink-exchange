@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package SimulinkOOOAPI;
+package SimulinkOOAPI;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -23,7 +23,7 @@ import org.eclipse.emf.ecore.EcorePackage;
  *   <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * @see SimulinkOOOAPI.SimulinkOOOAPIFactory
+ * @see SimulinkOOAPI.SimulinkOOOAPIFactory
  * @model kind="package"
  * @generated
  */
@@ -34,7 +34,7 @@ public interface SimulinkOOOAPIPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNAME = "SimulinkOOOAPI";
+	String eNAME = "SimulinkOOAPI";
 
 	/**
 	 * The package namespace URI.
@@ -58,14 +58,14 @@ public interface SimulinkOOOAPIPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	SimulinkOOOAPIPackage eINSTANCE = SimulinkOOOAPI.impl.SimulinkOOOAPIPackageImpl.init();
+	SimulinkOOOAPIPackage eINSTANCE = SimulinkOOAPI.impl.SimulinkOOOAPIPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link SimulinkOOOAPI.impl.ProtoObjectImpl <em>Proto Object</em>}' class.
+	 * The meta object id for the '{@link SimulinkOOAPI.impl.ProtoObjectImpl <em>Proto Object</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see SimulinkOOOAPI.impl.ProtoObjectImpl
-	 * @see SimulinkOOOAPI.impl.SimulinkOOOAPIPackageImpl#getProtoObject()
+	 * @see SimulinkOOAPI.impl.ProtoObjectImpl
+	 * @see SimulinkOOAPI.impl.SimulinkOOOAPIPackageImpl#getProtoObject()
 	 * @generated
 	 */
 	int PROTO_OBJECT = 0;
@@ -89,11 +89,11 @@ public interface SimulinkOOOAPIPackage extends EPackage {
 	int PROTO_OBJECT_FEATURE_COUNT = EcorePackage.EOBJECT_FEATURE_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link SimulinkOOOAPI.impl.LibraryImpl <em>Library</em>}' class.
+	 * The meta object id for the '{@link SimulinkOOAPI.impl.LibraryImpl <em>Library</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see SimulinkOOOAPI.impl.LibraryImpl
-	 * @see SimulinkOOOAPI.impl.SimulinkOOOAPIPackageImpl#getLibrary()
+	 * @see SimulinkOOAPI.impl.LibraryImpl
+	 * @see SimulinkOOAPI.impl.SimulinkOOOAPIPackageImpl#getLibrary()
 	 * @generated
 	 */
 	int LIBRARY = 1;
@@ -117,11 +117,11 @@ public interface SimulinkOOOAPIPackage extends EPackage {
 	int LIBRARY_FEATURE_COUNT = PROTO_OBJECT_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link SimulinkOOOAPI.impl.IdentityImpl <em>Identity</em>}' class.
+	 * The meta object id for the '{@link SimulinkOOAPI.impl.IdentityImpl <em>Identity</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see SimulinkOOOAPI.impl.IdentityImpl
-	 * @see SimulinkOOOAPI.impl.SimulinkOOOAPIPackageImpl#getIdentity()
+	 * @see SimulinkOOAPI.impl.IdentityImpl
+	 * @see SimulinkOOAPI.impl.SimulinkOOOAPIPackageImpl#getIdentity()
 	 * @generated
 	 */
 	int IDENTITY = 2;
@@ -145,11 +145,11 @@ public interface SimulinkOOOAPIPackage extends EPackage {
 	int IDENTITY_FEATURE_COUNT = EcorePackage.EOBJECT_FEATURE_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link SimulinkOOOAPI.impl.MaskImpl <em>Mask</em>}' class.
+	 * The meta object id for the '{@link SimulinkOOAPI.impl.MaskImpl <em>Mask</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see SimulinkOOOAPI.impl.MaskImpl
-	 * @see SimulinkOOOAPI.impl.SimulinkOOOAPIPackageImpl#getMask()
+	 * @see SimulinkOOAPI.impl.MaskImpl
+	 * @see SimulinkOOAPI.impl.SimulinkOOOAPIPackageImpl#getMask()
 	 * @generated
 	 */
 	int MASK = 3;
@@ -164,11 +164,11 @@ public interface SimulinkOOOAPIPackage extends EPackage {
 	int MASK_FEATURE_COUNT = EcorePackage.EOBJECT_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link SimulinkOOOAPI.impl.ChildrenSupportImpl <em>Children Support</em>}' class.
+	 * The meta object id for the '{@link SimulinkOOAPI.impl.ChildrenSupportImpl <em>Children Support</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see SimulinkOOOAPI.impl.ChildrenSupportImpl
-	 * @see SimulinkOOOAPI.impl.SimulinkOOOAPIPackageImpl#getChildrenSupport()
+	 * @see SimulinkOOAPI.impl.ChildrenSupportImpl
+	 * @see SimulinkOOAPI.impl.SimulinkOOOAPIPackageImpl#getChildrenSupport()
 	 * @generated
 	 */
 	int CHILDREN_SUPPORT = 4;
@@ -183,11 +183,11 @@ public interface SimulinkOOOAPIPackage extends EPackage {
 	int CHILDREN_SUPPORT_FEATURE_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link SimulinkOOOAPI.impl.GainBlockImpl <em>Gain Block</em>}' class.
+	 * The meta object id for the '{@link SimulinkOOAPI.impl.GainBlockImpl <em>Gain Block</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see SimulinkOOOAPI.impl.GainBlockImpl
-	 * @see SimulinkOOOAPI.impl.SimulinkOOOAPIPackageImpl#getGainBlock()
+	 * @see SimulinkOOAPI.impl.GainBlockImpl
+	 * @see SimulinkOOAPI.impl.SimulinkOOOAPIPackageImpl#getGainBlock()
 	 * @generated
 	 */
 	int GAIN_BLOCK = 5;
@@ -220,11 +220,11 @@ public interface SimulinkOOOAPIPackage extends EPackage {
 	int GAIN_BLOCK_FEATURE_COUNT = PROTO_OBJECT_FEATURE_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link SimulinkOOOAPI.impl.PortImpl <em>Port</em>}' class.
+	 * The meta object id for the '{@link SimulinkOOAPI.impl.PortImpl <em>Port</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see SimulinkOOOAPI.impl.PortImpl
-	 * @see SimulinkOOOAPI.impl.SimulinkOOOAPIPackageImpl#getPort()
+	 * @see SimulinkOOAPI.impl.PortImpl
+	 * @see SimulinkOOAPI.impl.SimulinkOOOAPIPackageImpl#getPort()
 	 * @generated
 	 */
 	int PORT = 6;
@@ -248,11 +248,11 @@ public interface SimulinkOOOAPIPackage extends EPackage {
 	int PORT_FEATURE_COUNT = PROTO_OBJECT_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link SimulinkOOOAPI.impl.LineImpl <em>Line</em>}' class.
+	 * The meta object id for the '{@link SimulinkOOAPI.impl.LineImpl <em>Line</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see SimulinkOOOAPI.impl.LineImpl
-	 * @see SimulinkOOOAPI.impl.SimulinkOOOAPIPackageImpl#getLine()
+	 * @see SimulinkOOAPI.impl.LineImpl
+	 * @see SimulinkOOAPI.impl.SimulinkOOOAPIPackageImpl#getLine()
 	 * @generated
 	 */
 	int LINE = 7;
@@ -294,11 +294,11 @@ public interface SimulinkOOOAPIPackage extends EPackage {
 	int LINE_FEATURE_COUNT = PROTO_OBJECT_FEATURE_COUNT + 2;
 
 	/**
-	 * The meta object id for the '{@link SimulinkOOOAPI.impl.SystemImpl <em>System</em>}' class.
+	 * The meta object id for the '{@link SimulinkOOAPI.impl.SystemImpl <em>System</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see SimulinkOOOAPI.impl.SystemImpl
-	 * @see SimulinkOOOAPI.impl.SimulinkOOOAPIPackageImpl#getSystem()
+	 * @see SimulinkOOAPI.impl.SystemImpl
+	 * @see SimulinkOOAPI.impl.SimulinkOOOAPIPackageImpl#getSystem()
 	 * @generated
 	 */
 	int SYSTEM = 8;
@@ -331,11 +331,11 @@ public interface SimulinkOOOAPIPackage extends EPackage {
 	int SYSTEM_FEATURE_COUNT = PROTO_OBJECT_FEATURE_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link SimulinkOOOAPI.impl.ModelImpl <em>Model</em>}' class.
+	 * The meta object id for the '{@link SimulinkOOAPI.impl.ModelImpl <em>Model</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see SimulinkOOOAPI.impl.ModelImpl
-	 * @see SimulinkOOOAPI.impl.SimulinkOOOAPIPackageImpl#getModel()
+	 * @see SimulinkOOAPI.impl.ModelImpl
+	 * @see SimulinkOOAPI.impl.SimulinkOOOAPIPackageImpl#getModel()
 	 * @generated
 	 */
 	int MODEL = 9;
@@ -369,177 +369,177 @@ public interface SimulinkOOOAPIPackage extends EPackage {
 
 
 	/**
-	 * Returns the meta object for class '{@link SimulinkOOOAPI.ProtoObject <em>Proto Object</em>}'.
+	 * Returns the meta object for class '{@link SimulinkOOAPI.ProtoObject <em>Proto Object</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Proto Object</em>'.
-	 * @see SimulinkOOOAPI.ProtoObject
+	 * @see SimulinkOOAPI.ProtoObject
 	 * @generated
 	 */
 	EClass getProtoObject();
 
 	/**
-	 * Returns the meta object for the reference '{@link SimulinkOOOAPI.ProtoObject#getIdentity <em>Identity</em>}'.
+	 * Returns the meta object for the reference '{@link SimulinkOOAPI.ProtoObject#getIdentity <em>Identity</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Identity</em>'.
-	 * @see SimulinkOOOAPI.ProtoObject#getIdentity()
+	 * @see SimulinkOOAPI.ProtoObject#getIdentity()
 	 * @see #getProtoObject()
 	 * @generated
 	 */
 	EReference getProtoObject_Identity();
 
 	/**
-	 * Returns the meta object for class '{@link SimulinkOOOAPI.Library <em>Library</em>}'.
+	 * Returns the meta object for class '{@link SimulinkOOAPI.Library <em>Library</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Library</em>'.
-	 * @see SimulinkOOOAPI.Library
+	 * @see SimulinkOOAPI.Library
 	 * @generated
 	 */
 	EClass getLibrary();
 
 	/**
-	 * Returns the meta object for class '{@link SimulinkOOOAPI.Identity <em>Identity</em>}'.
+	 * Returns the meta object for class '{@link SimulinkOOAPI.Identity <em>Identity</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Identity</em>'.
-	 * @see SimulinkOOOAPI.Identity
+	 * @see SimulinkOOAPI.Identity
 	 * @generated
 	 */
 	EClass getIdentity();
 
 	/**
-	 * Returns the meta object for the attribute '{@link SimulinkOOOAPI.Identity#getUuid <em>Uuid</em>}'.
+	 * Returns the meta object for the attribute '{@link SimulinkOOAPI.Identity#getUuid <em>Uuid</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Uuid</em>'.
-	 * @see SimulinkOOOAPI.Identity#getUuid()
+	 * @see SimulinkOOAPI.Identity#getUuid()
 	 * @see #getIdentity()
 	 * @generated
 	 */
 	EAttribute getIdentity_Uuid();
 
 	/**
-	 * Returns the meta object for class '{@link SimulinkOOOAPI.Mask <em>Mask</em>}'.
+	 * Returns the meta object for class '{@link SimulinkOOAPI.Mask <em>Mask</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Mask</em>'.
-	 * @see SimulinkOOOAPI.Mask
+	 * @see SimulinkOOAPI.Mask
 	 * @generated
 	 */
 	EClass getMask();
 
 	/**
-	 * Returns the meta object for class '{@link SimulinkOOOAPI.ChildrenSupport <em>Children Support</em>}'.
+	 * Returns the meta object for class '{@link SimulinkOOAPI.ChildrenSupport <em>Children Support</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Children Support</em>'.
-	 * @see SimulinkOOOAPI.ChildrenSupport
+	 * @see SimulinkOOAPI.ChildrenSupport
 	 * @generated
 	 */
 	EClass getChildrenSupport();
 
 	/**
-	 * Returns the meta object for class '{@link SimulinkOOOAPI.GainBlock <em>Gain Block</em>}'.
+	 * Returns the meta object for class '{@link SimulinkOOAPI.GainBlock <em>Gain Block</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Gain Block</em>'.
-	 * @see SimulinkOOOAPI.GainBlock
+	 * @see SimulinkOOAPI.GainBlock
 	 * @generated
 	 */
 	EClass getGainBlock();
 
 	/**
-	 * Returns the meta object for the attribute '{@link SimulinkOOOAPI.GainBlock#getGain <em>Gain</em>}'.
+	 * Returns the meta object for the attribute '{@link SimulinkOOAPI.GainBlock#getGain <em>Gain</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Gain</em>'.
-	 * @see SimulinkOOOAPI.GainBlock#getGain()
+	 * @see SimulinkOOAPI.GainBlock#getGain()
 	 * @see #getGainBlock()
 	 * @generated
 	 */
 	EAttribute getGainBlock_Gain();
 
 	/**
-	 * Returns the meta object for class '{@link SimulinkOOOAPI.Port <em>Port</em>}'.
+	 * Returns the meta object for class '{@link SimulinkOOAPI.Port <em>Port</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Port</em>'.
-	 * @see SimulinkOOOAPI.Port
+	 * @see SimulinkOOAPI.Port
 	 * @generated
 	 */
 	EClass getPort();
 
 	/**
-	 * Returns the meta object for class '{@link SimulinkOOOAPI.Line <em>Line</em>}'.
+	 * Returns the meta object for class '{@link SimulinkOOAPI.Line <em>Line</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Line</em>'.
-	 * @see SimulinkOOOAPI.Line
+	 * @see SimulinkOOAPI.Line
 	 * @generated
 	 */
 	EClass getLine();
 
 	/**
-	 * Returns the meta object for the reference '{@link SimulinkOOOAPI.Line#getSource <em>Source</em>}'.
+	 * Returns the meta object for the reference '{@link SimulinkOOAPI.Line#getSource <em>Source</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Source</em>'.
-	 * @see SimulinkOOOAPI.Line#getSource()
+	 * @see SimulinkOOAPI.Line#getSource()
 	 * @see #getLine()
 	 * @generated
 	 */
 	EReference getLine_Source();
 
 	/**
-	 * Returns the meta object for the reference '{@link SimulinkOOOAPI.Line#getDestination <em>Destination</em>}'.
+	 * Returns the meta object for the reference '{@link SimulinkOOAPI.Line#getDestination <em>Destination</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Destination</em>'.
-	 * @see SimulinkOOOAPI.Line#getDestination()
+	 * @see SimulinkOOAPI.Line#getDestination()
 	 * @see #getLine()
 	 * @generated
 	 */
 	EReference getLine_Destination();
 
 	/**
-	 * Returns the meta object for class '{@link SimulinkOOOAPI.System <em>System</em>}'.
+	 * Returns the meta object for class '{@link SimulinkOOAPI.System <em>System</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>System</em>'.
-	 * @see SimulinkOOOAPI.System
+	 * @see SimulinkOOAPI.System
 	 * @generated
 	 */
 	EClass getSystem();
 
 	/**
-	 * Returns the meta object for the reference '{@link SimulinkOOOAPI.System#getChildren <em>Children</em>}'.
+	 * Returns the meta object for the reference '{@link SimulinkOOAPI.System#getChildren <em>Children</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Children</em>'.
-	 * @see SimulinkOOOAPI.System#getChildren()
+	 * @see SimulinkOOAPI.System#getChildren()
 	 * @see #getSystem()
 	 * @generated
 	 */
 	EReference getSystem_Children();
 
 	/**
-	 * Returns the meta object for class '{@link SimulinkOOOAPI.Model <em>Model</em>}'.
+	 * Returns the meta object for class '{@link SimulinkOOAPI.Model <em>Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Model</em>'.
-	 * @see SimulinkOOOAPI.Model
+	 * @see SimulinkOOAPI.Model
 	 * @generated
 	 */
 	EClass getModel();
 
 	/**
-	 * Returns the meta object for the reference '{@link SimulinkOOOAPI.Model#getChildren <em>Children</em>}'.
+	 * Returns the meta object for the reference '{@link SimulinkOOAPI.Model#getChildren <em>Children</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Children</em>'.
-	 * @see SimulinkOOOAPI.Model#getChildren()
+	 * @see SimulinkOOAPI.Model#getChildren()
 	 * @see #getModel()
 	 * @generated
 	 */
@@ -568,11 +568,11 @@ public interface SimulinkOOOAPIPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link SimulinkOOOAPI.impl.ProtoObjectImpl <em>Proto Object</em>}' class.
+		 * The meta object literal for the '{@link SimulinkOOAPI.impl.ProtoObjectImpl <em>Proto Object</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see SimulinkOOOAPI.impl.ProtoObjectImpl
-		 * @see SimulinkOOOAPI.impl.SimulinkOOOAPIPackageImpl#getProtoObject()
+		 * @see SimulinkOOAPI.impl.ProtoObjectImpl
+		 * @see SimulinkOOAPI.impl.SimulinkOOOAPIPackageImpl#getProtoObject()
 		 * @generated
 		 */
 		EClass PROTO_OBJECT = eINSTANCE.getProtoObject();
@@ -586,21 +586,21 @@ public interface SimulinkOOOAPIPackage extends EPackage {
 		EReference PROTO_OBJECT__IDENTITY = eINSTANCE.getProtoObject_Identity();
 
 		/**
-		 * The meta object literal for the '{@link SimulinkOOOAPI.impl.LibraryImpl <em>Library</em>}' class.
+		 * The meta object literal for the '{@link SimulinkOOAPI.impl.LibraryImpl <em>Library</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see SimulinkOOOAPI.impl.LibraryImpl
-		 * @see SimulinkOOOAPI.impl.SimulinkOOOAPIPackageImpl#getLibrary()
+		 * @see SimulinkOOAPI.impl.LibraryImpl
+		 * @see SimulinkOOAPI.impl.SimulinkOOOAPIPackageImpl#getLibrary()
 		 * @generated
 		 */
 		EClass LIBRARY = eINSTANCE.getLibrary();
 
 		/**
-		 * The meta object literal for the '{@link SimulinkOOOAPI.impl.IdentityImpl <em>Identity</em>}' class.
+		 * The meta object literal for the '{@link SimulinkOOAPI.impl.IdentityImpl <em>Identity</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see SimulinkOOOAPI.impl.IdentityImpl
-		 * @see SimulinkOOOAPI.impl.SimulinkOOOAPIPackageImpl#getIdentity()
+		 * @see SimulinkOOAPI.impl.IdentityImpl
+		 * @see SimulinkOOAPI.impl.SimulinkOOOAPIPackageImpl#getIdentity()
 		 * @generated
 		 */
 		EClass IDENTITY = eINSTANCE.getIdentity();
@@ -614,31 +614,31 @@ public interface SimulinkOOOAPIPackage extends EPackage {
 		EAttribute IDENTITY__UUID = eINSTANCE.getIdentity_Uuid();
 
 		/**
-		 * The meta object literal for the '{@link SimulinkOOOAPI.impl.MaskImpl <em>Mask</em>}' class.
+		 * The meta object literal for the '{@link SimulinkOOAPI.impl.MaskImpl <em>Mask</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see SimulinkOOOAPI.impl.MaskImpl
-		 * @see SimulinkOOOAPI.impl.SimulinkOOOAPIPackageImpl#getMask()
+		 * @see SimulinkOOAPI.impl.MaskImpl
+		 * @see SimulinkOOAPI.impl.SimulinkOOOAPIPackageImpl#getMask()
 		 * @generated
 		 */
 		EClass MASK = eINSTANCE.getMask();
 
 		/**
-		 * The meta object literal for the '{@link SimulinkOOOAPI.impl.ChildrenSupportImpl <em>Children Support</em>}' class.
+		 * The meta object literal for the '{@link SimulinkOOAPI.impl.ChildrenSupportImpl <em>Children Support</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see SimulinkOOOAPI.impl.ChildrenSupportImpl
-		 * @see SimulinkOOOAPI.impl.SimulinkOOOAPIPackageImpl#getChildrenSupport()
+		 * @see SimulinkOOAPI.impl.ChildrenSupportImpl
+		 * @see SimulinkOOAPI.impl.SimulinkOOOAPIPackageImpl#getChildrenSupport()
 		 * @generated
 		 */
 		EClass CHILDREN_SUPPORT = eINSTANCE.getChildrenSupport();
 
 		/**
-		 * The meta object literal for the '{@link SimulinkOOOAPI.impl.GainBlockImpl <em>Gain Block</em>}' class.
+		 * The meta object literal for the '{@link SimulinkOOAPI.impl.GainBlockImpl <em>Gain Block</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see SimulinkOOOAPI.impl.GainBlockImpl
-		 * @see SimulinkOOOAPI.impl.SimulinkOOOAPIPackageImpl#getGainBlock()
+		 * @see SimulinkOOAPI.impl.GainBlockImpl
+		 * @see SimulinkOOAPI.impl.SimulinkOOOAPIPackageImpl#getGainBlock()
 		 * @generated
 		 */
 		EClass GAIN_BLOCK = eINSTANCE.getGainBlock();
@@ -652,21 +652,21 @@ public interface SimulinkOOOAPIPackage extends EPackage {
 		EAttribute GAIN_BLOCK__GAIN = eINSTANCE.getGainBlock_Gain();
 
 		/**
-		 * The meta object literal for the '{@link SimulinkOOOAPI.impl.PortImpl <em>Port</em>}' class.
+		 * The meta object literal for the '{@link SimulinkOOAPI.impl.PortImpl <em>Port</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see SimulinkOOOAPI.impl.PortImpl
-		 * @see SimulinkOOOAPI.impl.SimulinkOOOAPIPackageImpl#getPort()
+		 * @see SimulinkOOAPI.impl.PortImpl
+		 * @see SimulinkOOAPI.impl.SimulinkOOOAPIPackageImpl#getPort()
 		 * @generated
 		 */
 		EClass PORT = eINSTANCE.getPort();
 
 		/**
-		 * The meta object literal for the '{@link SimulinkOOOAPI.impl.LineImpl <em>Line</em>}' class.
+		 * The meta object literal for the '{@link SimulinkOOAPI.impl.LineImpl <em>Line</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see SimulinkOOOAPI.impl.LineImpl
-		 * @see SimulinkOOOAPI.impl.SimulinkOOOAPIPackageImpl#getLine()
+		 * @see SimulinkOOAPI.impl.LineImpl
+		 * @see SimulinkOOAPI.impl.SimulinkOOOAPIPackageImpl#getLine()
 		 * @generated
 		 */
 		EClass LINE = eINSTANCE.getLine();
@@ -688,11 +688,11 @@ public interface SimulinkOOOAPIPackage extends EPackage {
 		EReference LINE__DESTINATION = eINSTANCE.getLine_Destination();
 
 		/**
-		 * The meta object literal for the '{@link SimulinkOOOAPI.impl.SystemImpl <em>System</em>}' class.
+		 * The meta object literal for the '{@link SimulinkOOAPI.impl.SystemImpl <em>System</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see SimulinkOOOAPI.impl.SystemImpl
-		 * @see SimulinkOOOAPI.impl.SimulinkOOOAPIPackageImpl#getSystem()
+		 * @see SimulinkOOAPI.impl.SystemImpl
+		 * @see SimulinkOOAPI.impl.SimulinkOOOAPIPackageImpl#getSystem()
 		 * @generated
 		 */
 		EClass SYSTEM = eINSTANCE.getSystem();
@@ -706,11 +706,11 @@ public interface SimulinkOOOAPIPackage extends EPackage {
 		EReference SYSTEM__CHILDREN = eINSTANCE.getSystem_Children();
 
 		/**
-		 * The meta object literal for the '{@link SimulinkOOOAPI.impl.ModelImpl <em>Model</em>}' class.
+		 * The meta object literal for the '{@link SimulinkOOAPI.impl.ModelImpl <em>Model</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see SimulinkOOOAPI.impl.ModelImpl
-		 * @see SimulinkOOOAPI.impl.SimulinkOOOAPIPackageImpl#getModel()
+		 * @see SimulinkOOAPI.impl.ModelImpl
+		 * @see SimulinkOOAPI.impl.SimulinkOOOAPIPackageImpl#getModel()
 		 * @generated
 		 */
 		EClass MODEL = eINSTANCE.getModel();

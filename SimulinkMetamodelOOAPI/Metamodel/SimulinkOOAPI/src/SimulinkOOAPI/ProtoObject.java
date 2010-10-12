@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package SimulinkOOOAPI;
+package SimulinkOOAPI;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -16,11 +16,11 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link SimulinkOOOAPI.ProtoObject#getIdentity <em>Identity</em>}</li>
+ *   <li>{@link SimulinkOOAPI.ProtoObject#getIdentity <em>Identity</em>}</li>
  * </ul>
  * </p>
  *
- * @see SimulinkOOOAPI.SimulinkOOOAPIPackage#getProtoObject()
+ * @see SimulinkOOAPI.SimulinkOOOAPIPackage#getProtoObject()
  * @model abstract="true"
  * @generated
  */
@@ -35,14 +35,14 @@ public interface ProtoObject extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Identity</em>' reference.
 	 * @see #setIdentity(Identity)
-	 * @see SimulinkOOOAPI.SimulinkOOOAPIPackage#getProtoObject_Identity()
+	 * @see SimulinkOOAPI.SimulinkOOOAPIPackage#getProtoObject_Identity()
 	 * @model required="true"
 	 * @generated
 	 */
 	Identity getIdentity();
 
 	/**
-	 * Sets the value of the '{@link SimulinkOOOAPI.ProtoObject#getIdentity <em>Identity</em>}' reference.
+	 * Sets the value of the '{@link SimulinkOOAPI.ProtoObject#getIdentity <em>Identity</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Identity</em>' reference.

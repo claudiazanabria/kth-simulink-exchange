@@ -4,18 +4,18 @@
  *
  * $Id$
  */
-package SimulinkOOOAPI.impl;
+package SimulinkOOAPI.impl;
 
-import SimulinkOOOAPI.ChildrenSupport;
-import SimulinkOOOAPI.GainBlock;
-import SimulinkOOOAPI.Identity;
-import SimulinkOOOAPI.Library;
-import SimulinkOOOAPI.Line;
-import SimulinkOOOAPI.Mask;
-import SimulinkOOOAPI.Model;
-import SimulinkOOOAPI.Port;
-import SimulinkOOOAPI.SimulinkOOOAPIFactory;
-import SimulinkOOOAPI.SimulinkOOOAPIPackage;
+import SimulinkOOAPI.ChildrenSupport;
+import SimulinkOOAPI.GainBlock;
+import SimulinkOOAPI.Identity;
+import SimulinkOOAPI.Library;
+import SimulinkOOAPI.Line;
+import SimulinkOOAPI.Mask;
+import SimulinkOOAPI.Model;
+import SimulinkOOAPI.Port;
+import SimulinkOOAPI.SimulinkOOOAPIFactory;
+import SimulinkOOAPI.SimulinkOOOAPIPackage;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -158,7 +158,7 @@ public class SimulinkOOOAPIFactoryImpl extends EFactoryImpl implements SimulinkO
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SimulinkOOOAPI.System createSystem() {
+	public SimulinkOOAPI.System createSystem() {
 		SystemImpl system = new SystemImpl();
 		return system;
 	}

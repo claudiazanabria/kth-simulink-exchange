@@ -4,18 +4,18 @@
  *
  * $Id$
  */
-package SimulinkOOOAPI.util;
+package SimulinkOOAPI.util;
 
-import SimulinkOOOAPI.ChildrenSupport;
-import SimulinkOOOAPI.GainBlock;
-import SimulinkOOOAPI.Identity;
-import SimulinkOOOAPI.Library;
-import SimulinkOOOAPI.Line;
-import SimulinkOOOAPI.Mask;
-import SimulinkOOOAPI.Model;
-import SimulinkOOOAPI.Port;
-import SimulinkOOOAPI.ProtoObject;
-import SimulinkOOOAPI.SimulinkOOOAPIPackage;
+import SimulinkOOAPI.ChildrenSupport;
+import SimulinkOOAPI.GainBlock;
+import SimulinkOOAPI.Identity;
+import SimulinkOOAPI.Library;
+import SimulinkOOAPI.Line;
+import SimulinkOOAPI.Mask;
+import SimulinkOOAPI.Model;
+import SimulinkOOAPI.Port;
+import SimulinkOOAPI.ProtoObject;
+import SimulinkOOAPI.SimulinkOOOAPIPackage;
 
 import java.util.List;
 
@@ -32,7 +32,7 @@ import org.eclipse.emf.ecore.EObject;
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
- * @see SimulinkOOOAPI.SimulinkOOOAPIPackage
+ * @see SimulinkOOAPI.SimulinkOOOAPIPackage
  * @generated
  */
 public class SimulinkOOOAPISwitch<T> {
@@ -149,7 +149,7 @@ public class SimulinkOOOAPISwitch<T> {
 				return result;
 			}
 			case SimulinkOOOAPIPackage.SYSTEM: {
-				SimulinkOOOAPI.System system = (SimulinkOOOAPI.System)theEObject;
+				SimulinkOOAPI.System system = (SimulinkOOAPI.System)theEObject;
 				T result = caseSystem(system);
 				if (result == null) result = caseProtoObject(system);
 				if (result == null) result = defaultCase(theEObject);
@@ -297,7 +297,7 @@ public class SimulinkOOOAPISwitch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseSystem(SimulinkOOOAPI.System object) {
+	public T caseSystem(SimulinkOOAPI.System object) {
 		return null;
 	}
 

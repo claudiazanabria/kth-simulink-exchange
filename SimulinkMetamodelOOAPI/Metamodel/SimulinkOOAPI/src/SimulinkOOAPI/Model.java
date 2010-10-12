@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package SimulinkOOOAPI;
+package SimulinkOOAPI;
 
 
 /**
@@ -15,11 +15,11 @@ package SimulinkOOOAPI;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link SimulinkOOOAPI.Model#getChildren <em>Children</em>}</li>
+ *   <li>{@link SimulinkOOAPI.Model#getChildren <em>Children</em>}</li>
  * </ul>
  * </p>
  *
- * @see SimulinkOOOAPI.SimulinkOOOAPIPackage#getModel()
+ * @see SimulinkOOAPI.SimulinkOOOAPIPackage#getModel()
  * @model
  * @generated
  */
@@ -34,14 +34,14 @@ public interface Model extends ProtoObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Children</em>' reference.
 	 * @see #setChildren(ChildrenSupport)
-	 * @see SimulinkOOOAPI.SimulinkOOOAPIPackage#getModel_Children()
+	 * @see SimulinkOOAPI.SimulinkOOOAPIPackage#getModel_Children()
 	 * @model
 	 * @generated
 	 */
 	ChildrenSupport getChildren();
 
 	/**
-	 * Sets the value of the '{@link SimulinkOOOAPI.Model#getChildren <em>Children</em>}' reference.
+	 * Sets the value of the '{@link SimulinkOOAPI.Model#getChildren <em>Children</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Children</em>' reference.

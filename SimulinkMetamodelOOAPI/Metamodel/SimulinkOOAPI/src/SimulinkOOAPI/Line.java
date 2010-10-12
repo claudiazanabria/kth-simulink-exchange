@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package SimulinkOOOAPI;
+package SimulinkOOAPI;
 
 
 /**
@@ -15,12 +15,12 @@ package SimulinkOOOAPI;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link SimulinkOOOAPI.Line#getSource <em>Source</em>}</li>
- *   <li>{@link SimulinkOOOAPI.Line#getDestination <em>Destination</em>}</li>
+ *   <li>{@link SimulinkOOAPI.Line#getSource <em>Source</em>}</li>
+ *   <li>{@link SimulinkOOAPI.Line#getDestination <em>Destination</em>}</li>
  * </ul>
  * </p>
  *
- * @see SimulinkOOOAPI.SimulinkOOOAPIPackage#getLine()
+ * @see SimulinkOOAPI.SimulinkOOOAPIPackage#getLine()
  * @model
  * @generated
  */
@@ -35,14 +35,14 @@ public interface Line extends ProtoObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Source</em>' reference.
 	 * @see #setSource(Port)
-	 * @see SimulinkOOOAPI.SimulinkOOOAPIPackage#getLine_Source()
+	 * @see SimulinkOOAPI.SimulinkOOOAPIPackage#getLine_Source()
 	 * @model required="true"
 	 * @generated
 	 */
 	Port getSource();
 
 	/**
-	 * Sets the value of the '{@link SimulinkOOOAPI.Line#getSource <em>Source</em>}' reference.
+	 * Sets the value of the '{@link SimulinkOOAPI.Line#getSource <em>Source</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Source</em>' reference.
@@ -61,14 +61,14 @@ public interface Line extends ProtoObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Destination</em>' reference.
 	 * @see #setDestination(Port)
-	 * @see SimulinkOOOAPI.SimulinkOOOAPIPackage#getLine_Destination()
+	 * @see SimulinkOOAPI.SimulinkOOOAPIPackage#getLine_Destination()
 	 * @model required="true"
 	 * @generated
 	 */
 	Port getDestination();
 
 	/**
-	 * Sets the value of the '{@link SimulinkOOOAPI.Line#getDestination <em>Destination</em>}' reference.
+	 * Sets the value of the '{@link SimulinkOOAPI.Line#getDestination <em>Destination</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Destination</em>' reference.

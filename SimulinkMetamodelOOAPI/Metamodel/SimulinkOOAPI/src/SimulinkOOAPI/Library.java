@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package SimulinkOOOAPI;
+package SimulinkOOAPI;
 
 
 /**
@@ -13,7 +13,7 @@ package SimulinkOOOAPI;
  * <!-- end-user-doc -->
  *
  *
- * @see SimulinkOOOAPI.SimulinkOOOAPIPackage#getLibrary()
+ * @see SimulinkOOAPI.SimulinkOOOAPIPackage#getLibrary()
  * @model
  * @generated
  */

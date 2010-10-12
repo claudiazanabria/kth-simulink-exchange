@@ -4,10 +4,10 @@
  *
  * $Id$
  */
-package SimulinkOOOAPI.impl;
+package SimulinkOOAPI.impl;
 
-import SimulinkOOOAPI.GainBlock;
-import SimulinkOOOAPI.SimulinkOOOAPIPackage;
+import SimulinkOOAPI.GainBlock;
+import SimulinkOOAPI.SimulinkOOOAPIPackage;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link SimulinkOOOAPI.impl.GainBlockImpl#getGain <em>Gain</em>}</li>
+ *   <li>{@link SimulinkOOAPI.impl.GainBlockImpl#getGain <em>Gain</em>}</li>
  * </ul>
  * </p>
  *

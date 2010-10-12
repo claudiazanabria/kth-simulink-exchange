@@ -4,31 +4,29 @@
  *
  * $Id$
  */
-package SimulinkOOOAPI.impl;
+package SimulinkOOAPI.impl;
 
-import SimulinkOOOAPI.Mask;
-import SimulinkOOOAPI.SimulinkOOOAPIPackage;
+import SimulinkOOAPI.Port;
+import SimulinkOOAPI.SimulinkOOOAPIPackage;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Mask</b></em>'.
+ * An implementation of the model object '<em><b>Port</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * </p>
  *
  * @generated
  */
-public class MaskImpl extends EObjectImpl implements Mask {
+public class PortImpl extends ProtoObjectImpl implements Port {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected MaskImpl() {
+	protected PortImpl() {
 		super();
 	}
 
@@ -39,7 +37,7 @@ public class MaskImpl extends EObjectImpl implements Mask {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return SimulinkOOOAPIPackage.Literals.MASK;
+		return SimulinkOOOAPIPackage.Literals.PORT;
 	}
 
-} //MaskImpl
+} //PortImpl

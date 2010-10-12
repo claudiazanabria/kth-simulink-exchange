@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package SimulinkOOOAPI;
+package SimulinkOOAPI;
 
 
 /**
@@ -15,11 +15,11 @@ package SimulinkOOOAPI;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link SimulinkOOOAPI.GainBlock#getGain <em>Gain</em>}</li>
+ *   <li>{@link SimulinkOOAPI.GainBlock#getGain <em>Gain</em>}</li>
  * </ul>
  * </p>
  *
- * @see SimulinkOOOAPI.SimulinkOOOAPIPackage#getGainBlock()
+ * @see SimulinkOOAPI.SimulinkOOOAPIPackage#getGainBlock()
  * @model
  * @generated
  */
@@ -34,14 +34,14 @@ public interface GainBlock extends ProtoObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Gain</em>' attribute.
 	 * @see #setGain(int)
-	 * @see SimulinkOOOAPI.SimulinkOOOAPIPackage#getGainBlock_Gain()
+	 * @see SimulinkOOAPI.SimulinkOOOAPIPackage#getGainBlock_Gain()
 	 * @model
 	 * @generated
 	 */
 	int getGain();
 
 	/**
-	 * Sets the value of the '{@link SimulinkOOOAPI.GainBlock#getGain <em>Gain</em>}' attribute.
+	 * Sets the value of the '{@link SimulinkOOAPI.GainBlock#getGain <em>Gain</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Gain</em>' attribute.

@@ -4,18 +4,18 @@
  *
  * $Id$
  */
-package SimulinkOOOAPI.util;
+package SimulinkOOAPI.util;
 
-import SimulinkOOOAPI.ChildrenSupport;
-import SimulinkOOOAPI.GainBlock;
-import SimulinkOOOAPI.Identity;
-import SimulinkOOOAPI.Library;
-import SimulinkOOOAPI.Line;
-import SimulinkOOOAPI.Mask;
-import SimulinkOOOAPI.Model;
-import SimulinkOOOAPI.Port;
-import SimulinkOOOAPI.ProtoObject;
-import SimulinkOOOAPI.SimulinkOOOAPIPackage;
+import SimulinkOOAPI.ChildrenSupport;
+import SimulinkOOAPI.GainBlock;
+import SimulinkOOAPI.Identity;
+import SimulinkOOAPI.Library;
+import SimulinkOOAPI.Line;
+import SimulinkOOAPI.Mask;
+import SimulinkOOAPI.Model;
+import SimulinkOOAPI.Port;
+import SimulinkOOAPI.ProtoObject;
+import SimulinkOOAPI.SimulinkOOOAPIPackage;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
@@ -29,7 +29,7 @@ import org.eclipse.emf.ecore.EObject;
  * The <b>Adapter Factory</b> for the model.
  * It provides an adapter <code>createXXX</code> method for each class of the model.
  * <!-- end-user-doc -->
- * @see SimulinkOOOAPI.SimulinkOOOAPIPackage
+ * @see SimulinkOOAPI.SimulinkOOOAPIPackage
  * @generated
  */
 public class SimulinkOOOAPIAdapterFactory extends AdapterFactoryImpl {
@@ -113,7 +113,7 @@ public class SimulinkOOOAPIAdapterFactory extends AdapterFactoryImpl {
 				return createLineAdapter();
 			}
 			@Override
-			public Adapter caseSystem(SimulinkOOOAPI.System object) {
+			public Adapter caseSystem(SimulinkOOAPI.System object) {
 				return createSystemAdapter();
 			}
 			@Override
@@ -141,13 +141,13 @@ public class SimulinkOOOAPIAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link SimulinkOOOAPI.ProtoObject <em>Proto Object</em>}'.
+	 * Creates a new adapter for an object of class '{@link SimulinkOOAPI.ProtoObject <em>Proto Object</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see SimulinkOOOAPI.ProtoObject
+	 * @see SimulinkOOAPI.ProtoObject
 	 * @generated
 	 */
 	public Adapter createProtoObjectAdapter() {
@@ -155,13 +155,13 @@ public class SimulinkOOOAPIAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link SimulinkOOOAPI.Library <em>Library</em>}'.
+	 * Creates a new adapter for an object of class '{@link SimulinkOOAPI.Library <em>Library</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see SimulinkOOOAPI.Library
+	 * @see SimulinkOOAPI.Library
 	 * @generated
 	 */
 	public Adapter createLibraryAdapter() {
@@ -169,13 +169,13 @@ public class SimulinkOOOAPIAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link SimulinkOOOAPI.Identity <em>Identity</em>}'.
+	 * Creates a new adapter for an object of class '{@link SimulinkOOAPI.Identity <em>Identity</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see SimulinkOOOAPI.Identity
+	 * @see SimulinkOOAPI.Identity
 	 * @generated
 	 */
 	public Adapter createIdentityAdapter() {
@@ -183,13 +183,13 @@ public class SimulinkOOOAPIAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link SimulinkOOOAPI.Mask <em>Mask</em>}'.
+	 * Creates a new adapter for an object of class '{@link SimulinkOOAPI.Mask <em>Mask</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see SimulinkOOOAPI.Mask
+	 * @see SimulinkOOAPI.Mask
 	 * @generated
 	 */
 	public Adapter createMaskAdapter() {
@@ -197,13 +197,13 @@ public class SimulinkOOOAPIAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link SimulinkOOOAPI.ChildrenSupport <em>Children Support</em>}'.
+	 * Creates a new adapter for an object of class '{@link SimulinkOOAPI.ChildrenSupport <em>Children Support</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see SimulinkOOOAPI.ChildrenSupport
+	 * @see SimulinkOOAPI.ChildrenSupport
 	 * @generated
 	 */
 	public Adapter createChildrenSupportAdapter() {
@@ -211,13 +211,13 @@ public class SimulinkOOOAPIAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link SimulinkOOOAPI.GainBlock <em>Gain Block</em>}'.
+	 * Creates a new adapter for an object of class '{@link SimulinkOOAPI.GainBlock <em>Gain Block</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see SimulinkOOOAPI.GainBlock
+	 * @see SimulinkOOAPI.GainBlock
 	 * @generated
 	 */
 	public Adapter createGainBlockAdapter() {
@@ -225,13 +225,13 @@ public class SimulinkOOOAPIAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link SimulinkOOOAPI.Port <em>Port</em>}'.
+	 * Creates a new adapter for an object of class '{@link SimulinkOOAPI.Port <em>Port</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see SimulinkOOOAPI.Port
+	 * @see SimulinkOOAPI.Port
 	 * @generated
 	 */
 	public Adapter createPortAdapter() {
@@ -239,13 +239,13 @@ public class SimulinkOOOAPIAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link SimulinkOOOAPI.Line <em>Line</em>}'.
+	 * Creates a new adapter for an object of class '{@link SimulinkOOAPI.Line <em>Line</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see SimulinkOOOAPI.Line
+	 * @see SimulinkOOAPI.Line
 	 * @generated
 	 */
 	public Adapter createLineAdapter() {
@@ -253,13 +253,13 @@ public class SimulinkOOOAPIAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link SimulinkOOOAPI.System <em>System</em>}'.
+	 * Creates a new adapter for an object of class '{@link SimulinkOOAPI.System <em>System</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see SimulinkOOOAPI.System
+	 * @see SimulinkOOAPI.System
 	 * @generated
 	 */
 	public Adapter createSystemAdapter() {
@@ -267,13 +267,13 @@ public class SimulinkOOOAPIAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link SimulinkOOOAPI.Model <em>Model</em>}'.
+	 * Creates a new adapter for an object of class '{@link SimulinkOOAPI.Model <em>Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see SimulinkOOOAPI.Model
+	 * @see SimulinkOOAPI.Model
 	 * @generated
 	 */
 	public Adapter createModelAdapter() {

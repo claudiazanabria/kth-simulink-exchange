@@ -4,10 +4,10 @@
  *
  * $Id$
  */
-package SimulinkOOOAPI.impl;
+package SimulinkOOAPI.impl;
 
-import SimulinkOOOAPI.ChildrenSupport;
-import SimulinkOOOAPI.SimulinkOOOAPIPackage;
+import SimulinkOOAPI.Mask;
+import SimulinkOOAPI.SimulinkOOOAPIPackage;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -15,20 +15,20 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Children Support</b></em>'.
+ * An implementation of the model object '<em><b>Mask</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * </p>
  *
  * @generated
  */
-public class ChildrenSupportImpl extends EObjectImpl implements ChildrenSupport {
+public class MaskImpl extends EObjectImpl implements Mask {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ChildrenSupportImpl() {
+	protected MaskImpl() {
 		super();
 	}
 
@@ -39,7 +39,7 @@ public class ChildrenSupportImpl extends EObjectImpl implements ChildrenSupport 
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return SimulinkOOOAPIPackage.Literals.CHILDREN_SUPPORT;
+		return SimulinkOOOAPIPackage.Literals.MASK;
 	}
 
-} //ChildrenSupportImpl
+} //MaskImpl

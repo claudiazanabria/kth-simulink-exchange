@@ -4,19 +4,19 @@
  *
  * $Id$
  */
-package SimulinkOOOAPI.impl;
+package SimulinkOOAPI.impl;
 
-import SimulinkOOOAPI.ChildrenSupport;
-import SimulinkOOOAPI.GainBlock;
-import SimulinkOOOAPI.Identity;
-import SimulinkOOOAPI.Library;
-import SimulinkOOOAPI.Line;
-import SimulinkOOOAPI.Mask;
-import SimulinkOOOAPI.Model;
-import SimulinkOOOAPI.Port;
-import SimulinkOOOAPI.ProtoObject;
-import SimulinkOOOAPI.SimulinkOOOAPIFactory;
-import SimulinkOOOAPI.SimulinkOOOAPIPackage;
+import SimulinkOOAPI.ChildrenSupport;
+import SimulinkOOAPI.GainBlock;
+import SimulinkOOAPI.Identity;
+import SimulinkOOAPI.Library;
+import SimulinkOOAPI.Line;
+import SimulinkOOAPI.Mask;
+import SimulinkOOAPI.Model;
+import SimulinkOOAPI.Port;
+import SimulinkOOAPI.ProtoObject;
+import SimulinkOOAPI.SimulinkOOOAPIFactory;
+import SimulinkOOAPI.SimulinkOOOAPIPackage;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -114,7 +114,7 @@ public class SimulinkOOOAPIPackageImpl extends EPackageImpl implements SimulinkO
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
-	 * @see SimulinkOOOAPI.SimulinkOOOAPIPackage#eNS_URI
+	 * @see SimulinkOOAPI.SimulinkOOOAPIPackage#eNS_URI
 	 * @see #init()
 	 * @generated
 	 */
@@ -439,8 +439,8 @@ public class SimulinkOOOAPIPackageImpl extends EPackageImpl implements SimulinkO
 		initEReference(getLine_Source(), this.getPort(), null, "source", null, 1, 1, Line.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLine_Destination(), this.getPort(), null, "destination", null, 1, 1, Line.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(systemEClass, SimulinkOOOAPI.System.class, "System", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getSystem_Children(), this.getChildrenSupport(), null, "children", null, 0, 1, SimulinkOOOAPI.System.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(systemEClass, SimulinkOOAPI.System.class, "System", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getSystem_Children(), this.getChildrenSupport(), null, "children", null, 0, 1, SimulinkOOAPI.System.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getModel_Children(), this.getChildrenSupport(), null, "children", null, 0, 1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

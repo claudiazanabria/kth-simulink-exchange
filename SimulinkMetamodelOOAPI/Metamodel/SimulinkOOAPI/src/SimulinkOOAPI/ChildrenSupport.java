@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package SimulinkOOOAPI;
+package SimulinkOOAPI;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * <!-- end-user-doc -->
  *
  *
- * @see SimulinkOOOAPI.SimulinkOOOAPIPackage#getChildrenSupport()
+ * @see SimulinkOOAPI.SimulinkOOOAPIPackage#getChildrenSupport()
  * @model
  * @generated
  */

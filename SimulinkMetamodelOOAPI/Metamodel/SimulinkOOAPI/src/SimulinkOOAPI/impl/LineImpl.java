@@ -4,11 +4,11 @@
  *
  * $Id$
  */
-package SimulinkOOOAPI.impl;
+package SimulinkOOAPI.impl;
 
-import SimulinkOOOAPI.Line;
-import SimulinkOOOAPI.Port;
-import SimulinkOOOAPI.SimulinkOOOAPIPackage;
+import SimulinkOOAPI.Line;
+import SimulinkOOAPI.Port;
+import SimulinkOOAPI.SimulinkOOOAPIPackage;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -24,8 +24,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link SimulinkOOOAPI.impl.LineImpl#getSource <em>Source</em>}</li>
- *   <li>{@link SimulinkOOOAPI.impl.LineImpl#getDestination <em>Destination</em>}</li>
+ *   <li>{@link SimulinkOOAPI.impl.LineImpl#getSource <em>Source</em>}</li>
+ *   <li>{@link SimulinkOOAPI.impl.LineImpl#getDestination <em>Destination</em>}</li>
  * </ul>
  * </p>
  *

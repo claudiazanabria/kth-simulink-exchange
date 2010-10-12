@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package SimulinkOOOAPI;
+package SimulinkOOAPI;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -16,11 +16,11 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link SimulinkOOOAPI.Identity#getUuid <em>Uuid</em>}</li>
+ *   <li>{@link SimulinkOOAPI.Identity#getUuid <em>Uuid</em>}</li>
  * </ul>
  * </p>
  *
- * @see SimulinkOOOAPI.SimulinkOOOAPIPackage#getIdentity()
+ * @see SimulinkOOAPI.SimulinkOOOAPIPackage#getIdentity()
  * @model
  * @generated
  */
@@ -35,14 +35,14 @@ public interface Identity extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Uuid</em>' attribute.
 	 * @see #setUuid(String)
-	 * @see SimulinkOOOAPI.SimulinkOOOAPIPackage#getIdentity_Uuid()
+	 * @see SimulinkOOAPI.SimulinkOOOAPIPackage#getIdentity_Uuid()
 	 * @model
 	 * @generated
 	 */
 	String getUuid();
 
 	/**
-	 * Sets the value of the '{@link SimulinkOOOAPI.Identity#getUuid <em>Uuid</em>}' attribute.
+	 * Sets the value of the '{@link SimulinkOOAPI.Identity#getUuid <em>Uuid</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Uuid</em>' attribute.

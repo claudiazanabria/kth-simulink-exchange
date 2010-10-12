@@ -4,29 +4,29 @@
  *
  * $Id$
  */
-package SimulinkOOOAPI.impl;
+package SimulinkOOAPI.impl;
 
-import SimulinkOOOAPI.Port;
-import SimulinkOOOAPI.SimulinkOOOAPIPackage;
+import SimulinkOOAPI.Library;
+import SimulinkOOAPI.SimulinkOOOAPIPackage;
 
 import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Port</b></em>'.
+ * An implementation of the model object '<em><b>Library</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * </p>
  *
  * @generated
  */
-public class PortImpl extends ProtoObjectImpl implements Port {
+public class LibraryImpl extends ProtoObjectImpl implements Library {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected PortImpl() {
+	protected LibraryImpl() {
 		super();
 	}
 
@@ -37,7 +37,7 @@ public class PortImpl extends ProtoObjectImpl implements Port {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return SimulinkOOOAPIPackage.Literals.PORT;
+		return SimulinkOOOAPIPackage.Literals.LIBRARY;
 	}
 
-} //PortImpl
+} //LibraryImpl

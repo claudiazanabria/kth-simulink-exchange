@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package SimulinkOOOAPI;
+package SimulinkOOAPI;
 
 import org.eclipse.emf.ecore.EFactory;
 
@@ -13,7 +13,7 @@ import org.eclipse.emf.ecore.EFactory;
  * The <b>Factory</b> for the model.
  * It provides a create method for each non-abstract class of the model.
  * <!-- end-user-doc -->
- * @see SimulinkOOOAPI.SimulinkOOOAPIPackage
+ * @see SimulinkOOAPI.SimulinkOOOAPIPackage
  * @generated
  */
 public interface SimulinkOOOAPIFactory extends EFactory {
@@ -23,7 +23,7 @@ public interface SimulinkOOOAPIFactory extends EFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	SimulinkOOOAPIFactory eINSTANCE = SimulinkOOOAPI.impl.SimulinkOOOAPIFactoryImpl.init();
+	SimulinkOOOAPIFactory eINSTANCE = SimulinkOOAPI.impl.SimulinkOOOAPIFactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>Library</em>'.

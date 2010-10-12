@@ -4,11 +4,11 @@
  *
  * $Id$
  */
-package SimulinkOOOAPI.impl;
+package SimulinkOOAPI.impl;
 
-import SimulinkOOOAPI.Identity;
-import SimulinkOOOAPI.ProtoObject;
-import SimulinkOOOAPI.SimulinkOOOAPIPackage;
+import SimulinkOOAPI.Identity;
+import SimulinkOOAPI.ProtoObject;
+import SimulinkOOAPI.SimulinkOOOAPIPackage;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link SimulinkOOOAPI.impl.ProtoObjectImpl#getIdentity <em>Identity</em>}</li>
+ *   <li>{@link SimulinkOOAPI.impl.ProtoObjectImpl#getIdentity <em>Identity</em>}</li>
  * </ul>
  * </p>
  *
