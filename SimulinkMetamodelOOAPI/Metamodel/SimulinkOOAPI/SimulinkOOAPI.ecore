@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="SimulinkOOOAPI"
+    nsURI="http:///se.kth.md.attest3/SimulinkOOAPI/1.0" nsPrefix="simoo">
+  <eClassifiers xsi:type="ecore:EClass" name="ProtoObject" abstract="true" eSuperTypes="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="identity" lowerBound="1"
+        eType="#//Identity"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Library" eSuperTypes="#//ProtoObject"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Identity" eSuperTypes="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="uuid" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Mask" eSuperTypes="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ChildrenSupport"/>
+  <eClassifiers xsi:type="ecore:EClass" name="GainBlock" eSuperTypes="#//ProtoObject">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="gain" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Port" eSuperTypes="#//ProtoObject"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Line" eSuperTypes="#//ProtoObject">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" lowerBound="1"
+        eType="#//Port"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="destination" lowerBound="1"
+        eType="#//Port"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="System" eSuperTypes="#//ProtoObject">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="children" eType="#//ChildrenSupport"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Model" eSuperTypes="#//ProtoObject">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="children" eType="#//ChildrenSupport"/>
+  </eClassifiers>
+</ecore:EPackage>
