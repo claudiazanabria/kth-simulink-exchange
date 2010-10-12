@@ -6,6 +6,8 @@
  */
 package SimulinkOOAPI;
 
+import org.eclipse.emf.common.util.EList;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -49,5 +51,33 @@ public interface Model extends ProtoObject {
 	 * @generated
 	 */
 	void setChildren(ChildrenSupport value);
+	
+	/**
+	 * Adds a ProtoObject to children list.
+	 * 
+	 * @generated NOT
+	 */
+	public void addChild(ProtoObject child);
+	
+	/**
+	 * Returns a number of all children.
+	 * 
+	 * @generated NOT
+	 */
+	public int getNumberOfChildren();
+	
+	/**
+	 * Returns EList of all children.
+	 * 
+	 * @generated NOT
+	 */
+	public EList<ProtoObject> getAllChildren();
+	
+	/**
+	 * Returns EList of children of GainBlock type.
+	 * 
+	 * @generated NOT
+	 */
+	public EList<GainBlock> getChildrenOfTypeGainBlock();
 
 } // Model

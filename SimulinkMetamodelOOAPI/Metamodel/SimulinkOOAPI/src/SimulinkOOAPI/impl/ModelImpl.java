@@ -7,10 +7,13 @@
 package SimulinkOOAPI.impl;
 
 import SimulinkOOAPI.ChildrenSupport;
+import SimulinkOOAPI.GainBlock;
 import SimulinkOOAPI.Model;
+import SimulinkOOAPI.ProtoObject;
 import SimulinkOOAPI.SimulinkOOOAPIPackage;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -155,6 +158,42 @@ public class ModelImpl extends ProtoObjectImpl implements Model {
 				return children != null;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**	
+	 * @generated NOT
+	 */
+	@Override
+	public EList<GainBlock> getChildrenOfTypeGainBlock() {
+		//TODO: what if this.children is null?
+		return this.children.getChildrenOfTypeGainBlock();
+	}
+
+	/**	
+	 * @generated NOT
+	 */
+	@Override
+	public void addChild(ProtoObject child) {
+		//TODO: what if this.children is null?
+		this.children.addChild(child);
+	}
+
+	/**	
+	 * @generated NOT
+	 */
+	@Override
+	public EList<ProtoObject> getAllChildren() {
+		//TODO: what if this.children is null?
+		return this.children.getChildren();
+	}
+
+	/**	
+	 * @generated NOT
+	 */
+	@Override
+	public int getNumberOfChildren() {
+		//TODO: what if this.children is null?
+		return this.children.getNumberOfChildren();
 	}
 
 } //ModelImpl
