@@ -9,6 +9,7 @@ package SimulinkOOAPI.impl;
 import SimulinkOOAPI.ChildrenSupport;
 import SimulinkOOAPI.GainBlock;
 import SimulinkOOAPI.Identity;
+import SimulinkOOAPI.Library;
 import SimulinkOOAPI.Line;
 import SimulinkOOAPI.Port;
 import SimulinkOOAPI.ProtoObject;
@@ -214,7 +215,10 @@ public class SystemImpl extends ProtoObjectImpl implements SimulinkOOAPI.System 
 	}
 	
 	@Override
-	public void addChild(ProtoObject child) {		
+	public void addChild(ProtoObject child) {	
+		if (child instanceof Library)
+			throw new IllegalArgumentException("System can not contain libraries");		
+		
 		this.children.addChild(child);
 	}
 

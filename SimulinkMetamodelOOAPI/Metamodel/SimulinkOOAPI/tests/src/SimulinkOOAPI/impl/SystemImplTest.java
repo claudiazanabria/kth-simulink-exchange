@@ -1,6 +1,7 @@
 package SimulinkOOAPI.impl;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import junit.framework.AssertionFailedError;
 
 import org.jmock.Expectations;
@@ -12,6 +13,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import SimulinkOOAPI.Identity;
+import SimulinkOOAPI.ProtoObject;
 import SimulinkOOAPI.ReflectionList;
 import SimulinkOOAPI.System;
 
@@ -54,6 +56,21 @@ public class SystemImplTest {
 		assertEquals(0, system.getNumberOfChildren());
 		system.addChild(new PortImpl(identityMock));
 		assertEquals(1, system.getNumberOfChildren());
+	}
+	
+	protected void testAddWrongChild(ProtoObject child){
+		boolean passed = false;
+		try{
+			system.addChild(child);
+		}catch(IllegalArgumentException e){
+			passed = true;
+		}
+		assertTrue(passed);
+	}
+
+	@Test
+	public void testAddLibrary(){
+		testAddWrongChild(new LibraryImpl(identityMock));		
 	}
 	
 	@Test

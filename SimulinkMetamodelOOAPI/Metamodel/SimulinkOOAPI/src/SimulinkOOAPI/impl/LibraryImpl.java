@@ -207,7 +207,10 @@ public class LibraryImpl extends ProtoObjectImpl implements Library {
 	 * @generated NOT
 	 */
 	@Override
-	public void addChild(ProtoObject child) {		
+	public void addChild(ProtoObject child) {
+		if (child instanceof Library)
+			throw new IllegalArgumentException("Library can not contain libraries");	
+		
 		this.children.addChild(child);
 	}
 

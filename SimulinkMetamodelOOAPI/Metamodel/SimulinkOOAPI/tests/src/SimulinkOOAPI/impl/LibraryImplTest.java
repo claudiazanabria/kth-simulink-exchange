@@ -1,6 +1,7 @@
 package SimulinkOOAPI.impl;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import junit.framework.AssertionFailedError;
 
 import org.jmock.Mockery;
@@ -11,6 +12,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import SimulinkOOAPI.Identity;
+import SimulinkOOAPI.ProtoObject;
 
 @RunWith(JMock.class)
 public class LibraryImplTest {
@@ -36,11 +38,25 @@ public class LibraryImplTest {
 	}	
 	
 	@Test
-	//TODO: check some other elements cannot be added into library
 	public void testAddChild(){
 		assertEquals(0, library.getNumberOfChildren());
 		library.addChild(new SystemImpl(identityMock));
 		assertEquals(1, library.getNumberOfChildren());
+	}
+	
+	protected void testAddWrongChild(ProtoObject child){
+		boolean passed = false;
+		try{
+			library.addChild(child);
+		}catch(IllegalArgumentException e){
+			passed = true;
+		}
+		assertTrue(passed);
+	}
+
+	@Test
+	public void testAddLibrary(){
+		testAddWrongChild(new LibraryImpl(identityMock));		
 	}
 	
 	@Test

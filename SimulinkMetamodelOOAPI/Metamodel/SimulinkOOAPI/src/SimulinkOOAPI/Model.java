@@ -96,15 +96,7 @@ public interface Model extends ProtoObject {
 	 * 
 	 * @generated NOT
 	 */
-	public ReflectionList<ProtoObject> getAllChildren();
-	
-	/**
-	 * Returns EList of children of GainBlock type.
-	 * 
-	 * @generated NOT
-	 */
-	@Deprecated
-	public ReflectionList<GainBlock> getChildrenOfTypeGainBlock();
+	public ReflectionList<ProtoObject> getAllChildren();	
 	
 	/**
 	 * Returns EList of children of Line type.

@@ -9,8 +9,10 @@ package SimulinkOOAPI.impl;
 import SimulinkOOAPI.ChildrenSupport;
 import SimulinkOOAPI.GainBlock;
 import SimulinkOOAPI.Identity;
+import SimulinkOOAPI.Library;
 import SimulinkOOAPI.Line;
 import SimulinkOOAPI.Model;
+import SimulinkOOAPI.Port;
 import SimulinkOOAPI.ReflectionList;
 import SimulinkOOAPI.SimulinkOOAPIPackage;
 import SimulinkOOAPI.ProtoObject;
@@ -157,16 +159,14 @@ public class ModelImpl extends ProtoObjectImpl implements Model {
 	 * @generated NOT
 	 */
 	@Override
-	@Deprecated
-	public ReflectionList<GainBlock> getChildrenOfTypeGainBlock() {
-		return this.children.getChildrenOfTypeGainBlock();
-	}
-
-	/**	
-	 * @generated NOT
-	 */
-	@Override
-	public void addChild(ProtoObject child) {		
+	public void addChild(ProtoObject child) {
+		if (child instanceof GainBlock)
+			throw new IllegalArgumentException("Model can not contain gain blocks");
+		else if (child instanceof Library)
+			throw new IllegalArgumentException("Model can not contain libraries");			
+		else if (child instanceof Port)
+			throw new IllegalArgumentException("Model can not contain ports");
+		
 		this.children.addChild(child);
 	}
 

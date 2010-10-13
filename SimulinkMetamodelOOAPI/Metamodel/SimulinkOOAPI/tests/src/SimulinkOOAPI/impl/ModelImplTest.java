@@ -1,6 +1,7 @@
 package SimulinkOOAPI.impl;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import junit.framework.AssertionFailedError;
 
 import org.jmock.Mockery;
@@ -11,6 +12,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import SimulinkOOAPI.Identity;
+import SimulinkOOAPI.ProtoObject;
 
 @RunWith(JMock.class)
 public class ModelImplTest {
@@ -24,10 +26,7 @@ public class ModelImplTest {
 		model = new ModelImpl(identityMock);		
 		
 		model.addChild(new SystemImpl(identityMock));
-		model.addChild(new SystemImpl(identityMock));
-		//TODO: model can not contain gain block
-		model.addChild(new GainBlockImpl(identityMock, 2));
-		model.addChild(new GainBlockImpl(identityMock, 2));		
+		model.addChild(new SystemImpl(identityMock));				
 	}
 	
 	@Test
@@ -41,18 +40,36 @@ public class ModelImplTest {
 		}
 	}	
 	
-	@Test
-	//TODO: check that ports and some other elements cannot be added into model
+	@Test	
 	public void testAddChild(){
-		assertEquals(4, model.getNumberOfChildren());
+		assertEquals(2, model.getNumberOfChildren());
 		model.addChild(new SystemImpl(identityMock));
-		assertEquals(5, model.getNumberOfChildren());
+		assertEquals(3, model.getNumberOfChildren());
+	}
+	
+	protected void testAddWrongChild(ProtoObject child){
+		boolean passed = false;
+		try{
+			model.addChild(child);
+		}catch(IllegalArgumentException e){
+			passed = true;
+		}
+		assertTrue(passed);
 	}
 	
 	@Test
-	//TODO: model can not contain gain block
-	public void testGetChildrenOfTypeGainBlock(){
-		assertEquals(2, model.getChildrenOfTypeGainBlock().size());
+	public void testAddGainBlock(){
+		testAddWrongChild(new GainBlockImpl(identityMock, 3));		
+	}
+	
+	@Test
+	public void testAddLibrary(){
+		testAddWrongChild(new LibraryImpl(identityMock));		
+	}
+	
+	@Test
+	public void testAddPort(){
+		testAddWrongChild(new PortImpl(identityMock));
 	}
 	
 	@Test	
