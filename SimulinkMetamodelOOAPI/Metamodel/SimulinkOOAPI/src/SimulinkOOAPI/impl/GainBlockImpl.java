@@ -8,7 +8,6 @@ package SimulinkOOAPI.impl;
 
 import SimulinkOOAPI.GainBlock;
 import SimulinkOOAPI.Identity;
-import SimulinkOOAPI.ProtoObject;
 import SimulinkOOAPI.ReflectionList;
 import SimulinkOOAPI.SimulinkOOAPIPackage;
 
@@ -179,7 +178,7 @@ public class GainBlockImpl extends ProtoObjectImpl implements GainBlock {
 	 * @generated NOT
 	 */
 	@Override
-	public void ifGainBlockAddToList(ReflectionList<ProtoObject> list) {
+	public void ifGainBlockAddToList(ReflectionList<GainBlock> list) {
 		list.add(this);		
 	}
 

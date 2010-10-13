@@ -156,7 +156,6 @@ public class ModelImpl extends ProtoObjectImpl implements Model {
 	 */
 	@Override
 	public ReflectionList<GainBlock> getChildrenOfTypeGainBlock() {
-		//TODO: what if this.children is null?
 		return this.children.getChildrenOfTypeGainBlock();
 	}
 
@@ -164,8 +163,7 @@ public class ModelImpl extends ProtoObjectImpl implements Model {
 	 * @generated NOT
 	 */
 	@Override
-	public void addChild(ProtoObject child) {
-		//TODO: what if this.children is null?
+	public void addChild(ProtoObject child) {		
 		this.children.addChild(child);
 	}
 
@@ -174,7 +172,6 @@ public class ModelImpl extends ProtoObjectImpl implements Model {
 	 */
 	@Override
 	public ReflectionList<ProtoObject> getAllChildren() {
-		//TODO: what if this.children is null?
 		return this.children.getChildren();
 	}
 
@@ -183,7 +180,6 @@ public class ModelImpl extends ProtoObjectImpl implements Model {
 	 */
 	@Override
 	public int getNumberOfChildren() {
-		//TODO: what if this.children is null?
 		return this.children.getNumberOfChildren();
 	}
 

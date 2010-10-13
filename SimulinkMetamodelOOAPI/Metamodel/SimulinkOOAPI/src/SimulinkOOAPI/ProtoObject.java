@@ -57,6 +57,6 @@ public interface ProtoObject extends EObject {
 	 * @param list
 	 * @generated NOT
 	 */
-	public void ifGainBlockAddToList(ReflectionList<ProtoObject> list);
+	public void ifGainBlockAddToList(ReflectionList<GainBlock> list);
 
 } // ProtoObject

@@ -58,29 +58,12 @@ public class ChildrenSupportImpl extends EObjectImpl implements ChildrenSupport 
 	public ReflectionList<GainBlock> getChildrenOfTypeGainBlock() {
 		
 		ReflectionList<GainBlock> result = new ReflectionListImpl<GainBlock>();
-		//result.apply(method)
-		//for (ProtoObject child: this.children){
-			//Class.forName("")
-			//new Method().invoke(obj, args)
-			//child.addInListIfGainBlock(result);			
-	//	}		
-		try {
-			return result.collect("addInListIfGainBlock");
-		} catch (IllegalArgumentException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (NoSuchMethodException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InvocationTargetException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}finally{
-			return null;
-		}
+		
+		for (ProtoObject child: this.children){
+			child.ifGainBlockAddToList(result);			
+		}		
+		
+		return result;
 	}
 
 	/**

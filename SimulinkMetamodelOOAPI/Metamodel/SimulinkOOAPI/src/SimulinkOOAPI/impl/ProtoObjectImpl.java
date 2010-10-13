@@ -6,6 +6,7 @@
  */
 package SimulinkOOAPI.impl;
 
+import SimulinkOOAPI.GainBlock;
 import SimulinkOOAPI.Identity;
 import SimulinkOOAPI.ProtoObject;
 import SimulinkOOAPI.ReflectionList;
@@ -168,6 +169,6 @@ public abstract class ProtoObjectImpl extends EObjectImpl implements ProtoObject
 	 * @generated NOT
 	 */
 	@Override
-	public void ifGainBlockAddToList(ReflectionList<ProtoObject> list) {}
+	public void ifGainBlockAddToList(ReflectionList<GainBlock> list) {}
 
 } //ProtoObjectImpl
