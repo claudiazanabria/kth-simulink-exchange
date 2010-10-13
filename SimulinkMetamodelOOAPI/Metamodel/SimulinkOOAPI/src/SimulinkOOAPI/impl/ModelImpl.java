@@ -9,10 +9,12 @@ package SimulinkOOAPI.impl;
 import SimulinkOOAPI.ChildrenSupport;
 import SimulinkOOAPI.GainBlock;
 import SimulinkOOAPI.Identity;
+import SimulinkOOAPI.Line;
 import SimulinkOOAPI.Model;
 import SimulinkOOAPI.ReflectionList;
 import SimulinkOOAPI.SimulinkOOAPIPackage;
 import SimulinkOOAPI.ProtoObject;
+import SimulinkOOAPI.System;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -155,6 +157,7 @@ public class ModelImpl extends ProtoObjectImpl implements Model {
 	 * @generated NOT
 	 */
 	@Override
+	@Deprecated
 	public ReflectionList<GainBlock> getChildrenOfTypeGainBlock() {
 		return this.children.getChildrenOfTypeGainBlock();
 	}
@@ -183,6 +186,17 @@ public class ModelImpl extends ProtoObjectImpl implements Model {
 		return this.children.getNumberOfChildren();
 	}
 
+	
+	@Override
+	public ReflectionList<Line> getChildrenOfTypeLine() {
+		return children.getChildrenOfTypeLine();
+	}
+
+	@Override
+	public ReflectionList<System> getChildrenOfTypeSystem() {
+		return children.getChildrenOfTypeSystem();
+	}
+
 	@Override
 	public boolean isSetChildren() {
 		// TODO Auto-generated method stub
@@ -194,7 +208,6 @@ public class ModelImpl extends ProtoObjectImpl implements Model {
 		// TODO Auto-generated method stub
 		
 	}
-
 	
 
 } //ModelImpl

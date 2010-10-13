@@ -11,11 +11,12 @@ import org.junit.runner.RunWith;
 
 import SimulinkOOAPI.Identity;
 
+
 @RunWith(JMock.class)
 public class ChildrenSupportImplTest {
 	
 	Mockery context = new JUnit4Mockery();
-	Identity identityMock = context.mock(Identity.class);
+	Identity identityMock = context.mock(Identity.class);	
 	ChildrenSupportImpl childrenSupport;
 	
 	@Before
@@ -37,8 +38,25 @@ public class ChildrenSupportImplTest {
 	}
 	
 	@Test
-	public void testGetChildrenOfTypeGain(){
+	public void testGetChildrenOfTypeGainBlock(){
 		assertEquals(2, childrenSupport.getChildrenOfTypeGainBlock().size());
+	}
+	
+	@Test
+	public void testGetChildrenOfTypeLine(){		
+		childrenSupport.addChild(new LineImpl(identityMock));
+		assertEquals(1, childrenSupport.getChildrenOfTypeLine().size());
+	}
+	
+	@Test
+	public void testGetChildrenOfTypePort(){
+		childrenSupport.addChild(new PortImpl(identityMock));
+		assertEquals(1, childrenSupport.getChildrenOfTypePort().size());
+	}
+	
+	@Test
+	public void testGetChildrenOfTypeSystem(){
+		assertEquals(2, childrenSupport.getChildrenOfTypeSystem().size());
 	}
 
 }

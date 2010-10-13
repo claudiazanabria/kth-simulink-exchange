@@ -1,5 +1,6 @@
 package SimulinkOOAPI.impl;
 
+import static org.junit.Assert.assertEquals;
 import junit.framework.AssertionFailedError;
 
 import org.jmock.Expectations;
@@ -46,5 +47,38 @@ public class SystemImplTest {
 		
 		system.ifSystemAddToList(listMock);
 	}	
+	
+	@Test
+	//TODO: check that some elements cannot be added into system
+	public void testAddChild(){
+		assertEquals(0, system.getNumberOfChildren());
+		system.addChild(new PortImpl(identityMock));
+		assertEquals(1, system.getNumberOfChildren());
+	}
+	
+	@Test
+	public void testGetChildrenOfTypeGainBlock(){
+		system.addChild(new GainBlockImpl(identityMock, 2));
+		system.addChild(new GainBlockImpl(identityMock, 2));
+		assertEquals(2, system.getChildrenOfTypeGainBlock().size());
+	}
+	
+	@Test	
+	public void testGetChildrenOfTypeLine(){
+		system.addChild(new LineImpl(identityMock));
+		assertEquals(1, system.getChildrenOfTypeLine().size());
+	}
+	
+	@Test	
+	public void testGetChildrenOfTypePort(){
+		system.addChild(new PortImpl(identityMock));
+		assertEquals(1, system.getChildrenOfTypePort().size());
+	}
+	
+	@Test
+	public void testGetChildrenOfTypeSystem(){
+		system.addChild(new SystemImpl(identityMock));
+		assertEquals(1, system.getChildrenOfTypeSystem().size());
+	}
 
 }

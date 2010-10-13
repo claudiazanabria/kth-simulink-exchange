@@ -25,6 +25,7 @@ public class ModelImplTest {
 		
 		model.addChild(new SystemImpl(identityMock));
 		model.addChild(new SystemImpl(identityMock));
+		//TODO: model can not contain gain block
 		model.addChild(new GainBlockImpl(identityMock, 2));
 		model.addChild(new GainBlockImpl(identityMock, 2));		
 	}
@@ -41,6 +42,7 @@ public class ModelImplTest {
 	}	
 	
 	@Test
+	//TODO: check that ports and some other elements cannot be added into model
 	public void testAddChild(){
 		assertEquals(4, model.getNumberOfChildren());
 		model.addChild(new SystemImpl(identityMock));
@@ -48,8 +50,20 @@ public class ModelImplTest {
 	}
 	
 	@Test
-	public void testGetChildrenOfTypeGain(){
+	//TODO: model can not contain gain block
+	public void testGetChildrenOfTypeGainBlock(){
 		assertEquals(2, model.getChildrenOfTypeGainBlock().size());
+	}
+	
+	@Test	
+	public void testGetChildrenOfTypeLine(){
+		model.addChild(new LineImpl(identityMock));
+		assertEquals(1, model.getChildrenOfTypeLine().size());
+	}
+	
+	@Test
+	public void testGetChildrenOfTypeSystem(){
+		assertEquals(2, model.getChildrenOfTypeSystem().size());
 	}
 
 }

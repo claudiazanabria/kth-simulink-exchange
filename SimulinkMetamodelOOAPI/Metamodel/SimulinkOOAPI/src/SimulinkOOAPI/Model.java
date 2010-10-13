@@ -6,8 +6,6 @@
  */
 package SimulinkOOAPI;
 
-import org.eclipse.emf.common.util.EList;
-
 
 /**
  * <!-- begin-user-doc -->
@@ -105,6 +103,21 @@ public interface Model extends ProtoObject {
 	 * 
 	 * @generated NOT
 	 */
+	@Deprecated
 	public ReflectionList<GainBlock> getChildrenOfTypeGainBlock();
+	
+	/**
+	 * Returns EList of children of Line type.
+	 * 
+	 * @generated NOT
+	 */	
+	public ReflectionList<Line> getChildrenOfTypeLine();
+	
+	/**
+	 * Returns EList of children of System type.
+	 * 
+	 * @generated NOT
+	 */	
+	public ReflectionList<System> getChildrenOfTypeSystem();
 
 } // Model

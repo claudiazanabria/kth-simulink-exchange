@@ -6,14 +6,17 @@
  */
 package SimulinkOOAPI.impl;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
+//import java.lang.reflect.InvocationTargetException;
+//import java.lang.reflect.Method;
 
 import SimulinkOOAPI.ChildrenSupport;
+import SimulinkOOAPI.Line;
+import SimulinkOOAPI.Port;
 import SimulinkOOAPI.SimulinkOOAPIPackage;
 import SimulinkOOAPI.GainBlock;
 import SimulinkOOAPI.ProtoObject;
 import SimulinkOOAPI.ReflectionList;
+import SimulinkOOAPI.System;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -51,21 +54,6 @@ public class ChildrenSupportImpl extends EObjectImpl implements ChildrenSupport 
 		return SimulinkOOAPIPackage.Literals.CHILDREN_SUPPORT;
 	}
 	
-    /**
-     * @generated NOT
-     */
-	@Override
-	public ReflectionList<GainBlock> getChildrenOfTypeGainBlock() {
-		
-		ReflectionList<GainBlock> result = new ReflectionListImpl<GainBlock>();
-		
-		for (ProtoObject child: this.children){
-			child.ifGainBlockAddToList(result);			
-		}		
-		
-		return result;
-	}
-
 	/**
      * @generated NOT
      */
@@ -85,6 +73,58 @@ public class ChildrenSupportImpl extends EObjectImpl implements ChildrenSupport 
 	@Override
 	public int getNumberOfChildren() {
 		return this.children.size();
+	}
+	
+	/**
+    * @generated NOT
+    */
+	@Override
+	public ReflectionList<GainBlock> getChildrenOfTypeGainBlock() {
+		ReflectionList<GainBlock> result = new ReflectionListImpl<GainBlock>();
+
+		for (ProtoObject child : this.children) {
+			child.ifGainBlockAddToList(result);
+		}
+		return result;
+	}
+
+	/**
+    * @generated NOT
+    */
+	@Override
+	public ReflectionList<Line> getChildrenOfTypeLine() {
+		ReflectionList<Line> result = new ReflectionListImpl<Line>();
+
+		for (ProtoObject child : this.children) {
+			child.ifLineAddToList(result);
+		}
+		return result;
+	}
+
+	/**
+	* @generated NOT
+	*/
+	@Override
+	public ReflectionList<Port> getChildrenOfTypePort() {
+		ReflectionList<Port> result = new ReflectionListImpl<Port>();
+
+		for (ProtoObject child : this.children) {
+			child.ifPortAddToList(result);
+		}
+		return result;
+	}
+
+	/**
+	* @generated NOT
+	*/
+	@Override
+	public ReflectionList<System> getChildrenOfTypeSystem() {
+		ReflectionList<System> result = new ReflectionListImpl<System>();
+
+		for (ProtoObject child : this.children) {
+			child.ifSystemAddToList(result);
+		}
+		return result;
 	}
 
 } //ChildrenSupportImpl

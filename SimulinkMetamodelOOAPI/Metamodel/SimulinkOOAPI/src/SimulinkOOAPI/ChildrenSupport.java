@@ -48,4 +48,25 @@ public interface ChildrenSupport extends EObject {
 	 */
 	public ReflectionList<GainBlock> getChildrenOfTypeGainBlock();
 	
+	/**
+	 * Returns EList of children of Line type.
+	 * 
+	 * @generated NOT
+	 */
+	public ReflectionList<Line> getChildrenOfTypeLine();
+	
+	/**
+	 * Returns EList of children of Port type.
+	 * 
+	 * @generated NOT
+	 */
+	public ReflectionList<Port> getChildrenOfTypePort();
+	
+	/**
+	 * Returns EList of children of System type.
+	 * 
+	 * @generated NOT
+	 */
+	public ReflectionList<System> getChildrenOfTypeSystem();
+	
 } // ChildrenSupport

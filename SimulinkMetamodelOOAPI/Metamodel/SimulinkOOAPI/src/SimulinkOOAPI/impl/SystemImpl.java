@@ -7,7 +7,11 @@
 package SimulinkOOAPI.impl;
 
 import SimulinkOOAPI.ChildrenSupport;
+import SimulinkOOAPI.GainBlock;
 import SimulinkOOAPI.Identity;
+import SimulinkOOAPI.Line;
+import SimulinkOOAPI.Port;
+import SimulinkOOAPI.ProtoObject;
 import SimulinkOOAPI.ReflectionList;
 import SimulinkOOAPI.SimulinkOOAPIPackage;
 import SimulinkOOAPI.System;
@@ -59,6 +63,7 @@ public class SystemImpl extends ProtoObjectImpl implements SimulinkOOAPI.System 
 	 */	
 	protected SystemImpl(Identity identity) {
 		super(identity);
+		this.children = new ChildrenSupportImpl();
 	}
 
 	/**
@@ -168,11 +173,46 @@ public class SystemImpl extends ProtoObjectImpl implements SimulinkOOAPI.System 
 		return super.eIsSet(featureID);
 	}
 	
-	/**
-	 * @generated NOT
-	 */
+	@Override
 	public void ifSystemAddToList(ReflectionList<System> list){
 		list.add(this);
+	}
+	
+	@Override
+	public void addChild(ProtoObject child) {		
+		this.children.addChild(child);
+	}
+
+	
+	@Override
+	public ReflectionList<ProtoObject> getAllChildren() {
+		return this.children.getChildren();
+	}
+
+	
+	@Override
+	public int getNumberOfChildren() {
+		return this.children.getNumberOfChildren();
+	}
+
+	@Override
+	public ReflectionList<GainBlock> getChildrenOfTypeGainBlock() {		
+		return children.getChildrenOfTypeGainBlock();
+	}
+
+	@Override
+	public ReflectionList<Line> getChildrenOfTypeLine() {
+		return children.getChildrenOfTypeLine();
+	}
+
+	@Override
+	public ReflectionList<Port> getChildrenOfTypePort() {
+		return children.getChildrenOfTypePort();
+	}
+
+	@Override
+	public ReflectionList<System> getChildrenOfTypeSystem() {
+		return children.getChildrenOfTypeSystem();		
 	}
 
 } //SystemImpl
