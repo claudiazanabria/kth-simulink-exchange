@@ -2,6 +2,7 @@ package SimulinkOOAPI.impl;
 
 import junit.framework.AssertionFailedError;
 
+import org.jmock.Expectations;
 import org.jmock.Mockery;
 import org.jmock.integration.junit4.JMock;
 import org.jmock.integration.junit4.JUnit4Mockery;
@@ -10,11 +11,15 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import SimulinkOOAPI.Identity;
+import SimulinkOOAPI.Port;
+import SimulinkOOAPI.ReflectionList;
 
 @RunWith(JMock.class)
 public class PortImplTest {
 	Mockery context = new JUnit4Mockery();
 	Identity identityMock = context.mock(Identity.class);
+	@SuppressWarnings("unchecked")	
+	ReflectionList<Port> listMock = context.mock(ReflectionList.class);
     PortImpl port;
 	
 	@Before
@@ -31,6 +36,15 @@ public class PortImplTest {
 		}catch(UnsupportedOperationException e){
 			//test passed
 		}
+	}	
+	
+	@Test
+	public void testIfPortAddToList() throws Exception{		
+		context.checking(new Expectations() {{
+			one (listMock).add(with(port));			    
+		}});
+		
+		port.ifPortAddToList(listMock);
 	}	
 
 }
