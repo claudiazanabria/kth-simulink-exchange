@@ -80,5 +80,11 @@ public class SystemImplTest {
 		system.addChild(new SystemImpl(identityMock));
 		assertEquals(1, system.getChildrenOfTypeSystem().size());
 	}
+	
+	@Test
+	public void testGetChildrenOfTypeSystemReference(){
+		system.addChild(new SystemReferenceImpl(identityMock));
+		assertEquals(1, system.getChildrenOfTypeSystemReference().size());
+	}
 
 }

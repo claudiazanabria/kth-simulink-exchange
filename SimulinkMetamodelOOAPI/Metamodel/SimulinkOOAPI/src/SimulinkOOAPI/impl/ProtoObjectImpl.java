@@ -13,6 +13,7 @@ import SimulinkOOAPI.Port;
 import SimulinkOOAPI.ProtoObject;
 import SimulinkOOAPI.ReflectionList;
 import SimulinkOOAPI.SimulinkOOAPIPackage;
+import SimulinkOOAPI.SystemReference;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -190,5 +191,8 @@ public abstract class ProtoObjectImpl extends EObjectImpl implements ProtoObject
 	 */
 	@Override
 	public void ifPortAddToList(ReflectionList<Port> list){}
+	
+	@Override
+	public void ifSystemReferenceAddToList(ReflectionList<SystemReference> list){}
 
 } //ProtoObjectImpl

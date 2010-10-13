@@ -7,11 +7,13 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
 	ChildrenSupportImplTest.class,
 	GainBlockImplTest.class,
+	LibraryImplTest.class,
 	LineImplTest.class,
 	ModelImplTest.class,
 	PortImplTest.class,
 	ReflectionListImplTest.class,
-	SystemImplTest.class
+	SystemImplTest.class,
+	SystemReferenceImplTest.class
 })
 
 public class AllTests {}

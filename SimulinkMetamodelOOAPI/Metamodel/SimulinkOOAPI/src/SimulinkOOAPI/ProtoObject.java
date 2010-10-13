@@ -79,5 +79,12 @@ public interface ProtoObject extends EObject {
 	 * @generated NOT
 	 */
 	public void ifPortAddToList(ReflectionList<Port> list);
+	
+	/**
+	 * The element adds itself to list only if it is instance of SystemReference.	  
+	 * @param list
+	 * @generated NOT
+	 */
+	public void ifSystemReferenceAddToList(ReflectionList<SystemReference> list);
 
 } // ProtoObject

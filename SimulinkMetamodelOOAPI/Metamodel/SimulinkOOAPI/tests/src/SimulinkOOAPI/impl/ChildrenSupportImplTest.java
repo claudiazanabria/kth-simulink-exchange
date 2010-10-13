@@ -58,5 +58,11 @@ public class ChildrenSupportImplTest {
 	public void testGetChildrenOfTypeSystem(){
 		assertEquals(2, childrenSupport.getChildrenOfTypeSystem().size());
 	}
+	
+	@Test
+	public void testGetChildrenOfTypeSystemReference(){
+		childrenSupport.addChild(new SystemReferenceImpl(identityMock));
+		assertEquals(1, childrenSupport.getChildrenOfTypeSystemReference().size());
+	}
 
 }

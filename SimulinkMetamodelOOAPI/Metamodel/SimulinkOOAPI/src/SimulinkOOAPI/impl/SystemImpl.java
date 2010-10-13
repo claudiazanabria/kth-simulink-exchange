@@ -15,6 +15,7 @@ import SimulinkOOAPI.ProtoObject;
 import SimulinkOOAPI.ReflectionList;
 import SimulinkOOAPI.SimulinkOOAPIPackage;
 import SimulinkOOAPI.System;
+import SimulinkOOAPI.SystemReference;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -247,6 +248,11 @@ public class SystemImpl extends ProtoObjectImpl implements SimulinkOOAPI.System 
 	@Override
 	public ReflectionList<System> getChildrenOfTypeSystem() {
 		return children.getChildrenOfTypeSystem();		
+	}
+	
+	@Override
+	public ReflectionList<SystemReference> getChildrenOfTypeSystemReference() {
+		return children.getChildrenOfTypeSystemReference();
 	}
 
 } //SystemImpl

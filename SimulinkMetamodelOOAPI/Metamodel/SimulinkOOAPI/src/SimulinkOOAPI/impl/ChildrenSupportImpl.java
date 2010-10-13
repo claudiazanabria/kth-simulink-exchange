@@ -17,6 +17,7 @@ import SimulinkOOAPI.GainBlock;
 import SimulinkOOAPI.ProtoObject;
 import SimulinkOOAPI.ReflectionList;
 import SimulinkOOAPI.System;
+import SimulinkOOAPI.SystemReference;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -123,6 +124,16 @@ public class ChildrenSupportImpl extends EObjectImpl implements ChildrenSupport 
 
 		for (ProtoObject child : this.children) {
 			child.ifSystemAddToList(result);
+		}
+		return result;
+	}
+
+	@Override
+	public ReflectionList<SystemReference> getChildrenOfTypeSystemReference() {
+		ReflectionList<SystemReference> result = new ReflectionListImpl<SystemReference>();
+
+		for (ProtoObject child : this.children) {
+			child.ifSystemReferenceAddToList(result);
 		}
 		return result;
 	}

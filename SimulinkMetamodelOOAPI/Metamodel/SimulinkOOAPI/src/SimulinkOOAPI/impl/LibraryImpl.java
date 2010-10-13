@@ -7,8 +7,15 @@
 package SimulinkOOAPI.impl;
 
 import SimulinkOOAPI.ChildrenSupport;
+import SimulinkOOAPI.GainBlock;
+import SimulinkOOAPI.Identity;
 import SimulinkOOAPI.Library;
+import SimulinkOOAPI.Line;
+import SimulinkOOAPI.Port;
+import SimulinkOOAPI.ProtoObject;
+import SimulinkOOAPI.ReflectionList;
 import SimulinkOOAPI.SimulinkOOAPIPackage;
+import SimulinkOOAPI.System;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
@@ -54,6 +61,14 @@ public class LibraryImpl extends ProtoObjectImpl implements Library {
 	 */
 	protected LibraryImpl() {
 		super();
+	}
+	
+	/**
+	 * @generated NOT
+	 */
+	protected LibraryImpl(Identity identity) {
+		super(identity);
+		children = new ChildrenSupportImpl();
 	}
 
 	/**
@@ -186,6 +201,54 @@ public class LibraryImpl extends ProtoObjectImpl implements Library {
 				return isSetChildren();
 		}
 		return super.eIsSet(featureID);
+	}
+	
+	/**	
+	 * @generated NOT
+	 */
+	@Override
+	public void addChild(ProtoObject child) {		
+		this.children.addChild(child);
+	}
+
+	/**	
+	 * @generated NOT
+	 */
+	@Override
+	public ReflectionList<ProtoObject> getAllChildren() {
+		return this.children.getChildren();
+	}
+
+	/**	
+	 * @generated NOT
+	 */
+	@Override
+	public int getNumberOfChildren() {
+		return this.children.getNumberOfChildren();
+	}
+	
+	/**	
+	 * @generated NOT
+	 */
+	@Override	
+	public ReflectionList<GainBlock> getChildrenOfTypeGainBlock() {
+		return this.children.getChildrenOfTypeGainBlock();
+	}
+
+	
+	@Override
+	public ReflectionList<Line> getChildrenOfTypeLine() {
+		return children.getChildrenOfTypeLine();
+	}
+
+	@Override
+	public ReflectionList<System> getChildrenOfTypeSystem() {
+		return children.getChildrenOfTypeSystem();
+	}
+
+	@Override
+	public ReflectionList<Port> getChildrenOfTypePort() {
+		return children.getChildrenOfTypePort();
 	}
 
 } //LibraryImpl

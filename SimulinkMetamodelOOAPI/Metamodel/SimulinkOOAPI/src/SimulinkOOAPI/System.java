@@ -124,7 +124,13 @@ public interface System extends ProtoObject {
 	 * 
 	 * @generated NOT
 	 */	
-	//TODO: can System contain Systems?
 	public ReflectionList<System> getChildrenOfTypeSystem();
+	
+	/**
+	 * Returns EList of children of SystemReference type.
+	 * 
+	 * @generated NOT
+	 */	
+	public ReflectionList<SystemReference> getChildrenOfTypeSystemReference();
 
 } // System

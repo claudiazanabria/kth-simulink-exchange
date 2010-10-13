@@ -69,4 +69,11 @@ public interface ChildrenSupport extends EObject {
 	 */
 	public ReflectionList<System> getChildrenOfTypeSystem();
 	
+	/**
+	 * Returns EList of children of SystemReference type.
+	 * 
+	 * @generated NOT
+	 */
+	public ReflectionList<SystemReference> getChildrenOfTypeSystemReference();
+	
 } // ChildrenSupport
