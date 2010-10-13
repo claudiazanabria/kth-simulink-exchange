@@ -17,6 +17,7 @@ import SimulinkOOAPI.Port;
 import SimulinkOOAPI.SimulinkOOAPIFactory;
 import SimulinkOOAPI.SimulinkOOAPIPackage;
 
+import SimulinkOOAPI.SystemReference;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -78,6 +79,7 @@ public class SimulinkOOAPIFactoryImpl extends EFactoryImpl implements SimulinkOO
 			case SimulinkOOAPIPackage.LINE: return createLine();
 			case SimulinkOOAPIPackage.SYSTEM: return createSystem();
 			case SimulinkOOAPIPackage.MODEL: return createModel();
+			case SimulinkOOAPIPackage.SYSTEM_REFERENCE: return createSystemReference();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -171,6 +173,16 @@ public class SimulinkOOAPIFactoryImpl extends EFactoryImpl implements SimulinkOO
 	public Model createModel() {
 		ModelImpl model = new ModelImpl();
 		return model;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SystemReference createSystemReference() {
+		SystemReferenceImpl systemReference = new SystemReferenceImpl();
+		return systemReference;
 	}
 
 	/**

@@ -17,6 +17,7 @@ import SimulinkOOAPI.Port;
 import SimulinkOOAPI.ProtoObject;
 import SimulinkOOAPI.SimulinkOOAPIPackage;
 
+import SimulinkOOAPI.SystemReference;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
@@ -159,6 +160,13 @@ public class SimulinkOOAPISwitch<T> {
 				Model model = (Model)theEObject;
 				T result = caseModel(model);
 				if (result == null) result = caseProtoObject(model);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case SimulinkOOAPIPackage.SYSTEM_REFERENCE: {
+				SystemReference systemReference = (SystemReference)theEObject;
+				T result = caseSystemReference(systemReference);
+				if (result == null) result = caseProtoObject(systemReference);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -313,6 +321,21 @@ public class SimulinkOOAPISwitch<T> {
 	 * @generated
 	 */
 	public T caseModel(Model object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>System Reference</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>System Reference</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSystemReference(SystemReference object) {
 		return null;
 	}
 

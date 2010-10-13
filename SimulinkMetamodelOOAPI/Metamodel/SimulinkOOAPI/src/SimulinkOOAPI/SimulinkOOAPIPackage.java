@@ -108,13 +108,22 @@ public interface SimulinkOOAPIPackage extends EPackage {
 	int LIBRARY__IDENTITY = PROTO_OBJECT__IDENTITY;
 
 	/**
+	 * The feature id for the '<em><b>Children</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIBRARY__CHILDREN = PROTO_OBJECT_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Library</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LIBRARY_FEATURE_COUNT = PROTO_OBJECT_FEATURE_COUNT + 0;
+	int LIBRARY_FEATURE_COUNT = PROTO_OBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link SimulinkOOAPI.impl.IdentityImpl <em>Identity</em>}' class.
@@ -369,6 +378,44 @@ public interface SimulinkOOAPIPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link SimulinkOOAPI.impl.SystemReferenceImpl <em>System Reference</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see SimulinkOOAPI.impl.SystemReferenceImpl
+	 * @see SimulinkOOAPI.impl.SimulinkOOAPIPackageImpl#getSystemReference()
+	 * @generated
+	 */
+	int SYSTEM_REFERENCE = 10;
+
+	/**
+	 * The feature id for the '<em><b>Identity</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM_REFERENCE__IDENTITY = PROTO_OBJECT__IDENTITY;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM_REFERENCE__TARGET = PROTO_OBJECT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>System Reference</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM_REFERENCE_FEATURE_COUNT = PROTO_OBJECT_FEATURE_COUNT + 1;
+
+
+	/**
 	 * Returns the meta object for class '{@link SimulinkOOAPI.ProtoObject <em>Proto Object</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -398,6 +445,17 @@ public interface SimulinkOOAPIPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getLibrary();
+
+	/**
+	 * Returns the meta object for the reference '{@link SimulinkOOAPI.Library#getChildren <em>Children</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Children</em>'.
+	 * @see SimulinkOOAPI.Library#getChildren()
+	 * @see #getLibrary()
+	 * @generated
+	 */
+	EReference getLibrary_Children();
 
 	/**
 	 * Returns the meta object for class '{@link SimulinkOOAPI.Identity <em>Identity</em>}'.
@@ -546,6 +604,27 @@ public interface SimulinkOOAPIPackage extends EPackage {
 	EReference getModel_Children();
 
 	/**
+	 * Returns the meta object for class '{@link SimulinkOOAPI.SystemReference <em>System Reference</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>System Reference</em>'.
+	 * @see SimulinkOOAPI.SystemReference
+	 * @generated
+	 */
+	EClass getSystemReference();
+
+	/**
+	 * Returns the meta object for the reference '{@link SimulinkOOAPI.SystemReference#getTarget <em>Target</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Target</em>'.
+	 * @see SimulinkOOAPI.SystemReference#getTarget()
+	 * @see #getSystemReference()
+	 * @generated
+	 */
+	EReference getSystemReference_Target();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -594,6 +673,14 @@ public interface SimulinkOOAPIPackage extends EPackage {
 		 * @generated
 		 */
 		EClass LIBRARY = eINSTANCE.getLibrary();
+
+		/**
+		 * The meta object literal for the '<em><b>Children</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LIBRARY__CHILDREN = eINSTANCE.getLibrary_Children();
 
 		/**
 		 * The meta object literal for the '{@link SimulinkOOAPI.impl.IdentityImpl <em>Identity</em>}' class.
@@ -722,6 +809,24 @@ public interface SimulinkOOAPIPackage extends EPackage {
 		 * @generated
 		 */
 		EReference MODEL__CHILDREN = eINSTANCE.getModel_Children();
+
+		/**
+		 * The meta object literal for the '{@link SimulinkOOAPI.impl.SystemReferenceImpl <em>System Reference</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see SimulinkOOAPI.impl.SystemReferenceImpl
+		 * @see SimulinkOOAPI.impl.SimulinkOOAPIPackageImpl#getSystemReference()
+		 * @generated
+		 */
+		EClass SYSTEM_REFERENCE = eINSTANCE.getSystemReference();
+
+		/**
+		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SYSTEM_REFERENCE__TARGET = eINSTANCE.getSystemReference_Target();
 
 	}
 

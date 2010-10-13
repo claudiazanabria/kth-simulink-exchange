@@ -17,6 +17,7 @@ import SimulinkOOAPI.Port;
 import SimulinkOOAPI.ProtoObject;
 import SimulinkOOAPI.SimulinkOOAPIPackage;
 
+import SimulinkOOAPI.SystemReference;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 
@@ -119,6 +120,10 @@ public class SimulinkOOAPIAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseModel(Model object) {
 				return createModelAdapter();
+			}
+			@Override
+			public Adapter caseSystemReference(SystemReference object) {
+				return createSystemReferenceAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -277,6 +282,20 @@ public class SimulinkOOAPIAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createModelAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link SimulinkOOAPI.SystemReference <em>System Reference</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see SimulinkOOAPI.SystemReference
+	 * @generated
+	 */
+	public Adapter createSystemReferenceAdapter() {
 		return null;
 	}
 

@@ -7,7 +7,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="identity" lowerBound="1"
         eType="#//Identity"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Library" eSuperTypes="#//ProtoObject"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Library" eSuperTypes="#//ProtoObject">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="children" eType="#//ChildrenSupport"
+        unsettable="true"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Identity" eSuperTypes="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="uuid" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
@@ -30,5 +33,9 @@
   <eClassifiers xsi:type="ecore:EClass" name="Model" eSuperTypes="#//ProtoObject">
     <eStructuralFeatures xsi:type="ecore:EReference" name="children" eType="#//ChildrenSupport"
         volatile="true" unsettable="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SystemReference" eSuperTypes="#//ProtoObject">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+        eType="#//System"/>
   </eClassifiers>
 </ecore:EPackage>
