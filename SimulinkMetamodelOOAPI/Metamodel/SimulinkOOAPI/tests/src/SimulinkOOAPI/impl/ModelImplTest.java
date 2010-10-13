@@ -3,25 +3,30 @@ package SimulinkOOAPI.impl;
 import static org.junit.Assert.assertEquals;
 import junit.framework.AssertionFailedError;
 
+import org.jmock.Mockery;
+import org.jmock.integration.junit4.JMock;
+import org.jmock.integration.junit4.JUnit4Mockery;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
 import SimulinkOOAPI.Identity;
 
-
+@RunWith(JMock.class)
 public class ModelImplTest {
 	
-    Identity identity;
+	Mockery context = new JUnit4Mockery();
+	Identity identityMock = context.mock(Identity.class);
     ModelImpl model;
 	
 	@Before
 	public void setUp(){		
-		model = new ModelImpl(new IdentityImpl());		
+		model = new ModelImpl(identityMock);		
 		
-		model.addChild(new SystemImpl(new IdentityImpl()));
-		model.addChild(new SystemImpl(new IdentityImpl()));
-		model.addChild(new GainBlockImpl(new IdentityImpl()));
-		model.addChild(new GainBlockImpl(new IdentityImpl()));		
+		model.addChild(new SystemImpl(identityMock));
+		model.addChild(new SystemImpl(identityMock));
+		model.addChild(new GainBlockImpl(identityMock));
+		model.addChild(new GainBlockImpl(identityMock));		
 	}
 	
 	@Test
@@ -38,7 +43,7 @@ public class ModelImplTest {
 	@Test
 	public void testAddChild(){
 		assertEquals(4, model.getNumberOfChildren());
-		model.addChild(new SystemImpl(new IdentityImpl()));
+		model.addChild(new SystemImpl(identityMock));
 		assertEquals(5, model.getNumberOfChildren());
 	}
 	
