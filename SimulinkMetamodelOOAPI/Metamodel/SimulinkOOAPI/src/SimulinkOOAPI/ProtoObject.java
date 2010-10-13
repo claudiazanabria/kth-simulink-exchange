@@ -52,6 +52,11 @@ public interface ProtoObject extends EObject {
 	 */
 	void setIdentity(Identity value);
 	
-	public void addInListIfGainBlock(ReflectionList<ProtoObject> list);
+	/**
+	 * The element adds itself to list only if it is instance of GainBlock.	 * 
+	 * @param list
+	 * @generated NOT
+	 */
+	public void ifGainBlockAddToList(ReflectionList<ProtoObject> list);
 
 } // ProtoObject

@@ -164,7 +164,10 @@ public abstract class ProtoObjectImpl extends EObjectImpl implements ProtoObject
 		return super.eIsSet(featureID);
 	}
 	
+	/**	 
+	 * @generated NOT
+	 */
 	@Override
-	public void addInListIfGainBlock(ReflectionList<ProtoObject> list) {}
+	public void ifGainBlockAddToList(ReflectionList<ProtoObject> list) {}
 
 } //ProtoObjectImpl

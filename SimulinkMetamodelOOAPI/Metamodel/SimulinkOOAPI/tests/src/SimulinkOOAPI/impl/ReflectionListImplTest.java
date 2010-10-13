@@ -24,14 +24,14 @@ public class ReflectionListImplTest {
 //				ReflectionList.class,				
 //		});
 		list.add(new GainBlockImpl(new IdentityImpl()));
-		ReflectionList<ProtoObject> result = list.collect("addInListIfGainBlock");
+		ReflectionList<ProtoObject> result = list.collect("ifGainBlockAddToList");
 		assertEquals(1, result.size());
 	}
 	
 	@Test
 	public void testCollect2() throws Exception{
 		list.add(new ModelImpl(new IdentityImpl()));
-		ReflectionList<ProtoObject> result = list.collect("addInListIfGainBlock");
+		ReflectionList<ProtoObject> result = list.collect("ifGainBlockAddToList");
 		assertEquals(0, result.size());
 	}
 }

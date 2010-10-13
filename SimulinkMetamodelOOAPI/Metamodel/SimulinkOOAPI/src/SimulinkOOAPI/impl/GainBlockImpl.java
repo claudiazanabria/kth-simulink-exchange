@@ -175,8 +175,11 @@ public class GainBlockImpl extends ProtoObjectImpl implements GainBlock {
 		return result.toString();
 	}
 
+	/**
+	 * @generated NOT
+	 */
 	@Override
-	public void addInListIfGainBlock(ReflectionList<ProtoObject> list) {
+	public void ifGainBlockAddToList(ReflectionList<ProtoObject> list) {
 		list.add(this);		
 	}
 
