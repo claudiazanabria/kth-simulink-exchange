@@ -31,7 +31,7 @@ public class ReflectionListImplTest {
 //		list.apply("addInListIfGainBlock", new Class[]{
 //				ReflectionList.class,				
 //		});
-		list.add(new GainBlockImpl(identityMock));
+		list.add(new GainBlockImpl(identityMock, 2));
 		ReflectionList<ProtoObject> result = list.collect("ifGainBlockAddToList");
 		assertEquals(1, result.size());
 	}

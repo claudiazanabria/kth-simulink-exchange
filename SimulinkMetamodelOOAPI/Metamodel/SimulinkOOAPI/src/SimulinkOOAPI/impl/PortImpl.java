@@ -6,7 +6,9 @@
  */
 package SimulinkOOAPI.impl;
 
+import SimulinkOOAPI.Identity;
 import SimulinkOOAPI.Port;
+import SimulinkOOAPI.ReflectionList;
 import SimulinkOOAPI.SimulinkOOAPIPackage;
 
 import org.eclipse.emf.ecore.EClass;
@@ -29,6 +31,13 @@ public class PortImpl extends ProtoObjectImpl implements Port {
 	protected PortImpl() {
 		super();
 	}
+	
+	/**
+	 * @generated NOT
+	 */
+	protected PortImpl(Identity identity) {
+		super(identity); 		
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -38,6 +47,13 @@ public class PortImpl extends ProtoObjectImpl implements Port {
 	@Override
 	protected EClass eStaticClass() {
 		return SimulinkOOAPIPackage.Literals.PORT;
+	}
+	
+	/**	 
+	 * @generated NOT
+	 */
+	public void ifPortAddToList(ReflectionList<Port> list){
+		list.add(this);
 	}
 
 } //PortImpl

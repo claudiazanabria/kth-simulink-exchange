@@ -6,8 +6,12 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
 	ChildrenSupportImplTest.class,
+	GainBlockImplTest.class,
+	LineImplTest.class,
 	ModelImplTest.class,
-	ReflectionListImplTest.class
+	PortImplTest.class,
+	ReflectionListImplTest.class,
+	SystemImplTest.class
 })
 
 public class AllTests {}

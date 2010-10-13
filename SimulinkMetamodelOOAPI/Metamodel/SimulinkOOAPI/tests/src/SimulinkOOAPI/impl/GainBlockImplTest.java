@@ -1,6 +1,5 @@
 package SimulinkOOAPI.impl;
 
-import static org.junit.Assert.assertEquals;
 import junit.framework.AssertionFailedError;
 
 import org.jmock.Mockery;
@@ -13,43 +12,25 @@ import org.junit.runner.RunWith;
 import SimulinkOOAPI.Identity;
 
 @RunWith(JMock.class)
-public class ModelImplTest {
-	
+public class GainBlockImplTest {
 	Mockery context = new JUnit4Mockery();
 	Identity identityMock = context.mock(Identity.class);
-    ModelImpl model;
+    GainBlockImpl gainBlock;
 	
 	@Before
 	public void setUp(){		
-		model = new ModelImpl(identityMock);		
-		
-		model.addChild(new SystemImpl(identityMock));
-		model.addChild(new SystemImpl(identityMock));
-		model.addChild(new GainBlockImpl(identityMock, 2));
-		model.addChild(new GainBlockImpl(identityMock, 2));		
+		gainBlock = new GainBlockImpl(identityMock, 3);					
 	}
 	
 	@Test
 	public void testDefaultConstructorIsNotAllowed(){
 		try{
-			new ModelImpl();
+			new GainBlockImpl();
 			//if constructor was called successfully, the test has not passed
 			throw new AssertionFailedError();
 		}catch(UnsupportedOperationException e){
 			//test passed
 		}
 	}	
-	
-	@Test
-	public void testAddChild(){
-		assertEquals(4, model.getNumberOfChildren());
-		model.addChild(new SystemImpl(identityMock));
-		assertEquals(5, model.getNumberOfChildren());
-	}
-	
-	@Test
-	public void testGetChildrenOfTypeGain(){
-		assertEquals(2, model.getChildrenOfTypeGainBlock().size());
-	}
 
 }

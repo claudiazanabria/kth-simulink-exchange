@@ -6,8 +6,10 @@
  */
 package SimulinkOOAPI.impl;
 
+import SimulinkOOAPI.Identity;
 import SimulinkOOAPI.Line;
 import SimulinkOOAPI.Port;
+import SimulinkOOAPI.ReflectionList;
 import SimulinkOOAPI.SimulinkOOAPIPackage;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -61,6 +63,13 @@ public class LineImpl extends ProtoObjectImpl implements Line {
 		super();
 	}
 
+	/**
+	 * @generated NOT
+	 */
+	protected LineImpl(Identity identity) {
+		super(identity); 		
+	}
+	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -215,6 +224,13 @@ public class LineImpl extends ProtoObjectImpl implements Line {
 				return destination != null;
 		}
 		return super.eIsSet(featureID);
+	}
+	
+	/**
+	 * @generated NOT
+	 */
+	public void ifLineAddToList(ReflectionList<Line> list){
+		list.add(this);
 	}
 
 } //LineImpl

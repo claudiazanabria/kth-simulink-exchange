@@ -8,6 +8,8 @@ package SimulinkOOAPI.impl;
 
 import SimulinkOOAPI.GainBlock;
 import SimulinkOOAPI.Identity;
+import SimulinkOOAPI.Line;
+import SimulinkOOAPI.Port;
 import SimulinkOOAPI.ProtoObject;
 import SimulinkOOAPI.ReflectionList;
 import SimulinkOOAPI.SimulinkOOAPIPackage;
@@ -170,5 +172,23 @@ public abstract class ProtoObjectImpl extends EObjectImpl implements ProtoObject
 	 */
 	@Override
 	public void ifGainBlockAddToList(ReflectionList<GainBlock> list) {}
+	
+	/**	 
+	 * @generated NOT
+	 */
+	@Override
+	public void ifSystemAddToList(ReflectionList<SimulinkOOAPI.System> list) {}
+	
+	/**	 
+	 * @generated NOT
+	 */
+	@Override
+	public void ifLineAddToList(ReflectionList<Line> list) {}
+	
+	/**	 
+	 * @generated NOT
+	 */
+	@Override
+	public void ifPortAddToList(ReflectionList<Port> list){}
 
 } //ProtoObjectImpl

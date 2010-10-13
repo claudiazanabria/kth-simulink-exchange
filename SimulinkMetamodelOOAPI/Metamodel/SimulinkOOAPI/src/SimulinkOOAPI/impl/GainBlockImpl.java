@@ -65,8 +65,9 @@ public class GainBlockImpl extends ProtoObjectImpl implements GainBlock {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	protected GainBlockImpl(Identity identity) {
+	protected GainBlockImpl(Identity identity, int gain) {
 		super(identity);
+		this.gain = gain;
 	}
 
 	/**

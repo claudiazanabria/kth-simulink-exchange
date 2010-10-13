@@ -53,10 +53,31 @@ public interface ProtoObject extends EObject {
 	void setIdentity(Identity value);
 	
 	/**
-	 * The element adds itself to list only if it is instance of GainBlock.	 * 
+	 * The element adds itself to list only if it is instance of GainBlock.	  
 	 * @param list
 	 * @generated NOT
 	 */
 	public void ifGainBlockAddToList(ReflectionList<GainBlock> list);
+	
+	/**
+	 * The element adds itself to list only if it is instance of System.	  
+	 * @param list
+	 * @generated NOT
+	 */
+	public void ifSystemAddToList(ReflectionList<System> list);
+	
+	/**
+	 * The element adds itself to list only if it is instance of Line.	  
+	 * @param list
+	 * @generated NOT
+	 */
+	public void ifLineAddToList(ReflectionList<Line> list);
+	
+	/**
+	 * The element adds itself to list only if it is instance of Port.	  
+	 * @param list
+	 * @generated NOT
+	 */
+	public void ifPortAddToList(ReflectionList<Port> list);
 
 } // ProtoObject

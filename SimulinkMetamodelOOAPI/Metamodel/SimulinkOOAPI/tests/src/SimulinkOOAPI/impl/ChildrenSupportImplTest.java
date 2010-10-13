@@ -25,8 +25,8 @@ public class ChildrenSupportImplTest {
 		
 		childrenSupport.addChild(new SystemImpl(identityMock));
 		childrenSupport.addChild(new SystemImpl(identityMock));
-		childrenSupport.addChild(new GainBlockImpl(identityMock));
-		childrenSupport.addChild(new GainBlockImpl(identityMock));
+		childrenSupport.addChild(new GainBlockImpl(identityMock, 2));
+		childrenSupport.addChild(new GainBlockImpl(identityMock, 2));
 	}
 	
 	@Test

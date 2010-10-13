@@ -8,7 +8,9 @@ package SimulinkOOAPI.impl;
 
 import SimulinkOOAPI.ChildrenSupport;
 import SimulinkOOAPI.Identity;
+import SimulinkOOAPI.ReflectionList;
 import SimulinkOOAPI.SimulinkOOAPIPackage;
+import SimulinkOOAPI.System;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -164,6 +166,13 @@ public class SystemImpl extends ProtoObjectImpl implements SimulinkOOAPI.System 
 				return children != null;
 		}
 		return super.eIsSet(featureID);
+	}
+	
+	/**
+	 * @generated NOT
+	 */
+	public void ifSystemAddToList(ReflectionList<System> list){
+		list.add(this);
 	}
 
 } //SystemImpl
