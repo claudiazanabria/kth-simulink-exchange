@@ -4,5 +4,16 @@
 	<classpathentry kind="src" path="tests/src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry kind="lib" path="/JMockPlugin/bsh-core-2.0b4.jar"/>
+	<classpathentry kind="lib" path="/JMockPlugin/cglib-2.1_3-src.jar"/>
+	<classpathentry kind="lib" path="/JMockPlugin/cglib-nodep-2.1_3.jar"/>
+	<classpathentry kind="lib" path="/JMockPlugin/hamcrest-core-1.1.jar"/>
+	<classpathentry kind="lib" path="/JMockPlugin/hamcrest-library-1.1.jar"/>
+	<classpathentry kind="lib" path="/JMockPlugin/jmock-2.5.1.jar"/>
+	<classpathentry kind="lib" path="/JMockPlugin/jmock-junit3-2.5.1.jar"/>
+	<classpathentry kind="lib" path="/JMockPlugin/jmock-junit4-2.5.1.jar"/>
+	<classpathentry kind="lib" path="/JMockPlugin/jmock-legacy-2.5.1.jar"/>
+	<classpathentry kind="lib" path="/JMockPlugin/jmock-script-2.5.1.jar"/>
+	<classpathentry kind="lib" path="/JMockPlugin/objenesis-1.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

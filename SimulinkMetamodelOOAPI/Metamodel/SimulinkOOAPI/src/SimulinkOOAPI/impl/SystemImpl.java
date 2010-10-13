@@ -48,9 +48,18 @@ public class SystemImpl extends ProtoObjectImpl implements SimulinkOOAPI.System 
 	protected ChildrenSupport children;
 
 	/**
+	 * This is true if the Children reference has been set.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated 
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean childrenESet;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
 	 */
 	protected SystemImpl() {
 		super();
@@ -110,8 +119,33 @@ public class SystemImpl extends ProtoObjectImpl implements SimulinkOOAPI.System 
 	public void setChildren(ChildrenSupport newChildren) {
 		ChildrenSupport oldChildren = children;
 		children = newChildren;
+		boolean oldChildrenESet = childrenESet;
+		childrenESet = true;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, SimulinkOOAPIPackage.SYSTEM__CHILDREN, oldChildren, children));
+			eNotify(new ENotificationImpl(this, Notification.SET, SimulinkOOAPIPackage.SYSTEM__CHILDREN, oldChildren, children, !oldChildrenESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetChildren() {
+		ChildrenSupport oldChildren = children;
+		boolean oldChildrenESet = childrenESet;
+		children = null;
+		childrenESet = false;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET, SimulinkOOAPIPackage.SYSTEM__CHILDREN, oldChildren, null, oldChildrenESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetChildren() {
+		return childrenESet;
 	}
 
 	/**
@@ -153,7 +187,7 @@ public class SystemImpl extends ProtoObjectImpl implements SimulinkOOAPI.System 
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case SimulinkOOAPIPackage.SYSTEM__CHILDREN:
-				setChildren((ChildrenSupport)null);
+				unsetChildren();
 				return;
 		}
 		super.eUnset(featureID);
@@ -168,7 +202,7 @@ public class SystemImpl extends ProtoObjectImpl implements SimulinkOOAPI.System 
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case SimulinkOOAPIPackage.SYSTEM__CHILDREN:
-				return children != null;
+				return isSetChildren();
 		}
 		return super.eIsSet(featureID);
 	}
