@@ -13,6 +13,7 @@ import org.junit.runners.Suite;
 	ModelImplTest.class,
 	PortImplTest.class,
 	ReflectionListImplTest.class,
+	SimulinkOOAPIFactoryImplTest.class,
 	SystemImplTest.class,
 	SystemReferenceImplTest.class
 })
