@@ -12,6 +12,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import SimulinkOOAPI.Identity;
+import SimulinkOOAPI.Port;
 import SimulinkOOAPI.ProtoObject;
 
 @RunWith(JMock.class)
@@ -19,6 +20,7 @@ public class ModelImplTest {
 	
 	Mockery context = new JUnit4Mockery();
 	Identity identityMock = context.mock(Identity.class);
+	Port portMock = context.mock(Port.class);
     ModelImpl model;
 	
 	@Before
@@ -74,7 +76,7 @@ public class ModelImplTest {
 	
 	@Test	
 	public void testGetChildrenOfTypeLine(){
-		model.addChild(new LineImpl(identityMock));
+		model.addChild(new LineImpl(identityMock, portMock, portMock));
 		assertEquals(1, model.getChildrenOfTypeLine().size());
 	}
 	

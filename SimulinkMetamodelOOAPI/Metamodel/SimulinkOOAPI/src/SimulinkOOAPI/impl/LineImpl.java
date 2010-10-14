@@ -66,8 +66,10 @@ public class LineImpl extends ProtoObjectImpl implements Line {
 	/**
 	 * @generated NOT
 	 */
-	protected LineImpl(Identity identity) {
+	protected LineImpl(Identity identity, Port source, Port destination) {
 		super(identity); 		
+		this.source = source;
+		this.destination = destination;
 	}
 	
 	/**

@@ -63,10 +63,10 @@ public class SystemReferenceImpl extends ProtoObjectImpl implements SystemRefere
 	/**
 	 * @generated NOT
 	 */
-	//TODO: pass target system into constructor
-	protected SystemReferenceImpl(Identity identity) {
+	protected SystemReferenceImpl(Identity identity, SimulinkOOAPI.System target) {
 		super(identity);
 		children = new ChildrenSupportImpl();
+		this.target = target;
 	}
 
 	/**

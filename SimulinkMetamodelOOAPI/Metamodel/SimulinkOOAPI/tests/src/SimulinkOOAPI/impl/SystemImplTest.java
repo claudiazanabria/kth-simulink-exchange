@@ -13,6 +13,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import SimulinkOOAPI.Identity;
+import SimulinkOOAPI.Port;
 import SimulinkOOAPI.ProtoObject;
 import SimulinkOOAPI.ReflectionList;
 import SimulinkOOAPI.System;
@@ -21,6 +22,7 @@ import SimulinkOOAPI.System;
 public class SystemImplTest {
 	Mockery context = new JUnit4Mockery();
 	Identity identityMock = context.mock(Identity.class);
+	Port portMock = context.mock(Port.class);
 	@SuppressWarnings("unchecked")	
 	ReflectionList<System> listMock = context.mock(ReflectionList.class);
     SystemImpl system;
@@ -82,7 +84,7 @@ public class SystemImplTest {
 	
 	@Test	
 	public void testGetChildrenOfTypeLine(){
-		system.addChild(new LineImpl(identityMock));
+		system.addChild(new LineImpl(identityMock, portMock, portMock));
 		assertEquals(1, system.getChildrenOfTypeLine().size());
 	}
 	
@@ -100,7 +102,7 @@ public class SystemImplTest {
 	
 	@Test
 	public void testGetChildrenOfTypeSystemReference(){
-		system.addChild(new SystemReferenceImpl(identityMock));
+		system.addChild(new SystemReferenceImpl(identityMock, system));
 		assertEquals(1, system.getChildrenOfTypeSystemReference().size());
 	}
 

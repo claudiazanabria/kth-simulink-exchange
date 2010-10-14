@@ -11,17 +11,21 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import SimulinkOOAPI.Identity;
+import SimulinkOOAPI.Port;
+import SimulinkOOAPI.System;
 
 @RunWith(JMock.class)
 public class SystemReferenceImplTest {
 	
 	Mockery context = new JUnit4Mockery();
 	Identity identityMock = context.mock(Identity.class);
+	Port portMock = context.mock(Port.class);
+	System systemMock = context.mock(SimulinkOOAPI.System.class);
     SystemReferenceImpl systemReference;
 	
 	@Before
 	public void setUp(){		
-		systemReference = new SystemReferenceImpl(identityMock);				
+		systemReference = new SystemReferenceImpl(identityMock, systemMock);				
 	}
 	
 	@Test
@@ -39,7 +43,7 @@ public class SystemReferenceImplTest {
 	//TODO: check some other elements cannot be added into systemReference
 	public void testAddChild(){
 		assertEquals(0, systemReference.getNumberOfChildren());
-		systemReference.addChild(new LineImpl(identityMock));
+		systemReference.addChild(new LineImpl(identityMock, portMock, portMock));
 		assertEquals(1, systemReference.getNumberOfChildren());
 	}
 	
@@ -52,7 +56,7 @@ public class SystemReferenceImplTest {
 	
 	@Test	
 	public void testGetChildrenOfTypeLine(){
-		systemReference.addChild(new LineImpl(identityMock));
+		systemReference.addChild(new LineImpl(identityMock, portMock, portMock));
 		assertEquals(1, systemReference.getChildrenOfTypeLine().size());
 	}
 	
@@ -71,7 +75,7 @@ public class SystemReferenceImplTest {
 	
 	@Test
 	public void testGetChildrenOfTypeSystemReference(){
-		systemReference.addChild(new SystemReferenceImpl(identityMock));
+		systemReference.addChild(new SystemReferenceImpl(identityMock, systemMock));
 		assertEquals(1, systemReference.getChildrenOfTypeSystemReference().size());
 	}
 

@@ -10,6 +10,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import SimulinkOOAPI.Identity;
+import SimulinkOOAPI.Port;
 
 
 @RunWith(JMock.class)
@@ -17,6 +18,8 @@ public class ChildrenSupportImplTest {
 	
 	Mockery context = new JUnit4Mockery();
 	Identity identityMock = context.mock(Identity.class);	
+	Port portMock = context.mock(Port.class);
+	SimulinkOOAPI.System systemMock = context.mock(SimulinkOOAPI.System.class);
 	ChildrenSupportImpl childrenSupport;
 	
 	@Before
@@ -44,7 +47,7 @@ public class ChildrenSupportImplTest {
 	
 	@Test
 	public void testGetChildrenOfTypeLine(){		
-		childrenSupport.addChild(new LineImpl(identityMock));
+		childrenSupport.addChild(new LineImpl(identityMock, portMock, portMock));
 		assertEquals(1, childrenSupport.getChildrenOfTypeLine().size());
 	}
 	
@@ -61,7 +64,7 @@ public class ChildrenSupportImplTest {
 	
 	@Test
 	public void testGetChildrenOfTypeSystemReference(){
-		childrenSupport.addChild(new SystemReferenceImpl(identityMock));
+		childrenSupport.addChild(new SystemReferenceImpl(identityMock, systemMock));
 		assertEquals(1, childrenSupport.getChildrenOfTypeSystemReference().size());
 	}
 

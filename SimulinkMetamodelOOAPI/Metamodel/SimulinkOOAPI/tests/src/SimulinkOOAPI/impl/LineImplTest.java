@@ -12,6 +12,7 @@ import org.junit.runner.RunWith;
 
 import SimulinkOOAPI.Identity;
 import SimulinkOOAPI.Line;
+import SimulinkOOAPI.Port;
 import SimulinkOOAPI.ReflectionList;
 
 
@@ -19,13 +20,14 @@ import SimulinkOOAPI.ReflectionList;
 public class LineImplTest {
 	Mockery context = new JUnit4Mockery();
 	Identity identityMock = context.mock(Identity.class);
+	Port portMock = context.mock(Port.class);
 	@SuppressWarnings("unchecked")	
 	ReflectionList<Line> listMock = context.mock(ReflectionList.class);	
     LineImpl line;
 	
 	@Before
 	public void setUp(){		
-		line = new LineImpl(identityMock);					
+		line = new LineImpl(identityMock, portMock, portMock);					
 	}
 	
 	@Test
