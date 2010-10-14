@@ -9,10 +9,11 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Library" eSuperTypes="#//ProtoObject">
     <eStructuralFeatures xsi:type="ecore:EReference" name="children" eType="#//ChildrenSupport"
-        unsettable="true"/>
+        volatile="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Identity" eSuperTypes="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="uuid" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="uuid" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        volatile="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Mask" eSuperTypes="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"/>
   <eClassifiers xsi:type="ecore:EClass" name="ChildrenSupport"/>
@@ -28,16 +29,16 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="System" eSuperTypes="#//ProtoObject">
     <eStructuralFeatures xsi:type="ecore:EReference" name="children" eType="#//ChildrenSupport"
-        unsettable="true"/>
+        volatile="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Model" eSuperTypes="#//ProtoObject">
     <eStructuralFeatures xsi:type="ecore:EReference" name="children" eType="#//ChildrenSupport"
-        volatile="true" unsettable="true"/>
+        volatile="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SystemReference" eSuperTypes="#//ProtoObject">
     <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
         eType="#//System"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="children" eType="#//ChildrenSupport"
-        volatile="true" unsettable="true"/>
+        volatile="true"/>
   </eClassifiers>
 </ecore:EPackage>

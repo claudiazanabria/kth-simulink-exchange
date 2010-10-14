@@ -135,7 +135,7 @@ public class ModelImpl extends ProtoObjectImpl implements Model {
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case SimulinkOOAPIPackage.MODEL__CHILDREN:
-				unsetChildren();
+				setChildren((ChildrenSupport)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -150,7 +150,7 @@ public class ModelImpl extends ProtoObjectImpl implements Model {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case SimulinkOOAPIPackage.MODEL__CHILDREN:
-				return isSetChildren();
+				return basicGetChildren() != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -195,19 +195,6 @@ public class ModelImpl extends ProtoObjectImpl implements Model {
 	@Override
 	public ReflectionList<System> getChildrenOfTypeSystem() {
 		return children.getChildrenOfTypeSystem();
-	}
-
-	@Override
-	public boolean isSetChildren() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public void unsetChildren() {
-		// TODO Auto-generated method stub
-		
-	}
-	
+	}	
 
 } //ModelImpl

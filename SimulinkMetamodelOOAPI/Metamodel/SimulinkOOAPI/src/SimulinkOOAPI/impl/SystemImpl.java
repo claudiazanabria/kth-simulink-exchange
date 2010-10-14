@@ -6,6 +6,9 @@
  */
 package SimulinkOOAPI.impl;
 
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+
 import SimulinkOOAPI.ChildrenSupport;
 import SimulinkOOAPI.GainBlock;
 import SimulinkOOAPI.Identity;
@@ -17,13 +20,6 @@ import SimulinkOOAPI.ReflectionList;
 import SimulinkOOAPI.SimulinkOOAPIPackage;
 import SimulinkOOAPI.System;
 import SimulinkOOAPI.SystemReference;
-
-import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -39,25 +35,12 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * @generated
  */
 public class SystemImpl extends ProtoObjectImpl implements SimulinkOOAPI.System {
+	
 	/**
-	 * The cached value of the '{@link #getChildren() <em>Children</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getChildren()
-	 * @generated
-	 * @ordered
+	 * @generated NOT
 	 */
-	protected ChildrenSupport children;
-
-	/**
-	 * This is true if the Children reference has been set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean childrenESet;
-
+	ChildrenSupport children;
+	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -93,15 +76,8 @@ public class SystemImpl extends ProtoObjectImpl implements SimulinkOOAPI.System 
 	 * @generated
 	 */
 	public ChildrenSupport getChildren() {
-		if (children != null && children.eIsProxy()) {
-			InternalEObject oldChildren = (InternalEObject)children;
-			children = (ChildrenSupport)eResolveProxy(oldChildren);
-			if (children != oldChildren) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, SimulinkOOAPIPackage.SYSTEM__CHILDREN, oldChildren, children));
-			}
-		}
-		return children;
+		ChildrenSupport children = basicGetChildren();
+		return children != null && children.eIsProxy() ? (ChildrenSupport)eResolveProxy((InternalEObject)children) : children;
 	}
 
 	/**
@@ -110,7 +86,10 @@ public class SystemImpl extends ProtoObjectImpl implements SimulinkOOAPI.System 
 	 * @generated
 	 */
 	public ChildrenSupport basicGetChildren() {
-		return children;
+		// TODO: implement this method to return the 'Children' reference
+		// -> do not perform proxy resolution
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -119,35 +98,9 @@ public class SystemImpl extends ProtoObjectImpl implements SimulinkOOAPI.System 
 	 * @generated
 	 */
 	public void setChildren(ChildrenSupport newChildren) {
-		ChildrenSupport oldChildren = children;
-		children = newChildren;
-		boolean oldChildrenESet = childrenESet;
-		childrenESet = true;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, SimulinkOOAPIPackage.SYSTEM__CHILDREN, oldChildren, children, !oldChildrenESet));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void unsetChildren() {
-		ChildrenSupport oldChildren = children;
-		boolean oldChildrenESet = childrenESet;
-		children = null;
-		childrenESet = false;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET, SimulinkOOAPIPackage.SYSTEM__CHILDREN, oldChildren, null, oldChildrenESet));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetChildren() {
-		return childrenESet;
+		// TODO: implement this method to set the 'Children' reference
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -189,7 +142,7 @@ public class SystemImpl extends ProtoObjectImpl implements SimulinkOOAPI.System 
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case SimulinkOOAPIPackage.SYSTEM__CHILDREN:
-				unsetChildren();
+				setChildren((ChildrenSupport)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -204,7 +157,7 @@ public class SystemImpl extends ProtoObjectImpl implements SimulinkOOAPI.System 
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case SimulinkOOAPIPackage.SYSTEM__CHILDREN:
-				return isSetChildren();
+				return basicGetChildren() != null;
 		}
 		return super.eIsSet(featureID);
 	}

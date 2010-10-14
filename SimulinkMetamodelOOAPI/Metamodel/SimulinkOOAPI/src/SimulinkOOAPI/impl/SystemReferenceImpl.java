@@ -155,28 +155,6 @@ public class SystemReferenceImpl extends ProtoObjectImpl implements SystemRefere
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void unsetChildren() {
-		// TODO: implement this method to unset the 'Children' reference
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetChildren() {
-		// TODO: implement this method to return whether the 'Children' reference is set
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -220,7 +198,7 @@ public class SystemReferenceImpl extends ProtoObjectImpl implements SystemRefere
 				setTarget((SimulinkOOAPI.System)null);
 				return;
 			case SimulinkOOAPIPackage.SYSTEM_REFERENCE__CHILDREN:
-				unsetChildren();
+				setChildren((ChildrenSupport)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -237,7 +215,7 @@ public class SystemReferenceImpl extends ProtoObjectImpl implements SystemRefere
 			case SimulinkOOAPIPackage.SYSTEM_REFERENCE__TARGET:
 				return target != null;
 			case SimulinkOOAPIPackage.SYSTEM_REFERENCE__CHILDREN:
-				return isSetChildren();
+				return basicGetChildren() != null;
 		}
 		return super.eIsSet(featureID);
 	}	

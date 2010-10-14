@@ -41,16 +41,6 @@ public class IdentityImpl extends EObjectImpl implements Identity {
 	protected static final String UUID_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getUuid() <em>Uuid</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getUuid()
-	 * @generated
-	 * @ordered
-	 */
-	protected String uuid = UUID_EDEFAULT;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -75,7 +65,9 @@ public class IdentityImpl extends EObjectImpl implements Identity {
 	 * @generated
 	 */
 	public String getUuid() {
-		return uuid;
+		// TODO: implement this method to return the 'Uuid' attribute
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -84,10 +76,9 @@ public class IdentityImpl extends EObjectImpl implements Identity {
 	 * @generated
 	 */
 	public void setUuid(String newUuid) {
-		String oldUuid = uuid;
-		uuid = newUuid;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, SimulinkOOAPIPackage.IDENTITY__UUID, oldUuid, uuid));
+		// TODO: implement this method to set the 'Uuid' attribute
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -143,25 +134,9 @@ public class IdentityImpl extends EObjectImpl implements Identity {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case SimulinkOOAPIPackage.IDENTITY__UUID:
-				return UUID_EDEFAULT == null ? uuid != null : !UUID_EDEFAULT.equals(uuid);
+				return UUID_EDEFAULT == null ? getUuid() != null : !UUID_EDEFAULT.equals(getUuid());
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (uuid: ");
-		result.append(uuid);
-		result.append(')');
-		return result.toString();
 	}
 
 } //IdentityImpl

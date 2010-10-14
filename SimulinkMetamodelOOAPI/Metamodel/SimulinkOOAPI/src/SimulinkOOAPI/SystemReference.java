@@ -60,11 +60,9 @@ public interface SystemReference extends ProtoObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Children</em>' reference.
-	 * @see #isSetChildren()
-	 * @see #unsetChildren()
 	 * @see #setChildren(ChildrenSupport)
 	 * @see SimulinkOOAPI.SimulinkOOAPIPackage#getSystemReference_Children()
-	 * @model unsettable="true" volatile="true"
+	 * @model volatile="true"
 	 * @generated
 	 */
 	ChildrenSupport getChildren();
@@ -74,35 +72,10 @@ public interface SystemReference extends ProtoObject {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Children</em>' reference.
-	 * @see #isSetChildren()
-	 * @see #unsetChildren()
 	 * @see #getChildren()
 	 * @generated
 	 */
 	void setChildren(ChildrenSupport value);
-
-	/**
-	 * Unsets the value of the '{@link SimulinkOOAPI.SystemReference#getChildren <em>Children</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isSetChildren()
-	 * @see #getChildren()
-	 * @see #setChildren(ChildrenSupport)
-	 * @generated
-	 */
-	void unsetChildren();
-
-	/**
-	 * Returns whether the value of the '{@link SimulinkOOAPI.SystemReference#getChildren <em>Children</em>}' reference is set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return whether the value of the '<em>Children</em>' reference is set.
-	 * @see #unsetChildren()
-	 * @see #getChildren()
-	 * @see #setChildren(ChildrenSupport)
-	 * @generated
-	 */
-	boolean isSetChildren();
 
 	/**
 	 * Adds a ProtoObject to children list.
