@@ -1,12 +1,15 @@
 package SimulinkOOAPI.impl;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 
 import org.junit.Test;
 
 public class IdentityImplTest {
+	
+	IdentityImpl identity = new IdentityImpl();
 
 	@Test
 	public void testGetUids() throws Exception {
@@ -28,6 +31,40 @@ public class IdentityImplTest {
 			else
 				throw new Exception("Equal uuids were found!");
 		}
+	}
+	
+	@Test
+	public void testSetValidName(){		
+		identity.setName("System");
+		identity.setName("System.A");
+		identity.setName("System_A-b3");
+		identity.setName("System_A-b3.");
+	}
+	
+	public void testSetNonValidName(String name){		
+		boolean passed = false;
+		try{
+			identity.setName(name);
+		}catch(IllegalArgumentException e){
+			passed = true;
+		}
+		assertTrue(passed);	
+	}
+	
+	@Test
+	public void testNameMustNotStartWithNumbers(){		
+		testSetNonValidName("23Name");
+	}
+	
+	@Test
+	public void testNameMustNotContainSpaces(){		
+		testSetNonValidName("Na me");
+	}
+	
+	@Test
+	public void testNameMustNotContainSpecialSymbols(){		
+		testSetNonValidName("Na@me");
+		testSetNonValidName("Nme&");
 	}
 
 }

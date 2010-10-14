@@ -145,13 +145,22 @@ public interface SimulinkOOAPIPackage extends EPackage {
 	int IDENTITY__UUID = EcorePackage.EOBJECT_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTITY__NAME = EcorePackage.EOBJECT_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Identity</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IDENTITY_FEATURE_COUNT = EcorePackage.EOBJECT_FEATURE_COUNT + 1;
+	int IDENTITY_FEATURE_COUNT = EcorePackage.EOBJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link SimulinkOOAPI.impl.MaskImpl <em>Mask</em>}' class.
@@ -488,6 +497,17 @@ public interface SimulinkOOAPIPackage extends EPackage {
 	EAttribute getIdentity_Uuid();
 
 	/**
+	 * Returns the meta object for the attribute '{@link SimulinkOOAPI.Identity#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see SimulinkOOAPI.Identity#getName()
+	 * @see #getIdentity()
+	 * @generated
+	 */
+	EAttribute getIdentity_Name();
+
+	/**
 	 * Returns the meta object for class '{@link SimulinkOOAPI.Mask <em>Mask</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -719,6 +739,14 @@ public interface SimulinkOOAPIPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute IDENTITY__UUID = eINSTANCE.getIdentity_Uuid();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute IDENTITY__NAME = eINSTANCE.getIdentity_Name();
 
 		/**
 		 * The meta object literal for the '{@link SimulinkOOAPI.impl.MaskImpl <em>Mask</em>}' class.

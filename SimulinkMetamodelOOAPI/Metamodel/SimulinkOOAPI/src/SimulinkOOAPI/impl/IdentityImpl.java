@@ -6,12 +6,17 @@
  */
 package SimulinkOOAPI.impl;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import SimulinkOOAPI.Identity;
 import SimulinkOOAPI.SimulinkOOAPIPackage;
+import org.eclipse.emf.common.notify.Notification;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,6 +26,7 @@ import SimulinkOOAPI.SimulinkOOAPIPackage;
  * The following features are implemented:
  * <ul>
  *   <li>{@link SimulinkOOAPI.impl.IdentityImpl#getUuid <em>Uuid</em>}</li>
+ *   <li>{@link SimulinkOOAPI.impl.IdentityImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -42,6 +48,26 @@ public class IdentityImpl extends EObjectImpl implements Identity {
 	 * @ordered
 	 */
 	protected static final String UUID_EDEFAULT = null;
+
+	/**
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -88,11 +114,39 @@ public class IdentityImpl extends EObjectImpl implements Identity {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void setName(String newName) {
+		Pattern pattern = Pattern.compile("[a-zA-Z][a-zA-Z0-9._-]+");
+		Matcher matcher = pattern.matcher(newName);
+		if (!matcher.matches())
+		    throw new IllegalArgumentException("Name must not start with a number and must not contain spaces and special symbols except for . _ -");
+		
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, SimulinkOOAPIPackage.IDENTITY__NAME, oldName, name));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case SimulinkOOAPIPackage.IDENTITY__UUID:
 				return getUuid();
+			case SimulinkOOAPIPackage.IDENTITY__NAME:
+				return getName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -107,6 +161,9 @@ public class IdentityImpl extends EObjectImpl implements Identity {
 		switch (featureID) {
 			case SimulinkOOAPIPackage.IDENTITY__UUID:
 				setUuid((String)newValue);
+				return;
+			case SimulinkOOAPIPackage.IDENTITY__NAME:
+				setName((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -123,6 +180,9 @@ public class IdentityImpl extends EObjectImpl implements Identity {
 			case SimulinkOOAPIPackage.IDENTITY__UUID:
 				setUuid(UUID_EDEFAULT);
 				return;
+			case SimulinkOOAPIPackage.IDENTITY__NAME:
+				setName(NAME_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -137,8 +197,26 @@ public class IdentityImpl extends EObjectImpl implements Identity {
 		switch (featureID) {
 			case SimulinkOOAPIPackage.IDENTITY__UUID:
 				return UUID_EDEFAULT == null ? getUuid() != null : !UUID_EDEFAULT.equals(getUuid());
+			case SimulinkOOAPIPackage.IDENTITY__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (name: ");
+		result.append(name);
+		result.append(')');
+		return result.toString();
 	}
 
 } //IdentityImpl

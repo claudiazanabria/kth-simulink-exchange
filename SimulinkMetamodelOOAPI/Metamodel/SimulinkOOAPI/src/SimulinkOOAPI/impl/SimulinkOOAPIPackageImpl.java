@@ -234,6 +234,15 @@ public class SimulinkOOAPIPackageImpl extends EPackageImpl implements SimulinkOO
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getIdentity_Name() {
+		return (EAttribute)identityEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getMask() {
 		return maskEClass;
 	}
@@ -400,6 +409,7 @@ public class SimulinkOOAPIPackageImpl extends EPackageImpl implements SimulinkOO
 
 		identityEClass = createEClass(IDENTITY);
 		createEAttribute(identityEClass, IDENTITY__UUID);
+		createEAttribute(identityEClass, IDENTITY__NAME);
 
 		maskEClass = createEClass(MASK);
 
@@ -476,6 +486,7 @@ public class SimulinkOOAPIPackageImpl extends EPackageImpl implements SimulinkOO
 
 		initEClass(identityEClass, Identity.class, "Identity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getIdentity_Uuid(), ecorePackage.getEString(), "uuid", null, 0, 1, Identity.class, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getIdentity_Name(), ecorePackage.getEString(), "name", null, 0, 1, Identity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(maskEClass, Mask.class, "Mask", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
