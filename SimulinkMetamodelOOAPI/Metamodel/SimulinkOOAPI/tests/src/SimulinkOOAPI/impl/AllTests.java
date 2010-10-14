@@ -7,6 +7,7 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
 	ChildrenSupportImplTest.class,
 	GainBlockImplTest.class,
+	IdentityImplTest.class,
 	LibraryImplTest.class,
 	LineImplTest.class,
 	ModelImplTest.class,

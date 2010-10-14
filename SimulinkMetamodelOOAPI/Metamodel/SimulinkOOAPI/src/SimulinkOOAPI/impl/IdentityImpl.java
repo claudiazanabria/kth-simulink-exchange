@@ -6,15 +6,12 @@
  */
 package SimulinkOOAPI.impl;
 
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+
 import SimulinkOOAPI.Identity;
 import SimulinkOOAPI.SimulinkOOAPIPackage;
-
-import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.ecore.EClass;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,6 +27,12 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * @generated
  */
 public class IdentityImpl extends EObjectImpl implements Identity {
+	
+	/**
+	 * @generated NOT
+	 */
+	private String uuid;
+	
 	/**
 	 * The default value of the '{@link #getUuid() <em>Uuid</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -43,10 +46,11 @@ public class IdentityImpl extends EObjectImpl implements Identity {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected IdentityImpl() {
 		super();
+		this.uuid = EcoreUtil.generateUUID();
 	}
 
 	/**
@@ -62,12 +66,10 @@ public class IdentityImpl extends EObjectImpl implements Identity {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String getUuid() {
-		// TODO: implement this method to return the 'Uuid' attribute
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return this.uuid;
 	}
 
 	/**
