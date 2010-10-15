@@ -58,20 +58,20 @@ public class DemoModelBuilder {
 		system2.addChild(primarySystem);
 		system2.addChild(standBySystem);
 		
-		Port standBySystemTargetPort1 = factory.createPort();
-		Port standBySystemTargetPort2 = factory.createPort();
-		Port standBySystemSourcePort = factory.createPort();
+		Port standBySystemTargetPort1 = factory.createInport();
+		Port standBySystemTargetPort2 = factory.createInport();
+		Port standBySystemSourcePort = factory.createOutport();
 		standBySystem.addChild(standBySystemTargetPort1);
 		standBySystem.addChild(standBySystemTargetPort2);
 		standBySystem.addChild(standBySystemSourcePort);
 		
-		Port primarySystemTargetPort = factory.createPort();
-		Port primarySystemSourcePort = factory.createPort();
+		Port primarySystemTargetPort = factory.createInport();
+		Port primarySystemSourcePort = factory.createOutport();
 		primarySystem.addChild(primarySystemSourcePort);
 		primarySystem.addChild(primarySystemTargetPort);
 		
-		Port system2TargetPort = factory.createPort();
-		Port system2SourcePort = factory.createPort();
+		Port system2TargetPort = factory.createInport();
+		Port system2SourcePort = factory.createOutport();
 		system2.addChild(system2SourcePort);
 		system2.addChild(system2TargetPort);
 		

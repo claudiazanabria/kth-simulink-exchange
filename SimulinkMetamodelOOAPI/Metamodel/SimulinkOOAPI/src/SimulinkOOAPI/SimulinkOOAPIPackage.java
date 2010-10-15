@@ -266,6 +266,62 @@ public interface SimulinkOOAPIPackage extends EPackage {
 	int PORT_FEATURE_COUNT = PROTO_OBJECT_FEATURE_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link SimulinkOOAPI.impl.InportImpl <em>Inport</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see SimulinkOOAPI.impl.InportImpl
+	 * @see SimulinkOOAPI.impl.SimulinkOOAPIPackageImpl#getInport()
+	 * @generated
+	 */
+	int INPORT = 7;
+
+	/**
+	 * The feature id for the '<em><b>Identity</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPORT__IDENTITY = PORT__IDENTITY;
+
+	/**
+	 * The number of structural features of the '<em>Inport</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPORT_FEATURE_COUNT = PORT_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link SimulinkOOAPI.impl.OutportImpl <em>Outport</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see SimulinkOOAPI.impl.OutportImpl
+	 * @see SimulinkOOAPI.impl.SimulinkOOAPIPackageImpl#getOutport()
+	 * @generated
+	 */
+	int OUTPORT = 8;
+
+	/**
+	 * The feature id for the '<em><b>Identity</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPORT__IDENTITY = PORT__IDENTITY;
+
+	/**
+	 * The number of structural features of the '<em>Outport</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPORT_FEATURE_COUNT = PORT_FEATURE_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link SimulinkOOAPI.impl.LineImpl <em>Line</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -273,7 +329,7 @@ public interface SimulinkOOAPIPackage extends EPackage {
 	 * @see SimulinkOOAPI.impl.SimulinkOOAPIPackageImpl#getLine()
 	 * @generated
 	 */
-	int LINE = 7;
+	int LINE = 9;
 
 	/**
 	 * The feature id for the '<em><b>Identity</b></em>' reference.
@@ -319,7 +375,7 @@ public interface SimulinkOOAPIPackage extends EPackage {
 	 * @see SimulinkOOAPI.impl.SimulinkOOAPIPackageImpl#getSystem()
 	 * @generated
 	 */
-	int SYSTEM = 8;
+	int SYSTEM = 10;
 
 	/**
 	 * The feature id for the '<em><b>Identity</b></em>' reference.
@@ -356,7 +412,7 @@ public interface SimulinkOOAPIPackage extends EPackage {
 	 * @see SimulinkOOAPI.impl.SimulinkOOAPIPackageImpl#getModel()
 	 * @generated
 	 */
-	int MODEL = 9;
+	int MODEL = 11;
 
 	/**
 	 * The feature id for the '<em><b>Identity</b></em>' reference.
@@ -394,7 +450,7 @@ public interface SimulinkOOAPIPackage extends EPackage {
 	 * @see SimulinkOOAPI.impl.SimulinkOOAPIPackageImpl#getSystemReference()
 	 * @generated
 	 */
-	int SYSTEM_REFERENCE = 10;
+	int SYSTEM_REFERENCE = 12;
 
 	/**
 	 * The feature id for the '<em><b>Identity</b></em>' reference.
@@ -557,6 +613,26 @@ public interface SimulinkOOAPIPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getPort();
+
+	/**
+	 * Returns the meta object for class '{@link SimulinkOOAPI.Inport <em>Inport</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Inport</em>'.
+	 * @see SimulinkOOAPI.Inport
+	 * @generated
+	 */
+	EClass getInport();
+
+	/**
+	 * Returns the meta object for class '{@link SimulinkOOAPI.Outport <em>Outport</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Outport</em>'.
+	 * @see SimulinkOOAPI.Outport
+	 * @generated
+	 */
+	EClass getOutport();
 
 	/**
 	 * Returns the meta object for class '{@link SimulinkOOAPI.Line <em>Line</em>}'.
@@ -795,6 +871,26 @@ public interface SimulinkOOAPIPackage extends EPackage {
 		 * @generated
 		 */
 		EClass PORT = eINSTANCE.getPort();
+
+		/**
+		 * The meta object literal for the '{@link SimulinkOOAPI.impl.InportImpl <em>Inport</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see SimulinkOOAPI.impl.InportImpl
+		 * @see SimulinkOOAPI.impl.SimulinkOOAPIPackageImpl#getInport()
+		 * @generated
+		 */
+		EClass INPORT = eINSTANCE.getInport();
+
+		/**
+		 * The meta object literal for the '{@link SimulinkOOAPI.impl.OutportImpl <em>Outport</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see SimulinkOOAPI.impl.OutportImpl
+		 * @see SimulinkOOAPI.impl.SimulinkOOAPIPackageImpl#getOutport()
+		 * @generated
+		 */
+		EClass OUTPORT = eINSTANCE.getOutport();
 
 		/**
 		 * The meta object literal for the '{@link SimulinkOOAPI.impl.LineImpl <em>Line</em>}' class.

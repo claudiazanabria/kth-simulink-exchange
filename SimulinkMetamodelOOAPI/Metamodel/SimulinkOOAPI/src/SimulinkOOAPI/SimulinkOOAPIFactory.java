@@ -71,13 +71,22 @@ public interface SimulinkOOAPIFactory extends EFactory {
 	GainBlock createGainBlock();
 
 	/**
-	 * Returns a new object of class '<em>Port</em>'.
+	 * Returns a new object of class '<em>Inport</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Port</em>'.
+	 * @return a new object of class '<em>Inport</em>'.
 	 * @generated
 	 */
-	Port createPort();
+	Inport createInport();
+
+	/**
+	 * Returns a new object of class '<em>Outport</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Outport</em>'.
+	 * @generated
+	 */
+	Outport createOutport();
 
 	/**
 	 * Returns a new object of class '<em>Line</em>'.

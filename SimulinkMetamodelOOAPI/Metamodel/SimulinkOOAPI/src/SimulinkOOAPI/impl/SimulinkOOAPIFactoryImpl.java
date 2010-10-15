@@ -9,10 +9,12 @@ package SimulinkOOAPI.impl;
 import SimulinkOOAPI.ChildrenSupport;
 import SimulinkOOAPI.GainBlock;
 import SimulinkOOAPI.Identity;
+import SimulinkOOAPI.Inport;
 import SimulinkOOAPI.Library;
 import SimulinkOOAPI.Line;
 import SimulinkOOAPI.Mask;
 import SimulinkOOAPI.Model;
+import SimulinkOOAPI.Outport;
 import SimulinkOOAPI.Port;
 import SimulinkOOAPI.SimulinkOOAPIFactory;
 import SimulinkOOAPI.SimulinkOOAPIPackage;
@@ -75,7 +77,8 @@ public class SimulinkOOAPIFactoryImpl extends EFactoryImpl implements SimulinkOO
 			case SimulinkOOAPIPackage.MASK: return createMask();
 			case SimulinkOOAPIPackage.CHILDREN_SUPPORT: return createChildrenSupport();
 			case SimulinkOOAPIPackage.GAIN_BLOCK: return createGainBlock();
-			case SimulinkOOAPIPackage.PORT: return createPort();
+			case SimulinkOOAPIPackage.INPORT: return createInport();
+			case SimulinkOOAPIPackage.OUTPORT: return createOutport();
 			case SimulinkOOAPIPackage.LINE: return createLine();
 			case SimulinkOOAPIPackage.SYSTEM: return createSystem();
 			case SimulinkOOAPIPackage.MODEL: return createModel();
@@ -140,9 +143,19 @@ public class SimulinkOOAPIFactoryImpl extends EFactoryImpl implements SimulinkOO
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Port createPort() {
-		PortImpl port = new PortImpl();
-		return port;
+	public Inport createInport() {
+		InportImpl inport = new InportImpl();
+		return inport;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Outport createOutport() {
+		OutportImpl outport = new OutportImpl();
+		return outport;
 	}
 
 	/**

@@ -9,10 +9,12 @@ package SimulinkOOAPI.util;
 import SimulinkOOAPI.ChildrenSupport;
 import SimulinkOOAPI.GainBlock;
 import SimulinkOOAPI.Identity;
+import SimulinkOOAPI.Inport;
 import SimulinkOOAPI.Library;
 import SimulinkOOAPI.Line;
 import SimulinkOOAPI.Mask;
 import SimulinkOOAPI.Model;
+import SimulinkOOAPI.Outport;
 import SimulinkOOAPI.Port;
 import SimulinkOOAPI.ProtoObject;
 import SimulinkOOAPI.SimulinkOOAPIPackage;
@@ -108,6 +110,14 @@ public class SimulinkOOAPIAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter casePort(Port object) {
 				return createPortAdapter();
+			}
+			@Override
+			public Adapter caseInport(Inport object) {
+				return createInportAdapter();
+			}
+			@Override
+			public Adapter caseOutport(Outport object) {
+				return createOutportAdapter();
 			}
 			@Override
 			public Adapter caseLine(Line object) {
@@ -240,6 +250,34 @@ public class SimulinkOOAPIAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createPortAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link SimulinkOOAPI.Inport <em>Inport</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see SimulinkOOAPI.Inport
+	 * @generated
+	 */
+	public Adapter createInportAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link SimulinkOOAPI.Outport <em>Outport</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see SimulinkOOAPI.Outport
+	 * @generated
+	 */
+	public Adapter createOutportAdapter() {
 		return null;
 	}
 

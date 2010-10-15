@@ -14,7 +14,7 @@ package SimulinkOOAPI;
  *
  *
  * @see SimulinkOOAPI.SimulinkOOAPIPackage#getPort()
- * @model
+ * @model abstract="true"
  * @generated
  */
 public interface Port extends ProtoObject {

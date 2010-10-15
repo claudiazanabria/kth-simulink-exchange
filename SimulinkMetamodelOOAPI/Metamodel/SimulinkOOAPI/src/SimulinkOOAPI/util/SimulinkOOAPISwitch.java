@@ -9,10 +9,12 @@ package SimulinkOOAPI.util;
 import SimulinkOOAPI.ChildrenSupport;
 import SimulinkOOAPI.GainBlock;
 import SimulinkOOAPI.Identity;
+import SimulinkOOAPI.Inport;
 import SimulinkOOAPI.Library;
 import SimulinkOOAPI.Line;
 import SimulinkOOAPI.Mask;
 import SimulinkOOAPI.Model;
+import SimulinkOOAPI.Outport;
 import SimulinkOOAPI.Port;
 import SimulinkOOAPI.ProtoObject;
 import SimulinkOOAPI.SimulinkOOAPIPackage;
@@ -139,6 +141,22 @@ public class SimulinkOOAPISwitch<T> {
 				Port port = (Port)theEObject;
 				T result = casePort(port);
 				if (result == null) result = caseProtoObject(port);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case SimulinkOOAPIPackage.INPORT: {
+				Inport inport = (Inport)theEObject;
+				T result = caseInport(inport);
+				if (result == null) result = casePort(inport);
+				if (result == null) result = caseProtoObject(inport);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case SimulinkOOAPIPackage.OUTPORT: {
+				Outport outport = (Outport)theEObject;
+				T result = caseOutport(outport);
+				if (result == null) result = casePort(outport);
+				if (result == null) result = caseProtoObject(outport);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -276,6 +294,36 @@ public class SimulinkOOAPISwitch<T> {
 	 * @generated
 	 */
 	public T casePort(Port object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Inport</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Inport</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseInport(Inport object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Outport</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Outport</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseOutport(Outport object) {
 		return null;
 	}
 

@@ -50,9 +50,9 @@ public class SystemReferenceImplTest {
 	@Test
 	//TODO: check some other elements cannot be added into systemReference
 	public void testAddChild(){
-		assertEquals(0, systemReference.getNumberOfChildren());
-		systemReference.addChild(new LineImpl(identityMock, portMock, portMock));
-		assertEquals(1, systemReference.getNumberOfChildren());
+//		assertEquals(0, systemReference.getNumberOfChildren());
+//		systemReference.addChild(new LineImpl(identityMock, portMock, portMock));
+//		assertEquals(1, systemReference.getNumberOfChildren());
 	}
 	
 	@Test
@@ -66,17 +66,17 @@ public class SystemReferenceImplTest {
 		assertEquals(2, systemReference.getChildrenOfTypeGainBlock().size());
 	}
 	
-	@Test	
-	public void testGetChildrenOfTypeLine(){
-		systemReference.addChild(new LineImpl(identityMock, portMock, portMock));
-		assertEquals(1, systemReference.getChildrenOfTypeLine().size());
-	}
+//	@Test	
+//	public void testGetChildrenOfTypeLine(){
+//		systemReference.addChild(new LineImpl(identityMock, portMock, portMock));
+//		assertEquals(1, systemReference.getChildrenOfTypeLine().size());
+//	}
 	
-	@Test
-	public void testGetChildrenOfTypePort(){
-		systemReference.addChild(new PortImpl(identityMock));
-		assertEquals(1, systemReference.getChildrenOfTypePort().size());
-	}
+//	@Test
+//	public void testGetChildrenOfTypePort(){
+//		systemReference.addChild(new PortImpl(identityMock));
+//		assertEquals(1, systemReference.getChildrenOfTypePort().size());
+//	}
 
 	
 //	@Test

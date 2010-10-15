@@ -12,8 +12,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import SimulinkOOAPI.Identity;
+import SimulinkOOAPI.Inport;
 import SimulinkOOAPI.Model;
+import SimulinkOOAPI.Outport;
 import SimulinkOOAPI.Port;
 import SimulinkOOAPI.ProtoObject;
 import SimulinkOOAPI.ReflectionList;
@@ -21,10 +22,11 @@ import SimulinkOOAPI.System;
 
 @RunWith(JMock.class)
 public class SystemImplTest {
-	Mockery context = new JUnit4Mockery();
-	Identity identityMock = context.mock(Identity.class);
+	Mockery context = new JUnit4Mockery();	
 	Model modelMock = context.mock(Model.class);
 	Port portMock = context.mock(Port.class);
+	Inport inportMock = context.mock(Inport.class);
+	Outport outportMock = context.mock(Outport.class);
 	@SuppressWarnings("unchecked")	
 	ReflectionList<System> listMock = context.mock(ReflectionList.class);
     System system;
@@ -62,8 +64,12 @@ public class SystemImplTest {
 	@Test
 	//TODO: check that some elements cannot be added into system
 	public void testAddChild(){
+		context.checking(new Expectations() {{
+			ignoring(modelMock);			    
+		}});
+		
 		assertEquals(0, system.getNumberOfChildren());
-		system.addChild(new PortImpl(identityMock));
+		system.addChild(SystemImpl.newNamedWithin("sys", modelMock));
 		assertEquals(1, system.getNumberOfChildren());
 	}
 	
@@ -91,14 +97,15 @@ public class SystemImplTest {
 	
 	@Test	
 	public void testGetChildrenOfTypeLine(){
-		system.addChild(new LineImpl(identityMock, portMock, portMock));
+		LineImpl.newNamedWithinBetween("line", system, inportMock, outportMock);		
 		assertEquals(1, system.getChildrenOfTypeLine().size());
 	}
 	
 	@Test	
 	public void testGetChildrenOfTypePort(){
-		system.addChild(new PortImpl(identityMock));
-		assertEquals(1, system.getChildrenOfTypePort().size());
+		InportImpl.newNamedWithin("inport", system);
+		OutportImpl.newNamedWithin("outport", system);		
+		assertEquals(2, system.getChildrenOfTypePort().size());
 	}
 	
 	@Test

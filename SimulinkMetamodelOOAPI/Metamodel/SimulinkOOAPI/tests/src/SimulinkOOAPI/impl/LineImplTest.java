@@ -10,24 +10,30 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import SimulinkOOAPI.Identity;
+import SimulinkOOAPI.Inport;
 import SimulinkOOAPI.Line;
-import SimulinkOOAPI.Port;
+import SimulinkOOAPI.Model;
+import SimulinkOOAPI.Outport;
 import SimulinkOOAPI.ReflectionList;
 
 
 @RunWith(JMock.class)
 public class LineImplTest {
 	Mockery context = new JUnit4Mockery();
-	Identity identityMock = context.mock(Identity.class);
-	Port portMock = context.mock(Port.class);
+	Model modelMock = context.mock(Model.class);
+	Inport inportMock = context.mock(Inport.class);
+	Outport outportMock = context.mock(Outport.class);
 	@SuppressWarnings("unchecked")	
 	ReflectionList<Line> listMock = context.mock(ReflectionList.class);	
-    LineImpl line;
+    Line line;
 	
 	@Before
-	public void setUp(){		
-		line = new LineImpl(identityMock, portMock, portMock);					
+	public void setUp(){	
+		context.checking(new Expectations() {{
+			ignoring(modelMock);			    
+		}});
+		
+		line = LineImpl.newNamedWithinBetween("line", modelMock, inportMock, outportMock);					
 	}
 	
 	//Incorrect test! Default constructor should be allowed in order not to break emf core api. 

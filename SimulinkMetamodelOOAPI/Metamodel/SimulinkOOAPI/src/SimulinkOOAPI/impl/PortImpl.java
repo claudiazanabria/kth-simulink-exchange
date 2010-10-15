@@ -6,7 +6,6 @@
  */
 package SimulinkOOAPI.impl;
 
-import SimulinkOOAPI.Identity;
 import SimulinkOOAPI.Port;
 import SimulinkOOAPI.ReflectionList;
 import SimulinkOOAPI.SimulinkOOAPIPackage;
@@ -22,7 +21,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public class PortImpl extends ProtoObjectImpl implements Port {
+public abstract class PortImpl extends ProtoObjectImpl implements Port {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -30,13 +29,6 @@ public class PortImpl extends ProtoObjectImpl implements Port {
 	 */
 	protected PortImpl() {
 		super();
-	}
-	
-	/**
-	 * @generated NOT
-	 */
-	protected PortImpl(Identity identity) {
-		super(identity); 		
 	}
 
 	/**

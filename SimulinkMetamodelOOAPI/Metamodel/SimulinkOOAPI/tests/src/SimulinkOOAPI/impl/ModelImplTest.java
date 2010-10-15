@@ -2,7 +2,6 @@ package SimulinkOOAPI.impl;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-//import junit.framework.AssertionFailedError;
 
 import org.jmock.Expectations;
 import org.jmock.Mockery;
@@ -12,19 +11,19 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import SimulinkOOAPI.Identity;
+import SimulinkOOAPI.Inport;
 import SimulinkOOAPI.Model;
-import SimulinkOOAPI.Port;
+import SimulinkOOAPI.Outport;
 import SimulinkOOAPI.ProtoObject;
 import SimulinkOOAPI.System;
 
 @RunWith(JMock.class)
 public class ModelImplTest {
 	
-	Mockery context = new JUnit4Mockery();
-	Identity identityMock = context.mock(Identity.class);
-	System systemMock = context.mock(System.class);
-	Port portMock = context.mock(Port.class);
+	Mockery context = new JUnit4Mockery();	
+	System systemMock = context.mock(System.class);	
+	Inport inportMock = context.mock(Inport.class);
+	Outport outportMock = context.mock(Outport.class);
     Model model;
 	
 	@Before
@@ -85,12 +84,16 @@ public class ModelImplTest {
 	
 	@Test
 	public void testAddPort(){
-		testAddWrongChild(new PortImpl(identityMock));
+		context.checking(new Expectations() {{
+			ignoring(systemMock);
+		}});
+		
+		testAddWrongChild(InportImpl.newNamedWithin("port", systemMock));
 	}
 	
 	@Test	
 	public void testGetChildrenOfTypeLine(){
-		model.addChild(new LineImpl(identityMock, portMock, portMock));
+		LineImpl.newNamedWithinBetween("line", model, inportMock, outportMock);		
 		assertEquals(1, model.getChildrenOfTypeLine().size());
 	}
 	

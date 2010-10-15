@@ -6,11 +6,14 @@
  */
 package SimulinkOOAPI.impl;
 
-import SimulinkOOAPI.Identity;
+import SimulinkOOAPI.Inport;
 import SimulinkOOAPI.Line;
+import SimulinkOOAPI.Model;
+import SimulinkOOAPI.Outport;
 import SimulinkOOAPI.Port;
 import SimulinkOOAPI.ReflectionList;
 import SimulinkOOAPI.SimulinkOOAPIPackage;
+import SimulinkOOAPI.System;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -61,15 +64,6 @@ public class LineImpl extends ProtoObjectImpl implements Line {
 	 */
 	protected LineImpl() {
 		super();
-	}
-
-	/**
-	 * @generated NOT
-	 */
-	protected LineImpl(Identity identity, Port source, Port destination) {
-		super(identity); 		
-		this.source = source;
-		this.destination = destination;
 	}
 	
 	/**
@@ -233,6 +227,30 @@ public class LineImpl extends ProtoObjectImpl implements Line {
 	 */
 	public void ifLineAddToList(ReflectionList<Line> list){
 		list.add(this);
+	}
+	
+	/**
+	 * Returns new instance of Line with the given name within the given model between the inport and the outport.
+	 */
+	public static Line newNamedWithinBetween(String name, Model model, Inport inport, Outport outport){
+		Line line = new LineImpl();
+		line.setIdentity(IdentityImpl.newNamed(name));
+		model.addChild(line);
+		line.setSource(inport);
+		line.setDestination(outport);
+		return line;
+	}
+	
+	/**
+	 * Returns new instance of Line with the given name within the given system between the inport and the outport.
+	 */
+	public static Line newNamedWithinBetween(String name, System system, Inport inport, Outport outport){
+		Line line = new LineImpl();
+		line.setIdentity(IdentityImpl.newNamed(name));
+		system.addChild(line);
+		line.setSource(inport);
+		line.setDestination(outport);
+		return line;
 	}
 
 } //LineImpl

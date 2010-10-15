@@ -21,7 +21,9 @@
   <eClassifiers xsi:type="ecore:EClass" name="GainBlock" eSuperTypes="#//ProtoObject">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="gain" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Port" eSuperTypes="#//ProtoObject"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Port" abstract="true" eSuperTypes="#//ProtoObject"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Inport" eSuperTypes="#//Port"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Outport" eSuperTypes="#//Port"/>
   <eClassifiers xsi:type="ecore:EClass" name="Line" eSuperTypes="#//ProtoObject">
     <eStructuralFeatures xsi:type="ecore:EReference" name="source" lowerBound="1"
         eType="#//Port"/>

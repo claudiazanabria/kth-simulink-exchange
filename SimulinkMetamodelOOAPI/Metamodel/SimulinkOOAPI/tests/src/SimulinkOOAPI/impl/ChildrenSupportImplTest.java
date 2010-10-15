@@ -10,8 +10,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import SimulinkOOAPI.Identity;
+import SimulinkOOAPI.Inport;
 import SimulinkOOAPI.Model;
+import SimulinkOOAPI.Outport;
 import SimulinkOOAPI.Port;
 import SimulinkOOAPI.System;
 
@@ -20,9 +21,10 @@ import SimulinkOOAPI.System;
 public class ChildrenSupportImplTest {
 	
 	Mockery context = new JUnit4Mockery();
-	Identity identityMock = context.mock(Identity.class);
 	Model modelMock = context.mock(Model.class);
 	Port portMock = context.mock(Port.class);
+	Inport inportMock = context.mock(Inport.class);
+	Outport outportMock = context.mock(Outport.class);
 	SimulinkOOAPI.System systemMock = context.mock(SimulinkOOAPI.System.class);
 	ChildrenSupportImpl childrenSupport;
 	
@@ -55,14 +57,22 @@ public class ChildrenSupportImplTest {
 	}
 	
 	@Test
-	public void testGetChildrenOfTypeLine(){		
-		childrenSupport.addChild(new LineImpl(identityMock, portMock, portMock));
+	public void testGetChildrenOfTypeLine(){
+		context.checking(new Expectations() {{
+			ignoring(systemMock);			    
+		}});
+		
+		childrenSupport.addChild(LineImpl.newNamedWithinBetween("line", systemMock, inportMock, outportMock));
 		assertEquals(1, childrenSupport.getChildrenOfTypeLine().size());
 	}
 	
 	@Test
 	public void testGetChildrenOfTypePort(){
-		childrenSupport.addChild(new PortImpl(identityMock));
+		context.checking(new Expectations() {{
+			ignoring(systemMock);			    
+		}});
+		
+		childrenSupport.addChild(InportImpl.newNamedWithin("port", systemMock));
 		assertEquals(1, childrenSupport.getChildrenOfTypePort().size());
 	}
 	

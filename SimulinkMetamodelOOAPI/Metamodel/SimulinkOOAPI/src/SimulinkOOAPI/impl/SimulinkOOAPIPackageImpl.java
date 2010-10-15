@@ -9,10 +9,12 @@ package SimulinkOOAPI.impl;
 import SimulinkOOAPI.ChildrenSupport;
 import SimulinkOOAPI.GainBlock;
 import SimulinkOOAPI.Identity;
+import SimulinkOOAPI.Inport;
 import SimulinkOOAPI.Library;
 import SimulinkOOAPI.Line;
 import SimulinkOOAPI.Mask;
 import SimulinkOOAPI.Model;
+import SimulinkOOAPI.Outport;
 import SimulinkOOAPI.Port;
 import SimulinkOOAPI.ProtoObject;
 import SimulinkOOAPI.SimulinkOOAPIFactory;
@@ -82,6 +84,20 @@ public class SimulinkOOAPIPackageImpl extends EPackageImpl implements SimulinkOO
 	 * @generated
 	 */
 	private EClass portEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass inportEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass outportEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -288,6 +304,24 @@ public class SimulinkOOAPIPackageImpl extends EPackageImpl implements SimulinkOO
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getInport() {
+		return inportEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getOutport() {
+		return outportEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getLine() {
 		return lineEClass;
 	}
@@ -420,6 +454,10 @@ public class SimulinkOOAPIPackageImpl extends EPackageImpl implements SimulinkOO
 
 		portEClass = createEClass(PORT);
 
+		inportEClass = createEClass(INPORT);
+
+		outportEClass = createEClass(OUTPORT);
+
 		lineEClass = createEClass(LINE);
 		createEReference(lineEClass, LINE__SOURCE);
 		createEReference(lineEClass, LINE__DESTINATION);
@@ -472,6 +510,8 @@ public class SimulinkOOAPIPackageImpl extends EPackageImpl implements SimulinkOO
 		maskEClass.getESuperTypes().add(theEcorePackage.getEObject());
 		gainBlockEClass.getESuperTypes().add(this.getProtoObject());
 		portEClass.getESuperTypes().add(this.getProtoObject());
+		inportEClass.getESuperTypes().add(this.getPort());
+		outportEClass.getESuperTypes().add(this.getPort());
 		lineEClass.getESuperTypes().add(this.getProtoObject());
 		systemEClass.getESuperTypes().add(this.getProtoObject());
 		modelEClass.getESuperTypes().add(this.getProtoObject());
@@ -495,7 +535,11 @@ public class SimulinkOOAPIPackageImpl extends EPackageImpl implements SimulinkOO
 		initEClass(gainBlockEClass, GainBlock.class, "GainBlock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getGainBlock_Gain(), ecorePackage.getEInt(), "gain", null, 0, 1, GainBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(portEClass, Port.class, "Port", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(portEClass, Port.class, "Port", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(inportEClass, Inport.class, "Inport", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(outportEClass, Outport.class, "Outport", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(lineEClass, Line.class, "Line", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getLine_Source(), this.getPort(), null, "source", null, 1, 1, Line.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

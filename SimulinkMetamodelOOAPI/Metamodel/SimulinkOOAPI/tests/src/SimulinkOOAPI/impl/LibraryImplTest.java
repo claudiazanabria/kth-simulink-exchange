@@ -12,19 +12,19 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import SimulinkOOAPI.Identity;
+import SimulinkOOAPI.Inport;
 import SimulinkOOAPI.Library;
-import SimulinkOOAPI.Port;
+import SimulinkOOAPI.Outport;
 import SimulinkOOAPI.ProtoObject;
 import SimulinkOOAPI.System;
 
 @RunWith(JMock.class)
 public class LibraryImplTest {
 	
-	Mockery context = new JUnit4Mockery();
-	Identity identityMock = context.mock(Identity.class);
-	System systemMock = context.mock(System.class);
-	Port portMock = context.mock(Port.class);
+	Mockery context = new JUnit4Mockery();	
+	System systemMock = context.mock(System.class);	
+	Inport inportMock = context.mock(Inport.class);
+	Outport outportMock = context.mock(Outport.class);
     Library library;
 	
 	@Before
@@ -85,13 +85,21 @@ public class LibraryImplTest {
 	
 	@Test	
 	public void testGetChildrenOfTypeLine(){
-		library.addChild(new LineImpl(identityMock, portMock, portMock));
+		context.checking(new Expectations() {{
+			ignoring(systemMock);			    
+		}});
+		
+		library.addChild(LineImpl.newNamedWithinBetween("line", systemMock, inportMock, outportMock));
 		assertEquals(1, library.getChildrenOfTypeLine().size());
 	}
 	
 	@Test
 	public void testGetChildrenOfTypePort(){
-		library.addChild(new PortImpl(identityMock));
+		context.checking(new Expectations() {{
+			ignoring(systemMock);
+		}});
+		
+		library.addChild(InportImpl.newNamedWithin("port", systemMock));
 		assertEquals(1, library.getChildrenOfTypePort().size());
 	}
 
