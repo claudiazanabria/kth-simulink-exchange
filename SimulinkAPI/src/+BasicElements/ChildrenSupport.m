@@ -19,6 +19,7 @@ classdef ChildrenSupport < handle
             list.concatenate( self.ofTypeSystemReference );
             list.concatenate( self.ofTypeInport);
             list.concatenate( self.ofTypeOutport);
+            list.concatenate( self.ofTypeLine );
         end
         
         function result = size( self )
@@ -29,6 +30,10 @@ classdef ChildrenSupport < handle
             self.list.dump;
         end
           
+        function result = ofTypeLine( self )
+            result =  BasicElements.Line.findWithin( self.parent );
+        end
+        
         function result = ofTypeOutport( self )
             result = BasicElements.Outport.findWithin( self.parent );
         end

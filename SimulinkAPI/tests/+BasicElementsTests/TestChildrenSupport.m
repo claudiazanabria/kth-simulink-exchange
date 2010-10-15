@@ -22,10 +22,10 @@ classdef TestChildrenSupport < TestCase
             self.yorkModel.deleteFiles();
         end
 
-%         function testGetChildrenSize( self ) 
-%             %Lines are missing !!
-%             assertEqual(5, self.children.size );            
-%         end
+        function testGetChildrenSize( self ) 
+            %Lines are missing !!
+            assertEqual(5, self.children.size );            
+        end
         
         function testChildrenOfTypeGainBlock( self )
             assertEqual(1,self.children.ofTypeGainBlock.size );
@@ -38,7 +38,11 @@ classdef TestChildrenSupport < TestCase
         function testChildrenOfTypeSystemReference( self ) 
             assertEqual(1,self.children.ofTypeSystemReference.size );
         end
-        
+
+        function testChildrenOfTypeLine( self ) 
+            assertEqual(2,self.children.ofTypeLine.size );
+        end
+
         function testChildrenOfTypeOutport( self )
             %FIXME: replace this with a find inside model
             f2 = self.children.ofTypeSystem.at(1);
