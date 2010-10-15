@@ -160,6 +160,7 @@ public class ModelImpl extends ProtoObjectImpl implements Model {
 	 */
 	@Override
 	public void addChild(ProtoObject child) {
+		//TODO: assertFalse(cannotAddPort());
 		if (child instanceof GainBlock)
 			throw new IllegalArgumentException("Model can not contain gain blocks");
 		else if (child instanceof Library)
@@ -168,6 +169,10 @@ public class ModelImpl extends ProtoObjectImpl implements Model {
 			throw new IllegalArgumentException("Model can not contain ports");
 		
 		this.children.addChild(child);
+	}
+	
+	private boolean canAddPort(){
+		return false;
 	}
 
 	/**	

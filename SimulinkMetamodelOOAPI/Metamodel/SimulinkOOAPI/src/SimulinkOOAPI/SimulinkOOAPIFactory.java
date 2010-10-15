@@ -66,9 +66,9 @@ public interface SimulinkOOAPIFactory extends EFactory {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return a new object of class '<em>Gain Block</em>'.
-	 * @generated NOT
+	 * @generated
 	 */
-	GainBlock createGainBlock(int gain);
+	GainBlock createGainBlock();
 
 	/**
 	 * Returns a new object of class '<em>Port</em>'.
@@ -84,9 +84,9 @@ public interface SimulinkOOAPIFactory extends EFactory {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return a new object of class '<em>Line</em>'.
-	 * @generated NOT
+	 * @generated
 	 */
-	Line createLine(Port source, Port destination);
+	Line createLine();
 
 	/**
 	 * Returns a new object of class '<em>System</em>'.
@@ -111,9 +111,9 @@ public interface SimulinkOOAPIFactory extends EFactory {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return a new object of class '<em>System Reference</em>'.
-	 * @generated NOT
+	 * @generated
 	 */
-	SystemReference createSystemReference(SimulinkOOAPI.System target);
+	SystemReference createSystemReference();
 
 	/**
 	 * Returns the package supported by this factory.

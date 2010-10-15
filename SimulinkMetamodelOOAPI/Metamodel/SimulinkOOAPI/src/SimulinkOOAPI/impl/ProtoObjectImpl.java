@@ -53,7 +53,7 @@ public abstract class ProtoObjectImpl extends EObjectImpl implements ProtoObject
 	 * @generated NOT
 	 */
 	protected ProtoObjectImpl() {
-		throw new UnsupportedOperationException();
+		//throw new UnsupportedOperationException();
 	}
 	
 	protected ProtoObjectImpl(Identity identity) {

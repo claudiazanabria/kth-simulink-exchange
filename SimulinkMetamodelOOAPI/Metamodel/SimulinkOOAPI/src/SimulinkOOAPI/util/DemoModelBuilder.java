@@ -13,10 +13,11 @@ public class DemoModelBuilder {
 	 * TODO: javadoc
 	 * @return
 	 */
-	public static Model buildYourkModel(){
+	public static Model buildYourkModelWithECoreAPI(){
 		//TODO: pass names to the constructor
 		
 		SimulinkOOAPIFactory factory = SimulinkOOAPIFactoryImpl.init();
+		//Model model = Model.newNamed("name");
 		Model model = factory.createModel();
 		
 		SimulinkOOAPI.System rootSys = factory.createSystem();
@@ -39,16 +40,19 @@ public class DemoModelBuilder {
 		standBySystem.getIdentity().setName("StandBy");
 		model.addChild(standBySystem);
 		
-		SystemReference sysRef1 = factory.createSystemReference(system1);
+		SystemReference sysRef1 = factory.createSystemReference();
 		sysRef1.getIdentity().setName("SysRef1");
+		sysRef1.setTarget(system1);
 		rootSys.addChild(sysRef1);
 		
-		SystemReference sysRef2 = factory.createSystemReference(system2);
-		sysRef1.getIdentity().setName("SysRef2");
+		SystemReference sysRef2 = factory.createSystemReference();
+		sysRef2.getIdentity().setName("SysRef2");
+		sysRef2.setTarget(system2);
 		rootSys.addChild(sysRef2);
 		
-		SystemReference sysRef3 = factory.createSystemReference(primarySystem);
-		sysRef1.getIdentity().setName("SysRef3");
+		SystemReference sysRef3 = factory.createSystemReference();
+		sysRef3.getIdentity().setName("SysRef3");
+		sysRef3.setTarget(primarySystem);
 		rootSys.addChild(sysRef3);
 		
 		system2.addChild(primarySystem);
@@ -71,11 +75,11 @@ public class DemoModelBuilder {
 		system2.addChild(system2SourcePort);
 		system2.addChild(system2TargetPort);
 		
-		system2.addChild(factory.createLine(system2TargetPort, primarySystemTargetPort));
-		system2.addChild(factory.createLine(system2TargetPort, standBySystemTargetPort1));
-		system2.addChild(factory.createLine(primarySystemSourcePort, standBySystemTargetPort2));
-		system2.addChild(factory.createLine(primarySystemSourcePort, system2SourcePort));
-		system2.addChild(factory.createLine(standBySystemSourcePort, system2SourcePort));
+		//system2.addChild(factory.createLine(system2TargetPort, primarySystemTargetPort));
+		//system2.addChild(factory.createLine(system2TargetPort, standBySystemTargetPort1));
+		//system2.addChild(factory.createLine(primarySystemSourcePort, standBySystemTargetPort2));
+		//system2.addChild(factory.createLine(primarySystemSourcePort, system2SourcePort));
+		//system2.addChild(factory.createLine(standBySystemSourcePort, system2SourcePort));
 		
 		return model;
 	}

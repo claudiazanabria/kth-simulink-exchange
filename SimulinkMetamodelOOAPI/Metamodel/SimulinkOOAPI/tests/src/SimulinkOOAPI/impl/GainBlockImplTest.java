@@ -1,6 +1,6 @@
 package SimulinkOOAPI.impl;
 
-import junit.framework.AssertionFailedError;
+//import junit.framework.AssertionFailedError;
 
 import org.jmock.Expectations;
 import org.jmock.Mockery;
@@ -28,6 +28,8 @@ public class GainBlockImplTest {
 		gainBlock = new GainBlockImpl(new IdentityImpl(), 3);					
 	}
 	
+	//Incorrect test! Default constructor should be allowed in order not to break emf core api. 
+	/*
 	@Test
 	public void testDefaultConstructorIsNotAllowed(){
 		try{
@@ -37,7 +39,7 @@ public class GainBlockImplTest {
 		}catch(UnsupportedOperationException e){
 			//test passed
 		}
-	}	
+	}	*/
 	
 	@Test
 	public void testIfGainBlockAddToList() throws Exception{		

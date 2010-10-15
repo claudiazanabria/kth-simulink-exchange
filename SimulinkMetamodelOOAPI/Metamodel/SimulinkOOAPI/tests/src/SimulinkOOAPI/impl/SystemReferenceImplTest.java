@@ -1,7 +1,7 @@
 package SimulinkOOAPI.impl;
 
 import static org.junit.Assert.assertEquals;
-import junit.framework.AssertionFailedError;
+//import junit.framework.AssertionFailedError;
 
 import org.jmock.Mockery;
 import org.jmock.integration.junit4.JMock;
@@ -28,6 +28,8 @@ public class SystemReferenceImplTest {
 		systemReference = new SystemReferenceImpl(identityMock, systemMock);				
 	}
 	
+	//Incorrect test! Default constructor should be allowed in order not to break emf core api. 
+	/*
 	@Test
 	public void testDefaultConstructorIsNotAllowed(){
 		try{
@@ -37,7 +39,7 @@ public class SystemReferenceImplTest {
 		}catch(UnsupportedOperationException e){
 			//test passed
 		}
-	}	
+	}*/	
 	
 	@Test
 	//TODO: check some other elements cannot be added into systemReference

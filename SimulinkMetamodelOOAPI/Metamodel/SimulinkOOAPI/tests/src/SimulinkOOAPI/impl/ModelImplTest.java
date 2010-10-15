@@ -2,7 +2,7 @@ package SimulinkOOAPI.impl;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import junit.framework.AssertionFailedError;
+//import junit.framework.AssertionFailedError;
 
 import org.jmock.Mockery;
 import org.jmock.integration.junit4.JMock;
@@ -31,6 +31,8 @@ public class ModelImplTest {
 		model.addChild(new SystemImpl(identityMock));				
 	}
 	
+	//Incorrect test! Default constructor should be allowed in order not to break emf core api. 
+	/*
 	@Test
 	public void testDefaultConstructorIsNotAllowed(){
 		try{
@@ -40,7 +42,7 @@ public class ModelImplTest {
 		}catch(UnsupportedOperationException e){
 			//test passed
 		}
-	}	
+	}*/	
 	
 	@Test	
 	public void testAddChild(){

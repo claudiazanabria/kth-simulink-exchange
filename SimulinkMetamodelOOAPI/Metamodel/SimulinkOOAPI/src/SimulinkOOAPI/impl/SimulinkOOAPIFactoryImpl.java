@@ -16,8 +16,8 @@ import SimulinkOOAPI.Model;
 import SimulinkOOAPI.Port;
 import SimulinkOOAPI.SimulinkOOAPIFactory;
 import SimulinkOOAPI.SimulinkOOAPIPackage;
-
 import SimulinkOOAPI.SystemReference;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -69,18 +69,17 @@ public class SimulinkOOAPIFactoryImpl extends EFactoryImpl implements SimulinkOO
 	 */
 	@Override
 	public EObject create(EClass eClass) {
-		//TODO: FIX_ME - provide parameters for constructors
 		switch (eClass.getClassifierID()) {
 			case SimulinkOOAPIPackage.LIBRARY: return createLibrary();
 			case SimulinkOOAPIPackage.IDENTITY: return createIdentity();
 			case SimulinkOOAPIPackage.MASK: return createMask();
 			case SimulinkOOAPIPackage.CHILDREN_SUPPORT: return createChildrenSupport();
-			case SimulinkOOAPIPackage.GAIN_BLOCK: return createGainBlock(0);
+			case SimulinkOOAPIPackage.GAIN_BLOCK: return createGainBlock();
 			case SimulinkOOAPIPackage.PORT: return createPort();
-			//case SimulinkOOAPIPackage.LINE: return createLine();
+			case SimulinkOOAPIPackage.LINE: return createLine();
 			case SimulinkOOAPIPackage.SYSTEM: return createSystem();
 			case SimulinkOOAPIPackage.MODEL: return createModel();
-			//case SimulinkOOAPIPackage.SYSTEM_REFERENCE: return createSystemReference();
+			case SimulinkOOAPIPackage.SYSTEM_REFERENCE: return createSystemReference();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -129,40 +128,40 @@ public class SimulinkOOAPIFactoryImpl extends EFactoryImpl implements SimulinkOO
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
-	public GainBlock createGainBlock(int gain) {
-		GainBlockImpl gainBlock = new GainBlockImpl(createIdentity(), gain);
+	public GainBlock createGainBlock() {
+		GainBlockImpl gainBlock = new GainBlockImpl();
 		return gainBlock;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	public Port createPort() {
-		PortImpl port = new PortImpl(createIdentity());
+		PortImpl port = new PortImpl();
 		return port;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
-	public Line createLine(Port source, Port destination) {
-		LineImpl line = new LineImpl(createIdentity(), source, destination);
+	public Line createLine() {
+		LineImpl line = new LineImpl();
 		return line;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	public SimulinkOOAPI.System createSystem() {
-		SystemImpl system = new SystemImpl(createIdentity());
+		SystemImpl system = new SystemImpl();
 		return system;
 	}
 
@@ -172,7 +171,7 @@ public class SimulinkOOAPIFactoryImpl extends EFactoryImpl implements SimulinkOO
 	 * @generated
 	 */
 	public Model createModel() {
-		ModelImpl model = new ModelImpl(createIdentity());
+		ModelImpl model = new ModelImpl();
 		return model;
 	}
 
@@ -181,8 +180,8 @@ public class SimulinkOOAPIFactoryImpl extends EFactoryImpl implements SimulinkOO
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SystemReference createSystemReference(SimulinkOOAPI.System target) {
-		SystemReferenceImpl systemReference = new SystemReferenceImpl(createIdentity(), target);
+	public SystemReference createSystemReference() {
+		SystemReferenceImpl systemReference = new SystemReferenceImpl();
 		return systemReference;
 	}
 
