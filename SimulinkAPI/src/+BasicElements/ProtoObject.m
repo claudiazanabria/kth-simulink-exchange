@@ -17,7 +17,7 @@ classdef ProtoObject < handle
     methods
         
         function str = asString( self )
-            str = sprintf('%s (%s)',self.name, self.handle);
+            str = sprintf('%s (%g)',self.name, self.handle);
         end
         
         function dump( self )

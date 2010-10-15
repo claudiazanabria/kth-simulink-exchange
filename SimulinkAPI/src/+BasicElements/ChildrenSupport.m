@@ -13,10 +13,10 @@ classdef ChildrenSupport < handle
         end
 
         function list = get.list( self )
-            import BasicElements.Factory;
-            handlelist = BasicElements.List( self.childrenHandleList );
-            convertHandleToObjects = @(each) Factory.newChildFromHandle(each, self.parent);
-            list = handlelist.collect( convertHandleToObjects );
+            list = BasicElements.List( {} );
+            list.concatenate( self.ofTypeGainBlock );
+            list.concatenate( self.ofTypeSystem );
+            list.concatenate( self.ofTypeSystemReference );
         end
         
         function result = size( self )
@@ -39,21 +39,5 @@ classdef ChildrenSupport < handle
             result = BasicElements.SystemReference.findWithin( self.parent );
         end
 
-    end
-    
-    methods (Access=private)
-
-        function result = injectInto( self, aFunction )
-            result = BasicElements.List( {} );
-            self.list.injectInto(result, aFunction);
-        end
-        
-        function children = childrenHandleList( self )
-            handle = self.parent.handle;
-            blocks = BasicElements.SimulinkEnv.findAllBlocksWithin(handle);
-            lines = BasicElements.SimulinkEnv.findAllLinesWithin(handle);
-            children = [blocks ; lines];
-        end
-        
-    end
+    end    
 end

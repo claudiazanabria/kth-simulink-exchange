@@ -80,6 +80,12 @@ classdef List < handle
             self.do( f );
             fprintf('%i %s\n', self.size, ' elements.');
         end
+        
+        function concatenate( self, secondList )
+            for i = 1:secondList.size
+                self.add( secondList.at(i) );
+            end
+        end
     end
     
     methods (Static, Access=private)

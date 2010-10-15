@@ -22,11 +22,19 @@ classdef TestChildrenSupport < TestCase
             self.yorkModel.deleteFiles();
         end
 
-        function testGetChildren( self )            
-%            assertEqual(5, self.children.size );            
-% Lines are missing!
+        function testGetChildrenSize( self )            
+            assertEqual(5, self.children.size );            
+        end
+        
+        function testChildrenOfTypeGainBlock( self )
             assertEqual(1,self.children.ofTypeGainBlock.size );
+        end
+        
+        function testChildrenOfTypeSystem( self )
             assertEqual(1,self.children.ofTypeSystem.size );
+        end
+        
+        function testChildrenOfTypeSystemReference( self ) 
             assertEqual(1,self.children.ofTypeSystemReference.size );
         end
         

@@ -38,8 +38,8 @@ classdef System < BasicElements.ProtoObject
         end
         
         function str = asString( self )
-            %FIXME: part of this str shuld be built by the superclass.
-            str = sprintf('System:\t %s (%g)',self.name, self.handle);
+            str = sprintf('System:\t%s', ...
+                asString@BasicElements.ProtoObject(self));
         end
 
     end

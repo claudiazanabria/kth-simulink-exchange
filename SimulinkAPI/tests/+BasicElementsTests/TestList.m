@@ -96,5 +96,12 @@ classdef TestList < TestCase
             list = BasicElements.List.newEmptyList();
             assertEqual(0, list.size);
         end
+        
+        function testConcatenate( self )
+            list2 = BasicElements.List({9 3 1});
+            self.aList.concatenate( list2 );
+            assertEqual(6, self.aList.size);
+            assertEqual({1 2 'alex' 9 3 1}, self.aList.asCells);
+        end
     end    
 end
