@@ -4,8 +4,11 @@ classdef YorkModel < handle
         libraryName;
     end
     
-    properties(Access=private, Constant)
-        F2Name = 'F2';
+    properties (Access=private)
+        F2FullName;
+    end
+    
+    properties (Constant)
         wrongName = 'I do not exists';        
     end
 
@@ -69,6 +72,10 @@ classdef YorkModel < handle
             delete([self.modelName '.mdl']);            
             delete([self.libraryName '.mdl']);            
         end
+        
+        function h=f2Handle( self )
+            h = self.F2FullName;
+        end
     end
     methods (Access=private)
     
@@ -76,6 +83,7 @@ classdef YorkModel < handle
             import BasicElements.SimulinkEntityName;
             self.libraryName = SimulinkEntityName('Library').timeStamped();
             self.modelName = SimulinkEntityName('yorkDummy').timeStamped();
+            self.F2FullName=[self.modelName '/F2'];
         end
         
         function setupLibrary( self )
@@ -102,18 +110,16 @@ classdef YorkModel < handle
         end
                 
         function setupF2( self )
-            F2FullName=[self.modelName '/' self.F2Name];
-            add_block('built-in/subsystem', F2FullName,'Position',[210 82 300 233]);
-            add_block('built-in/Inport', [F2FullName '/Inport1'],'Position',[25  95  45  115]);
-            add_block('built-in/Outport', [F2FullName '/Outport1'],'Position',[465 95 485 115]);
-            add_block('built-in/Outport', [F2FullName '/Outport2'],'Position',[465 220 485 240]);                     
+            add_block('built-in/subsystem', self.F2FullName,'Position',[210 82 300 233]);
+            add_block('built-in/Inport', [self.F2FullName '/Inport1'],'Position',[25  95  45  115]);
+            add_block('built-in/Outport', [self.F2FullName '/Outport1'],'Position',[465 95 485 115]);
+            add_block('built-in/Outport', [self.F2FullName '/Outport2'],'Position',[465 220 485 240]);                     
         end
         
         function setupF21( self )
-            F2FullName=[self.modelName '/' self.F2Name];
-            add_block('built-in/subsystem', [F2FullName '/F21'],'Position',[305 36 405 174]);
-            add_block('built-in/Inport', [F2FullName '/F21/Inport1'],'Position',[170 110 190  130]);
-            add_block('built-in/Outport', [F2FullName '/F21/Outport1'],'Position',[340 110 360  130]);
+            add_block('built-in/subsystem', [self.F2FullName '/F21'],'Position',[305 36 405 174]);
+            add_block('built-in/Inport', [self.F2FullName '/F21/Inport1'],'Position',[170 110 190  130]);
+            add_block('built-in/Outport', [self.F2FullName '/F21/Outport1'],'Position',[340 110 360  130]);
         end
         
         function setupF22( self )
@@ -122,11 +128,10 @@ classdef YorkModel < handle
         end
         
         function addLinesInsideF22( self )
-            f2Name = [self.modelName '/F2'];
-            add_line(f2Name, 'Inport1/1','F21/1');
-            add_line(f2Name, 'Inport1/1','F22/1');
-            add_line(f2Name, 'F21/1','Outport1/1');
-            add_line(f2Name, 'F22/1','Outport2/1');
+            add_line(self.F2FullName, 'Inport1/1','F21/1');
+            add_line(self.F2FullName, 'Inport1/1','F22/1');
+            add_line(self.F2FullName, 'F21/1','Outport1/1');
+            add_line(self.F2FullName, 'F22/1','Outport2/1');
         end
         
         function setupF2GainBlock( self) 

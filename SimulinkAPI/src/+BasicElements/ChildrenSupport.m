@@ -17,6 +17,8 @@ classdef ChildrenSupport < handle
             list.concatenate( self.ofTypeGainBlock );
             list.concatenate( self.ofTypeSystem );
             list.concatenate( self.ofTypeSystemReference );
+            list.concatenate( self.ofTypeInport);
+            list.concatenate( self.ofTypeOutport);
         end
         
         function result = size( self )
@@ -26,7 +28,15 @@ classdef ChildrenSupport < handle
         function dump( self )
             self.list.dump;
         end
-                
+          
+        function result = ofTypeOutport( self )
+            result = BasicElements.Outport.findWithin( self.parent );
+        end
+        
+        function result = ofTypeInport( self )
+            result = BasicElements.Inport.findWithin( self.parent );
+        end
+        
         function result = ofTypeGainBlock( self )
             result = BasicElements.GainBlock.findWithin( self.parent );
         end

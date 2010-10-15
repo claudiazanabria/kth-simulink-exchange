@@ -1,17 +1,17 @@
-classdef System < BasicElements.ProtoObject
+classdef Outport < BasicElements.ProtoObject
     
     properties
         parent
-        children
     end
+    
     methods (Static)
         function result = findWithin( parent )
-            import BasicElements.System;
+            import BasicElements.Outport;
             import BasicElements.List;
-            handleList = System.findCommand( parent.handle );
+            handleList = Outport.findCommand( parent.handle );
             list = List( handleList );
             result = list.collectWith( ...
-                @System.convertHandleToClass, parent.handle );
+                @Outport.convertHandleToClass, parent.handle );
         end
         
         function list = findCommand( ParentHandle )
@@ -19,31 +19,24 @@ classdef System < BasicElements.ProtoObject
             'regexp', 'off', ...
             'SearchDepth',1, ...
             'FollowLinks','on', ...
-            'BlockType','SubSystem', ...
-            'ReferenceBlock','' );
+            'BlockType','Outport');
         end
         
         function gain = convertHandleToClass( each, parentHandle )
-            gain = BasicElements.System(each, parentHandle);
+            gain = BasicElements.Outport(each, parentHandle);
         end
     end
     
     methods
-        function self = System( identity, parent )
+        function self = Outport( identity, parent )
             self = self@BasicElements.ProtoObject( identity );
             self.parent = parent;
-            self.children = BasicElements.ChildrenSupport( self );            
-        end        
-       
-        function  aList = ifSystemAddToList( self, aList )
-            aList.add( self );            
         end
         
         function str = asString( self )
-            str = sprintf('System:\t%s', ...
+            str = sprintf('Outport:\t%s', ...
                 asString@BasicElements.ProtoObject(self));
         end
-
     end
     
 end

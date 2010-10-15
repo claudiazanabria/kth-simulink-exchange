@@ -32,12 +32,7 @@ classdef GainBlock < BasicElements.ProtoObject
             self = self@BasicElements.ProtoObject( identity );
             self.parent = parent;
         end        
-       
-% Unused?
-%         function  aList = ifGainBlockAddToList( self, aList )
-%             aList.add( self );            
-%         end
-        
+               
         function str = asString( self )
             str = sprintf('Gain:\t%s', ...
                 asString@BasicElements.ProtoObject(self));
