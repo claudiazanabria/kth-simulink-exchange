@@ -11,9 +11,9 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import SimulinkOOAPI.ChildrenSupport;
 import SimulinkOOAPI.GainBlock;
-import SimulinkOOAPI.Identity;
 import SimulinkOOAPI.Library;
 import SimulinkOOAPI.Line;
+import SimulinkOOAPI.Model;
 import SimulinkOOAPI.Port;
 import SimulinkOOAPI.ProtoObject;
 import SimulinkOOAPI.ReflectionList;
@@ -44,21 +44,12 @@ public class SystemImpl extends ProtoObjectImpl implements SimulinkOOAPI.System 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected SystemImpl() {
 		super();
-	}
-	
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT 
-	 */	
-	protected SystemImpl(Identity identity) {
-		super(identity);
 		this.children = new ChildrenSupportImpl();
-	}
+	}	
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -211,5 +202,26 @@ public class SystemImpl extends ProtoObjectImpl implements SimulinkOOAPI.System 
 	public ReflectionList<SystemReference> getChildrenOfTypeSystemReference() {
 		return children.getChildrenOfTypeSystemReference();
 	}
+	
+	/**
+	 * Returns new instance of System with the given name within the given model. 
+	 */
+	public static System newNamedWithin(String name, Model model){
+		System system = new SystemImpl();
+		system.setIdentity(IdentityImpl.newNamed(name));
+		model.addChild(system);
+		return system;
+	}
+	
+	/**
+	 * Returns new instance of System with the given name within the given system. 
+	 */
+	public static System newNamedWithin(String name, System system){
+		System returnSystem = new SystemImpl();
+		returnSystem.setIdentity(IdentityImpl.newNamed(name));
+		system.addChild(returnSystem);
+		return returnSystem;
+	}
+	
 
 } //SystemImpl

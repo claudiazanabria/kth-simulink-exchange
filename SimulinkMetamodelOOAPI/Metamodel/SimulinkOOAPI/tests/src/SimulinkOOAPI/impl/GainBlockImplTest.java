@@ -13,19 +13,25 @@ import org.junit.runner.RunWith;
 import SimulinkOOAPI.GainBlock;
 import SimulinkOOAPI.Identity;
 import SimulinkOOAPI.ReflectionList;
+import SimulinkOOAPI.System;
 
 
 @RunWith(JMock.class)
 public class GainBlockImplTest {
 	Mockery context = new JUnit4Mockery();
 	Identity identityMock = context.mock(Identity.class);
+	System systemMock = context.mock(System.class);
 	@SuppressWarnings("unchecked")	
 	ReflectionList<GainBlock> listMock = context.mock(ReflectionList.class);	
-    GainBlockImpl gainBlock;
+    GainBlock gainBlock;
 	
 	@Before
-	public void setUp(){		
-		gainBlock = new GainBlockImpl(new IdentityImpl(), 3);					
+	public void setUp(){	
+		context.checking(new Expectations() {{			
+			ignoring(systemMock);
+		}});
+		
+		gainBlock = GainBlockImpl.newNamedWithGainWithin("gainBlock", 1, systemMock);		
 	}
 	
 	//Incorrect test! Default constructor should be allowed in order not to break emf core api. 
@@ -44,7 +50,7 @@ public class GainBlockImplTest {
 	@Test
 	public void testIfGainBlockAddToList() throws Exception{		
 		context.checking(new Expectations() {{
-			one (listMock).add(with(gainBlock));			    
+			one (listMock).add(with(gainBlock));		
 		}});
 		
 		gainBlock.ifGainBlockAddToList(listMock);

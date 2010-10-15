@@ -13,6 +13,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import SimulinkOOAPI.Identity;
+import SimulinkOOAPI.Model;
 import SimulinkOOAPI.Port;
 import SimulinkOOAPI.ProtoObject;
 import SimulinkOOAPI.ReflectionList;
@@ -22,14 +23,18 @@ import SimulinkOOAPI.System;
 public class SystemImplTest {
 	Mockery context = new JUnit4Mockery();
 	Identity identityMock = context.mock(Identity.class);
+	Model modelMock = context.mock(Model.class);
 	Port portMock = context.mock(Port.class);
 	@SuppressWarnings("unchecked")	
 	ReflectionList<System> listMock = context.mock(ReflectionList.class);
-    SystemImpl system;
+    System system;
 	
 	@Before
-	public void setUp(){		
-		system = new SystemImpl(identityMock);					
+	public void setUp(){
+		context.checking(new Expectations() {{
+			ignoring(modelMock);			    
+		}});
+		system = SystemImpl.newNamedWithin("sys", modelMock);					
 	}
 	
 	//Incorrect test! Default constructor should be allowed in order not to break emf core api. 
@@ -74,13 +79,13 @@ public class SystemImplTest {
 
 	@Test
 	public void testAddLibrary(){
-		testAddWrongChild(new LibraryImpl(identityMock));		
+		testAddWrongChild(LibraryImpl.newNamed("library"));		
 	}
 	
 	@Test
 	public void testGetChildrenOfTypeGainBlock(){
-		system.addChild(new GainBlockImpl(identityMock, 2));
-		system.addChild(new GainBlockImpl(identityMock, 2));
+		GainBlockImpl.newNamedWithGainWithin("gainBlock1", 2, system);
+		GainBlockImpl.newNamedWithGainWithin("gainBlock2", 2, system);
 		assertEquals(2, system.getChildrenOfTypeGainBlock().size());
 	}
 	
@@ -98,13 +103,13 @@ public class SystemImplTest {
 	
 	@Test
 	public void testGetChildrenOfTypeSystem(){
-		system.addChild(new SystemImpl(identityMock));
+		SystemImpl.newNamedWithin("sys", system);		
 		assertEquals(1, system.getChildrenOfTypeSystem().size());
 	}
 	
 	@Test
 	public void testGetChildrenOfTypeSystemReference(){
-		system.addChild(new SystemReferenceImpl(identityMock, system));
+		SystemReferenceImpl.newNamedWithinTargeting("sysRef", system, system);
 		assertEquals(1, system.getChildrenOfTypeSystemReference().size());
 	}
 

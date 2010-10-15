@@ -8,8 +8,8 @@ package SimulinkOOAPI.impl;
 
 import SimulinkOOAPI.ChildrenSupport;
 import SimulinkOOAPI.GainBlock;
-import SimulinkOOAPI.Identity;
 import SimulinkOOAPI.Line;
+import SimulinkOOAPI.Model;
 import SimulinkOOAPI.Port;
 import SimulinkOOAPI.ProtoObject;
 import SimulinkOOAPI.ReflectionList;
@@ -54,21 +54,13 @@ public class SystemReferenceImpl extends ProtoObjectImpl implements SystemRefere
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected SystemReferenceImpl() {
 		super();
+		children = new ChildrenSupportImpl();
 	}
 	
-	/**
-	 * @generated NOT
-	 */
-	protected SystemReferenceImpl(Identity identity, SimulinkOOAPI.System target) {
-		super(identity);
-		children = new ChildrenSupportImpl();
-		this.target = target;
-	}
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -277,4 +269,27 @@ public class SystemReferenceImpl extends ProtoObjectImpl implements SystemRefere
 	public void ifSystemReferenceAddToList(ReflectionList<SystemReference> list){
 		list.add(this);
 	}
+	
+	/**
+	 * Returns new instance of SystemReference with the given name, within the given model, targeting to the given system
+	 */
+	public static SystemReference newNamedWithinTargeting(String name, Model model, System target){
+		SystemReference sysRef = new SystemReferenceImpl();
+		sysRef.setIdentity(IdentityImpl.newNamed(name));
+		model.addChild(sysRef);
+		sysRef.setTarget(target);
+		return sysRef;
+	}
+	
+	/**
+	 * Returns new instance of SystemReference with the given name, within the given system, targeting to the given system
+	 */
+	public static SystemReference newNamedWithinTargeting(String name, System system, System target){
+		SystemReference sysRef = new SystemReferenceImpl();
+		sysRef.setIdentity(IdentityImpl.newNamed(name));
+		system.addChild(sysRef);
+		sysRef.setTarget(target);
+		return sysRef;
+	}
+	
 } //SystemReferenceImpl

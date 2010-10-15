@@ -2,6 +2,7 @@ package SimulinkOOAPI.impl;
 
 import static org.junit.Assert.assertEquals;
 
+import org.jmock.Expectations;
 import org.jmock.Mockery;
 import org.jmock.integration.junit4.JMock;
 import org.jmock.integration.junit4.JUnit4Mockery;
@@ -9,16 +10,16 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import SimulinkOOAPI.Identity;
 import SimulinkOOAPI.ProtoObject;
 import SimulinkOOAPI.ReflectionList;
+import SimulinkOOAPI.System;
 
 
 @RunWith(JMock.class)
 public class ReflectionListImplTest {
 	
-	Mockery context = new JUnit4Mockery();
-	Identity identityMock = context.mock(Identity.class);
+	Mockery context = new JUnit4Mockery();	
+	System systemMock = context.mock(System.class);
 	ReflectionListImpl<ProtoObject> list;
 	
 	@Before
@@ -31,14 +32,18 @@ public class ReflectionListImplTest {
 //		list.apply("addInListIfGainBlock", new Class[]{
 //				ReflectionList.class,				
 //		});
-		list.add(new GainBlockImpl(identityMock, 2));
+		context.checking(new Expectations() {{			
+			ignoring(systemMock);
+		}});
+		
+		list.add(GainBlockImpl.newNamedWithGainWithin("gainblock", 2, systemMock));
 		ReflectionList<ProtoObject> result = list.collect("ifGainBlockAddToList");
 		assertEquals(1, result.size());
 	}
 	
 	@Test
 	public void testCollect2() throws Exception{
-		list.add(new ModelImpl(identityMock));
+		list.add(ModelImpl.newNamed("model"));
 		ReflectionList<ProtoObject> result = list.collect("ifGainBlockAddToList");
 		assertEquals(0, result.size());
 	}

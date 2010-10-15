@@ -11,7 +11,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import SimulinkOOAPI.ChildrenSupport;
 import SimulinkOOAPI.GainBlock;
-import SimulinkOOAPI.Identity;
 import SimulinkOOAPI.Library;
 import SimulinkOOAPI.Line;
 import SimulinkOOAPI.Port;
@@ -43,19 +42,12 @@ public class LibraryImpl extends ProtoObjectImpl implements Library {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected LibraryImpl() {
 		super();
-	}
-	
-	/**
-	 * @generated NOT
-	 */
-	protected LibraryImpl(Identity identity) {
-		super(identity);
 		children = new ChildrenSupportImpl();
-	}
+	}	
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -208,6 +200,15 @@ public class LibraryImpl extends ProtoObjectImpl implements Library {
 	@Override
 	public ReflectionList<Port> getChildrenOfTypePort() {
 		return children.getChildrenOfTypePort();
+	}
+	
+	/**
+	 * Returns new Library instance with the given name.
+	 */
+	public static Library newNamed(String name){
+		Library library = new LibraryImpl();
+		library.setIdentity(IdentityImpl.newNamed(name));
+		return library;
 	}
 
 } //LibraryImpl

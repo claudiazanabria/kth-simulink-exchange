@@ -218,5 +218,16 @@ public class IdentityImpl extends EObjectImpl implements Identity {
 		result.append(')');
 		return result.toString();
 	}
+	
+	/**
+	 * Returns new Identity instance with the given name.
+	 * @param aName
+	 * @return
+	 */
+	public static Identity newNamed(String aName){
+		Identity identity = new IdentityImpl();
+		identity.setName(aName);
+		return identity;
+	}
 
 } //IdentityImpl

@@ -7,9 +7,9 @@
 package SimulinkOOAPI.impl;
 
 import SimulinkOOAPI.GainBlock;
-import SimulinkOOAPI.Identity;
 import SimulinkOOAPI.ReflectionList;
 import SimulinkOOAPI.SimulinkOOAPIPackage;
+import SimulinkOOAPI.System;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -58,17 +58,7 @@ public class GainBlockImpl extends ProtoObjectImpl implements GainBlock {
 	 */
 	protected GainBlockImpl() {
 		super();
-	}
-	
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	protected GainBlockImpl(Identity identity, int gain) {
-		super(identity);
-		this.gain = gain;
-	}
+	}	
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -181,6 +171,21 @@ public class GainBlockImpl extends ProtoObjectImpl implements GainBlock {
 	@Override
 	public void ifGainBlockAddToList(ReflectionList<GainBlock> list) {
 		list.add(this);		
+	}
+	
+	/**
+	 * Returns new instance of GainBlock with the given name, with the given gain, contains within the given system.
+	 * @param name
+	 * @param gain
+	 * @param system
+	 * @return
+	 */
+	public static GainBlock newNamedWithGainWithin(String name, int gain, System system){
+		GainBlock gainBlock = new GainBlockImpl();
+		gainBlock.setIdentity(IdentityImpl.newNamed(name));
+		gainBlock.setGain(gain);
+		system.addChild(gainBlock);
+		return gainBlock;
 	}
 
 } //GainBlockImpl

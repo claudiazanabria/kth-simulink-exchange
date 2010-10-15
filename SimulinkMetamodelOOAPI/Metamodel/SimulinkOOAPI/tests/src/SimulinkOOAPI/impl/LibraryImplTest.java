@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 //import junit.framework.AssertionFailedError;
 
+import org.jmock.Expectations;
 import org.jmock.Mockery;
 import org.jmock.integration.junit4.JMock;
 import org.jmock.integration.junit4.JUnit4Mockery;
@@ -12,20 +13,23 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import SimulinkOOAPI.Identity;
+import SimulinkOOAPI.Library;
 import SimulinkOOAPI.Port;
 import SimulinkOOAPI.ProtoObject;
+import SimulinkOOAPI.System;
 
 @RunWith(JMock.class)
 public class LibraryImplTest {
 	
 	Mockery context = new JUnit4Mockery();
 	Identity identityMock = context.mock(Identity.class);
+	System systemMock = context.mock(System.class);
 	Port portMock = context.mock(Port.class);
-    LibraryImpl library;
+    Library library;
 	
 	@Before
 	public void setUp(){		
-		library = new LibraryImpl(identityMock);				
+		library = LibraryImpl.newNamed("library");				
 	}
 	
 	//Incorrect test! Default constructor should be allowed in order not to break emf core api. 
@@ -44,8 +48,12 @@ public class LibraryImplTest {
 	
 	@Test
 	public void testAddChild(){
+		context.checking(new Expectations() {{
+			ignoring(systemMock);			    
+		}});
+		
 		assertEquals(0, library.getNumberOfChildren());
-		library.addChild(new SystemImpl(identityMock));
+		library.addChild(SystemImpl.newNamedWithin("system", systemMock));
 		assertEquals(1, library.getNumberOfChildren());
 	}
 	
@@ -61,13 +69,17 @@ public class LibraryImplTest {
 
 	@Test
 	public void testAddLibrary(){
-		testAddWrongChild(new LibraryImpl(identityMock));		
+		testAddWrongChild(LibraryImpl.newNamed("library"));		
 	}
 	
 	@Test
 	public void testGetChildrenOfTypeGainBlock(){
-		library.addChild(new GainBlockImpl(identityMock, 2));
-		library.addChild(new GainBlockImpl(identityMock, 3));
+		context.checking(new Expectations() {{
+			ignoring(systemMock);
+		}});
+		
+		library.addChild(GainBlockImpl.newNamedWithGainWithin("gainBlock1", 1, systemMock));
+		library.addChild(GainBlockImpl.newNamedWithGainWithin("gainBlock2", 1, systemMock));
 		assertEquals(2, library.getChildrenOfTypeGainBlock().size());
 	}
 	
@@ -86,7 +98,11 @@ public class LibraryImplTest {
 	
 	@Test
 	public void testGetChildrenOfTypeSystem(){
-		library.addChild(new SystemImpl(identityMock));
+		context.checking(new Expectations() {{
+			ignoring(systemMock);			    
+		}});
+		
+		library.addChild(SystemImpl.newNamedWithin("system", systemMock));
 		assertEquals(1, library.getChildrenOfTypeSystem().size());
 	}
 

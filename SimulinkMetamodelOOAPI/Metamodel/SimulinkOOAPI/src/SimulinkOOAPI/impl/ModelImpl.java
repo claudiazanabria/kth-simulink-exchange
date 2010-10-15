@@ -8,7 +8,6 @@ package SimulinkOOAPI.impl;
 
 import SimulinkOOAPI.ChildrenSupport;
 import SimulinkOOAPI.GainBlock;
-import SimulinkOOAPI.Identity;
 import SimulinkOOAPI.Library;
 import SimulinkOOAPI.Line;
 import SimulinkOOAPI.Model;
@@ -20,7 +19,6 @@ import SimulinkOOAPI.System;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 
 /**
  * <!-- begin-user-doc -->
@@ -42,16 +40,12 @@ public class ModelImpl extends ProtoObjectImpl implements Model {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected ModelImpl() {
 		super();
-	}
-	
-	protected ModelImpl(Identity identity) {
-		super(identity);
 		this.children = new ChildrenSupportImpl();
-	}
+	}	
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -201,5 +195,14 @@ public class ModelImpl extends ProtoObjectImpl implements Model {
 	public ReflectionList<System> getChildrenOfTypeSystem() {
 		return children.getChildrenOfTypeSystem();
 	}	
+	
+	/**
+	 * Returns new Model instance with the given name
+	 */
+	public static Model newNamed(String aName){
+		Model model = new ModelImpl();
+		model.setIdentity(IdentityImpl.newNamed(aName));		
+		return model;
+	}
 
 } //ModelImpl
