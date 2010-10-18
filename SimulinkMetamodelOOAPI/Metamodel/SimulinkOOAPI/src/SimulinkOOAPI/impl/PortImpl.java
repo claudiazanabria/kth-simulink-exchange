@@ -30,6 +30,10 @@ public abstract class PortImpl extends ProtoObjectImpl implements Port {
 	protected PortImpl() {
 		super();
 	}
+	
+	protected PortImpl(String name) {
+		super(name);
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -39,11 +43,8 @@ public abstract class PortImpl extends ProtoObjectImpl implements Port {
 	@Override
 	protected EClass eStaticClass() {
 		return SimulinkOOAPIPackage.Literals.PORT;
-	}
+	}	
 	
-	/**	 
-	 * @generated NOT
-	 */
 	public void ifPortAddToList(ReflectionList<Port> list){
 		list.add(this);
 	}

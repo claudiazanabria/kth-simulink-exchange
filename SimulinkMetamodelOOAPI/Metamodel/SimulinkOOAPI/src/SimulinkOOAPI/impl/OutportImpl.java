@@ -7,6 +7,8 @@
 package SimulinkOOAPI.impl;
 
 import SimulinkOOAPI.Outport;
+import SimulinkOOAPI.ReflectionList;
+import SimulinkOOAPI.System;
 import SimulinkOOAPI.SimulinkOOAPIPackage;
 
 import org.eclipse.emf.ecore.EClass;
@@ -29,6 +31,12 @@ public class OutportImpl extends PortImpl implements Outport {
 	protected OutportImpl() {
 		super();
 	}
+	
+	protected OutportImpl(String name, System parent) {
+		super(name);
+		parent.addChild(this);
+	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -43,11 +51,13 @@ public class OutportImpl extends PortImpl implements Outport {
 	/**
 	 * Returns new instance of Outport with the given name within the given system	 
 	 */
-	public static Outport newNamedWithin(String name, SimulinkOOAPI.System system){
-		Outport inport = new OutportImpl();
-		inport.setIdentity(IdentityImpl.newNamed(name));
-		system.addChild(inport);
+	public static Outport newNamedWithin(String name, System parent){
+		Outport inport = new OutportImpl(name, parent);
 		return inport;
+	}
+	
+	public void ifOutportAddToList(ReflectionList<Outport> list){
+		list.add(this);
 	}
 
 } //OutportImpl

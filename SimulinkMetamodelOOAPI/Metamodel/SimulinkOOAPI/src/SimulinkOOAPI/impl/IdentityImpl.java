@@ -78,6 +78,11 @@ public class IdentityImpl extends EObjectImpl implements Identity {
 		super();
 		this.uuid = EcoreUtil.generateUUID();
 	}
+	
+	protected IdentityImpl(String name) {
+		this();		
+		this.name = name;
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -224,9 +229,8 @@ public class IdentityImpl extends EObjectImpl implements Identity {
 	 * @param aName
 	 * @return
 	 */
-	public static Identity newNamed(String aName){
-		Identity identity = new IdentityImpl();
-		identity.setName(aName);
+	public static Identity newNamed(String name){
+		Identity identity = new IdentityImpl(name);
 		return identity;
 	}
 

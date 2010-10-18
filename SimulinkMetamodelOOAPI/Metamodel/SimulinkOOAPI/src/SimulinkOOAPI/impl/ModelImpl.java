@@ -46,6 +46,11 @@ public class ModelImpl extends ProtoObjectImpl implements Model {
 		super();
 		this.children = new ChildrenSupportImpl();
 	}	
+	
+	protected ModelImpl(String name) {
+		super(name);
+		this.children = new ChildrenSupportImpl();
+	}	
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -199,9 +204,8 @@ public class ModelImpl extends ProtoObjectImpl implements Model {
 	/**
 	 * Returns new Model instance with the given name
 	 */
-	public static Model newNamed(String aName){
-		Model model = new ModelImpl();
-		model.setIdentity(IdentityImpl.newNamed(aName));		
+	public static Model newNamed(String name){
+		Model model = new ModelImpl(name);				
 		return model;
 	}
 

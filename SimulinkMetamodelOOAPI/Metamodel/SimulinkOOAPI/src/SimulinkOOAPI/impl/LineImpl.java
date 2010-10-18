@@ -66,6 +66,20 @@ public class LineImpl extends ProtoObjectImpl implements Line {
 		super();
 	}
 	
+	protected LineImpl(String name, System parent, Inport source, Outport destination){
+		super(name);
+		parent.addChild(this);
+		this.source = source;
+		this.destination = destination;
+	}
+	
+	protected LineImpl(String name, Model parent, Inport source, Outport destination){
+		super(name);
+		parent.addChild(this);
+		this.source = source;
+		this.destination = destination;
+	}
+	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -232,24 +246,16 @@ public class LineImpl extends ProtoObjectImpl implements Line {
 	/**
 	 * Returns new instance of Line with the given name within the given model between the inport and the outport.
 	 */
-	public static Line newNamedWithinBetween(String name, Model model, Inport inport, Outport outport){
-		Line line = new LineImpl();
-		line.setIdentity(IdentityImpl.newNamed(name));
-		model.addChild(line);
-		line.setSource(inport);
-		line.setDestination(outport);
+	public static Line newNamedWithinBetween(String name, Model parent, Inport source, Outport destination){
+		Line line = new LineImpl(name, parent, source, destination);		
 		return line;
 	}
 	
 	/**
 	 * Returns new instance of Line with the given name within the given system between the inport and the outport.
 	 */
-	public static Line newNamedWithinBetween(String name, System system, Inport inport, Outport outport){
-		Line line = new LineImpl();
-		line.setIdentity(IdentityImpl.newNamed(name));
-		system.addChild(line);
-		line.setSource(inport);
-		line.setDestination(outport);
+	public static Line newNamedWithinBetween(String name, System parent, Inport source, Outport destination){
+		Line line = new LineImpl(name, parent, source, destination);		
 		return line;
 	}
 

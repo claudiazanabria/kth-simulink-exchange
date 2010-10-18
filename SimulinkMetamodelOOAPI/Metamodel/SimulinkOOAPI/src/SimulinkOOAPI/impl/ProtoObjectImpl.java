@@ -8,7 +8,9 @@ package SimulinkOOAPI.impl;
 
 import SimulinkOOAPI.GainBlock;
 import SimulinkOOAPI.Identity;
+import SimulinkOOAPI.Inport;
 import SimulinkOOAPI.Line;
+import SimulinkOOAPI.Outport;
 import SimulinkOOAPI.Port;
 import SimulinkOOAPI.ProtoObject;
 import SimulinkOOAPI.ReflectionList;
@@ -56,9 +58,9 @@ public abstract class ProtoObjectImpl extends EObjectImpl implements ProtoObject
 		//throw new UnsupportedOperationException();
 	}
 	
-	protected ProtoObjectImpl(Identity identity) {
+	protected ProtoObjectImpl(String name) {
 		super();
-		this.identity = identity;
+		this.identity = IdentityImpl.newNamed(name);
 	}
 
 	/**
@@ -168,31 +170,25 @@ public abstract class ProtoObjectImpl extends EObjectImpl implements ProtoObject
 		return super.eIsSet(featureID);
 	}
 	
-	/**	 
-	 * @generated NOT
-	 */
 	@Override
 	public void ifGainBlockAddToList(ReflectionList<GainBlock> list) {}
 	
-	/**	 
-	 * @generated NOT
-	 */
 	@Override
 	public void ifSystemAddToList(ReflectionList<SimulinkOOAPI.System> list) {}
 	
-	/**	 
-	 * @generated NOT
-	 */
 	@Override
 	public void ifLineAddToList(ReflectionList<Line> list) {}
 	
-	/**	 
-	 * @generated NOT
-	 */
 	@Override
 	public void ifPortAddToList(ReflectionList<Port> list){}
 	
 	@Override
 	public void ifSystemReferenceAddToList(ReflectionList<SystemReference> list){}
+	
+	@Override
+	public void ifOutportAddToList(ReflectionList<Outport> list){}
+	
+	@Override
+	public void ifInportAddToList(ReflectionList<Inport> list){}
 
 } //ProtoObjectImpl

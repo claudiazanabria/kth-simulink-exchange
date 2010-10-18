@@ -59,6 +59,12 @@ public class GainBlockImpl extends ProtoObjectImpl implements GainBlock {
 	protected GainBlockImpl() {
 		super();
 	}	
+	
+	protected GainBlockImpl(String name, System parent, int gain) {
+		super(name);
+		parent.addChild(this);
+		this.gain = gain;
+	}	
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -180,11 +186,8 @@ public class GainBlockImpl extends ProtoObjectImpl implements GainBlock {
 	 * @param system
 	 * @return
 	 */
-	public static GainBlock newNamedWithGainWithin(String name, int gain, System system){
-		GainBlock gainBlock = new GainBlockImpl();
-		gainBlock.setIdentity(IdentityImpl.newNamed(name));
-		gainBlock.setGain(gain);
-		system.addChild(gainBlock);
+	public static GainBlock newNamedWithGainWithin(String name, int gain, System parent){
+		GainBlock gainBlock = new GainBlockImpl(name, parent, gain);		
 		return gainBlock;
 	}
 

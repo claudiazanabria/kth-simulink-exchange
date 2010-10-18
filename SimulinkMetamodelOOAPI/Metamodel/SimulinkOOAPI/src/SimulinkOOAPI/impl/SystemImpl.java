@@ -50,6 +50,18 @@ public class SystemImpl extends ProtoObjectImpl implements SimulinkOOAPI.System 
 		super();
 		this.children = new ChildrenSupportImpl();
 	}	
+	
+	protected SystemImpl(String name, System parent) {
+		super(name);
+		this.children = new ChildrenSupportImpl();
+		parent.addChild(this);
+	}	
+	
+	protected SystemImpl(String name, Model parent) {
+		super(name);
+		this.children = new ChildrenSupportImpl();
+		parent.addChild(this);
+	}	
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -206,20 +218,16 @@ public class SystemImpl extends ProtoObjectImpl implements SimulinkOOAPI.System 
 	/**
 	 * Returns new instance of System with the given name within the given model. 
 	 */
-	public static System newNamedWithin(String name, Model model){
-		System system = new SystemImpl();
-		system.setIdentity(IdentityImpl.newNamed(name));
-		model.addChild(system);
+	public static System newNamedWithin(String name, Model parent){
+		System system = new SystemImpl(name, parent);
 		return system;
 	}
 	
 	/**
 	 * Returns new instance of System with the given name within the given system. 
 	 */
-	public static System newNamedWithin(String name, System system){
-		System returnSystem = new SystemImpl();
-		returnSystem.setIdentity(IdentityImpl.newNamed(name));
-		system.addChild(returnSystem);
+	public static System newNamedWithin(String name, System parent){
+		System returnSystem = new SystemImpl(name, parent);		
 		return returnSystem;
 	}
 	

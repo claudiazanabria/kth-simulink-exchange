@@ -6,23 +6,16 @@
  */
 package SimulinkOOAPI.impl;
 
-import SimulinkOOAPI.ChildrenSupport;
-import SimulinkOOAPI.GainBlock;
-import SimulinkOOAPI.Line;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import SimulinkOOAPI.Model;
-import SimulinkOOAPI.Port;
-import SimulinkOOAPI.ProtoObject;
 import SimulinkOOAPI.ReflectionList;
 import SimulinkOOAPI.SimulinkOOAPIPackage;
 import SimulinkOOAPI.System;
 import SimulinkOOAPI.SystemReference;
-
-import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -32,7 +25,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link SimulinkOOAPI.impl.SystemReferenceImpl#getTarget <em>Target</em>}</li>
- *   <li>{@link SimulinkOOAPI.impl.SystemReferenceImpl#getChildren <em>Children</em>}</li>
  * </ul>
  * </p>
  *
@@ -49,16 +41,25 @@ public class SystemReferenceImpl extends ProtoObjectImpl implements SystemRefere
 	 */
 	protected SimulinkOOAPI.System target;
 	
-	private ChildrenSupport children;
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
 	protected SystemReferenceImpl() {
-		super();
-		children = new ChildrenSupportImpl();
+		super();	
+	}
+	
+	protected SystemReferenceImpl(String name, System parent, System target) {
+		super(name);		
+		parent.addChild(this);
+		this.target = target;
+	}
+	
+	protected SystemReferenceImpl(String name, Model parent, System target) {
+		super(name);	
+		parent.addChild(this);
+		this.target = target;
 	}
 	
 	/**
@@ -114,48 +115,12 @@ public class SystemReferenceImpl extends ProtoObjectImpl implements SystemRefere
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ChildrenSupport getChildren() {
-		ChildrenSupport children = basicGetChildren();
-		return children != null && children.eIsProxy() ? (ChildrenSupport)eResolveProxy((InternalEObject)children) : children;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ChildrenSupport basicGetChildren() {
-		// TODO: implement this method to return the 'Children' reference
-		// -> do not perform proxy resolution
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setChildren(ChildrenSupport newChildren) {
-		// TODO: implement this method to set the 'Children' reference
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case SimulinkOOAPIPackage.SYSTEM_REFERENCE__TARGET:
 				if (resolve) return getTarget();
 				return basicGetTarget();
-			case SimulinkOOAPIPackage.SYSTEM_REFERENCE__CHILDREN:
-				if (resolve) return getChildren();
-				return basicGetChildren();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -170,9 +135,6 @@ public class SystemReferenceImpl extends ProtoObjectImpl implements SystemRefere
 		switch (featureID) {
 			case SimulinkOOAPIPackage.SYSTEM_REFERENCE__TARGET:
 				setTarget((SimulinkOOAPI.System)newValue);
-				return;
-			case SimulinkOOAPIPackage.SYSTEM_REFERENCE__CHILDREN:
-				setChildren((ChildrenSupport)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -189,9 +151,6 @@ public class SystemReferenceImpl extends ProtoObjectImpl implements SystemRefere
 			case SimulinkOOAPIPackage.SYSTEM_REFERENCE__TARGET:
 				setTarget((SimulinkOOAPI.System)null);
 				return;
-			case SimulinkOOAPIPackage.SYSTEM_REFERENCE__CHILDREN:
-				setChildren((ChildrenSupport)null);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -206,65 +165,10 @@ public class SystemReferenceImpl extends ProtoObjectImpl implements SystemRefere
 		switch (featureID) {
 			case SimulinkOOAPIPackage.SYSTEM_REFERENCE__TARGET:
 				return target != null;
-			case SimulinkOOAPIPackage.SYSTEM_REFERENCE__CHILDREN:
-				return basicGetChildren() != null;
 		}
 		return super.eIsSet(featureID);
-	}	
-
-	/**	
-	 * @generated NOT
-	 */
-	@Override
-	public void addChild(ProtoObject child) {		
-		this.children.addChild(child);
-	}
-
-	/**	
-	 * @generated NOT
-	 */
-	@Override
-	public ReflectionList<ProtoObject> getAllChildren() {
-		return this.children.getChildren();
-	}
-
-	/**	
-	 * @generated NOT
-	 */
-	@Override
-	public int getNumberOfChildren() {
-		return this.children.getNumberOfChildren();
 	}
 	
-	/**	
-	 * @generated NOT
-	 */
-	@Override	
-	public ReflectionList<GainBlock> getChildrenOfTypeGainBlock() {
-		return this.children.getChildrenOfTypeGainBlock();
-	}
-
-	
-	@Override
-	public ReflectionList<Line> getChildrenOfTypeLine() {
-		return children.getChildrenOfTypeLine();
-	}
-
-	@Override
-	public ReflectionList<System> getChildrenOfTypeSystem() {
-		return children.getChildrenOfTypeSystem();
-	}
-
-	@Override
-	public ReflectionList<Port> getChildrenOfTypePort() {
-		return children.getChildrenOfTypePort();
-	}
-
-	@Override
-	public ReflectionList<SystemReference> getChildrenOfTypeSystemReference() {
-		return children.getChildrenOfTypeSystemReference();
-	}
-
 	@Override
 	public void ifSystemReferenceAddToList(ReflectionList<SystemReference> list){
 		list.add(this);
@@ -273,22 +177,16 @@ public class SystemReferenceImpl extends ProtoObjectImpl implements SystemRefere
 	/**
 	 * Returns new instance of SystemReference with the given name, within the given model, targeting to the given system
 	 */
-	public static SystemReference newNamedWithinTargeting(String name, Model model, System target){
-		SystemReference sysRef = new SystemReferenceImpl();
-		sysRef.setIdentity(IdentityImpl.newNamed(name));
-		model.addChild(sysRef);
-		sysRef.setTarget(target);
+	public static SystemReference newNamedWithinTargeting(String name, Model parent, System target){
+		SystemReference sysRef = new SystemReferenceImpl(name, parent, target);
 		return sysRef;
 	}
 	
 	/**
 	 * Returns new instance of SystemReference with the given name, within the given system, targeting to the given system
 	 */
-	public static SystemReference newNamedWithinTargeting(String name, System system, System target){
-		SystemReference sysRef = new SystemReferenceImpl();
-		sysRef.setIdentity(IdentityImpl.newNamed(name));
-		system.addChild(sysRef);
-		sysRef.setTarget(target);
+	public static SystemReference newNamedWithinTargeting(String name, System parent, System target){
+		SystemReference sysRef = new SystemReferenceImpl(name, parent, target);
 		return sysRef;
 	}
 	

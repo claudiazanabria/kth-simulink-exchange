@@ -7,6 +7,8 @@
 package SimulinkOOAPI.impl;
 
 import SimulinkOOAPI.Inport;
+import SimulinkOOAPI.ReflectionList;
+import SimulinkOOAPI.System;
 import SimulinkOOAPI.SimulinkOOAPIPackage;
 
 import org.eclipse.emf.ecore.EClass;
@@ -29,6 +31,11 @@ public class InportImpl extends PortImpl implements Inport {
 	protected InportImpl() {
 		super();
 	}
+	
+	protected InportImpl(String name, System parent) {
+		super(name);
+		parent.addChild(this);
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -43,11 +50,14 @@ public class InportImpl extends PortImpl implements Inport {
 	/**
 	 * Returns new instance of Inport with the given name within the given system	 
 	 */
-	public static Inport newNamedWithin(String name, SimulinkOOAPI.System system){
-		Inport inport = new InportImpl();
-		inport.setIdentity(IdentityImpl.newNamed(name));
-		system.addChild(inport);
+	public static Inport newNamedWithin(String name, System parent){
+		Inport inport = new InportImpl(name, parent);		
 		return inport;
+	}
+
+	@Override
+	public void ifInportAddToList(ReflectionList<Inport> list) {
+			list.add(this);
 	}
 
 } //InportImpl

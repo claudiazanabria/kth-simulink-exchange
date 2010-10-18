@@ -48,6 +48,11 @@ public class LibraryImpl extends ProtoObjectImpl implements Library {
 		super();
 		children = new ChildrenSupportImpl();
 	}	
+	
+	protected LibraryImpl(String name) {
+		super(name);
+		children = new ChildrenSupportImpl();
+	}	
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -206,8 +211,7 @@ public class LibraryImpl extends ProtoObjectImpl implements Library {
 	 * Returns new Library instance with the given name.
 	 */
 	public static Library newNamed(String name){
-		Library library = new LibraryImpl();
-		library.setIdentity(IdentityImpl.newNamed(name));
+		Library library = new LibraryImpl(name);		
 		return library;
 	}
 

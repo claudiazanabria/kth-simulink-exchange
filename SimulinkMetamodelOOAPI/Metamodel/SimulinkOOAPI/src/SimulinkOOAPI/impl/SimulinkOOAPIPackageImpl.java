@@ -403,15 +403,6 @@ public class SimulinkOOAPIPackageImpl extends EPackageImpl implements SimulinkOO
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSystemReference_Children() {
-		return (EReference)systemReferenceEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public SimulinkOOAPIFactory getSimulinkOOAPIFactory() {
 		return (SimulinkOOAPIFactory)getEFactoryInstance();
 	}
@@ -470,7 +461,6 @@ public class SimulinkOOAPIPackageImpl extends EPackageImpl implements SimulinkOO
 
 		systemReferenceEClass = createEClass(SYSTEM_REFERENCE);
 		createEReference(systemReferenceEClass, SYSTEM_REFERENCE__TARGET);
-		createEReference(systemReferenceEClass, SYSTEM_REFERENCE__CHILDREN);
 	}
 
 	/**
@@ -553,7 +543,6 @@ public class SimulinkOOAPIPackageImpl extends EPackageImpl implements SimulinkOO
 
 		initEClass(systemReferenceEClass, SystemReference.class, "SystemReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSystemReference_Target(), this.getSystem(), null, "target", null, 1, 1, SystemReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSystemReference_Children(), this.getChildrenSupport(), null, "children", null, 0, 1, SystemReference.class, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

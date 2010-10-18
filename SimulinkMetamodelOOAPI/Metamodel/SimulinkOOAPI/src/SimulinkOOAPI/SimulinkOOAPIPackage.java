@@ -471,22 +471,13 @@ public interface SimulinkOOAPIPackage extends EPackage {
 	int SYSTEM_REFERENCE__TARGET = PROTO_OBJECT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Children</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SYSTEM_REFERENCE__CHILDREN = PROTO_OBJECT_FEATURE_COUNT + 1;
-
-	/**
 	 * The number of structural features of the '<em>System Reference</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SYSTEM_REFERENCE_FEATURE_COUNT = PROTO_OBJECT_FEATURE_COUNT + 2;
+	int SYSTEM_REFERENCE_FEATURE_COUNT = PROTO_OBJECT_FEATURE_COUNT + 1;
 
 
 	/**
@@ -730,17 +721,6 @@ public interface SimulinkOOAPIPackage extends EPackage {
 	EReference getSystemReference_Target();
 
 	/**
-	 * Returns the meta object for the reference '{@link SimulinkOOAPI.SystemReference#getChildren <em>Children</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Children</em>'.
-	 * @see SimulinkOOAPI.SystemReference#getChildren()
-	 * @see #getSystemReference()
-	 * @generated
-	 */
-	EReference getSystemReference_Children();
-
-	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -971,14 +951,6 @@ public interface SimulinkOOAPIPackage extends EPackage {
 		 * @generated
 		 */
 		EReference SYSTEM_REFERENCE__TARGET = eINSTANCE.getSystemReference_Target();
-
-		/**
-		 * The meta object literal for the '<em><b>Children</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference SYSTEM_REFERENCE__CHILDREN = eINSTANCE.getSystemReference_Children();
 
 	}
 

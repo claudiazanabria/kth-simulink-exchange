@@ -15,7 +15,6 @@ import SimulinkOOAPI.Line;
 import SimulinkOOAPI.Mask;
 import SimulinkOOAPI.Model;
 import SimulinkOOAPI.Outport;
-import SimulinkOOAPI.Port;
 import SimulinkOOAPI.SimulinkOOAPIFactory;
 import SimulinkOOAPI.SimulinkOOAPIPackage;
 import SimulinkOOAPI.SystemReference;
