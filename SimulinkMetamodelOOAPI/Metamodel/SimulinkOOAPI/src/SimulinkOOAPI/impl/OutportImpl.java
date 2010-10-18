@@ -6,6 +6,7 @@
  */
 package SimulinkOOAPI.impl;
 
+import SimulinkOOAPI.Library;
 import SimulinkOOAPI.Outport;
 import SimulinkOOAPI.ReflectionList;
 import SimulinkOOAPI.System;
@@ -33,8 +34,11 @@ public class OutportImpl extends PortImpl implements Outport {
 	}
 	
 	protected OutportImpl(String name, System parent) {
-		super(name);
-		parent.addChild(this);
+		super(name, parent);		
+	}
+	
+	protected OutportImpl(String name, Library parent) {
+		super(name, parent);		
 	}
 
 
@@ -46,6 +50,10 @@ public class OutportImpl extends PortImpl implements Outport {
 	@Override
 	protected EClass eStaticClass() {
 		return SimulinkOOAPIPackage.Literals.OUTPORT;
+	}	
+	
+	public void ifOutportAddToList(ReflectionList<Outport> list){
+		list.add(this);
 	}
 	
 	/**
@@ -56,8 +64,12 @@ public class OutportImpl extends PortImpl implements Outport {
 		return inport;
 	}
 	
-	public void ifOutportAddToList(ReflectionList<Outport> list){
-		list.add(this);
+	/**
+	 * Returns new instance of Outport with the given name within the given library	 
+	 */
+	public static Outport newNamedWithin(String name, Library parent){
+		Outport inport = new OutportImpl(name, parent);
+		return inport;
 	}
 
 } //OutportImpl

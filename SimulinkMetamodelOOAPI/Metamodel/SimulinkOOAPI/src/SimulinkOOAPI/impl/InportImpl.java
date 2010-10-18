@@ -7,6 +7,7 @@
 package SimulinkOOAPI.impl;
 
 import SimulinkOOAPI.Inport;
+import SimulinkOOAPI.Library;
 import SimulinkOOAPI.ReflectionList;
 import SimulinkOOAPI.System;
 import SimulinkOOAPI.SimulinkOOAPIPackage;
@@ -33,8 +34,11 @@ public class InportImpl extends PortImpl implements Inport {
 	}
 	
 	protected InportImpl(String name, System parent) {
-		super(name);
-		parent.addChild(this);
+		super(name, parent);		
+	}
+	
+	protected InportImpl(String name, Library parent) {
+		super(name, parent);		
 	}
 
 	/**
@@ -45,6 +49,11 @@ public class InportImpl extends PortImpl implements Inport {
 	@Override
 	protected EClass eStaticClass() {
 		return SimulinkOOAPIPackage.Literals.INPORT;
+	}	
+
+	@Override
+	public void ifInportAddToList(ReflectionList<Inport> list) {
+			list.add(this);
 	}
 	
 	/**
@@ -54,10 +63,13 @@ public class InportImpl extends PortImpl implements Inport {
 		Inport inport = new InportImpl(name, parent);		
 		return inport;
 	}
-
-	@Override
-	public void ifInportAddToList(ReflectionList<Inport> list) {
-			list.add(this);
+	
+	/**
+	 * Returns new instance of Inport with the given name within the given library	 
+	 */
+	public static Inport newNamedWithin(String name, Library parent){
+		Inport inport = new InportImpl(name, parent);		
+		return inport;
 	}
 
 } //InportImpl

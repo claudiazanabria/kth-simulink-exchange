@@ -36,7 +36,7 @@ public class ReflectionListImplTest {
 			ignoring(systemMock);
 		}});
 		
-		list.add(GainBlockImpl.newNamedWithGainWithin("gainblock", 2, systemMock));
+		list.add(GainBlockImpl.newNamedWithinWithGain("gainblock", systemMock, 2));
 		ReflectionList<ProtoObject> result = list.collect("ifGainBlockAddToList");
 		assertEquals(1, result.size());
 	}

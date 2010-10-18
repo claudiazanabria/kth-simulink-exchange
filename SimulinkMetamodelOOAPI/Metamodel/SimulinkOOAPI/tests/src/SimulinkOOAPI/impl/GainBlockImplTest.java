@@ -31,7 +31,7 @@ public class GainBlockImplTest {
 			ignoring(systemMock);
 		}});
 		
-		gainBlock = GainBlockImpl.newNamedWithGainWithin("gainBlock", 1, systemMock);		
+		gainBlock = GainBlockImpl.newNamedWithinWithGain("gainBlock", systemMock, 1);		
 	}
 	
 	//Incorrect test! Default constructor should be allowed in order not to break emf core api. 

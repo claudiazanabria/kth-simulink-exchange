@@ -7,6 +7,7 @@
 package SimulinkOOAPI.impl;
 
 import SimulinkOOAPI.GainBlock;
+import SimulinkOOAPI.Library;
 import SimulinkOOAPI.ReflectionList;
 import SimulinkOOAPI.SimulinkOOAPIPackage;
 import SimulinkOOAPI.System;
@@ -61,6 +62,12 @@ public class GainBlockImpl extends ProtoObjectImpl implements GainBlock {
 	}	
 	
 	protected GainBlockImpl(String name, System parent, int gain) {
+		super(name);
+		parent.addChild(this);
+		this.gain = gain;
+	}	
+	
+	protected GainBlockImpl(String name, Library parent, int gain) {
 		super(name);
 		parent.addChild(this);
 		this.gain = gain;
@@ -186,7 +193,19 @@ public class GainBlockImpl extends ProtoObjectImpl implements GainBlock {
 	 * @param system
 	 * @return
 	 */
-	public static GainBlock newNamedWithGainWithin(String name, int gain, System parent){
+	public static GainBlock newNamedWithinWithGain(String name, System parent, int gain){
+		GainBlock gainBlock = new GainBlockImpl(name, parent, gain);		
+		return gainBlock;
+	}
+	
+	/**
+	 * Returns new instance of GainBlock with the given name, with the given gain, contains within the given library.
+	 * @param name
+	 * @param gain
+	 * @param system
+	 * @return
+	 */
+	public static GainBlock newNamedWithinWithGain(String name, Library parent, int gain){
 		GainBlock gainBlock = new GainBlockImpl(name, parent, gain);		
 		return gainBlock;
 	}

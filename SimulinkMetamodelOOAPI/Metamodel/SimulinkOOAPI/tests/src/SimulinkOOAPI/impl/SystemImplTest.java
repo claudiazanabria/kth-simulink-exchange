@@ -92,8 +92,8 @@ public class SystemImplTest {
 	
 	@Test
 	public void testGetChildrenOfTypeGainBlock(){
-		GainBlockImpl.newNamedWithGainWithin("gainBlock1", 2, system);
-		GainBlockImpl.newNamedWithGainWithin("gainBlock2", 2, system);
+		GainBlockImpl.newNamedWithinWithGain("gainBlock1", system, 5);
+		GainBlockImpl.newNamedWithinWithGain("gainBlock2", system, 6);
 		assertEquals(2, system.getChildrenOfTypeGainBlock().size());
 	}
 	

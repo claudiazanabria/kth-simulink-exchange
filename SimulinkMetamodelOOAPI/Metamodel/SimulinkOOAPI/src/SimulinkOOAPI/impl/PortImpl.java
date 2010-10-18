@@ -6,9 +6,11 @@
  */
 package SimulinkOOAPI.impl;
 
+import SimulinkOOAPI.Library;
 import SimulinkOOAPI.Port;
 import SimulinkOOAPI.ReflectionList;
 import SimulinkOOAPI.SimulinkOOAPIPackage;
+import SimulinkOOAPI.System;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -31,8 +33,14 @@ public abstract class PortImpl extends ProtoObjectImpl implements Port {
 		super();
 	}
 	
-	protected PortImpl(String name) {
+	protected PortImpl(String name, System parent) {
 		super(name);
+		parent.addChild(this);
+	}
+	
+	protected PortImpl(String name, Library parent) {
+		super(name);
+		parent.addChild(this);
 	}
 
 	/**

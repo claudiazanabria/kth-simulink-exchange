@@ -74,64 +74,40 @@ public class LibraryImplTest {
 	
 	@Test
 	public void testGetChildrenOfTypeGainBlock(){
-		context.checking(new Expectations() {{
-			ignoring(systemMock);
-		}});
-		
-		library.addChild(GainBlockImpl.newNamedWithGainWithin("gainBlock1", 1, systemMock));
-		library.addChild(GainBlockImpl.newNamedWithGainWithin("gainBlock2", 1, systemMock));
+		GainBlockImpl.newNamedWithinWithGain("gainBlock1", library, 1);
+		GainBlockImpl.newNamedWithinWithGain("gainBlock2", library, 1);		
 		assertEquals(2, library.getChildrenOfTypeGainBlock().size());
 	}
 	
 	@Test	
 	public void testGetChildrenOfTypeLine(){
-		context.checking(new Expectations() {{
-			ignoring(systemMock);			    
-		}});
-		
-		library.addChild(LineImpl.newNamedWithinBetween("line", systemMock, inportMock, outportMock));
+		LineImpl.newNamedWithinBetween("line", library, inportMock, outportMock);		
 		assertEquals(1, library.getChildrenOfTypeLine().size());
 	}
 	
 	@Test
 	public void testGetChildrenOfTypePort(){
-		context.checking(new Expectations() {{
-			ignoring(systemMock);
-		}});
-		
-		library.addChild(InportImpl.newNamedWithin("port", systemMock));
-		library.addChild(OutportImpl.newNamedWithin("port", systemMock));
+		InportImpl.newNamedWithin("port", library);
+		OutportImpl.newNamedWithin("port", library);
 		assertEquals(2, library.getChildrenOfTypePort().size());
 	}
 	
 	@Test
 	public void testGetChildrenOfTypeInport(){
-		context.checking(new Expectations() {{
-			ignoring(systemMock);
-		}});
-		
-		library.addChild(InportImpl.newNamedWithin("port", systemMock));
+		InportImpl.newNamedWithin("port", library);
 		assertEquals(1, library.getChildrenOfTypeInport().size());
 	}
 	
 	@Test
 	public void testGetChildrenOfTypeOutport(){
-		context.checking(new Expectations() {{
-			ignoring(systemMock);
-		}});
-		
-		library.addChild(OutportImpl.newNamedWithin("port", systemMock));
+		OutportImpl.newNamedWithin("port", library);		
 		assertEquals(1, library.getChildrenOfTypeOutport().size());
 	}
 
 	
 	@Test
 	public void testGetChildrenOfTypeSystem(){
-		context.checking(new Expectations() {{
-			ignoring(systemMock);			    
-		}});
-		
-		library.addChild(SystemImpl.newNamedWithin("system", systemMock));
+		SystemImpl.newNamedWithin("system", library);	
 		assertEquals(1, library.getChildrenOfTypeSystem().size());
 	}
 

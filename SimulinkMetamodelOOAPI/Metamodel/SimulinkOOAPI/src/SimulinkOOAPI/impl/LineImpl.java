@@ -7,6 +7,7 @@
 package SimulinkOOAPI.impl;
 
 import SimulinkOOAPI.Inport;
+import SimulinkOOAPI.Library;
 import SimulinkOOAPI.Line;
 import SimulinkOOAPI.Model;
 import SimulinkOOAPI.Outport;
@@ -74,6 +75,13 @@ public class LineImpl extends ProtoObjectImpl implements Line {
 	}
 	
 	protected LineImpl(String name, Model parent, Inport source, Outport destination){
+		super(name);
+		parent.addChild(this);
+		this.source = source;
+		this.destination = destination;
+	}
+	
+	protected LineImpl(String name, Library parent, Inport source, Outport destination){
 		super(name);
 		parent.addChild(this);
 		this.source = source;
@@ -255,6 +263,14 @@ public class LineImpl extends ProtoObjectImpl implements Line {
 	 * Returns new instance of Line with the given name within the given system between the inport and the outport.
 	 */
 	public static Line newNamedWithinBetween(String name, System parent, Inport source, Outport destination){
+		Line line = new LineImpl(name, parent, source, destination);		
+		return line;
+	}
+	
+	/**
+	 * Returns new instance of Line with the given name within the given library between the inport and the outport.
+	 */
+	public static Line newNamedWithinBetween(String name, Library parent, Inport source, Outport destination){
 		Line line = new LineImpl(name, parent, source, destination);		
 		return line;
 	}

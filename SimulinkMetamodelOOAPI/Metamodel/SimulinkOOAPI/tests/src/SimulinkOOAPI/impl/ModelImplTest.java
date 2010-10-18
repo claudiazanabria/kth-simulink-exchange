@@ -74,7 +74,7 @@ public class ModelImplTest {
 			ignoring(systemMock);
 		}});
 		
-		testAddWrongChild(GainBlockImpl.newNamedWithGainWithin("gainBlock", 2, systemMock));		
+		testAddWrongChild(GainBlockImpl.newNamedWithinWithGain("gainBlock", systemMock, 2));		
 	}
 	
 	@Test

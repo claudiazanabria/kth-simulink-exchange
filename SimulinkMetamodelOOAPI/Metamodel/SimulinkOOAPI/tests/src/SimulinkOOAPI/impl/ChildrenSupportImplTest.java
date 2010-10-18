@@ -40,8 +40,8 @@ public class ChildrenSupportImplTest {
 		System sys1 = SystemImpl.newNamedWithin("sys1", modelMock);
 		childrenSupport.addChild(sys1);
 		childrenSupport.addChild(SystemImpl.newNamedWithin("sys2", sys1));
-		childrenSupport.addChild(GainBlockImpl.newNamedWithGainWithin("gain1", 3, sys1));
-		childrenSupport.addChild(GainBlockImpl.newNamedWithGainWithin("gain2", 3, sys1));
+		childrenSupport.addChild(GainBlockImpl.newNamedWithinWithGain("gain1", sys1, 3));
+		childrenSupport.addChild(GainBlockImpl.newNamedWithinWithGain("gain2", sys1, 2));
 	}
 	
 	@Test
