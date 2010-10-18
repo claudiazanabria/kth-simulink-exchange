@@ -10,7 +10,9 @@ package SimulinkOOAPI.impl;
 //import java.lang.reflect.Method;
 
 import SimulinkOOAPI.ChildrenSupport;
+import SimulinkOOAPI.Inport;
 import SimulinkOOAPI.Line;
+import SimulinkOOAPI.Outport;
 import SimulinkOOAPI.Port;
 import SimulinkOOAPI.SimulinkOOAPIPackage;
 import SimulinkOOAPI.GainBlock;
@@ -136,6 +138,27 @@ public class ChildrenSupportImpl extends EObjectImpl implements ChildrenSupport 
 			child.ifSystemReferenceAddToList(result);
 		}
 		return result;
+	}
+
+	@Override
+	public ReflectionList<Inport> getChildrenOfTypeInport() {
+		ReflectionList<Inport> result = new ReflectionListImpl<Inport>();
+
+		for (ProtoObject child : this.children) {
+			child.ifInportAddToList(result);
+		}
+		return result;	
+	}
+
+	@Override
+	public ReflectionList<Outport> getChildrenOfTypeOutport() {
+		ReflectionList<Outport> result = new ReflectionListImpl<Outport>();
+
+		for (ProtoObject child : this.children) {
+			child.ifOutportAddToList(result);
+		}
+		return result;	
+
 	}
 
 } //ChildrenSupportImpl

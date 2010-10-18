@@ -100,7 +100,28 @@ public class LibraryImplTest {
 		}});
 		
 		library.addChild(InportImpl.newNamedWithin("port", systemMock));
-		assertEquals(1, library.getChildrenOfTypePort().size());
+		library.addChild(OutportImpl.newNamedWithin("port", systemMock));
+		assertEquals(2, library.getChildrenOfTypePort().size());
+	}
+	
+	@Test
+	public void testGetChildrenOfTypeInport(){
+		context.checking(new Expectations() {{
+			ignoring(systemMock);
+		}});
+		
+		library.addChild(InportImpl.newNamedWithin("port", systemMock));
+		assertEquals(1, library.getChildrenOfTypeInport().size());
+	}
+	
+	@Test
+	public void testGetChildrenOfTypeOutport(){
+		context.checking(new Expectations() {{
+			ignoring(systemMock);
+		}});
+		
+		library.addChild(OutportImpl.newNamedWithin("port", systemMock));
+		assertEquals(1, library.getChildrenOfTypeOutport().size());
 	}
 
 	

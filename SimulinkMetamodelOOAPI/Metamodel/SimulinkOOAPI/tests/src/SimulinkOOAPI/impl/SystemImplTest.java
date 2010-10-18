@@ -36,7 +36,9 @@ public class SystemImplTest {
 		context.checking(new Expectations() {{
 			ignoring(modelMock);			    
 		}});
-		system = SystemImpl.newNamedWithin("sys", modelMock);					
+		system = SystemImpl.newNamedWithin("sys", modelMock);
+		InportImpl.newNamedWithin("inport", system);
+		OutportImpl.newNamedWithin("outport", system);
 	}
 	
 	//Incorrect test! Default constructor should be allowed in order not to break emf core api. 
@@ -68,9 +70,9 @@ public class SystemImplTest {
 			ignoring(modelMock);			    
 		}});
 		
-		assertEquals(0, system.getNumberOfChildren());
+		assertEquals(2, system.getNumberOfChildren());
 		system.addChild(SystemImpl.newNamedWithin("sys", modelMock));
-		assertEquals(1, system.getNumberOfChildren());
+		assertEquals(3, system.getNumberOfChildren());
 	}
 	
 	protected void testAddWrongChild(ProtoObject child){
@@ -102,10 +104,18 @@ public class SystemImplTest {
 	}
 	
 	@Test	
-	public void testGetChildrenOfTypePort(){
-		InportImpl.newNamedWithin("inport", system);
-		OutportImpl.newNamedWithin("outport", system);		
+	public void testGetChildrenOfTypePort(){			
 		assertEquals(2, system.getChildrenOfTypePort().size());
+	}
+	
+	@Test	
+	public void testGetChildrenOfTypeInport(){				
+		assertEquals(1, system.getChildrenOfTypeInport().size());
+	}
+
+	@Test	
+	public void testGetChildrenOfTypeOutport(){				
+		assertEquals(1, system.getChildrenOfTypeOutport().size());
 	}
 	
 	@Test

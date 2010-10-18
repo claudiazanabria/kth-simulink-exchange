@@ -11,9 +11,11 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import SimulinkOOAPI.ChildrenSupport;
 import SimulinkOOAPI.GainBlock;
+import SimulinkOOAPI.Inport;
 import SimulinkOOAPI.Library;
 import SimulinkOOAPI.Line;
 import SimulinkOOAPI.Model;
+import SimulinkOOAPI.Outport;
 import SimulinkOOAPI.Port;
 import SimulinkOOAPI.ProtoObject;
 import SimulinkOOAPI.ReflectionList;
@@ -213,6 +215,16 @@ public class SystemImpl extends ProtoObjectImpl implements SimulinkOOAPI.System 
 	@Override
 	public ReflectionList<SystemReference> getChildrenOfTypeSystemReference() {
 		return children.getChildrenOfTypeSystemReference();
+	}
+	
+	@Override
+	public ReflectionList<Inport> getChildrenOfTypeInport() {
+		return children.getChildrenOfTypeInport();
+	}
+
+	@Override
+	public ReflectionList<Outport> getChildrenOfTypeOutport() {		
+		return children.getChildrenOfTypeOutport();
 	}
 	
 	/**

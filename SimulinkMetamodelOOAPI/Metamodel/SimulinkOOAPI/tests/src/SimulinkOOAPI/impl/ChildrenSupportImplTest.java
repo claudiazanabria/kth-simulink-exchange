@@ -72,8 +72,29 @@ public class ChildrenSupportImplTest {
 			ignoring(systemMock);			    
 		}});
 		
+		childrenSupport.addChild(InportImpl.newNamedWithin("port1", systemMock));
+		childrenSupport.addChild(OutportImpl.newNamedWithin("port2", systemMock));
+		assertEquals(2, childrenSupport.getChildrenOfTypePort().size());
+	}
+	
+	@Test
+	public void testGetChildrenOfTypeOutport(){
+		context.checking(new Expectations() {{
+			ignoring(systemMock);			    
+		}});
+		
+		childrenSupport.addChild(OutportImpl.newNamedWithin("port", systemMock));
+		assertEquals(1, childrenSupport.getChildrenOfTypeOutport().size());
+	}
+	
+	@Test
+	public void testGetChildrenOfTypeInport(){
+		context.checking(new Expectations() {{
+			ignoring(systemMock);			    
+		}});
+		
 		childrenSupport.addChild(InportImpl.newNamedWithin("port", systemMock));
-		assertEquals(1, childrenSupport.getChildrenOfTypePort().size());
+		assertEquals(1, childrenSupport.getChildrenOfTypeInport().size());
 	}
 	
 	@Test

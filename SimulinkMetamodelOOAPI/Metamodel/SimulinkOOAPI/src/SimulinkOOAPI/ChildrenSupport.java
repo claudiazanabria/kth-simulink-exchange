@@ -63,6 +63,16 @@ public interface ChildrenSupport extends EObject {
 	public ReflectionList<Port> getChildrenOfTypePort();
 	
 	/**
+	 * Returns EList of children of Inport type.	
+	 */	
+	public ReflectionList<Inport> getChildrenOfTypeInport();
+	
+	/**
+	 * Returns EList of children of Outport type.
+	 */	
+	public ReflectionList<Outport> getChildrenOfTypeOutport();
+	
+	/**
 	 * Returns EList of children of System type.
 	 * 
 	 * @generated NOT
