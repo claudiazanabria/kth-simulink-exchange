@@ -15,6 +15,7 @@ import SimulinkOOAPI.Port;
 import SimulinkOOAPI.ReflectionList;
 import SimulinkOOAPI.SimulinkOOAPIPackage;
 import SimulinkOOAPI.System;
+import SimulinkOOAPI.util.AssertionRunner;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -67,25 +68,35 @@ public class LineImpl extends ProtoObjectImpl implements Line {
 		super();
 	}
 	
-	protected LineImpl(String name, System parent, Inport source, Outport destination){
+	
+	private LineImpl(String name, Outport source, Inport destination){
 		super(name);
-		parent.addChild(this);
+		AssertionRunner.assertOr(
+				AssertionRunner.assertion("Ports must belong to the same system.", 
+						                  LineImpl.portsBelongToTheSameSystem(source, destination)),
+				AssertionRunner.assertion("Can connect system only to the first level children system.", 
+						                  LineImpl.canConnectPortsAtDifferentLevels(source, destination)),
+				AssertionRunner.assertion("Can connect ports on different systems of the same childen level.", 
+						                  LineImpl.canConnectPortsAtTheSameLevel(source, destination))
+		);
+		
 		this.source = source;
 		this.destination = destination;
 	}
 	
-	protected LineImpl(String name, Model parent, Inport source, Outport destination){
-		super(name);
-		parent.addChild(this);
-		this.source = source;
-		this.destination = destination;
+	protected LineImpl(String name, System parent, Outport source, Inport destination){
+		this(name, source, destination);
+		parent.addChild(this);		
 	}
 	
-	protected LineImpl(String name, Library parent, Inport source, Outport destination){
-		super(name);
+	protected LineImpl(String name, Model parent, Outport source, Inport destination){
+		this(name, source, destination);
+		parent.addChild(this);		
+	}
+	
+	protected LineImpl(String name, Library parent, Outport source, Inport destination){
+		this(name, source, destination);
 		parent.addChild(this);
-		this.source = source;
-		this.destination = destination;
 	}
 	
 	/**
@@ -254,7 +265,7 @@ public class LineImpl extends ProtoObjectImpl implements Line {
 	/**
 	 * Returns new instance of Line with the given name within the given model between the inport and the outport.
 	 */
-	public static Line newNamedWithinBetween(String name, Model parent, Inport source, Outport destination){
+	public static Line newNamedWithinFromTo(String name, Model parent, Outport source, Inport destination){
 		Line line = new LineImpl(name, parent, source, destination);		
 		return line;
 	}
@@ -262,7 +273,7 @@ public class LineImpl extends ProtoObjectImpl implements Line {
 	/**
 	 * Returns new instance of Line with the given name within the given system between the inport and the outport.
 	 */
-	public static Line newNamedWithinBetween(String name, System parent, Inport source, Outport destination){
+	public static Line newNamedWithinFromTo(String name, System parent, Outport source, Inport destination){
 		Line line = new LineImpl(name, parent, source, destination);		
 		return line;
 	}
@@ -270,9 +281,38 @@ public class LineImpl extends ProtoObjectImpl implements Line {
 	/**
 	 * Returns new instance of Line with the given name within the given library between the inport and the outport.
 	 */
-	public static Line newNamedWithinBetween(String name, Library parent, Inport source, Outport destination){
+	public static Line newNamedWithinFromTo(String name, Library parent, Outport source, Inport destination){
 		Line line = new LineImpl(name, parent, source, destination);		
 		return line;
+	}
+	
+	/**
+	 * Returns true if the two ports belong to the same system i e has the common system as a parent.
+	 */
+	public static boolean portsBelongToTheSameSystem(Port portA, Port portB){
+		return portA.getParent().equals(portB.getParent());
+	}
+	
+	/**
+	 * Checks that system can be connected to the child system at the first level of children.	 
+	 * Returns true if the destination port belongs to the first level children of the source port parent system or
+	 * if the source port belongs to the first level children of the destination port parent system.
+	 */
+	public static boolean canConnectPortsAtDifferentLevels(Outport source, Inport destination) {
+		System sourceSystem = source.getParent();
+		System destinationSystem = destination.getParent();
+		return destinationSystem.isParentOf(sourceSystem) 
+				|| sourceSystem.isParentOf(destinationSystem);
+	}
+	
+	/**
+	 * Returns true if the ports are on different systems on the same level.
+	 */
+	public static boolean canConnectPortsAtTheSameLevel(Outport source, Inport destination) {
+		System sourceSystem = source.getParent();
+		System destinationSystem = destination.getParent();
+		
+		return !sourceSystem.equals(destinationSystem);
 	}
 
 } //LineImpl

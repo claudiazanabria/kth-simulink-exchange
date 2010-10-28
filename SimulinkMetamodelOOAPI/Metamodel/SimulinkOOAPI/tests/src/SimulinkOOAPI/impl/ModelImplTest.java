@@ -93,7 +93,16 @@ public class ModelImplTest {
 	
 	@Test	
 	public void testGetChildrenOfTypeLine(){
-		LineImpl.newNamedWithinBetween("line", model, inportMock, outportMock);		
+		context.checking(new Expectations() {{
+			atLeast(1).of(inportMock).getParent();
+				will(returnValue(systemMock));
+			atLeast(1).of(outportMock).getParent();
+				will(returnValue(systemMock));
+			
+			ignoring(systemMock);			
+		}});
+		
+		LineImpl.newNamedWithinFromTo("line", model, outportMock, inportMock);		
 		assertEquals(1, model.getChildrenOfTypeLine().size());
 	}
 	

@@ -6,13 +6,13 @@
  */
 package SimulinkOOAPI.impl;
 
+import org.eclipse.emf.ecore.EClass;
+
 import SimulinkOOAPI.Library;
 import SimulinkOOAPI.Outport;
 import SimulinkOOAPI.ReflectionList;
-import SimulinkOOAPI.System;
 import SimulinkOOAPI.SimulinkOOAPIPackage;
-
-import org.eclipse.emf.ecore.EClass;
+import SimulinkOOAPI.System;
 
 /**
  * <!-- begin-user-doc -->

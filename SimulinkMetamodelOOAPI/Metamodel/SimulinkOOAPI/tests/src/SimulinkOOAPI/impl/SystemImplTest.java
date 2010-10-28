@@ -2,6 +2,7 @@ package SimulinkOOAPI.impl;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
 //import junit.framework.AssertionFailedError;
 
 import org.jmock.Expectations;
@@ -99,7 +100,13 @@ public class SystemImplTest {
 	
 	@Test	
 	public void testGetChildrenOfTypeLine(){
-		LineImpl.newNamedWithinBetween("line", system, inportMock, outportMock);		
+		context.checking(new Expectations() {{
+			atLeast(1).of(inportMock).getParent();
+				will(returnValue(system));
+			atLeast(1).of(outportMock).getParent();
+				will(returnValue(system));								    
+		}});
+		LineImpl.newNamedWithinFromTo("line", system, outportMock, inportMock);		
 		assertEquals(1, system.getChildrenOfTypeLine().size());
 	}
 	
@@ -128,6 +135,18 @@ public class SystemImplTest {
 	public void testGetChildrenOfTypeSystemReference(){
 		SystemReferenceImpl.newNamedWithinTargeting("sysRef", system, system);
 		assertEquals(1, system.getChildrenOfTypeSystemReference().size());
+	}
+	
+	@Test
+	public void testIsParentOfSystem(){
+		System subsystem = SystemImpl.newNamedWithin("subSystem", system);
+		assertTrue(system.isParentOf(subsystem));
+	}
+	
+	@Test
+	public void testIsNotParentOfSystem(){
+		System subsystem = SystemImpl.newNamedWithin("subSystem", modelMock);
+		assertFalse(system.isParentOf(subsystem));
 	}
 
 }

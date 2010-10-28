@@ -81,7 +81,16 @@ public class LibraryImplTest {
 	
 	@Test	
 	public void testGetChildrenOfTypeLine(){
-		LineImpl.newNamedWithinBetween("line", library, inportMock, outportMock);		
+		context.checking(new Expectations() {{
+			atLeast(1).of(inportMock).getParent();
+				will(returnValue(systemMock));
+			atLeast(1).of(outportMock).getParent();
+				will(returnValue(systemMock));
+				
+			ignoring(systemMock);
+		}});
+		
+		LineImpl.newNamedWithinFromTo("line", library, outportMock, inportMock);		
 		assertEquals(1, library.getChildrenOfTypeLine().size());
 	}
 	

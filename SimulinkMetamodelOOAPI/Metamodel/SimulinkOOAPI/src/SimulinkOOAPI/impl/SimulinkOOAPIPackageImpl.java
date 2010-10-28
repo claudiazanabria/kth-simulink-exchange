@@ -304,6 +304,15 @@ public class SimulinkOOAPIPackageImpl extends EPackageImpl implements SimulinkOO
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getPort_Parent() {
+		return (EReference)portEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getInport() {
 		return inportEClass;
 	}
@@ -444,6 +453,7 @@ public class SimulinkOOAPIPackageImpl extends EPackageImpl implements SimulinkOO
 		createEAttribute(gainBlockEClass, GAIN_BLOCK__GAIN);
 
 		portEClass = createEClass(PORT);
+		createEReference(portEClass, PORT__PARENT);
 
 		inportEClass = createEClass(INPORT);
 
@@ -526,6 +536,7 @@ public class SimulinkOOAPIPackageImpl extends EPackageImpl implements SimulinkOO
 		initEAttribute(getGainBlock_Gain(), ecorePackage.getEInt(), "gain", null, 0, 1, GainBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(portEClass, Port.class, "Port", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getPort_Parent(), this.getSystem(), null, "parent", null, 1, 1, Port.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(inportEClass, Inport.class, "Inport", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

@@ -52,43 +52,31 @@ public interface System extends ProtoObject {
 	
 	/**
 	 * Adds a ProtoObject to children list.
-	 * 
-	 * @generated NOT
 	 */
 	public void addChild(ProtoObject child);
 	
 	/**
 	 * Returns a number of all children.
-	 * 
-	 * @generated NOT
 	 */
 	public int getNumberOfChildren();
 	
 	/**
 	 * Returns EList of all children.
-	 * 
-	 * @generated NOT
 	 */
 	public ReflectionList<ProtoObject> getAllChildren();
 	
 	/**
 	 * Returns EList of children of GainBlock type.
-	 * 
-	 * @generated NOT
 	 */
 	public ReflectionList<GainBlock> getChildrenOfTypeGainBlock();
 	
 	/**
 	 * Returns EList of children of Line type.
-	 * 
-	 * @generated NOT
 	 */	
 	public ReflectionList<Line> getChildrenOfTypeLine();
 	
 	/**
 	 * Returns EList of children of Port type.
-	 * 
-	 * @generated NOT
 	 */
 	public ReflectionList<Port> getChildrenOfTypePort();
 	
@@ -104,16 +92,22 @@ public interface System extends ProtoObject {
 	
 	/**
 	 * Returns EList of children of System type.
-	 * 
-	 * @generated NOT
 	 */	
 	public ReflectionList<System> getChildrenOfTypeSystem();
 	
 	/**
 	 * Returns EList of children of SystemReference type.
-	 * 
-	 * @generated NOT
 	 */	
 	public ReflectionList<SystemReference> getChildrenOfTypeSystemReference();
+	
+	/**
+	 * Returns true if the system is the parent of the given system.
+	 */
+	public boolean isParentOf(System system);
+	
+	/**
+	 * Returns true if the system is the parent of the given system reference.
+	 */
+	public boolean isParentOf(SystemReference system);
 
 } // System

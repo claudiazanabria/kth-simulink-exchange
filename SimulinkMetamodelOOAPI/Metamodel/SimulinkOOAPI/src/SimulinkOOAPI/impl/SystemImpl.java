@@ -233,6 +233,16 @@ public class SystemImpl extends ProtoObjectImpl implements SimulinkOOAPI.System 
 		return children.getChildrenOfTypeOutport();
 	}
 	
+	@Override
+	public boolean isParentOf(System system) {
+		return getChildrenOfTypeSystem().contains(system);
+	}
+	
+	@Override
+	public boolean isParentOf(SystemReference systemReference) {
+		return getChildrenOfTypeSystemReference().contains(systemReference);
+	}
+	
 	/**
 	 * Returns new instance of System with the given name within the given model. 
 	 */

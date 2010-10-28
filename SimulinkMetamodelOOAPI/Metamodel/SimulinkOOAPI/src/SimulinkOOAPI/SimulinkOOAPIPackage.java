@@ -257,13 +257,22 @@ public interface SimulinkOOAPIPackage extends EPackage {
 	int PORT__IDENTITY = PROTO_OBJECT__IDENTITY;
 
 	/**
+	 * The feature id for the '<em><b>Parent</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PORT__PARENT = PROTO_OBJECT_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Port</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PORT_FEATURE_COUNT = PROTO_OBJECT_FEATURE_COUNT + 0;
+	int PORT_FEATURE_COUNT = PROTO_OBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link SimulinkOOAPI.impl.InportImpl <em>Inport</em>}' class.
@@ -283,6 +292,15 @@ public interface SimulinkOOAPIPackage extends EPackage {
 	 * @ordered
 	 */
 	int INPORT__IDENTITY = PORT__IDENTITY;
+
+	/**
+	 * The feature id for the '<em><b>Parent</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPORT__PARENT = PORT__PARENT;
 
 	/**
 	 * The number of structural features of the '<em>Inport</em>' class.
@@ -311,6 +329,15 @@ public interface SimulinkOOAPIPackage extends EPackage {
 	 * @ordered
 	 */
 	int OUTPORT__IDENTITY = PORT__IDENTITY;
+
+	/**
+	 * The feature id for the '<em><b>Parent</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPORT__PARENT = PORT__PARENT;
 
 	/**
 	 * The number of structural features of the '<em>Outport</em>' class.
@@ -606,6 +633,17 @@ public interface SimulinkOOAPIPackage extends EPackage {
 	EClass getPort();
 
 	/**
+	 * Returns the meta object for the reference '{@link SimulinkOOAPI.Port#getParent <em>Parent</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Parent</em>'.
+	 * @see SimulinkOOAPI.Port#getParent()
+	 * @see #getPort()
+	 * @generated
+	 */
+	EReference getPort_Parent();
+
+	/**
 	 * Returns the meta object for class '{@link SimulinkOOAPI.Inport <em>Inport</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -851,6 +889,14 @@ public interface SimulinkOOAPIPackage extends EPackage {
 		 * @generated
 		 */
 		EClass PORT = eINSTANCE.getPort();
+
+		/**
+		 * The meta object literal for the '<em><b>Parent</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PORT__PARENT = eINSTANCE.getPort_Parent();
 
 		/**
 		 * The meta object literal for the '{@link SimulinkOOAPI.impl.InportImpl <em>Inport</em>}' class.
