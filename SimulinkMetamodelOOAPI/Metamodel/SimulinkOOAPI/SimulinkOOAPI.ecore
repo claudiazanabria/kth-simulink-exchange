@@ -36,6 +36,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="System" eSuperTypes="#//ProtoObject">
     <eStructuralFeatures xsi:type="ecore:EReference" name="children" eType="#//ChildrenSupport"
         volatile="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parent" lowerBound="1"
+        eType="#//ProtoObject"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Model" eSuperTypes="#//ProtoObject">
     <eStructuralFeatures xsi:type="ecore:EReference" name="children" eType="#//ChildrenSupport"

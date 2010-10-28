@@ -16,6 +16,7 @@ package SimulinkOOAPI;
  * The following features are supported:
  * <ul>
  *   <li>{@link SimulinkOOAPI.System#getChildren <em>Children</em>}</li>
+ *   <li>{@link SimulinkOOAPI.System#getParent <em>Parent</em>}</li>
  * </ul>
  * </p>
  *
@@ -50,6 +51,32 @@ public interface System extends ProtoObject {
 	 */
 	void setChildren(ChildrenSupport value);
 	
+	/**
+	 * Returns the value of the '<em><b>Parent</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Parent</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Parent</em>' reference.
+	 * @see #setParent(ProtoObject)
+	 * @see SimulinkOOAPI.SimulinkOOAPIPackage#getSystem_Parent()
+	 * @model required="true"
+	 * @generated
+	 */
+	ProtoObject getParent();
+
+	/**
+	 * Sets the value of the '{@link SimulinkOOAPI.System#getParent <em>Parent</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Parent</em>' reference.
+	 * @see #getParent()
+	 * @generated
+	 */
+	void setParent(ProtoObject value);
+
 	/**
 	 * Adds a ProtoObject to children list.
 	 */

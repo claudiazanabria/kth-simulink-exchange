@@ -423,13 +423,22 @@ public interface SimulinkOOAPIPackage extends EPackage {
 	int SYSTEM__CHILDREN = PROTO_OBJECT_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Parent</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM__PARENT = PROTO_OBJECT_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>System</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SYSTEM_FEATURE_COUNT = PROTO_OBJECT_FEATURE_COUNT + 1;
+	int SYSTEM_FEATURE_COUNT = PROTO_OBJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link SimulinkOOAPI.impl.ModelImpl <em>Model</em>}' class.
@@ -717,6 +726,17 @@ public interface SimulinkOOAPIPackage extends EPackage {
 	EReference getSystem_Children();
 
 	/**
+	 * Returns the meta object for the reference '{@link SimulinkOOAPI.System#getParent <em>Parent</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Parent</em>'.
+	 * @see SimulinkOOAPI.System#getParent()
+	 * @see #getSystem()
+	 * @generated
+	 */
+	EReference getSystem_Parent();
+
+	/**
 	 * Returns the meta object for class '{@link SimulinkOOAPI.Model <em>Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -961,6 +981,14 @@ public interface SimulinkOOAPIPackage extends EPackage {
 		 * @generated
 		 */
 		EReference SYSTEM__CHILDREN = eINSTANCE.getSystem_Children();
+
+		/**
+		 * The meta object literal for the '<em><b>Parent</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SYSTEM__PARENT = eINSTANCE.getSystem_Parent();
 
 		/**
 		 * The meta object literal for the '{@link SimulinkOOAPI.impl.ModelImpl <em>Model</em>}' class.

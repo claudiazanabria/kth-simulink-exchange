@@ -153,5 +153,37 @@ public class LineImplTest {
 		
 		assertFalse(LineImpl.canConnectPortsAtDifferentLevels(outport, inport));
 	}
+	
+	@Test
+	public void testCanConnectPortsAtSameLevel(){
+		context.checking(new Expectations() {{
+			ignoring(modelMock);			
+		}});
+		
+		System system = SystemImpl.newNamedWithin("system", modelMock);
+		System subSystemA = SystemImpl.newNamedWithin("subSystem1", system);
+		System subSystemB = SystemImpl.newNamedWithin("subSystem2", system);
+		
+		Outport outport = OutportImpl.newNamedWithin("outport", subSystemA);
+		Inport inport = InportImpl.newNamedWithin("port", subSystemB);
+		
+		assertTrue(LineImpl.canConnectPortsAtTheSameLevel(outport, inport));
+	}
+	
+	@Test
+	public void testCanNotConnectPortsAtSameLevel(){
+		context.checking(new Expectations() {{
+			ignoring(modelMock);			
+		}});
+		
+		System system = SystemImpl.newNamedWithin("system", modelMock);
+		System subSystem = SystemImpl.newNamedWithin("subSystem1", system);
+		System subSubSystem = SystemImpl.newNamedWithin("subSystem2", subSystem);
+		
+		Outport outport = OutportImpl.newNamedWithin("outport", subSystem);
+		Inport inport = InportImpl.newNamedWithin("port", subSubSystem);
+		
+		assertFalse(LineImpl.canConnectPortsAtTheSameLevel(outport, inport));
+	}
 
 }

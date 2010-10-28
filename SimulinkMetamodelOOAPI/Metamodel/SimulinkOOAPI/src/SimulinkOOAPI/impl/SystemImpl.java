@@ -9,6 +9,7 @@ package SimulinkOOAPI.impl;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import SimulinkOOAPI.ChildrenSupport;
 import SimulinkOOAPI.GainBlock;
 import SimulinkOOAPI.Inport;
@@ -20,6 +21,7 @@ import SimulinkOOAPI.Port;
 import SimulinkOOAPI.ProtoObject;
 import SimulinkOOAPI.ReflectionList;
 import SimulinkOOAPI.SimulinkOOAPIPackage;
+import org.eclipse.emf.common.notify.Notification;
 import SimulinkOOAPI.System;
 import SimulinkOOAPI.SystemReference;
 
@@ -31,6 +33,7 @@ import SimulinkOOAPI.SystemReference;
  * The following features are implemented:
  * <ul>
  *   <li>{@link SimulinkOOAPI.impl.SystemImpl#getChildren <em>Children</em>}</li>
+ *   <li>{@link SimulinkOOAPI.impl.SystemImpl#getParent <em>Parent</em>}</li>
  * </ul>
  * </p>
  *
@@ -42,6 +45,10 @@ public class SystemImpl extends ProtoObjectImpl implements SimulinkOOAPI.System 
 	 * @generated NOT
 	 */
 	ChildrenSupport children;
+	/**
+	 * @generated NOT
+	 */
+	ProtoObject parent;
 	
 	/**
 	 * <!-- begin-user-doc -->
@@ -56,18 +63,21 @@ public class SystemImpl extends ProtoObjectImpl implements SimulinkOOAPI.System 
 	protected SystemImpl(String name, System parent) {
 		super(name);
 		this.children = new ChildrenSupportImpl();
+		this.parent = parent;
 		parent.addChild(this);
 	}	
 	
 	protected SystemImpl(String name, Model parent) {
 		super(name);
 		this.children = new ChildrenSupportImpl();
+		this.parent = parent;
 		parent.addChild(this);
 	}	
 	
 	protected SystemImpl(String name, Library parent) {
 		super(name);
 		this.children = new ChildrenSupportImpl();
+		this.parent = parent;
 		parent.addChild(this);
 	}	
 
@@ -119,12 +129,53 @@ public class SystemImpl extends ProtoObjectImpl implements SimulinkOOAPI.System 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public ProtoObject getParent() {
+		if (parent != null && parent.eIsProxy()) {
+			InternalEObject oldParent = (InternalEObject)parent;
+			parent = (ProtoObject)eResolveProxy(oldParent);
+			if (parent != oldParent) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, SimulinkOOAPIPackage.SYSTEM__PARENT, oldParent, parent));
+			}
+		}
+		return parent;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public ProtoObject basicGetParent() {
+		return parent;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setParent(ProtoObject newParent) {
+		ProtoObject oldParent = parent;
+		parent = newParent;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, SimulinkOOAPIPackage.SYSTEM__PARENT, oldParent, parent));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case SimulinkOOAPIPackage.SYSTEM__CHILDREN:
 				if (resolve) return getChildren();
 				return basicGetChildren();
+			case SimulinkOOAPIPackage.SYSTEM__PARENT:
+				if (resolve) return getParent();
+				return basicGetParent();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -139,6 +190,9 @@ public class SystemImpl extends ProtoObjectImpl implements SimulinkOOAPI.System 
 		switch (featureID) {
 			case SimulinkOOAPIPackage.SYSTEM__CHILDREN:
 				setChildren((ChildrenSupport)newValue);
+				return;
+			case SimulinkOOAPIPackage.SYSTEM__PARENT:
+				setParent((ProtoObject)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -155,6 +209,9 @@ public class SystemImpl extends ProtoObjectImpl implements SimulinkOOAPI.System 
 			case SimulinkOOAPIPackage.SYSTEM__CHILDREN:
 				setChildren((ChildrenSupport)null);
 				return;
+			case SimulinkOOAPIPackage.SYSTEM__PARENT:
+				setParent((ProtoObject)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -169,6 +226,8 @@ public class SystemImpl extends ProtoObjectImpl implements SimulinkOOAPI.System 
 		switch (featureID) {
 			case SimulinkOOAPIPackage.SYSTEM__CHILDREN:
 				return basicGetChildren() != null;
+			case SimulinkOOAPIPackage.SYSTEM__PARENT:
+				return parent != null;
 		}
 		return super.eIsSet(featureID);
 	}

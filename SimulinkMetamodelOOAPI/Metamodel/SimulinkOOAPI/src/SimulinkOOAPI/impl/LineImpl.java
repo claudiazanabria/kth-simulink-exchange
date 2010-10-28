@@ -312,7 +312,8 @@ public class LineImpl extends ProtoObjectImpl implements Line {
 		System sourceSystem = source.getParent();
 		System destinationSystem = destination.getParent();
 		
-		return !sourceSystem.equals(destinationSystem);
+		return !sourceSystem.equals(destinationSystem) && 
+		       sourceSystem.getParent().equals(destinationSystem.getParent()) ;
 	}
 
 } //LineImpl
