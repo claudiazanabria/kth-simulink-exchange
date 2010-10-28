@@ -16,6 +16,7 @@ import SimulinkOOAPI.ReflectionList;
 import SimulinkOOAPI.SimulinkOOAPIPackage;
 import SimulinkOOAPI.System;
 import SimulinkOOAPI.util.AssertionRunner;
+import SimulinkOOAPI.util.ErrorMessages;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -72,11 +73,11 @@ public class LineImpl extends ProtoObjectImpl implements Line {
 	private LineImpl(String name, Outport source, Inport destination){
 		super(name);
 		AssertionRunner.assertOr(
-				AssertionRunner.assertion("Ports must belong to the same system.", 
+				AssertionRunner.assertion(ErrorMessages.LINE_PORTS_BELONG_TO_SAME_SYSTEM, 
 						                  LineImpl.portsBelongToTheSameSystem(source, destination)),
-				AssertionRunner.assertion("Can connect system only to the first level children system.", 
+				AssertionRunner.assertion(ErrorMessages.LINE_CONNECT_DIFFERENT_LEVEL_PORTS, 
 						                  LineImpl.canConnectPortsAtDifferentLevels(source, destination)),
-				AssertionRunner.assertion("Can connect ports on different systems of the same childen level.", 
+				AssertionRunner.assertion(ErrorMessages.LINE_CONNECT_SAME_LEVEL_PORTS, 
 						                  LineImpl.canConnectPortsAtTheSameLevel(source, destination))
 		);
 		

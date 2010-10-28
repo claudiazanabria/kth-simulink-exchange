@@ -1,6 +1,6 @@
 package SimulinkOOAPI.impl;
 
-//import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertEquals;
 //import junit.framework.AssertionFailedError;
 
 import org.jmock.Expectations;
@@ -15,6 +15,7 @@ import SimulinkOOAPI.Identity;
 import SimulinkOOAPI.Port;
 import SimulinkOOAPI.System;
 import SimulinkOOAPI.SystemReference;
+import SimulinkOOAPI.util.ErrorMessages;
 
 @RunWith(JMock.class)
 public class SystemReferenceImplTest {
@@ -26,13 +27,7 @@ public class SystemReferenceImplTest {
     SystemReference systemReference;
 	
 	@Before
-	public void setUp(){		
-		context.checking(new Expectations() {{
-			ignoring(systemMock);			    
-		}});
-		
-		systemReference = SystemReferenceImpl.newNamedWithinTargeting("sysRef", systemMock, systemMock);				
-	}
+	public void setUp(){}
 	
 	//Incorrect test! Default constructor should be allowed in order not to break emf core api. 
 	/*
@@ -48,8 +43,16 @@ public class SystemReferenceImplTest {
 	}*/
 	
 	@Test
-	public void test(){
-	    //TODO: write some test	
+	public void testCreateInvalidSystemReference(){
+		context.checking(new Expectations() {{
+			ignoring(systemMock);			    
+		}});
+		
+		try{
+			systemReference = SystemReferenceImpl.newNamedWithinTargeting("sysRef", systemMock, systemMock);
+		}catch(IllegalArgumentException e){
+			assertEquals(ErrorMessages.SYS_REF_TARGET_EQUALS_PARENT, e.getMessage());
+		}
 	}
 	
 }

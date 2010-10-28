@@ -16,6 +16,7 @@ import SimulinkOOAPI.ReflectionList;
 import SimulinkOOAPI.SimulinkOOAPIPackage;
 import SimulinkOOAPI.System;
 import SimulinkOOAPI.SystemReference;
+import SimulinkOOAPI.util.ErrorMessages;
 
 /**
  * <!-- begin-user-doc -->
@@ -52,6 +53,8 @@ public class SystemReferenceImpl extends ProtoObjectImpl implements SystemRefere
 	
 	protected SystemReferenceImpl(String name, System parent, System target) {
 		super(name);		
+		if (parent.equals(target))
+			throw new IllegalArgumentException(ErrorMessages.SYS_REF_TARGET_EQUALS_PARENT);
 		parent.addChild(this);
 		this.target = target;
 	}
