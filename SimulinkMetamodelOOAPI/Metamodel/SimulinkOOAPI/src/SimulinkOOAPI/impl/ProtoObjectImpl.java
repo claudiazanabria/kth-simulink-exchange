@@ -9,12 +9,15 @@ package SimulinkOOAPI.impl;
 import SimulinkOOAPI.GainBlock;
 import SimulinkOOAPI.Identity;
 import SimulinkOOAPI.Inport;
+import SimulinkOOAPI.Library;
 import SimulinkOOAPI.Line;
+import SimulinkOOAPI.Model;
 import SimulinkOOAPI.Outport;
 import SimulinkOOAPI.Port;
 import SimulinkOOAPI.ProtoObject;
 import SimulinkOOAPI.ReflectionList;
 import SimulinkOOAPI.SimulinkOOAPIPackage;
+import SimulinkOOAPI.System;
 import SimulinkOOAPI.SystemReference;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -56,6 +59,8 @@ public abstract class ProtoObjectImpl extends EObjectImpl implements ProtoObject
 	 */
 	protected ProtoObjectImpl() {
 		//throw new UnsupportedOperationException();
+		super();
+		this.identity = new IdentityImpl();
 	}
 	
 	protected ProtoObjectImpl(String name) {
@@ -190,5 +195,20 @@ public abstract class ProtoObjectImpl extends EObjectImpl implements ProtoObject
 	
 	@Override
 	public void ifInportAddToList(ReflectionList<Inport> list){}
+	
+	@Override
+	public void addTo(Model parent) {
+		parent.getAllChildren().add(this);		
+	}
+
+	@Override
+	public void addTo(System parent) {
+		parent.getAllChildren().add(this);		
+	}
+	
+	@Override
+	public void addTo(Library parent) {
+		parent.getAllChildren().add(this);		
+	}
 
 } //ProtoObjectImpl

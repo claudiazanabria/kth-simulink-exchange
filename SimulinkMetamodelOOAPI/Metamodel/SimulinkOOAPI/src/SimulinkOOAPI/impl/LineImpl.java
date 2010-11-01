@@ -315,6 +315,11 @@ public class LineImpl extends ProtoObjectImpl implements Line {
 		
 		return !sourceSystem.equals(destinationSystem) && 
 		       sourceSystem.getParent().equals(destinationSystem.getParent()) ;
+	}	
+	
+	@Override
+	public void addTo(Library parent) {
+		throw new IllegalArgumentException(ErrorMessages.LINE_ADD_TO_LIBRARY);		
 	}
 
 } //LineImpl

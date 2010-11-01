@@ -14,12 +14,14 @@ import SimulinkOOAPI.GainBlock;
 import SimulinkOOAPI.Inport;
 import SimulinkOOAPI.Library;
 import SimulinkOOAPI.Line;
+import SimulinkOOAPI.Model;
 import SimulinkOOAPI.Outport;
 import SimulinkOOAPI.Port;
 import SimulinkOOAPI.ProtoObject;
 import SimulinkOOAPI.ReflectionList;
 import SimulinkOOAPI.SimulinkOOAPIPackage;
 import SimulinkOOAPI.System;
+import SimulinkOOAPI.util.ErrorMessages;
 
 /**
  * <!-- begin-user-doc -->
@@ -225,6 +227,16 @@ public class LibraryImpl extends ProtoObjectImpl implements Library {
 	public static Library newNamed(String name){
 		Library library = new LibraryImpl(name);		
 		return library;
+	}	
+
+	@Override
+	public void addTo(System parent) {
+		throw new IllegalArgumentException(ErrorMessages.LIBRARY_ADD_TO_SYSTEM);		
+	}
+
+	@Override
+	public void addTo(Library parent) {
+		throw new IllegalArgumentException(ErrorMessages.LIBRARY_ADD_TO_LIBRARY);		
 	}
 
 } //LibraryImpl

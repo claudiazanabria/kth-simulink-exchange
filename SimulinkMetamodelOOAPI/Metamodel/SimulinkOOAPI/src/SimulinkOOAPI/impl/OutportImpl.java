@@ -9,10 +9,12 @@ package SimulinkOOAPI.impl;
 import org.eclipse.emf.ecore.EClass;
 
 import SimulinkOOAPI.Library;
+import SimulinkOOAPI.Model;
 import SimulinkOOAPI.Outport;
 import SimulinkOOAPI.ReflectionList;
 import SimulinkOOAPI.SimulinkOOAPIPackage;
 import SimulinkOOAPI.System;
+import SimulinkOOAPI.util.ErrorMessages;
 
 /**
  * <!-- begin-user-doc -->
@@ -70,6 +72,16 @@ public class OutportImpl extends PortImpl implements Outport {
 	public static Outport newNamedWithin(String name, Library parent){
 		Outport inport = new OutportImpl(name, parent);
 		return inport;
+	}
+	
+	@Override
+	public void addTo(Model parent) {
+		throw new IllegalArgumentException(ErrorMessages.PORT_ADD_TO_MODEL);		
+	}	
+
+	@Override
+	public void addTo(Library parent) {
+		throw new IllegalArgumentException(ErrorMessages.PORT_ADD_TO_LIBRARY);		
 	}
 
 } //OutportImpl

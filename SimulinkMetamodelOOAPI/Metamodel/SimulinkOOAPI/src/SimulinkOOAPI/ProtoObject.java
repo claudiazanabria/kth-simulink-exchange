@@ -98,5 +98,20 @@ public interface ProtoObject extends EObject {
 	 * @param list	
 	 */	
 	public void ifInportAddToList(ReflectionList<Inport> list);
+	
+	/**
+	 * Adds the element to the model children list if the element can be added to the given parent 
+	 */
+	public void addTo(Model parent);
+	
+	/**
+	 * Adds the element to the system children list if the element can be added to the given parent 
+	 */
+	public void addTo(System parent);
+	
+	/**
+	 * Adds the element to the library children list if the element can be added to the given parent 
+	 */
+	public void addTo(Library parent);
 
 } // ProtoObject

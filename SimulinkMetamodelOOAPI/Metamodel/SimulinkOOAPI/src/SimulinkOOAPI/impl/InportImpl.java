@@ -10,9 +10,11 @@ import org.eclipse.emf.ecore.EClass;
 
 import SimulinkOOAPI.Inport;
 import SimulinkOOAPI.Library;
+import SimulinkOOAPI.Model;
 import SimulinkOOAPI.ReflectionList;
 import SimulinkOOAPI.SimulinkOOAPIPackage;
 import SimulinkOOAPI.System;
+import SimulinkOOAPI.util.ErrorMessages;
 
 /**
  * <!-- begin-user-doc -->
@@ -70,6 +72,16 @@ public class InportImpl extends PortImpl implements Inport {
 	public static Inport newNamedWithin(String name, Library parent){
 		Inport inport = new InportImpl(name, parent);		
 		return inport;
+	}
+
+	@Override
+	public void addTo(Model parent) {
+		throw new IllegalArgumentException(ErrorMessages.PORT_ADD_TO_MODEL);		
+	}	
+
+	@Override
+	public void addTo(Library parent) {
+		throw new IllegalArgumentException(ErrorMessages.PORT_ADD_TO_LIBRARY);		
 	}
 
 } //InportImpl

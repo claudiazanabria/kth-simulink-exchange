@@ -104,13 +104,14 @@ public class SystemImpl extends ProtoObjectImpl implements SimulinkOOAPI.System 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public ChildrenSupport basicGetChildren() {
 		// TODO: implement this method to return the 'Children' reference
 		// -> do not perform proxy resolution
 		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		//throw new UnsupportedOperationException();
+		return children;
 	}
 
 	/**

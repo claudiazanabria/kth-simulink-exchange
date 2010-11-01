@@ -6,19 +6,17 @@
  */
 package SimulinkOOAPI.impl;
 
-import SimulinkOOAPI.ChildrenSupport;
-import SimulinkOOAPI.GainBlock;
-import SimulinkOOAPI.Library;
-import SimulinkOOAPI.Line;
-import SimulinkOOAPI.Model;
-import SimulinkOOAPI.Port;
-import SimulinkOOAPI.ReflectionList;
-import SimulinkOOAPI.SimulinkOOAPIPackage;
-import SimulinkOOAPI.ProtoObject;
-import SimulinkOOAPI.System;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
+import SimulinkOOAPI.ChildrenSupport;
+import SimulinkOOAPI.Line;
+import SimulinkOOAPI.Model;
+import SimulinkOOAPI.ProtoObject;
+import SimulinkOOAPI.ReflectionList;
+import SimulinkOOAPI.SimulinkOOAPIPackage;
+import SimulinkOOAPI.System;
+import SimulinkOOAPI.util.ErrorMessages;
 
 /**
  * <!-- begin-user-doc -->
@@ -75,13 +73,14 @@ public class ModelImpl extends ProtoObjectImpl implements Model {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public ChildrenSupport basicGetChildren() {
 		// TODO: implement this method to return the 'Children' reference
 		// -> do not perform proxy resolution
 		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		//throw new UnsupportedOperationException();
+		return children;
 	}
 
 	/**
@@ -158,20 +157,8 @@ public class ModelImpl extends ProtoObjectImpl implements Model {
 	 * @generated NOT
 	 */
 	@Override
-	public void addChild(ProtoObject child) {
-		//TODO: assertFalse(cannotAddPort());
-		if (child instanceof GainBlock)
-			throw new IllegalArgumentException("Model can not contain gain blocks");
-		else if (child instanceof Library)
-			throw new IllegalArgumentException("Model can not contain libraries");			
-		else if (child instanceof Port)
-			throw new IllegalArgumentException("Model can not contain ports");
-		
-		this.children.addChild(child);
-	}
-	
-	private boolean canAddPort(){
-		return false;
+	public void addChild(ProtoObject child) {		
+		child.addTo(this);		
 	}
 
 	/**	
@@ -208,5 +195,15 @@ public class ModelImpl extends ProtoObjectImpl implements Model {
 		Model model = new ModelImpl(name);				
 		return model;
 	}
+
+	@Override
+	public void addTo(Model parent) {
+		throw new IllegalArgumentException(ErrorMessages.MODEL_ADD_TO_MODEL);		
+	}
+
+	@Override
+	public void addTo(System parent) {
+		throw new IllegalArgumentException(ErrorMessages.MODEL_ADD_TO_SYSTEM);		
+	}	
 
 } //ModelImpl

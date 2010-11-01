@@ -118,7 +118,8 @@ public class ChildrenSupportImplTest {
 			ignoring(systemMock);			    
 		}});
 		
-		childrenSupport.addChild(SystemReferenceImpl.newNamedWithinTargeting("sysRef", systemMock, systemMock));
+		System system = SystemImpl.newNamedWithin("sys", systemMock);
+		childrenSupport.addChild(SystemReferenceImpl.newNamedWithinTargeting("sysRef", systemMock, system));
 		assertEquals(1, childrenSupport.getChildrenOfTypeSystemReference().size());
 	}
 

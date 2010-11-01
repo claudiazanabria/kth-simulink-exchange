@@ -26,6 +26,7 @@ public class SystemImplTest {
 	Mockery context = new JUnit4Mockery();	
 	Model modelMock = context.mock(Model.class);
 	Port portMock = context.mock(Port.class);
+	System systemMock = context.mock(System.class);
 	Inport inportMock = context.mock(Inport.class);
 	Outport outportMock = context.mock(Outport.class);
 	@SuppressWarnings("unchecked")	
@@ -133,7 +134,7 @@ public class SystemImplTest {
 	
 	@Test
 	public void testGetChildrenOfTypeSystemReference(){
-		SystemReferenceImpl.newNamedWithinTargeting("sysRef", system, system);
+		SystemReferenceImpl.newNamedWithinTargeting("sysRef", system, systemMock);
 		assertEquals(1, system.getChildrenOfTypeSystemReference().size());
 	}
 	

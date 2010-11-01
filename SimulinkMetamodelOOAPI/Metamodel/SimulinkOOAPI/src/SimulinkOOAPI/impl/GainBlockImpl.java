@@ -8,9 +8,11 @@ package SimulinkOOAPI.impl;
 
 import SimulinkOOAPI.GainBlock;
 import SimulinkOOAPI.Library;
+import SimulinkOOAPI.Model;
 import SimulinkOOAPI.ReflectionList;
 import SimulinkOOAPI.SimulinkOOAPIPackage;
 import SimulinkOOAPI.System;
+import SimulinkOOAPI.util.ErrorMessages;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -209,5 +211,11 @@ public class GainBlockImpl extends ProtoObjectImpl implements GainBlock {
 		GainBlock gainBlock = new GainBlockImpl(name, parent, gain);		
 		return gainBlock;
 	}
+
+	@Override
+	public void addTo(Model parent) {
+		throw new IllegalArgumentException(ErrorMessages.GAINBLOCK_ADD_TO_MODEL);		
+	}
+	
 
 } //GainBlockImpl
