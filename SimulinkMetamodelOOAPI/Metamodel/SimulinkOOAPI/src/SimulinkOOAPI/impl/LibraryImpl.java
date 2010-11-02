@@ -14,7 +14,6 @@ import SimulinkOOAPI.GainBlock;
 import SimulinkOOAPI.Inport;
 import SimulinkOOAPI.Library;
 import SimulinkOOAPI.Line;
-import SimulinkOOAPI.Model;
 import SimulinkOOAPI.Outport;
 import SimulinkOOAPI.Port;
 import SimulinkOOAPI.ProtoObject;
