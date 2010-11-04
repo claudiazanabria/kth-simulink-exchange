@@ -25,7 +25,7 @@ public class DemoModelBuilder {
 		
 		Model model = ModelImpl.newNamed("model");
 		
-		System rootSys = SystemImpl.newNamedWithin("rootSys", model);
+		System rootSys = SystemImpl.newNamedWithin("RootSystem", model);
 		System system1 = SystemImpl.newNamedWithin("System1", model);
 		System system2 = SystemImpl.newNamedWithin("System2", model);
 		System primarySys = SystemImpl.newNamedWithin("Primary", model);
@@ -60,27 +60,32 @@ public class DemoModelBuilder {
 		
 		SimulinkOOAPIFactory factory = SimulinkOOAPIFactoryImpl.init();		
 		Model model = factory.createModel();
-		model.getIdentity().setName("name");
+		model.getIdentity().setName("model");
 		
 		System rootSys = factory.createSystem();
 		rootSys.getIdentity().setName("RootSystem");
 		model.addChild(rootSys);
+		rootSys.setParent(model);
 		
 		System system1 = factory.createSystem();
 		system1.getIdentity().setName("System1");
 		model.addChild(system1);
+		system1.setParent(model);
 		
 		System system2 = factory.createSystem();
 		system2.getIdentity().setName("System2");
 		model.addChild(system2);
+		system2.setParent(model);
 		
 		System primarySystem = factory.createSystem();
 		primarySystem.getIdentity().setName("Primary");
 		model.addChild(primarySystem);
+		primarySystem.setParent(model);
 		
 		System standBySystem = factory.createSystem();
 		standBySystem.getIdentity().setName("StandBy");
 		model.addChild(standBySystem);
+		standBySystem.setParent(model);
 		
 		SystemReference sysRef1 = factory.createSystemReference();
 		sysRef1.getIdentity().setName("SysRef1");
@@ -97,9 +102,11 @@ public class DemoModelBuilder {
 		sysRef3.setTarget(primarySystem);
 		rootSys.addChild(sysRef3);
 		
-		system2.addChild(primarySystem);
-		system2.addChild(standBySystem);
-		
+//		system2.addChild(primarySystem);
+//		primarySystem.setParent(system2);
+//		system2.addChild(standBySystem);
+//		standBySystem.setParent(system2);
+//		
 		Inport system2Inport = factory.createInport();
 		system2Inport.getIdentity().setName("sys2In");
 		system2.addChild(system2Inport);		

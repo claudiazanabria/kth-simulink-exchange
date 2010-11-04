@@ -19,10 +19,12 @@ import SimulinkOOAPI.ReflectionList;
 import SimulinkOOAPI.SimulinkOOAPIPackage;
 import SimulinkOOAPI.System;
 import SimulinkOOAPI.SystemReference;
+import SimulinkOOAPI.util.EqualityHelper;
 
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -210,5 +212,14 @@ public abstract class ProtoObjectImpl extends EObjectImpl implements ProtoObject
 	public void addTo(Library parent) {
 		parent.getAllChildren().add(this);		
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof EObject){
+			return new EqualityHelper().equals(this, (EObject)obj);
+		}
+		return super.equals(obj);
+	}	
+    
 
 } //ProtoObjectImpl

@@ -8,7 +8,8 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
 	AssertionRunnerTest.class,
 	DemoModelBuilderTest.class,
-	EMFCompareWrapperTest.class
+	EMFCompareWrapperTest.class,
+	EqualityHelperTest.class
 })
 
 public class AllTests {}
