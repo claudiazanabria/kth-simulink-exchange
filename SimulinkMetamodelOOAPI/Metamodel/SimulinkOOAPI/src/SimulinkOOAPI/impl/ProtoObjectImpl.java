@@ -215,9 +215,9 @@ public abstract class ProtoObjectImpl extends EObjectImpl implements ProtoObject
 	
 	@Override
 	public boolean equals(Object obj) {
-		if (obj instanceof EObject){
-			return new EqualityHelper().equals(this, (EObject)obj);
-		}
+		//if (obj instanceof EObject){
+		//	return new EqualityHelper().equals(this, (EObject)obj);
+		//}
 		return super.equals(obj);
 	}	
     

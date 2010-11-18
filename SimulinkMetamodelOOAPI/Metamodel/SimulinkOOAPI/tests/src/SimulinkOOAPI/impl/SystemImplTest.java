@@ -59,7 +59,9 @@ public class SystemImplTest {
 	@Test
 	public void testIfSystemAddToList() throws Exception{		
 		context.checking(new Expectations() {{
-			one (listMock).add(with(system));			    
+			one (listMock).add(with(system));
+			
+			ignoring(listMock);
 		}});
 		
 		system.ifSystemAddToList(listMock);
@@ -134,6 +136,10 @@ public class SystemImplTest {
 	
 	@Test
 	public void testGetChildrenOfTypeSystemReference(){
+		context.checking(new Expectations() {{
+			ignoring(systemMock);								    
+		}});
+		
 		SystemReferenceImpl.newNamedWithinTargeting("sysRef", system, systemMock);
 		assertEquals(1, system.getChildrenOfTypeSystemReference().size());
 	}

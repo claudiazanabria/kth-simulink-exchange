@@ -32,7 +32,9 @@ public class InportImplTest {
 	@Test
 	public void testIfPortAddToList() throws Exception{		
 		context.checking(new Expectations() {{
-			one (listMock).add(with(port));			    
+			one (listMock).add(with(port));
+			
+			ignoring(listMock);
 		}});
 		
 		port.ifPortAddToList(listMock);
