@@ -79,41 +79,6 @@ public class LibraryImplTest {
 		assertEquals(2, library.getChildrenOfTypeGainBlock().size());
 	}
 	
-	@Test	
-	public void testGetChildrenOfTypeLine(){
-		context.checking(new Expectations() {{
-			atLeast(1).of(inportMock).getParent();
-				will(returnValue(systemMock));
-			atLeast(1).of(outportMock).getParent();
-				will(returnValue(systemMock));
-				
-			ignoring(systemMock);
-		}});
-		
-		LineImpl.newNamedWithinFromTo("line", library, outportMock, inportMock);		
-		assertEquals(1, library.getChildrenOfTypeLine().size());
-	}
-	
-	@Test
-	public void testGetChildrenOfTypePort(){
-		InportImpl.newNamedWithin("port", library);
-		OutportImpl.newNamedWithin("port", library);
-		assertEquals(2, library.getChildrenOfTypePort().size());
-	}
-	
-	@Test
-	public void testGetChildrenOfTypeInport(){
-		InportImpl.newNamedWithin("port", library);
-		assertEquals(1, library.getChildrenOfTypeInport().size());
-	}
-	
-	@Test
-	public void testGetChildrenOfTypeOutport(){
-		OutportImpl.newNamedWithin("port", library);		
-		assertEquals(1, library.getChildrenOfTypeOutport().size());
-	}
-
-	
 	@Test
 	public void testGetChildrenOfTypeSystem(){
 		SystemImpl.newNamedWithin("system", library);	

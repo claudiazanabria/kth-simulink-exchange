@@ -11,11 +11,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import SimulinkOOAPI.ChildrenSupport;
 import SimulinkOOAPI.GainBlock;
-import SimulinkOOAPI.Inport;
 import SimulinkOOAPI.Library;
-import SimulinkOOAPI.Line;
-import SimulinkOOAPI.Outport;
-import SimulinkOOAPI.Port;
 import SimulinkOOAPI.ProtoObject;
 import SimulinkOOAPI.ReflectionList;
 import SimulinkOOAPI.SimulinkOOAPIPackage;
@@ -193,32 +189,11 @@ public class LibraryImpl extends ProtoObjectImpl implements Library {
 	public ReflectionList<GainBlock> getChildrenOfTypeGainBlock() {
 		return this.children.getChildrenOfTypeGainBlock();
 	}
-
 	
-	@Override
-	public ReflectionList<Line> getChildrenOfTypeLine() {
-		return children.getChildrenOfTypeLine();
-	}
-
 	@Override
 	public ReflectionList<System> getChildrenOfTypeSystem() {
 		return children.getChildrenOfTypeSystem();
-	}
-
-	@Override
-	public ReflectionList<Port> getChildrenOfTypePort() {
-		return children.getChildrenOfTypePort();
 	}	
-
-	@Override
-	public ReflectionList<Inport> getChildrenOfTypeInport() {
-		return children.getChildrenOfTypeInport();
-	}
-
-	@Override
-	public ReflectionList<Outport> getChildrenOfTypeOutport() {		
-		return children.getChildrenOfTypeOutport();
-	}
 	
 	/**
 	 * Returns new Library instance with the given name.

@@ -77,31 +77,7 @@ public interface Library extends ProtoObject {
 	 * 
 	 * @generated NOT
 	 */
-	public ReflectionList<GainBlock> getChildrenOfTypeGainBlock();
-	
-	/**
-	 * Returns EList of children of Line type.
-	 * 
-	 * @generated NOT
-	 */	
-	public ReflectionList<Line> getChildrenOfTypeLine();
-	
-	/**
-	 * Returns EList of children of Line type.
-	 * 
-	 * @generated NOT
-	 */	
-	public ReflectionList<Port> getChildrenOfTypePort();
-	
-	/**
-	 * Returns EList of children of Inport type.	
-	 */	
-	public ReflectionList<Inport> getChildrenOfTypeInport();
-	
-	/**
-	 * Returns EList of children of Outport type.
-	 */	
-	public ReflectionList<Outport> getChildrenOfTypeOutport();
+	public ReflectionList<GainBlock> getChildrenOfTypeGainBlock();	
 	
 	/**
 	 * Returns EList of children of System type.
