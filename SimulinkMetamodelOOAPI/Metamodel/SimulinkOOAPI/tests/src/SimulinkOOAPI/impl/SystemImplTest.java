@@ -32,15 +32,16 @@ public class SystemImplTest {
 	@SuppressWarnings("unchecked")	
 	ReflectionList<System> listMock = context.mock(ReflectionList.class);
     System system;
+    CreationFactory factory = new CreationFactory();
 	
 	@Before
-	public void setUp(){
+	public void setUp() throws Exception{
 		context.checking(new Expectations() {{
 			ignoring(modelMock);			    
 		}});
-		system = SystemImpl.newNamedWithin("sys", modelMock);
-		InportImpl.newNamedWithin("inport", system);
-		OutportImpl.newNamedWithin("outport", system);
+		system = factory.createSystem().within(modelMock).withName("sys").please();
+		factory.createInport().withName("inport").within(system).please();
+		factory.createOutport().withName("outport").within(system).please();		
 	}
 	
 	//Incorrect test! Default constructor should be allowed in order not to break emf core api. 
@@ -69,13 +70,13 @@ public class SystemImplTest {
 	
 	@Test
 	//TODO: check that some elements cannot be added into system
-	public void testAddChild(){
+	public void testAddChild() throws Exception{
 		context.checking(new Expectations() {{
 			ignoring(modelMock);			    
 		}});
 		
 		assertEquals(2, system.getNumberOfChildren());
-		system.addChild(SystemImpl.newNamedWithin("sys", modelMock));
+		system.addChild(factory.createSystem().within(modelMock).withName("sys").please());
 		assertEquals(3, system.getNumberOfChildren());
 	}
 	
@@ -90,26 +91,26 @@ public class SystemImplTest {
 	}
 
 	@Test
-	public void testAddLibrary(){
-		testAddWrongChild(LibraryImpl.newNamed("library"));		
+	public void testAddLibrary() throws Exception{
+		testAddWrongChild(factory.createLibrary().withName("sys").please());		
 	}
 	
 	@Test
-	public void testGetChildrenOfTypeGainBlock(){
-		GainBlockImpl.newNamedWithinWithGain("gainBlock1", system, 5);
-		GainBlockImpl.newNamedWithinWithGain("gainBlock2", system, 6);
+	public void testGetChildrenOfTypeGainBlock() throws Exception{
+		factory.createGainBlock().withName("gainBlock1").withGain(5).within(system).please();
+		factory.createGainBlock().withName("gainBlock2").withGain(5).within(system).please();
 		assertEquals(2, system.getChildrenOfTypeGainBlock().size());
 	}
 	
 	@Test	
-	public void testGetChildrenOfTypeLine(){
+	public void testGetChildrenOfTypeLine() throws Exception{
 		context.checking(new Expectations() {{
 			atLeast(1).of(inportMock).getParent();
 				will(returnValue(system));
 			atLeast(1).of(outportMock).getParent();
 				will(returnValue(system));								    
 		}});
-		LineImpl.newNamedWithinFromTo("line", system, outportMock, inportMock);		
+		factory.createLine().within(system).withName("line").from(outportMock).to(inportMock).please();		
 		assertEquals(1, system.getChildrenOfTypeLine().size());
 	}
 	
@@ -129,30 +130,30 @@ public class SystemImplTest {
 	}
 	
 	@Test
-	public void testGetChildrenOfTypeSystem(){
-		SystemImpl.newNamedWithin("sys", system);		
+	public void testGetChildrenOfTypeSystem() throws Exception{
+		factory.createSystem().within(system).withName("sys").please();		
 		assertEquals(1, system.getChildrenOfTypeSystem().size());
 	}
 	
 	@Test
-	public void testGetChildrenOfTypeSystemReference(){
+	public void testGetChildrenOfTypeSystemReference() throws Exception{
 		context.checking(new Expectations() {{
 			ignoring(systemMock);								    
 		}});
 		
-		SystemReferenceImpl.newNamedWithinTargeting("sysRef", system, systemMock);
+		factory.createSystemReference().targeting(systemMock).within(system).withName("sysRef").please();		
 		assertEquals(1, system.getChildrenOfTypeSystemReference().size());
 	}
 	
 	@Test
-	public void testIsParentOfSystem(){
-		System subsystem = SystemImpl.newNamedWithin("subSystem", system);
+	public void testIsParentOfSystem() throws Exception{
+		System subsystem = factory.createSystem().within(system).withName("sub").please();		
 		assertTrue(system.isParentOf(subsystem));
 	}
 	
 	@Test
-	public void testIsNotParentOfSystem(){
-		System subsystem = SystemImpl.newNamedWithin("subSystem", modelMock);
+	public void testIsNotParentOfSystem() throws Exception{
+		System subsystem = factory.createSystem().within(modelMock).withName("sub").please();		
 		assertFalse(system.isParentOf(subsystem));
 	}
 

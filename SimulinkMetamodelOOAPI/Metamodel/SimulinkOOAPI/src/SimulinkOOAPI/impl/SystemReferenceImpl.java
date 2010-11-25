@@ -6,6 +6,8 @@
  */
 package SimulinkOOAPI.impl;
 
+import java.util.Map;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -180,6 +182,7 @@ public class SystemReferenceImpl extends ProtoObjectImpl implements SystemRefere
 	/**
 	 * Returns new instance of SystemReference with the given name, within the given model, targeting to the given system
 	 */
+	@Deprecated
 	public static SystemReference newNamedWithinTargeting(String name, Model parent, System target){
 		SystemReference sysRef = new SystemReferenceImpl(name, parent, target);
 		return sysRef;
@@ -188,9 +191,35 @@ public class SystemReferenceImpl extends ProtoObjectImpl implements SystemRefere
 	/**
 	 * Returns new instance of SystemReference with the given name, within the given system, targeting to the given system
 	 */
+	@Deprecated
 	public static SystemReference newNamedWithinTargeting(String name, System parent, System target){
 		SystemReference sysRef = new SystemReferenceImpl(name, parent, target);
 		return sysRef;
+	}
+	
+	public static SystemReference newFromDictionary(Map<String, Object> constructDict) throws ProtoObjectCreationException{		
+		if (!constructDict.containsKey(CreationFactory.keyWithName))			
+			throw new ProtoObjectCreationException();
+		if (!constructDict.containsKey(CreationFactory.keyWithin))			
+			throw new ProtoObjectCreationException();
+		if (!constructDict.containsKey(CreationFactory.keyTargeting))			
+			throw new ProtoObjectCreationException();
+		
+		//TODO: add check for the type casting		
+		String name = (String) constructDict.get(CreationFactory.keyWithName);
+		System target = (System) constructDict.get(CreationFactory.keyTargeting);
+		System system = null;
+		Model model = null;
+		Object parent = constructDict.get(CreationFactory.keyWithin);
+		if (parent instanceof Model)
+			model = (Model) parent;
+		else
+			system = (System)parent;
+		
+		if (system != null)
+			return new SystemReferenceImpl(name, system, target);
+		else
+			return new SystemReferenceImpl(name, model, target);		
 	}
 	
 } //SystemReferenceImpl

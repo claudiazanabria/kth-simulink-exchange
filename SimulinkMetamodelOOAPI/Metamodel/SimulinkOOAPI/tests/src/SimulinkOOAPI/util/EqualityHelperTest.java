@@ -6,37 +6,38 @@ import static org.junit.Assert.assertFalse;
 import org.junit.Test;
 
 import SimulinkOOAPI.Model;
-import SimulinkOOAPI.impl.ModelImpl;
-import SimulinkOOAPI.impl.SystemImpl;
+import SimulinkOOAPI.impl.CreationFactory;
 
 
 public class EqualityHelperTest {
 	
+	CreationFactory factory = new CreationFactory();
+	
 	@Test
-	public void testEmptyModelsAreEqual(){
-		Model modelA = ModelImpl.newNamed("a");
-		Model modelB = ModelImpl.newNamed("a");
+	public void testEmptyModelsAreEqual() throws Exception{
+		Model modelA = (Model) factory.createModel().withName("a").please();
+		Model modelB = (Model) factory.createModel().withName("a").please();
 		
 		assertTrue(modelA.equals(modelB));
 	}
 	
 	@Test
-	public void testEmptyModelsAreNotEqual(){
-		Model modelA = ModelImpl.newNamed("a");
-		Model modelB = ModelImpl.newNamed("b");
+	public void testEmptyModelsAreNotEqual() throws Exception{
+		Model modelA = (Model) factory.createModel().withName("a").please();
+		Model modelB = (Model) factory.createModel().withName("b").please();
 		
 		assertFalse(modelA.equals(modelB));
 	}
 	
 	@Test
-	public void testModelsAreEqual(){
-		Model modelA = ModelImpl.newNamed("a");
-		Model modelB = ModelImpl.newNamed("a");
+	public void testModelsAreEqual() throws Exception{
+		Model modelA = (Model) factory.createModel().withName("a").please();
+		Model modelB = (Model) factory.createModel().withName("a").please();
 		
-		SystemImpl.newNamedWithin("sysA", modelA);
-		SystemImpl.newNamedWithin("sysB", modelA);
-		SystemImpl.newNamedWithin("sysA", modelB);
-		SystemImpl.newNamedWithin("sysB", modelA);
+		factory.createSystem().within(modelA).withName("sysA").please();
+		factory.createSystem().within(modelA).withName("sysB").please();
+		factory.createSystem().within(modelB).withName("sysA").please();
+		factory.createSystem().within(modelB).withName("sysB").please();
 		
 		assertTrue(modelA.equals(modelB));
 	}

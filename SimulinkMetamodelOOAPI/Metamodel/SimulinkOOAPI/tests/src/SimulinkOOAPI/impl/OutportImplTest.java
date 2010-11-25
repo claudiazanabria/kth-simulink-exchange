@@ -21,12 +21,14 @@ public class OutportImplTest {
     Outport port;
 	
 	@Before
-	public void setUp(){
+	public void setUp() throws Exception {
 		context.checking(new Expectations() {{
 			ignoring(systemMock);			    
 		}});
 		
-		port = OutportImpl.newNamedWithin("inport", systemMock); 					
+		port = new CreationFactory().createOutport().
+		                             within(systemMock).
+		                             withName("port").please();					
 	}	
 	
 	@Test

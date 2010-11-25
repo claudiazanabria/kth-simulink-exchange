@@ -30,18 +30,19 @@ public class LineImplTest {
 	@SuppressWarnings("unchecked")	
 	ReflectionList<Line> listMock = context.mock(ReflectionList.class);	
     Line line;
+    CreationFactory factory = new CreationFactory();
 	
 	@Before
-	public void setUp(){	
+	public void setUp() throws Exception{	
 		context.checking(new Expectations() {{
 			ignoring(modelMock);			
 		}});
 		
-		System system = SystemImpl.newNamedWithin("systen", modelMock);
-		System subSystem = SystemImpl.newNamedWithin("systen", system);
-		Inport inport = InportImpl.newNamedWithin("inport", system);
-		Outport outport = OutportImpl.newNamedWithin("outport", subSystem);
-		line = LineImpl.newNamedWithinFromTo("line", modelMock, outport, inport);					
+		System system = factory.createSystem().withName("sys").within(modelMock).please();
+		System subSystem = factory.createSystem().withName("sub").within(system).please();		
+		Inport inport = factory.createInport().withName("inport").within(system).please();
+		Outport outport = factory.createOutport().withName("outport").within(subSystem).please();
+		line = factory.createLine().withName("line").within(modelMock).from(outport).to(inport).please();		
 	}
 	
 	//Incorrect test! Default constructor should be allowed in order not to break emf core api. 
@@ -68,120 +69,120 @@ public class LineImplTest {
 	}	
 	
 	@Test
-	public void testPortsBelongToTheSameSystem(){
+	public void testPortsBelongToTheSameSystem() throws Exception{
 		context.checking(new Expectations() {{
 			ignoring(systemMock);			
 		}});
 		
-		Inport inport = InportImpl.newNamedWithin("port", systemMock);
-		Outport outport = OutportImpl.newNamedWithin("outport", systemMock);
+		Inport inport = factory.createInport().withName("inport").within(systemMock).please();
+		Outport outport = factory.createOutport().withName("outport").within(systemMock).please();		
 		
 		assertTrue(LineImpl.portsBelongToTheSameSystem(inport, outport));
 	}
 	
 	@Test
-	public void testPortsDoNotBelongToTheSameSystem(){
+	public void testPortsDoNotBelongToTheSameSystem() throws Exception{
 		context.checking(new Expectations() {{
 			ignoring(systemMock);			
 		}});
 		
-		System system = SystemImpl.newNamedWithin("system", systemMock);
-		Inport inport = InportImpl.newNamedWithin("port", systemMock);
-		Outport outport = OutportImpl.newNamedWithin("outport", system);
+		System system = factory.createSystem().within(systemMock).withName("system").please();
+		Inport inport = factory.createInport().withName("inport").within(systemMock).please();
+		Outport outport = factory.createOutport().withName("outport").within(system).please();		
 		
 		assertFalse(LineImpl.portsBelongToTheSameSystem(inport, outport));
 	}
 	
 	@Test
-	public void testCanConnectPortsAtDifferentLevels(){
+	public void testCanConnectPortsAtDifferentLevels() throws Exception{
 		context.checking(new Expectations() {{
 			ignoring(modelMock);			
 		}});
 		
-		System system = SystemImpl.newNamedWithin("system", modelMock);
-		System subSystem = SystemImpl.newNamedWithin("subSystem", system);		
+		System system = factory.createSystem().within(modelMock).withName("system").please();		
+		System subSystem = factory.createSystem().within(system).withName("sub").please();		
 		
-		Outport outport = OutportImpl.newNamedWithin("outport", system);
-		Inport inport = InportImpl.newNamedWithin("port", subSystem);
+		Outport outport = factory.createOutport().withName("outport").within(system).please();	
+		Inport inport = factory.createInport().withName("inport").within(subSystem).please();		
 		
 		assertTrue(LineImpl.canConnectPortsAtDifferentLevels(outport, inport));
 	}
 	
 	@Test
-	public void testCanConnectPortsAtDifferentLevels2(){
+	public void testCanConnectPortsAtDifferentLevels2() throws Exception{
 		context.checking(new Expectations() {{
 			ignoring(modelMock);			
 		}});
 		
-		System system = SystemImpl.newNamedWithin("system", modelMock);
-		System subSystem = SystemImpl.newNamedWithin("subSystem", system);		
+		System system = factory.createSystem().within(modelMock).withName("system").please();		
+		System subSystem = factory.createSystem().within(system).withName("sub").please();		
 		
-		Outport outport = OutportImpl.newNamedWithin("outport", subSystem);
-		Inport inport = InportImpl.newNamedWithin("port", system);
+		Outport outport = factory.createOutport().withName("outport").within(subSystem).please();	
+		Inport inport = factory.createInport().withName("inport").within(system).please();		
 		
 		assertTrue(LineImpl.canConnectPortsAtDifferentLevels(outport, inport));
 	}
 	
 	@Test
-	public void testCanNotConnectPortsAtDifferentLevels(){
+	public void testCanNotConnectPortsAtDifferentLevels() throws Exception{
 		context.checking(new Expectations() {{
 			ignoring(modelMock);			
 		}});
 		
-		System system = SystemImpl.newNamedWithin("system", modelMock);
-		System subSystem = SystemImpl.newNamedWithin("subSystem", system);
-		System subSubSystem = SystemImpl.newNamedWithin("subSystem", subSystem);
+		System system = factory.createSystem().within(modelMock).withName("system").please();		
+		System subSystem = factory.createSystem().within(system).withName("sub").please();
+		System subSubSystem = factory.createSystem().within(subSystem).withName("subSystem").please();
 		
-		Outport outport = OutportImpl.newNamedWithin("outport", system);
-		Inport inport = InportImpl.newNamedWithin("port", subSubSystem);
+		Outport outport = factory.createOutport().withName("outport").within(system).please();
+		Inport inport = factory.createInport().withName("inport").within(subSubSystem).please();		
 		
 		assertFalse(LineImpl.canConnectPortsAtDifferentLevels(outport, inport));
 	}
 	
 	@Test
-	public void testCanNotConnectPortsAtDifferentLevels2(){
+	public void testCanNotConnectPortsAtDifferentLevels2() throws Exception{
 		context.checking(new Expectations() {{
 			ignoring(modelMock);			
 		}});
 		
-		System system = SystemImpl.newNamedWithin("system", modelMock);
-		System subSystem = SystemImpl.newNamedWithin("subSystem", system);
-		System subSubSystem = SystemImpl.newNamedWithin("subSystem", subSystem);
+		System system = factory.createSystem().within(modelMock).withName("system").please();		
+		System subSystem = factory.createSystem().within(system).withName("sub").please();
+		System subSubSystem = factory.createSystem().within(subSystem).withName("subSystem").please();
 		
-		Outport outport = OutportImpl.newNamedWithin("outport", subSubSystem);
-		Inport inport = InportImpl.newNamedWithin("port", system);
-		
+		Outport outport = factory.createOutport().withName("outport").within(subSubSystem).please();
+		Inport inport = factory.createInport().withName("inport").within(system).please();
+				
 		assertFalse(LineImpl.canConnectPortsAtDifferentLevels(outport, inport));
 	}
 	
 	@Test
-	public void testCanConnectPortsAtSameLevel(){
+	public void testCanConnectPortsAtSameLevel() throws Exception{
 		context.checking(new Expectations() {{
 			ignoring(modelMock);			
 		}});
 		
-		System system = SystemImpl.newNamedWithin("system", modelMock);
-		System subSystemA = SystemImpl.newNamedWithin("subSystem1", system);
-		System subSystemB = SystemImpl.newNamedWithin("subSystem2", system);
+		System system = factory.createSystem().within(modelMock).withName("system").please();
+		System subSystemA = factory.createSystem().within(system).withName("subSystem1").please();
+		System subSystemB = factory.createSystem().within(system).withName("subSystem").please();		
 		
-		Outport outport = OutportImpl.newNamedWithin("outport", subSystemA);
-		Inport inport = InportImpl.newNamedWithin("port", subSystemB);
+		Outport outport = factory.createOutport().withName("outport").within(subSystemA).please();
+		Inport inport = factory.createInport().withName("inport").within(subSystemB).please();		
 		
 		assertTrue(LineImpl.canConnectPortsAtTheSameLevel(outport, inport));
 	}
 	
 	@Test
-	public void testCanNotConnectPortsAtSameLevel(){
+	public void testCanNotConnectPortsAtSameLevel() throws Exception{
 		context.checking(new Expectations() {{
 			ignoring(modelMock);			
 		}});
 		
-		System system = SystemImpl.newNamedWithin("system", modelMock);
-		System subSystem = SystemImpl.newNamedWithin("subSystem1", system);
-		System subSubSystem = SystemImpl.newNamedWithin("subSystem2", subSystem);
+		System system = factory.createSystem().within(modelMock).withName("system").please();		
+		System subSystem = factory.createSystem().within(system).withName("sub").please();
+		System subSubSystem = factory.createSystem().within(subSystem).withName("subSystem").please();
 		
-		Outport outport = OutportImpl.newNamedWithin("outport", subSystem);
-		Inport inport = InportImpl.newNamedWithin("port", subSubSystem);
+		Outport outport = factory.createOutport().withName("outport").within(subSystem).please();
+		Inport inport = factory.createInport().withName("inport").within(subSubSystem).please();
 		
 		assertFalse(LineImpl.canConnectPortsAtTheSameLevel(outport, inport));
 	}

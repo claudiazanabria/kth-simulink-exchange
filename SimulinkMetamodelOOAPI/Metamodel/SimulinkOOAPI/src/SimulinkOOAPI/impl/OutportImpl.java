@@ -6,6 +6,8 @@
  */
 package SimulinkOOAPI.impl;
 
+import java.util.Map;
+
 import org.eclipse.emf.ecore.EClass;
 
 import SimulinkOOAPI.Library;
@@ -38,11 +40,6 @@ public class OutportImpl extends PortImpl implements Outport {
 	protected OutportImpl(String name, System parent) {
 		super(name, parent);		
 	}
-	
-	protected OutportImpl(String name, Library parent) {
-		super(name, parent);		
-	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -61,15 +58,8 @@ public class OutportImpl extends PortImpl implements Outport {
 	/**
 	 * Returns new instance of Outport with the given name within the given system	 
 	 */
+	@Deprecated
 	public static Outport newNamedWithin(String name, System parent){
-		Outport inport = new OutportImpl(name, parent);
-		return inport;
-	}
-	
-	/**
-	 * Returns new instance of Outport with the given name within the given library	 
-	 */
-	public static Outport newNamedWithin(String name, Library parent){
 		Outport inport = new OutportImpl(name, parent);
 		return inport;
 	}
@@ -82,6 +72,19 @@ public class OutportImpl extends PortImpl implements Outport {
 	@Override
 	public void addTo(Library parent) {
 		throw new IllegalArgumentException(ErrorMessages.PORT_ADD_TO_LIBRARY);		
+	}
+	
+	public static OutportImpl newFromDictionary(Map<String, Object> constructDict) throws ProtoObjectCreationException{
+		if (!constructDict.containsKey(CreationFactory.keyWithName))			
+			throw new ProtoObjectCreationException();
+		if (!constructDict.containsKey(CreationFactory.keyWithin))			
+			throw new ProtoObjectCreationException();		
+		
+		//TODO: add check for the type casting		
+		String name = (String) constructDict.get(CreationFactory.keyWithName);		
+		System parent = (System) constructDict.get(CreationFactory.keyWithin);
+		
+		return new OutportImpl(name, parent);		
 	}
 
 } //OutportImpl

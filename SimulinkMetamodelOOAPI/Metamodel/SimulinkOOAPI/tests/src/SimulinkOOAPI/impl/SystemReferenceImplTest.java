@@ -43,13 +43,13 @@ public class SystemReferenceImplTest {
 	}*/
 	
 	@Test
-	public void testCreateInvalidSystemReference(){
+	public void testCreateInvalidSystemReference() throws Exception{
 		context.checking(new Expectations() {{
 			ignoring(systemMock);			    
 		}});
 		
 		try{
-			systemReference = SystemReferenceImpl.newNamedWithinTargeting("sysRef", systemMock, systemMock);
+			new CreationFactory().createSystemReference().targeting(systemMock).within(systemMock).withName("sysRef").please();			
 		}catch(IllegalArgumentException e){
 			assertEquals(ErrorMessages.SYS_REF_TARGET_EQUALS_PARENT, e.getMessage());
 		}

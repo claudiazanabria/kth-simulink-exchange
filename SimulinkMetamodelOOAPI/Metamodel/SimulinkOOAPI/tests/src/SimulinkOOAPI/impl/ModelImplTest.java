@@ -25,13 +25,14 @@ public class ModelImplTest {
 	Inport inportMock = context.mock(Inport.class);
 	Outport outportMock = context.mock(Outport.class);
     Model model;
+    CreationFactory factory = new CreationFactory();
 	
 	@Before
-	public void setUp(){		
-		model = ModelImpl.newNamed("model");		
+	public void setUp() throws Exception{		
+		model = factory.createModel().withName("model").please();
 		
-		SystemImpl.newNamedWithin("sys1", model);
-		SystemImpl.newNamedWithin("sys2", model);				
+		factory.createSystem().withName("sys1").within(model).please();
+		factory.createSystem().withName("sys2").within(model).please();						
 	}
 	
 	//Incorrect test! Default constructor should be allowed in order not to break emf core api. 
@@ -48,13 +49,13 @@ public class ModelImplTest {
 	}*/	
 	
 	@Test	
-	public void testAddChild(){
+	public void testAddChild() throws Exception{
 		context.checking(new Expectations() {{
 			ignoring(systemMock);			    
 		}});
 		
 		assertEquals(2, model.getNumberOfChildren());
-		model.addChild(SystemImpl.newNamedWithin("sys1", systemMock));
+		model.addChild(factory.createSystem().within(systemMock).withName("sys1").please());
 		assertEquals(3, model.getNumberOfChildren());
 	}
 	
@@ -69,30 +70,30 @@ public class ModelImplTest {
 	}
 	
 	@Test
-	public void testAddGainBlock(){
+	public void testAddGainBlock() throws Exception{
 		context.checking(new Expectations() {{			
 			ignoring(systemMock);
 		}});
 		
-		testAddWrongChild(GainBlockImpl.newNamedWithinWithGain("gainBlock", systemMock, 2));		
+		testAddWrongChild(factory.createGainBlock().within(systemMock).withGain(2).withName("gainBlock").please());		
 	}
 	
 	@Test
-	public void testAddLibrary(){
-		testAddWrongChild(LibraryImpl.newNamed("library"));		
+	public void testAddLibrary() throws Exception{
+		testAddWrongChild(factory.createLibrary().withName("library").please());		
 	}
 	
 	@Test
-	public void testAddPort(){
+	public void testAddPort() throws Exception{
 		context.checking(new Expectations() {{
 			ignoring(systemMock);
 		}});
 		
-		testAddWrongChild(InportImpl.newNamedWithin("port", systemMock));
+		testAddWrongChild(factory.createInport().within(systemMock).withName("port").please());
 	}
 	
 	@Test	
-	public void testGetChildrenOfTypeLine(){
+	public void testGetChildrenOfTypeLine() throws Exception{
 		context.checking(new Expectations() {{
 			atLeast(1).of(inportMock).getParent();
 				will(returnValue(systemMock));
@@ -102,7 +103,7 @@ public class ModelImplTest {
 			ignoring(systemMock);			
 		}});
 		
-		LineImpl.newNamedWithinFromTo("line", model, outportMock, inportMock);		
+		factory.createLine().withName("line").within(model).from(outportMock).to(inportMock).please();		
 		assertEquals(1, model.getChildrenOfTypeLine().size());
 	}
 	

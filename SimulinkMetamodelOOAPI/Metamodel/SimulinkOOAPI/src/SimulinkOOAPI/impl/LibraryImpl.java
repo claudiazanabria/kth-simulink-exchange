@@ -6,6 +6,8 @@
  */
 package SimulinkOOAPI.impl;
 
+import java.util.Map;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -198,6 +200,7 @@ public class LibraryImpl extends ProtoObjectImpl implements Library {
 	/**
 	 * Returns new Library instance with the given name.
 	 */
+	@Deprecated
 	public static Library newNamed(String name){
 		Library library = new LibraryImpl(name);		
 		return library;
@@ -211,6 +214,14 @@ public class LibraryImpl extends ProtoObjectImpl implements Library {
 	@Override
 	public void addTo(Library parent) {
 		throw new IllegalArgumentException(ErrorMessages.LIBRARY_ADD_TO_LIBRARY);		
+	}
+	
+	public static Library newFromDictionary(Map<String, Object> constructDict) throws ProtoObjectCreationException{		
+		if (!constructDict.containsKey(CreationFactory.keyWithName))			
+			throw new ProtoObjectCreationException();
+		
+		String name = (String) constructDict.get(CreationFactory.keyWithName);
+		return new LibraryImpl(name);		
 	}
 
 } //LibraryImpl

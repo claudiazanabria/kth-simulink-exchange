@@ -7,13 +7,9 @@ import SimulinkOOAPI.Outport;
 import SimulinkOOAPI.SimulinkOOAPIFactory;
 import SimulinkOOAPI.System;
 import SimulinkOOAPI.SystemReference;
-import SimulinkOOAPI.impl.InportImpl;
-import SimulinkOOAPI.impl.LineImpl;
-import SimulinkOOAPI.impl.ModelImpl;
-import SimulinkOOAPI.impl.OutportImpl;
+import SimulinkOOAPI.impl.CreationFactory;
+import SimulinkOOAPI.impl.ProtoObjectCreationException;
 import SimulinkOOAPI.impl.SimulinkOOAPIFactoryImpl;
-import SimulinkOOAPI.impl.SystemImpl;
-import SimulinkOOAPI.impl.SystemReferenceImpl;
 
 
 public class DemoModelBuilder {
@@ -21,33 +17,35 @@ public class DemoModelBuilder {
 	/**
 	 * Builds York model with SimulinkOO API.	 
 	 */
-	public static Model buildYorkModelWithSimulinkOOAPI(){
+	public static Model buildYorkModelWithSimulinkOOAPI() throws ProtoObjectCreationException{
 		
-		Model model = ModelImpl.newNamed("model");
+		CreationFactory factory = new CreationFactory();
 		
-		System rootSys = SystemImpl.newNamedWithin("RootSystem", model);
-		System system1 = SystemImpl.newNamedWithin("System1", model);
-		System system2 = SystemImpl.newNamedWithin("System2", model);
-		System primarySys = SystemImpl.newNamedWithin("Primary", model);
-		System standBySys = SystemImpl.newNamedWithin("StandBy", model);
+		Model model = factory.createModel().withName("model").please();
 		
-		SystemReferenceImpl.newNamedWithinTargeting("SysRef1", rootSys, system1);
-		SystemReferenceImpl.newNamedWithinTargeting("SysRef2", rootSys, system2);
-		SystemReferenceImpl.newNamedWithinTargeting("SysRef3", rootSys, primarySys);
+		System rootSys = factory.createSystem().within(model).withName("RootSystem").please();
+		System system1 = factory.createSystem().within(model).withName("System1").please();
+		System system2 = factory.createSystem().within(model).withName("System2").please();
+		System primarySys = factory.createSystem().within(model).withName("Primary").please();		
+		System standBySys = factory.createSystem().within(model).withName("StandBy").please();
 		
-		Inport system2Inport = InportImpl.newNamedWithin("sys2In", system2);
-		Outport system2Outport = OutportImpl.newNamedWithin("sys2Out", system2);
-		Inport primarySysInport = InportImpl.newNamedWithin("primarysysIn", primarySys);
-		Outport primarySysOutport = OutportImpl.newNamedWithin("primarysysOut", primarySys);
-		Inport standBySysInport1 = InportImpl.newNamedWithin("standBySysInport1", standBySys);
-		Inport standBySysInport2 = InportImpl.newNamedWithin("standBySysInport2", standBySys);
-		Outport standBySysOutport = OutportImpl.newNamedWithin("standBySysOutport", standBySys);
+		factory.createSystemReference().within(rootSys).targeting(system1).withName("SysRef1").please();
+		factory.createSystemReference().within(rootSys).targeting(system2).withName("SysRef2").please();
+		factory.createSystemReference().within(rootSys).targeting(primarySys).withName("SysRef3").please();		
 		
-		LineImpl.newNamedWithinFromTo("line1", system2, system2Outport, primarySysInport);
-		LineImpl.newNamedWithinFromTo("line2", system2, system2Outport, standBySysInport1);
-		LineImpl.newNamedWithinFromTo("line3", system2, primarySysOutport, standBySysInport2);
-		LineImpl.newNamedWithinFromTo("line4", system2, primarySysOutport, system2Inport);
-		LineImpl.newNamedWithinFromTo("line5", system2, standBySysOutport, system2Inport);		
+		Inport system2Inport = factory.createInport().within(system2).withName("sys2In").please();
+		Outport system2Outport = factory.createOutport().within(system2).withName("sys2Out").please();
+		Inport primarySysInport = factory.createInport().within(primarySys).withName("primarysysIn").please();
+		Outport primarySysOutport = factory.createOutport().within(primarySys).withName("primarysysOut").please();
+		Inport standBySysInport1 = factory.createInport().within(standBySys).withName("standBySysInport1").please();
+		Inport standBySysInport2 = factory.createInport().within(standBySys).withName("standBySysInport2").please();
+		Outport standBySysOutport = factory.createOutport().within(standBySys).withName("standBySysOutport").please();
+		
+		factory.createLine().within(system2).from(system2Outport).to(primarySysInport).withName("line1").please();
+		factory.createLine().within(system2).from(system2Outport).to(standBySysInport1).withName("line2").please();
+		factory.createLine().within(system2).from(primarySysOutport).to(standBySysInport2).withName("line3").please();
+		factory.createLine().within(system2).from(primarySysOutport).to(system2Inport).withName("line4").please();
+		factory.createLine().within(system2).from(standBySysOutport).to(system2Inport).withName("line5").please();
 		
 		return model;
 	}

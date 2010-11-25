@@ -21,12 +21,12 @@ public class InportImplTest {
     Inport port;
 	
 	@Before
-	public void setUp(){
+	public void setUp() throws Exception{
 		context.checking(new Expectations() {{
 			ignoring(systemMock);			    
 		}});
 		
-		port = InportImpl.newNamedWithin("inport", systemMock); 					
+		port = new CreationFactory().createInport().withName("inport").within(systemMock).please();		 					
 	}	
 	
 	@Test

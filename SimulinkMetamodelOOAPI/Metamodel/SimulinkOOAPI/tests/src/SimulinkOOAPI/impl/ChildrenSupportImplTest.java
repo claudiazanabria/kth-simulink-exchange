@@ -29,9 +29,10 @@ public class ChildrenSupportImplTest {
 	Outport outportMock = context.mock(Outport.class);
 	System systemMock = context.mock(System.class);
 	ChildrenSupportImpl childrenSupport;
+	CreationFactory factory = new CreationFactory();
 	
 	@Before
-	public void setUp(){
+	public void setUp() throws Exception{
 		childrenSupport = new ChildrenSupportImpl();
 		assertNotNull(childrenSupport.getChildren());
 		
@@ -39,17 +40,17 @@ public class ChildrenSupportImplTest {
 			ignoring(modelMock);			    
 		}});
 		
-		System sys1 = SystemImpl.newNamedWithin("sys1", modelMock);
+		System sys1 = factory.createSystem().withName("sys1").within(modelMock).please();
 		childrenSupport.addChild(sys1);
-		childrenSupport.addChild(SystemImpl.newNamedWithin("sys2", sys1));
-		childrenSupport.addChild(GainBlockImpl.newNamedWithinWithGain("gain1", sys1, 3));
-		childrenSupport.addChild(GainBlockImpl.newNamedWithinWithGain("gain2", sys1, 2));
+		childrenSupport.addChild(factory.createSystem().within(sys1).withName("sys2").please());
+		childrenSupport.addChild(factory.createGainBlock().withGain(3).within(sys1).withName("gain1").please());
+		childrenSupport.addChild(factory.createGainBlock().withGain(3).within(sys1).withName("gain2").please());
 	}
 	
 	@Test
-	public void testAddChild(){
+	public void testAddChild() throws Exception{
 		assertEquals(4, childrenSupport.getNumberOfChildren());
-		childrenSupport.addChild(SystemImpl.newNamedWithin("sys1", modelMock));
+		childrenSupport.addChild(factory.createSystem().within(modelMock).withName("sys1").please());
 		assertEquals(5, childrenSupport.getNumberOfChildren());
 	}
 	
@@ -59,7 +60,7 @@ public class ChildrenSupportImplTest {
 	}
 	
 	@Test
-	public void testGetChildrenOfTypeLine(){
+	public void testGetChildrenOfTypeLine() throws Exception{
 		//final System subsystem = SystemImpl.newNamedWithin("subSystem", systemMock);
 		
 		context.checking(new Expectations() {{
@@ -72,38 +73,38 @@ public class ChildrenSupportImplTest {
 			ignoring(systemMock);					
 		}});		
 		
-		childrenSupport.addChild(LineImpl.newNamedWithinFromTo("line", systemMock, outportMock, inportMock));
+		childrenSupport.addChild(factory.createLine().within(systemMock).from(outportMock).to(inportMock).withName("line").please());
 		assertEquals(1, childrenSupport.getChildrenOfTypeLine().size());
 	}
 	
 	@Test
-	public void testGetChildrenOfTypePort(){
+	public void testGetChildrenOfTypePort() throws Exception{
 		context.checking(new Expectations() {{
 			ignoring(systemMock);			    
 		}});
 		
-		childrenSupport.addChild(InportImpl.newNamedWithin("port1", systemMock));
-		childrenSupport.addChild(OutportImpl.newNamedWithin("port2", systemMock));
+		childrenSupport.addChild(factory.createInport().within(systemMock).withName("port1").please());
+		childrenSupport.addChild(factory.createOutport().within(systemMock).withName("port2").please());
 		assertEquals(2, childrenSupport.getChildrenOfTypePort().size());
 	}
 	
 	@Test
-	public void testGetChildrenOfTypeOutport(){
+	public void testGetChildrenOfTypeOutport() throws Exception{
 		context.checking(new Expectations() {{
 			ignoring(systemMock);			    
 		}});
 		
-		childrenSupport.addChild(OutportImpl.newNamedWithin("port", systemMock));
+		childrenSupport.addChild(factory.createOutport().within(systemMock).withName("port").please());
 		assertEquals(1, childrenSupport.getChildrenOfTypeOutport().size());
 	}
 	
 	@Test
-	public void testGetChildrenOfTypeInport(){
+	public void testGetChildrenOfTypeInport() throws Exception{
 		context.checking(new Expectations() {{
 			ignoring(systemMock);			    
 		}});
 		
-		childrenSupport.addChild(InportImpl.newNamedWithin("port", systemMock));
+		childrenSupport.addChild(factory.createInport().within(systemMock).withName("port").please());
 		assertEquals(1, childrenSupport.getChildrenOfTypeInport().size());
 	}
 	
@@ -113,13 +114,13 @@ public class ChildrenSupportImplTest {
 	}
 	
 	@Test
-	public void testGetChildrenOfTypeSystemReference(){
+	public void testGetChildrenOfTypeSystemReference() throws Exception{
 		context.checking(new Expectations() {{
 			ignoring(systemMock);			    
 		}});
 		
-		System system = SystemImpl.newNamedWithin("sys", systemMock);
-		childrenSupport.addChild(SystemReferenceImpl.newNamedWithinTargeting("sysRef", systemMock, system));
+		System system = factory.createSystem().within(systemMock).withName("sys").please();
+		childrenSupport.addChild(factory.createSystemReference().within(systemMock).targeting(system).withName("sysRef").please());
 		assertEquals(1, childrenSupport.getChildrenOfTypeSystemReference().size());
 	}
 

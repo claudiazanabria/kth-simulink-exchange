@@ -6,6 +6,8 @@
  */
 package SimulinkOOAPI.impl;
 
+import java.util.Map;
+
 import SimulinkOOAPI.GainBlock;
 import SimulinkOOAPI.Library;
 import SimulinkOOAPI.Model;
@@ -195,6 +197,7 @@ public class GainBlockImpl extends ProtoObjectImpl implements GainBlock {
 	 * @param system
 	 * @return
 	 */
+	@Deprecated
 	public static GainBlock newNamedWithinWithGain(String name, System parent, int gain){
 		GainBlock gainBlock = new GainBlockImpl(name, parent, gain);		
 		return gainBlock;
@@ -207,6 +210,7 @@ public class GainBlockImpl extends ProtoObjectImpl implements GainBlock {
 	 * @param system
 	 * @return
 	 */
+	@Deprecated
 	public static GainBlock newNamedWithinWithGain(String name, Library parent, int gain){
 		GainBlock gainBlock = new GainBlockImpl(name, parent, gain);		
 		return gainBlock;
@@ -215,6 +219,32 @@ public class GainBlockImpl extends ProtoObjectImpl implements GainBlock {
 	@Override
 	public void addTo(Model parent) {
 		throw new IllegalArgumentException(ErrorMessages.GAINBLOCK_ADD_TO_MODEL);		
+	}
+	
+	
+	public static GainBlock newFromDictionary(Map<String, Object> constructDict) throws ProtoObjectCreationException{		
+		if (!constructDict.containsKey(CreationFactory.keyWithName))			
+			throw new ProtoObjectCreationException();
+		if (!constructDict.containsKey(CreationFactory.keyWithin))			
+			throw new ProtoObjectCreationException();
+		if (!constructDict.containsKey(CreationFactory.keyWithGain))			
+			throw new ProtoObjectCreationException();
+		
+		//TODO: add check for the type casting
+		int gain = ((Integer) constructDict.get(CreationFactory.keyWithGain)).intValue();
+		String name = (String) constructDict.get(CreationFactory.keyWithName);
+		System system = null;
+		Library library = null;
+		Object parent = constructDict.get(CreationFactory.keyWithin);
+		if (parent instanceof Library)
+			library = (Library) parent;
+		else
+			system = (System)parent;
+		
+		if (system != null)
+			return new GainBlockImpl(name, system, gain);
+		else
+			return new GainBlockImpl(name, library, gain);		
 	}
 	
 

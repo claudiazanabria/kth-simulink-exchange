@@ -6,6 +6,8 @@
  */
 package SimulinkOOAPI.impl;
 
+import java.util.Map;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -191,6 +193,7 @@ public class ModelImpl extends ProtoObjectImpl implements Model {
 	/**
 	 * Returns new Model instance with the given name
 	 */
+	@Deprecated
 	public static Model newNamed(String name){
 		Model model = new ModelImpl(name);				
 		return model;
@@ -205,5 +208,13 @@ public class ModelImpl extends ProtoObjectImpl implements Model {
 	public void addTo(System parent) {
 		throw new IllegalArgumentException(ErrorMessages.MODEL_ADD_TO_SYSTEM);		
 	}	
+	
+	public static Model newFromDictionary(Map<String, Object> constructDict) throws ProtoObjectCreationException{		
+		if (!constructDict.containsKey(CreationFactory.keyWithName))			
+			throw new ProtoObjectCreationException();
+		
+		String name = (String) constructDict.get(CreationFactory.keyWithName);
+		return new ModelImpl(name);		
+	}
 
 } //ModelImpl

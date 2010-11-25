@@ -6,6 +6,8 @@
  */
 package SimulinkOOAPI.impl;
 
+import java.util.Map;
+
 import SimulinkOOAPI.Inport;
 import SimulinkOOAPI.Library;
 import SimulinkOOAPI.Line;
@@ -93,12 +95,7 @@ public class LineImpl extends ProtoObjectImpl implements Line {
 	protected LineImpl(String name, Model parent, Outport source, Inport destination){
 		this(name, source, destination);
 		parent.addChild(this);		
-	}
-	
-	protected LineImpl(String name, Library parent, Outport source, Inport destination){
-		this(name, source, destination);
-		parent.addChild(this);
-	}
+	}	
 	
 	/**
 	 * <!-- begin-user-doc -->
@@ -266,6 +263,7 @@ public class LineImpl extends ProtoObjectImpl implements Line {
 	/**
 	 * Returns new instance of Line with the given name within the given model between the inport and the outport.
 	 */
+	@Deprecated
 	public static Line newNamedWithinFromTo(String name, Model parent, Outport source, Inport destination){
 		Line line = new LineImpl(name, parent, source, destination);		
 		return line;
@@ -274,15 +272,8 @@ public class LineImpl extends ProtoObjectImpl implements Line {
 	/**
 	 * Returns new instance of Line with the given name within the given system between the inport and the outport.
 	 */
+	@Deprecated
 	public static Line newNamedWithinFromTo(String name, System parent, Outport source, Inport destination){
-		Line line = new LineImpl(name, parent, source, destination);		
-		return line;
-	}
-	
-	/**
-	 * Returns new instance of Line with the given name within the given library between the inport and the outport.
-	 */
-	public static Line newNamedWithinFromTo(String name, Library parent, Outport source, Inport destination){
 		Line line = new LineImpl(name, parent, source, destination);		
 		return line;
 	}
@@ -320,6 +311,34 @@ public class LineImpl extends ProtoObjectImpl implements Line {
 	@Override
 	public void addTo(Library parent) {
 		throw new IllegalArgumentException(ErrorMessages.LINE_ADD_TO_LIBRARY);		
+	}
+	
+	public static Line newFromDictionary(Map<String, Object> constructDict) throws ProtoObjectCreationException{		
+		if (!constructDict.containsKey(CreationFactory.keyWithName))			
+			throw new ProtoObjectCreationException();
+		if (!constructDict.containsKey(CreationFactory.keyWithin))			
+			throw new ProtoObjectCreationException();
+		if (!constructDict.containsKey(CreationFactory.keyFrom))			
+			throw new ProtoObjectCreationException();
+		if (!constructDict.containsKey(CreationFactory.keyTo))			
+			throw new ProtoObjectCreationException();
+		
+		//TODO: add check for the type casting
+		Outport from = (Outport) constructDict.get(CreationFactory.keyFrom);
+		Inport to = (Inport) constructDict.get(CreationFactory.keyTo);
+		String name = (String) constructDict.get(CreationFactory.keyWithName);
+		System system = null;
+		Model model = null;
+		Object parent = constructDict.get(CreationFactory.keyWithin);
+		if (parent instanceof Model)
+			model = (Model) parent;
+		else
+			system = (System)parent;
+		
+		if (system != null)
+			return new LineImpl(name, system, from, to);
+		else
+			return new LineImpl(name, model, from, to);		
 	}
 
 } //LineImpl

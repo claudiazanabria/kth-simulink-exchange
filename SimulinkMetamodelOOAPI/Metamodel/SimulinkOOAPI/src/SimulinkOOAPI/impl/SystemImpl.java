@@ -6,6 +6,8 @@
  */
 package SimulinkOOAPI.impl;
 
+import java.util.Map;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -306,6 +308,7 @@ public class SystemImpl extends ProtoObjectImpl implements SimulinkOOAPI.System 
 	/**
 	 * Returns new instance of System with the given name within the given model. 
 	 */
+	@Deprecated
 	public static System newNamedWithin(String name, Model parent){
 		System system = new SystemImpl(name, parent);
 		return system;
@@ -314,6 +317,7 @@ public class SystemImpl extends ProtoObjectImpl implements SimulinkOOAPI.System 
 	/**
 	 * Returns new instance of System with the given name within the given system. 
 	 */
+	@Deprecated
 	public static System newNamedWithin(String name, System parent){
 		System returnSystem = new SystemImpl(name, parent);		
 		return returnSystem;
@@ -322,9 +326,36 @@ public class SystemImpl extends ProtoObjectImpl implements SimulinkOOAPI.System 
 	/**
 	 * Returns new instance of System with the given name within the given library. 
 	 */
+	@Deprecated
 	public static System newNamedWithin(String name, Library parent){
 		System returnSystem = new SystemImpl(name, parent);		
 		return returnSystem;
+	}
+	
+	public static System newFromDictionary(Map<String, Object> constructDict) throws ProtoObjectCreationException{		
+		if (!constructDict.containsKey(CreationFactory.keyWithName))			
+			throw new ProtoObjectCreationException();
+		if (!constructDict.containsKey(CreationFactory.keyWithin))			
+			throw new ProtoObjectCreationException();
+		
+		//TODO: add check for the type casting		
+		String name = (String) constructDict.get(CreationFactory.keyWithName);
+		System system = null;
+		Library library = null;
+		Model model = null;
+		Object parent = constructDict.get(CreationFactory.keyWithin);
+		if (parent instanceof Library)
+			library = (Library) parent;
+		else if (parent instanceof System)
+			system = (System)parent;
+		else 
+			model = (Model) parent;
+		
+		if (system != null)
+			return new SystemImpl(name, system);
+		if (model != null)
+			return new SystemImpl(name, model);
+		return new SystemImpl(name, library);
 	}
 	
 
