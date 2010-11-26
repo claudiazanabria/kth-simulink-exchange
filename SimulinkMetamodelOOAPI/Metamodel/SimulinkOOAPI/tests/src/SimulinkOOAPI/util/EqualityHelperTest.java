@@ -6,38 +6,36 @@ import static org.junit.Assert.assertFalse;
 import org.junit.Test;
 
 import SimulinkOOAPI.Model;
-import SimulinkOOAPI.impl.CreationFactory;
+import SimulinkOOAPI.impl.Factory;
 
 
-public class EqualityHelperTest {
-	
-	CreationFactory factory = new CreationFactory();
+public class EqualityHelperTest {	
 	
 	@Test
 	public void testEmptyModelsAreEqual() throws Exception{
-		Model modelA = (Model) factory.createModel().withName("a").please();
-		Model modelB = (Model) factory.createModel().withName("a").please();
+		Model modelA = (Model) Factory.createModel().withName("a").please();
+		Model modelB = (Model) Factory.createModel().withName("a").please();
 		
 		assertTrue(modelA.equals(modelB));
 	}
 	
 	@Test
 	public void testEmptyModelsAreNotEqual() throws Exception{
-		Model modelA = (Model) factory.createModel().withName("a").please();
-		Model modelB = (Model) factory.createModel().withName("b").please();
+		Model modelA = (Model) Factory.createModel().withName("a").please();
+		Model modelB = (Model) Factory.createModel().withName("b").please();
 		
 		assertFalse(modelA.equals(modelB));
 	}
 	
 	@Test
 	public void testModelsAreEqual() throws Exception{
-		Model modelA = (Model) factory.createModel().withName("a").please();
-		Model modelB = (Model) factory.createModel().withName("a").please();
+		Model modelA = (Model) Factory.createModel().withName("a").please();
+		Model modelB = (Model) Factory.createModel().withName("a").please();
 		
-		factory.createSystem().within(modelA).withName("sysA").please();
-		factory.createSystem().within(modelA).withName("sysB").please();
-		factory.createSystem().within(modelB).withName("sysA").please();
-		factory.createSystem().within(modelB).withName("sysB").please();
+		Factory.createSystem().within(modelA).withName("sysA").please();
+		Factory.createSystem().within(modelA).withName("sysB").please();
+		Factory.createSystem().within(modelB).withName("sysA").please();
+		Factory.createSystem().within(modelB).withName("sysB").please();
 		
 		assertTrue(modelA.equals(modelB));
 	}

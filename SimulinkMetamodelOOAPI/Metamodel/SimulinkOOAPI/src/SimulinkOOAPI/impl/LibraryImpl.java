@@ -217,10 +217,10 @@ public class LibraryImpl extends ProtoObjectImpl implements Library {
 	}
 	
 	public static Library newFromDictionary(Map<String, Object> constructDict) throws ProtoObjectCreationException{		
-		if (!constructDict.containsKey(CreationFactory.keyWithName))			
+		if (!constructDict.containsKey(Factory.keyWithName))			
 			throw new ProtoObjectCreationException();
 		
-		String name = (String) constructDict.get(CreationFactory.keyWithName);
+		String name = (String) constructDict.get(Factory.keyWithName);
 		return new LibraryImpl(name);		
 	}
 

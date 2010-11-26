@@ -210,10 +210,10 @@ public class ModelImpl extends ProtoObjectImpl implements Model {
 	}	
 	
 	public static Model newFromDictionary(Map<String, Object> constructDict) throws ProtoObjectCreationException{		
-		if (!constructDict.containsKey(CreationFactory.keyWithName))			
+		if (!constructDict.containsKey(Factory.keyWithName))			
 			throw new ProtoObjectCreationException();
 		
-		String name = (String) constructDict.get(CreationFactory.keyWithName);
+		String name = (String) constructDict.get(Factory.keyWithName);
 		return new ModelImpl(name);		
 	}
 

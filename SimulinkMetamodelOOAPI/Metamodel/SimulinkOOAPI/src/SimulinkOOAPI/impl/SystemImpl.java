@@ -333,17 +333,17 @@ public class SystemImpl extends ProtoObjectImpl implements SimulinkOOAPI.System 
 	}
 	
 	public static System newFromDictionary(Map<String, Object> constructDict) throws ProtoObjectCreationException{		
-		if (!constructDict.containsKey(CreationFactory.keyWithName))			
+		if (!constructDict.containsKey(Factory.keyWithName))			
 			throw new ProtoObjectCreationException();
-		if (!constructDict.containsKey(CreationFactory.keyWithin))			
+		if (!constructDict.containsKey(Factory.keyWithin))			
 			throw new ProtoObjectCreationException();
 		
 		//TODO: add check for the type casting		
-		String name = (String) constructDict.get(CreationFactory.keyWithName);
+		String name = (String) constructDict.get(Factory.keyWithName);
 		System system = null;
 		Library library = null;
 		Model model = null;
-		Object parent = constructDict.get(CreationFactory.keyWithin);
+		Object parent = constructDict.get(Factory.keyWithin);
 		if (parent instanceof Library)
 			library = (Library) parent;
 		else if (parent instanceof System)

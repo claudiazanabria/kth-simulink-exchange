@@ -314,22 +314,22 @@ public class LineImpl extends ProtoObjectImpl implements Line {
 	}
 	
 	public static Line newFromDictionary(Map<String, Object> constructDict) throws ProtoObjectCreationException{		
-		if (!constructDict.containsKey(CreationFactory.keyWithName))			
+		if (!constructDict.containsKey(Factory.keyWithName))			
 			throw new ProtoObjectCreationException();
-		if (!constructDict.containsKey(CreationFactory.keyWithin))			
+		if (!constructDict.containsKey(Factory.keyWithin))			
 			throw new ProtoObjectCreationException();
-		if (!constructDict.containsKey(CreationFactory.keyFrom))			
+		if (!constructDict.containsKey(Factory.keyFrom))			
 			throw new ProtoObjectCreationException();
-		if (!constructDict.containsKey(CreationFactory.keyTo))			
+		if (!constructDict.containsKey(Factory.keyTo))			
 			throw new ProtoObjectCreationException();
 		
 		//TODO: add check for the type casting
-		Outport from = (Outport) constructDict.get(CreationFactory.keyFrom);
-		Inport to = (Inport) constructDict.get(CreationFactory.keyTo);
-		String name = (String) constructDict.get(CreationFactory.keyWithName);
+		Outport from = (Outport) constructDict.get(Factory.keyFrom);
+		Inport to = (Inport) constructDict.get(Factory.keyTo);
+		String name = (String) constructDict.get(Factory.keyWithName);
 		System system = null;
 		Model model = null;
-		Object parent = constructDict.get(CreationFactory.keyWithin);
+		Object parent = constructDict.get(Factory.keyWithin);
 		if (parent instanceof Model)
 			model = (Model) parent;
 		else

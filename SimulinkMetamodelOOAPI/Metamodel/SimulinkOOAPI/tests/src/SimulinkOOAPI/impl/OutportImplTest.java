@@ -26,7 +26,7 @@ public class OutportImplTest {
 			ignoring(systemMock);			    
 		}});
 		
-		port = new CreationFactory().createOutport().
+		port = Factory.createOutport().
 		                             within(systemMock).
 		                             withName("port").please();					
 	}	

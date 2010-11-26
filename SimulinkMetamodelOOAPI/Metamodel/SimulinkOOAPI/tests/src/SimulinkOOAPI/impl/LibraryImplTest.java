@@ -25,12 +25,11 @@ public class LibraryImplTest {
 	System systemMock = context.mock(System.class);	
 	Inport inportMock = context.mock(Inport.class);
 	Outport outportMock = context.mock(Outport.class);
-    Library library;
-    CreationFactory factory = new CreationFactory();
+    Library library;    
 	
 	@Before
 	public void setUp() throws Exception{		
-		library = factory.createLibrary().withName("library").please();			
+		library = Factory.createLibrary().withName("library").please();			
 	}
 	
 	//Incorrect test! Default constructor should be allowed in order not to break emf core api. 
@@ -54,7 +53,7 @@ public class LibraryImplTest {
 		}});
 		
 		assertEquals(0, library.getNumberOfChildren());
-		library.addChild(factory.createSystem().withName("sys").within(systemMock).please());
+		library.addChild(Factory.createSystem().withName("sys").within(systemMock).please());
 		assertEquals(1, library.getNumberOfChildren());
 	}
 	
@@ -70,19 +69,19 @@ public class LibraryImplTest {
 
 	@Test
 	public void testAddLibrary() throws Exception{
-		testAddWrongChild(new CreationFactory().createLibrary().withName("library").please());		
+		testAddWrongChild(Factory.createLibrary().withName("library").please());		
 	}
 	
 	@Test
 	public void testGetChildrenOfTypeGainBlock() throws Exception {
-		factory.createGainBlock().within(library).withGain(1).withName("gBlock1").please();
-		factory.createGainBlock().within(library).withGain(1).withName("gBlock2").please();				
+		Factory.createGainBlock().within(library).withGain(1).withName("gBlock1").please();
+		Factory.createGainBlock().within(library).withGain(1).withName("gBlock2").please();				
 		assertEquals(2, library.getChildrenOfTypeGainBlock().size());
 	}
 	
 	@Test
 	public void testGetChildrenOfTypeSystem() throws Exception{
-		factory.createSystem().within(library).withName("system").please();		
+		Factory.createSystem().within(library).withName("system").please();		
 		assertEquals(1, library.getChildrenOfTypeSystem().size());
 	}
 

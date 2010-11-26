@@ -20,8 +20,7 @@ public class ReflectionListImplTest {
 	
 	Mockery context = new JUnit4Mockery();	
 	System systemMock = context.mock(System.class);
-	ReflectionListImpl<ProtoObject> list;
-	CreationFactory factory = new CreationFactory();
+	ReflectionListImpl<ProtoObject> list;	
 	
 	@Before
 	public void setUp(){
@@ -37,14 +36,14 @@ public class ReflectionListImplTest {
 			ignoring(systemMock);
 		}});
 		
-		list.add(factory.createGainBlock().withGain(2).within(systemMock).withName("gainblock").please());
+		list.add(Factory.createGainBlock().withGain(2).within(systemMock).withName("gainblock").please());
 		ReflectionList<ProtoObject> result = list.collect("ifGainBlockAddToList");
 		assertEquals(1, result.size());
 	}
 	
 	@Test
 	public void testCollect2() throws Exception{
-		list.add(factory.createModel().withName("model").please());
+		list.add(Factory.createModel().withName("model").please());
 		ReflectionList<ProtoObject> result = list.collect("ifGainBlockAddToList");
 		assertEquals(0, result.size());
 	}

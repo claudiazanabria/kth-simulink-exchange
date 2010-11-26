@@ -76,14 +76,14 @@ public class InportImpl extends PortImpl implements Inport {
 	}
 	
 	public static InportImpl newFromDictionary(Map<String, Object> constructDict) throws ProtoObjectCreationException{		
-		if (!constructDict.containsKey(CreationFactory.keyWithName))			
+		if (!constructDict.containsKey(Factory.keyWithName))			
 			throw new ProtoObjectCreationException();
-		if (!constructDict.containsKey(CreationFactory.keyWithin))			
+		if (!constructDict.containsKey(Factory.keyWithin))			
 			throw new ProtoObjectCreationException();		
 		
 		//TODO: add check for the type casting		
-		String name = (String) constructDict.get(CreationFactory.keyWithName);		
-		System parent = (System) constructDict.get(CreationFactory.keyWithin);
+		String name = (String) constructDict.get(Factory.keyWithName);		
+		System parent = (System) constructDict.get(Factory.keyWithin);
 		
 		return new InportImpl(name, parent);		
 	}

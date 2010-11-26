@@ -223,19 +223,19 @@ public class GainBlockImpl extends ProtoObjectImpl implements GainBlock {
 	
 	
 	public static GainBlock newFromDictionary(Map<String, Object> constructDict) throws ProtoObjectCreationException{		
-		if (!constructDict.containsKey(CreationFactory.keyWithName))			
+		if (!constructDict.containsKey(Factory.keyWithName))			
 			throw new ProtoObjectCreationException();
-		if (!constructDict.containsKey(CreationFactory.keyWithin))			
+		if (!constructDict.containsKey(Factory.keyWithin))			
 			throw new ProtoObjectCreationException();
-		if (!constructDict.containsKey(CreationFactory.keyWithGain))			
+		if (!constructDict.containsKey(Factory.keyWithGain))			
 			throw new ProtoObjectCreationException();
 		
 		//TODO: add check for the type casting
-		int gain = ((Integer) constructDict.get(CreationFactory.keyWithGain)).intValue();
-		String name = (String) constructDict.get(CreationFactory.keyWithName);
+		int gain = ((Integer) constructDict.get(Factory.keyWithGain)).intValue();
+		String name = (String) constructDict.get(Factory.keyWithName);
 		System system = null;
 		Library library = null;
-		Object parent = constructDict.get(CreationFactory.keyWithin);
+		Object parent = constructDict.get(Factory.keyWithin);
 		if (parent instanceof Library)
 			library = (Library) parent;
 		else

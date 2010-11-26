@@ -24,15 +24,14 @@ public class ModelImplTest {
 	System systemMock = context.mock(System.class);	
 	Inport inportMock = context.mock(Inport.class);
 	Outport outportMock = context.mock(Outport.class);
-    Model model;
-    CreationFactory factory = new CreationFactory();
+    Model model;    
 	
 	@Before
 	public void setUp() throws Exception{		
-		model = factory.createModel().withName("model").please();
+		model = Factory.createModel().withName("model").please();
 		
-		factory.createSystem().withName("sys1").within(model).please();
-		factory.createSystem().withName("sys2").within(model).please();						
+		Factory.createSystem().withName("sys1").within(model).please();
+		Factory.createSystem().withName("sys2").within(model).please();						
 	}
 	
 	//Incorrect test! Default constructor should be allowed in order not to break emf core api. 
@@ -55,7 +54,7 @@ public class ModelImplTest {
 		}});
 		
 		assertEquals(2, model.getNumberOfChildren());
-		model.addChild(factory.createSystem().within(systemMock).withName("sys1").please());
+		model.addChild(Factory.createSystem().within(systemMock).withName("sys1").please());
 		assertEquals(3, model.getNumberOfChildren());
 	}
 	
@@ -75,12 +74,12 @@ public class ModelImplTest {
 			ignoring(systemMock);
 		}});
 		
-		testAddWrongChild(factory.createGainBlock().within(systemMock).withGain(2).withName("gainBlock").please());		
+		testAddWrongChild(Factory.createGainBlock().within(systemMock).withGain(2).withName("gainBlock").please());		
 	}
 	
 	@Test
 	public void testAddLibrary() throws Exception{
-		testAddWrongChild(factory.createLibrary().withName("library").please());		
+		testAddWrongChild(Factory.createLibrary().withName("library").please());		
 	}
 	
 	@Test
@@ -89,7 +88,7 @@ public class ModelImplTest {
 			ignoring(systemMock);
 		}});
 		
-		testAddWrongChild(factory.createInport().within(systemMock).withName("port").please());
+		testAddWrongChild(Factory.createInport().within(systemMock).withName("port").please());
 	}
 	
 	@Test	
@@ -103,7 +102,7 @@ public class ModelImplTest {
 			ignoring(systemMock);			
 		}});
 		
-		factory.createLine().withName("line").within(model).from(outportMock).to(inportMock).please();		
+		Factory.createLine().withName("line").within(model).from(outportMock).to(inportMock).please();		
 		assertEquals(1, model.getChildrenOfTypeLine().size());
 	}
 	

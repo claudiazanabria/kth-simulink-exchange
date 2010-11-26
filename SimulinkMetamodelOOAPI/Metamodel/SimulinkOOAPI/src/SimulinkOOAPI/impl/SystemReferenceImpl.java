@@ -198,19 +198,19 @@ public class SystemReferenceImpl extends ProtoObjectImpl implements SystemRefere
 	}
 	
 	public static SystemReference newFromDictionary(Map<String, Object> constructDict) throws ProtoObjectCreationException{		
-		if (!constructDict.containsKey(CreationFactory.keyWithName))			
+		if (!constructDict.containsKey(Factory.keyWithName))			
 			throw new ProtoObjectCreationException();
-		if (!constructDict.containsKey(CreationFactory.keyWithin))			
+		if (!constructDict.containsKey(Factory.keyWithin))			
 			throw new ProtoObjectCreationException();
-		if (!constructDict.containsKey(CreationFactory.keyTargeting))			
+		if (!constructDict.containsKey(Factory.keyTargeting))			
 			throw new ProtoObjectCreationException();
 		
 		//TODO: add check for the type casting		
-		String name = (String) constructDict.get(CreationFactory.keyWithName);
-		System target = (System) constructDict.get(CreationFactory.keyTargeting);
+		String name = (String) constructDict.get(Factory.keyWithName);
+		System target = (System) constructDict.get(Factory.keyTargeting);
 		System system = null;
 		Model model = null;
-		Object parent = constructDict.get(CreationFactory.keyWithin);
+		Object parent = constructDict.get(Factory.keyWithin);
 		if (parent instanceof Model)
 			model = (Model) parent;
 		else
