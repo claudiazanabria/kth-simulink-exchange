@@ -9,13 +9,13 @@ import org.junit.Test;
 import SimulinkOOAPI.Model;
 
 
-public class DemoModelBuilderTest {	
+public class YorkModelTest {	
 	
 	
 	@Test
 	public void testModelsCompare() throws Exception{		
-		Model modelA = DemoModelBuilder.buildYorkModelWithECoreAPI();
-		Model modelB = DemoModelBuilder.buildYorkModelWithSimulinkOOAPI();    
+		Model modelA = YorkModel.buildWithECoreAPI();
+		Model modelB = YorkModel.buildWithSimulinkOOAPI();    
 		//MatchModel match = EMFCompareWrapper.getMatch(modelA, modelB);
 		
 		assertTrue(EMFCompareWrapper.matched(modelA, modelB));		

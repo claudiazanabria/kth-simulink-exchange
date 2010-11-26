@@ -37,11 +37,11 @@ public class LineImplTest {
 			ignoring(modelMock);			
 		}});
 		
-		System system = Factory.createSystem().withName("sys").within(modelMock).please();
-		System subSystem = Factory.createSystem().withName("sub").within(system).please();		
-		Inport inport = Factory.createInport().withName("inport").within(system).please();
-		Outport outport = Factory.createOutport().withName("outport").within(subSystem).please();
-		line = Factory.createLine().withName("line").within(modelMock).from(outport).to(inport).please();		
+		System system = new Factory.Builder().named("sys").within(modelMock).createSystem();
+		System subSystem = new Factory.Builder().named("sub").within(system).createSystem();		
+		Inport inport = new Factory.Builder().named("inport").within(system).createInport();
+		Outport outport = new Factory.Builder().named("outport").within(subSystem).createOutport();
+		line = new Factory.Builder().named("line").within(modelMock).from(outport).to(inport).createLine();		
 	}
 	
 	//Incorrect test! Default constructor should be allowed in order not to break emf core api. 
@@ -73,8 +73,8 @@ public class LineImplTest {
 			ignoring(systemMock);			
 		}});
 		
-		Inport inport = Factory.createInport().withName("inport").within(systemMock).please();
-		Outport outport = Factory.createOutport().withName("outport").within(systemMock).please();		
+		Inport inport = new Factory.Builder().named("inport").within(systemMock).createInport();
+		Outport outport = new Factory.Builder().named("outport").within(systemMock).createOutport();		
 		
 		assertTrue(LineImpl.portsBelongToTheSameSystem(inport, outport));
 	}
@@ -85,9 +85,9 @@ public class LineImplTest {
 			ignoring(systemMock);			
 		}});
 		
-		System system = Factory.createSystem().within(systemMock).withName("system").please();
-		Inport inport = Factory.createInport().withName("inport").within(systemMock).please();
-		Outport outport = Factory.createOutport().withName("outport").within(system).please();		
+		System system = new Factory.Builder().within(systemMock).named("system").createSystem();
+		Inport inport = new Factory.Builder().named("inport").within(systemMock).createInport();
+		Outport outport = new Factory.Builder().named("outport").within(system).createOutport();		
 		
 		assertFalse(LineImpl.portsBelongToTheSameSystem(inport, outport));
 	}
@@ -98,11 +98,11 @@ public class LineImplTest {
 			ignoring(modelMock);			
 		}});
 		
-		System system = Factory.createSystem().within(modelMock).withName("system").please();		
-		System subSystem = Factory.createSystem().within(system).withName("sub").please();		
+		System system = new Factory.Builder().within(modelMock).named("system").createSystem();		
+		System subSystem = new Factory.Builder().within(system).named("sub").createSystem();		
 		
-		Outport outport = Factory.createOutport().withName("outport").within(system).please();	
-		Inport inport = Factory.createInport().withName("inport").within(subSystem).please();		
+		Outport outport = new Factory.Builder().named("outport").within(system).createOutport();	
+		Inport inport = new Factory.Builder().named("inport").within(subSystem).createInport();		
 		
 		assertTrue(LineImpl.canConnectPortsAtDifferentLevels(outport, inport));
 	}
@@ -113,11 +113,11 @@ public class LineImplTest {
 			ignoring(modelMock);			
 		}});
 		
-		System system = Factory.createSystem().within(modelMock).withName("system").please();		
-		System subSystem = Factory.createSystem().within(system).withName("sub").please();		
+		System system = new Factory.Builder().within(modelMock).named("system").createSystem();		
+		System subSystem = new Factory.Builder().within(system).named("sub").createSystem();		
 		
-		Outport outport = Factory.createOutport().withName("outport").within(subSystem).please();	
-		Inport inport = Factory.createInport().withName("inport").within(system).please();		
+		Outport outport = new Factory.Builder().named("outport").within(subSystem).createOutport();	
+		Inport inport = new Factory.Builder().named("inport").within(system).createInport();		
 		
 		assertTrue(LineImpl.canConnectPortsAtDifferentLevels(outport, inport));
 	}
@@ -128,12 +128,12 @@ public class LineImplTest {
 			ignoring(modelMock);			
 		}});
 		
-		System system = Factory.createSystem().within(modelMock).withName("system").please();		
-		System subSystem = Factory.createSystem().within(system).withName("sub").please();
-		System subSubSystem = Factory.createSystem().within(subSystem).withName("subSystem").please();
+		System system = new Factory.Builder().within(modelMock).named("system").createSystem();		
+		System subSystem = new Factory.Builder().within(system).named("sub").createSystem();
+		System subSubSystem = new Factory.Builder().within(subSystem).named("subSystem").createSystem();
 		
-		Outport outport = Factory.createOutport().withName("outport").within(system).please();
-		Inport inport = Factory.createInport().withName("inport").within(subSubSystem).please();		
+		Outport outport = new Factory.Builder().named("outport").within(system).createOutport();
+		Inport inport = new Factory.Builder().named("inport").within(subSubSystem).createInport();		
 		
 		assertFalse(LineImpl.canConnectPortsAtDifferentLevels(outport, inport));
 	}
@@ -144,12 +144,12 @@ public class LineImplTest {
 			ignoring(modelMock);			
 		}});
 		
-		System system = Factory.createSystem().within(modelMock).withName("system").please();		
-		System subSystem = Factory.createSystem().within(system).withName("sub").please();
-		System subSubSystem = Factory.createSystem().within(subSystem).withName("subSystem").please();
+		System system = new Factory.Builder().within(modelMock).named("system").createSystem();		
+		System subSystem = new Factory.Builder().within(system).named("sub").createSystem();
+		System subSubSystem = new Factory.Builder().within(subSystem).named("subSystem").createSystem();
 		
-		Outport outport = Factory.createOutport().withName("outport").within(subSubSystem).please();
-		Inport inport = Factory.createInport().withName("inport").within(system).please();
+		Outport outport = new Factory.Builder().named("outport").within(subSubSystem).createOutport();
+		Inport inport = new Factory.Builder().named("inport").within(system).createInport();
 				
 		assertFalse(LineImpl.canConnectPortsAtDifferentLevels(outport, inport));
 	}
@@ -160,12 +160,12 @@ public class LineImplTest {
 			ignoring(modelMock);			
 		}});
 		
-		System system = Factory.createSystem().within(modelMock).withName("system").please();
-		System subSystemA = Factory.createSystem().within(system).withName("subSystem1").please();
-		System subSystemB = Factory.createSystem().within(system).withName("subSystem").please();		
+		System system = new Factory.Builder().within(modelMock).named("system").createSystem();
+		System subSystemA = new Factory.Builder().within(system).named("subSystem1").createSystem();
+		System subSystemB = new Factory.Builder().within(system).named("subSystem").createSystem();		
 		
-		Outport outport = Factory.createOutport().withName("outport").within(subSystemA).please();
-		Inport inport = Factory.createInport().withName("inport").within(subSystemB).please();		
+		Outport outport = new Factory.Builder().named("outport").within(subSystemA).createOutport();
+		Inport inport = new Factory.Builder().named("inport").within(subSystemB).createInport();		
 		
 		assertTrue(LineImpl.canConnectPortsAtTheSameLevel(outport, inport));
 	}
@@ -176,12 +176,12 @@ public class LineImplTest {
 			ignoring(modelMock);			
 		}});
 		
-		System system = Factory.createSystem().within(modelMock).withName("system").please();		
-		System subSystem = Factory.createSystem().within(system).withName("sub").please();
-		System subSubSystem = Factory.createSystem().within(subSystem).withName("subSystem").please();
+		System system = new Factory.Builder().within(modelMock).named("system").createSystem();		
+		System subSystem = new Factory.Builder().within(system).named("sub").createSystem();
+		System subSubSystem = new Factory.Builder().within(subSystem).named("subSystem").createSystem();
 		
-		Outport outport = Factory.createOutport().withName("outport").within(subSystem).please();
-		Inport inport = Factory.createInport().withName("inport").within(subSubSystem).please();
+		Outport outport = new Factory.Builder().named("outport").within(subSystem).createOutport();
+		Inport inport = new Factory.Builder().named("inport").within(subSubSystem).createInport();
 		
 		assertFalse(LineImpl.canConnectPortsAtTheSameLevel(outport, inport));
 	}

@@ -1,7 +1,5 @@
 package SimulinkOOAPI.util;
 
-import java.util.List;
-
 import org.eclipse.emf.compare.FactoryException;
 import org.eclipse.emf.compare.match.engine.GenericMatchEngine;
 import org.eclipse.emf.ecore.EObject;
@@ -10,6 +8,7 @@ import SimulinkOOAPI.Identity;
 import SimulinkOOAPI.Library;
 import SimulinkOOAPI.Model;
 import SimulinkOOAPI.ProtoObject;
+import SimulinkOOAPI.ReflectionList;
 import SimulinkOOAPI.System;
 
 public class SimulinkModelMatcher extends GenericMatchEngine{
@@ -38,15 +37,15 @@ public class SimulinkModelMatcher extends GenericMatchEngine{
 		if (obj1 instanceof Library && obj2 instanceof Library){
 			if(!areChildrenSimilar((Library) obj1, (Library) obj2))
 				return false;	
-		} 
-		 
+		}	 
+		
 		return super.isSimilar(obj1, obj2);
 	}
 	
 	private boolean areChildrenSimilar(Model obj1, Model obj2){
 		if (haveChildrenSameSize(obj1, obj2)){
-			List<ProtoObject> children1 = obj1.getAllChildren();
-			List<ProtoObject> children2 = obj2.getAllChildren();		
+			ReflectionList<ProtoObject> children1 = obj1.getAllChildren();
+			ReflectionList<ProtoObject> children2 = obj2.getAllChildren();		
 			if(!areChildrenSimilar(children1, children2))
 				return false;
 		
@@ -58,8 +57,8 @@ public class SimulinkModelMatcher extends GenericMatchEngine{
 	
 	private boolean areChildrenSimilar(System obj1, System obj2){
 		if (haveChildrenSameSize(obj1, obj2)){
-			List<ProtoObject> children1 = obj1.getAllChildren();
-			List<ProtoObject> children2 = obj2.getAllChildren();		
+			ReflectionList<ProtoObject> children1 = obj1.getAllChildren();
+			ReflectionList<ProtoObject> children2 = obj2.getAllChildren();		
 			if(!areChildrenSimilar(children1, children2))
 				return false;
 		
@@ -71,8 +70,8 @@ public class SimulinkModelMatcher extends GenericMatchEngine{
 	
 	private boolean areChildrenSimilar(Library obj1, Library obj2){
 		if (haveChildrenSameSize(obj1, obj2)){
-			List<ProtoObject> children1 = obj1.getAllChildren();
-			List<ProtoObject> children2 = obj2.getAllChildren();		
+			ReflectionList<ProtoObject> children1 = obj1.getAllChildren();
+			ReflectionList<ProtoObject> children2 = obj2.getAllChildren();		
 			if(!areChildrenSimilar(children1, children2))
 				return false;
 		
@@ -82,9 +81,9 @@ public class SimulinkModelMatcher extends GenericMatchEngine{
 		return false;
 	}
 	
-	private boolean areChildrenSimilar(List<ProtoObject> children1, List<ProtoObject> children2){
+	private boolean areChildrenSimilar(ReflectionList<ProtoObject> children1, ReflectionList<ProtoObject> children2){
 		for (ProtoObject element: children1){
-			if (!children2.contains(element)){
+			if (!children2.doesContain(element)){
 				return false;
 			}
 		}
@@ -102,6 +101,6 @@ public class SimulinkModelMatcher extends GenericMatchEngine{
 	
 	private boolean haveChildrenSameSize(Library obj1, Library obj2){
 		return obj1.getNumberOfChildren() == obj2.getNumberOfChildren();
-	}
-
+	}	
+	
 }

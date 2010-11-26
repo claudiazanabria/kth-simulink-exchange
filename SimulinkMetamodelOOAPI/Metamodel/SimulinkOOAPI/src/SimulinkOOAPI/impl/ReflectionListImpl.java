@@ -5,9 +5,11 @@ import java.lang.reflect.Method;
 import java.util.ListIterator;
 
 import org.eclipse.emf.common.util.BasicEList;
+import org.eclipse.emf.ecore.EObject;
 
-import SimulinkOOAPI.ProtoObject;
+//import SimulinkOOAPI.ProtoObject;
 import SimulinkOOAPI.ReflectionList;
+import SimulinkOOAPI.util.EqualityHelper;
 
 /**
  * @generated NOT
@@ -21,7 +23,7 @@ public class ReflectionListImpl<T> extends BasicEList<T> implements ReflectionLi
 	
 	private Method getMethod(String methodName) throws ClassNotFoundException, NoSuchMethodException{
 
-		Class<ProtoObject> cl = (Class<ProtoObject>)Class.forName("SimulinkOOAPI.impl.ProtoObjectImpl");//ProtoObjectImpl.class;		
+		Class cl = Class.forName("SimulinkOOAPI.impl.ProtoObjectImpl");//ProtoObjectImpl.class;		
 		
 		return cl.getMethod(methodName, new Class[]{ReflectionList.class});
 	}
@@ -59,6 +61,27 @@ public class ReflectionListImpl<T> extends BasicEList<T> implements ReflectionLi
 	public ReflectionList<T> select(String methodName) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	
+	@Override
+	public boolean doesContain(EObject object) {
+		if (object != null) {
+	      for (int i = 0; i < size; ++i) {
+	    	if(data[i] instanceof EObject){
+	    		if (new EqualityHelper().equals((EObject)data[i], object))
+	    			return true;
+	    	}
+	      }
+	    }
+	    else {
+	      for (int i = 0; i < size; ++i) {
+	        if (data[i] == object)	        
+	          return true;	        
+	      }
+	    }
+
+	    return false;		
 	}
 
 }

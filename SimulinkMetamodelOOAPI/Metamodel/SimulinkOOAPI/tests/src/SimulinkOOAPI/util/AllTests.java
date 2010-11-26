@@ -7,7 +7,7 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
 	AssertionRunnerTest.class,
-	DemoModelBuilderTest.class,
+	YorkModelTest.class,
 	EMFCompareWrapperTest.class,
 	EqualityHelperTest.class
 })

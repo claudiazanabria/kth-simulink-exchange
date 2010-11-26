@@ -14,23 +14,23 @@ public class EMFCompareWrapperTest {
 	
 	@Test
 	public void testMatchEqualModels() throws Exception{
-		Model modelA = Factory.createModel().withName("a").please();
-		Model modelB = Factory.createModel().withName("a").please();		
+		Model modelA = new Factory.Builder().named("a").createModel();
+		Model modelB = new Factory.Builder().named("a").createModel();		
 		assertTrue(EMFCompareWrapper.matched(modelA, modelB));				
 	}
 	
 	@Test
 	public void testMatchModelsWithDiffNames() throws Exception{		
-		Model modelA = Factory.createModel().withName("a").please();
-		Model modelB = Factory.createModel().withName("b").please();		
+		Model modelA = new Factory.Builder().named("a").createModel();
+		Model modelB = new Factory.Builder().named("b").createModel();		
 		assertTrue(EMFCompareWrapper.matched(modelA, modelB));		
 	}
 	
 	@Test
 	public void testMatchModelsWithDiffChild() throws Exception{		
-		Model modelA = Factory.createModel().withName("a").please();
-		Model modelB = Factory.createModel().withName("a").please();
-		Factory.createSystem().within(modelA).withName("sys");
+		Model modelA = new Factory.Builder().named("a").createModel();
+		Model modelB = new Factory.Builder().named("a").createModel();
+		new Factory.Builder().within(modelA).named("sys").createSystem();
 		
 		assertFalse(EMFCompareWrapper.matched(modelA, modelB));		
 		assertNull(EMFCompareWrapper.getDifference(modelA, modelB));
@@ -38,8 +38,8 @@ public class EMFCompareWrapperTest {
 	
 	@Test	
 	public void testNonMatchModels() throws Exception{		
-		Model modelA = Factory.createModel().withName("a").please();
-		System modelB = Factory.createSystem().within(modelA).withName("sys").please();		
+		Model modelA = new Factory.Builder().named("a").createModel();
+		System modelB = new Factory.Builder().within(modelA).named("sys").createSystem();		
 		assertFalse(EMFCompareWrapper.matched(modelA, modelB));
 		assertNull(EMFCompareWrapper.getDifference(modelA, modelB));
 	}

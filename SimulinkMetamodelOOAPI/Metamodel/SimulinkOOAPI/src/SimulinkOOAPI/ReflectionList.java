@@ -1,9 +1,12 @@
 package SimulinkOOAPI;
 
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
+//import java.lang.reflect.Method;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
+
+import SimulinkOOAPI.util.EqualityHelper;
 
 /**
  * 
@@ -35,6 +38,14 @@ public interface ReflectionList<T> extends EList<T>{
 	 * @generated NOT
 	 */
 	public ReflectionList<T> select(String methodName);
+	
+	/**
+	 * Method for calling from the matching test.
+	 * Returns true if this list contains the specified element.
+	 * I. e. if the passing object is equals to some list element, 
+	 * where the equality is delegate to {@link EqualityHelper}
+	 */
+	public boolean doesContain(EObject object);
 	
 
 }

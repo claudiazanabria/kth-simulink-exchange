@@ -31,11 +31,10 @@ public class GainBlockImplTest {
 			ignoring(systemMock);
 		}});	
 		
-		gainBlock = Factory.createGainBlock().
-										  withGain(3).
-										  withName("gblock").
+		gainBlock = new Factory.Builder().withGain(3).
+										  named("gblock").
 										  within(systemMock).
-										  please();
+										  createGainBlock();
 				
 	}
 	

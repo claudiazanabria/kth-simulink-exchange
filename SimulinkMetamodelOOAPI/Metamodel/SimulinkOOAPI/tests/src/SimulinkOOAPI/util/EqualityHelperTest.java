@@ -9,35 +9,37 @@ import SimulinkOOAPI.Model;
 import SimulinkOOAPI.impl.Factory;
 
 
-public class EqualityHelperTest {	
+public class EqualityHelperTest {
+	
+	EqualityHelper helper = new EqualityHelper();
 	
 	@Test
 	public void testEmptyModelsAreEqual() throws Exception{
-		Model modelA = (Model) Factory.createModel().withName("a").please();
-		Model modelB = (Model) Factory.createModel().withName("a").please();
+		Model modelA = new Factory.Builder().named("a").createModel();
+		Model modelB = new Factory.Builder().named("a").createModel();
 		
-		assertTrue(modelA.equals(modelB));
+		assertTrue(helper.equals(modelA, modelB));
 	}
 	
 	@Test
 	public void testEmptyModelsAreNotEqual() throws Exception{
-		Model modelA = (Model) Factory.createModel().withName("a").please();
-		Model modelB = (Model) Factory.createModel().withName("b").please();
+		Model modelA = new Factory.Builder().named("a").createModel();
+		Model modelB = new Factory.Builder().named("b").createModel();
 		
-		assertFalse(modelA.equals(modelB));
+		assertFalse(helper.equals(modelA, modelB));
 	}
 	
 	@Test
 	public void testModelsAreEqual() throws Exception{
-		Model modelA = (Model) Factory.createModel().withName("a").please();
-		Model modelB = (Model) Factory.createModel().withName("a").please();
+		Model modelA = new Factory.Builder().named("a").createModel();
+		Model modelB = new Factory.Builder().named("a").createModel();
 		
-		Factory.createSystem().within(modelA).withName("sysA").please();
-		Factory.createSystem().within(modelA).withName("sysB").please();
-		Factory.createSystem().within(modelB).withName("sysA").please();
-		Factory.createSystem().within(modelB).withName("sysB").please();
+		new Factory.Builder().within(modelA).named("sysA").createSystem();
+		new Factory.Builder().within(modelA).named("sysB").createSystem();
+		new Factory.Builder().within(modelB).named("sysA").createSystem();
+		new Factory.Builder().within(modelB).named("sysB").createSystem();
 		
-		assertTrue(modelA.equals(modelB));
+		assertTrue(helper.equals(modelA, modelB));
 	}
 
 }

@@ -36,14 +36,14 @@ public class ReflectionListImplTest {
 			ignoring(systemMock);
 		}});
 		
-		list.add(Factory.createGainBlock().withGain(2).within(systemMock).withName("gainblock").please());
+		list.add(new Factory.Builder().withGain(2).within(systemMock).named("gainblock").createGainBlock());
 		ReflectionList<ProtoObject> result = list.collect("ifGainBlockAddToList");
 		assertEquals(1, result.size());
 	}
 	
 	@Test
 	public void testCollect2() throws Exception{
-		list.add(Factory.createModel().withName("model").please());
+		list.add(new Factory.Builder().named("model").createModel());
 		ReflectionList<ProtoObject> result = list.collect("ifGainBlockAddToList");
 		assertEquals(0, result.size());
 	}

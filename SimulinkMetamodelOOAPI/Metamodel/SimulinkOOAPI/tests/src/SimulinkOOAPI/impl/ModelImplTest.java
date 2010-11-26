@@ -28,10 +28,10 @@ public class ModelImplTest {
 	
 	@Before
 	public void setUp() throws Exception{		
-		model = Factory.createModel().withName("model").please();
+		model = new Factory.Builder().named("model").createModel();
 		
-		Factory.createSystem().withName("sys1").within(model).please();
-		Factory.createSystem().withName("sys2").within(model).please();						
+		new Factory.Builder().named("sys1").within(model).createSystem();
+		new Factory.Builder().named("sys2").within(model).createSystem();						
 	}
 	
 	//Incorrect test! Default constructor should be allowed in order not to break emf core api. 
@@ -54,7 +54,7 @@ public class ModelImplTest {
 		}});
 		
 		assertEquals(2, model.getNumberOfChildren());
-		model.addChild(Factory.createSystem().within(systemMock).withName("sys1").please());
+		model.addChild(new Factory.Builder().within(systemMock).named("sys1").createSystem());
 		assertEquals(3, model.getNumberOfChildren());
 	}
 	
@@ -74,12 +74,12 @@ public class ModelImplTest {
 			ignoring(systemMock);
 		}});
 		
-		testAddWrongChild(Factory.createGainBlock().within(systemMock).withGain(2).withName("gainBlock").please());		
+		testAddWrongChild(new Factory.Builder().within(systemMock).withGain(2).named("gainBlock").createGainBlock());		
 	}
 	
 	@Test
 	public void testAddLibrary() throws Exception{
-		testAddWrongChild(Factory.createLibrary().withName("library").please());		
+		testAddWrongChild(new Factory.Builder().named("library").createLibrary());		
 	}
 	
 	@Test
@@ -88,7 +88,7 @@ public class ModelImplTest {
 			ignoring(systemMock);
 		}});
 		
-		testAddWrongChild(Factory.createInport().within(systemMock).withName("port").please());
+		testAddWrongChild(new Factory.Builder().within(systemMock).named("port").createInport());
 	}
 	
 	@Test	
@@ -102,7 +102,7 @@ public class ModelImplTest {
 			ignoring(systemMock);			
 		}});
 		
-		Factory.createLine().withName("line").within(model).from(outportMock).to(inportMock).please();		
+		new Factory.Builder().named("line").within(model).from(outportMock).to(inportMock).createLine();		
 		assertEquals(1, model.getChildrenOfTypeLine().size());
 	}
 	

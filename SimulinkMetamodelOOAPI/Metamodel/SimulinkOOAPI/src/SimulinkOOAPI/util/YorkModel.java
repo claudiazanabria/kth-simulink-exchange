@@ -12,38 +12,39 @@ import SimulinkOOAPI.impl.ProtoObjectCreationException;
 import SimulinkOOAPI.impl.SimulinkOOAPIFactoryImpl;
 
 
-public class DemoModelBuilder {
+public class YorkModel {
 	
 	/**
 	 * Builds York model with SimulinkOO API.	 
-	 */
-	public static Model buildYorkModelWithSimulinkOOAPI() throws ProtoObjectCreationException{	
+	 *
+	 */	
+	public static Model buildWithSimulinkOOAPI() throws ProtoObjectCreationException{	
 		
-		Model model = Factory.createModel().withName("model").please();
+		Model model = new Factory.Builder().named("model").createModel();
 		
-		System rootSys = Factory.createSystem().within(model).withName("RootSystem").please();
-		System system1 = Factory.createSystem().within(model).withName("System1").please();
-		System system2 = Factory.createSystem().within(model).withName("System2").please();
-		System primarySys = Factory.createSystem().within(model).withName("Primary").please();		
-		System standBySys = Factory.createSystem().within(model).withName("StandBy").please();
+		System rootSys = new Factory.Builder().within(model).named("RootSystem").createSystem();
+		System system1 = new Factory.Builder().within(model).named("System1").createSystem();
+		System system2 = new Factory.Builder().within(model).named("System2").createSystem();
+		System primarySys = new Factory.Builder().within(model).named("Primary").createSystem();		
+		System standBySys = new Factory.Builder().within(model).named("StandBy").createSystem();
 		
-		Factory.createSystemReference().within(rootSys).targeting(system1).withName("SysRef1").please();
-		Factory.createSystemReference().within(rootSys).targeting(system2).withName("SysRef2").please();
-		Factory.createSystemReference().within(rootSys).targeting(primarySys).withName("SysRef3").please();		
+		new Factory.Builder().within(rootSys).targeting(system1).named("SysRef1").createSystemReferemce();
+		new Factory.Builder().within(rootSys).targeting(system2).named("SysRef2").createSystemReferemce();
+		new Factory.Builder().within(rootSys).targeting(primarySys).named("SysRef3").createSystemReferemce();		
 		
-		Inport system2Inport = Factory.createInport().within(system2).withName("sys2In").please();
-		Outport system2Outport = Factory.createOutport().within(system2).withName("sys2Out").please();
-		Inport primarySysInport = Factory.createInport().within(primarySys).withName("primarysysIn").please();
-		Outport primarySysOutport = Factory.createOutport().within(primarySys).withName("primarysysOut").please();
-		Inport standBySysInport1 = Factory.createInport().within(standBySys).withName("standBySysInport1").please();
-		Inport standBySysInport2 = Factory.createInport().within(standBySys).withName("standBySysInport2").please();
-		Outport standBySysOutport = Factory.createOutport().within(standBySys).withName("standBySysOutport").please();
+		Inport system2Inport = new Factory.Builder().within(system2).named("sys2In").createInport();
+		Outport system2Outport = new Factory.Builder().within(system2).named("sys2Out").createOutport();
+		Inport primarySysInport = new Factory.Builder().within(primarySys).named("primarysysIn").createInport();
+		Outport primarySysOutport = new Factory.Builder().within(primarySys).named("primarysysOut").createOutport();
+		Inport standBySysInport1 = new Factory.Builder().within(standBySys).named("standBySysInport1").createInport();
+		Inport standBySysInport2 = new Factory.Builder().within(standBySys).named("standBySysInport2").createInport();
+		Outport standBySysOutport = new Factory.Builder().within(standBySys).named("standBySysOutport").createOutport();
 		
-		Factory.createLine().within(system2).from(system2Outport).to(primarySysInport).withName("line1").please();
-		Factory.createLine().within(system2).from(system2Outport).to(standBySysInport1).withName("line2").please();
-		Factory.createLine().within(system2).from(primarySysOutport).to(standBySysInport2).withName("line3").please();
-		Factory.createLine().within(system2).from(primarySysOutport).to(system2Inport).withName("line4").please();
-		Factory.createLine().within(system2).from(standBySysOutport).to(system2Inport).withName("line5").please();
+		new Factory.Builder().within(system2).from(system2Outport).to(primarySysInport).named("line1").createLine();
+		new Factory.Builder().within(system2).from(system2Outport).to(standBySysInport1).named("line2").createLine();
+		new Factory.Builder().within(system2).from(primarySysOutport).to(standBySysInport2).named("line3").createLine();
+		new Factory.Builder().within(system2).from(primarySysOutport).to(system2Inport).named("line4").createLine();
+		new Factory.Builder().within(system2).from(standBySysOutport).to(system2Inport).named("line5").createLine();
 		
 		return model;
 	}
@@ -52,7 +53,7 @@ public class DemoModelBuilder {
 	/**
 	 * Builds York model by means of pure ECore API.
 	 */
-	public static Model buildYorkModelWithECoreAPI(){
+	public static Model buildWithECoreAPI(){
 		
 		SimulinkOOAPIFactory factory = SimulinkOOAPIFactoryImpl.init();		
 		Model model = factory.createModel();

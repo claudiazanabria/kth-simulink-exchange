@@ -26,7 +26,7 @@ public class InportImplTest {
 			ignoring(systemMock);			    
 		}});
 		
-		port = Factory.createInport().withName("inport").within(systemMock).please();		 					
+		port = new Factory.Builder().named("inport").within(systemMock).createInport();		 					
 	}	
 	
 	@Test

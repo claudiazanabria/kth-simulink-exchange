@@ -39,17 +39,17 @@ public class ChildrenSupportImplTest {
 			ignoring(modelMock);			    
 		}});
 		
-		System sys1 = Factory.createSystem().withName("sys1").within(modelMock).please();
+		System sys1 = new Factory.Builder().named("sys1").within(modelMock).createSystem();
 		childrenSupport.addChild(sys1);
-		childrenSupport.addChild(Factory.createSystem().within(sys1).withName("sys2").please());
-		childrenSupport.addChild(Factory.createGainBlock().withGain(3).within(sys1).withName("gain1").please());
-		childrenSupport.addChild(Factory.createGainBlock().withGain(3).within(sys1).withName("gain2").please());
+		childrenSupport.addChild(new Factory.Builder().within(sys1).named("sys2").createSystem());
+		childrenSupport.addChild(new Factory.Builder().withGain(3).within(sys1).named("gain1").createGainBlock());
+		childrenSupport.addChild(new Factory.Builder().withGain(3).within(sys1).named("gain2").createGainBlock());
 	}
 	
 	@Test
 	public void testAddChild() throws Exception{
 		assertEquals(4, childrenSupport.getNumberOfChildren());
-		childrenSupport.addChild(Factory.createSystem().within(modelMock).withName("sys1").please());
+		childrenSupport.addChild(new Factory.Builder().within(modelMock).named("sys1").createSystem());
 		assertEquals(5, childrenSupport.getNumberOfChildren());
 	}
 	
@@ -72,7 +72,7 @@ public class ChildrenSupportImplTest {
 			ignoring(systemMock);					
 		}});		
 		
-		childrenSupport.addChild(Factory.createLine().within(systemMock).from(outportMock).to(inportMock).withName("line").please());
+		childrenSupport.addChild(new Factory.Builder().within(systemMock).from(outportMock).to(inportMock).named("line").createLine());
 		assertEquals(1, childrenSupport.getChildrenOfTypeLine().size());
 	}
 	
@@ -82,8 +82,8 @@ public class ChildrenSupportImplTest {
 			ignoring(systemMock);			    
 		}});
 		
-		childrenSupport.addChild(Factory.createInport().within(systemMock).withName("port1").please());
-		childrenSupport.addChild(Factory.createOutport().within(systemMock).withName("port2").please());
+		childrenSupport.addChild(new Factory.Builder().within(systemMock).named("port1").createInport());
+		childrenSupport.addChild(new Factory.Builder().within(systemMock).named("port2").createOutport());
 		assertEquals(2, childrenSupport.getChildrenOfTypePort().size());
 	}
 	
@@ -93,7 +93,7 @@ public class ChildrenSupportImplTest {
 			ignoring(systemMock);			    
 		}});
 		
-		childrenSupport.addChild(Factory.createOutport().within(systemMock).withName("port").please());
+		childrenSupport.addChild(new Factory.Builder().within(systemMock).named("port").createOutport());
 		assertEquals(1, childrenSupport.getChildrenOfTypeOutport().size());
 	}
 	
@@ -103,7 +103,7 @@ public class ChildrenSupportImplTest {
 			ignoring(systemMock);			    
 		}});
 		
-		childrenSupport.addChild(Factory.createInport().within(systemMock).withName("port").please());
+		childrenSupport.addChild(new Factory.Builder().within(systemMock).named("port").createInport());
 		assertEquals(1, childrenSupport.getChildrenOfTypeInport().size());
 	}
 	
@@ -118,8 +118,8 @@ public class ChildrenSupportImplTest {
 			ignoring(systemMock);			    
 		}});
 		
-		System system = Factory.createSystem().within(systemMock).withName("sys").please();
-		childrenSupport.addChild(Factory.createSystemReference().within(systemMock).targeting(system).withName("sysRef").please());
+		System system = new Factory.Builder().within(systemMock).named("sys").createSystem();
+		childrenSupport.addChild(new Factory.Builder().within(systemMock).targeting(system).named("sysRef").createSystemReferemce());
 		assertEquals(1, childrenSupport.getChildrenOfTypeSystemReference().size());
 	}
 
