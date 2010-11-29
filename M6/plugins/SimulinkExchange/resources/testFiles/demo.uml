@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:FunctionModeling="http://www.papyrusuml.org/EAST-ADL2/Structure/FunctionModeling/1" xmlns:SystemModeling="http://www.papyrusuml.org/EAST-ADL2/Structure/SystemModeling/1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xsi:schemaLocation="http://www.papyrusuml.org/EAST-ADL2/Structure/FunctionModeling/1 http://www.papyrusuml.org/EAST-ADL2/1#//structure/functionmodeling http://www.papyrusuml.org/EAST-ADL2/Structure/SystemModeling/1 http://www.papyrusuml.org/EAST-ADL2/1#//structure/systemmodeling">
+  <uml:Model xmi:id="_n1JbgHRzEd-MxI-rS4gWhA" name="York">
+    <packagedElement xmi:type="uml:Class" xmi:id="_n1JbgXRzEd-MxI-rS4gWhA" name="SystemModel"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_n1JbgnRzEd-MxI-rS4gWhA" name="AnalysisLevel">
+      <ownedAttribute xmi:id="_n1Jbg3RzEd-MxI-rS4gWhA" name="faa" type="_n1PiInRzEd-MxI-rS4gWhA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_n1JbhHRzEd-MxI-rS4gWhA" name="FunctionalComponents">
+      <packagedElement xmi:type="uml:Class" xmi:id="_n1PiInRzEd-MxI-rS4gWhA" name="RootSys">
+        <ownedAttribute xmi:id="_n1PiLnRzEd-MxI-rS4gWhA" name="refF1" type="_n1PiJHRzEd-MxI-rS4gWhA" isUnique="false" aggregation="composite"/>
+        <ownedAttribute xmi:id="_n1VowHRzEd-MxI-rS4gWhA" name="refF2" type="_n1PiJnRzEd-MxI-rS4gWhA" isUnique="false" aggregation="composite"/>
+        <ownedAttribute xmi:id="_n1VownRzEd-MxI-rS4gWhA" name="refF3" type="_n1PiKHRzEd-MxI-rS4gWhA" isUnique="false" aggregation="composite"/>
+        <ownedConnector xmi:id="_n1h2AHRzEd-MxI-rS4gWhA" name="L1">
+          <end xmi:id="_n1h2AXRzEd-MxI-rS4gWhA" role="_n1bvYHRzEd-MxI-rS4gWhA"/>
+          <end xmi:id="_n1h2AnRzEd-MxI-rS4gWhA" role="_n1bvanRzEd-MxI-rS4gWhA"/>
+        </ownedConnector>
+        <ownedConnector xmi:id="_n1h2BHRzEd-MxI-rS4gWhA" name="L2">
+          <end xmi:id="_n1h2BXRzEd-MxI-rS4gWhA" role="_n1bvYnRzEd-MxI-rS4gWhA"/>
+          <end xmi:id="_n1h2BnRzEd-MxI-rS4gWhA" role="_n1bvbHRzEd-MxI-rS4gWhA"/>
+        </ownedConnector>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_n1PiJHRzEd-MxI-rS4gWhA" name="F1">
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_n1bvYHRzEd-MxI-rS4gWhA" name="F1Out" type="_n1JbhnRzEd-MxI-rS4gWhA" aggregation="composite"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_n1PiJnRzEd-MxI-rS4gWhA" name="F2">
+        <ownedAttribute xmi:id="_n1VoxHRzEd-MxI-rS4gWhA" name="refF21" type="_n1PiKnRzEd-MxI-rS4gWhA" isUnique="false" aggregation="composite"/>
+        <ownedAttribute xmi:id="_n1VoxnRzEd-MxI-rS4gWhA" name="refF22" type="_n1PiLHRzEd-MxI-rS4gWhA" isUnique="false" aggregation="composite"/>
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_n1bvanRzEd-MxI-rS4gWhA" name="F2In" type="_n1JbhnRzEd-MxI-rS4gWhA" aggregation="composite"/>
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_n1bvYnRzEd-MxI-rS4gWhA" name="F2Out" type="_n1JbhnRzEd-MxI-rS4gWhA" aggregation="composite"/>
+        <ownedConnector xmi:id="_n1h2CHRzEd-MxI-rS4gWhA" name="L3">
+          <end xmi:id="_n1h2CXRzEd-MxI-rS4gWhA" role="_n1bvZnRzEd-MxI-rS4gWhA"/>
+          <end xmi:id="_n1h2CnRzEd-MxI-rS4gWhA" role="_n1bvcHRzEd-MxI-rS4gWhA"/>
+        </ownedConnector>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_n1PiKHRzEd-MxI-rS4gWhA" name="F3">
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_n1bvbHRzEd-MxI-rS4gWhA" name="F3In" type="_n1JbhnRzEd-MxI-rS4gWhA" aggregation="composite"/>
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_n1bvZHRzEd-MxI-rS4gWhA" name="F3Out" type="_n1JbhnRzEd-MxI-rS4gWhA" aggregation="composite"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_n1PiKnRzEd-MxI-rS4gWhA" name="F21">
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_n1bvbnRzEd-MxI-rS4gWhA" name="F21In" type="_n1JbhnRzEd-MxI-rS4gWhA" aggregation="composite"/>
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_n1bvZnRzEd-MxI-rS4gWhA" name="F21Out" type="_n1JbhnRzEd-MxI-rS4gWhA" aggregation="composite"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_n1PiLHRzEd-MxI-rS4gWhA" name="F22">
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_n1bvcHRzEd-MxI-rS4gWhA" name="F22In" type="_n1JbhnRzEd-MxI-rS4gWhA" aggregation="composite"/>
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_n1bvaHRzEd-MxI-rS4gWhA" name="F22Out" type="_n1JbhnRzEd-MxI-rS4gWhA" aggregation="composite"/>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_n1JbhXRzEd-MxI-rS4gWhA" name="Datatypes">
+      <packagedElement xmi:type="uml:DataType" xmi:id="_n1JbhnRzEd-MxI-rS4gWhA" name="DataType_0"/>
+    </packagedElement>
+  </uml:Model>
+  <SystemModeling:AnalysisLevel xmi:id="_n1PiIHRzEd-MxI-rS4gWhA" functionalAnalysisArchitecture="_n1PiIXRzEd-MxI-rS4gWhA"/>
+  <FunctionModeling:AnalysisFunctionPrototype xmi:id="_n1PiIXRzEd-MxI-rS4gWhA"/>
+  <FunctionModeling:AnalysisFunctionType xmi:id="_n1PiI3RzEd-MxI-rS4gWhA"/>
+  <FunctionModeling:AnalysisFunctionType xmi:id="_n1PiJXRzEd-MxI-rS4gWhA"/>
+  <FunctionModeling:AnalysisFunctionType xmi:id="_n1PiJ3RzEd-MxI-rS4gWhA"/>
+  <FunctionModeling:AnalysisFunctionType xmi:id="_n1PiKXRzEd-MxI-rS4gWhA"/>
+  <FunctionModeling:AnalysisFunctionType xmi:id="_n1PiK3RzEd-MxI-rS4gWhA"/>
+  <FunctionModeling:AnalysisFunctionType xmi:id="_n1PiLXRzEd-MxI-rS4gWhA"/>
+  <FunctionModeling:AnalysisFunctionPrototype xmi:id="_n1PiL3RzEd-MxI-rS4gWhA"/>
+  <FunctionModeling:AnalysisFunctionPrototype xmi:id="_n1VowXRzEd-MxI-rS4gWhA"/>
+  <FunctionModeling:AnalysisFunctionPrototype xmi:id="_n1Vow3RzEd-MxI-rS4gWhA"/>
+  <FunctionModeling:AnalysisFunctionPrototype xmi:id="_n1VoxXRzEd-MxI-rS4gWhA"/>
+  <FunctionModeling:AnalysisFunctionPrototype xmi:id="_n1Vox3RzEd-MxI-rS4gWhA"/>
+  <FunctionModeling:FunctionFlowPort xmi:id="_n1bvYXRzEd-MxI-rS4gWhA" direction="out"/>
+  <FunctionModeling:FunctionFlowPort xmi:id="_n1bvY3RzEd-MxI-rS4gWhA" direction="out"/>
+  <FunctionModeling:FunctionFlowPort xmi:id="_n1bvZXRzEd-MxI-rS4gWhA" direction="out"/>
+  <FunctionModeling:FunctionFlowPort xmi:id="_n1bvZ3RzEd-MxI-rS4gWhA" direction="out"/>
+  <FunctionModeling:FunctionFlowPort xmi:id="_n1bvaXRzEd-MxI-rS4gWhA" direction="out"/>
+  <FunctionModeling:FunctionFlowPort xmi:id="_n1bva3RzEd-MxI-rS4gWhA" direction="in"/>
+  <FunctionModeling:FunctionFlowPort xmi:id="_n1bvbXRzEd-MxI-rS4gWhA" direction="in"/>
+  <FunctionModeling:FunctionFlowPort xmi:id="_n1bvb3RzEd-MxI-rS4gWhA" direction="in"/>
+  <FunctionModeling:FunctionFlowPort xmi:id="_n1bvcXRzEd-MxI-rS4gWhA" direction="in"/>
+  <FunctionModeling:FunctionConnector xmi:id="_n1h2A3RzEd-MxI-rS4gWhA"/>
+  <FunctionModeling:FunctionConnector xmi:id="_n1h2B3RzEd-MxI-rS4gWhA"/>
+  <FunctionModeling:FunctionConnector xmi:id="_n1h2C3RzEd-MxI-rS4gWhA"/>
+</xmi:XMI>

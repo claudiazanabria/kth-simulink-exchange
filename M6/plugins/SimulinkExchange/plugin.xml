@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            id="se.kth.md.simulinkExchange.contributionSIM"
+            nameFilter="*.simulink"
+            objectClass="org.eclipse.core.resources.IFile">
+         <menu
+               label="Simulink Exchange"
+               path="additions"
+               id="se.kth.md.simulinkExchange.menuSIM">
+            <separator
+                  name="group1">
+            </separator>
+         </menu>
+         <action
+               class="se.kth.md.simulinkExchange.popup.actions.atl.Dispatcher2EAST"
+               enablesFor="1"
+               id="se.kth.md.simulinkExchange.newAction1"
+               label="Transform into EAST-ADL"
+               menubarPath="se.kth.md.simulinkExchange.menuSIM/group1"
+               state="true"
+               style="push"
+               tooltip="Transform into UML">
+         </action>
+         <action
+               class="se.kth.md.simulinkExchange.popup.actions.validation.Dispatcher4simulink"
+               enablesFor="1"
+               id="se.kth.md.simulinkExchange.newAction3"
+               label="Validate"
+               menubarPath="se.kth.md.simulinkExchange.menuSIM/group1"
+               state="true"
+               style="push"
+               tooltip="Validate model">
+         </action>
+      </objectContribution>
+      <objectContribution
+            id="se.kth.md.simulinkExchange.contributionUML"
+            nameFilter="*.uml"
+            objectClass="org.eclipse.core.resources.IFile">
+         <menu
+               id="se.kth.md.simulinkExchange.menuUML"
+               label="Simulink Exchange"
+               path="additions">
+            <separator
+                  name="group1">
+            </separator>
+         </menu>
+         <action
+               class="se.kth.md.simulinkExchange.popup.actions.atl.Dispatcher2Simulink"
+               enablesFor="1"
+               id="se.kth.md.simulinkExchange.newAction2"
+               label="Transform into Simulink"
+               menubarPath="se.kth.md.simulinkExchange.menuUML/group1"
+               state="true"
+               style="push"
+               tooltip="Transform into simulink">
+         </action>
+         <action
+               class="se.kth.md.simulinkExchange.popup.actions.validation.Dispatcher4east"
+               enablesFor="1"
+               id="se.kth.md.simulinkExchange.newAction4"
+               label="Validate"
+               menubarPath="se.kth.md.simulinkExchange.menuUML/group1"
+               state="true"
+               style="push"
+               tooltip="Validate model">
+         </action>
+      </objectContribution>
+   </extension>
+
+</plugin>

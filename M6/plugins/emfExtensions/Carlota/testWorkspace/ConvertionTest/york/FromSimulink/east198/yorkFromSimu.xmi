@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ASCII"?>
+<attest2:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:attest2="http:///se.kth.md/attest2/metamodels" Handle="3.0009765625" Name="yorkFromSimu" Version="99.99">
+  <RootSystem Name="yorkFromSimu">
+    <Lines Handle="29.001220703125" Name="a" SrcPort="//@RootSystem/@Blocks.0/@Ports.1" DstPort="//@RootSystem/@Blocks.1/@Ports.3" SrcBlock="//@RootSystem/@Blocks.0" DstBlock="//@RootSystem/@Blocks.1"/>
+    <Lines Handle="28.001220703125" Name="c" SrcPort="//@RootSystem/@Blocks.1/@Ports.1" DstPort="//@RootSystem/@Blocks.2/@Ports.1" SrcBlock="//@RootSystem/@Blocks.1" DstBlock="//@RootSystem/@Blocks.2"/>
+    <Lines Handle="27.001220703125" Name="b" SrcPort="//@RootSystem/@Blocks.0/@Ports.0" DstPort="//@RootSystem/@Blocks.1/@Ports.2" SrcBlock="//@RootSystem/@Blocks.0" DstBlock="//@RootSystem/@Blocks.1"/>
+    <Blocks Handle="5.0009765625" Name="pF1" BlockType="SubSystem">
+      <System Name="F1"/>
+      <Ports Handle="6.0009765625" Name="F1_Out" PortType="Outport"/>
+      <Ports Handle="7.0009765625" Name="F1_Out_N&amp;E" PortType="Outport"/>
+    </Blocks>
+    <Blocks Handle="8.0009765625" Name="pF2" BlockType="SubSystem">
+      <System Name="F2">
+        <Lines Handle="22.001220703125" Name="b" SrcPort="//@RootSystem/@Blocks.1/@System/@Blocks.1/@Ports.0" DstPort="//@RootSystem/@Blocks.1/@Ports.1" SrcBlock="//@RootSystem/@Blocks.1/@System/@Blocks.1" DstBlock="//@RootSystem/@Blocks.1"/>
+        <Lines Handle="21.0009765625" Name="a" SrcPort="//@RootSystem/@Blocks.1/@System/@Blocks.0/@Ports.0" DstPort="//@RootSystem/@Blocks.1/@System/@Blocks.1/@Ports.1" SrcBlock="//@RootSystem/@Blocks.1/@System/@Blocks.0" DstBlock="//@RootSystem/@Blocks.1/@System/@Blocks.1"/>
+        <Blocks Handle="11.0009765625" Name="pprimary" BlockType="SubSystem">
+          <System Name="primary">
+            <Lines Handle="14.0009765625" Name="m" SrcPort="//@RootSystem/@Blocks.1/@System/@Blocks.0/@Ports.1" DstPort="//@RootSystem/@Blocks.1/@System/@Blocks.0/@Ports.0" SrcBlock="//@RootSystem/@Blocks.1/@System/@Blocks.0" DstBlock="//@RootSystem/@Blocks.1/@System/@Blocks.0"/>
+          </System>
+          <Ports Handle="13.0009765625" Name="F21_Out_N&amp;E" PortType="Outport"/>
+          <Ports Handle="12.0009765625" Name="F21_In_N&amp;E" PortType="Inport"/>
+        </Blocks>
+        <Blocks Handle="15.001220703125" Name="pstandby" BlockType="SubSystem">
+          <System Name="standby"/>
+          <Ports Handle="18.0009765625" Name="pF22_Out_N&amp;E" PortType="Outport"/>
+          <Ports Handle="16.0009765625" Name="pF22_In1_N&amp;E" PortType="Inport"/>
+          <Ports Handle="17.0009765625" Name="pF22_In2_N&amp;E" PortType="Inport"/>
+        </Blocks>
+      </System>
+      <Ports Handle="19.0009765625" Name="F2_Out" PortType="Outport"/>
+      <Ports Handle="20.0009765625" Name="pF2_Out_N&amp;E" PortType="Outport"/>
+      <Ports Handle="9.0009765625" Name="F2_In" PortType="Inport"/>
+      <Ports Handle="10.0009765625" Name="pF2_In_N&amp;E" PortType="Inport"/>
+    </Blocks>
+    <Blocks Handle="23.001220703125" Name="pF3" BlockType="SubSystem">
+      <System Name="F3">
+        <Lines Handle="26.0009765625" Name="L" SrcPort="//@RootSystem/@Blocks.2/@Ports.1" DstPort="//@RootSystem/@Blocks.2/@Ports.0" SrcBlock="//@RootSystem/@Blocks.2" DstBlock="//@RootSystem/@Blocks.2"/>
+      </System>
+      <Ports Handle="25.0009765625" Name="pF3_Out_N&amp;E" PortType="Outport"/>
+      <Ports Handle="24.0009765625" Name="pF3_In_N&amp;E" PortType="Inport"/>
+    </Blocks>
+  </RootSystem>
+</attest2:Model>

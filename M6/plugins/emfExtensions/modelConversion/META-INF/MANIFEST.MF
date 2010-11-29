@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: SimulinkExchange modelConversion
+Bundle-SymbolicName: se.kth.md.simulinkExchange.modelConversion
+Bundle-Version: 3.5.1
+Export-Package: se.kth.md.simulinkExchange.modelConversion.exceptions,
+ se.kth.md.simulinkExchange.modelConversion.simulink,
+ se.kth.md.simulinkExchange.modelConversion.simulink.preprocessing
+Bundle-Vendor: KTH Mechatronics
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.junit4,
+ se.kth.md.simulinkExchange.metamodel.Simulink,
+ se.kth.md.simulinkExchange.modelManagement;bundle-version="3.5.1",
+ apache.commons.io;bundle-version="1.0.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6

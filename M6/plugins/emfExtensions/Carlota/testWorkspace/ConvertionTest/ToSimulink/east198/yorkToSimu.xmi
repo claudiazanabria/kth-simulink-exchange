@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<attest2:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:attest2="http:///se.kth.md/attest2/metamodels" Name="MyADLSystemModel" Version="99.99">
+  <RootSystem Name="MyFAA">
+    <Lines Name="pF1_Out_N&amp;EpF2_In_N&amp;Econnector" SrcPort="//@RootSystem/@Blocks.0/@Ports.1" DstPort="//@RootSystem/@Blocks.1/@Ports.2" SrcBlock="//@RootSystem/@Blocks.0" DstBlock="//@RootSystem/@Blocks.1"/>
+    <Lines Name="pF2_Out_N&amp;EpF3_In_N&amp;Econnector" SrcPort="//@RootSystem/@Blocks.1/@Ports.3" DstPort="//@RootSystem/@Blocks.2/@Ports.0" SrcBlock="//@RootSystem/@Blocks.1" DstBlock="//@RootSystem/@Blocks.2"/>
+    <Blocks Name="pF1" BlockType="SubSystem">
+      <System Name="F1"/>
+      <Ports Name="F1_Out" PortNumber="1" PortType="Outport"/>
+      <Ports Name="F1_Out_N&amp;E" PortNumber="2" PortType="Outport"/>
+      <Link>none</Link>
+    </Blocks>
+    <Blocks Name="pF2" BlockType="SubSystem">
+      <System Name="F2">
+        <Lines Name="F21_Out_N&amp;EpF22_In1_N&amp;Econnector" SrcPort="//@RootSystem/@Blocks.1/@System/@Blocks.0/@Ports.0" DstPort="//@RootSystem/@Blocks.1/@System/@Blocks.1/@Ports.1" SrcBlock="//@RootSystem/@Blocks.1/@System/@Blocks.0" DstBlock="//@RootSystem/@Blocks.1/@System/@Blocks.1"/>
+        <Lines Name="pF22_Out_N&amp;EpF2_Out_N&amp;Econnector" SrcPort="//@RootSystem/@Blocks.1/@System/@Blocks.1/@Ports.0" DstPort="//@RootSystem/@Blocks.1/@Ports.3" SrcBlock="//@RootSystem/@Blocks.1/@System/@Blocks.1" DstBlock="//@RootSystem/@Blocks.1"/>
+        <Blocks Name="primary" BlockType="SubSystem">
+          <System Name="F21"/>
+          <Ports Name="F21_Out_N&amp;E" PortNumber="1" PortType="Outport"/>
+          <Ports Name="F21_In_N&amp;E" PortNumber="1" PortType="Inport"/>
+          <Link>none</Link>
+        </Blocks>
+        <Blocks Name="standby" BlockType="SubSystem">
+          <System Name="F22"/>
+          <Ports Name="pF22_Out_N&amp;E" PortNumber="1" PortType="Outport"/>
+          <Ports Name="pF22_In1_N&amp;E" PortNumber="1" PortType="Inport"/>
+          <Ports Name="pF22_In2_N&amp;E" PortNumber="2" PortType="Inport"/>
+          <Link>none</Link>
+        </Blocks>
+      </System>
+      <Ports Name="F2_In" PortNumber="1" PortType="Inport"/>
+      <Ports Name="F2_Out" PortNumber="1" PortType="Outport"/>
+      <Ports Name="pF2_In_N&amp;E" PortNumber="2" PortType="Inport"/>
+      <Ports Name="pF2_Out_N&amp;E" PortNumber="2" PortType="Outport"/>
+      <Link>none</Link>
+    </Blocks>
+    <Blocks Name="pF3" BlockType="SubSystem">
+      <System Name="F3"/>
+      <Ports Name="pF3_In_N&amp;E" PortNumber="1" PortType="Inport"/>
+      <Ports Name="pF3_Out_N&amp;E" PortNumber="1" PortType="Outport"/>
+      <Link>none</Link>
+    </Blocks>
+  </RootSystem>
+</attest2:Model>

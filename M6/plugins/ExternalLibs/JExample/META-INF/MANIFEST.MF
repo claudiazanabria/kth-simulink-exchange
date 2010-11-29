@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: JExample
+Bundle-SymbolicName: se.kth.md.simulinkExchange.JExample
+Bundle-Version: 1.0.1
+Bundle-ClassPath: jexample-4.5-391.jar
+Bundle-Vendor: KTH Mechatronics
+Export-Package: ch.unibe.jexample,
+ ch.unibe.jexample.internal;x-internal:=true,
+ ch.unibe.jexample.internal.deepcopy;x-internal:=true,
+ ch.unibe.jexample.internal.graph;x-internal:=true,
+ ch.unibe.jexample.internal.util;x-internal:=true
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Require-Bundle: org.junit4;bundle-version="4.5.0"
