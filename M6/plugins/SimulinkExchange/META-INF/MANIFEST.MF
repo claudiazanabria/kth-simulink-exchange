@@ -12,12 +12,12 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.emf.common,
  org.eclipse.emf.ecore,
  org.eclipse.emf.ecore.xmi,
- com.cea.papyrus.uml4eastadl.extension,
  org.junit4,
  se.kth.md.simulinkExchange.metamodel.Simulink,
  se.kth.md.simulinkExchange.JExample,
  org.eclipse.m2m.atl.common,
- org.eclipse.m2m.atl.core
+ org.eclipse.m2m.atl.core,
+ org.eclipse.papyrus.eastadl;bundle-version="2.1.8"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Export-Package: se.kth.md.simulinkExchange,
