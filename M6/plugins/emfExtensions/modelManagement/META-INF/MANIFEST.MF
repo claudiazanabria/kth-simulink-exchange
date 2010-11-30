@@ -10,7 +10,7 @@ Export-Package: se.kth.md.simulinkExchange.modelManagement;uses:="org.eclipse.em
 Bundle-Vendor: KTH Mechatronics
 Require-Bundle: org.junit4,
  org.eclipse.emf.ecore.xmi,
- com.cea.papyrus.uml4eastadl.extension,
  se.kth.md.simulinkExchange.metamodel.Simulink;bundle-version="3.2.2",
- apache.commons.io;bundle-version="1.0.0"
+ apache.commons.io;bundle-version="1.0.0",
+ org.eclipse.papyrus.eastadl;bundle-version="2.1.8"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6

@@ -2,11 +2,10 @@ package se.kth.md.simulinkExchange.modelManagement.east;
 
 
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.papyrus.eastadl.EastadlFactory;
+import org.eclipse.papyrus.eastadl.EastadlPackage;
 
 import se.kth.md.simulinkExchange.modelManagement.ModelManager;
-
-import com.cea.papyrus.uml4eastadl.eastadl.EastadlFactory;
-import com.cea.papyrus.uml4eastadl.eastadl.EastadlPackage;
 
 /**
  * A ModelManager that can handle EAST-ADL models.
