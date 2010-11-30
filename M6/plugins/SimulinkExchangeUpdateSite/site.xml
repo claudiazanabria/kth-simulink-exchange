@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
    <feature url="features/se.kth.md.simulinkExchange.feature_3.1.12.jar" id="se.kth.md.simulinkExchange.feature" version="3.1.12">
-      <category name="simulink.excahnge"/>
+      <category name="simulink.exchange"/>
    </feature>
-   <category-def name="simulink.excahnge" label="Simulink Exchange"/>
+   <feature url="features/se.kth.md.ExternalLib.feature_1.0.0.201011301745.jar" id="se.kth.md.ExternalLib.feature" version="1.0.0.201011301745">
+      <category name="external.libs"/>
+   </feature>
+   <feature url="features/se.kth.md.SimulinkMetamodel.feature_3.2.3.201011301745.jar" id="se.kth.md.SimulinkMetamodel.feature" version="3.2.3.201011301745">
+      <category name="simulink.metamodel"/>
+   </feature>
+   <category-def name="simulink.exchange" label="Simulink Exchange"/>
+   <category-def name="external.libs" label="ExternalLibs">
+      <description>
+         External libraries for SimulinkExchange bundle.
+      </description>
+   </category-def>
+   <category-def name="simulink.metamodel" label="SimulinkMetamodel">
+      <description>
+         Simulink Ecore Metamodel
+      </description>
+   </category-def>
 </site>

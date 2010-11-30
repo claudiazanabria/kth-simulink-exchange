@@ -39,38 +39,9 @@ Redistribution and use in source and binary forms, with or without modification,
       <import plugin="org.eclipse.emf.ecore.xmi"/>
       <import plugin="org.eclipse.emf.edit.ui"/>
       <import plugin="org.eclipse.core.resources" version="3.5.0" match="greaterOrEqual"/>
+      <import feature="se.kth.md.ExternalLib.feature" version="1.0.0.qualifier"/>
+      <import feature="se.kth.md.SimulinkMetamodel.feature" version="3.2.3.qualifier"/>
    </requires>
-
-   <plugin
-         id="apache.commons.io"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="se.kth.md.simulinkExchange.JExample"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"/>
-
-   <plugin
-         id="se.kth.md.simulinkExchange.metamodel.Simulink"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"/>
-
-   <plugin
-         id="se.kth.md.simulinkExchange.metamodel.Simulink.edit"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"/>
-
-   <plugin
-         id="se.kth.md.simulinkExchange.metamodel.Simulink.editor"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"/>
 
    <plugin
          id="se.kth.md.simulinkExchange"
