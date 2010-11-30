@@ -11,5 +11,6 @@ Bundle-ActivationPolicy: lazy
 Require-Bundle: org.junit4,
  se.kth.md.simulinkExchange.metamodel.Simulink,
  se.kth.md.simulinkExchange.modelManagement;bundle-version="3.5.1",
- apache.commons.io;bundle-version="1.0.0"
+ apache.commons.io;bundle-version="1.0.0",
+ se.kth.md.simulinkExchange.JExample;bundle-version="1.0.1"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6

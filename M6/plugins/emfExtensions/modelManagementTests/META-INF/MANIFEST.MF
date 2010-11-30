@@ -8,4 +8,5 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Require-Bundle: org.eclipse.emf.common,
  se.kth.md.simulinkExchange.metamodel.Simulink,
  org.junit4,
- se.kth.md.simulinkExchange.modelManagement
+ se.kth.md.simulinkExchange.modelManagement,
+ se.kth.md.simulinkExchange.JExample;bundle-version="1.0.1"
