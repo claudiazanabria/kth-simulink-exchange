@@ -7,9 +7,10 @@ Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: SimulinkOOAPI,
- SimulinkOOAPI.impl,
- SimulinkOOAPI.util
+Export-Package: se.kth.md,
+ se.kth.md.SimulinkOOAPI,
+ se.kth.md.SimulinkOOAPI.impl,
+ se.kth.md.SimulinkOOAPI.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.ui;bundle-version="3.5.2",
