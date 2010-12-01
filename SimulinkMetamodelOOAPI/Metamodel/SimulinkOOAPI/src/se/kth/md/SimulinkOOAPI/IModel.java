@@ -62,7 +62,12 @@ public interface IModel extends IProtoObject {
 	/**
 	 * Returns EList of all children.
 	 */
-	public IReflectionList<IProtoObject> getAllChildren();	
+	public IReflectionList<IProtoObject> getAllChildren();
+	
+	/**
+	 * Returns EList of children of GainBlock type.
+	 */	
+	public IReflectionList<IGainBlock> getChildrenOfTypeGainBlock();
 	
 	/**
 	 * Returns EList of children of Line type.

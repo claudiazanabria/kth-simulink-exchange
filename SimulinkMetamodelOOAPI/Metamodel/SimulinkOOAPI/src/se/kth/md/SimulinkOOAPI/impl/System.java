@@ -323,6 +323,7 @@ public class System extends ProtoObject implements ISystem {
 		return new System(name, parent);
 	}
 	
+	@Deprecated
 	public static ISystem newFromDictionary(Map<String, Object> constructDict) throws ProtoObjectCreationException{		
 		if (!constructDict.containsKey(Factory.keyWithName))			
 			throw new ProtoObjectCreationException();

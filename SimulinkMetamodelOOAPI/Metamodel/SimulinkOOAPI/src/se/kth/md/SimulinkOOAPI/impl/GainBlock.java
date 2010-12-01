@@ -20,7 +20,6 @@ import se.kth.md.SimulinkOOAPI.IModel;
 import se.kth.md.SimulinkOOAPI.IReflectionList;
 import se.kth.md.SimulinkOOAPI.ISimulinkOOAPIPackage;
 import se.kth.md.SimulinkOOAPI.ISystem;
-import se.kth.md.SimulinkOOAPI.util.ErrorMessages;
 
 /**
  * <!-- begin-user-doc -->
@@ -72,6 +71,12 @@ public class GainBlock extends ProtoObject implements IGainBlock {
 	}	
 	
 	protected GainBlock(String name, ILibrary parent, int gain) {
+		super(name);
+		parent.addChild(this);
+		this.gain = gain;
+	}	
+	
+	protected GainBlock(String name, IModel parent, int gain) {
 		super(name);
 		parent.addChild(this);
 		this.gain = gain;
@@ -187,11 +192,6 @@ public class GainBlock extends ProtoObject implements IGainBlock {
 		list.add(this);		
 	}
 	
-	@Override
-	public void addTo(IModel parent) {
-		throw new IllegalArgumentException(ErrorMessages.GAINBLOCK_ADD_TO_MODEL);		
-	}
-	
 	/**
 	 * Returns new instance of GainBlock with the given name, with the given gain, contains within the given system.
 	 */	
@@ -206,7 +206,15 @@ public class GainBlock extends ProtoObject implements IGainBlock {
 		return new GainBlock(name, parent, gain);
 	}	
 	
+	/**
+	 * Returns new instance of GainBlock with the given name, with the given gain, contains within the given model.
+	 */	
+	public static IGainBlock newNamedWithinWithGain(String name, IModel parent, int gain){		
+		return new GainBlock(name, parent, gain);
+	}	
 	
+	
+	@Deprecated
 	public static IGainBlock newFromDictionary(Map<String, Object> constructDict) throws ProtoObjectCreationException{		
 		if (!constructDict.containsKey(Factory.keyWithName))			
 			throw new ProtoObjectCreationException();

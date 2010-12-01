@@ -73,6 +73,7 @@ public class Inport extends Port implements IInport {
 		return new Inport(name, parent);
 	}		
 	
+	@Deprecated
 	public static IInport newFromDictionary(Map<String, Object> constructDict) throws ProtoObjectCreationException{		
 		if (!constructDict.containsKey(Factory.keyWithName))			
 			throw new ProtoObjectCreationException();

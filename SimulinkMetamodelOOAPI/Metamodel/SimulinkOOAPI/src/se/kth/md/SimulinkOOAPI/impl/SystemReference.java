@@ -195,6 +195,7 @@ public class SystemReference extends ProtoObject implements ISystemReference {
 		return new SystemReference(name, parent, target);
 	}
 	
+	@Deprecated
 	public static ISystemReference newFromDictionary(Map<String, Object> constructDict) throws ProtoObjectCreationException{		
 		if (!constructDict.containsKey(Factory.keyWithName))			
 			throw new ProtoObjectCreationException();

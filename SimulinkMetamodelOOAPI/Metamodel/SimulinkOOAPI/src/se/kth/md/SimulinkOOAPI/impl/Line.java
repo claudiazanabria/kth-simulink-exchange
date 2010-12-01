@@ -306,6 +306,7 @@ public class Line extends ProtoObject implements ILine {
 		throw new IllegalArgumentException(ErrorMessages.LINE_ADD_TO_LIBRARY);		
 	}
 	
+	@Deprecated
 	public static ILine newFromDictionary(Map<String, Object> constructDict) throws ProtoObjectCreationException{		
 		if (!constructDict.containsKey(Factory.keyWithName))			
 			throw new ProtoObjectCreationException();

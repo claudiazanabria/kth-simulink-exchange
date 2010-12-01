@@ -51,6 +51,11 @@ public interface IProtoObject extends EObject {
 	 */
 	void setIdentity(IIdentity value);
 	
+	/***
+	 * Returns the object Simulink name
+	 */
+	public String getName();
+	
 	/**
 	 * The element adds itself to list only if it is instance of GainBlock.	  
 	 * @param list

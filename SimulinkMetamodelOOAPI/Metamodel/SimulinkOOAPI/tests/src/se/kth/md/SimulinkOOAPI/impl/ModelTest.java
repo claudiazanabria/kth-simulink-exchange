@@ -1,0 +1,115 @@
+package se.kth.md.SimulinkOOAPI.impl;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+import org.jmock.Expectations;
+import org.jmock.Mockery;
+import org.jmock.integration.junit4.JMock;
+import org.jmock.integration.junit4.JUnit4Mockery;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+
+import se.kth.md.SimulinkOOAPI.IInport;
+import se.kth.md.SimulinkOOAPI.IModel;
+import se.kth.md.SimulinkOOAPI.IOutport;
+import se.kth.md.SimulinkOOAPI.IProtoObject;
+import se.kth.md.SimulinkOOAPI.ISystem;
+
+@RunWith(JMock.class)
+public class ModelTest {
+	
+	Mockery context = new JUnit4Mockery();	
+	ISystem systemMock = context.mock(ISystem.class);	
+	IInport inportMock = context.mock(IInport.class);
+	IOutport outportMock = context.mock(IOutport.class);
+    IModel model;    
+	
+	@Before
+	public void setUp() throws Exception{		
+		model = Model.newNamed("model");
+		assertEquals("model", model.getName());
+		
+		System.newNamedWithin("sys1", model);
+		System.newNamedWithin("sys2", model);
+	}
+	
+	//Incorrect test! Default constructor should be allowed in order not to break emf core api. 
+	/*
+	@Test
+	public void testDefaultConstructorIsNotAllowed(){
+		try{
+			new ModelImpl();
+			//if constructor was called successfully, the test has not passed
+			throw new AssertionFailedError();
+		}catch(UnsupportedOperationException e){
+			//test passed
+		}
+	}*/	
+	
+	@Test	
+	public void testAddChild() throws Exception{
+		context.checking(new Expectations() {{
+			ignoring(systemMock);			    
+		}});
+		
+		assertEquals(2, model.getNumberOfChildren());
+		model.addChild(new Factory.Builder().within(systemMock).named("sys1").createSystem());
+		assertEquals(3, model.getNumberOfChildren());
+	}
+	
+	protected void testAddWrongChild(IProtoObject child){
+		boolean passed = false;
+		try{
+			model.addChild(child);
+		}catch(IllegalArgumentException e){
+			passed = true;
+		}
+		assertTrue(passed);
+	}	
+	
+	@Test
+	public void testAddLibrary() throws Exception{
+		testAddWrongChild(new Factory.Builder().named("library").createLibrary());		
+	}
+	
+	@Test
+	public void testAddPort() throws Exception{
+		context.checking(new Expectations() {{
+			ignoring(systemMock);
+		}});
+		
+		testAddWrongChild(new Factory.Builder().within(systemMock).named("port").createInport());
+	}
+	
+	@Test	
+	public void testGetChildrenOfTypeLine() throws Exception{
+		context.checking(new Expectations() {{
+			atLeast(1).of(inportMock).getParent();
+				will(returnValue(systemMock));
+			atLeast(1).of(outportMock).getParent();
+				will(returnValue(systemMock));
+			
+			ignoring(systemMock);			
+		}});
+		
+		new Factory.Builder().named("line").within(model).from(outportMock).to(inportMock).createLine();		
+		assertEquals(1, model.getChildrenOfTypeLine().size());
+	}
+	
+	@Test
+	public void testGetChildrenOfTypeSystem(){
+		assertEquals(2, model.getChildrenOfTypeSystem().size());
+	}
+	
+	@Test
+	public void testGetChildrenOfTypeGainBlock(){
+		GainBlock.newNamedWithinWithGain("gb1", model, 1);
+		GainBlock.newNamedWithinWithGain("gb2", model, 1);
+		GainBlock.newNamedWithinWithGain("gb3", model, 1);
+		assertEquals(3, model.getChildrenOfTypeGainBlock().size());
+	}
+	
+
+}

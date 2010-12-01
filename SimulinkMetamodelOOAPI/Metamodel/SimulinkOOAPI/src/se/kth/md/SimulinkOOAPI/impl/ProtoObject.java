@@ -210,5 +210,10 @@ public abstract class ProtoObject extends EObjectImpl implements IProtoObject {
 	public void addTo(ILibrary parent) {
 		parent.getAllChildren().add(this);		
 	}
+	
+	@Override
+	public String getName() {	
+		return this.identity.getName();
+	}
 
 } //ProtoObject

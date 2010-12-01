@@ -12,6 +12,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import se.kth.md.SimulinkOOAPI.IChildrenSupport;
+import se.kth.md.SimulinkOOAPI.IGainBlock;
+import se.kth.md.SimulinkOOAPI.ILibrary;
 import se.kth.md.SimulinkOOAPI.ILine;
 import se.kth.md.SimulinkOOAPI.IModel;
 import se.kth.md.SimulinkOOAPI.IProtoObject;
@@ -165,6 +167,11 @@ public class Model extends ProtoObject implements IModel {
 	public int getNumberOfChildren() {
 		return this.children.getNumberOfChildren();
 	}
+	
+	@Override
+	public IReflectionList<IGainBlock> getChildrenOfTypeGainBlock() {		
+		return children.getChildrenOfTypeGainBlock();
+	}
 
 	
 	@Override
@@ -194,6 +201,12 @@ public class Model extends ProtoObject implements IModel {
 		throw new IllegalArgumentException(ErrorMessages.MODEL_ADD_TO_SYSTEM);		
 	}	
 	
+	@Override
+	public void addTo(ILibrary parent) {
+		throw new IllegalArgumentException(ErrorMessages.MODEL_ADD_TO_LIBRARY);		
+	}	
+	
+	@Deprecated
 	public static IModel newFromDictionary(Map<String, Object> constructDict) throws ProtoObjectCreationException{		
 		if (!constructDict.containsKey(Factory.keyWithName))			
 			throw new ProtoObjectCreationException();

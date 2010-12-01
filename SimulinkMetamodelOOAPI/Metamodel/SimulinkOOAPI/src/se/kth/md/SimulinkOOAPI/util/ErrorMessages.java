@@ -12,9 +12,10 @@ public interface ErrorMessages {
 	public static final String PORT_ADD_TO_LIBRARY = "Port can not be added to library.";
 	public static final String LIBRARY_ADD_TO_LIBRARY = "Library can not be added to library.";
 	public static final String LIBRARY_ADD_TO_SYSTEM = "Library can not be added to system.";
+	public static final String LIBRARY_ADD_TO_MODEL = "Library can not be added to model.";
 	public static final String LINE_ADD_TO_LIBRARY = "Line can not be added to library.";
 	public static final String MODEL_ADD_TO_MODEL = "Model can not be added to model.";
 	public static final String MODEL_ADD_TO_SYSTEM = "Model can not be added to system.";
-	public static final String GAINBLOCK_ADD_TO_MODEL = "Gain block can not be added to model.";
+	public static final String MODEL_ADD_TO_LIBRARY = "Model can not be added to library.";
 
 }

@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import se.kth.md.SimulinkOOAPI.IChildrenSupport;
 import se.kth.md.SimulinkOOAPI.IGainBlock;
 import se.kth.md.SimulinkOOAPI.ILibrary;
+import se.kth.md.SimulinkOOAPI.IModel;
 import se.kth.md.SimulinkOOAPI.IProtoObject;
 import se.kth.md.SimulinkOOAPI.IReflectionList;
 import se.kth.md.SimulinkOOAPI.ISimulinkOOAPIPackage;
@@ -166,6 +167,11 @@ public class Library extends ProtoObject implements ILibrary {
 	public void addTo(ILibrary parent) {
 		throw new IllegalArgumentException(ErrorMessages.LIBRARY_ADD_TO_LIBRARY);		
 	}
+	
+	@Override
+	public void addTo(IModel parent) {
+		throw new IllegalArgumentException(ErrorMessages.LIBRARY_ADD_TO_MODEL);		
+	}
 
 	
 	@Override
@@ -203,7 +209,9 @@ public class Library extends ProtoObject implements ILibrary {
 		return new Library(name);
 	}	
 		
-	public static Library newFromDictionary(Map<String, Object> constructDict) throws ProtoObjectCreationException{		
+	
+	@Deprecated
+	public static ILibrary newFromDictionary(Map<String, Object> constructDict) throws ProtoObjectCreationException{		
 		if (!constructDict.containsKey(Factory.keyWithName))			
 			throw new ProtoObjectCreationException();
 		

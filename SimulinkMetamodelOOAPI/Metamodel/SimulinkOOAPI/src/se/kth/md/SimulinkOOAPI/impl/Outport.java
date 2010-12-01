@@ -74,6 +74,7 @@ public class Outport extends Port implements IOutport {
 	}
 	
 	
+	@Deprecated
 	public static IOutport newFromDictionary(Map<String, Object> constructDict) throws ProtoObjectCreationException{
 		if (!constructDict.containsKey(Factory.keyWithName))			
 			throw new ProtoObjectCreationException();
