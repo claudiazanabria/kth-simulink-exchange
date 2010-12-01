@@ -1,6 +1,7 @@
 package se.kth.md.SimulinkOOAPI.impl;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
 //import junit.framework.AssertionFailedError;
@@ -190,6 +191,25 @@ public class SystemTest {
 		
 		ISystem system = System.newNamedWithin("sys", libraryMock);		
 		assertEquals("sys", system.getName());		
+	}
+	
+	@Test
+	public void testChildWithName(){
+		assertNotNull(system.childWith("inport"));
+		assertNotNull(system.childWith("outport"));
+	}
+	
+	@Test
+	public void testChildWithUuid(){
+		String inportUuid = system.childWith("inport").getUuid();
+		String outportUuid = system.childWith("outport").getUuid();
+		assertNotNull(system.childWith(inportUuid));
+		assertNotNull(system.childWith(outportUuid));
+	}
+	
+	@Test
+	public void testNoChildWithName(){
+		assertTrue(system.childWith("somenameOrUuid") == null);		
 	}
 	
 	

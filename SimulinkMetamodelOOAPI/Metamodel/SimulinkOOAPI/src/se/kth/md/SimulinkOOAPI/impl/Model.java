@@ -184,6 +184,16 @@ public class Model extends ProtoObject implements IModel {
 		return children.getChildrenOfTypeSystem();
 	}	
 	
+	@Override
+	public IProtoObject childWith(String uuidOrName) {
+		for (IProtoObject child : getAllChildren()){
+			if (child.getName().equals(uuidOrName) || child.getUuid().equals(uuidOrName)){
+				return child;
+			}
+		}		
+		return null;
+	}
+	
 	/**
 	 * Returns new Model instance with the given name
 	 */	

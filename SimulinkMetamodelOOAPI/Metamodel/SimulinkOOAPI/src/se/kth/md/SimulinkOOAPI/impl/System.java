@@ -238,6 +238,16 @@ public class System extends ProtoObject implements ISystem {
 	}
 	
 	@Override
+	public IProtoObject childWith(String uuidOrName) {
+		for (IProtoObject child : getAllChildren()){
+			if (child.getName().equals(uuidOrName) || child.getUuid().equals(uuidOrName)){
+				return child;
+			}
+		}		
+		return null;
+	}
+	
+	@Override
 	public void addChild(IProtoObject child) {	
 		if (child instanceof Library)
 			throw new IllegalArgumentException("System can not contain libraries");		
@@ -348,6 +358,6 @@ public class System extends ProtoObject implements ISystem {
 		if (model != null)
 			return new System(name, model);
 		return new System(name, library);
-	}
+	}	
 
 } //System

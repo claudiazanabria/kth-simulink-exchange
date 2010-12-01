@@ -74,5 +74,11 @@ public interface ILibrary extends IProtoObject {
 	 * Returns EList of children of System type.
 	 */	
 	public IReflectionList<ISystem> getChildrenOfTypeSystem();
+	
+	/**
+	 * Returns a first child met with the given name or uuid.
+	 * Returns null if there is no such child.
+	 */
+	public IProtoObject childWith(String uuidOrName);
 
 } // ILibrary

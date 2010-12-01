@@ -215,5 +215,10 @@ public abstract class ProtoObject extends EObjectImpl implements IProtoObject {
 	public String getName() {	
 		return this.identity.getName();
 	}
+	
+	@Override
+	public String getUuid() {	
+		return this.identity.getUuid();
+	}
 
 } //ProtoObject

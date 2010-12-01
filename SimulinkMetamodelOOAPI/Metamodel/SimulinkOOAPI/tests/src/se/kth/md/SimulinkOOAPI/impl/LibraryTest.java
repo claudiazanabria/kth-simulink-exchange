@@ -1,6 +1,7 @@
 package se.kth.md.SimulinkOOAPI.impl;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 //import junit.framework.AssertionFailedError;
 
@@ -83,6 +84,23 @@ public class LibraryTest {
 	public void testGetChildrenOfTypeSystem() throws Exception{
 		new Factory.Builder().within(library).named("system").createSystem();		
 		assertEquals(1, library.getChildrenOfTypeSystem().size());
+	}
+	
+	@Test
+	public void testChildWithName(){
+		GainBlock.newNamedWithinWithGain("gain", library, 2);
+		assertNotNull(library.childWith("gain"));		
+	}
+	
+	@Test
+	public void testChildWithUuid(){		
+		String uuid = GainBlock.newNamedWithinWithGain("gain", library, 2).getUuid(); 
+		assertNotNull(library.childWith(uuid));		
+	}
+	
+	@Test
+	public void testNoChildWithName(){
+		assertTrue(library.childWith("somenameOrUuid") == null);		
 	}
 
 }

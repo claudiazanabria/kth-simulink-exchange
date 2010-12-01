@@ -56,6 +56,11 @@ public interface IProtoObject extends EObject {
 	 */
 	public String getName();
 	
+	/***
+	 * Returns the object uuid
+	 */
+	public String getUuid();
+	
 	/**
 	 * The element adds itself to list only if it is instance of GainBlock.	  
 	 * @param list

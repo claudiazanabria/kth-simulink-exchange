@@ -202,6 +202,16 @@ public class Library extends ProtoObject implements ILibrary {
 		return children.getChildrenOfTypeSystem();
 	}	
 	
+	@Override
+	public IProtoObject childWith(String uuidOrName) {
+		for (IProtoObject child : getAllChildren()){
+			if (child.getName().equals(uuidOrName) || child.getUuid().equals(uuidOrName)){
+				return child;
+			}
+		}		
+		return null;
+	}
+	
 	/**
 	 * Returns new Library instance with the given name.
 	 */	

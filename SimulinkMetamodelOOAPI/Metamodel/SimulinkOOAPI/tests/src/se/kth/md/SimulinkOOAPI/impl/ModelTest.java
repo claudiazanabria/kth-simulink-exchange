@@ -1,6 +1,7 @@
 package se.kth.md.SimulinkOOAPI.impl;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import org.jmock.Expectations;
@@ -24,15 +25,18 @@ public class ModelTest {
 	ISystem systemMock = context.mock(ISystem.class);	
 	IInport inportMock = context.mock(IInport.class);
 	IOutport outportMock = context.mock(IOutport.class);
-    IModel model;    
+    IModel model;  
+    String testSystem1Uuid, testSystem2Uuid;
 	
 	@Before
 	public void setUp() throws Exception{		
 		model = Model.newNamed("model");
 		assertEquals("model", model.getName());
 		
-		System.newNamedWithin("sys1", model);
-		System.newNamedWithin("sys2", model);
+		ISystem sys1 = System.newNamedWithin("sys1", model);
+		ISystem sys2 = System.newNamedWithin("sys2", model);
+		testSystem1Uuid = sys1.getUuid();
+		testSystem2Uuid = sys2.getUuid();
 	}
 	
 	//Incorrect test! Default constructor should be allowed in order not to break emf core api. 
@@ -109,6 +113,23 @@ public class ModelTest {
 		GainBlock.newNamedWithinWithGain("gb2", model, 1);
 		GainBlock.newNamedWithinWithGain("gb3", model, 1);
 		assertEquals(3, model.getChildrenOfTypeGainBlock().size());
+	}
+	
+	@Test
+	public void testChildWithName(){
+		assertNotNull(model.childWith("sys1"));
+		assertNotNull(model.childWith("sys2"));
+	}
+	
+	@Test
+	public void testChildWithUuid(){
+		assertNotNull(model.childWith(testSystem1Uuid));
+		assertNotNull(model.childWith(testSystem2Uuid));
+	}
+	
+	@Test
+	public void testNoChildWithName(){
+		assertTrue(model.childWith("somenameOrUuid") == null);		
 	}
 	
 

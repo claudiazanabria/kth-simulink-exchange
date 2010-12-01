@@ -135,5 +135,11 @@ public interface ISystem extends IProtoObject {
 	 * Returns true if the system is the parent of the given system reference.
 	 */
 	public boolean isParentOf(ISystemReference system);
+	
+	/**
+	 * Returns a first child met with the given name or uuid.
+	 * Returns null if there is no such child.
+	 */
+	public IProtoObject childWith(String uuidOrName);
 
 } // ISystem
