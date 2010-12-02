@@ -6,6 +6,7 @@ import static org.junit.Assert.assertFalse;
 import org.junit.Test;
 
 import se.kth.md.SimulinkOOAPI.IModel;
+import se.kth.md.SimulinkOOAPI.exceptions.ProtoObjectCreationException;
 import se.kth.md.SimulinkOOAPI.impl.Factory;
 
 
@@ -14,7 +15,7 @@ public class EqualityHelperTest {
 	EqualityHelper helper = new EqualityHelper();
 	
 	@Test
-	public void testEmptyModelsAreEqual() throws Exception{
+	public void testEmptyModelsAreEqual() throws ProtoObjectCreationException{
 		IModel modelA = Factory.newModelNamed("a");
 		IModel modelB = Factory.newModelNamed("a");
 		
@@ -22,7 +23,7 @@ public class EqualityHelperTest {
 	}
 	
 	@Test
-	public void testEmptyModelsAreNotEqual() throws Exception{
+	public void testEmptyModelsAreNotEqual() throws ProtoObjectCreationException{
 		IModel modelA = Factory.newModelNamed("a");
 		IModel modelB = Factory.newModelNamed("b");
 		
@@ -30,7 +31,7 @@ public class EqualityHelperTest {
 	}
 	
 	@Test
-	public void testModelsAreEqual() throws Exception{
+	public void testModelsAreEqual() throws ProtoObjectCreationException{
 		IModel modelA = Factory.newModelNamed("a");
 		IModel modelB = Factory.newModelNamed("a");
 		

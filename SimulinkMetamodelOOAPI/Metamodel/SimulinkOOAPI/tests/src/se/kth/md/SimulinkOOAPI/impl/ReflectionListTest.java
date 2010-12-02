@@ -13,6 +13,7 @@ import org.junit.runner.RunWith;
 import se.kth.md.SimulinkOOAPI.IProtoObject;
 import se.kth.md.SimulinkOOAPI.ISimulinkList;
 import se.kth.md.SimulinkOOAPI.ISystem;
+import se.kth.md.SimulinkOOAPI.exceptions.ProtoObjectCreationException;
 
 
 @RunWith(JMock.class)
@@ -28,7 +29,7 @@ public class ReflectionListTest {
 	}
 
 	@Test
-	public void testCollect() throws Exception{
+	public void testCollect() throws Exception, ProtoObjectCreationException{
 //		list.apply("addInListIfGainBlock", new Class[]{
 //				ReflectionList.class,				
 //		});
@@ -42,7 +43,7 @@ public class ReflectionListTest {
 	}
 	
 	@Test
-	public void testCollect2() throws Exception{
+	public void testCollect2() throws Exception, ProtoObjectCreationException{
 		list.add(Factory.newModelNamed("model"));
 		ISimulinkList<IProtoObject> result = list.collect("ifGainBlockAddToList");
 		assertEquals(0, result.size());

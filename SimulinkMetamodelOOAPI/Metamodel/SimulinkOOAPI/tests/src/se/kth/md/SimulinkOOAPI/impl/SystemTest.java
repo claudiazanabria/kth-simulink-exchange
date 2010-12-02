@@ -22,6 +22,7 @@ import se.kth.md.SimulinkOOAPI.IPort;
 import se.kth.md.SimulinkOOAPI.IProtoObject;
 import se.kth.md.SimulinkOOAPI.ISimulinkList;
 import se.kth.md.SimulinkOOAPI.ISystem;
+import se.kth.md.SimulinkOOAPI.exceptions.ProtoObjectCreationException;
 
 @RunWith(JMock.class)
 public class SystemTest {
@@ -37,7 +38,7 @@ public class SystemTest {
     ISystem system;    
 	
 	@Before
-	public void setUp() throws Exception{
+	public void setUp() throws ProtoObjectCreationException{
 		context.checking(new Expectations() {{
 			one(modelMock).addChild(with(any(ISystem.class)));			    
 		}});
@@ -72,7 +73,7 @@ public class SystemTest {
 	
 	@Test
 	//TODO: check that some elements cannot be added into system
-	public void testAddChild() throws Exception{
+	public void testAddChild() throws ProtoObjectCreationException{
 		context.checking(new Expectations() {{
 			ignoring(modelMock);			    
 		}});
@@ -93,19 +94,19 @@ public class SystemTest {
 	}
 
 	@Test
-	public void testAddLibrary() throws Exception{
+	public void testAddLibrary() throws ProtoObjectCreationException{
 		testAddWrongChild(Library.newNamed("lib"));		
 	}
 	
 	@Test
-	public void testGetChildrenOfTypeGainBlock() throws Exception{
+	public void testGetChildrenOfTypeGainBlock() throws ProtoObjectCreationException{
 		GainBlock.newNamedWithinWithGain("gainBlock1", system, 1);
 		GainBlock.newNamedWithinWithGain("gainBlock2", system, 1);		
 		assertEquals(2, system.getChildrenOfTypeGainBlock().size());
 	}
 	
 	@Test	
-	public void testGetChildrenOfTypeLine() throws Exception{
+	public void testGetChildrenOfTypeLine() throws ProtoObjectCreationException{
 		context.checking(new Expectations() {{
 			atLeast(1).of(inportMock).getParent();
 				will(returnValue(system));
@@ -132,13 +133,13 @@ public class SystemTest {
 	}
 	
 	@Test
-	public void testGetChildrenOfTypeSystem() throws Exception{
+	public void testGetChildrenOfTypeSystem() throws ProtoObjectCreationException{
 		System.newNamedWithin("sys", system);		
 		assertEquals(1, system.getChildrenOfTypeSystem().size());
 	}
 	
 	@Test
-	public void testGetChildrenOfTypeSystemReference() throws Exception{
+	public void testGetChildrenOfTypeSystemReference() throws ProtoObjectCreationException{
 		context.checking(new Expectations() {{
 			ignoring(systemMock);								    
 		}});
@@ -148,13 +149,13 @@ public class SystemTest {
 	}
 	
 	@Test
-	public void testIsParentOfSystem() throws Exception{
+	public void testIsParentOfSystem() throws ProtoObjectCreationException{
 		ISystem subsystem = Factory.newSystemNamedWithin("sub", system);		
 		assertTrue(system.isParentOf(subsystem));
 	}
 	
 	@Test
-	public void testIsNotParentOfSystem() throws Exception{
+	public void testIsNotParentOfSystem() throws ProtoObjectCreationException{
 		context.checking(new Expectations() {{
 			ignoring(modelMock);			    
 		}});
@@ -164,7 +165,7 @@ public class SystemTest {
 	}
 	
 	@Test
-	public void testCreateWithinModel() throws Exception{		
+	public void testCreateWithinModel() throws ProtoObjectCreationException{		
 		context.checking(new Expectations() {{					
 			one(modelMock).addChild(with(any(ISystem.class)));
 		}});	
@@ -174,7 +175,7 @@ public class SystemTest {
 	}
 	
 	@Test
-	public void testCreateWithinSystem() throws Exception{		
+	public void testCreateWithinSystem() throws ProtoObjectCreationException{		
 		context.checking(new Expectations() {{					
 			one(systemMock).addChild(with(any(ISystem.class)));
 		}});	
@@ -184,7 +185,7 @@ public class SystemTest {
 	}
 	
 	@Test
-	public void testCreateWithinLibrary() throws Exception{		
+	public void testCreateWithinLibrary() throws ProtoObjectCreationException{		
 		context.checking(new Expectations() {{					
 			one(libraryMock).addChild(with(any(ISystem.class)));
 		}});	

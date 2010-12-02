@@ -20,7 +20,8 @@ import se.kth.md.SimulinkOOAPI.ISimulinkList;
 import se.kth.md.SimulinkOOAPI.ISimulinkOOAPIPackage;
 import se.kth.md.SimulinkOOAPI.ISystem;
 import se.kth.md.SimulinkOOAPI.ISystemReference;
-import se.kth.md.SimulinkOOAPI.util.ErrorMessages;
+import se.kth.md.SimulinkOOAPI.exceptions.ErrorMessages;
+import se.kth.md.SimulinkOOAPI.exceptions.ProtoObjectCreationException;
 
 /**
  * <!-- begin-user-doc -->
@@ -55,15 +56,15 @@ public class SystemReference extends ProtoObject implements ISystemReference {
 		super();
 	}
 	
-	protected SystemReference(String name, ISystem parent, ISystem target) {
+	protected SystemReference(String name, ISystem parent, ISystem target) throws ProtoObjectCreationException {
 		super(name);		
 		if (parent.equals(target))
-			throw new IllegalArgumentException(ErrorMessages.SYS_REF_TARGET_EQUALS_PARENT);
+			throw new ProtoObjectCreationException(ErrorMessages.SYS_REF_TARGET_EQUALS_PARENT);
 		parent.addChild(this);
 		this.target = target;
 	}
 	
-	protected SystemReference(String name, IModel parent, ISystem target) {
+	protected SystemReference(String name, IModel parent, ISystem target) throws ProtoObjectCreationException {
 		super(name);	
 		parent.addChild(this);
 		this.target = target;
@@ -183,26 +184,29 @@ public class SystemReference extends ProtoObject implements ISystemReference {
 	
 	/**
 	 * Returns new instance of SystemReference with the given name, within the given model, targeting to the given system
+	 * @throws ProtoObjectCreationException 
 	 */	
-	protected static ISystemReference newNamedWithinTargeting(String name, IModel parent, ISystem target){		
+	protected static ISystemReference newNamedWithinTargeting(String name, IModel parent, ISystem target) throws ProtoObjectCreationException{		
 		return new SystemReference(name, parent, target);
 	}
 	
 	/**
 	 * Returns new instance of SystemReference with the given name, within the given system, targeting to the given system
+	 * @throws ProtoObjectCreationException 
 	 */	
-	protected static ISystemReference newNamedWithinTargeting(String name, ISystem parent, ISystem target){
+	protected static ISystemReference newNamedWithinTargeting(String name, ISystem parent, ISystem target) throws ProtoObjectCreationException{
 		return new SystemReference(name, parent, target);
 	}
 	
 	@Deprecated
-	public static ISystemReference newFromDictionary(Map<String, Object> constructDict) throws ProtoObjectCreationException{		
+	public static ISystemReference newFromDictionary(Map<String, Object> constructDict) throws ProtoObjectCreationException{
+		//TODO: add error messages
 		if (!constructDict.containsKey(Factory.keyWithName))			
-			throw new ProtoObjectCreationException();
+			throw new ProtoObjectCreationException("");
 		if (!constructDict.containsKey(Factory.keyWithin))			
-			throw new ProtoObjectCreationException();
+			throw new ProtoObjectCreationException("");
 		if (!constructDict.containsKey(Factory.keyTargeting))			
-			throw new ProtoObjectCreationException();
+			throw new ProtoObjectCreationException("");
 		
 		//TODO: add check for the type casting		
 		String name = (String) constructDict.get(Factory.keyWithName);

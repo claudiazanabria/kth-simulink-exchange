@@ -20,7 +20,8 @@ import se.kth.md.SimulinkOOAPI.IProtoObject;
 import se.kth.md.SimulinkOOAPI.ISimulinkList;
 import se.kth.md.SimulinkOOAPI.ISimulinkOOAPIPackage;
 import se.kth.md.SimulinkOOAPI.ISystem;
-import se.kth.md.SimulinkOOAPI.util.ErrorMessages;
+import se.kth.md.SimulinkOOAPI.exceptions.ErrorMessages;
+import se.kth.md.SimulinkOOAPI.exceptions.ProtoObjectCreationException;
 
 /**
  * <!-- begin-user-doc -->
@@ -49,7 +50,7 @@ public class Model extends ProtoObject implements IModel {
 		this.children = new ChildrenSupport();
 	}	
 	
-	protected Model(String name) {
+	protected Model(String name) throws ProtoObjectCreationException {
 		super(name);
 		this.children = new ChildrenSupport();
 	}	
@@ -196,8 +197,9 @@ public class Model extends ProtoObject implements IModel {
 	
 	/**
 	 * Returns new Model instance with the given name
+	 * @throws ProtoObjectCreationException 
 	 */	
-	protected static Model newNamed(String name){						
+	protected static Model newNamed(String name) throws ProtoObjectCreationException{						
 		return new Model(name);
 	}
 
@@ -217,9 +219,10 @@ public class Model extends ProtoObject implements IModel {
 	}	
 	
 	@Deprecated
-	public static IModel newFromDictionary(Map<String, Object> constructDict) throws ProtoObjectCreationException{		
+	public static IModel newFromDictionary(Map<String, Object> constructDict) throws ProtoObjectCreationException{
+		//TODO: add error messages
 		if (!constructDict.containsKey(Factory.keyWithName))			
-			throw new ProtoObjectCreationException();
+			throw new ProtoObjectCreationException("");
 		
 		String name = (String) constructDict.get(Factory.keyWithName);
 		return new Model(name);		

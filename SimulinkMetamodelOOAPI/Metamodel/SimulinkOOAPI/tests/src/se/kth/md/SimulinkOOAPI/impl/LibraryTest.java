@@ -18,6 +18,7 @@ import se.kth.md.SimulinkOOAPI.ILibrary;
 import se.kth.md.SimulinkOOAPI.IOutport;
 import se.kth.md.SimulinkOOAPI.IProtoObject;
 import se.kth.md.SimulinkOOAPI.ISystem;
+import se.kth.md.SimulinkOOAPI.exceptions.ProtoObjectCreationException;
 
 @RunWith(JMock.class)
 public class LibraryTest {
@@ -29,7 +30,7 @@ public class LibraryTest {
     ILibrary library;    
 	
 	@Before
-	public void setUp() throws Exception{		
+	public void setUp() throws ProtoObjectCreationException{		
 		library = Factory.newLibraryNamed("library");		
 	}
 	
@@ -48,7 +49,7 @@ public class LibraryTest {
 	*/	
 	
 	@Test
-	public void testAddChild() throws Exception{
+	public void testAddChild() throws ProtoObjectCreationException{
 		context.checking(new Expectations() {{
 			ignoring(systemMock);			    
 		}});
@@ -69,31 +70,31 @@ public class LibraryTest {
 	}
 
 	@Test
-	public void testAddLibrary() throws Exception{
+	public void testAddLibrary() throws ProtoObjectCreationException{
 		testAddWrongChild(Factory.newLibraryNamed("library"));		
 	}
 	
 	@Test
-	public void testGetChildrenOfTypeGainBlock() throws Exception {
+	public void testGetChildrenOfTypeGainBlock() throws ProtoObjectCreationException {
 		Factory.newGainBlockNamedWithinWithGain("gBlock1", library, 1);
 		Factory.newGainBlockNamedWithinWithGain("gBlock2", library, 1);				
 		assertEquals(2, library.getChildrenOfTypeGainBlock().size());
 	}
 	
 	@Test
-	public void testGetChildrenOfTypeSystem() throws Exception{
+	public void testGetChildrenOfTypeSystem() throws ProtoObjectCreationException{
 		Factory.newSystemNamedWithin("system", library);		
 		assertEquals(1, library.getChildrenOfTypeSystem().size());
 	}
 	
 	@Test
-	public void testChildWithName(){
+	public void testChildWithName() throws ProtoObjectCreationException{
 		GainBlock.newNamedWithinWithGain("gain", library, 2);
 		assertNotNull(library.childWith("gain"));		
 	}
 	
 	@Test
-	public void testChildWithUuid(){		
+	public void testChildWithUuid() throws ProtoObjectCreationException{		
 		String uuid = GainBlock.newNamedWithinWithGain("gain", library, 2).getUuid(); 
 		assertNotNull(library.childWith(uuid));		
 	}

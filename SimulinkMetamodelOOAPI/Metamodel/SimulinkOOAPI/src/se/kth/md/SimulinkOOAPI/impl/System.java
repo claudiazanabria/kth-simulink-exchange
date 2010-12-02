@@ -28,6 +28,7 @@ import se.kth.md.SimulinkOOAPI.ISimulinkList;
 import se.kth.md.SimulinkOOAPI.ISimulinkOOAPIPackage;
 import se.kth.md.SimulinkOOAPI.ISystem;
 import se.kth.md.SimulinkOOAPI.ISystemReference;
+import se.kth.md.SimulinkOOAPI.exceptions.ProtoObjectCreationException;
 
 /**
  * <!-- begin-user-doc -->
@@ -59,21 +60,21 @@ public class System extends ProtoObject implements ISystem {
 		this.children = new ChildrenSupport();
 	}	
 	
-	protected System(String name, ISystem parent) {
+	protected System(String name, ISystem parent) throws ProtoObjectCreationException {
 		super(name);
 		this.children = new ChildrenSupport();
 		this.parent = parent;
 		parent.addChild(this);
 	}	
 	
-	protected System(String name, IModel parent) {
+	protected System(String name, IModel parent) throws ProtoObjectCreationException {
 		super(name);
 		this.children = new ChildrenSupport();
 		this.parent = parent;
 		parent.addChild(this);
 	}	
 	
-	protected System(String name, ILibrary parent) {
+	protected System(String name, ILibrary parent) throws ProtoObjectCreationException {
 		super(name);
 		this.children = new ChildrenSupport();
 		this.parent = parent;
@@ -310,31 +311,35 @@ public class System extends ProtoObject implements ISystem {
 	
 	/**
 	 * Returns new instance of System with the given name within the given model. 
+	 * @throws ProtoObjectCreationException 
 	 */
-	protected static System newNamedWithin(String name, IModel parent){		
+	protected static System newNamedWithin(String name, IModel parent) throws ProtoObjectCreationException{		
 		return new System(name, parent);
 	}
 	
 	/**
 	 * Returns new instance of System with the given name within the given system. 
+	 * @throws ProtoObjectCreationException 
 	 */
-	protected static System newNamedWithin(String name, ISystem parent){		
+	protected static System newNamedWithin(String name, ISystem parent) throws ProtoObjectCreationException{		
 		return new System(name, parent);
 	}
 	
 	/**
 	 * Returns new instance of System with the given name within the given library. 
+	 * @throws ProtoObjectCreationException 
 	 */	
-	protected static System newNamedWithin(String name, ILibrary parent){
+	protected static System newNamedWithin(String name, ILibrary parent) throws ProtoObjectCreationException{
 		return new System(name, parent);
 	}
 	
 	@Deprecated
-	public static ISystem newFromDictionary(Map<String, Object> constructDict) throws ProtoObjectCreationException{		
+	public static ISystem newFromDictionary(Map<String, Object> constructDict) throws ProtoObjectCreationException{
+		//TODO: error messages
 		if (!constructDict.containsKey(Factory.keyWithName))			
-			throw new ProtoObjectCreationException();
+			throw new ProtoObjectCreationException("");
 		if (!constructDict.containsKey(Factory.keyWithin))			
-			throw new ProtoObjectCreationException();
+			throw new ProtoObjectCreationException("");
 		
 		//TODO: add check for the type casting		
 		String name = (String) constructDict.get(Factory.keyWithName);

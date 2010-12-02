@@ -19,7 +19,8 @@ import se.kth.md.SimulinkOOAPI.IProtoObject;
 import se.kth.md.SimulinkOOAPI.ISimulinkList;
 import se.kth.md.SimulinkOOAPI.ISimulinkOOAPIPackage;
 import se.kth.md.SimulinkOOAPI.ISystem;
-import se.kth.md.SimulinkOOAPI.util.ErrorMessages;
+import se.kth.md.SimulinkOOAPI.exceptions.ErrorMessages;
+import se.kth.md.SimulinkOOAPI.exceptions.ProtoObjectCreationException;
 
 /**
  * <!-- begin-user-doc -->
@@ -53,8 +54,9 @@ public class Library extends ProtoObject implements ILibrary {
 	
 	/**
 	 * Constructs a new Library with the given name
+	 * @throws ProtoObjectCreationException 
 	 */
-	protected Library(String name) {
+	protected Library(String name) throws ProtoObjectCreationException {
 		super(name);
 		children = new ChildrenSupport();
 	}	
@@ -217,16 +219,18 @@ public class Library extends ProtoObject implements ILibrary {
 	
 	/**
 	 * Returns new Library instance with the given name.
+	 * @throws ProtoObjectCreationException 
 	 */	
-	protected static ILibrary newNamed(String name){				
+	protected static ILibrary newNamed(String name) throws ProtoObjectCreationException{				
 		return new Library(name);
 	}	
 		
 	
 	@Deprecated
-	public static ILibrary newFromDictionary(Map<String, Object> constructDict) throws ProtoObjectCreationException{		
+	public static ILibrary newFromDictionary(Map<String, Object> constructDict) throws ProtoObjectCreationException{
+		//TODO: add error messages
 		if (!constructDict.containsKey(Factory.keyWithName))			
-			throw new ProtoObjectCreationException();
+			throw new ProtoObjectCreationException("");
 		
 		String name = (String) constructDict.get(Factory.keyWithName);
 		return new Library(name);		

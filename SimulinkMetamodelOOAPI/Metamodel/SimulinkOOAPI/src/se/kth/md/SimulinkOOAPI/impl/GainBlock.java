@@ -20,6 +20,7 @@ import se.kth.md.SimulinkOOAPI.IModel;
 import se.kth.md.SimulinkOOAPI.ISimulinkList;
 import se.kth.md.SimulinkOOAPI.ISimulinkOOAPIPackage;
 import se.kth.md.SimulinkOOAPI.ISystem;
+import se.kth.md.SimulinkOOAPI.exceptions.ProtoObjectCreationException;
 
 /**
  * <!-- begin-user-doc -->
@@ -66,8 +67,9 @@ public class GainBlock extends ProtoObject implements IGainBlock {
 	
 	/**
 	 * Constructs a gain block with the given name, with the given gain, contained within the given system.	 
+	 * @throws ProtoObjectCreationException 
 	 */
-	protected GainBlock(String name, ISystem parent, int gain) {
+	protected GainBlock(String name, ISystem parent, int gain) throws ProtoObjectCreationException {
 		super(name);
 		parent.addChild(this);
 		this.gain = gain;
@@ -75,8 +77,9 @@ public class GainBlock extends ProtoObject implements IGainBlock {
 	
 	/**
 	 * Constructs a gain block with the given name, with the given gain, contained within the given library.	 
+	 * @throws ProtoObjectCreationException 
 	 */
-	protected GainBlock(String name, ILibrary parent, int gain) {
+	protected GainBlock(String name, ILibrary parent, int gain) throws ProtoObjectCreationException {
 		super(name);
 		parent.addChild(this);
 		this.gain = gain;
@@ -84,8 +87,9 @@ public class GainBlock extends ProtoObject implements IGainBlock {
 	
 	/**
 	 * Constructs a gain block with the given name, with the given gain, contained within the given model.	 
+	 * @throws ProtoObjectCreationException 
 	 */
-	protected GainBlock(String name, IModel parent, int gain) {
+	protected GainBlock(String name, IModel parent, int gain) throws ProtoObjectCreationException {
 		super(name);
 		parent.addChild(this);
 		this.gain = gain;
@@ -203,34 +207,38 @@ public class GainBlock extends ProtoObject implements IGainBlock {
 	
 	/**
 	 * Returns new instance of GainBlock with the given name, with the given gain, contains within the given system.
+	 * @throws ProtoObjectCreationException 
 	 */	
-	protected static IGainBlock newNamedWithinWithGain(String name, ISystem parent, int gain){		
+	protected static IGainBlock newNamedWithinWithGain(String name, ISystem parent, int gain) throws ProtoObjectCreationException{		
 		return new GainBlock(name, parent, gain);
 	}
 	
 	/**
 	 * Returns new instance of GainBlock with the given name, with the given gain, contains within the given library.
+	 * @throws ProtoObjectCreationException 
 	 */	
-	protected static IGainBlock newNamedWithinWithGain(String name, ILibrary parent, int gain){		
+	protected static IGainBlock newNamedWithinWithGain(String name, ILibrary parent, int gain) throws ProtoObjectCreationException{		
 		return new GainBlock(name, parent, gain);
 	}	
 	
 	/**
 	 * Returns new instance of GainBlock with the given name, with the given gain, contains within the given model.
+	 * @throws ProtoObjectCreationException 
 	 */	
-	protected static IGainBlock newNamedWithinWithGain(String name, IModel parent, int gain){		
+	protected static IGainBlock newNamedWithinWithGain(String name, IModel parent, int gain) throws ProtoObjectCreationException{		
 		return new GainBlock(name, parent, gain);
 	}	
 	
 	
 	@Deprecated
-	public static IGainBlock newFromDictionary(Map<String, Object> constructDict) throws ProtoObjectCreationException{		
+	public static IGainBlock newFromDictionary(Map<String, Object> constructDict) throws ProtoObjectCreationException{
+		//TODO: add error messages
 		if (!constructDict.containsKey(Factory.keyWithName))			
-			throw new ProtoObjectCreationException();
+			throw new ProtoObjectCreationException("");
 		if (!constructDict.containsKey(Factory.keyWithin))			
-			throw new ProtoObjectCreationException();
+			throw new ProtoObjectCreationException("");
 		if (!constructDict.containsKey(Factory.keyWithGain))			
-			throw new ProtoObjectCreationException();
+			throw new ProtoObjectCreationException("");
 		
 		//TODO: add check for the type casting
 		int gain = ((Integer) constructDict.get(Factory.keyWithGain)).intValue();

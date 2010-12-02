@@ -17,6 +17,7 @@ import se.kth.md.SimulinkOOAPI.ILibrary;
 import se.kth.md.SimulinkOOAPI.IModel;
 import se.kth.md.SimulinkOOAPI.ISimulinkList;
 import se.kth.md.SimulinkOOAPI.ISystem;
+import se.kth.md.SimulinkOOAPI.exceptions.ProtoObjectCreationException;
 
 
 @RunWith(JMock.class)
@@ -31,7 +32,7 @@ public class GainBlockTest {
     IGainBlock gainBlock;    
 	
 	@Before
-	public void setUp() throws Exception{	
+	public void setUp() throws ProtoObjectCreationException{	
 		context.checking(new Expectations() {{			
 			one(systemMock).addChild(with(any(IGainBlock.class)));
 		}});	
@@ -41,7 +42,7 @@ public class GainBlockTest {
 	}
 	
 	@Test
-	public void testCreateGainBlockWithinModel() throws Exception{		
+	public void testCreateGainBlockWithinModel() throws ProtoObjectCreationException{		
 		context.checking(new Expectations() {{
 			one(modelMock).addChild(with(any(IGainBlock.class)));
 		}});	
@@ -52,7 +53,7 @@ public class GainBlockTest {
 	}
 	
 	@Test
-	public void testCreateGainBlockWithinSystem() throws Exception{
+	public void testCreateGainBlockWithinSystem() throws ProtoObjectCreationException{
 		context.checking(new Expectations() {{			
 			one(systemMock).addChild(with(any(IGainBlock.class)));
 		}});	
@@ -63,7 +64,7 @@ public class GainBlockTest {
 	}
 	
 	@Test
-	public void testCreateGainBlockWithinLibrary() throws Exception{
+	public void testCreateGainBlockWithinLibrary() throws ProtoObjectCreationException{
 		context.checking(new Expectations() {{			
 			one(libraryMock).addChild(with(any(IGainBlock.class)));
 		}});	

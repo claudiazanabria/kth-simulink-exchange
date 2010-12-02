@@ -16,7 +16,8 @@ import se.kth.md.SimulinkOOAPI.IModel;
 import se.kth.md.SimulinkOOAPI.ISimulinkList;
 import se.kth.md.SimulinkOOAPI.ISimulinkOOAPIPackage;
 import se.kth.md.SimulinkOOAPI.ISystem;
-import se.kth.md.SimulinkOOAPI.util.ErrorMessages;
+import se.kth.md.SimulinkOOAPI.exceptions.ErrorMessages;
+import se.kth.md.SimulinkOOAPI.exceptions.ProtoObjectCreationException;
 
 /**
  * <!-- begin-user-doc -->
@@ -39,8 +40,9 @@ public class Inport extends Port implements IInport {
 	
 	/**
 	 * Constructs an Inport with the given name within the given system.
+	 * @throws ProtoObjectCreationException 
 	 */
-	protected Inport(String name, ISystem parent) {
+	protected Inport(String name, ISystem parent) throws ProtoObjectCreationException {
 		super(name, parent);		
 	}	
 
@@ -71,17 +73,19 @@ public class Inport extends Port implements IInport {
 	
 	/**
 	 * Returns new instance of Inport with the given name within the given system	 
+	 * @throws ProtoObjectCreationException 
 	 */	
-	protected static IInport newNamedWithin(String name, ISystem parent){		
+	protected static IInport newNamedWithin(String name, ISystem parent) throws ProtoObjectCreationException{		
 		return new Inport(name, parent);
 	}		
 	
 	@Deprecated
-	public static IInport newFromDictionary(Map<String, Object> constructDict) throws ProtoObjectCreationException{		
+	public static IInport newFromDictionary(Map<String, Object> constructDict) throws ProtoObjectCreationException{
+		//TODO: add error messages
 		if (!constructDict.containsKey(Factory.keyWithName))			
-			throw new ProtoObjectCreationException();
+			throw new ProtoObjectCreationException("");
 		if (!constructDict.containsKey(Factory.keyWithin))			
-			throw new ProtoObjectCreationException();		
+			throw new ProtoObjectCreationException("");		
 		
 		//TODO: add check for the type casting		
 		String name = (String) constructDict.get(Factory.keyWithName);		

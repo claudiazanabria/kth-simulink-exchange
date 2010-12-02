@@ -16,7 +16,8 @@ import se.kth.md.SimulinkOOAPI.IOutport;
 import se.kth.md.SimulinkOOAPI.ISimulinkList;
 import se.kth.md.SimulinkOOAPI.ISimulinkOOAPIPackage;
 import se.kth.md.SimulinkOOAPI.ISystem;
-import se.kth.md.SimulinkOOAPI.util.ErrorMessages;
+import se.kth.md.SimulinkOOAPI.exceptions.ErrorMessages;
+import se.kth.md.SimulinkOOAPI.exceptions.ProtoObjectCreationException;
 
 /**
  * <!-- begin-user-doc -->
@@ -37,7 +38,7 @@ public class Outport extends Port implements IOutport {
 		super();
 	}
 	
-	protected Outport(String name, ISystem parent) {
+	protected Outport(String name, ISystem parent) throws ProtoObjectCreationException {
 		super(name, parent);		
 	}
 
@@ -68,18 +69,20 @@ public class Outport extends Port implements IOutport {
 	
 	/**
 	 * Returns new instance of Outport with the given name within the given system	 
+	 * @throws ProtoObjectCreationException 
 	 */	
-	protected static IOutport newNamedWithin(String name, ISystem parent){		
+	protected static IOutport newNamedWithin(String name, ISystem parent) throws ProtoObjectCreationException{		
 		return new Outport(name, parent);
 	}
 	
 	
 	@Deprecated
 	public static IOutport newFromDictionary(Map<String, Object> constructDict) throws ProtoObjectCreationException{
+		//TODO: add error messages
 		if (!constructDict.containsKey(Factory.keyWithName))			
-			throw new ProtoObjectCreationException();
+			throw new ProtoObjectCreationException("");
 		if (!constructDict.containsKey(Factory.keyWithin))			
-			throw new ProtoObjectCreationException();		
+			throw new ProtoObjectCreationException("");		
 		
 		//TODO: add check for the type casting		
 		String name = (String) constructDict.get(Factory.keyWithName);		

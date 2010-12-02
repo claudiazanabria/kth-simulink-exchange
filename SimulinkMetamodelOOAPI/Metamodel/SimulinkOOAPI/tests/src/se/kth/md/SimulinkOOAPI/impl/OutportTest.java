@@ -12,6 +12,7 @@ import se.kth.md.SimulinkOOAPI.IOutport;
 import se.kth.md.SimulinkOOAPI.IPort;
 import se.kth.md.SimulinkOOAPI.ISimulinkList;
 import se.kth.md.SimulinkOOAPI.ISystem;
+import se.kth.md.SimulinkOOAPI.exceptions.ProtoObjectCreationException;
 
 
 public class OutportTest {
@@ -23,7 +24,7 @@ public class OutportTest {
     IOutport port;
 	
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() throws Exception, ProtoObjectCreationException {
 		context.checking(new Expectations() {{
 			ignoring(systemMock);			    
 		}});
@@ -43,7 +44,7 @@ public class OutportTest {
 	}
 	
 	@Test
-	public void testCreateOutport() throws Exception{
+	public void testCreateOutport() throws Exception, ProtoObjectCreationException{
 		context.checking(new Expectations() {{
 			one(systemMock).addChild(with(any(IOutport.class)));		    
 		}});

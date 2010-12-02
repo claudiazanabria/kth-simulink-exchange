@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import org.junit.Test;
 
 import se.kth.md.SimulinkOOAPI.IIdentity;
+import se.kth.md.SimulinkOOAPI.exceptions.ProtoObjectCreationException;
 
 public class IdentityTest {
 	
@@ -73,19 +74,19 @@ public class IdentityTest {
 	}
 	
 	@Test
-	public void testCreateWithValidName() throws Exception{
+	public void testCreateWithValidName() throws ProtoObjectCreationException{
 		IIdentity identity = Identity.newNamed("Name");
 		assertEquals("Name", identity.getName());
 		assertNotNull(identity.getUuid());
 	}
 	
 	@Test
-	public void testCreateWithInvalidName() {
+	public void testCreateWithInvalidName() throws ProtoObjectCreationException {
 		IIdentity identity = null;
 		try{
 			identity = Identity.newNamed("2Name");
 			assertTrue(false); //should not reach this line
-		}catch(IllegalArgumentException e){
+		}catch(ProtoObjectCreationException e){
 			assertTrue(identity == null);
 		}		
 	}

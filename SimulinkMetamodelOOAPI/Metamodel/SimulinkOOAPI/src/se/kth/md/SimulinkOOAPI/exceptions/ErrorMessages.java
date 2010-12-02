@@ -1,6 +1,8 @@
-package se.kth.md.SimulinkOOAPI.util;
+package se.kth.md.SimulinkOOAPI.exceptions;
 
 public interface ErrorMessages {
+	
+	public static final String INVALID_SIMULINK_NAME = "Name must not start with a number and must not contain spaces and special symbols except for . _ -";
 	
 	public static final String SYS_REF_TARGET_EQUALS_PARENT = "Targeting system should not be equal to the parent system.";
 	

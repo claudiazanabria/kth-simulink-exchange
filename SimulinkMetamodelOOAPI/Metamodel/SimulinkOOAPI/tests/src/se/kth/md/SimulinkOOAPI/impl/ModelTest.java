@@ -17,6 +17,7 @@ import se.kth.md.SimulinkOOAPI.IModel;
 import se.kth.md.SimulinkOOAPI.IOutport;
 import se.kth.md.SimulinkOOAPI.IProtoObject;
 import se.kth.md.SimulinkOOAPI.ISystem;
+import se.kth.md.SimulinkOOAPI.exceptions.ProtoObjectCreationException;
 
 @RunWith(JMock.class)
 public class ModelTest {
@@ -29,7 +30,7 @@ public class ModelTest {
     String testSystem1Uuid, testSystem2Uuid;
 	
 	@Before
-	public void setUp() throws Exception{		
+	public void setUp() throws ProtoObjectCreationException{		
 		model = Model.newNamed("model");
 		assertEquals("model", model.getName());
 		
@@ -53,7 +54,7 @@ public class ModelTest {
 	}*/	
 	
 	@Test	
-	public void testAddChild() throws Exception{
+	public void testAddChild() throws ProtoObjectCreationException{
 		context.checking(new Expectations() {{
 			ignoring(systemMock);			    
 		}});
@@ -74,12 +75,12 @@ public class ModelTest {
 	}	
 	
 	@Test
-	public void testAddLibrary() throws Exception{
+	public void testAddLibrary() throws ProtoObjectCreationException{
 		testAddWrongChild(Factory.newLibraryNamed("library"));		
 	}
 	
 	@Test
-	public void testAddPort() throws Exception{
+	public void testAddPort() throws ProtoObjectCreationException{
 		context.checking(new Expectations() {{
 			ignoring(systemMock);
 		}});
@@ -88,7 +89,7 @@ public class ModelTest {
 	}
 	
 	@Test	
-	public void testGetChildrenOfTypeLine() throws Exception{
+	public void testGetChildrenOfTypeLine() throws ProtoObjectCreationException{
 		context.checking(new Expectations() {{
 			atLeast(1).of(inportMock).getParent();
 				will(returnValue(systemMock));
@@ -108,7 +109,7 @@ public class ModelTest {
 	}
 	
 	@Test
-	public void testGetChildrenOfTypeGainBlock(){
+	public void testGetChildrenOfTypeGainBlock() throws ProtoObjectCreationException{
 		GainBlock.newNamedWithinWithGain("gb1", model, 1);
 		GainBlock.newNamedWithinWithGain("gb2", model, 1);
 		GainBlock.newNamedWithinWithGain("gb3", model, 1);

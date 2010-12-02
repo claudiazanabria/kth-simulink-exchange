@@ -24,8 +24,9 @@ import se.kth.md.SimulinkOOAPI.IPort;
 import se.kth.md.SimulinkOOAPI.ISimulinkList;
 import se.kth.md.SimulinkOOAPI.ISimulinkOOAPIPackage;
 import se.kth.md.SimulinkOOAPI.ISystem;
+import se.kth.md.SimulinkOOAPI.exceptions.ErrorMessages;
+import se.kth.md.SimulinkOOAPI.exceptions.ProtoObjectCreationException;
 import se.kth.md.SimulinkOOAPI.util.AssertionRunner;
-import se.kth.md.SimulinkOOAPI.util.ErrorMessages;
 
 /**
  * <!-- begin-user-doc -->
@@ -71,7 +72,7 @@ public class Line extends ProtoObject implements ILine {
 		super();
 	}
 	
-	private Line(String name, IOutport source, IInport destination){
+	private Line(String name, IOutport source, IInport destination) throws ProtoObjectCreationException{
 		super(name);
 		AssertionRunner.assertOr(
 				AssertionRunner.assertion(ErrorMessages.LINE_PORTS_BELONG_TO_SAME_SYSTEM, 
@@ -86,12 +87,12 @@ public class Line extends ProtoObject implements ILine {
 		this.destination = destination;
 	}
 	
-	protected Line(String name, ISystem parent, IOutport source, IInport destination){
+	protected Line(String name, ISystem parent, IOutport source, IInport destination) throws ProtoObjectCreationException{
 		this(name, source, destination);
 		parent.addChild(this);		
 	}
 	
-	protected Line(String name, IModel parent, IOutport source, IInport destination){
+	protected Line(String name, IModel parent, IOutport source, IInport destination) throws ProtoObjectCreationException{
 		this(name, source, destination);
 		parent.addChild(this);		
 	}	
@@ -259,15 +260,17 @@ public class Line extends ProtoObject implements ILine {
 	
 	/**
 	 * Returns new instance of Line with the given name within the given model between the inport and the outport.
+	 * @throws ProtoObjectCreationException 
 	 */	
-	protected static ILine newNamedWithinFromTo(String name, IModel parent, IOutport source, IInport destination){		
+	protected static ILine newNamedWithinFromTo(String name, IModel parent, IOutport source, IInport destination) throws ProtoObjectCreationException{		
 		return new Line(name, parent, source, destination);
 	}
 	
 	/**
 	 * Returns new instance of Line with the given name within the given system between the inport and the outport.
+	 * @throws ProtoObjectCreationException 
 	 */	
-	protected static ILine newNamedWithinFromTo(String name, ISystem parent, IOutport source, IInport destination){
+	protected static ILine newNamedWithinFromTo(String name, ISystem parent, IOutport source, IInport destination) throws ProtoObjectCreationException{
 		return new Line(name, parent, source, destination);
 	}
 	
@@ -307,15 +310,16 @@ public class Line extends ProtoObject implements ILine {
 	}
 	
 	@Deprecated
-	public static ILine newFromDictionary(Map<String, Object> constructDict) throws ProtoObjectCreationException{		
+	public static ILine newFromDictionary(Map<String, Object> constructDict) throws ProtoObjectCreationException{
+		//TODO: add error messages
 		if (!constructDict.containsKey(Factory.keyWithName))			
-			throw new ProtoObjectCreationException();
+			throw new ProtoObjectCreationException("");
 		if (!constructDict.containsKey(Factory.keyWithin))			
-			throw new ProtoObjectCreationException();
+			throw new ProtoObjectCreationException("");
 		if (!constructDict.containsKey(Factory.keyFrom))			
-			throw new ProtoObjectCreationException();
+			throw new ProtoObjectCreationException("");
 		if (!constructDict.containsKey(Factory.keyTo))			
-			throw new ProtoObjectCreationException();
+			throw new ProtoObjectCreationException("");
 		
 		//TODO: add check for the type casting
 		IOutport from = (IOutport) constructDict.get(Factory.keyFrom);

@@ -27,6 +27,7 @@ import se.kth.md.SimulinkOOAPI.ISimulinkList;
 import se.kth.md.SimulinkOOAPI.ISimulinkOOAPIPackage;
 import se.kth.md.SimulinkOOAPI.ISystem;
 import se.kth.md.SimulinkOOAPI.ISystemReference;
+import se.kth.md.SimulinkOOAPI.exceptions.ProtoObjectCreationException;
 
 /**
  * <!-- begin-user-doc -->
@@ -63,7 +64,7 @@ public abstract class ProtoObject extends EObjectImpl implements IProtoObject {
 		this.identity = new Identity();
 	}
 	
-	protected ProtoObject(String name) {
+	protected ProtoObject(String name) throws ProtoObjectCreationException {
 		super();
 		this.identity = Identity.newNamed(name);
 	}

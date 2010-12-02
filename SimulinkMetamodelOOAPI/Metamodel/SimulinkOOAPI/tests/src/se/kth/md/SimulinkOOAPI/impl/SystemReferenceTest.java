@@ -16,7 +16,8 @@ import se.kth.md.SimulinkOOAPI.IModel;
 import se.kth.md.SimulinkOOAPI.IPort;
 import se.kth.md.SimulinkOOAPI.ISystem;
 import se.kth.md.SimulinkOOAPI.ISystemReference;
-import se.kth.md.SimulinkOOAPI.util.ErrorMessages;
+import se.kth.md.SimulinkOOAPI.exceptions.ErrorMessages;
+import se.kth.md.SimulinkOOAPI.exceptions.ProtoObjectCreationException;
 
 @RunWith(JMock.class)
 public class SystemReferenceTest {
@@ -45,20 +46,20 @@ public class SystemReferenceTest {
 	}*/
 	
 	@Test
-	public void testCreateInvalidSystemReference() throws Exception{
+	public void testCreateInvalidSystemReference() throws ProtoObjectCreationException{
 		context.checking(new Expectations() {{
 			ignoring(systemMock);			    
 		}});
 		
 		try{
 			Factory.newSystemReferemceNamedWithinTargeting("sysRef", systemMock, systemMock);			
-		}catch(IllegalArgumentException e){
+		}catch(ProtoObjectCreationException e){
 			assertEquals(ErrorMessages.SYS_REF_TARGET_EQUALS_PARENT, e.getMessage());
 		}
 	}
 	
 	@Test
-	public void testCreateWithinModel() throws Exception{		
+	public void testCreateWithinModel() throws ProtoObjectCreationException{		
 		context.checking(new Expectations() {{					
 			one(modelMock).addChild(with(any(ISystemReference.class)));			
 			ignoring(systemMock);	
@@ -70,7 +71,7 @@ public class SystemReferenceTest {
 	}
 	
 	@Test
-	public void testCreateWithinSystem() throws Exception{		
+	public void testCreateWithinSystem() throws ProtoObjectCreationException{		
 		context.checking(new Expectations() {{					
 			one(systemMock).addChild(with(any(ISystemReference.class)));
 			

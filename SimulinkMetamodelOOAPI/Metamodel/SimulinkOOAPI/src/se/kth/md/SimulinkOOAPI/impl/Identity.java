@@ -10,15 +10,15 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import se.kth.md.SimulinkOOAPI.IIdentity;
 import se.kth.md.SimulinkOOAPI.ISimulinkOOAPIPackage;
+import se.kth.md.SimulinkOOAPI.exceptions.ErrorMessages;
+import se.kth.md.SimulinkOOAPI.exceptions.ProtoObjectCreationException;
 
 /**
  * <!-- begin-user-doc -->
@@ -81,9 +81,13 @@ public class Identity extends EObjectImpl implements IIdentity {
 	/**
 	 * Constructs an Identity with the given name. Uuid is generated.
 	 */
-	protected Identity(String name) {
+	protected Identity(String name) throws ProtoObjectCreationException {
 		this();		
-		setName(name);
+		try{
+			setName(name);
+		}catch(IllegalArgumentException e){
+			throw new ProtoObjectCreationException(e.getMessage());
+		}
 	}
 
 	/**
@@ -132,7 +136,7 @@ public class Identity extends EObjectImpl implements IIdentity {
 		Pattern pattern = Pattern.compile("([a-zA-Z]){1}([a-zA-Z0-9._-]+)*");
 		Matcher matcher = pattern.matcher(newName);
 		if (!matcher.matches())
-		    throw new IllegalArgumentException("Name must not start with a number and must not contain spaces and special symbols except for . _ -");
+		    throw new IllegalArgumentException(ErrorMessages.INVALID_SIMULINK_NAME);
 		
 		String oldName = name;
 		name = newName;
@@ -229,8 +233,9 @@ public class Identity extends EObjectImpl implements IIdentity {
 	 * Returns new Identity instance with the given name.
 	 * @param aName
 	 * @return
+	 * @throws ProtoObjectCreationException 
 	 */
-	public static IIdentity newNamed(String name){
+	public static IIdentity newNamed(String name) throws ProtoObjectCreationException{
 		Identity identity = new Identity(name);
 		return identity;
 	}
