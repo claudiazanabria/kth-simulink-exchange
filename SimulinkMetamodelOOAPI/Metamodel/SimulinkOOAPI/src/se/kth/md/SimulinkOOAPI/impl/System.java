@@ -315,21 +315,21 @@ public class System extends ProtoObject implements ISystem {
 	/**
 	 * Returns new instance of System with the given name within the given model. 
 	 */
-	public static System newNamedWithin(String name, IModel parent){		
+	protected static System newNamedWithin(String name, IModel parent){		
 		return new System(name, parent);
 	}
 	
 	/**
 	 * Returns new instance of System with the given name within the given system. 
 	 */
-	public static System newNamedWithin(String name, ISystem parent){		
+	protected static System newNamedWithin(String name, ISystem parent){		
 		return new System(name, parent);
 	}
 	
 	/**
 	 * Returns new instance of System with the given name within the given library. 
 	 */	
-	public static System newNamedWithin(String name, ILibrary parent){
+	protected static System newNamedWithin(String name, ILibrary parent){
 		return new System(name, parent);
 	}
 	

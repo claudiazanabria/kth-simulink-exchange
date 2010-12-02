@@ -184,14 +184,14 @@ public class SystemReference extends ProtoObject implements ISystemReference {
 	/**
 	 * Returns new instance of SystemReference with the given name, within the given model, targeting to the given system
 	 */	
-	public static ISystemReference newNamedWithinTargeting(String name, IModel parent, ISystem target){		
+	protected static ISystemReference newNamedWithinTargeting(String name, IModel parent, ISystem target){		
 		return new SystemReference(name, parent, target);
 	}
 	
 	/**
 	 * Returns new instance of SystemReference with the given name, within the given system, targeting to the given system
 	 */	
-	public static ISystemReference newNamedWithinTargeting(String name, ISystem parent, ISystem target){
+	protected static ISystemReference newNamedWithinTargeting(String name, ISystem parent, ISystem target){
 		return new SystemReference(name, parent, target);
 	}
 	

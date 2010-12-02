@@ -28,7 +28,7 @@ public class InportTest {
 			one(systemMock).addChild(with(any(IInport.class)));		    
 		}});
 		
-		port = new Factory.Builder().named("inport").within(systemMock).createInport();		 					
+		port = Factory.newInportNamedWithin("inport", systemMock);		 					
 	}	
 	
 	@Test

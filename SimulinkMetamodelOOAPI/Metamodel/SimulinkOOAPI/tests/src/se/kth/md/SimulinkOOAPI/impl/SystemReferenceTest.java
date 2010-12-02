@@ -51,7 +51,7 @@ public class SystemReferenceTest {
 		}});
 		
 		try{
-			new Factory.Builder().targeting(systemMock).within(systemMock).named("sysRef").createSystemReferemce();			
+			Factory.newSystemReferemceNamedWithinTargeting("sysRef", systemMock, systemMock);			
 		}catch(IllegalArgumentException e){
 			assertEquals(ErrorMessages.SYS_REF_TARGET_EQUALS_PARENT, e.getMessage());
 		}

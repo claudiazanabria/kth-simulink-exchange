@@ -36,10 +36,7 @@ public class GainBlockTest {
 			one(systemMock).addChild(with(any(IGainBlock.class)));
 		}});	
 		
-		gainBlock = new Factory.Builder().withGain(3).
-										  named("gblock").
-										  within(systemMock).
-										  createGainBlock();
+		gainBlock = Factory.newGainBlockNamedWithinWithGain("gblock", systemMock, 1);
 				
 	}
 	

@@ -195,21 +195,21 @@ public class GainBlock extends ProtoObject implements IGainBlock {
 	/**
 	 * Returns new instance of GainBlock with the given name, with the given gain, contains within the given system.
 	 */	
-	public static IGainBlock newNamedWithinWithGain(String name, ISystem parent, int gain){		
+	protected static IGainBlock newNamedWithinWithGain(String name, ISystem parent, int gain){		
 		return new GainBlock(name, parent, gain);
 	}
 	
 	/**
 	 * Returns new instance of GainBlock with the given name, with the given gain, contains within the given library.
 	 */	
-	public static IGainBlock newNamedWithinWithGain(String name, ILibrary parent, int gain){		
+	protected static IGainBlock newNamedWithinWithGain(String name, ILibrary parent, int gain){		
 		return new GainBlock(name, parent, gain);
 	}	
 	
 	/**
 	 * Returns new instance of GainBlock with the given name, with the given gain, contains within the given model.
 	 */	
-	public static IGainBlock newNamedWithinWithGain(String name, IModel parent, int gain){		
+	protected static IGainBlock newNamedWithinWithGain(String name, IModel parent, int gain){		
 		return new GainBlock(name, parent, gain);
 	}	
 	

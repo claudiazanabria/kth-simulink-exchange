@@ -69,7 +69,7 @@ public class Inport extends Port implements IInport {
 	/**
 	 * Returns new instance of Inport with the given name within the given system	 
 	 */	
-	public static IInport newNamedWithin(String name, ISystem parent){		
+	protected static IInport newNamedWithin(String name, ISystem parent){		
 		return new Inport(name, parent);
 	}		
 	

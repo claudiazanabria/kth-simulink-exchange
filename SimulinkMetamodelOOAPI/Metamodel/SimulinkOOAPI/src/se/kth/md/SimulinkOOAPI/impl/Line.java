@@ -260,14 +260,14 @@ public class Line extends ProtoObject implements ILine {
 	/**
 	 * Returns new instance of Line with the given name within the given model between the inport and the outport.
 	 */	
-	public static ILine newNamedWithinFromTo(String name, IModel parent, IOutport source, IInport destination){		
+	protected static ILine newNamedWithinFromTo(String name, IModel parent, IOutport source, IInport destination){		
 		return new Line(name, parent, source, destination);
 	}
 	
 	/**
 	 * Returns new instance of Line with the given name within the given system between the inport and the outport.
 	 */	
-	public static ILine newNamedWithinFromTo(String name, ISystem parent, IOutport source, IInport destination){
+	protected static ILine newNamedWithinFromTo(String name, ISystem parent, IOutport source, IInport destination){
 		return new Line(name, parent, source, destination);
 	}
 	

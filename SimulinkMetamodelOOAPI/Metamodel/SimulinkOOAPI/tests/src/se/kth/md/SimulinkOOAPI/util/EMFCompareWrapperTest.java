@@ -14,32 +14,42 @@ public class EMFCompareWrapperTest {
 	
 	@Test
 	public void testMatchEqualModels() throws Exception{
-		IModel modelA = new Factory.Builder().named("a").createModel();
-		IModel modelB = new Factory.Builder().named("a").createModel();		
+		IModel modelA = Factory.newModelNamed("a");
+		IModel modelB = Factory.newModelNamed("a");		
 		assertTrue(EMFCompareWrapper.matched(modelA, modelB));				
 	}
 	
 	@Test
 	public void testMatchModelsWithDiffNames() throws Exception{		
-		IModel modelA = new Factory.Builder().named("a").createModel();
-		IModel modelB = new Factory.Builder().named("b").createModel();		
+		IModel modelA = Factory.newModelNamed("a");
+		IModel modelB = Factory.newModelNamed("b");		
 		assertTrue(EMFCompareWrapper.matched(modelA, modelB));		
 	}
 	
 	@Test
 	public void testMatchModelsWithDiffChild() throws Exception{		
-		IModel modelA = new Factory.Builder().named("a").createModel();
-		IModel modelB = new Factory.Builder().named("a").createModel();
-		new Factory.Builder().within(modelA).named("sys").createSystem();
+		IModel modelA = Factory.newModelNamed("a");
+		IModel modelB = Factory.newModelNamed("a");
+		Factory.newSystemNamedWithin("sys", modelA);
 		
 		assertFalse(EMFCompareWrapper.matched(modelA, modelB));		
 		assertNull(EMFCompareWrapper.getDifference(modelA, modelB));
 	}
 	
+	@Test
+	public void testMatchModelsWithEqualChild() throws Exception{		
+		IModel modelA = Factory.newModelNamed("a");
+		IModel modelB = Factory.newModelNamed("a");
+		Factory.newSystemNamedWithin("sys", modelA);
+		Factory.newSystemNamedWithin("sys", modelB);
+		
+		assertTrue(EMFCompareWrapper.matched(modelA, modelB));
+	}
+	
 	@Test	
 	public void testNonMatchModels() throws Exception{		
-		IModel modelA = new Factory.Builder().named("a").createModel();
-		ISystem modelB = new Factory.Builder().within(modelA).named("sys").createSystem();		
+		IModel modelA = Factory.newModelNamed("a");
+		ISystem modelB = Factory.newSystemNamedWithin("sys", modelA);		
 		assertFalse(EMFCompareWrapper.matched(modelA, modelB));
 		assertNull(EMFCompareWrapper.getDifference(modelA, modelB));
 	}

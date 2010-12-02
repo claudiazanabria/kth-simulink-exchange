@@ -14,7 +14,111 @@ import se.kth.md.SimulinkOOAPI.IOutport;
 import se.kth.md.SimulinkOOAPI.ISystem;
 import se.kth.md.SimulinkOOAPI.ISystemReference;
 
-public class Factory implements IFactory{
+public class Factory {
+	
+	/**
+	 * Returns new instance of GainBlock with the given name, with the given gain, contains within the given system.
+	 */	
+	public static IGainBlock newGainBlockNamedWithinWithGain(String name, ISystem parent, int gain) throws ProtoObjectCreationException {		
+		return GainBlock.newNamedWithinWithGain(name, parent, gain);
+	}
+	
+	/**
+	 * Returns new instance of GainBlock with the given name, with the given gain, contains within the given model.
+	 */	
+	public static IGainBlock newGainBlockNamedWithinWithGain(String name, IModel parent, int gain) throws ProtoObjectCreationException {		
+		return GainBlock.newNamedWithinWithGain(name, parent, gain);
+	}
+	
+	/**
+	 * Returns new instance of GainBlock with the given name, with the given gain, contains within the given library.
+	 */	
+	public static IGainBlock newGainBlockNamedWithinWithGain(String name, ILibrary parent, int gain) throws ProtoObjectCreationException {		
+		return GainBlock.newNamedWithinWithGain(name, parent, gain);
+	}
+
+	/**
+	 * Returns new Library instance with the given name.
+	 */
+	public static ILibrary newLibraryNamed(String name) throws ProtoObjectCreationException {
+		return Library.newNamed(name);
+	}
+
+	/**
+	 * Returns new instance of Line with the given name within the given model between the inport and the outport.
+	 */
+	public static ILine newLineNameWithinFromTo(String name, IModel parent, IOutport source, IInport destination) throws ProtoObjectCreationException {		
+		return Line.newNamedWithinFromTo(name, parent, source, destination);
+	}
+	
+	/**
+	 * Returns new instance of Line with the given name within the given system between the inport and the outport.
+	 */
+	public static ILine newLineNameWithinFromTo(String name, ISystem parent, IOutport source, IInport destination) throws ProtoObjectCreationException {		
+		return Line.newNamedWithinFromTo(name, parent, source, destination);
+	}
+
+	/**
+	 * Returns new instance of Inport with the given name within the given system	 
+	 */	
+	public static IInport newInportNamedWithin(String name, ISystem parent) throws ProtoObjectCreationException {		
+		return Inport.newNamedWithin(name, parent);
+	}
+
+	/**
+	 * Returns new instance of Outport with the given name within the given system	 
+	 */	
+	public static IOutport newOutportNamedWithin(String name, ISystem parent) throws ProtoObjectCreationException {
+		return Outport.newNamedWithin(name, parent);
+	}
+
+	/**
+	 * Returns new Model instance with the given name.
+	 */
+	public static IModel newModelNamed(String name) throws ProtoObjectCreationException {		
+		return Model.newNamed(name);
+	}
+
+	/**
+	 * Returns new instance of System with the given name within the given model. 
+	 */
+	public static ISystem newSystemNamedWithin(String name, IModel parent) throws ProtoObjectCreationException {		
+		return System.newNamedWithin(name, parent);
+	}
+	
+	/**
+	 * Returns new instance of System with the given name within the given system. 
+	 */
+	public static ISystem newSystemNamedWithin(String name, ISystem parent) throws ProtoObjectCreationException {		
+		return System.newNamedWithin(name, parent);
+	}
+	
+	/**
+	 * Returns new instance of System with the given name within the given library. 
+	 */
+	public static ISystem newSystemNamedWithin(String name, ILibrary parent) throws ProtoObjectCreationException {		
+		return System.newNamedWithin(name, parent);
+	}
+
+	/**
+	 * Returns new instance of SystemReference with the given name, within the
+	 * given model, targeting to the given system
+	 */
+	public static ISystemReference newSystemReferemceNamedWithinTargeting(
+			String name, IModel parent, ISystem target)
+			throws ProtoObjectCreationException {
+		return SystemReference.newNamedWithinTargeting(name, parent, target);
+	}
+
+	/**
+	 * Returns new instance of SystemReference with the given name, within the
+	 * given system, targeting to the given system
+	 */
+	public static ISystemReference newSystemReferemceNamedWithinTargeting(
+			String name, ISystem parent, ISystem target)
+			throws ProtoObjectCreationException {
+		return SystemReference.newNamedWithinTargeting(name, parent, target);
+	}
 	
 	/**
 	 * List of required parameters to create a valid gain block object
@@ -29,7 +133,7 @@ public class Factory implements IFactory{
 	/***
 	 * Proto Object under construction.
 	 */
-	public static class Builder{
+	private static class Builder{
 		Map<String, Object> constructDict = new HashMap<String, Object>();		
 		
 		public Builder withGain(int gain){
@@ -104,7 +208,9 @@ public class Factory implements IFactory{
 			return SystemReference.newFromDictionary(this.constructDict);
 		}
 		
-	}	
+	}
+
+	
 	
 //	public static class GainBlockUnderConstruction extends ProtoObjectUnderConstruction{
 //		

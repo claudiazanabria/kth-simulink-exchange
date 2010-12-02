@@ -197,7 +197,7 @@ public class Model extends ProtoObject implements IModel {
 	/**
 	 * Returns new Model instance with the given name
 	 */	
-	public static Model newNamed(String name){						
+	protected static Model newNamed(String name){						
 		return new Model(name);
 	}
 

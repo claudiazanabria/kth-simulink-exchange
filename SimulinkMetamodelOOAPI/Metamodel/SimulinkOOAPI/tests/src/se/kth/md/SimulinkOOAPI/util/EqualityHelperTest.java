@@ -15,29 +15,29 @@ public class EqualityHelperTest {
 	
 	@Test
 	public void testEmptyModelsAreEqual() throws Exception{
-		IModel modelA = new Factory.Builder().named("a").createModel();
-		IModel modelB = new Factory.Builder().named("a").createModel();
+		IModel modelA = Factory.newModelNamed("a");
+		IModel modelB = Factory.newModelNamed("a");
 		
 		assertTrue(helper.equals(modelA, modelB));
 	}
 	
 	@Test
 	public void testEmptyModelsAreNotEqual() throws Exception{
-		IModel modelA = new Factory.Builder().named("a").createModel();
-		IModel modelB = new Factory.Builder().named("b").createModel();
+		IModel modelA = Factory.newModelNamed("a");
+		IModel modelB = Factory.newModelNamed("b");
 		
 		assertFalse(helper.equals(modelA, modelB));
 	}
 	
 	@Test
 	public void testModelsAreEqual() throws Exception{
-		IModel modelA = new Factory.Builder().named("a").createModel();
-		IModel modelB = new Factory.Builder().named("a").createModel();
+		IModel modelA = Factory.newModelNamed("a");
+		IModel modelB = Factory.newModelNamed("a");
 		
-		new Factory.Builder().within(modelA).named("sysA").createSystem();
-		new Factory.Builder().within(modelA).named("sysB").createSystem();
-		new Factory.Builder().within(modelB).named("sysA").createSystem();
-		new Factory.Builder().within(modelB).named("sysB").createSystem();
+		Factory.newSystemNamedWithin("sysA", modelA);
+		Factory.newSystemNamedWithin("sysB", modelA);
+		Factory.newSystemNamedWithin("sysA", modelB);
+		Factory.newSystemNamedWithin("sysB", modelB);
 		
 		assertTrue(helper.equals(modelA, modelB));
 	}

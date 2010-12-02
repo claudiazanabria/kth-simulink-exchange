@@ -42,8 +42,8 @@ public class SystemTest {
 			one(modelMock).addChild(with(any(ISystem.class)));			    
 		}});
 		system = System.newNamedWithin("sys", modelMock);
-		new Factory.Builder().named("inport").within(system).createInport();
-		new Factory.Builder().named("outport").within(system).createOutport();		
+		Factory.newInportNamedWithin("inport", system);
+		Outport.newNamedWithin("outport", system);		
 	}
 	
 	//Incorrect test! Default constructor should be allowed in order not to break emf core api. 
@@ -78,7 +78,7 @@ public class SystemTest {
 		}});
 		
 		assertEquals(2, system.getNumberOfChildren());
-		system.addChild(new Factory.Builder().within(modelMock).named("sys").createSystem());
+		system.addChild(System.newNamedWithin("sys", modelMock));
 		assertEquals(3, system.getNumberOfChildren());
 	}
 	
@@ -94,13 +94,13 @@ public class SystemTest {
 
 	@Test
 	public void testAddLibrary() throws Exception{
-		testAddWrongChild(new Factory.Builder().named("sys").createLibrary());		
+		testAddWrongChild(Library.newNamed("lib"));		
 	}
 	
 	@Test
 	public void testGetChildrenOfTypeGainBlock() throws Exception{
-		new Factory.Builder().named("gainBlock1").withGain(5).within(system).createGainBlock();
-		new Factory.Builder().named("gainBlock2").withGain(5).within(system).createGainBlock();
+		GainBlock.newNamedWithinWithGain("gainBlock1", system, 1);
+		GainBlock.newNamedWithinWithGain("gainBlock2", system, 1);		
 		assertEquals(2, system.getChildrenOfTypeGainBlock().size());
 	}
 	
@@ -112,7 +112,7 @@ public class SystemTest {
 			atLeast(1).of(outportMock).getParent();
 				will(returnValue(system));								    
 		}});
-		new Factory.Builder().within(system).named("line").from(outportMock).to(inportMock).createLine();		
+		Line.newNamedWithinFromTo("line", system, outportMock, inportMock);				
 		assertEquals(1, system.getChildrenOfTypeLine().size());
 	}
 	
@@ -133,7 +133,7 @@ public class SystemTest {
 	
 	@Test
 	public void testGetChildrenOfTypeSystem() throws Exception{
-		new Factory.Builder().within(system).named("sys").createSystem();		
+		System.newNamedWithin("sys", system);		
 		assertEquals(1, system.getChildrenOfTypeSystem().size());
 	}
 	
@@ -143,13 +143,13 @@ public class SystemTest {
 			ignoring(systemMock);								    
 		}});
 		
-		new Factory.Builder().targeting(systemMock).within(system).named("sysRef").createSystemReferemce();		
+		SystemReference.newNamedWithinTargeting("sysref", system, systemMock);		
 		assertEquals(1, system.getChildrenOfTypeSystemReference().size());
 	}
 	
 	@Test
 	public void testIsParentOfSystem() throws Exception{
-		ISystem subsystem = new Factory.Builder().within(system).named("sub").createSystem();		
+		ISystem subsystem = Factory.newSystemNamedWithin("sub", system);		
 		assertTrue(system.isParentOf(subsystem));
 	}
 	
@@ -159,7 +159,7 @@ public class SystemTest {
 			ignoring(modelMock);			    
 		}});
 		
-		ISystem subsystem = new Factory.Builder().within(modelMock).named("sub").createSystem();		
+		ISystem subsystem = Factory.newSystemNamedWithin("sub", modelMock);		
 		assertFalse(system.isParentOf(subsystem));
 	}
 	

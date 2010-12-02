@@ -69,7 +69,7 @@ public class Outport extends Port implements IOutport {
 	/**
 	 * Returns new instance of Outport with the given name within the given system	 
 	 */	
-	public static IOutport newNamedWithin(String name, ISystem parent){		
+	protected static IOutport newNamedWithin(String name, ISystem parent){		
 		return new Outport(name, parent);
 	}
 	

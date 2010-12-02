@@ -59,7 +59,7 @@ public class ModelTest {
 		}});
 		
 		assertEquals(2, model.getNumberOfChildren());
-		model.addChild(new Factory.Builder().within(systemMock).named("sys1").createSystem());
+		model.addChild(Factory.newSystemNamedWithin("sys1", systemMock));
 		assertEquals(3, model.getNumberOfChildren());
 	}
 	
@@ -75,7 +75,7 @@ public class ModelTest {
 	
 	@Test
 	public void testAddLibrary() throws Exception{
-		testAddWrongChild(new Factory.Builder().named("library").createLibrary());		
+		testAddWrongChild(Factory.newLibraryNamed("library"));		
 	}
 	
 	@Test
@@ -84,7 +84,7 @@ public class ModelTest {
 			ignoring(systemMock);
 		}});
 		
-		testAddWrongChild(new Factory.Builder().within(systemMock).named("port").createInport());
+		testAddWrongChild(Factory.newInportNamedWithin("inport", systemMock));
 	}
 	
 	@Test	
@@ -98,7 +98,7 @@ public class ModelTest {
 			ignoring(systemMock);			
 		}});
 		
-		new Factory.Builder().named("line").within(model).from(outportMock).to(inportMock).createLine();		
+		Factory.newLineNameWithinFromTo("line", model, outportMock, inportMock);		
 		assertEquals(1, model.getChildrenOfTypeLine().size());
 	}
 	

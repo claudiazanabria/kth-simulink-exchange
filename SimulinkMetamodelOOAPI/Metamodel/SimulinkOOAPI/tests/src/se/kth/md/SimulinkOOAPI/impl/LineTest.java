@@ -54,11 +54,11 @@ public class LineTest {
 			ignoring(modelMock);
 		}});
 		
-		ISystem system = new Factory.Builder().named("sys").within(modelMock).createSystem();
-		ISystem subSystem = new Factory.Builder().named("sub").within(system).createSystem();		
-		IInport inport = new Factory.Builder().named("inport").within(system).createInport();
-		IOutport outport = new Factory.Builder().named("outport").within(subSystem).createOutport();
-		line = new Factory.Builder().named("line").within(modelMock).from(outport).to(inport).createLine();		
+		ISystem system = Factory.newSystemNamedWithin("sys", modelMock);
+		ISystem subSystem = Factory.newSystemNamedWithin("sub", system);		
+		IInport inport = Factory.newInportNamedWithin("inport", system);
+		IOutport outport = Factory.newOutportNamedWithin("outport", subSystem);
+		line = Factory.newLineNameWithinFromTo("line", modelMock, outport, inport);		
 		
 		line.ifLineAddToList(listMock);
 	}	
@@ -71,8 +71,8 @@ public class LineTest {
 			ignoring(systemMock);
 		}});
 		
-		IInport inport = new Factory.Builder().named("inport").within(systemMock).createInport();
-		IOutport outport = new Factory.Builder().named("outport").within(systemMock).createOutport();		
+		IInport inport = Factory.newInportNamedWithin("inport", systemMock);
+		IOutport outport = Factory.newOutportNamedWithin("outport", systemMock);		
 		
 		assertTrue(Line.portsBelongToTheSameSystem(inport, outport));
 	}
@@ -83,9 +83,9 @@ public class LineTest {
 			ignoring(systemMock);			
 		}});
 		
-		ISystem system = new Factory.Builder().within(systemMock).named("system").createSystem();
-		IInport inport = new Factory.Builder().named("inport").within(systemMock).createInport();
-		IOutport outport = new Factory.Builder().named("outport").within(system).createOutport();		
+		ISystem system = Factory.newSystemNamedWithin("system", systemMock);
+		IInport inport = Factory.newInportNamedWithin("inport", systemMock);
+		IOutport outport = Factory.newOutportNamedWithin("outport", system);		
 		
 		assertFalse(Line.portsBelongToTheSameSystem(inport, outport));
 	}
@@ -96,11 +96,11 @@ public class LineTest {
 			ignoring(modelMock);			
 		}});
 		
-		ISystem system = new Factory.Builder().within(modelMock).named("system").createSystem();		
-		ISystem subSystem = new Factory.Builder().within(system).named("sub").createSystem();		
+		ISystem system = Factory.newSystemNamedWithin("system", modelMock);		
+		ISystem subSystem = Factory.newSystemNamedWithin("sub", system);		
 		
-		IOutport outport = new Factory.Builder().named("outport").within(system).createOutport();	
-		IInport inport = new Factory.Builder().named("inport").within(subSystem).createInport();		
+		IOutport outport = Factory.newOutportNamedWithin("outport", system);	
+		IInport inport = Factory.newInportNamedWithin("inport", subSystem);		
 		
 		assertTrue(Line.canConnectPortsAtDifferentLevels(outport, inport));
 	}
@@ -111,11 +111,11 @@ public class LineTest {
 			ignoring(modelMock);			
 		}});
 		
-		ISystem system = new Factory.Builder().within(modelMock).named("system").createSystem();		
-		ISystem subSystem = new Factory.Builder().within(system).named("sub").createSystem();		
+		ISystem system = Factory.newSystemNamedWithin("system", modelMock);		
+		ISystem subSystem = Factory.newSystemNamedWithin("sub", system);		
 		
-		IOutport outport = new Factory.Builder().named("outport").within(subSystem).createOutport();	
-		IInport inport = new Factory.Builder().named("inport").within(system).createInport();		
+		IOutport outport = Factory.newOutportNamedWithin("outport", subSystem);	
+		IInport inport = Factory.newInportNamedWithin("inport", system);		
 		
 		assertTrue(Line.canConnectPortsAtDifferentLevels(outport, inport));
 	}
@@ -126,12 +126,12 @@ public class LineTest {
 			ignoring(modelMock);			
 		}});
 		
-		ISystem system = new Factory.Builder().within(modelMock).named("system").createSystem();		
-		ISystem subSystem = new Factory.Builder().within(system).named("sub").createSystem();
-		ISystem subSubSystem = new Factory.Builder().within(subSystem).named("subSystem").createSystem();
+		ISystem system = Factory.newSystemNamedWithin("system", modelMock);		
+		ISystem subSystem = Factory.newSystemNamedWithin("sub", system);
+		ISystem subSubSystem = Factory.newSystemNamedWithin("subSystem", subSystem);
 		
-		IOutport outport = new Factory.Builder().named("outport").within(system).createOutport();
-		IInport inport = new Factory.Builder().named("inport").within(subSubSystem).createInport();		
+		IOutport outport = Factory.newOutportNamedWithin("outport", system);
+		IInport inport = Factory.newInportNamedWithin("inport", subSubSystem);		
 		
 		assertFalse(Line.canConnectPortsAtDifferentLevels(outport, inport));
 	}
@@ -142,12 +142,12 @@ public class LineTest {
 			ignoring(modelMock);			
 		}});
 		
-		ISystem system = new Factory.Builder().within(modelMock).named("system").createSystem();		
-		ISystem subSystem = new Factory.Builder().within(system).named("sub").createSystem();
-		ISystem subSubSystem = new Factory.Builder().within(subSystem).named("subSystem").createSystem();
+		ISystem system = Factory.newSystemNamedWithin("system", modelMock);		
+		ISystem subSystem = Factory.newSystemNamedWithin("sub", system);
+		ISystem subSubSystem = Factory.newSystemNamedWithin("subSystem", subSystem);
 		
-		IOutport outport = new Factory.Builder().named("outport").within(subSubSystem).createOutport();
-		IInport inport = new Factory.Builder().named("inport").within(system).createInport();
+		IOutport outport = Factory.newOutportNamedWithin("outport", subSubSystem);
+		IInport inport = Factory.newInportNamedWithin("inport", system);
 				
 		assertFalse(Line.canConnectPortsAtDifferentLevels(outport, inport));
 	}
@@ -158,12 +158,12 @@ public class LineTest {
 			ignoring(modelMock);			
 		}});
 		
-		ISystem system = new Factory.Builder().within(modelMock).named("system").createSystem();
-		ISystem subSystemA = new Factory.Builder().within(system).named("subSystem1").createSystem();
-		ISystem subSystemB = new Factory.Builder().within(system).named("subSystem").createSystem();		
+		ISystem system = Factory.newSystemNamedWithin("system", modelMock);
+		ISystem subSystemA = Factory.newSystemNamedWithin("subSystem1", system);
+		ISystem subSystemB = Factory.newSystemNamedWithin("subSystem", system);		
 		
-		IOutport outport = new Factory.Builder().named("outport").within(subSystemA).createOutport();
-		IInport inport = new Factory.Builder().named("inport").within(subSystemB).createInport();		
+		IOutport outport = Factory.newOutportNamedWithin("outport", subSystemA);
+		IInport inport = Factory.newInportNamedWithin("inport", subSystemB);		
 		
 		assertTrue(Line.canConnectPortsAtTheSameLevel(outport, inport));
 	}
@@ -174,12 +174,12 @@ public class LineTest {
 			ignoring(modelMock);			
 		}});
 		
-		ISystem system = new Factory.Builder().within(modelMock).named("system").createSystem();		
-		ISystem subSystem = new Factory.Builder().within(system).named("sub").createSystem();
-		ISystem subSubSystem = new Factory.Builder().within(subSystem).named("subSystem").createSystem();
+		ISystem system = Factory.newSystemNamedWithin("system", modelMock);		
+		ISystem subSystem = Factory.newSystemNamedWithin("sub", system);
+		ISystem subSubSystem = Factory.newSystemNamedWithin("subSystem", subSystem);
 		
-		IOutport outport = new Factory.Builder().named("outport").within(subSystem).createOutport();
-		IInport inport = new Factory.Builder().named("inport").within(subSubSystem).createInport();
+		IOutport outport = Factory.newOutportNamedWithin("outport", subSystem);
+		IInport inport = Factory.newInportNamedWithin("inport", subSubSystem);
 		
 		assertFalse(Line.canConnectPortsAtTheSameLevel(outport, inport));
 	}

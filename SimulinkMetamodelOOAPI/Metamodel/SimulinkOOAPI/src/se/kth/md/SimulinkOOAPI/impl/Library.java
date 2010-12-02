@@ -215,7 +215,7 @@ public class Library extends ProtoObject implements ILibrary {
 	/**
 	 * Returns new Library instance with the given name.
 	 */	
-	public static ILibrary newNamed(String name){				
+	protected static ILibrary newNamed(String name){				
 		return new Library(name);
 	}	
 		
