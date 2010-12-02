@@ -22,6 +22,7 @@ import se.kth.md.SimulinkOOAPI.IPort;
 import se.kth.md.SimulinkOOAPI.IProtoObject;
 import se.kth.md.SimulinkOOAPI.ISimulinkList;
 import se.kth.md.SimulinkOOAPI.ISystem;
+import se.kth.md.SimulinkOOAPI.exceptions.AddChildException;
 import se.kth.md.SimulinkOOAPI.exceptions.ProtoObjectCreationException;
 
 @RunWith(JMock.class)
@@ -38,7 +39,7 @@ public class SystemTest {
     ISystem system;    
 	
 	@Before
-	public void setUp() throws ProtoObjectCreationException{
+	public void setUp() throws ProtoObjectCreationException, AddChildException{
 		context.checking(new Expectations() {{
 			one(modelMock).addChild(with(any(ISystem.class)));			    
 		}});
@@ -73,7 +74,7 @@ public class SystemTest {
 	
 	@Test
 	//TODO: check that some elements cannot be added into system
-	public void testAddChild() throws ProtoObjectCreationException{
+	public void testAddChild() throws Exception{
 		context.checking(new Expectations() {{
 			ignoring(modelMock);			    
 		}});
@@ -83,18 +84,18 @@ public class SystemTest {
 		assertEquals(3, system.getNumberOfChildren());
 	}
 	
-	protected void testAddWrongChild(IProtoObject child){
+	protected void testAddWrongChild(IProtoObject child) throws AddChildException{
 		boolean passed = false;
 		try{
 			system.addChild(child);
-		}catch(IllegalArgumentException e){
+		}catch(AddChildException e){
 			passed = true;
 		}
 		assertTrue(passed);
 	}
 
 	@Test
-	public void testAddLibrary() throws ProtoObjectCreationException{
+	public void testAddLibrary() throws Exception{
 		testAddWrongChild(Library.newNamed("lib"));		
 	}
 	
@@ -165,7 +166,7 @@ public class SystemTest {
 	}
 	
 	@Test
-	public void testCreateWithinModel() throws ProtoObjectCreationException{		
+	public void testCreateWithinModel() throws ProtoObjectCreationException, AddChildException{		
 		context.checking(new Expectations() {{					
 			one(modelMock).addChild(with(any(ISystem.class)));
 		}});	
@@ -175,7 +176,7 @@ public class SystemTest {
 	}
 	
 	@Test
-	public void testCreateWithinSystem() throws ProtoObjectCreationException{		
+	public void testCreateWithinSystem() throws ProtoObjectCreationException, AddChildException{		
 		context.checking(new Expectations() {{					
 			one(systemMock).addChild(with(any(ISystem.class)));
 		}});	
@@ -185,7 +186,7 @@ public class SystemTest {
 	}
 	
 	@Test
-	public void testCreateWithinLibrary() throws ProtoObjectCreationException{		
+	public void testCreateWithinLibrary() throws ProtoObjectCreationException, AddChildException{		
 		context.checking(new Expectations() {{					
 			one(libraryMock).addChild(with(any(ISystem.class)));
 		}});	

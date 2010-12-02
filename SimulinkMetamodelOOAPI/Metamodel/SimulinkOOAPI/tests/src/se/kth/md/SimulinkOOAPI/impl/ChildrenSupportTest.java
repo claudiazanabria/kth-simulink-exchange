@@ -17,8 +17,6 @@ import se.kth.md.SimulinkOOAPI.IModel;
 import se.kth.md.SimulinkOOAPI.IOutport;
 import se.kth.md.SimulinkOOAPI.IPort;
 import se.kth.md.SimulinkOOAPI.ISystem;
-import se.kth.md.SimulinkOOAPI.exceptions.ProtoObjectCreationException;
-
 
 @RunWith(JMock.class)
 public class ChildrenSupportTest {
@@ -33,7 +31,7 @@ public class ChildrenSupportTest {
 	IChildrenSupport childrenSupport;	
 	
 	@Before
-	public void setUp() throws ProtoObjectCreationException{
+	public void setUp() throws Exception {
 		childrenSupport = new ChildrenSupport();
 		assertNotNull(childrenSupport.getChildren());
 		
@@ -50,7 +48,7 @@ public class ChildrenSupportTest {
 	}
 	
 	@Test
-	public void testAddChild() throws ProtoObjectCreationException{
+	public void testAddChild() throws Exception {
 		context.checking(new Expectations() {{
 			one(modelMock).addChild(with(any(System.class)));	    
 		}});
@@ -66,7 +64,7 @@ public class ChildrenSupportTest {
 	}
 	
 	@Test
-	public void testGetChildrenOfTypeLine() throws ProtoObjectCreationException{
+	public void testGetChildrenOfTypeLine() throws Exception{
 		//final System subsystem = SystemImpl.newNamedWithin("subSystem", systemMock);
 		
 		context.checking(new Expectations() {{
@@ -85,7 +83,7 @@ public class ChildrenSupportTest {
 	}
 	
 	@Test
-	public void testGetChildrenOfTypePort() throws ProtoObjectCreationException{
+	public void testGetChildrenOfTypePort() throws Exception {
 		context.checking(new Expectations() {{
 			ignoring(systemMock);			    
 		}});
@@ -96,7 +94,7 @@ public class ChildrenSupportTest {
 	}
 	
 	@Test
-	public void testGetChildrenOfTypeOutport() throws ProtoObjectCreationException{
+	public void testGetChildrenOfTypeOutport() throws Exception {
 		context.checking(new Expectations() {{
 			ignoring(systemMock);			    
 		}});
@@ -106,7 +104,7 @@ public class ChildrenSupportTest {
 	}
 	
 	@Test
-	public void testGetChildrenOfTypeInport() throws ProtoObjectCreationException{
+	public void testGetChildrenOfTypeInport() throws Exception {
 		context.checking(new Expectations() {{
 			ignoring(systemMock);			    
 		}});
@@ -121,7 +119,7 @@ public class ChildrenSupportTest {
 	}
 	
 	@Test
-	public void testGetChildrenOfTypeSystemReference() throws ProtoObjectCreationException{
+	public void testGetChildrenOfTypeSystemReference() throws Exception {
 		context.checking(new Expectations() {{
 			ignoring(systemMock);			    
 		}});

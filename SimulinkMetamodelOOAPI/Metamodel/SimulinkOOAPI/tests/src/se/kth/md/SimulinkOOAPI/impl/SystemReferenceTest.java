@@ -19,6 +19,7 @@ import se.kth.md.SimulinkOOAPI.ISystemReference;
 import se.kth.md.SimulinkOOAPI.exceptions.ErrorMessages;
 import se.kth.md.SimulinkOOAPI.exceptions.ProtoObjectCreationException;
 
+
 @RunWith(JMock.class)
 public class SystemReferenceTest {
 	
@@ -46,7 +47,7 @@ public class SystemReferenceTest {
 	}*/
 	
 	@Test
-	public void testCreateInvalidSystemReference() throws ProtoObjectCreationException{
+	public void testCreateInvalidSystemReference() throws Exception {
 		context.checking(new Expectations() {{
 			ignoring(systemMock);			    
 		}});
@@ -59,7 +60,7 @@ public class SystemReferenceTest {
 	}
 	
 	@Test
-	public void testCreateWithinModel() throws ProtoObjectCreationException{		
+	public void testCreateWithinModel() throws Exception{		
 		context.checking(new Expectations() {{					
 			one(modelMock).addChild(with(any(ISystemReference.class)));			
 			ignoring(systemMock);	
@@ -71,7 +72,7 @@ public class SystemReferenceTest {
 	}
 	
 	@Test
-	public void testCreateWithinSystem() throws ProtoObjectCreationException{		
+	public void testCreateWithinSystem() throws Exception{		
 		context.checking(new Expectations() {{					
 			one(systemMock).addChild(with(any(ISystemReference.class)));
 			

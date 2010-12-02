@@ -20,6 +20,7 @@ import se.kth.md.SimulinkOOAPI.IModel;
 import se.kth.md.SimulinkOOAPI.ISimulinkList;
 import se.kth.md.SimulinkOOAPI.ISimulinkOOAPIPackage;
 import se.kth.md.SimulinkOOAPI.ISystem;
+import se.kth.md.SimulinkOOAPI.exceptions.AddChildException;
 import se.kth.md.SimulinkOOAPI.exceptions.ProtoObjectCreationException;
 
 /**
@@ -71,7 +72,11 @@ public class GainBlock extends ProtoObject implements IGainBlock {
 	 */
 	protected GainBlock(String name, ISystem parent, int gain) throws ProtoObjectCreationException {
 		super(name);
-		parent.addChild(this);
+		try {
+			parent.addChild(this);
+		} catch (AddChildException e) {
+			//Should not happen. Gain block can be added to system.
+		}
 		this.gain = gain;
 	}	
 	
@@ -81,7 +86,11 @@ public class GainBlock extends ProtoObject implements IGainBlock {
 	 */
 	protected GainBlock(String name, ILibrary parent, int gain) throws ProtoObjectCreationException {
 		super(name);
-		parent.addChild(this);
+		try {
+			parent.addChild(this);
+		} catch (AddChildException e) {
+			//Should not happen. Gain blocks can be added to library.
+		}
 		this.gain = gain;
 	}	
 	
@@ -91,7 +100,11 @@ public class GainBlock extends ProtoObject implements IGainBlock {
 	 */
 	protected GainBlock(String name, IModel parent, int gain) throws ProtoObjectCreationException {
 		super(name);
-		parent.addChild(this);
+		try {
+			parent.addChild(this);
+		} catch (AddChildException e) {
+			//Should not happen. Gain blocks can be added to models.
+		}
 		this.gain = gain;
 	}	
 

@@ -20,6 +20,7 @@ import se.kth.md.SimulinkOOAPI.ISimulinkList;
 import se.kth.md.SimulinkOOAPI.ISimulinkOOAPIPackage;
 import se.kth.md.SimulinkOOAPI.ISystem;
 import se.kth.md.SimulinkOOAPI.ISystemReference;
+import se.kth.md.SimulinkOOAPI.exceptions.AddChildException;
 import se.kth.md.SimulinkOOAPI.exceptions.ErrorMessages;
 import se.kth.md.SimulinkOOAPI.exceptions.ProtoObjectCreationException;
 
@@ -60,13 +61,21 @@ public class SystemReference extends ProtoObject implements ISystemReference {
 		super(name);		
 		if (parent.equals(target))
 			throw new ProtoObjectCreationException(ErrorMessages.SYS_REF_TARGET_EQUALS_PARENT);
-		parent.addChild(this);
+		try {
+			parent.addChild(this);
+		} catch (AddChildException e) {
+			//Should not happen. System reference can be added to system.
+		}
 		this.target = target;
 	}
 	
 	protected SystemReference(String name, IModel parent, ISystem target) throws ProtoObjectCreationException {
 		super(name);	
-		parent.addChild(this);
+		try {
+			parent.addChild(this);
+		} catch (AddChildException e) {
+			//Should not happen. System references can be added to models.
+		}
 		this.target = target;
 	}
 

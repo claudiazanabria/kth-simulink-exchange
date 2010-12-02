@@ -24,6 +24,7 @@ import se.kth.md.SimulinkOOAPI.IPort;
 import se.kth.md.SimulinkOOAPI.ISimulinkList;
 import se.kth.md.SimulinkOOAPI.ISimulinkOOAPIPackage;
 import se.kth.md.SimulinkOOAPI.ISystem;
+import se.kth.md.SimulinkOOAPI.exceptions.AddChildException;
 import se.kth.md.SimulinkOOAPI.exceptions.ErrorMessages;
 import se.kth.md.SimulinkOOAPI.exceptions.ProtoObjectCreationException;
 import se.kth.md.SimulinkOOAPI.util.AssertionRunner;
@@ -89,12 +90,20 @@ public class Line extends ProtoObject implements ILine {
 	
 	protected Line(String name, ISystem parent, IOutport source, IInport destination) throws ProtoObjectCreationException{
 		this(name, source, destination);
-		parent.addChild(this);		
+		try {
+			parent.addChild(this);
+		} catch (AddChildException e) {
+			//Should not happen. Line can be added to system.
+		}		
 	}
 	
 	protected Line(String name, IModel parent, IOutport source, IInport destination) throws ProtoObjectCreationException{
 		this(name, source, destination);
-		parent.addChild(this);		
+		try{
+			parent.addChild(this);
+		}catch(AddChildException e){
+			//Should not happen. Lines can be added to models.
+		}
 	}	
 
 	/**
@@ -305,8 +314,8 @@ public class Line extends ProtoObject implements ILine {
 	}	
 	
 	@Override
-	public void addTo(ILibrary parent) {
-		throw new IllegalArgumentException(ErrorMessages.LINE_ADD_TO_LIBRARY);		
+	public void addTo(ILibrary parent) throws AddChildException {
+		throw new AddChildException(this, parent);		
 	}
 	
 	@Deprecated

@@ -7,6 +7,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 import se.kth.md.SimulinkOOAPI.IModel;
+import se.kth.md.SimulinkOOAPI.exceptions.AddChildException;
 import se.kth.md.SimulinkOOAPI.exceptions.ProtoObjectCreationException;
 
 
@@ -14,7 +15,7 @@ public class YorkModelTest {
 	
 	
 	@Test
-	public void testModelsCompare() throws ProtoObjectCreationException{		
+	public void testModelsCompare() throws ProtoObjectCreationException, AddChildException{		
 		IModel modelA = YorkModel.buildWithECoreAPI();
 		IModel modelB = YorkModel.buildWithSimulinkOOAPI();    
 		//MatchModel match = EMFCompareWrapper.getMatch(modelA, modelB);

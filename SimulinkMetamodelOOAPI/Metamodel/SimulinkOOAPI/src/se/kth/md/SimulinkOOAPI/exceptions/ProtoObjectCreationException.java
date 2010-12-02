@@ -11,7 +11,7 @@
 package se.kth.md.SimulinkOOAPI.exceptions;
 
 
-public class ProtoObjectCreationException extends Throwable{
+public class ProtoObjectCreationException extends Exception {
 	
 	private static final long serialVersionUID = 1L;
 	

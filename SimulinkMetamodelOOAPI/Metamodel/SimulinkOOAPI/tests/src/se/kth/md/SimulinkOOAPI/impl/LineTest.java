@@ -19,7 +19,6 @@ import se.kth.md.SimulinkOOAPI.IOutport;
 import se.kth.md.SimulinkOOAPI.IPort;
 import se.kth.md.SimulinkOOAPI.ISimulinkList;
 import se.kth.md.SimulinkOOAPI.ISystem;
-import se.kth.md.SimulinkOOAPI.exceptions.ProtoObjectCreationException;
 
 @RunWith(JMock.class)
 public class LineTest {
@@ -48,7 +47,7 @@ public class LineTest {
 	
 	
 	@Test
-	public void testIfLineAddToList() throws ProtoObjectCreationException{		
+	public void testIfLineAddToList() throws Exception {		
 		context.checking(new Expectations() {{		
 			one (listMock).add(with(any(ILine.class)));
 			
@@ -65,7 +64,7 @@ public class LineTest {
 	}	
 	
 	@Test
-	public void testPortsBelongToTheSameSystem() throws ProtoObjectCreationException{
+	public void testPortsBelongToTheSameSystem() throws Exception {
 		context.checking(new Expectations() {{
 			exactly(2).of(systemMock).addChild(with(any(IPort.class)));
 			
@@ -79,7 +78,7 @@ public class LineTest {
 	}
 	
 	@Test
-	public void testPortsDoNotBelongToTheSameSystem() throws ProtoObjectCreationException{
+	public void testPortsDoNotBelongToTheSameSystem() throws Exception {
 		context.checking(new Expectations() {{
 			ignoring(systemMock);			
 		}});
@@ -92,7 +91,7 @@ public class LineTest {
 	}
 	
 	@Test
-	public void testCanConnectPortsAtDifferentLevels() throws ProtoObjectCreationException{
+	public void testCanConnectPortsAtDifferentLevels() throws Exception {
 		context.checking(new Expectations() {{
 			ignoring(modelMock);			
 		}});
@@ -107,7 +106,7 @@ public class LineTest {
 	}
 	
 	@Test
-	public void testCanConnectPortsAtDifferentLevels2() throws ProtoObjectCreationException{
+	public void testCanConnectPortsAtDifferentLevels2() throws Exception {
 		context.checking(new Expectations() {{
 			ignoring(modelMock);			
 		}});
@@ -122,7 +121,7 @@ public class LineTest {
 	}
 	
 	@Test
-	public void testCanNotConnectPortsAtDifferentLevels() throws ProtoObjectCreationException{
+	public void testCanNotConnectPortsAtDifferentLevels() throws Exception {
 		context.checking(new Expectations() {{
 			ignoring(modelMock);			
 		}});
@@ -138,7 +137,7 @@ public class LineTest {
 	}
 	
 	@Test
-	public void testCanNotConnectPortsAtDifferentLevels2() throws ProtoObjectCreationException{
+	public void testCanNotConnectPortsAtDifferentLevels2() throws Exception {
 		context.checking(new Expectations() {{
 			ignoring(modelMock);			
 		}});
@@ -154,7 +153,7 @@ public class LineTest {
 	}
 	
 	@Test
-	public void testCanConnectPortsAtSameLevel() throws ProtoObjectCreationException{
+	public void testCanConnectPortsAtSameLevel() throws Exception {
 		context.checking(new Expectations() {{
 			ignoring(modelMock);			
 		}});
@@ -170,7 +169,7 @@ public class LineTest {
 	}
 	
 	@Test
-	public void testCanNotConnectPortsAtSameLevel() throws ProtoObjectCreationException{
+	public void testCanNotConnectPortsAtSameLevel() throws Exception {
 		context.checking(new Expectations() {{
 			ignoring(modelMock);			
 		}});
@@ -186,7 +185,7 @@ public class LineTest {
 	}
 	
 	@Test
-	public void testCreateLineWithinSystem() throws ProtoObjectCreationException{
+	public void testCreateLineWithinSystem() throws Exception {
 		context.checking(new Expectations() {{			
 			
 			atLeast(1).of(outportMock).getParent(); will(returnValue(systemMock));
@@ -201,7 +200,7 @@ public class LineTest {
 	}
 	
 	@Test
-	public void testCreateLineWithinModel() throws ProtoObjectCreationException{		
+	public void testCreateLineWithinModel() throws Exception{		
 		context.checking(new Expectations() {{			
 			
 			atLeast(1).of(outportMock).getParent(); will(returnValue(systemMock));

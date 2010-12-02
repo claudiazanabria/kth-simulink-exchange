@@ -7,6 +7,7 @@ import se.kth.md.SimulinkOOAPI.IOutport;
 import se.kth.md.SimulinkOOAPI.ISimulinkOOAPIFactory;
 import se.kth.md.SimulinkOOAPI.ISystem;
 import se.kth.md.SimulinkOOAPI.ISystemReference;
+import se.kth.md.SimulinkOOAPI.exceptions.AddChildException;
 import se.kth.md.SimulinkOOAPI.exceptions.ProtoObjectCreationException;
 import se.kth.md.SimulinkOOAPI.impl.Factory;
 import se.kth.md.SimulinkOOAPI.impl.SimulinkOOAPIFactory;
@@ -79,8 +80,9 @@ public class YorkModel {
 	
 	/**
 	 * Builds York model by means of pure ECore API.
+	 * @throws AddChildException 
 	 */
-	public static IModel buildWithECoreAPI(){
+	public static IModel buildWithECoreAPI() throws AddChildException{
 		
 		ISimulinkOOAPIFactory factory = SimulinkOOAPIFactory.init();		
 		IModel model = factory.createModel();

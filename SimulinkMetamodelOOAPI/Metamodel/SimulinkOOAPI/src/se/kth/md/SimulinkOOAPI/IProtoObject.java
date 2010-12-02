@@ -8,6 +8,8 @@ package se.kth.md.SimulinkOOAPI;
 
 import org.eclipse.emf.ecore.EObject;
 
+import se.kth.md.SimulinkOOAPI.exceptions.AddChildException;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Proto Object</b></em>'.
@@ -104,18 +106,21 @@ public interface IProtoObject extends EObject {
 	public void ifInportAddToList(ISimulinkList<IInport> list);
 	
 	/**
-	 * Adds the element to the model children list if the element can be added to the given parent 
+	 * Adds the element to the model children list if the element can be added to the given parent.
+	 * Throws {@link se.kth.md.SimulinkOOAPI.exceptions.AddChildException} otherwise.
 	 */
-	public void addTo(IModel parent);
+	public void addTo(IModel parent) throws AddChildException;
 	
 	/**
-	 * Adds the element to the system children list if the element can be added to the given parent 
+	 * Adds the element to the system children list if the element can be added to the given parent.
+	 * Throws {@link se.kth.md.SimulinkOOAPI.exceptions.AddChildException} otherwise. 
 	 */
-	public void addTo(ISystem parent);
+	public void addTo(ISystem parent) throws AddChildException;
 	
 	/**
-	 * Adds the element to the library children list if the element can be added to the given parent 
+	 * Adds the element to the library children list if the element can be added to the given parent.
+	 * Throws {@link se.kth.md.SimulinkOOAPI.exceptions.AddChildException} otherwise.
 	 */
-	public void addTo(ILibrary parent);
+	public void addTo(ILibrary parent) throws AddChildException;
 
 } // IProtoObject

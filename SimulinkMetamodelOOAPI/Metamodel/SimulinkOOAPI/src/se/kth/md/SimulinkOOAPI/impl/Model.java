@@ -20,6 +20,7 @@ import se.kth.md.SimulinkOOAPI.IProtoObject;
 import se.kth.md.SimulinkOOAPI.ISimulinkList;
 import se.kth.md.SimulinkOOAPI.ISimulinkOOAPIPackage;
 import se.kth.md.SimulinkOOAPI.ISystem;
+import se.kth.md.SimulinkOOAPI.exceptions.AddChildException;
 import se.kth.md.SimulinkOOAPI.exceptions.ErrorMessages;
 import se.kth.md.SimulinkOOAPI.exceptions.ProtoObjectCreationException;
 
@@ -155,7 +156,7 @@ public class Model extends ProtoObject implements IModel {
 	}
 	
 	@Override
-	public void addChild(IProtoObject child) {		
+	public void addChild(IProtoObject child) throws AddChildException {		
 		child.addTo(this);		
 	}
 
@@ -204,18 +205,18 @@ public class Model extends ProtoObject implements IModel {
 	}
 
 	@Override
-	public void addTo(IModel parent) {
-		throw new IllegalArgumentException(ErrorMessages.MODEL_ADD_TO_MODEL);		
+	public void addTo(IModel parent) throws AddChildException {
+		throw new AddChildException(this, parent);		
 	}
 
 	@Override
-	public void addTo(ISystem parent) {
-		throw new IllegalArgumentException(ErrorMessages.MODEL_ADD_TO_SYSTEM);		
+	public void addTo(ISystem parent) throws AddChildException {
+		throw new AddChildException(this, parent);		
 	}	
 	
 	@Override
-	public void addTo(ILibrary parent) {
-		throw new IllegalArgumentException(ErrorMessages.MODEL_ADD_TO_LIBRARY);		
+	public void addTo(ILibrary parent) throws AddChildException {
+		throw new AddChildException(this, parent);		
 	}	
 	
 	@Deprecated

@@ -16,7 +16,7 @@ import se.kth.md.SimulinkOOAPI.IOutport;
 import se.kth.md.SimulinkOOAPI.ISimulinkList;
 import se.kth.md.SimulinkOOAPI.ISimulinkOOAPIPackage;
 import se.kth.md.SimulinkOOAPI.ISystem;
-import se.kth.md.SimulinkOOAPI.exceptions.ErrorMessages;
+import se.kth.md.SimulinkOOAPI.exceptions.AddChildException;
 import se.kth.md.SimulinkOOAPI.exceptions.ProtoObjectCreationException;
 
 /**
@@ -58,13 +58,13 @@ public class Outport extends Port implements IOutport {
 	}
 	
 	@Override
-	public void addTo(IModel parent) {
-		throw new IllegalArgumentException(ErrorMessages.PORT_ADD_TO_MODEL);		
+	public void addTo(IModel parent) throws AddChildException {
+		throw new AddChildException(this, parent);		
 	}	
 
 	@Override
-	public void addTo(ILibrary parent) {
-		throw new IllegalArgumentException(ErrorMessages.PORT_ADD_TO_LIBRARY);		
+	public void addTo(ILibrary parent) throws AddChildException {
+		throw new AddChildException(this, parent);		
 	}
 	
 	/**

@@ -28,6 +28,7 @@ import se.kth.md.SimulinkOOAPI.ISimulinkList;
 import se.kth.md.SimulinkOOAPI.ISimulinkOOAPIPackage;
 import se.kth.md.SimulinkOOAPI.ISystem;
 import se.kth.md.SimulinkOOAPI.ISystemReference;
+import se.kth.md.SimulinkOOAPI.exceptions.AddChildException;
 import se.kth.md.SimulinkOOAPI.exceptions.ProtoObjectCreationException;
 
 /**
@@ -64,21 +65,33 @@ public class System extends ProtoObject implements ISystem {
 		super(name);
 		this.children = new ChildrenSupport();
 		this.parent = parent;
-		parent.addChild(this);
+		try {
+			parent.addChild(this);
+		} catch (AddChildException e) {
+			//Should not happen. Systems can be added to systems.
+		}
 	}	
 	
 	protected System(String name, IModel parent) throws ProtoObjectCreationException {
 		super(name);
 		this.children = new ChildrenSupport();
 		this.parent = parent;
-		parent.addChild(this);
+		try {
+			parent.addChild(this);
+		} catch (AddChildException e) {
+			//Should not happen. Systems can be added to models.
+		}
 	}	
 	
 	protected System(String name, ILibrary parent) throws ProtoObjectCreationException {
 		super(name);
 		this.children = new ChildrenSupport();
 		this.parent = parent;
-		parent.addChild(this);
+		try {
+			parent.addChild(this);
+		} catch (AddChildException e) {
+			//Should not happen. Systems can be added to libraries.
+		}
 	}
 
 	/**
@@ -245,11 +258,8 @@ public class System extends ProtoObject implements ISystem {
 	}
 	
 	@Override
-	public void addChild(IProtoObject child) {	
-		if (child instanceof Library)
-			throw new IllegalArgumentException("System can not contain libraries");		
-		
-		this.children.addChild(child);
+	public void addChild(IProtoObject child) throws AddChildException{	
+		child.addTo(this);
 	}
 
 	

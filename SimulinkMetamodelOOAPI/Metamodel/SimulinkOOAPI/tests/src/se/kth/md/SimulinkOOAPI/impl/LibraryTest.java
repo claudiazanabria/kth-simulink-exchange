@@ -18,6 +18,7 @@ import se.kth.md.SimulinkOOAPI.ILibrary;
 import se.kth.md.SimulinkOOAPI.IOutport;
 import se.kth.md.SimulinkOOAPI.IProtoObject;
 import se.kth.md.SimulinkOOAPI.ISystem;
+import se.kth.md.SimulinkOOAPI.exceptions.AddChildException;
 import se.kth.md.SimulinkOOAPI.exceptions.ProtoObjectCreationException;
 
 @RunWith(JMock.class)
@@ -49,7 +50,7 @@ public class LibraryTest {
 	*/	
 	
 	@Test
-	public void testAddChild() throws ProtoObjectCreationException{
+	public void testAddChild() throws Exception{
 		context.checking(new Expectations() {{
 			ignoring(systemMock);			    
 		}});
@@ -59,23 +60,23 @@ public class LibraryTest {
 		assertEquals(1, library.getNumberOfChildren());
 	}
 	
-	protected void testAddWrongChild(IProtoObject child){
+	protected void testAddWrongChild(IProtoObject child) throws AddChildException{
 		boolean passed = false;
 		try{
 			library.addChild(child);
-		}catch(IllegalArgumentException e){
+		}catch(AddChildException e){
 			passed = true;
 		}
 		assertTrue(passed);
 	}
 
 	@Test
-	public void testAddLibrary() throws ProtoObjectCreationException{
+	public void testAddLibrary() throws Exception{
 		testAddWrongChild(Factory.newLibraryNamed("library"));		
 	}
 	
 	@Test
-	public void testGetChildrenOfTypeGainBlock() throws ProtoObjectCreationException {
+	public void testGetChildrenOfTypeGainBlock() throws Exception {
 		Factory.newGainBlockNamedWithinWithGain("gBlock1", library, 1);
 		Factory.newGainBlockNamedWithinWithGain("gBlock2", library, 1);				
 		assertEquals(2, library.getChildrenOfTypeGainBlock().size());

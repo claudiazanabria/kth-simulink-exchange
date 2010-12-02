@@ -17,6 +17,7 @@ import se.kth.md.SimulinkOOAPI.IPort;
 import se.kth.md.SimulinkOOAPI.ISimulinkList;
 import se.kth.md.SimulinkOOAPI.ISimulinkOOAPIPackage;
 import se.kth.md.SimulinkOOAPI.ISystem;
+import se.kth.md.SimulinkOOAPI.exceptions.AddChildException;
 import se.kth.md.SimulinkOOAPI.exceptions.ProtoObjectCreationException;
 
 /**
@@ -54,7 +55,11 @@ public abstract class Port extends ProtoObject implements IPort {
 	
 	protected Port(String name, ISystem parent) throws ProtoObjectCreationException {
 		super(name);
-		parent.addChild(this);
+		try {
+			parent.addChild(this);
+		} catch (AddChildException e) {
+			//Should not happen. Port can be added to system.
+		}
 		this.parent = parent;
 	}
 

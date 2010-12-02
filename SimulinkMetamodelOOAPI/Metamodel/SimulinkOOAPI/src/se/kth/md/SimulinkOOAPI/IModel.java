@@ -6,6 +6,8 @@
  */
 package se.kth.md.SimulinkOOAPI;
 
+import se.kth.md.SimulinkOOAPI.exceptions.AddChildException;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Model</b></em>'.
@@ -52,7 +54,7 @@ public interface IModel extends IProtoObject {
 	/**
 	 * Adds a ProtoObject to children list.
 	 */
-	public void addChild(IProtoObject child);
+	public void addChild(IProtoObject child) throws AddChildException;
 	
 	/**
 	 * Returns a number of all children.

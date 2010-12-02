@@ -17,6 +17,7 @@ import se.kth.md.SimulinkOOAPI.IModel;
 import se.kth.md.SimulinkOOAPI.IOutport;
 import se.kth.md.SimulinkOOAPI.IProtoObject;
 import se.kth.md.SimulinkOOAPI.ISystem;
+import se.kth.md.SimulinkOOAPI.exceptions.AddChildException;
 import se.kth.md.SimulinkOOAPI.exceptions.ProtoObjectCreationException;
 
 @RunWith(JMock.class)
@@ -54,7 +55,7 @@ public class ModelTest {
 	}*/	
 	
 	@Test	
-	public void testAddChild() throws ProtoObjectCreationException{
+	public void testAddChild() throws ProtoObjectCreationException, AddChildException{
 		context.checking(new Expectations() {{
 			ignoring(systemMock);			    
 		}});
@@ -64,23 +65,23 @@ public class ModelTest {
 		assertEquals(3, model.getNumberOfChildren());
 	}
 	
-	protected void testAddWrongChild(IProtoObject child){
+	protected void testAddWrongChild(IProtoObject child) throws AddChildException{
 		boolean passed = false;
 		try{
 			model.addChild(child);
-		}catch(IllegalArgumentException e){
+		}catch(AddChildException e){
 			passed = true;
 		}
 		assertTrue(passed);
 	}	
 	
 	@Test
-	public void testAddLibrary() throws ProtoObjectCreationException{
+	public void testAddLibrary() throws ProtoObjectCreationException, AddChildException{
 		testAddWrongChild(Factory.newLibraryNamed("library"));		
 	}
 	
 	@Test
-	public void testAddPort() throws ProtoObjectCreationException{
+	public void testAddPort() throws ProtoObjectCreationException, AddChildException{
 		context.checking(new Expectations() {{
 			ignoring(systemMock);
 		}});

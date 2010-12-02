@@ -27,6 +27,7 @@ import se.kth.md.SimulinkOOAPI.ISimulinkList;
 import se.kth.md.SimulinkOOAPI.ISimulinkOOAPIPackage;
 import se.kth.md.SimulinkOOAPI.ISystem;
 import se.kth.md.SimulinkOOAPI.ISystemReference;
+import se.kth.md.SimulinkOOAPI.exceptions.AddChildException;
 import se.kth.md.SimulinkOOAPI.exceptions.ProtoObjectCreationException;
 
 /**
@@ -198,17 +199,17 @@ public abstract class ProtoObject extends EObjectImpl implements IProtoObject {
 	public void ifInportAddToList(ISimulinkList<IInport> list){}
 	
 	@Override
-	public void addTo(IModel parent) {
+	public void addTo(IModel parent) throws AddChildException{
 		parent.getAllChildren().add(this);		
 	}
 
 	@Override
-	public void addTo(ISystem parent) {
+	public void addTo(ISystem parent) throws AddChildException{
 		parent.getAllChildren().add(this);		
 	}
 	
 	@Override
-	public void addTo(ILibrary parent) {
+	public void addTo(ILibrary parent) throws AddChildException{
 		parent.getAllChildren().add(this);		
 	}
 	
