@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import se.kth.md.SimulinkOOAPI.IModel;
-import se.kth.md.SimulinkOOAPI.IReflectionList;
+import se.kth.md.SimulinkOOAPI.ISimulinkList;
 import se.kth.md.SimulinkOOAPI.ISimulinkOOAPIPackage;
 import se.kth.md.SimulinkOOAPI.ISystem;
 import se.kth.md.SimulinkOOAPI.ISystemReference;
@@ -177,7 +177,7 @@ public class SystemReference extends ProtoObject implements ISystemReference {
 	}
 	
 	@Override
-	public void ifSystemReferenceAddToList(IReflectionList<ISystemReference> list){
+	public void ifSystemReferenceAddToList(ISimulinkList<ISystemReference> list){
 		list.add(this);
 	}
 	

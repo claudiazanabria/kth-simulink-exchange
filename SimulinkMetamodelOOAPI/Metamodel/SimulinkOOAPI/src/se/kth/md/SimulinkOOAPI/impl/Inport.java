@@ -13,7 +13,7 @@ import org.eclipse.emf.ecore.EClass;
 import se.kth.md.SimulinkOOAPI.IInport;
 import se.kth.md.SimulinkOOAPI.ILibrary;
 import se.kth.md.SimulinkOOAPI.IModel;
-import se.kth.md.SimulinkOOAPI.IReflectionList;
+import se.kth.md.SimulinkOOAPI.ISimulinkList;
 import se.kth.md.SimulinkOOAPI.ISimulinkOOAPIPackage;
 import se.kth.md.SimulinkOOAPI.ISystem;
 import se.kth.md.SimulinkOOAPI.util.ErrorMessages;
@@ -37,6 +37,9 @@ public class Inport extends Port implements IInport {
 		super();
 	}
 	
+	/**
+	 * Constructs an Inport with the given name within the given system.
+	 */
 	protected Inport(String name, ISystem parent) {
 		super(name, parent);		
 	}	
@@ -52,7 +55,7 @@ public class Inport extends Port implements IInport {
 	}
 	
 	@Override
-	public void ifInportAddToList(IReflectionList<IInport> list) {
+	public void ifInportAddToList(ISimulinkList<IInport> list) {
 		list.add(this);
 	}
 	

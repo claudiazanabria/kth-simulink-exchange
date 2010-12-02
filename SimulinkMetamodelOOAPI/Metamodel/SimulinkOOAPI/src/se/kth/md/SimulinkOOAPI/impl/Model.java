@@ -17,7 +17,7 @@ import se.kth.md.SimulinkOOAPI.ILibrary;
 import se.kth.md.SimulinkOOAPI.ILine;
 import se.kth.md.SimulinkOOAPI.IModel;
 import se.kth.md.SimulinkOOAPI.IProtoObject;
-import se.kth.md.SimulinkOOAPI.IReflectionList;
+import se.kth.md.SimulinkOOAPI.ISimulinkList;
 import se.kth.md.SimulinkOOAPI.ISimulinkOOAPIPackage;
 import se.kth.md.SimulinkOOAPI.ISystem;
 import se.kth.md.SimulinkOOAPI.util.ErrorMessages;
@@ -159,7 +159,7 @@ public class Model extends ProtoObject implements IModel {
 	}
 
 	@Override
-	public IReflectionList<IProtoObject> getAllChildren() {
+	public ISimulinkList<IProtoObject> getAllChildren() {
 		return this.children.getChildren();
 	}
 
@@ -169,18 +169,18 @@ public class Model extends ProtoObject implements IModel {
 	}
 	
 	@Override
-	public IReflectionList<IGainBlock> getChildrenOfTypeGainBlock() {		
+	public ISimulinkList<IGainBlock> getChildrenOfTypeGainBlock() {		
 		return children.getChildrenOfTypeGainBlock();
 	}
 
 	
 	@Override
-	public IReflectionList<ILine> getChildrenOfTypeLine() {
+	public ISimulinkList<ILine> getChildrenOfTypeLine() {
 		return children.getChildrenOfTypeLine();
 	}
 
 	@Override
-	public IReflectionList<ISystem> getChildrenOfTypeSystem() {
+	public ISimulinkList<ISystem> getChildrenOfTypeSystem() {
 		return children.getChildrenOfTypeSystem();
 	}	
 	

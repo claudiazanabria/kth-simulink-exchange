@@ -13,7 +13,7 @@ import org.eclipse.emf.ecore.EClass;
 import se.kth.md.SimulinkOOAPI.ILibrary;
 import se.kth.md.SimulinkOOAPI.IModel;
 import se.kth.md.SimulinkOOAPI.IOutport;
-import se.kth.md.SimulinkOOAPI.IReflectionList;
+import se.kth.md.SimulinkOOAPI.ISimulinkList;
 import se.kth.md.SimulinkOOAPI.ISimulinkOOAPIPackage;
 import se.kth.md.SimulinkOOAPI.ISystem;
 import se.kth.md.SimulinkOOAPI.util.ErrorMessages;
@@ -52,7 +52,7 @@ public class Outport extends Port implements IOutport {
 	}
 	
 	@Override
-	public void ifOutportAddToList(IReflectionList<IOutport> list){
+	public void ifOutportAddToList(ISimulinkList<IOutport> list){
 		list.add(this);
 	}
 	

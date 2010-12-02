@@ -8,7 +8,7 @@ import se.kth.md.SimulinkOOAPI.IIdentity;
 import se.kth.md.SimulinkOOAPI.ILibrary;
 import se.kth.md.SimulinkOOAPI.IModel;
 import se.kth.md.SimulinkOOAPI.IProtoObject;
-import se.kth.md.SimulinkOOAPI.IReflectionList;
+import se.kth.md.SimulinkOOAPI.ISimulinkList;
 import se.kth.md.SimulinkOOAPI.ISystem;
 
 public class SimulinkModelMatcher extends GenericMatchEngine{
@@ -21,7 +21,7 @@ public class SimulinkModelMatcher extends GenericMatchEngine{
 		 
 		//If we've got an Identity, only check the name similarity.		 
 		if (obj1 instanceof IIdentity || obj2 instanceof IIdentity)
-			return nameSimilarity(obj1, obj2) > 0.8;
+			return ((IIdentity) obj1).getName().equals(((IIdentity) obj2).getName());
 		
 		//If we've got a Model, System, or Library, compare their children lists.	
 		if (obj1 instanceof IModel && obj2 instanceof IModel){										
@@ -44,8 +44,8 @@ public class SimulinkModelMatcher extends GenericMatchEngine{
 	
 	private boolean areChildrenSimilar(IModel obj1, IModel obj2){
 		if (haveChildrenSameSize(obj1, obj2)){
-			IReflectionList<IProtoObject> children1 = obj1.getAllChildren();
-			IReflectionList<IProtoObject> children2 = obj2.getAllChildren();		
+			ISimulinkList<IProtoObject> children1 = obj1.getAllChildren();
+			ISimulinkList<IProtoObject> children2 = obj2.getAllChildren();		
 			if(!areChildrenSimilar(children1, children2))
 				return false;
 		
@@ -57,8 +57,8 @@ public class SimulinkModelMatcher extends GenericMatchEngine{
 	
 	private boolean areChildrenSimilar(ISystem obj1, ISystem obj2){
 		if (haveChildrenSameSize(obj1, obj2)){
-			IReflectionList<IProtoObject> children1 = obj1.getAllChildren();
-			IReflectionList<IProtoObject> children2 = obj2.getAllChildren();		
+			ISimulinkList<IProtoObject> children1 = obj1.getAllChildren();
+			ISimulinkList<IProtoObject> children2 = obj2.getAllChildren();		
 			if(!areChildrenSimilar(children1, children2))
 				return false;
 		
@@ -70,8 +70,8 @@ public class SimulinkModelMatcher extends GenericMatchEngine{
 	
 	private boolean areChildrenSimilar(ILibrary obj1, ILibrary obj2){
 		if (haveChildrenSameSize(obj1, obj2)){
-			IReflectionList<IProtoObject> children1 = obj1.getAllChildren();
-			IReflectionList<IProtoObject> children2 = obj2.getAllChildren();		
+			ISimulinkList<IProtoObject> children1 = obj1.getAllChildren();
+			ISimulinkList<IProtoObject> children2 = obj2.getAllChildren();		
 			if(!areChildrenSimilar(children1, children2))
 				return false;
 		
@@ -81,7 +81,7 @@ public class SimulinkModelMatcher extends GenericMatchEngine{
 		return false;
 	}
 	
-	private boolean areChildrenSimilar(IReflectionList<IProtoObject> children1, IReflectionList<IProtoObject> children2){
+	private boolean areChildrenSimilar(ISimulinkList<IProtoObject> children1, ISimulinkList<IProtoObject> children2){
 		for (IProtoObject element: children1){
 			if (!children2.doesContain(element)){
 				return false;

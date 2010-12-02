@@ -7,25 +7,22 @@ import java.util.ListIterator;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.ecore.EObject;
 
-import se.kth.md.SimulinkOOAPI.IReflectionList;
+import se.kth.md.SimulinkOOAPI.ISimulinkList;
 import se.kth.md.SimulinkOOAPI.util.EqualityHelper;
 
 
 /**
  * @generated NOT
  */
-public class ReflectionList<T> extends BasicEList<T> implements IReflectionList<T>{
-
-	/**
-	 * 
-	 */
+public class SimulinkList<T> extends BasicEList<T> implements ISimulinkList<T>{
+	
 	private static final long serialVersionUID = 1L;
 	
 	private Method getMethod(String methodName) throws ClassNotFoundException, NoSuchMethodException{
 
 		Class cl = Class.forName("se.kth.md.SimulinkOOAPI.impl.ProtoObject");//ProtoObjectImpl.class;		
 		
-		return cl.getMethod(methodName, new Class[]{IReflectionList.class});
+		return cl.getMethod(methodName, new Class[]{ISimulinkList.class});
 	}
 
 	/**
@@ -40,8 +37,8 @@ public class ReflectionList<T> extends BasicEList<T> implements IReflectionList<
 	 * @generated NOT
 	 */
 	@Override
-	public IReflectionList<T> collect(String methodName) throws NoSuchMethodException, IllegalArgumentException, IllegalAccessException, InvocationTargetException {
-		IReflectionList<T> result = new ReflectionList<T>();
+	public ISimulinkList<T> collect(String methodName) throws NoSuchMethodException, IllegalArgumentException, IllegalAccessException, InvocationTargetException {
+		ISimulinkList<T> result = new SimulinkList<T>();
 		try {
 			Method method = getMethod(methodName);
 			ListIterator<T> iterator = basicListIterator();
@@ -58,7 +55,7 @@ public class ReflectionList<T> extends BasicEList<T> implements IReflectionList<
 	}
 
 	@Override
-	public IReflectionList<T> select(String methodName) {
+	public ISimulinkList<T> select(String methodName) {
 		// TODO Auto-generated method stub
 		return null;
 	}

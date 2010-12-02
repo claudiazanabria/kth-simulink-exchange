@@ -23,7 +23,7 @@ import se.kth.md.SimulinkOOAPI.IModel;
 import se.kth.md.SimulinkOOAPI.IOutport;
 import se.kth.md.SimulinkOOAPI.IPort;
 import se.kth.md.SimulinkOOAPI.IProtoObject;
-import se.kth.md.SimulinkOOAPI.IReflectionList;
+import se.kth.md.SimulinkOOAPI.ISimulinkList;
 import se.kth.md.SimulinkOOAPI.ISimulinkOOAPIPackage;
 import se.kth.md.SimulinkOOAPI.ISystem;
 import se.kth.md.SimulinkOOAPI.ISystemReference;
@@ -176,25 +176,25 @@ public abstract class ProtoObject extends EObjectImpl implements IProtoObject {
 	}
 	
 	@Override
-	public void ifGainBlockAddToList(IReflectionList<IGainBlock> list) {}
+	public void ifGainBlockAddToList(ISimulinkList<IGainBlock> list) {}
 	
 	@Override
-	public void ifSystemAddToList(IReflectionList<ISystem> list) {}
+	public void ifSystemAddToList(ISimulinkList<ISystem> list) {}
 	
 	@Override
-	public void ifLineAddToList(IReflectionList<ILine> list) {}
+	public void ifLineAddToList(ISimulinkList<ILine> list) {}
 	
 	@Override
-	public void ifPortAddToList(IReflectionList<IPort> list){}
+	public void ifPortAddToList(ISimulinkList<IPort> list){}
 	
 	@Override
-	public void ifSystemReferenceAddToList(IReflectionList<ISystemReference> list){}
+	public void ifSystemReferenceAddToList(ISimulinkList<ISystemReference> list){}
 	
 	@Override
-	public void ifOutportAddToList(IReflectionList<IOutport> list){}
+	public void ifOutportAddToList(ISimulinkList<IOutport> list){}
 	
 	@Override
-	public void ifInportAddToList(IReflectionList<IInport> list){}
+	public void ifInportAddToList(ISimulinkList<IInport> list){}
 	
 	@Override
 	public void addTo(IModel parent) {

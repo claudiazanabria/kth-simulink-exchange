@@ -15,7 +15,7 @@ import se.kth.md.SimulinkOOAPI.IGainBlock;
 import se.kth.md.SimulinkOOAPI.IIdentity;
 import se.kth.md.SimulinkOOAPI.ILibrary;
 import se.kth.md.SimulinkOOAPI.IModel;
-import se.kth.md.SimulinkOOAPI.IReflectionList;
+import se.kth.md.SimulinkOOAPI.ISimulinkList;
 import se.kth.md.SimulinkOOAPI.ISystem;
 
 
@@ -27,7 +27,7 @@ public class GainBlockTest {
 	ISystem systemMock = context.mock(ISystem.class);
 	ILibrary libraryMock = context.mock(ILibrary.class);
 	@SuppressWarnings("unchecked")	
-	IReflectionList<IGainBlock> listMock = context.mock(IReflectionList.class);	
+	ISimulinkList<IGainBlock> listMock = context.mock(ISimulinkList.class);	
     IGainBlock gainBlock;    
 	
 	@Before

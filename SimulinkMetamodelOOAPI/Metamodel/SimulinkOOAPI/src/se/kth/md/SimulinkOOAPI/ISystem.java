@@ -87,44 +87,44 @@ public interface ISystem extends IProtoObject {
 	public int getNumberOfChildren();
 	
 	/**
-	 * Returns EList of all children.
+	 * Returns a list of all children.
 	 */
-	public IReflectionList<IProtoObject> getAllChildren();
+	public ISimulinkList<IProtoObject> getAllChildren();
 	
 	/**
-	 * Returns EList of children of GainBlock type.
+	 * Returns a list of children of GainBlock type.
 	 */
-	public IReflectionList<IGainBlock> getChildrenOfTypeGainBlock();
+	public ISimulinkList<IGainBlock> getChildrenOfTypeGainBlock();
 	
 	/**
-	 * Returns EList of children of Line type.
+	 * Returns a list of children of Line type.
 	 */	
-	public IReflectionList<ILine> getChildrenOfTypeLine();
+	public ISimulinkList<ILine> getChildrenOfTypeLine();
 	
 	/**
-	 * Returns EList of children of Port type.
+	 * Returns a list of children of Port type.
 	 */
-	public IReflectionList<IPort> getChildrenOfTypePort();
+	public ISimulinkList<IPort> getChildrenOfTypePort();
 	
 	/**
-	 * Returns EList of children of Inport type.	
+	 * Returns a list of children of Inport type.	
 	 */	
-	public IReflectionList<IInport> getChildrenOfTypeInport();
+	public ISimulinkList<IInport> getChildrenOfTypeInport();
 	
 	/**
-	 * Returns EList of children of Outport type.
+	 * Returns a list of children of Outport type.
 	 */	
-	public IReflectionList<IOutport> getChildrenOfTypeOutport();
+	public ISimulinkList<IOutport> getChildrenOfTypeOutport();
 	
 	/**
-	 * Returns EList of children of System type.
+	 * Returns a list of children of System type.
 	 */	
-	public IReflectionList<ISystem> getChildrenOfTypeSystem();
+	public ISimulinkList<ISystem> getChildrenOfTypeSystem();
 	
 	/**
-	 * Returns EList of children of SystemReference type.
+	 * Returns a list of children of SystemReference type.
 	 */	
-	public IReflectionList<ISystemReference> getChildrenOfTypeSystemReference();
+	public ISimulinkList<ISystemReference> getChildrenOfTypeSystemReference();
 	
 	/**
 	 * Returns true if the system is the parent of the given system.

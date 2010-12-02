@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import se.kth.md.SimulinkOOAPI.IPort;
-import se.kth.md.SimulinkOOAPI.IReflectionList;
+import se.kth.md.SimulinkOOAPI.ISimulinkList;
 import se.kth.md.SimulinkOOAPI.ISimulinkOOAPIPackage;
 import se.kth.md.SimulinkOOAPI.ISystem;
 
@@ -165,7 +165,7 @@ public abstract class Port extends ProtoObject implements IPort {
 	}
 	
 	@Override
-	public void ifPortAddToList(IReflectionList<IPort> list){
+	public void ifPortAddToList(ISimulinkList<IPort> list){
 		list.add(this);
 	}
 

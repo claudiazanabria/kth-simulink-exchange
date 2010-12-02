@@ -21,7 +21,7 @@ import se.kth.md.SimulinkOOAPI.ILine;
 import se.kth.md.SimulinkOOAPI.IModel;
 import se.kth.md.SimulinkOOAPI.IOutport;
 import se.kth.md.SimulinkOOAPI.IPort;
-import se.kth.md.SimulinkOOAPI.IReflectionList;
+import se.kth.md.SimulinkOOAPI.ISimulinkList;
 import se.kth.md.SimulinkOOAPI.ISimulinkOOAPIPackage;
 import se.kth.md.SimulinkOOAPI.ISystem;
 import se.kth.md.SimulinkOOAPI.util.AssertionRunner;
@@ -253,7 +253,7 @@ public class Line extends ProtoObject implements ILine {
 	}
 	
 	@Override
-	public void ifLineAddToList(IReflectionList<ILine> list){
+	public void ifLineAddToList(ISimulinkList<ILine> list){
 		list.add(this);
 	}
 	

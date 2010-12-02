@@ -34,11 +34,8 @@ import se.kth.md.SimulinkOOAPI.ISimulinkOOAPIPackage;
  *
  * @generated
  */
-public class Identity extends EObjectImpl implements IIdentity {
+public class Identity extends EObjectImpl implements IIdentity {	
 	
-	/**
-	 * @generated NOT
-	 */
 	private String uuid;
 	
 	/**
@@ -81,9 +78,12 @@ public class Identity extends EObjectImpl implements IIdentity {
 		this.uuid = EcoreUtil.generateUUID();
 	}
 	
+	/**
+	 * Constructs an Identity with the given name. Uuid is generated.
+	 */
 	protected Identity(String name) {
 		this();		
-		this.name = name;
+		setName(name);
 	}
 
 	/**
@@ -108,11 +108,9 @@ public class Identity extends EObjectImpl implements IIdentity {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
-	public void setUuid(String newUuid) {
-		// TODO: implement this method to set the 'Uuid' attribute
-		// Ensure that you remove @generated or mark it @generated NOT
+	public void setUuid(String newUuid) {		
 		throw new UnsupportedOperationException();
 	}
 
@@ -126,12 +124,12 @@ public class Identity extends EObjectImpl implements IIdentity {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Sets a new name to the identity.	  
 	 * @generated NOT
+	 * @throws IllegalArgumentException - If a new name starts with a number, contains spaces or special symbols except for . _ -
 	 */
 	public void setName(String newName) {
-		Pattern pattern = Pattern.compile("[a-zA-Z][a-zA-Z0-9._-]+");
+		Pattern pattern = Pattern.compile("([a-zA-Z]){1}([a-zA-Z0-9._-]+)*");
 		Matcher matcher = pattern.matcher(newName);
 		if (!matcher.matches())
 		    throw new IllegalArgumentException("Name must not start with a number and must not contain spaces and special symbols except for . _ -");

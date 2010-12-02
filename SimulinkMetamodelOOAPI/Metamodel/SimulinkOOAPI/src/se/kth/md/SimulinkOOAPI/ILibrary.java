@@ -61,19 +61,19 @@ public interface ILibrary extends IProtoObject {
 	public int getNumberOfChildren();
 	
 	/**
-	 * Returns EList of all children.
+	 * Returns a list of all children.
 	 */
-	public IReflectionList<IProtoObject> getAllChildren();
+	public ISimulinkList<IProtoObject> getAllChildren();
 	
 	/**
-	 * Returns EList of children of GainBlock type.
+	 * Returns a list of children of GainBlock type.
 	 */
-	public IReflectionList<IGainBlock> getChildrenOfTypeGainBlock();	
+	public ISimulinkList<IGainBlock> getChildrenOfTypeGainBlock();	
 	
 	/**
-	 * Returns EList of children of System type.
+	 * Returns a list of children of System type.
 	 */	
-	public IReflectionList<ISystem> getChildrenOfTypeSystem();
+	public ISimulinkList<ISystem> getChildrenOfTypeSystem();
 	
 	/**
 	 * Returns a first child met with the given name or uuid.

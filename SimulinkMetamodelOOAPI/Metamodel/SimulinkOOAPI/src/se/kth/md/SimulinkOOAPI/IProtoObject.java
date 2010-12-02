@@ -65,43 +65,43 @@ public interface IProtoObject extends EObject {
 	 * The element adds itself to list only if it is instance of GainBlock.	  
 	 * @param list
 	 */
-	public void ifGainBlockAddToList(IReflectionList<IGainBlock> list);
+	public void ifGainBlockAddToList(ISimulinkList<IGainBlock> list);
 	
 	/**
 	 * The element adds itself to list only if it is instance of System.	  
 	 * @param list	 
 	 */
-	public void ifSystemAddToList(IReflectionList<ISystem> list);
+	public void ifSystemAddToList(ISimulinkList<ISystem> list);
 	
 	/**
 	 * The element adds itself to list only if it is instance of Line.	  
 	 * @param list
 	 */
-	public void ifLineAddToList(IReflectionList<ILine> list);
+	public void ifLineAddToList(ISimulinkList<ILine> list);
 	
 	/**
 	 * The element adds itself to list only if it is instance of Port.	  
 	 * @param list
 	 */
-	public void ifPortAddToList(IReflectionList<IPort> list);
+	public void ifPortAddToList(ISimulinkList<IPort> list);
 	
 	/**
 	 * The element adds itself to list only if it is instance of SystemReference.	  
 	 * @param list
 	 */
-	public void ifSystemReferenceAddToList(IReflectionList<ISystemReference> list);
+	public void ifSystemReferenceAddToList(ISimulinkList<ISystemReference> list);
 	
 	/**
 	 * The element adds itself to list only if it is instance of Outport.	  
 	 * @param list	
 	 */	
-	public void ifOutportAddToList(IReflectionList<IOutport> list);
+	public void ifOutportAddToList(ISimulinkList<IOutport> list);
 	
 	/**
 	 * The element adds itself to list only if it is instance of Inport.	  
 	 * @param list	
 	 */	
-	public void ifInportAddToList(IReflectionList<IInport> list);
+	public void ifInportAddToList(ISimulinkList<IInport> list);
 	
 	/**
 	 * Adds the element to the model children list if the element can be added to the given parent 

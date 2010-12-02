@@ -6,12 +6,12 @@ import java.lang.reflect.InvocationTargetException;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
-/**
+/** 
+ * List for the inner use within {@link se.kth.md.SimulinkOOAPI.IChildrenSupport}
  * 
- * TODO: javadoc
  * @generated NOT
  */
-public interface IReflectionList<T> extends EList<T>{
+public interface ISimulinkList<T> extends EList<T>{
 	
 	/***
 	 * Applies (invokes) the given method on each list element.
@@ -28,14 +28,14 @@ public interface IReflectionList<T> extends EList<T>{
 	 * @param methodName
 	 * @generated NOT
 	 */
-	public IReflectionList<T> collect(String methodName) throws NoSuchMethodException, IllegalArgumentException, IllegalAccessException, InvocationTargetException;
+	public ISimulinkList<T> collect(String methodName) throws NoSuchMethodException, IllegalArgumentException, IllegalAccessException, InvocationTargetException;
 	
 	/***
 	 * Returns a new list that contains all elements that answer true to the given method application.
 	 * @param methodName
 	 * @generated NOT
 	 */
-	public IReflectionList<T> select(String methodName);
+	public ISimulinkList<T> select(String methodName);
 	
 	/**
 	 * Method for calling from the matching test.

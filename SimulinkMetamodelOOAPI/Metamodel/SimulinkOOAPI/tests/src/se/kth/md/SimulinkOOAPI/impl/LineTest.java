@@ -17,7 +17,7 @@ import se.kth.md.SimulinkOOAPI.ILine;
 import se.kth.md.SimulinkOOAPI.IModel;
 import se.kth.md.SimulinkOOAPI.IOutport;
 import se.kth.md.SimulinkOOAPI.IPort;
-import se.kth.md.SimulinkOOAPI.IReflectionList;
+import se.kth.md.SimulinkOOAPI.ISimulinkList;
 import se.kth.md.SimulinkOOAPI.ISystem;
 
 @RunWith(JMock.class)
@@ -28,7 +28,7 @@ public class LineTest {
 	IInport inportMock = context.mock(IInport.class);
 	IOutport outportMock = context.mock(IOutport.class);
 	@SuppressWarnings("unchecked")	
-	IReflectionList<ILine> listMock = context.mock(IReflectionList.class);	
+	ISimulinkList<ILine> listMock = context.mock(ISimulinkList.class);	
     ILine line;	
 	
 	

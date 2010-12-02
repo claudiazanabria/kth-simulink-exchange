@@ -9,9 +9,8 @@ package se.kth.md.SimulinkOOAPI;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Children Support</b></em>'.
- * <!-- end-user-doc -->
+ * The class is responsible for the children storying within a container.
  *
  *
  * @see se.kth.md.SimulinkOOAPI.ISimulinkOOAPIPackage#getChildrenSupport()
@@ -33,40 +32,40 @@ public interface IChildrenSupport extends EObject {
 	/**
 	 * Returns EList of all children.	
 	 */
-	public IReflectionList<IProtoObject> getChildren();
+	public ISimulinkList<IProtoObject> getChildren();
 	
 	/**
-	 * Returns EList of children of GainBlock type.	
+	 * Returns a list of children of IGainBlock type.	
 	 */
-	public IReflectionList<IGainBlock> getChildrenOfTypeGainBlock();
+	public ISimulinkList<IGainBlock> getChildrenOfTypeGainBlock();
 	
 	/**
-	 * Returns EList of children of Line type.
+	 * Returns al ist of children of ILine type.
 	 */
-	public IReflectionList<ILine> getChildrenOfTypeLine();
+	public ISimulinkList<ILine> getChildrenOfTypeLine();
 	
 	/**
-	 * Returns EList of children of Port type.	
+	 * Returns a list of children of IPort type.	
 	 */
-	public IReflectionList<IPort> getChildrenOfTypePort();
+	public ISimulinkList<IPort> getChildrenOfTypePort();
 	
 	/**
-	 * Returns EList of children of Inport type.	
+	 * Returns a list of children of IInport type.	
 	 */	
-	public IReflectionList<IInport> getChildrenOfTypeInport();
+	public ISimulinkList<IInport> getChildrenOfTypeInport();
 	
 	/**
-	 * Returns EList of children of Outport type.
+	 * Returns a list of children of IOutport type.
 	 */	
-	public IReflectionList<IOutport> getChildrenOfTypeOutport();
+	public ISimulinkList<IOutport> getChildrenOfTypeOutport();
 	
 	/**
-	 * Returns EList of children of System type.	
+	 * Returns a list of children of ISystem type.	
 	 */
-	public IReflectionList<ISystem> getChildrenOfTypeSystem();
+	public ISimulinkList<ISystem> getChildrenOfTypeSystem();
 	
 	/**
-	 * Returns EList of children of SystemReference type.	
+	 * Returns a list of children of ISystemReference type.	
 	 */
-	public IReflectionList<ISystemReference> getChildrenOfTypeSystemReference();
+	public ISimulinkList<ISystemReference> getChildrenOfTypeSystemReference();
 } 

@@ -1,11 +1,17 @@
 package se.kth.md.SimulinkOOAPI.util;
 
+/**
+ * Class for checking a set of conditions and raising IllegalArgumentException if they are not satisfied.
+ */
 public class AssertionRunner {
 	
 	public static Assertion assertion(String message, boolean condition){
 		return new Assertion(message, condition);
 	}
 	
+	/**
+	 * Throws IllegalArgumentException if there is at least one failed assertion within assertions.	 
+	 */
 	public static void assertAnd(Assertion... assertions) {		
 		for (Assertion a: assertions){
 			if (!a.isCondition()){
@@ -14,6 +20,9 @@ public class AssertionRunner {
 		}		
 	}
 	
+	/**
+	 * Throws IllegalArgumentException if all the assertions are failed.	 
+	 */
 	public static void assertOr(Assertion... assertions) {
 		String message = null;
 		for (Assertion a: assertions){

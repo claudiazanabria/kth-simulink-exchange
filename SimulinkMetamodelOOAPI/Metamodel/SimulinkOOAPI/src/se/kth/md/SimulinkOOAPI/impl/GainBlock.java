@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import se.kth.md.SimulinkOOAPI.IGainBlock;
 import se.kth.md.SimulinkOOAPI.ILibrary;
 import se.kth.md.SimulinkOOAPI.IModel;
-import se.kth.md.SimulinkOOAPI.IReflectionList;
+import se.kth.md.SimulinkOOAPI.ISimulinkList;
 import se.kth.md.SimulinkOOAPI.ISimulinkOOAPIPackage;
 import se.kth.md.SimulinkOOAPI.ISystem;
 
@@ -64,18 +64,27 @@ public class GainBlock extends ProtoObject implements IGainBlock {
 		super();
 	}
 	
+	/**
+	 * Constructs a gain block with the given name, with the given gain, contained within the given system.	 
+	 */
 	protected GainBlock(String name, ISystem parent, int gain) {
 		super(name);
 		parent.addChild(this);
 		this.gain = gain;
 	}	
 	
+	/**
+	 * Constructs a gain block with the given name, with the given gain, contained within the given library.	 
+	 */
 	protected GainBlock(String name, ILibrary parent, int gain) {
 		super(name);
 		parent.addChild(this);
 		this.gain = gain;
 	}	
 	
+	/**
+	 * Constructs a gain block with the given name, with the given gain, contained within the given model.	 
+	 */
 	protected GainBlock(String name, IModel parent, int gain) {
 		super(name);
 		parent.addChild(this);
@@ -188,7 +197,7 @@ public class GainBlock extends ProtoObject implements IGainBlock {
 	}
 	
 	@Override
-	public void ifGainBlockAddToList(IReflectionList<IGainBlock> list) {
+	public void ifGainBlockAddToList(ISimulinkList<IGainBlock> list) {
 		list.add(this);		
 	}
 	

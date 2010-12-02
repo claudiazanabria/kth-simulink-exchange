@@ -11,7 +11,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import se.kth.md.SimulinkOOAPI.IProtoObject;
-import se.kth.md.SimulinkOOAPI.IReflectionList;
+import se.kth.md.SimulinkOOAPI.ISimulinkList;
 import se.kth.md.SimulinkOOAPI.ISystem;
 
 
@@ -20,11 +20,11 @@ public class ReflectionListTest {
 	
 	Mockery context = new JUnit4Mockery();	
 	ISystem systemMock = context.mock(ISystem.class);
-	IReflectionList<IProtoObject> list;	
+	ISimulinkList<IProtoObject> list;	
 	
 	@Before
 	public void setUp(){
-		list = new ReflectionList<IProtoObject>();		
+		list = new SimulinkList<IProtoObject>();		
 	}
 
 	@Test
@@ -37,14 +37,14 @@ public class ReflectionListTest {
 		}});
 		
 		list.add(Factory.newGainBlockNamedWithinWithGain("gain", systemMock, 3));
-		IReflectionList<IProtoObject> result = list.collect("ifGainBlockAddToList");
+		ISimulinkList<IProtoObject> result = list.collect("ifGainBlockAddToList");
 		assertEquals(1, result.size());
 	}
 	
 	@Test
 	public void testCollect2() throws Exception{
 		list.add(Factory.newModelNamed("model"));
-		IReflectionList<IProtoObject> result = list.collect("ifGainBlockAddToList");
+		ISimulinkList<IProtoObject> result = list.collect("ifGainBlockAddToList");
 		assertEquals(0, result.size());
 	}
 }

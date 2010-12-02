@@ -17,7 +17,7 @@ import se.kth.md.SimulinkOOAPI.ILine;
 import se.kth.md.SimulinkOOAPI.IOutport;
 import se.kth.md.SimulinkOOAPI.IPort;
 import se.kth.md.SimulinkOOAPI.IProtoObject;
-import se.kth.md.SimulinkOOAPI.IReflectionList;
+import se.kth.md.SimulinkOOAPI.ISimulinkList;
 import se.kth.md.SimulinkOOAPI.ISimulinkOOAPIPackage;
 import se.kth.md.SimulinkOOAPI.ISystem;
 import se.kth.md.SimulinkOOAPI.ISystemReference;
@@ -33,7 +33,7 @@ import se.kth.md.SimulinkOOAPI.ISystemReference;
  */
 public class ChildrenSupport extends EObjectImpl implements IChildrenSupport {
 	
-	private IReflectionList<IProtoObject> children = new ReflectionList<IProtoObject>();
+	private ISimulinkList<IProtoObject> children = new SimulinkList<IProtoObject>();
 	
 	/**
 	 * <!-- begin-user-doc -->
@@ -60,7 +60,7 @@ public class ChildrenSupport extends EObjectImpl implements IChildrenSupport {
 	}
 
 	@Override
-	public IReflectionList<IProtoObject> getChildren() {		
+	public ISimulinkList<IProtoObject> getChildren() {		
 		return this.children;
 	}
 
@@ -70,8 +70,8 @@ public class ChildrenSupport extends EObjectImpl implements IChildrenSupport {
 	}
 	
 	@Override
-	public IReflectionList<IGainBlock> getChildrenOfTypeGainBlock() {
-		IReflectionList<IGainBlock> result = new ReflectionList<IGainBlock>();
+	public ISimulinkList<IGainBlock> getChildrenOfTypeGainBlock() {
+		ISimulinkList<IGainBlock> result = new SimulinkList<IGainBlock>();
 
 		for (IProtoObject child : this.children) {
 			child.ifGainBlockAddToList(result);
@@ -80,8 +80,8 @@ public class ChildrenSupport extends EObjectImpl implements IChildrenSupport {
 	}
 
 	@Override
-	public IReflectionList<ILine> getChildrenOfTypeLine() {
-		IReflectionList<ILine> result = new ReflectionList<ILine>();
+	public ISimulinkList<ILine> getChildrenOfTypeLine() {
+		ISimulinkList<ILine> result = new SimulinkList<ILine>();
 
 		for (IProtoObject child : this.children) {
 			child.ifLineAddToList(result);
@@ -90,8 +90,8 @@ public class ChildrenSupport extends EObjectImpl implements IChildrenSupport {
 	}
 
 	@Override
-	public IReflectionList<IPort> getChildrenOfTypePort() {
-		IReflectionList<IPort> result = new ReflectionList<IPort>();
+	public ISimulinkList<IPort> getChildrenOfTypePort() {
+		ISimulinkList<IPort> result = new SimulinkList<IPort>();
 
 		for (IProtoObject child : this.children) {
 			child.ifPortAddToList(result);
@@ -100,8 +100,8 @@ public class ChildrenSupport extends EObjectImpl implements IChildrenSupport {
 	}
 	
 	@Override
-	public IReflectionList<ISystem> getChildrenOfTypeSystem() {
-		IReflectionList<ISystem> result = new ReflectionList<ISystem>();
+	public ISimulinkList<ISystem> getChildrenOfTypeSystem() {
+		ISimulinkList<ISystem> result = new SimulinkList<ISystem>();
 
 		for (IProtoObject child : this.children) {
 			child.ifSystemAddToList(result);
@@ -110,8 +110,8 @@ public class ChildrenSupport extends EObjectImpl implements IChildrenSupport {
 	}
 
 	@Override
-	public IReflectionList<ISystemReference> getChildrenOfTypeSystemReference() {
-		IReflectionList<ISystemReference> result = new ReflectionList<ISystemReference>();
+	public ISimulinkList<ISystemReference> getChildrenOfTypeSystemReference() {
+		ISimulinkList<ISystemReference> result = new SimulinkList<ISystemReference>();
 
 		for (IProtoObject child : this.children) {
 			child.ifSystemReferenceAddToList(result);
@@ -120,8 +120,8 @@ public class ChildrenSupport extends EObjectImpl implements IChildrenSupport {
 	}
 
 	@Override
-	public IReflectionList<IInport> getChildrenOfTypeInport() {
-		IReflectionList<IInport> result = new ReflectionList<IInport>();
+	public ISimulinkList<IInport> getChildrenOfTypeInport() {
+		ISimulinkList<IInport> result = new SimulinkList<IInport>();
 
 		for (IProtoObject child : this.children) {
 			child.ifInportAddToList(result);
@@ -130,8 +130,8 @@ public class ChildrenSupport extends EObjectImpl implements IChildrenSupport {
 	}
 
 	@Override
-	public IReflectionList<IOutport> getChildrenOfTypeOutport() {
-		IReflectionList<IOutport> result = new ReflectionList<IOutport>();
+	public ISimulinkList<IOutport> getChildrenOfTypeOutport() {
+		ISimulinkList<IOutport> result = new SimulinkList<IOutport>();
 
 		for (IProtoObject child : this.children) {
 			child.ifOutportAddToList(result);

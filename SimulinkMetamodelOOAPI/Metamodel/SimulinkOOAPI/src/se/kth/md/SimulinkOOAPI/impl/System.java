@@ -24,7 +24,7 @@ import se.kth.md.SimulinkOOAPI.IModel;
 import se.kth.md.SimulinkOOAPI.IOutport;
 import se.kth.md.SimulinkOOAPI.IPort;
 import se.kth.md.SimulinkOOAPI.IProtoObject;
-import se.kth.md.SimulinkOOAPI.IReflectionList;
+import se.kth.md.SimulinkOOAPI.ISimulinkList;
 import se.kth.md.SimulinkOOAPI.ISimulinkOOAPIPackage;
 import se.kth.md.SimulinkOOAPI.ISystem;
 import se.kth.md.SimulinkOOAPI.ISystemReference;
@@ -44,14 +44,10 @@ import se.kth.md.SimulinkOOAPI.ISystemReference;
  * @generated
  */
 public class System extends ProtoObject implements ISystem {
-	/**
-	 * @generated NOT
-	 */
-	IChildrenSupport children;
-	/**
-	 * @generated NOT
-	 */
-	IProtoObject parent;
+	
+	private IChildrenSupport children;
+	
+	private IProtoObject parent;
 	
 	/**
 	 * <!-- begin-user-doc -->
@@ -233,7 +229,7 @@ public class System extends ProtoObject implements ISystem {
 	}
 	
 	@Override
-	public void ifSystemAddToList(IReflectionList<ISystem> list){
+	public void ifSystemAddToList(ISimulinkList<ISystem> list){
 		list.add(this);
 	}
 	
@@ -257,7 +253,7 @@ public class System extends ProtoObject implements ISystem {
 
 	
 	@Override
-	public IReflectionList<IProtoObject> getAllChildren() {
+	public ISimulinkList<IProtoObject> getAllChildren() {
 		return this.children.getChildren();
 	}
 
@@ -268,37 +264,37 @@ public class System extends ProtoObject implements ISystem {
 	}
 
 	@Override
-	public IReflectionList<IGainBlock> getChildrenOfTypeGainBlock() {		
+	public ISimulinkList<IGainBlock> getChildrenOfTypeGainBlock() {		
 		return children.getChildrenOfTypeGainBlock();
 	}
 
 	@Override
-	public IReflectionList<ILine> getChildrenOfTypeLine() {
+	public ISimulinkList<ILine> getChildrenOfTypeLine() {
 		return children.getChildrenOfTypeLine();
 	}
 
 	@Override
-	public IReflectionList<IPort> getChildrenOfTypePort() {
+	public ISimulinkList<IPort> getChildrenOfTypePort() {
 		return children.getChildrenOfTypePort();
 	}
 
 	@Override
-	public IReflectionList<ISystem> getChildrenOfTypeSystem() {
+	public ISimulinkList<ISystem> getChildrenOfTypeSystem() {
 		return children.getChildrenOfTypeSystem();		
 	}
 	
 	@Override
-	public IReflectionList<ISystemReference> getChildrenOfTypeSystemReference() {
+	public ISimulinkList<ISystemReference> getChildrenOfTypeSystemReference() {
 		return children.getChildrenOfTypeSystemReference();
 	}
 	
 	@Override
-	public IReflectionList<IInport> getChildrenOfTypeInport() {
+	public ISimulinkList<IInport> getChildrenOfTypeInport() {
 		return children.getChildrenOfTypeInport();
 	}
 
 	@Override
-	public IReflectionList<IOutport> getChildrenOfTypeOutport() {		
+	public ISimulinkList<IOutport> getChildrenOfTypeOutport() {		
 		return children.getChildrenOfTypeOutport();
 	}
 	

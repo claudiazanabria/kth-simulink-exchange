@@ -4,7 +4,6 @@ package se.kth.md.SimulinkOOAPI.impl;
 import java.util.HashMap;
 import java.util.Map;
 
-import se.kth.md.SimulinkOOAPI.IFactory;
 import se.kth.md.SimulinkOOAPI.IGainBlock;
 import se.kth.md.SimulinkOOAPI.IInport;
 import se.kth.md.SimulinkOOAPI.ILibrary;
@@ -14,6 +13,9 @@ import se.kth.md.SimulinkOOAPI.IOutport;
 import se.kth.md.SimulinkOOAPI.ISystem;
 import se.kth.md.SimulinkOOAPI.ISystemReference;
 
+/**
+ * The Simulink model factory  
+ */
 public class Factory {
 	
 	/**

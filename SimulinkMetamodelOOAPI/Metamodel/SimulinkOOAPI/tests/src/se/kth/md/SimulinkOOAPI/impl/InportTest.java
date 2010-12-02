@@ -10,7 +10,7 @@ import org.junit.Test;
 
 import se.kth.md.SimulinkOOAPI.IInport;
 import se.kth.md.SimulinkOOAPI.IPort;
-import se.kth.md.SimulinkOOAPI.IReflectionList;
+import se.kth.md.SimulinkOOAPI.ISimulinkList;
 import se.kth.md.SimulinkOOAPI.ISystem;
 
 
@@ -19,7 +19,7 @@ public class InportTest {
 	Mockery context = new JUnit4Mockery();
 	ISystem systemMock = context.mock(ISystem.class);
 	@SuppressWarnings("unchecked")	
-	IReflectionList<IPort> listMock = context.mock(IReflectionList.class);
+	ISimulinkList<IPort> listMock = context.mock(ISimulinkList.class);
     IInport port;
 	
 	@Before
