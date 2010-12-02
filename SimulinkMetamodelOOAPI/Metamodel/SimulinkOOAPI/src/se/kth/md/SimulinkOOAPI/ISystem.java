@@ -6,8 +6,6 @@
  */
 package se.kth.md.SimulinkOOAPI;
 
-import se.kth.md.SimulinkOOAPI.exceptions.AddChildException;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>System</b></em>'.
@@ -16,7 +14,6 @@ import se.kth.md.SimulinkOOAPI.exceptions.AddChildException;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link se.kth.md.SimulinkOOAPI.ISystem#getChildren <em>Children</em>}</li>
  *   <li>{@link se.kth.md.SimulinkOOAPI.ISystem#getParent <em>Parent</em>}</li>
  * </ul>
  * </p>
@@ -25,33 +22,7 @@ import se.kth.md.SimulinkOOAPI.exceptions.AddChildException;
  * @model
  * @generated
  */
-public interface ISystem extends IProtoObject {
-	/**
-	 * Returns the value of the '<em><b>Children</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Children</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Children</em>' reference.
-	 * @see #setChildren(IChildrenSupport)
-	 * @see se.kth.md.SimulinkOOAPI.ISimulinkOOAPIPackage#getSystem_Children()
-	 * @model volatile="true"
-	 * @generated
-	 */
-	IChildrenSupport getChildren();
-
-	/**
-	 * Sets the value of the '{@link se.kth.md.SimulinkOOAPI.ISystem#getChildren <em>Children</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Children</em>' reference.
-	 * @see #getChildren()
-	 * @generated
-	 */
-	void setChildren(IChildrenSupport value);
-
+public interface ISystem extends IContainer {
 	/**
 	 * Returns the value of the '<em><b>Parent</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -76,27 +47,7 @@ public interface ISystem extends IProtoObject {
 	 * @see #getParent()
 	 * @generated
 	 */
-	void setParent(IProtoObject value);
-	
-	/**
-	 * Adds a ProtoObject to children list.
-	 */
-	public void addChild(IProtoObject child) throws AddChildException;
-	
-	/**
-	 * Returns a number of all children.
-	 */
-	public int getNumberOfChildren();
-	
-	/**
-	 * Returns a list of all children.
-	 */
-	public ISimulinkList<IProtoObject> getAllChildren();
-	
-	/**
-	 * Returns a list of children of GainBlock type.
-	 */
-	public ISimulinkList<IGainBlock> getChildrenOfTypeGainBlock();
+	void setParent(IProtoObject value);	
 	
 	/**
 	 * Returns a list of children of Line type.
@@ -116,12 +67,7 @@ public interface ISystem extends IProtoObject {
 	/**
 	 * Returns a list of children of Outport type.
 	 */	
-	public ISimulinkList<IOutport> getChildrenOfTypeOutport();
-	
-	/**
-	 * Returns a list of children of System type.
-	 */	
-	public ISimulinkList<ISystem> getChildrenOfTypeSystem();
+	public ISimulinkList<IOutport> getChildrenOfTypeOutport();	
 	
 	/**
 	 * Returns a list of children of SystemReference type.
@@ -136,12 +82,7 @@ public interface ISystem extends IProtoObject {
 	/**
 	 * Returns true if the system is the parent of the given system reference.
 	 */
-	public boolean isParentOf(ISystemReference system);
+	public boolean isParentOf(ISystemReference system);	
 	
-	/**
-	 * Returns a first child met with the given name or uuid.
-	 * Returns null if there is no such child.
-	 */
-	public IProtoObject childWith(String uuidOrName);
 
 } // ISystem

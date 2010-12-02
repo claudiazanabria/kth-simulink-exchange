@@ -15,8 +15,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import se.kth.md.SimulinkOOAPI.IChildrenSupport;
-import se.kth.md.SimulinkOOAPI.IGainBlock;
 import se.kth.md.SimulinkOOAPI.IInport;
 import se.kth.md.SimulinkOOAPI.ILibrary;
 import se.kth.md.SimulinkOOAPI.ILine;
@@ -38,32 +36,27 @@ import se.kth.md.SimulinkOOAPI.exceptions.ProtoObjectCreationException;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link se.kth.md.SimulinkOOAPI.impl.System#getChildren <em>Children</em>}</li>
  *   <li>{@link se.kth.md.SimulinkOOAPI.impl.System#getParent <em>Parent</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class System extends ProtoObject implements ISystem {
-	
-	private IChildrenSupport children;
+public class System extends Container implements ISystem {
 	
 	private IProtoObject parent;
 	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated 
 	 */
 	protected System() {
-		super();
-		this.children = new ChildrenSupport();
+		super();		
 	}	
 	
 	protected System(String name, ISystem parent) throws ProtoObjectCreationException {
-		super(name);
-		this.children = new ChildrenSupport();
+		super(name);	
 		this.parent = parent;
 		try {
 			parent.addChild(this);
@@ -73,8 +66,7 @@ public class System extends ProtoObject implements ISystem {
 	}	
 	
 	protected System(String name, IModel parent) throws ProtoObjectCreationException {
-		super(name);
-		this.children = new ChildrenSupport();
+		super(name);		
 		this.parent = parent;
 		try {
 			parent.addChild(this);
@@ -85,7 +77,6 @@ public class System extends ProtoObject implements ISystem {
 	
 	protected System(String name, ILibrary parent) throws ProtoObjectCreationException {
 		super(name);
-		this.children = new ChildrenSupport();
 		this.parent = parent;
 		try {
 			parent.addChild(this);
@@ -102,37 +93,7 @@ public class System extends ProtoObject implements ISystem {
 	@Override
 	protected EClass eStaticClass() {
 		return ISimulinkOOAPIPackage.Literals.SYSTEM;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public IChildrenSupport getChildren() {
-		IChildrenSupport children = basicGetChildren();
-		return children != null && children.eIsProxy() ? (IChildrenSupport)eResolveProxy((InternalEObject)children) : children;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public IChildrenSupport basicGetChildren() {
-		return children;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setChildren(IChildrenSupport newChildren) {
-		// TODO: implement this method to set the 'Children' reference
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
+	}	
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -180,9 +141,6 @@ public class System extends ProtoObject implements ISystem {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ISimulinkOOAPIPackage.SYSTEM__CHILDREN:
-				if (resolve) return getChildren();
-				return basicGetChildren();
 			case ISimulinkOOAPIPackage.SYSTEM__PARENT:
 				if (resolve) return getParent();
 				return basicGetParent();
@@ -198,9 +156,6 @@ public class System extends ProtoObject implements ISystem {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ISimulinkOOAPIPackage.SYSTEM__CHILDREN:
-				setChildren((IChildrenSupport)newValue);
-				return;
 			case ISimulinkOOAPIPackage.SYSTEM__PARENT:
 				setParent((IProtoObject)newValue);
 				return;
@@ -216,9 +171,6 @@ public class System extends ProtoObject implements ISystem {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ISimulinkOOAPIPackage.SYSTEM__CHILDREN:
-				setChildren((IChildrenSupport)null);
-				return;
 			case ISimulinkOOAPIPackage.SYSTEM__PARENT:
 				setParent((IProtoObject)null);
 				return;
@@ -234,8 +186,6 @@ public class System extends ProtoObject implements ISystem {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ISimulinkOOAPIPackage.SYSTEM__CHILDREN:
-				return basicGetChildren() != null;
 			case ISimulinkOOAPIPackage.SYSTEM__PARENT:
 				return parent != null;
 		}
@@ -248,38 +198,6 @@ public class System extends ProtoObject implements ISystem {
 	}
 	
 	@Override
-	public IProtoObject childWith(String uuidOrName) {
-		for (IProtoObject child : getAllChildren()){
-			if (child.getName().equals(uuidOrName) || child.getUuid().equals(uuidOrName)){
-				return child;
-			}
-		}		
-		return null;
-	}
-	
-	@Override
-	public void addChild(IProtoObject child) throws AddChildException{	
-		child.addTo(this);
-	}
-
-	
-	@Override
-	public ISimulinkList<IProtoObject> getAllChildren() {
-		return this.children.getChildren();
-	}
-
-	
-	@Override
-	public int getNumberOfChildren() {
-		return this.children.getNumberOfChildren();
-	}
-
-	@Override
-	public ISimulinkList<IGainBlock> getChildrenOfTypeGainBlock() {		
-		return children.getChildrenOfTypeGainBlock();
-	}
-
-	@Override
 	public ISimulinkList<ILine> getChildrenOfTypeLine() {
 		return children.getChildrenOfTypeLine();
 	}
@@ -287,11 +205,6 @@ public class System extends ProtoObject implements ISystem {
 	@Override
 	public ISimulinkList<IPort> getChildrenOfTypePort() {
 		return children.getChildrenOfTypePort();
-	}
-
-	@Override
-	public ISimulinkList<ISystem> getChildrenOfTypeSystem() {
-		return children.getChildrenOfTypeSystem();		
 	}
 	
 	@Override

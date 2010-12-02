@@ -12,6 +12,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 
 import se.kth.md.SimulinkOOAPI.IChildrenSupport;
+import se.kth.md.SimulinkOOAPI.IContainer;
 import se.kth.md.SimulinkOOAPI.IGainBlock;
 import se.kth.md.SimulinkOOAPI.IIdentity;
 import se.kth.md.SimulinkOOAPI.IInport;
@@ -109,6 +110,7 @@ public class SimulinkOOAPISwitch<T> {
 			case ISimulinkOOAPIPackage.LIBRARY: {
 				ILibrary library = (ILibrary)theEObject;
 				T result = caseLibrary(library);
+				if (result == null) result = caseContainer(library);
 				if (result == null) result = caseProtoObject(library);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -171,6 +173,7 @@ public class SimulinkOOAPISwitch<T> {
 			case ISimulinkOOAPIPackage.SYSTEM: {
 				ISystem system = (ISystem)theEObject;
 				T result = caseSystem(system);
+				if (result == null) result = caseContainer(system);
 				if (result == null) result = caseProtoObject(system);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -178,6 +181,7 @@ public class SimulinkOOAPISwitch<T> {
 			case ISimulinkOOAPIPackage.MODEL: {
 				IModel model = (IModel)theEObject;
 				T result = caseModel(model);
+				if (result == null) result = caseContainer(model);
 				if (result == null) result = caseProtoObject(model);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -186,6 +190,13 @@ public class SimulinkOOAPISwitch<T> {
 				ISystemReference systemReference = (ISystemReference)theEObject;
 				T result = caseSystemReference(systemReference);
 				if (result == null) result = caseProtoObject(systemReference);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ISimulinkOOAPIPackage.CONTAINER: {
+				IContainer container = (IContainer)theEObject;
+				T result = caseContainer(container);
+				if (result == null) result = caseProtoObject(container);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -385,6 +396,21 @@ public class SimulinkOOAPISwitch<T> {
 	 * @generated
 	 */
 	public T caseSystemReference(ISystemReference object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Container</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Container</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseContainer(IContainer object) {
 		return null;
 	}
 

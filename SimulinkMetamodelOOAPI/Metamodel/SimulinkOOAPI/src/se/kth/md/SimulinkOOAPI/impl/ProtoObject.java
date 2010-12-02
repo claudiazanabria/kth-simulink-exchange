@@ -200,7 +200,7 @@ public abstract class ProtoObject extends EObjectImpl implements IProtoObject {
 	
 	@Override
 	public void addTo(IModel parent) throws AddChildException{
-		parent.getAllChildren().add(this);		
+		parent.getAllChildren().add(this);
 	}
 
 	@Override
@@ -210,7 +210,7 @@ public abstract class ProtoObject extends EObjectImpl implements IProtoObject {
 	
 	@Override
 	public void addTo(ILibrary parent) throws AddChildException{
-		parent.getAllChildren().add(this);		
+		parent.getAllChildren().add(this);
 	}
 	
 	@Override

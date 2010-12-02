@@ -13,8 +13,10 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+import org.eclipse.emf.ecore.impl.EcorePackageImpl;
 
 import se.kth.md.SimulinkOOAPI.IChildrenSupport;
+import se.kth.md.SimulinkOOAPI.IContainer;
 import se.kth.md.SimulinkOOAPI.IGainBlock;
 import se.kth.md.SimulinkOOAPI.IIdentity;
 import se.kth.md.SimulinkOOAPI.IInport;
@@ -129,6 +131,13 @@ public class SimulinkOOAPIPackage extends EPackageImpl implements ISimulinkOOAPI
 	private EClass systemReferenceEClass = null;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass containerEClass = null;
+
+	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
 	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
 	 * package URI value.
@@ -174,14 +183,16 @@ public class SimulinkOOAPIPackage extends EPackageImpl implements ISimulinkOOAPI
 
 		isInited = true;
 
-		// Initialize simple dependencies
-		EcorePackage.eINSTANCE.eClass();
+		// Obtain or create and register interdependencies
+		EcorePackageImpl theEcorePackage = (EcorePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI) instanceof EcorePackage ? EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI) : EcorePackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theSimulinkOOAPIPackage.createPackageContents();
+		theEcorePackage.createPackageContents();
 
 		// Initialize created meta-data
 		theSimulinkOOAPIPackage.initializePackageContents();
+		theEcorePackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theSimulinkOOAPIPackage.freeze();
@@ -217,15 +228,6 @@ public class SimulinkOOAPIPackage extends EPackageImpl implements ISimulinkOOAPI
 	 */
 	public EClass getLibrary() {
 		return libraryEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getLibrary_Children() {
-		return (EReference)libraryEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -368,17 +370,8 @@ public class SimulinkOOAPIPackage extends EPackageImpl implements ISimulinkOOAPI
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSystem_Children() {
-		return (EReference)systemEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getSystem_Parent() {
-		return (EReference)systemEClass.getEStructuralFeatures().get(1);
+		return (EReference)systemEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -388,15 +381,6 @@ public class SimulinkOOAPIPackage extends EPackageImpl implements ISimulinkOOAPI
 	 */
 	public EClass getModel() {
 		return modelEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getModel_Children() {
-		return (EReference)modelEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -415,6 +399,24 @@ public class SimulinkOOAPIPackage extends EPackageImpl implements ISimulinkOOAPI
 	 */
 	public EReference getSystemReference_Target() {
 		return (EReference)systemReferenceEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getContainer() {
+		return containerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getContainer_Children() {
+		return (EReference)containerEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -449,7 +451,6 @@ public class SimulinkOOAPIPackage extends EPackageImpl implements ISimulinkOOAPI
 		createEReference(protoObjectEClass, PROTO_OBJECT__IDENTITY);
 
 		libraryEClass = createEClass(LIBRARY);
-		createEReference(libraryEClass, LIBRARY__CHILDREN);
 
 		identityEClass = createEClass(IDENTITY);
 		createEAttribute(identityEClass, IDENTITY__UUID);
@@ -474,14 +475,15 @@ public class SimulinkOOAPIPackage extends EPackageImpl implements ISimulinkOOAPI
 		createEReference(lineEClass, LINE__DESTINATION);
 
 		systemEClass = createEClass(SYSTEM);
-		createEReference(systemEClass, SYSTEM__CHILDREN);
 		createEReference(systemEClass, SYSTEM__PARENT);
 
 		modelEClass = createEClass(MODEL);
-		createEReference(modelEClass, MODEL__CHILDREN);
 
 		systemReferenceEClass = createEClass(SYSTEM_REFERENCE);
 		createEReference(systemReferenceEClass, SYSTEM_REFERENCE__TARGET);
+
+		containerEClass = createEClass(CONTAINER);
+		createEReference(containerEClass, CONTAINER__CHILDREN);
 	}
 
 	/**
@@ -516,7 +518,7 @@ public class SimulinkOOAPIPackage extends EPackageImpl implements ISimulinkOOAPI
 
 		// Add supertypes to classes
 		protoObjectEClass.getESuperTypes().add(theEcorePackage.getEObject());
-		libraryEClass.getESuperTypes().add(this.getProtoObject());
+		libraryEClass.getESuperTypes().add(this.getContainer());
 		identityEClass.getESuperTypes().add(theEcorePackage.getEObject());
 		maskEClass.getESuperTypes().add(theEcorePackage.getEObject());
 		gainBlockEClass.getESuperTypes().add(this.getProtoObject());
@@ -524,16 +526,16 @@ public class SimulinkOOAPIPackage extends EPackageImpl implements ISimulinkOOAPI
 		inportEClass.getESuperTypes().add(this.getPort());
 		outportEClass.getESuperTypes().add(this.getPort());
 		lineEClass.getESuperTypes().add(this.getProtoObject());
-		systemEClass.getESuperTypes().add(this.getProtoObject());
-		modelEClass.getESuperTypes().add(this.getProtoObject());
+		systemEClass.getESuperTypes().add(this.getContainer());
+		modelEClass.getESuperTypes().add(this.getContainer());
 		systemReferenceEClass.getESuperTypes().add(this.getProtoObject());
+		containerEClass.getESuperTypes().add(this.getProtoObject());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(protoObjectEClass, IProtoObject.class, "ProtoObject", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getProtoObject_Identity(), this.getIdentity(), null, "identity", null, 1, 1, IProtoObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(libraryEClass, ILibrary.class, "Library", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getLibrary_Children(), this.getChildrenSupport(), null, "children", null, 0, 1, ILibrary.class, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(identityEClass, IIdentity.class, "Identity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getIdentity_Uuid(), ecorePackage.getEString(), "uuid", null, 0, 1, IIdentity.class, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -558,14 +560,15 @@ public class SimulinkOOAPIPackage extends EPackageImpl implements ISimulinkOOAPI
 		initEReference(getLine_Destination(), this.getPort(), null, "destination", null, 1, 1, ILine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(systemEClass, ISystem.class, "System", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getSystem_Children(), this.getChildrenSupport(), null, "children", null, 0, 1, ISystem.class, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSystem_Parent(), this.getProtoObject(), null, "parent", null, 1, 1, ISystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(modelEClass, IModel.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getModel_Children(), this.getChildrenSupport(), null, "children", null, 0, 1, IModel.class, !IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(systemReferenceEClass, ISystemReference.class, "SystemReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSystemReference_Target(), this.getSystem(), null, "target", null, 1, 1, ISystemReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(containerEClass, IContainer.class, "Container", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getContainer_Children(), this.getChildrenSupport(), null, "children", null, 0, 1, IContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

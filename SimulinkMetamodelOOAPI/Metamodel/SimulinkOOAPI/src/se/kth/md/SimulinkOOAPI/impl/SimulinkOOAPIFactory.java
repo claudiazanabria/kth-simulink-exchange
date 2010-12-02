@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 import se.kth.md.SimulinkOOAPI.IChildrenSupport;
+import se.kth.md.SimulinkOOAPI.IContainer;
 import se.kth.md.SimulinkOOAPI.IGainBlock;
 import se.kth.md.SimulinkOOAPI.IIdentity;
 import se.kth.md.SimulinkOOAPI.IInport;
@@ -83,6 +84,7 @@ public class SimulinkOOAPIFactory extends EFactoryImpl implements ISimulinkOOAPI
 			case ISimulinkOOAPIPackage.SYSTEM: return createSystem();
 			case ISimulinkOOAPIPackage.MODEL: return createModel();
 			case ISimulinkOOAPIPackage.SYSTEM_REFERENCE: return createSystemReference();
+			case ISimulinkOOAPIPackage.CONTAINER: return createContainer();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -196,6 +198,16 @@ public class SimulinkOOAPIFactory extends EFactoryImpl implements ISimulinkOOAPI
 	public ISystemReference createSystemReference() {
 		SystemReference systemReference = new SystemReference();
 		return systemReference;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public IContainer createContainer() {
+		se.kth.md.SimulinkOOAPI.impl.Container container = new se.kth.md.SimulinkOOAPI.impl.Container();
+		return container;
 	}
 
 	/**

@@ -14,6 +14,7 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
 
 import se.kth.md.SimulinkOOAPI.IChildrenSupport;
+import se.kth.md.SimulinkOOAPI.IContainer;
 import se.kth.md.SimulinkOOAPI.IGainBlock;
 import se.kth.md.SimulinkOOAPI.IIdentity;
 import se.kth.md.SimulinkOOAPI.IInport;
@@ -135,6 +136,10 @@ public class SimulinkOOAPIAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseSystemReference(ISystemReference object) {
 				return createSystemReferenceAdapter();
+			}
+			@Override
+			public Adapter caseContainer(IContainer object) {
+				return createContainerAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -335,6 +340,20 @@ public class SimulinkOOAPIAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createSystemReferenceAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link se.kth.md.SimulinkOOAPI.IContainer <em>Container</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see se.kth.md.SimulinkOOAPI.IContainer
+	 * @generated
+	 */
+	public Adapter createContainerAdapter() {
 		return null;
 	}
 
