@@ -1,0 +1,3 @@
+To run the tests, CD to the package diriectory, not to the tests but to containing folder.
+Use the package name to identify the test: runtests BasicElementsTests.TestList
+Do not forget to add the package BasicElements to the Matlab path.

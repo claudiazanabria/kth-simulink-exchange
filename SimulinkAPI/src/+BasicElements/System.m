@@ -1,8 +1,7 @@
-classdef System < BasicElements.ProtoObject
+classdef System < BasicElements.Container
     
     properties
         parent
-        children
     end
     methods (Static)
         function result = findWithin( parent )
@@ -30,9 +29,8 @@ classdef System < BasicElements.ProtoObject
     
     methods
         function self = System( identity, parent )
-            self = self@BasicElements.ProtoObject( identity );
+            self = self@BasicElements.Container( identity );
             self.parent = parent;
-            self.children = BasicElements.ChildrenSupport( self );            
         end        
        
         function  aList = ifSystemAddToList( self, aList )

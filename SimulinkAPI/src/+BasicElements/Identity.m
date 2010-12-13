@@ -52,6 +52,10 @@ classdef Identity < handle
         function boolean = isIdentity( self ) %#ok<MANU>
             boolean = true;
         end
+        
+        function boolean = hasSameName(self, aName)
+            boolean = strcmp(self.name, aName)
+        end
     end
 end
 

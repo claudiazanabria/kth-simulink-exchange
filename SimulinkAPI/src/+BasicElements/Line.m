@@ -1,4 +1,6 @@
 classdef Line < BasicElements.ProtoObject
+
+    %TODO: the name of the line does not show.
     
     properties
         parent

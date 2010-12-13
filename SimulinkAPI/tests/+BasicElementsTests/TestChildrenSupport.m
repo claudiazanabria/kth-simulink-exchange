@@ -23,7 +23,6 @@ classdef TestChildrenSupport < TestCase
         end
 
         function testGetChildrenSize( self ) 
-            %Lines are missing !!
             assertEqual(5, self.children.size );            
         end
         

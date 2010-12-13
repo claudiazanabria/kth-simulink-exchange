@@ -60,6 +60,12 @@ classdef List < handle
                 aFunction( self.at(i) );
             end            
         end
+
+        function doWith( self, aFunction, arg1 )
+            for i = 1:self.size;
+                aFunction( self.at(i), arg1 );
+            end            
+        end
         
         function cells = asCells( self )
             cells = cell(1,self.size);
@@ -85,6 +91,10 @@ classdef List < handle
             for i = 1:secondList.size
                 self.add( secondList.at(i) );
             end
+        end
+        
+        function result=first( self )
+            result = self.at(1);
         end
     end
     

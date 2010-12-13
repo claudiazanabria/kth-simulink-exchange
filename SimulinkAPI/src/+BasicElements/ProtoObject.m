@@ -34,14 +34,15 @@ classdef ProtoObject < handle
             n = self.identity.name;
         end
         
-        function aList = ifGainBlockAddToList( self, aList ) %#ok<INUSD,MANU>
-        end
-        
-        function aList = ifSystemAddToList( self, aList )  %#ok<INUSD,MANU>
-        end
-        
-        function aList = ifRefBlockAddToList( self, aList )  %#ok<INUSD,MANU>
-        end
+% Old code, deprecated!
+%         function aList = ifGainBlockAddToList( self, aList ) %#ok<INUSD,MANU>
+%         end
+%         
+%         function aList = ifSystemAddToList( self, aList )  %#ok<INUSD,MANU>
+%         end
+%         
+%         function aList = ifRefBlockAddToList( self, aList )  %#ok<INUSD,MANU>
+%         end
     end
 end
 

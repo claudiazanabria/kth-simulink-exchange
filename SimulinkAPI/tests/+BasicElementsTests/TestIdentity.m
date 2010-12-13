@@ -48,5 +48,12 @@ classdef TestIdentity < TestCase
             identity2 = BasicElements.Identity.from( identity1 );
             assertTrue(identity1 == identity2);
         end
-    end    
+        
+        function testHasSameName( self )
+            identity = BasicElements.Identity.from( self.yorkModel.modelName );
+            assertTrue(identity.hasSameName( self.yorkModel.modelName));
+            assertFalse(identity.hasSameName('wrongName'));
+        end
+        
+    end
 end

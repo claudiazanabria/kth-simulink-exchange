@@ -1,11 +1,7 @@
-classdef Model < BasicElements.ProtoObject
+classdef Model < BasicElements.Container
     %MODEL The phantom class of a model loaded in memory
     %   
-    
-    properties
-        children
-    end
-    
+        
     methods (Static)
         
         function model=from( loadedModelName )
@@ -25,8 +21,7 @@ classdef Model < BasicElements.ProtoObject
     
     methods (Access=private)
         function self = Model( identityOrHandleOrName )
-            self = self@BasicElements.ProtoObject(identityOrHandleOrName);
-            self.children = BasicElements.ChildrenSupport( self );
+            self = self@BasicElements.Container(identityOrHandleOrName);
         end        
        
     end

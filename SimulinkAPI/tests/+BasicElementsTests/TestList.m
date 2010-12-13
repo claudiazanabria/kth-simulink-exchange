@@ -63,6 +63,8 @@ classdef TestList < TestCase
             assertEqual({1 2 'alex'}, self.aList.asCells);
         end
         
+        %TODO: create tests for do and doWith
+        
         function testCollect( self ) %#ok<MANU>
             list =  BasicElements.List( {2 6 8} );
             addOne = @(element) element + 1;
@@ -102,6 +104,10 @@ classdef TestList < TestCase
             self.aList.concatenate( list2 );
             assertEqual(6, self.aList.size);
             assertEqual({1 2 'alex' 9 3 1}, self.aList.asCells);
+        end
+        
+        function testfirst( self )
+            assertEqual(1,self.aList.first);
         end
     end    
 end
