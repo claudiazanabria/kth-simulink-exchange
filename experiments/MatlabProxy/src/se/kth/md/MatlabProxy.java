@@ -3,7 +3,7 @@ package se.kth.md;
 import java.util.EventObject;
 import java.util.Vector;
 
-public class MatlabProxy{
+public class MatlabProxy implements IMatlabProxy{
 	
 	private Vector<IHTTPEventListener> listeners = new Vector<IHTTPEventListener>();
 	

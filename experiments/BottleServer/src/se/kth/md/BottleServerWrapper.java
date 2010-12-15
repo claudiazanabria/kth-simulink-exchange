@@ -19,7 +19,7 @@ public class BottleServerWrapper {
 	
 private Thread serverThread;
 	
-	public BottleServerWrapper(String pathToPythonModules, MatlabProxy proxy) {		
+	public BottleServerWrapper(String pathToPythonModules, IMatlabProxy proxy) {		
 		
 		initPythonPath(pathToPythonModules);
 		
@@ -62,6 +62,10 @@ private Thread serverThread;
      */
     public void stop () {   	
     	serverThread.interrupt();
+    }
+    
+    public boolean isAlive(){    	
+    	return serverThread.isAlive() && !serverThread.isInterrupted();
     }
     
     
