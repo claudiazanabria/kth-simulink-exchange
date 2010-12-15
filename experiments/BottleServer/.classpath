@@ -7,5 +7,8 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JMock"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Jython"/>
+	<classpathentry kind="lib" path="/home/dashaa/eclipse/plugins/org.eclipse.emf.ecore_2.6.1.v20100914-1218.jar"/>
+	<classpathentry kind="lib" path="/home/dashaa/eclipse/plugins/org.eclipse.emf.common_2.6.0.v20100914-1218.jar"/>
+	<classpathentry kind="lib" path="/SimulinkOOAPI/SimulinkOOAPI.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

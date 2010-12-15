@@ -8,6 +8,9 @@ import org.python.core.Py;
 import org.python.core.PyObject;
 import org.python.util.PythonInterpreter;
 
+import se.kth.md.SimulinkOOAPI.exceptions.ProtoObjectCreationException;
+import se.kth.md.SimulinkOOAPI.util.YorkModel;
+
 /**
  * A Java wrapper around python bottle server.
  * 
@@ -85,5 +88,10 @@ private Thread serverThread;
     		} catch (InterruptedException e) {}
     	}
     }   
+    
+    public static void main(String[] args) throws Exception {    	
+      	String path = new File(".").getCanonicalPath();
+		new BottleServerWrapper(path, new MatlabProxy()).run();
+	}
 
 }
