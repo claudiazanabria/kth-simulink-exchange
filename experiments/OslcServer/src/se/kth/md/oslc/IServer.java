@@ -11,5 +11,11 @@ public interface IServer {
 	 * Stops server
 	 */
 	public void kill();
+	
+	public void fireHTTPGetEvent(Object data);
+	
+    public void addHTTPGETEventListener(IHTTPEventListener listener);
+	
+	public void removeHTTPGETEventListener(IHTTPEventListener listener);
 
 }

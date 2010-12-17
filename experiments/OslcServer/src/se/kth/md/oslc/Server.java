@@ -51,6 +51,23 @@ public class Server implements IServer{
 		pyServer.kill();		
 	}
 	
+	@Override
+	public void fireHTTPGetEvent(Object data) {
+		pyServer.fireHTTPGetEvent(data);		
+	}
+	
+	@Override
+	public void addHTTPGETEventListener(IHTTPEventListener listener) {
+		pyServer.addHTTPGETEventListener(listener);	
+		
+	}
+
+	@Override
+	public void removeHTTPGETEventListener(IHTTPEventListener listener) {
+		pyServer.removeHTTPGETEventListener(listener);		
+	}
+	
+    	
 	public static void main(String[] args) throws Exception {
 		String path = new File("./src/se/kth/md/oslc").getCanonicalPath();		
 		System.out.println("Main thread; starting the server.");
@@ -61,6 +78,7 @@ public class Server implements IServer{
 		System.out.println("Main thread; about to stop.");
 		//server.kill();
 	}
+
 	
 
 }
