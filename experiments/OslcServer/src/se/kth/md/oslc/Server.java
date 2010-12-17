@@ -54,17 +54,16 @@ public class Server implements IServer{
 	}
 	
 	@Override
-	//addRequestListener
-	public void addRequestEventListener(Server.IRequestListener listener) {
+	public void addRequestEventListener(IRequestListener listener) {
 		pyServer.addRequestEventListener(listener);			
 	}
 
 	@Override
-	public void removeRequestEventListener(Server.IRequestListener listener) {
+	public void removeRequestEventListener(IRequestListener listener) {
 		pyServer.addRequestEventListener(listener);		
-	}
+	}	
 	
-	public interface IRequestListener extends EventListener {
+	public static interface IRequestListener extends EventListener {
 
 		public void requestArrived(RequestEvent event);		
 		
@@ -90,10 +89,20 @@ public class Server implements IServer{
 		String path = new File("./src/se/kth/md/oslc").getCanonicalPath();		
 		System.out.println("Main thread; starting the server.");
 		Server server = new Server(path);
+		
+		server.addRequestEventListener(new IRequestListener() {
+			
+			@Override
+			public void requestArrived(RequestEvent event) {
+				event.request.setAnswer(new Integer(42));
+				event.request.setAnswer_ready(true);		
+				
+			}
+		});
 		server.run();
-		System.out.println("Main thread; server running.");
-		Thread.sleep(5000);
-		System.out.println("Main thread; about to stop.");
+		//System.out.println("Main thread; server running.");
+		//Thread.sleep(5000);
+		//System.out.println("Main thread; about to stop.");
 		//server.kill();
 	}
 

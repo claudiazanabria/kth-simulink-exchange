@@ -51,9 +51,9 @@ class ServerController(IServer):
         self.daemon.server.force_stop()    
     
     def addRequestEventListener(self, listener):
-        self.application.addHTTPGETEventListener(listener)
+        self.application.addRequestEventListener(listener)
     
-    def addRequestEventListener(listener):        
-        self.application.removeHTTPGETEventListener(listener)
+    def removeRequestEventListener(self, listener):        
+        self.application.removeRequestEventListener(listener)
           
     

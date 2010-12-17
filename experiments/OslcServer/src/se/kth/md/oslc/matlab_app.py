@@ -16,7 +16,7 @@ class MatlabApplication(Bottle):
     """    
     def __init__(self, *args, **kwargs):
         super(MatlabApplication, self).__init__(*args, **kwargs)    
-        self.listeners = ()
+        self.listeners = []
         self.oslc_request = None
         
         @self.route('/gain_block')        
@@ -45,10 +45,10 @@ class MatlabApplication(Bottle):
         self.oslc_request.setQuery(data)        
         event = se.kth.md.oslc.Server.RequestEvent(self, self.oslc_request)        
         for listener in self.listeners:
-            listener.GETRequestArrived(event)
+            listener.requestArrived(event)
     
     def addRequestEventListener(self, listener):
         self.listeners.append(listener)
     
-    def addRequestEventListener(listener):        
+    def removeRequestEventListener(listener):        
         self.listeners.remove(listener)

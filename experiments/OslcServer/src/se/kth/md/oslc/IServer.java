@@ -1,5 +1,7 @@
 package se.kth.md.oslc;
 
+import se.kth.md.oslc.Server.IRequestListener;
+
 public interface IServer {
 	
 	/**
@@ -13,9 +15,9 @@ public interface IServer {
 	public void kill();
 	
 	
-    void addRequestEventListener(Server.IRequestListener listener);
+    void addRequestEventListener(IRequestListener listener);
 
-	void removeRequestEventListener(Server.IRequestListener listener);
+	void removeRequestEventListener(IRequestListener listener);
 
 	
 
