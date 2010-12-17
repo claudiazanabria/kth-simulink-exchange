@@ -7,6 +7,7 @@ import static org.junit.Assert.assertFalse;
 
 import org.jmock.Mockery;
 import org.jmock.integration.junit4.JMock;
+import org.jmock.integration.junit4.JUnit4Mockery;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,7 +16,7 @@ import org.junit.runner.RunWith;
 @RunWith(JMock.class)
 public class BottleServerWrapperTest {
 	
-	Mockery context = new Mockery();
+	Mockery context = new JUnit4Mockery();
 	IMatlabProxy matlabProxyMock = context.mock(IMatlabProxy.class);
 	BottleServerWrapper serverWrapper;
 	

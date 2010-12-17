@@ -20,7 +20,7 @@ import se.kth.md.SimulinkOOAPI.util.YorkModel;
  */
 public class BottleServerWrapper {
 	
-private Thread serverThread;
+    //private ServerThread serverThread;
 	
 	public BottleServerWrapper(String pathToPythonModules, IMatlabProxy proxy) {		
 		
@@ -33,7 +33,8 @@ private Thread serverThread;
         PyObject buildingObject = serverClass.__call__(Py.java2py(proxy));
         IBottleServer bottleServer =  (IBottleServer) buildingObject.__tojava__(IBottleServer.class);
         
-        serverThread = new ServerThread(bottleServer);
+     //   serverThread = new ServerThread(bottleServer);
+      
     }
 	
 	/**
@@ -56,42 +57,51 @@ private Thread serverThread;
     /**
      * Runs python server.
      */
-    public void run () {        
-    	serverThread.start();
+    public void runBottleServer () {        
+    	//serverThread.start();
     }  
     
     /**
      * Stops python server.
      */
-    public void stop () {   	
-    	serverThread.interrupt();
-    }
-    
-    public boolean isAlive(){    	
-    	return serverThread.isAlive() && !serverThread.isInterrupted();
+    public void stopServer () {   	
+    	//serverThread.interrupt();
     }
     
     
-    class ServerThread extends Thread {
-    	private IBottleServer bottleServer;
-    	
-    	public ServerThread(IBottleServer bottleServer){
-    		this.bottleServer = bottleServer;
-    	}
-    	
-    	@Override
-    	public void run() {    		
-    		bottleServer.runServer();
-    		try {			
-    			// let other threads to perform actions
-    			Thread.sleep(60);
-    		} catch (InterruptedException e) {}
-    	}
-    }   
     
-    public static void main(String[] args) throws Exception {    	
-      	String path = new File(".").getCanonicalPath();
-		new BottleServerWrapper(path, new MatlabProxy()).run();
-	}
+//    class ServerThread extends Thread {
+//    	private IBottleServer bottleServer;
+//    	
+//    	public ServerThread(IBottleServer bottleServer){
+//    		this.bottleServer = bottleServer;
+//    	}    	
+//    	
+//    	public void wakeUp(){
+//    		super.resume();
+//    		System.out.println("push server");
+//    		bottleServer.wakeUp();
+//    	}
+//    	
+//    	@Override
+//    	public void run() {    		
+//    		bottleServer.runServer();
+//    		try {			
+//    			// let other threads to perform actions
+//    			Thread.sleep(60);
+//    		} catch (InterruptedException e) {}
+//    	}
+//    }   
+//    
+//    public static void main(String[] args) throws Exception {    	
+//      	String path = new File(".").getCanonicalPath();
+//      	BottleServerWrapper wr = new BottleServerWrapper(path, new MatlabProxy());
+//      	wr.run();
+//		try {			
+//			// let other threads to perform actions
+//			Thread.sleep(60);
+//		} catch (InterruptedException e) {}
+//		wr.waikUp();
+//	}
 
 }

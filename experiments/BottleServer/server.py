@@ -22,6 +22,7 @@ class MatlabApplication(Bottle):
     def __init__(self, matlab_proxy, *args, **kwargs):
         super(MatlabApplication, self).__init__(*args, **kwargs)
         self.matlab_proxy = matlab_proxy
+        self.is_waiting = False
         
         def get_gain_block(self, dict):
             """
@@ -46,7 +47,10 @@ class MatlabApplication(Bottle):
             dict = HashMap()            
             for key in request.GET:
                 dict.put(key, request.GET[key])        
-            result = matlab_proxy.fireHTTPGetEvent(dict)
+            matlab_proxy.fireHTTPGetEvent(dict)
+            
+            while self.is_waiting:
+               print 'waiting'
             #return 'Result is %s' % result
             
             #res = self.get_gain_block(dict)
@@ -83,3 +87,10 @@ class Server(IBottleServer):
         
     def runServer(self, host='localhost', port=8080):        
         run(app=self.application, host=host, port=port)
+        
+    def wakeUp(self):
+        print 'awake'
+        self.application.is_waiting = False
+        
+    def sleep(self):
+        print 'sleep'

@@ -8,5 +8,7 @@ public interface IBottleServer {
 	 * Runs Server on localhost, 8080 port
 	 */
 	public void runServer();
+	
+	public void wakeUp();
 
 }

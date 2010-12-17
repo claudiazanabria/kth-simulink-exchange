@@ -3,25 +3,28 @@ package se.kth.md;
 import java.util.EventObject;
 import java.util.Vector;
 
+/**
+ * 
+ 
+ *
+ */
 public class MatlabProxy implements IMatlabProxy{
 	
 	private Vector<IHTTPEventListener> listeners = new Vector<IHTTPEventListener>();
 	
-	public void addHTTPGETEventListener(IHTTPEventListener listener) {
+	public synchronized void addHTTPGETEventListener(IHTTPEventListener listener) {		
 		listeners.add(listener);		
 	}
 
-	public void removeHTTPGETEventListener(IHTTPEventListener listener) {
+	public synchronized void removeHTTPGETEventListener(IHTTPEventListener listener) {
 		listeners.remove(listener);		
 	}
 
-	public Object fireHTTPGetEvent(Object data) {
+	public void fireHTTPGetEvent(Object data) {
 		HTTPGETEvent event = new HTTPGETEvent(this, data);
-		if (!listeners.isEmpty()){
-			return listeners.get(0).GETRequestArrived(event);
-		}
-		
-		return null;		
+		for (IHTTPEventListener listener: listeners){
+			listener.GETRequestArrived(event);
+		}				
 	}
 	
 	public class HTTPGETEvent extends EventObject implements IHTTPEvent {

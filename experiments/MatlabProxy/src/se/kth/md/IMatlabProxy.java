@@ -6,6 +6,6 @@ public interface IMatlabProxy {
 	
 	public void removeHTTPGETEventListener(IHTTPEventListener listener);
 	
-	public Object fireHTTPGetEvent(Object data);
+	public void fireHTTPGetEvent(Object data);
 
 }
