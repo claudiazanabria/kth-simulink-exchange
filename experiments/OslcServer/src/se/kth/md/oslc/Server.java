@@ -16,8 +16,8 @@ public class Server implements IServer{
 		initPythonPath(pathToPythonModules);
 		
         PythonInterpreter interpreter = new PythonInterpreter();
-        interpreter.exec("from server import Server");
-        PyObject serverClass = interpreter.get("Server");
+        interpreter.exec("from server import ServerController");
+        PyObject serverClass = interpreter.get("ServerController");
         
         PyObject buildingObject = serverClass.__call__();
         pyServer =  (IServer) buildingObject.__tojava__(IServer.class);   
@@ -47,16 +47,19 @@ public class Server implements IServer{
 	}
 	
 	@Override
-	public void stop() {		
-		pyServer.stop();		
+	public void kill() {		
+		pyServer.kill();		
 	}
 	
 	public static void main(String[] args) throws Exception {
 		String path = new File("./src/se/kth/md/oslc").getCanonicalPath();		
+		System.out.println("Main thread; starting the server.");
 		Server server = new Server(path);
 		server.run();
-		Thread.sleep(10000);
-		server.stop();
+		System.out.println("Main thread; server running.");
+		Thread.sleep(5000);
+		System.out.println("Main thread; about to stop.");
+		server.kill();
 	}
 	
 

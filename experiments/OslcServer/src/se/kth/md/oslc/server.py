@@ -16,7 +16,7 @@ class StoppableWSGIServer(WSGIServer):
         self.stopped = True
                     
 
-class ServerThread(Thread):
+class StoppableWSGIServerDaemon(Thread):
     
     def __init__(self, app, host='127.0.0.1', port=8080):
         Thread.__init__(self)
@@ -32,7 +32,7 @@ class ServerThread(Thread):
         self.server.serve_forever()
 
         
-class Server(IServer): 
+class ServerController(IServer): 
     """    
     WSGI Server that runs with MatlabApplication.
     It's run method supposed to be called from Matlab.
@@ -40,12 +40,12 @@ class Server(IServer):
     def __init__(self, host='127.0.0.1', port=8080):                
         #self.application = MatlabApplication()
         self.application = None
-        self.serverThread = ServerThread(self.application, host, port)   
+        self.daemon = StoppableWSGIServerDaemon(self.application, host, port)   
         
     def run(self):   
-        self.serverThread.start()        
+        self.daemon.start()        
         
-    def stop(self):
-        self.serverThread.server.force_stop()
+    def kill(self):
+        self.daemon.server.force_stop()
           
     

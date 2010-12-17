@@ -10,6 +10,6 @@ public interface IServer {
 	/**
 	 * Stops server
 	 */
-	public void stop();
+	public void kill();
 
 }
