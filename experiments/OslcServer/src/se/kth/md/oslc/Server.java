@@ -59,7 +59,7 @@ public class Server implements IServer{
 		System.out.println("Main thread; server running.");
 		Thread.sleep(5000);
 		System.out.println("Main thread; about to stop.");
-		server.kill();
+		//server.kill();
 	}
 	
 

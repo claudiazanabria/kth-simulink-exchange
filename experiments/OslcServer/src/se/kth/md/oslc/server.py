@@ -1,6 +1,9 @@
-from se.kth.md.oslc import IServer
 from wsgiref.simple_server import WSGIServer 
-from threading import Thread  
+from threading import Thread
+
+from matlab_app import MatlabApplication
+
+from se.kth.md.oslc import IServer  
         
 
 class StoppableWSGIServer(WSGIServer):
@@ -38,8 +41,7 @@ class ServerController(IServer):
     It's run method supposed to be called from Matlab.
     """
     def __init__(self, host='127.0.0.1', port=8080):                
-        #self.application = MatlabApplication()
-        self.application = None
+        self.application = MatlabApplication()        
         self.daemon = StoppableWSGIServerDaemon(self.application, host, port)   
         
     def run(self):   
