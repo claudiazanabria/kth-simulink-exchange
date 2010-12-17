@@ -12,10 +12,11 @@ public interface IServer {
 	 */
 	public void kill();
 	
-	public void fireHTTPGetEvent(Object data);
 	
-    public void addHTTPGETEventListener(IHTTPEventListener listener);
+    void addRequestEventListener(Server.IRequestListener listener);
+
+	void removeRequestEventListener(Server.IRequestListener listener);
+
 	
-	public void removeHTTPGETEventListener(IHTTPEventListener listener);
 
 }

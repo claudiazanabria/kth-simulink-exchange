@@ -2,6 +2,8 @@ package se.kth.md.oslc;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.EventListener;
+import java.util.EventObject;
 import java.util.Properties;
 
 import org.python.core.PyObject;
@@ -52,22 +54,38 @@ public class Server implements IServer{
 	}
 	
 	@Override
-	public void fireHTTPGetEvent(Object data) {
-		pyServer.fireHTTPGetEvent(data);		
-	}
-	
-	@Override
-	public void addHTTPGETEventListener(IHTTPEventListener listener) {
-		pyServer.addHTTPGETEventListener(listener);	
-		
+	//addRequestListener
+	public void addRequestEventListener(Server.IRequestListener listener) {
+		pyServer.addRequestEventListener(listener);			
 	}
 
 	@Override
-	public void removeHTTPGETEventListener(IHTTPEventListener listener) {
-		pyServer.removeHTTPGETEventListener(listener);		
+	public void removeRequestEventListener(Server.IRequestListener listener) {
+		pyServer.addRequestEventListener(listener);		
 	}
 	
-    	
+	public interface IRequestListener extends EventListener {
+
+		public void requestArrived(RequestEvent event);		
+		
+	}
+	
+	public static class RequestEvent extends EventObject {
+		
+		public IRequest request;		
+		
+		public IRequest getRequest() {
+			return request;
+		}
+
+		public RequestEvent(Object source, IRequest request) {
+			super(source);
+			this.request = request;
+		}	
+		
+		private static final long serialVersionUID = 1L;
+	}
+	
 	public static void main(String[] args) throws Exception {
 		String path = new File("./src/se/kth/md/oslc").getCanonicalPath();		
 		System.out.println("Main thread; starting the server.");

@@ -48,15 +48,12 @@ class ServerController(IServer):
         self.daemon.start()        
         
     def kill(self):
-        self.daemon.server.force_stop()
-        
-    def fireHTTPGetEvent(self, data):
-        self.application.fireHTTPGetEvent(data)
+        self.daemon.server.force_stop()    
     
-    def addHTTPGETEventListener(self, listener):
+    def addRequestEventListener(self, listener):
         self.application.addHTTPGETEventListener(listener)
     
-    def removeHTTPGETEventListener(listener):        
+    def addRequestEventListener(listener):        
         self.application.removeHTTPGETEventListener(listener)
           
     
