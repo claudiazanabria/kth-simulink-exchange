@@ -18,8 +18,8 @@ class MatlabApplication(Bottle):
         super(MatlabApplication, self).__init__(*args, **kwargs)    
         self.listeners = []        
         
-        @self.route('/gain_block')        
-        def send_data():                     
+        @self.route('/query/')        
+        def send_data():     
             dict = HashMap()            
             for key in request.GET:
                 dict.put(key, request.GET[key])   
