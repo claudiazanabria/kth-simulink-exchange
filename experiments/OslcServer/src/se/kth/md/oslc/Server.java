@@ -54,16 +54,16 @@ public class Server implements IServer{
 	}
 	
 	@Override
-	public void addRequestEventListener(IRequestListener listener) {
+	public void addRequestEventListener(RequestEventListener listener) {
 		pyServer.addRequestEventListener(listener);			
 	}
 
 	@Override
-	public void removeRequestEventListener(IRequestListener listener) {
+	public void removeRequestEventListener(RequestEventListener listener) {
 		pyServer.addRequestEventListener(listener);		
 	}	
 	
-	public static interface IRequestListener extends EventListener {
+	public static interface RequestEventListener extends EventListener {
 
 		public void requestArrived(RequestEvent event);		
 		
@@ -90,7 +90,7 @@ public class Server implements IServer{
 		System.out.println("Main thread; starting the server.");
 		Server server = new Server(path);
 		
-		server.addRequestEventListener(new IRequestListener() {
+		server.addRequestEventListener(new RequestEventListener() {
 			
 			@Override
 			public void requestArrived(RequestEvent event) {
