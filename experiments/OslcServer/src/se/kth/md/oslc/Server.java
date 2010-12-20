@@ -6,24 +6,39 @@ import java.util.EventListener;
 import java.util.EventObject;
 import java.util.Properties;
 
+import org.python.core.PyInteger;
 import org.python.core.PyObject;
+import org.python.core.PyString;
 import org.python.util.PythonInterpreter;
 
 public class Server implements IServer{
 	
+	PyObject serverClass;
 	IServer pyServer;
 	
 	public Server(String pathToPythonModules) {		
 		
-		initPythonPath(pathToPythonModules);
+		initPythonPath(pathToPythonModules);		
+    	initServerPythonClass();
 		
-        PythonInterpreter interpreter = new PythonInterpreter();
-        interpreter.exec("from server import ServerController");
-        PyObject serverClass = interpreter.get("ServerController");
-        
         PyObject buildingObject = serverClass.__call__();
         pyServer =  (IServer) buildingObject.__tojava__(IServer.class);   
       
+    }
+	
+    public Server(String pathToPythonModules, String host, int port) {
+    	
+    	initPythonPath(pathToPythonModules);		
+    	initServerPythonClass();
+        
+        PyObject buildingObject = serverClass.__call__(new PyString(host), new PyInteger(port));
+        pyServer =  (IServer) buildingObject.__tojava__(IServer.class);      
+    }
+    
+    private void initServerPythonClass(){    	
+        PythonInterpreter interpreter = new PythonInterpreter();
+        interpreter.exec("from server import ServerController");
+        serverClass = interpreter.get("ServerController");
     }
 	
 	/**

@@ -16,8 +16,7 @@ class MatlabApplication(Bottle):
     """    
     def __init__(self, *args, **kwargs):
         super(MatlabApplication, self).__init__(*args, **kwargs)    
-        self.listeners = []
-        self.oslc_request = None
+        self.listeners = []        
         
         @self.route('/gain_block')        
         def send_data():                     
@@ -25,12 +24,12 @@ class MatlabApplication(Bottle):
             for key in request.GET:
                 dict.put(key, request.GET[key])   
                           
-            self.fireGetEvent(dict)     
+            oslc_request = self.fireGetEvent(dict)            
             
-            while not self.oslc_request.isAnswer_ready():
+            while not oslc_request.isAnswer_ready():
                 time.sleep(100)            
             
-            return 'Result %s' % self.oslc_request.getAnswer()
+            return 'Result %s' % oslc_request.getAnswer()
         
         @self.route('/images/:filename#.*\.png#')
         def send_image(filename):
@@ -41,11 +40,12 @@ class MatlabApplication(Bottle):
             return static_file(filename, root=self.PATH_TO_STATIC_FILES)
         
     def fireGetEvent(self, data):         
-        self.oslc_request = GetRequest()        
-        self.oslc_request.setQuery(data)        
-        event = se.kth.md.oslc.Server.RequestEvent(self, self.oslc_request)        
+        oslc_request = GetRequest()        
+        oslc_request.setQuery(data)        
+        event = se.kth.md.oslc.Server.RequestEvent(self, oslc_request)        
         for listener in self.listeners:
             listener.requestArrived(event)
+        return oslc_request
     
     def addRequestEventListener(self, listener):
         self.listeners.append(listener)
