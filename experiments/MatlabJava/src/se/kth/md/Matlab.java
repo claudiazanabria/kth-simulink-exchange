@@ -68,7 +68,7 @@ public class Matlab {
 				else{
 					IProtoObject child = childWith(uuid, simulinkModel);
 					if (child != null){
-						result = child.getUuid();
+						result = child.getName();
 					}
 				}
 			}
