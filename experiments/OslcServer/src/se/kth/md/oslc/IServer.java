@@ -19,6 +19,4 @@ public interface IServer {
 
 	void removeRequestEventListener(RequestEventListener listener);
 
-	
-
 }

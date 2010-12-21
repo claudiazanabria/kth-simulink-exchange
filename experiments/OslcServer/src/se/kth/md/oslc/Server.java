@@ -77,12 +77,14 @@ public class Server implements IServer{
 	public void removeRequestEventListener(RequestEventListener listener) {
 		pyServer.addRequestEventListener(listener);		
 	}	
+
 	
 	public static interface RequestEventListener extends EventListener {
 
 		public void requestArrived(RequestEvent event);		
 		
 	}
+	
 	
 	public static class RequestEvent extends EventObject {
 		
@@ -103,23 +105,26 @@ public class Server implements IServer{
 	public static void main(String[] args) throws Exception {
 		String path = new File("./src/se/kth/md/oslc").getCanonicalPath();		
 		System.out.println("Main thread; starting the server.");
-		Server server = new Server(path);
-		
+		final Server server = new Server(path);		
+				
 		server.addRequestEventListener(new RequestEventListener() {
 			
 			@Override
 			public void requestArrived(RequestEvent event) {
-				event.request.setAnswer(new Integer(42));
-				event.request.setAnswer_ready(true);		
+				 event.request.setAnswer(new Integer(42));		
+				 event.request.notifyServerDataReady();
 				
 			}
-		});
-		server.run();
+		});		
+		server.run();		
+		
 		//System.out.println("Main thread; server running.");
 		//Thread.sleep(5000);
 		//System.out.println("Main thread; about to stop.");
 		//server.kill();
 	}
+
+	
 
 	
 

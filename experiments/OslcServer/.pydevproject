@@ -4,4 +4,11 @@
 <pydev_project>
 <pydev_property name="org.python.pydev.PYTHON_PROJECT_INTERPRETER">Default</pydev_property>
 <pydev_property name="org.python.pydev.PYTHON_PROJECT_VERSION">python 2.7</pydev_property>
+<pydev_pathproperty name="org.python.pydev.PROJECT_SOURCE_PATH">
+<path>/OslcServer/src</path>
+<path>/OslcServer/tests/src</path>
+</pydev_pathproperty>
+<pydev_pathproperty name="org.python.pydev.PROJECT_EXTERNAL_SOURCE_PATH">
+<path>/home/dashaa/Dropbox/Work/Odesk/REST/EXP/experiments/OslcServer/server.jar</path>
+</pydev_pathproperty>
 </pydev_project>

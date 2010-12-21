@@ -6,7 +6,11 @@ public interface IRequest {
 	public void setQuery(Object query);
 	public Object getAnswer();
 	public void setAnswer(Object answer);
-	public boolean isAnswer_ready();
-	public void setAnswer_ready(boolean answer_ready);
+	public boolean isAnswer_ready();	
+	void setAnswer_ready(boolean answer_ready);
+	
+	public void addServerListener(IServerApplication app);
+	public void removeServerListener();
+	public void notifyServerDataReady();
 
 }

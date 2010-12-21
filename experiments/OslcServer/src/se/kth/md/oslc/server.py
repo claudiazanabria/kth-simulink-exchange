@@ -4,6 +4,10 @@ from threading import Thread
 from matlab_app import MatlabApplication
 
 from se.kth.md.oslc import IServer  
+import urllib2
+import urllib
+import sys
+import httplib
         
 
 class StoppableWSGIServer(WSGIServer):
@@ -41,7 +45,9 @@ class ServerController(IServer):
     It's run method supposed to be called from Matlab.
     """
     def __init__(self, host='127.0.0.1', port=8080):                
-        self.application = MatlabApplication()        
+        self.application = MatlabApplication()  
+        self.host = host
+        self.port = port      
         self.daemon = StoppableWSGIServerDaemon(self.application, host, port)   
         
     def run(self):   
@@ -54,6 +60,12 @@ class ServerController(IServer):
         self.application.addRequestEventListener(listener)
     
     def removeRequestEventListener(self, listener):        
-        self.application.removeRequestEventListener(listener)
+        self.application.removeRequestEventListener(listener)     
+        
+    def handleDataReady(self, oslc_request):
+        pass        
+        #self.application.temp()
+        
+         
           
     

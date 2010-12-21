@@ -4,6 +4,7 @@ public class GetRequest implements IRequest {
 	private Object query;
 	private Object answer;
 	private boolean answer_ready = false;	
+	private IServerApplication listener;
 	
 	public Object getQuery() {
 		return query;
@@ -22,6 +23,24 @@ public class GetRequest implements IRequest {
 	}
 	public void setAnswer_ready(boolean answer_ready) {
 		this.answer_ready = answer_ready;
+	}
+	
+	@Override
+	public void addServerListener(IServerApplication app) {		
+		this.listener = app;
+		
+	}
+	
+	@Override
+	public void removeServerListener() {
+		this.listener = null;		
+	}
+	
+	@Override
+	public void notifyServerDataReady() {
+		if (this.listener!=null)
+			this.listener.handleDataReady(this);
+		
 	}
 
 }

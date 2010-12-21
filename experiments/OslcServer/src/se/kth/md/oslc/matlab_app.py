@@ -1,16 +1,15 @@
 from os.path import abspath, dirname, join
-import time
 
 from bottle import Bottle
 from bottle import route, request, view
 
 from java.util import HashMap
-from se.kth.md.oslc import GetRequest, Server
+from se.kth.md.oslc import GetRequest, Server, IServerApplication
 import se.kth.md.oslc.Server
 import se.kth.md.oslc.Server.RequestEvent
 
 
-class MatlabApplication(Bottle):    
+class MatlabApplication(Bottle, IServerApplication):    
     """    
     The application sends queries to Matlab and gets answers from it.
     """    
@@ -22,12 +21,12 @@ class MatlabApplication(Bottle):
         def send_data():     
             dict = HashMap()            
             for key in request.GET:
-                dict.put(key, request.GET[key])   
-                          
-            oslc_request = self.fireGetEvent(dict)            
+                dict.put(key, request.GET[key])                         
             
-            while not oslc_request.isAnswer_ready():
-                time.sleep(100)            
+            oslc_request = self.fireGetEvent(dict)
+            
+            while not oslc_request.isAnswer_ready():                         
+                pass  #this is an infinite loop!
             
             return 'Result %s' % oslc_request.getAnswer()
         
@@ -41,7 +40,8 @@ class MatlabApplication(Bottle):
         
     def fireGetEvent(self, data):         
         oslc_request = GetRequest()        
-        oslc_request.setQuery(data)        
+        oslc_request.setQuery(data)
+        oslc_request.addServerListener(self)        
         event = se.kth.md.oslc.Server.RequestEvent(self, oslc_request)        
         for listener in self.listeners:
             listener.requestArrived(event)
@@ -52,3 +52,6 @@ class MatlabApplication(Bottle):
     
     def removeRequestEventListener(listener):        
         self.listeners.remove(listener)
+        
+    def handleDataReady(self, oslc_request):        
+        oslc_request.setAnswer_ready(True)

@@ -74,7 +74,7 @@ public class Matlab {
 			}
 			
 			event.request.setAnswer(result);
-			event.request.setAnswer_ready(true);			
+			event.request.notifyServerDataReady();		
 		}
 		
 		
