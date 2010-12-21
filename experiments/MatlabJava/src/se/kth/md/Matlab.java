@@ -34,47 +34,32 @@ public class Matlab {
 			this.simulinkModel = simulinkModel;
 		}
 		
-		private IProtoObject childWith(String name, IContainer container){			
-			if (container.childWith(name)!=null)
-				return container.childWith(name);
-			
-			for (IProtoObject child: container.getAllChildren()){
-				if (child instanceof IContainer){
-					return childWith(name, (IContainer) child);
-				}
-			}
-			return null;
-		}
 		
 		@Override
 		public void requestArrived(RequestEvent event) {
+			
 			String result = "Not Found";			
 			HashMap map = (HashMap) event.request.getQuery();
+			String nameOrUuid = "";
+			boolean searchByName = false;
 			
 			if (map.containsKey("name")){
-				String name = (String) map.get("name");
-				if (name.equals(simulinkModel.getName()))
-					result = simulinkModel.getUuid();
-				else{
-					IProtoObject child = childWith(name, simulinkModel);
-					if (child != null){
-						result = child.getUuid();
-					}
-				}
+				nameOrUuid = (String) map.get("name");
+				searchByName = true;
 			}else if (map.containsKey("uuid")){
-				String uuid = (String) map.get("uuid");
-				if (uuid.equals(simulinkModel.getUuid()))
-					result = simulinkModel.getName();
-				else{
-					IProtoObject child = childWith(uuid, simulinkModel);
-					if (child != null){
-						result = child.getName();
-					}
-				}
+				nameOrUuid = (String) map.get("uuid");				
 			}
 			
+			IProtoObject child = simulinkModel.searchInModel(nameOrUuid);
+			if (child != null){
+				if (searchByName)
+					result = child.getUuid();
+				else
+					result = child.getName();
+			}		
+			
 			event.request.setAnswer(result);
-			event.request.notifyServerDataReady();		
+			event.request.setAnswer_ready(true);					
 		}
 		
 		

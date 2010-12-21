@@ -62,10 +62,7 @@ class ServerController(IServer):
     def removeRequestEventListener(self, listener):        
         self.application.removeRequestEventListener(listener)     
         
-    def handleDataReady(self, oslc_request):
-        pass        
-        #self.application.temp()
-        
+     
          
           
     

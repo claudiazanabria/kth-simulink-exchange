@@ -112,8 +112,7 @@ public class Server implements IServer{
 			@Override
 			public void requestArrived(RequestEvent event) {
 				 event.request.setAnswer(new Integer(42));		
-				 event.request.notifyServerDataReady();
-				
+				 event.request.setAnswer_ready(true);				
 			}
 		});		
 		server.run();		

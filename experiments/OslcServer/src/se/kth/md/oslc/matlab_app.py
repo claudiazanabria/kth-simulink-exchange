@@ -4,12 +4,12 @@ from bottle import Bottle
 from bottle import route, request, view
 
 from java.util import HashMap
-from se.kth.md.oslc import GetRequest, Server, IServerApplication
+from se.kth.md.oslc import GetRequest, Server
 import se.kth.md.oslc.Server
 import se.kth.md.oslc.Server.RequestEvent
 
 
-class MatlabApplication(Bottle, IServerApplication):    
+class MatlabApplication(Bottle):    
     """    
     The application sends queries to Matlab and gets answers from it.
     """    
@@ -40,8 +40,7 @@ class MatlabApplication(Bottle, IServerApplication):
         
     def fireGetEvent(self, data):         
         oslc_request = GetRequest()        
-        oslc_request.setQuery(data)
-        oslc_request.addServerListener(self)        
+        oslc_request.setQuery(data)        
         event = se.kth.md.oslc.Server.RequestEvent(self, oslc_request)        
         for listener in self.listeners:
             listener.requestArrived(event)
@@ -52,6 +51,3 @@ class MatlabApplication(Bottle, IServerApplication):
     
     def removeRequestEventListener(listener):        
         self.listeners.remove(listener)
-        
-    def handleDataReady(self, oslc_request):        
-        oslc_request.setAnswer_ready(True)
