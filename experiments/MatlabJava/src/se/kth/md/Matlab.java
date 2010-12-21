@@ -3,7 +3,6 @@ package se.kth.md;
 import java.io.File;
 import java.util.HashMap;
 
-import se.kth.md.SimulinkOOAPI.IContainer;
 import se.kth.md.SimulinkOOAPI.IModel;
 import se.kth.md.SimulinkOOAPI.IProtoObject;
 import se.kth.md.SimulinkOOAPI.exceptions.ProtoObjectCreationException;
@@ -37,8 +36,6 @@ public class Matlab {
 		
 		@Override
 		public void requestArrived(RequestEvent event) {
-			
-			String result = "Not Found";			
 			HashMap map = (HashMap) event.request.getQuery();
 			String nameOrUuid = "";
 			boolean searchByName = false;
@@ -50,15 +47,9 @@ public class Matlab {
 				nameOrUuid = (String) map.get("uuid");				
 			}
 			
-			IProtoObject child = simulinkModel.searchInModel(nameOrUuid);
-			if (child != null){
-				if (searchByName)
-					result = child.getUuid();
-				else
-					result = child.getName();
-			}		
+			IProtoObject child = simulinkModel.searchInModel(nameOrUuid);			
 			
-			event.request.setAnswer(result);
+			event.request.setAnswer(child);
 			event.request.setAnswer_ready(true);					
 		}
 		
