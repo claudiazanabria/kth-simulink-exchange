@@ -222,5 +222,34 @@ public abstract class ProtoObject extends EObjectImpl implements IProtoObject {
 	public String getUuid() {	
 		return this.identity.getUuid();
 	}
+	
+	
+	@Override
+	public IProtoObject childWith(String nameOrUuid) {	
+		return null;
+	}
+	
+	@Override
+	public ISimulinkList<IProtoObject> getAllChildren() {	
+		return new SimulinkList<IProtoObject>();
+	}
+	
+	@Override
+	public IProtoObject searchInModel(String nameOrUuid) {
+		if (this.getName().equals(nameOrUuid) || this.getUuid().equals(nameOrUuid))
+			return this;
+		
+		return childWith(nameOrUuid, this);
+	}
+	
+	private IProtoObject childWith(String name, IProtoObject container){			
+		if (container.childWith(name)!=null)
+			return container.childWith(name);
+		
+		for (IProtoObject child: container.getAllChildren()){			
+			return childWith(name, child);			
+		}
+		return null;
+	}
 
 } //ProtoObject

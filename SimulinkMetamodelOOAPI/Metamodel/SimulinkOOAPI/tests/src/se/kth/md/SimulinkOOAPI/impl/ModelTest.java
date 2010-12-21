@@ -2,6 +2,7 @@ package se.kth.md.SimulinkOOAPI.impl;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import org.jmock.Expectations;
@@ -19,6 +20,7 @@ import se.kth.md.SimulinkOOAPI.IProtoObject;
 import se.kth.md.SimulinkOOAPI.ISystem;
 import se.kth.md.SimulinkOOAPI.exceptions.AddChildException;
 import se.kth.md.SimulinkOOAPI.exceptions.ProtoObjectCreationException;
+import se.kth.md.SimulinkOOAPI.util.YorkModel;
 
 @RunWith(JMock.class)
 public class ModelTest {
@@ -132,6 +134,15 @@ public class ModelTest {
 	@Test
 	public void testNoChildWithName(){
 		assertTrue(model.childWith("somenameOrUuid") == null);		
+	}
+	
+	@Test
+	public void testSearchInModel() throws Exception{
+		IModel york = YorkModel.buildWithSimulinkOOAPI();
+		assertNotNull(york.searchInModel("RootSystem"));		
+		assertNotNull(york.searchInModel("System1"));
+		assertNull(york.searchInModel("RootSys"));
+		assertEquals(york, york.searchInModel("model"));
 	}
 	
 

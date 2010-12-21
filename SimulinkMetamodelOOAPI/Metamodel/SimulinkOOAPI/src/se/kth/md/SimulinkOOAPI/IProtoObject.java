@@ -122,5 +122,23 @@ public interface IProtoObject extends EObject {
 	 * Throws {@link se.kth.md.SimulinkOOAPI.exceptions.AddChildException} otherwise.
 	 */
 	public void addTo(ILibrary parent) throws AddChildException;
+	
+	/**
+	 * Returns the proto object whose name or uuid is equals to the given string.
+	 * 
+	 * The input string is compared with this instance first, then it search in children list.
+	 */
+	public IProtoObject searchInModel(String nameOrUuid);
+	
+	/**
+	 * Returns a first child met with the given name or uuid.
+	 * Returns null if there is no such child or the element is not container.
+	 */
+	public IProtoObject childWith(String nameOrUuid);
+	
+	/**
+	 * Returns a list of all children for containers; empty list for non-containers.
+	 */
+	public ISimulinkList<IProtoObject> getAllChildren();
 
 } // IProtoObject
