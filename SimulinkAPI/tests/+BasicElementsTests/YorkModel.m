@@ -6,14 +6,36 @@ classdef YorkModel < handle
     
     properties (Access=private)
         F2FullName;
+        tempPrefix;
     end
     
     properties (Constant)
         wrongName = 'I do not exists';        
     end
 
+    methods (Static)
+        function self = onTempFolder()
+             BasicElementsTests.YorkModel.workOnTempDir();
+             self = BasicElementsTests.YorkModel();             
+        end
+    end
+    
+    methods (Static, Access=private)
+        function workOnTempDir()
+            if isempty( regexp(pwd,'temp$','end') )
+                try
+                    cd 'temp';
+                catch e %#ok<NASGU>
+                    mkdir 'temp';
+                    BasicElementsTests.YorkModel.workOnTempDir;
+                end
+            end
+        end
+                
+    end
     methods
         function self=YorkModel()
+           
             self.setupNames();
             self.setupLibrary();
             self.setupModel();
@@ -54,6 +76,19 @@ classdef YorkModel < handle
             close_system( self.libraryName, 0 );
         end
 
+        function saveAll( self )
+            self.saveModel();
+            self.saveLibrary();
+        end
+        
+        function saveModel( self )
+            save_system( self.modelName, 0 );
+        end
+        
+        function saveLibrary( self )
+            save_system( self.libraryName, 0 );
+        end
+        
         function loadAll( self )
             self.loadModel();
             self.loadLibrary();
@@ -78,7 +113,7 @@ classdef YorkModel < handle
         end
     end
     methods (Access=private)
-    
+            
         function setupNames( self )
             import BasicElements.SimulinkEntityName;
             self.libraryName = SimulinkEntityName('Library').timeStamped();
