@@ -11,21 +11,21 @@ import java.util.List;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 
-import se.kth.md.SimulinkOOAPI.IChildrenSupport;
-import se.kth.md.SimulinkOOAPI.IContainer;
-import se.kth.md.SimulinkOOAPI.IGainBlock;
-import se.kth.md.SimulinkOOAPI.IIdentity;
-import se.kth.md.SimulinkOOAPI.IInport;
-import se.kth.md.SimulinkOOAPI.ILibrary;
-import se.kth.md.SimulinkOOAPI.ILine;
-import se.kth.md.SimulinkOOAPI.IMask;
-import se.kth.md.SimulinkOOAPI.IModel;
-import se.kth.md.SimulinkOOAPI.IOutport;
-import se.kth.md.SimulinkOOAPI.IPort;
-import se.kth.md.SimulinkOOAPI.IProtoObject;
-import se.kth.md.SimulinkOOAPI.ISimulinkOOAPIPackage;
-import se.kth.md.SimulinkOOAPI.ISystem;
-import se.kth.md.SimulinkOOAPI.ISystemReference;
+import se.kth.md.SimulinkOOAPI.ChildrenSupport;
+import se.kth.md.SimulinkOOAPI.Container;
+import se.kth.md.SimulinkOOAPI.GainBlock;
+import se.kth.md.SimulinkOOAPI.Identity;
+import se.kth.md.SimulinkOOAPI.Inport;
+import se.kth.md.SimulinkOOAPI.Library;
+import se.kth.md.SimulinkOOAPI.Line;
+import se.kth.md.SimulinkOOAPI.Mask;
+import se.kth.md.SimulinkOOAPI.Model;
+import se.kth.md.SimulinkOOAPI.Outport;
+import se.kth.md.SimulinkOOAPI.Port;
+import se.kth.md.SimulinkOOAPI.ProtoObject;
+import se.kth.md.SimulinkOOAPI.SimulinkOOAPIPackage;
+import se.kth.md.SimulinkOOAPI.System;
+import se.kth.md.SimulinkOOAPI.SystemReference;
 
 /**
  * <!-- begin-user-doc -->
@@ -37,7 +37,7 @@ import se.kth.md.SimulinkOOAPI.ISystemReference;
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
- * @see se.kth.md.SimulinkOOAPI.ISimulinkOOAPIPackage
+ * @see se.kth.md.SimulinkOOAPI.SimulinkOOAPIPackage
  * @generated
  */
 public class SimulinkOOAPISwitch<T> {
@@ -47,7 +47,7 @@ public class SimulinkOOAPISwitch<T> {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static ISimulinkOOAPIPackage modelPackage;
+	protected static SimulinkOOAPIPackage modelPackage;
 
 	/**
 	 * Creates an instance of the switch.
@@ -57,7 +57,7 @@ public class SimulinkOOAPISwitch<T> {
 	 */
 	public SimulinkOOAPISwitch() {
 		if (modelPackage == null) {
-			modelPackage = ISimulinkOOAPIPackage.eINSTANCE;
+			modelPackage = SimulinkOOAPIPackage.eINSTANCE;
 		}
 	}
 
@@ -101,100 +101,100 @@ public class SimulinkOOAPISwitch<T> {
 	 */
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case ISimulinkOOAPIPackage.PROTO_OBJECT: {
-				IProtoObject protoObject = (IProtoObject)theEObject;
+			case SimulinkOOAPIPackage.PROTO_OBJECT: {
+				ProtoObject protoObject = (ProtoObject)theEObject;
 				T result = caseProtoObject(protoObject);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ISimulinkOOAPIPackage.LIBRARY: {
-				ILibrary library = (ILibrary)theEObject;
+			case SimulinkOOAPIPackage.LIBRARY: {
+				Library library = (Library)theEObject;
 				T result = caseLibrary(library);
 				if (result == null) result = caseContainer(library);
 				if (result == null) result = caseProtoObject(library);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ISimulinkOOAPIPackage.IDENTITY: {
-				IIdentity identity = (IIdentity)theEObject;
+			case SimulinkOOAPIPackage.IDENTITY: {
+				Identity identity = (Identity)theEObject;
 				T result = caseIdentity(identity);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ISimulinkOOAPIPackage.MASK: {
-				IMask mask = (IMask)theEObject;
+			case SimulinkOOAPIPackage.MASK: {
+				Mask mask = (Mask)theEObject;
 				T result = caseMask(mask);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ISimulinkOOAPIPackage.CHILDREN_SUPPORT: {
-				IChildrenSupport childrenSupport = (IChildrenSupport)theEObject;
+			case SimulinkOOAPIPackage.CHILDREN_SUPPORT: {
+				ChildrenSupport childrenSupport = (ChildrenSupport)theEObject;
 				T result = caseChildrenSupport(childrenSupport);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ISimulinkOOAPIPackage.GAIN_BLOCK: {
-				IGainBlock gainBlock = (IGainBlock)theEObject;
+			case SimulinkOOAPIPackage.GAIN_BLOCK: {
+				GainBlock gainBlock = (GainBlock)theEObject;
 				T result = caseGainBlock(gainBlock);
 				if (result == null) result = caseProtoObject(gainBlock);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ISimulinkOOAPIPackage.PORT: {
-				IPort port = (IPort)theEObject;
+			case SimulinkOOAPIPackage.PORT: {
+				Port port = (Port)theEObject;
 				T result = casePort(port);
 				if (result == null) result = caseProtoObject(port);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ISimulinkOOAPIPackage.INPORT: {
-				IInport inport = (IInport)theEObject;
+			case SimulinkOOAPIPackage.INPORT: {
+				Inport inport = (Inport)theEObject;
 				T result = caseInport(inport);
 				if (result == null) result = casePort(inport);
 				if (result == null) result = caseProtoObject(inport);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ISimulinkOOAPIPackage.OUTPORT: {
-				IOutport outport = (IOutport)theEObject;
+			case SimulinkOOAPIPackage.OUTPORT: {
+				Outport outport = (Outport)theEObject;
 				T result = caseOutport(outport);
 				if (result == null) result = casePort(outport);
 				if (result == null) result = caseProtoObject(outport);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ISimulinkOOAPIPackage.LINE: {
-				ILine line = (ILine)theEObject;
+			case SimulinkOOAPIPackage.LINE: {
+				Line line = (Line)theEObject;
 				T result = caseLine(line);
 				if (result == null) result = caseProtoObject(line);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ISimulinkOOAPIPackage.SYSTEM: {
-				ISystem system = (ISystem)theEObject;
+			case SimulinkOOAPIPackage.SYSTEM: {
+				se.kth.md.SimulinkOOAPI.System system = (se.kth.md.SimulinkOOAPI.System)theEObject;
 				T result = caseSystem(system);
 				if (result == null) result = caseContainer(system);
 				if (result == null) result = caseProtoObject(system);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ISimulinkOOAPIPackage.MODEL: {
-				IModel model = (IModel)theEObject;
+			case SimulinkOOAPIPackage.MODEL: {
+				Model model = (Model)theEObject;
 				T result = caseModel(model);
 				if (result == null) result = caseContainer(model);
 				if (result == null) result = caseProtoObject(model);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ISimulinkOOAPIPackage.SYSTEM_REFERENCE: {
-				ISystemReference systemReference = (ISystemReference)theEObject;
+			case SimulinkOOAPIPackage.SYSTEM_REFERENCE: {
+				SystemReference systemReference = (SystemReference)theEObject;
 				T result = caseSystemReference(systemReference);
 				if (result == null) result = caseProtoObject(systemReference);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ISimulinkOOAPIPackage.CONTAINER: {
-				IContainer container = (IContainer)theEObject;
+			case SimulinkOOAPIPackage.CONTAINER: {
+				Container container = (Container)theEObject;
 				T result = caseContainer(container);
 				if (result == null) result = caseProtoObject(container);
 				if (result == null) result = defaultCase(theEObject);
@@ -215,7 +215,7 @@ public class SimulinkOOAPISwitch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseProtoObject(IProtoObject object) {
+	public T caseProtoObject(ProtoObject object) {
 		return null;
 	}
 
@@ -230,7 +230,7 @@ public class SimulinkOOAPISwitch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseLibrary(ILibrary object) {
+	public T caseLibrary(Library object) {
 		return null;
 	}
 
@@ -245,7 +245,7 @@ public class SimulinkOOAPISwitch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseIdentity(IIdentity object) {
+	public T caseIdentity(Identity object) {
 		return null;
 	}
 
@@ -260,7 +260,7 @@ public class SimulinkOOAPISwitch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseMask(IMask object) {
+	public T caseMask(Mask object) {
 		return null;
 	}
 
@@ -275,7 +275,7 @@ public class SimulinkOOAPISwitch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseChildrenSupport(IChildrenSupport object) {
+	public T caseChildrenSupport(ChildrenSupport object) {
 		return null;
 	}
 
@@ -290,7 +290,7 @@ public class SimulinkOOAPISwitch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseGainBlock(IGainBlock object) {
+	public T caseGainBlock(GainBlock object) {
 		return null;
 	}
 
@@ -305,7 +305,7 @@ public class SimulinkOOAPISwitch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T casePort(IPort object) {
+	public T casePort(Port object) {
 		return null;
 	}
 
@@ -320,7 +320,7 @@ public class SimulinkOOAPISwitch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseInport(IInport object) {
+	public T caseInport(Inport object) {
 		return null;
 	}
 
@@ -335,7 +335,7 @@ public class SimulinkOOAPISwitch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseOutport(IOutport object) {
+	public T caseOutport(Outport object) {
 		return null;
 	}
 
@@ -350,7 +350,7 @@ public class SimulinkOOAPISwitch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseLine(ILine object) {
+	public T caseLine(Line object) {
 		return null;
 	}
 
@@ -365,7 +365,7 @@ public class SimulinkOOAPISwitch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseSystem(ISystem object) {
+	public T caseSystem(se.kth.md.SimulinkOOAPI.System object) {
 		return null;
 	}
 
@@ -380,7 +380,7 @@ public class SimulinkOOAPISwitch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseModel(IModel object) {
+	public T caseModel(Model object) {
 		return null;
 	}
 
@@ -395,7 +395,7 @@ public class SimulinkOOAPISwitch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseSystemReference(ISystemReference object) {
+	public T caseSystemReference(SystemReference object) {
 		return null;
 	}
 
@@ -410,7 +410,7 @@ public class SimulinkOOAPISwitch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseContainer(IContainer object) {
+	public T caseContainer(Container object) {
 		return null;
 	}
 

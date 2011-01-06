@@ -8,27 +8,27 @@ import org.jmock.integration.junit4.JUnit4Mockery;
 import org.junit.Before;
 import org.junit.Test;
 
-import se.kth.md.SimulinkOOAPI.IInport;
-import se.kth.md.SimulinkOOAPI.IPort;
-import se.kth.md.SimulinkOOAPI.ISimulinkList;
-import se.kth.md.SimulinkOOAPI.ISystem;
+import se.kth.md.SimulinkOOAPI.Inport;
+import se.kth.md.SimulinkOOAPI.Port;
+import se.kth.md.SimulinkOOAPI.SimulinkList;
+import se.kth.md.SimulinkOOAPI.System;
 
 
 public class InportTest {
 	
 	Mockery context = new JUnit4Mockery();
-	ISystem systemMock = context.mock(ISystem.class);
+	System systemMock = context.mock(System.class);
 	@SuppressWarnings("unchecked")	
-	ISimulinkList<IPort> listMock = context.mock(ISimulinkList.class);
-    IInport port;
+	SimulinkList<Port> listMock = context.mock(SimulinkList.class);
+    Inport port;
 	
 	@Before
 	public void setUp() throws Exception {
 		context.checking(new Expectations() {{
-			one(systemMock).addChild(with(any(IInport.class)));		    
+			one(systemMock).addChild(with(any(Inport.class)));		    
 		}});
 		
-		port = Factory.newInportNamedWithin("inport", systemMock);		 					
+		port = FactoryImpl.newInportNamedWithin("inport", systemMock);		 					
 	}	
 	
 	@Test
@@ -45,10 +45,10 @@ public class InportTest {
 	@Test
 	public void testCreateInport() throws Exception {
 		context.checking(new Expectations() {{
-			one(systemMock).addChild(with(any(IInport.class)));		    
+			one(systemMock).addChild(with(any(Inport.class)));		    
 		}});
 		
-		IInport inport = Inport.newNamedWithin("inport", systemMock);
+		Inport inport = InportImpl.newNamedWithin("inport", systemMock);
 		assertEquals("inport", inport.getName());		
 	}
 

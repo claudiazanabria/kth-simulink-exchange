@@ -12,24 +12,24 @@ import org.jmock.integration.junit4.JUnit4Mockery;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import se.kth.md.SimulinkOOAPI.IInport;
-import se.kth.md.SimulinkOOAPI.ILine;
-import se.kth.md.SimulinkOOAPI.IModel;
-import se.kth.md.SimulinkOOAPI.IOutport;
-import se.kth.md.SimulinkOOAPI.IPort;
-import se.kth.md.SimulinkOOAPI.ISimulinkList;
-import se.kth.md.SimulinkOOAPI.ISystem;
+import se.kth.md.SimulinkOOAPI.Inport;
+import se.kth.md.SimulinkOOAPI.Line;
+import se.kth.md.SimulinkOOAPI.Model;
+import se.kth.md.SimulinkOOAPI.Outport;
+import se.kth.md.SimulinkOOAPI.Port;
+import se.kth.md.SimulinkOOAPI.SimulinkList;
+import se.kth.md.SimulinkOOAPI.System;
 
 @RunWith(JMock.class)
 public class LineTest {
 	Mockery context = new JUnit4Mockery();
-	IModel modelMock = context.mock(IModel.class);
-	ISystem systemMock = context.mock(ISystem.class);	
-	IInport inportMock = context.mock(IInport.class);
-	IOutport outportMock = context.mock(IOutport.class);
+	Model modelMock = context.mock(Model.class);
+	System systemMock = context.mock(System.class);	
+	Inport inportMock = context.mock(Inport.class);
+	Outport outportMock = context.mock(Outport.class);
 	@SuppressWarnings("unchecked")	
-	ISimulinkList<ILine> listMock = context.mock(ISimulinkList.class);	
-    ILine line;	
+	SimulinkList<Line> listMock = context.mock(SimulinkList.class);	
+    Line line;	
 	
 	
 	//Incorrect test! Default constructor should be allowed in order not to break emf core api. 
@@ -49,16 +49,16 @@ public class LineTest {
 	@Test
 	public void testIfLineAddToList() throws Exception {		
 		context.checking(new Expectations() {{		
-			one (listMock).add(with(any(ILine.class)));
+			one (listMock).add(with(any(Line.class)));
 			
 			ignoring(modelMock);
 		}});
 		
-		ISystem system = Factory.newSystemNamedWithin("sys", modelMock);
-		ISystem subSystem = Factory.newSystemNamedWithin("sub", system);		
-		IInport inport = Factory.newInportNamedWithin("inport", system);
-		IOutport outport = Factory.newOutportNamedWithin("outport", subSystem);
-		line = Factory.newLineNameWithinFromTo("line", modelMock, outport, inport);		
+		System system = FactoryImpl.newSystemNamedWithin("sys", modelMock);
+		System subSystem = FactoryImpl.newSystemNamedWithin("sub", system);		
+		Inport inport = FactoryImpl.newInportNamedWithin("inport", system);
+		Outport outport = FactoryImpl.newOutportNamedWithin("outport", subSystem);
+		line = FactoryImpl.newLineNameWithinFromTo("line", modelMock, outport, inport);		
 		
 		line.ifLineAddToList(listMock);
 	}	
@@ -66,15 +66,15 @@ public class LineTest {
 	@Test
 	public void testPortsBelongToTheSameSystem() throws Exception {
 		context.checking(new Expectations() {{
-			exactly(2).of(systemMock).addChild(with(any(IPort.class)));
+			exactly(2).of(systemMock).addChild(with(any(Port.class)));
 			
 			ignoring(systemMock);
 		}});
 		
-		IInport inport = Factory.newInportNamedWithin("inport", systemMock);
-		IOutport outport = Factory.newOutportNamedWithin("outport", systemMock);		
+		Inport inport = FactoryImpl.newInportNamedWithin("inport", systemMock);
+		Outport outport = FactoryImpl.newOutportNamedWithin("outport", systemMock);		
 		
-		assertTrue(Line.portsBelongToTheSameSystem(inport, outport));
+		assertTrue(LineImpl.portsBelongToTheSameSystem(inport, outport));
 	}
 	
 	@Test
@@ -83,11 +83,11 @@ public class LineTest {
 			ignoring(systemMock);			
 		}});
 		
-		ISystem system = Factory.newSystemNamedWithin("system", systemMock);
-		IInport inport = Factory.newInportNamedWithin("inport", systemMock);
-		IOutport outport = Factory.newOutportNamedWithin("outport", system);		
+		System system = FactoryImpl.newSystemNamedWithin("system", systemMock);
+		Inport inport = FactoryImpl.newInportNamedWithin("inport", systemMock);
+		Outport outport = FactoryImpl.newOutportNamedWithin("outport", system);		
 		
-		assertFalse(Line.portsBelongToTheSameSystem(inport, outport));
+		assertFalse(LineImpl.portsBelongToTheSameSystem(inport, outport));
 	}
 	
 	@Test
@@ -96,13 +96,13 @@ public class LineTest {
 			ignoring(modelMock);			
 		}});
 		
-		ISystem system = Factory.newSystemNamedWithin("system", modelMock);		
-		ISystem subSystem = Factory.newSystemNamedWithin("sub", system);		
+		System system = FactoryImpl.newSystemNamedWithin("system", modelMock);		
+		System subSystem = FactoryImpl.newSystemNamedWithin("sub", system);		
 		
-		IOutport outport = Factory.newOutportNamedWithin("outport", system);	
-		IInport inport = Factory.newInportNamedWithin("inport", subSystem);		
+		Outport outport = FactoryImpl.newOutportNamedWithin("outport", system);	
+		Inport inport = FactoryImpl.newInportNamedWithin("inport", subSystem);		
 		
-		assertTrue(Line.canConnectPortsAtDifferentLevels(outport, inport));
+		assertTrue(LineImpl.canConnectPortsAtDifferentLevels(outport, inport));
 	}
 	
 	@Test
@@ -111,13 +111,13 @@ public class LineTest {
 			ignoring(modelMock);			
 		}});
 		
-		ISystem system = Factory.newSystemNamedWithin("system", modelMock);		
-		ISystem subSystem = Factory.newSystemNamedWithin("sub", system);		
+		System system = FactoryImpl.newSystemNamedWithin("system", modelMock);		
+		System subSystem = FactoryImpl.newSystemNamedWithin("sub", system);		
 		
-		IOutport outport = Factory.newOutportNamedWithin("outport", subSystem);	
-		IInport inport = Factory.newInportNamedWithin("inport", system);		
+		Outport outport = FactoryImpl.newOutportNamedWithin("outport", subSystem);	
+		Inport inport = FactoryImpl.newInportNamedWithin("inport", system);		
 		
-		assertTrue(Line.canConnectPortsAtDifferentLevels(outport, inport));
+		assertTrue(LineImpl.canConnectPortsAtDifferentLevels(outport, inport));
 	}
 	
 	@Test
@@ -126,14 +126,14 @@ public class LineTest {
 			ignoring(modelMock);			
 		}});
 		
-		ISystem system = Factory.newSystemNamedWithin("system", modelMock);		
-		ISystem subSystem = Factory.newSystemNamedWithin("sub", system);
-		ISystem subSubSystem = Factory.newSystemNamedWithin("subSystem", subSystem);
+		System system = FactoryImpl.newSystemNamedWithin("system", modelMock);		
+		System subSystem = FactoryImpl.newSystemNamedWithin("sub", system);
+		System subSubSystem = FactoryImpl.newSystemNamedWithin("subSystem", subSystem);
 		
-		IOutport outport = Factory.newOutportNamedWithin("outport", system);
-		IInport inport = Factory.newInportNamedWithin("inport", subSubSystem);		
+		Outport outport = FactoryImpl.newOutportNamedWithin("outport", system);
+		Inport inport = FactoryImpl.newInportNamedWithin("inport", subSubSystem);		
 		
-		assertFalse(Line.canConnectPortsAtDifferentLevels(outport, inport));
+		assertFalse(LineImpl.canConnectPortsAtDifferentLevels(outport, inport));
 	}
 	
 	@Test
@@ -142,14 +142,14 @@ public class LineTest {
 			ignoring(modelMock);			
 		}});
 		
-		ISystem system = Factory.newSystemNamedWithin("system", modelMock);		
-		ISystem subSystem = Factory.newSystemNamedWithin("sub", system);
-		ISystem subSubSystem = Factory.newSystemNamedWithin("subSystem", subSystem);
+		System system = FactoryImpl.newSystemNamedWithin("system", modelMock);		
+		System subSystem = FactoryImpl.newSystemNamedWithin("sub", system);
+		System subSubSystem = FactoryImpl.newSystemNamedWithin("subSystem", subSystem);
 		
-		IOutport outport = Factory.newOutportNamedWithin("outport", subSubSystem);
-		IInport inport = Factory.newInportNamedWithin("inport", system);
+		Outport outport = FactoryImpl.newOutportNamedWithin("outport", subSubSystem);
+		Inport inport = FactoryImpl.newInportNamedWithin("inport", system);
 				
-		assertFalse(Line.canConnectPortsAtDifferentLevels(outport, inport));
+		assertFalse(LineImpl.canConnectPortsAtDifferentLevels(outport, inport));
 	}
 	
 	@Test
@@ -158,14 +158,14 @@ public class LineTest {
 			ignoring(modelMock);			
 		}});
 		
-		ISystem system = Factory.newSystemNamedWithin("system", modelMock);
-		ISystem subSystemA = Factory.newSystemNamedWithin("subSystem1", system);
-		ISystem subSystemB = Factory.newSystemNamedWithin("subSystem", system);		
+		System system = FactoryImpl.newSystemNamedWithin("system", modelMock);
+		System subSystemA = FactoryImpl.newSystemNamedWithin("subSystem1", system);
+		System subSystemB = FactoryImpl.newSystemNamedWithin("subSystem", system);		
 		
-		IOutport outport = Factory.newOutportNamedWithin("outport", subSystemA);
-		IInport inport = Factory.newInportNamedWithin("inport", subSystemB);		
+		Outport outport = FactoryImpl.newOutportNamedWithin("outport", subSystemA);
+		Inport inport = FactoryImpl.newInportNamedWithin("inport", subSystemB);		
 		
-		assertTrue(Line.canConnectPortsAtTheSameLevel(outport, inport));
+		assertTrue(LineImpl.canConnectPortsAtTheSameLevel(outport, inport));
 	}
 	
 	@Test
@@ -174,14 +174,14 @@ public class LineTest {
 			ignoring(modelMock);			
 		}});
 		
-		ISystem system = Factory.newSystemNamedWithin("system", modelMock);		
-		ISystem subSystem = Factory.newSystemNamedWithin("sub", system);
-		ISystem subSubSystem = Factory.newSystemNamedWithin("subSystem", subSystem);
+		System system = FactoryImpl.newSystemNamedWithin("system", modelMock);		
+		System subSystem = FactoryImpl.newSystemNamedWithin("sub", system);
+		System subSubSystem = FactoryImpl.newSystemNamedWithin("subSystem", subSystem);
 		
-		IOutport outport = Factory.newOutportNamedWithin("outport", subSystem);
-		IInport inport = Factory.newInportNamedWithin("inport", subSubSystem);
+		Outport outport = FactoryImpl.newOutportNamedWithin("outport", subSystem);
+		Inport inport = FactoryImpl.newInportNamedWithin("inport", subSubSystem);
 		
-		assertFalse(Line.canConnectPortsAtTheSameLevel(outport, inport));
+		assertFalse(LineImpl.canConnectPortsAtTheSameLevel(outport, inport));
 	}
 	
 	@Test
@@ -190,12 +190,12 @@ public class LineTest {
 			
 			atLeast(1).of(outportMock).getParent(); will(returnValue(systemMock));
 			atLeast(1).of(inportMock).getParent(); will(returnValue(systemMock));
-			one(systemMock).addChild(with(any(ILine.class)));
+			one(systemMock).addChild(with(any(Line.class)));
 			
 			ignoring(systemMock);			
 		}});	
 		
-		ILine line = Line.newNamedWithinFromTo("line", systemMock, outportMock, inportMock);		
+		Line line = LineImpl.newNamedWithinFromTo("line", systemMock, outportMock, inportMock);		
 		assertEquals("line", line.getName());	
 	}
 	
@@ -205,12 +205,12 @@ public class LineTest {
 			
 			atLeast(1).of(outportMock).getParent(); will(returnValue(systemMock));
 			atLeast(1).of(inportMock).getParent(); will(returnValue(systemMock));
-			one(modelMock).addChild(with(any(ILine.class)));
+			one(modelMock).addChild(with(any(Line.class)));
 			
 			ignoring(systemMock);	
 		}});	
 		
-		ILine line = Line.newNamedWithinFromTo("line", modelMock, outportMock, inportMock);		
+		Line line = LineImpl.newNamedWithinFromTo("line", modelMock, outportMock, inportMock);		
 		assertEquals("line", line.getName());	
 	}
 

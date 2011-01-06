@@ -3,17 +3,17 @@ package se.kth.md.SimulinkOOAPI.util;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.xsd.presentation.XSDEditor;
 
-import se.kth.md.SimulinkOOAPI.IInport;
-import se.kth.md.SimulinkOOAPI.ILine;
-import se.kth.md.SimulinkOOAPI.IModel;
-import se.kth.md.SimulinkOOAPI.IOutport;
-import se.kth.md.SimulinkOOAPI.ISimulinkOOAPIFactory;
-import se.kth.md.SimulinkOOAPI.ISystem;
-import se.kth.md.SimulinkOOAPI.ISystemReference;
+import se.kth.md.SimulinkOOAPI.Inport;
+import se.kth.md.SimulinkOOAPI.Line;
+import se.kth.md.SimulinkOOAPI.Model;
+import se.kth.md.SimulinkOOAPI.Outport;
+import se.kth.md.SimulinkOOAPI.SimulinkOOAPIFactory;
+import se.kth.md.SimulinkOOAPI.System;
+import se.kth.md.SimulinkOOAPI.SystemReference;
 import se.kth.md.SimulinkOOAPI.exceptions.AddChildException;
 import se.kth.md.SimulinkOOAPI.exceptions.ProtoObjectCreationException;
-import se.kth.md.SimulinkOOAPI.impl.Factory;
-import se.kth.md.SimulinkOOAPI.impl.SimulinkOOAPIFactory;
+import se.kth.md.SimulinkOOAPI.impl.FactoryImpl;
+import se.kth.md.SimulinkOOAPI.impl.SimulinkOOAPIFactoryImpl;
 
 public class YorkModel {
 	
@@ -21,32 +21,32 @@ public class YorkModel {
 	 * Builds York model with SimulinkOO API.	 
 	 *
 	 */	
-	public static IModel buildWithSimulinkOOAPI() throws ProtoObjectCreationException{		
-		IModel model = Factory.newModelNamed("model");
+	public static Model buildWithSimulinkOOAPI() throws ProtoObjectCreationException{		
+		Model model = FactoryImpl.newModelNamed("model");
 		
-		ISystem rootSys = Factory.newSystemNamedWithin("RootSystem", model);
-		ISystem system1 = Factory.newSystemNamedWithin("System1", model);
-		ISystem system2 = Factory.newSystemNamedWithin("System2", model);
-		ISystem primarySys = Factory.newSystemNamedWithin("Primary", model);
-		ISystem standBySys = Factory.newSystemNamedWithin("StandBy", model);		
+		System rootSys = FactoryImpl.newSystemNamedWithin("RootSystem", model);
+		System system1 = FactoryImpl.newSystemNamedWithin("System1", model);
+		System system2 = FactoryImpl.newSystemNamedWithin("System2", model);
+		System primarySys = FactoryImpl.newSystemNamedWithin("Primary", model);
+		System standBySys = FactoryImpl.newSystemNamedWithin("StandBy", model);		
 		
-		Factory.newSystemReferemceNamedWithinTargeting("SysRef1", rootSys, system1);
-		Factory.newSystemReferemceNamedWithinTargeting("SysRef2", rootSys, system2);
-		Factory.newSystemReferemceNamedWithinTargeting("SysRef3", rootSys, primarySys);
+		FactoryImpl.newSystemReferemceNamedWithinTargeting("SysRef1", rootSys, system1);
+		FactoryImpl.newSystemReferemceNamedWithinTargeting("SysRef2", rootSys, system2);
+		FactoryImpl.newSystemReferemceNamedWithinTargeting("SysRef3", rootSys, primarySys);
 		
-		IInport system2Inport = Factory.newInportNamedWithin("sys2In", system2);
-		IOutport system2Outport = Factory.newOutportNamedWithin("sys2Out", system2);
-		IInport primarySysInport = Factory.newInportNamedWithin("primarysysIn", primarySys);
-		IOutport primarySysOutport = Factory.newOutportNamedWithin("primarysysOut", primarySys);
-		IInport standBySysInport1 = Factory.newInportNamedWithin("standBySysInport1", standBySys);
-		IInport standBySysInport2 = Factory.newInportNamedWithin("standBySysInport2", standBySys);
-		IOutport standBySysOutport = Factory.newOutportNamedWithin("standBySysOutport", standBySys);
+		Inport system2Inport = FactoryImpl.newInportNamedWithin("sys2In", system2);
+		Outport system2Outport = FactoryImpl.newOutportNamedWithin("sys2Out", system2);
+		Inport primarySysInport = FactoryImpl.newInportNamedWithin("primarysysIn", primarySys);
+		Outport primarySysOutport = FactoryImpl.newOutportNamedWithin("primarysysOut", primarySys);
+		Inport standBySysInport1 = FactoryImpl.newInportNamedWithin("standBySysInport1", standBySys);
+		Inport standBySysInport2 = FactoryImpl.newInportNamedWithin("standBySysInport2", standBySys);
+		Outport standBySysOutport = FactoryImpl.newOutportNamedWithin("standBySysOutport", standBySys);
 		
-		Factory.newLineNameWithinFromTo("line1", system2, system2Outport, primarySysInport);
-		Factory.newLineNameWithinFromTo("line2", system2, system2Outport, standBySysInport1);
-		Factory.newLineNameWithinFromTo("line3", system2, primarySysOutport, standBySysInport2);
-		Factory.newLineNameWithinFromTo("line4", system2, primarySysOutport, system2Inport);
-		Factory.newLineNameWithinFromTo("line5", system2, standBySysOutport, system2Inport);
+		FactoryImpl.newLineNameWithinFromTo("line1", system2, system2Outport, primarySysInport);
+		FactoryImpl.newLineNameWithinFromTo("line2", system2, system2Outport, standBySysInport1);
+		FactoryImpl.newLineNameWithinFromTo("line3", system2, primarySysOutport, standBySysInport2);
+		FactoryImpl.newLineNameWithinFromTo("line4", system2, primarySysOutport, system2Inport);
+		FactoryImpl.newLineNameWithinFromTo("line5", system2, standBySysOutport, system2Inport);
 		
 		return model;
 		
@@ -84,48 +84,48 @@ public class YorkModel {
 	 * Builds York model by means of pure ECore API.
 	 * @throws AddChildException 
 	 */
-	public static IModel buildWithECoreAPI() throws AddChildException{
+	public static Model buildWithECoreAPI() throws AddChildException{
 		
-		ISimulinkOOAPIFactory factory = SimulinkOOAPIFactory.init();		
-		IModel model = factory.createModel();
+		SimulinkOOAPIFactory factory = SimulinkOOAPIFactoryImpl.init();		
+		Model model = factory.createModel();
 		model.getIdentity().setName("model");
 		
-		ISystem rootSys = factory.createSystem();
+		System rootSys = factory.createSystem();
 		rootSys.getIdentity().setName("RootSystem");
 		model.addChild(rootSys);
 		rootSys.setParent(model);
 		
-		ISystem system1 = factory.createSystem();
+		System system1 = factory.createSystem();
 		system1.getIdentity().setName("System1");
 		model.addChild(system1);
 		system1.setParent(model);
 		
-		ISystem system2 = factory.createSystem();
+		System system2 = factory.createSystem();
 		system2.getIdentity().setName("System2");
 		model.addChild(system2);
 		system2.setParent(model);
 		
-		ISystem primarySystem = factory.createSystem();
+		System primarySystem = factory.createSystem();
 		primarySystem.getIdentity().setName("Primary");
 		model.addChild(primarySystem);
 		primarySystem.setParent(model);
 		
-		ISystem standBySystem = factory.createSystem();
+		System standBySystem = factory.createSystem();
 		standBySystem.getIdentity().setName("StandBy");
 		model.addChild(standBySystem);
 		standBySystem.setParent(model);
 		
-		ISystemReference sysRef1 = factory.createSystemReference();
+		SystemReference sysRef1 = factory.createSystemReference();
 		sysRef1.getIdentity().setName("SysRef1");
 		sysRef1.setTarget(system1);
 		rootSys.addChild(sysRef1);
 		
-		ISystemReference sysRef2 = factory.createSystemReference();
+		SystemReference sysRef2 = factory.createSystemReference();
 		sysRef2.getIdentity().setName("SysRef2");
 		sysRef2.setTarget(system2);
 		rootSys.addChild(sysRef2);
 		
-		ISystemReference sysRef3 = factory.createSystemReference();
+		SystemReference sysRef3 = factory.createSystemReference();
 		sysRef3.getIdentity().setName("SysRef3");
 		sysRef3.setTarget(primarySystem);
 		rootSys.addChild(sysRef3);
@@ -135,54 +135,54 @@ public class YorkModel {
 //		system2.addChild(standBySystem);
 //		standBySystem.setParent(system2);
 //		
-		IInport system2Inport = factory.createInport();
+		Inport system2Inport = factory.createInport();
 		system2Inport.getIdentity().setName("sys2In");
 		system2.addChild(system2Inport);		
-		IOutport system2Outport = factory.createOutport();
+		Outport system2Outport = factory.createOutport();
 		system2Outport.getIdentity().setName("sys2Out");
 		system2.addChild(system2Outport);
-		IInport primarySysInport = factory.createInport();
+		Inport primarySysInport = factory.createInport();
 		primarySysInport.getIdentity().setName("primarysysIn");
 		primarySystem.addChild(primarySysInport);
-		IOutport primarySysOutport = factory.createOutport();
+		Outport primarySysOutport = factory.createOutport();
 		primarySysOutport.getIdentity().setName("primarysysOut");
 		primarySystem.addChild(primarySysOutport);		
-		IInport standBySysInport1 = factory.createInport();
+		Inport standBySysInport1 = factory.createInport();
 		standBySysInport1.getIdentity().setName("standBySysInport1");
 		standBySystem.addChild(standBySysInport1);
-		IInport standBySysInport2 = factory.createInport();
+		Inport standBySysInport2 = factory.createInport();
 		standBySysInport1.getIdentity().setName("standBySysInport2");
 		standBySystem.addChild(standBySysInport2);		
-		IOutport standBySysOutport = factory.createOutport();
+		Outport standBySysOutport = factory.createOutport();
 		standBySysOutport.getIdentity().setName("standBySysOutport");
 		standBySystem.addChild(standBySysOutport);
 		
 		
-		ILine line1 = factory.createLine();
+		Line line1 = factory.createLine();
 		line1.getIdentity().setName("line1");
 		line1.setSource(system2Outport);
 		line1.setDestination(primarySysInport);
 		system2.addChild(line1);
 		
-		ILine line2 = factory.createLine();
+		Line line2 = factory.createLine();
 		line2.getIdentity().setName("line2");
 		line2.setSource(system2Outport);
 		line2.setDestination(standBySysInport1);
 		system2.addChild(line2);
 		
-		ILine line3 = factory.createLine();
+		Line line3 = factory.createLine();
 		line3.getIdentity().setName("line3");
 		line3.setSource(primarySysOutport);
 		line3.setDestination(standBySysInport2);
 		system2.addChild(line3);
 		
-		ILine line4 = factory.createLine();
+		Line line4 = factory.createLine();
 		line4.getIdentity().setName("line4");
 		line4.setSource(primarySysOutport);
 		line4.setDestination(system2Inport);
 		system2.addChild(line4);
 		
-		ILine line5 = factory.createLine();
+		Line line5 = factory.createLine();
 		line5.getIdentity().setName("line5");
 		line5.setSource(standBySysOutport);
 		line5.setDestination(system2Inport);

@@ -3,17 +3,17 @@
     xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="SimulinkOOAPI"
     nsURI="http:///se.kth.md.attest3/SimulinkOOAPI/1.0" nsPrefix="simoo">
-  <eClassifiers xsi:type="ecore:EClass" name="ProtoObject" abstract="true" eSuperTypes="Ecore.ecore#//EObject">
+  <eClassifiers xsi:type="ecore:EClass" name="ProtoObject" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EReference" name="identity" lowerBound="1"
         eType="#//Identity" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Library" eSuperTypes="#//Container"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Identity" eSuperTypes="Ecore.ecore#//EObject">
+  <eClassifiers xsi:type="ecore:EClass" name="Identity">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="uuid" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         volatile="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Mask" eSuperTypes="Ecore.ecore#//EObject"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Mask"/>
   <eClassifiers xsi:type="ecore:EClass" name="ChildrenSupport"/>
   <eClassifiers xsi:type="ecore:EClass" name="GainBlock" eSuperTypes="#//ProtoObject">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="gain" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>

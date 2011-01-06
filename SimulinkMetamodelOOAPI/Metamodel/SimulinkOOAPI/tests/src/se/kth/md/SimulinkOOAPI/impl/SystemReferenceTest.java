@@ -11,11 +11,11 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import se.kth.md.SimulinkOOAPI.IIdentity;
-import se.kth.md.SimulinkOOAPI.IModel;
-import se.kth.md.SimulinkOOAPI.IPort;
-import se.kth.md.SimulinkOOAPI.ISystem;
-import se.kth.md.SimulinkOOAPI.ISystemReference;
+import se.kth.md.SimulinkOOAPI.Identity;
+import se.kth.md.SimulinkOOAPI.Model;
+import se.kth.md.SimulinkOOAPI.Port;
+import se.kth.md.SimulinkOOAPI.System;
+import se.kth.md.SimulinkOOAPI.SystemReference;
 import se.kth.md.SimulinkOOAPI.exceptions.ErrorMessages;
 import se.kth.md.SimulinkOOAPI.exceptions.ProtoObjectCreationException;
 
@@ -24,11 +24,11 @@ import se.kth.md.SimulinkOOAPI.exceptions.ProtoObjectCreationException;
 public class SystemReferenceTest {
 	
 	Mockery context = new JUnit4Mockery();
-	IIdentity identityMock = context.mock(IIdentity.class);
-	IPort portMock = context.mock(IPort.class);
-	IModel modelMock = context.mock(IModel.class);
-	ISystem systemMock = context.mock(ISystem.class);
-    ISystemReference systemReference;
+	Identity identityMock = context.mock(Identity.class);
+	Port portMock = context.mock(Port.class);
+	Model modelMock = context.mock(Model.class);
+	System systemMock = context.mock(System.class);
+    SystemReference systemReference;
 	
 	@Before
 	public void setUp(){}
@@ -53,7 +53,7 @@ public class SystemReferenceTest {
 		}});
 		
 		try{
-			Factory.newSystemReferemceNamedWithinTargeting("sysRef", systemMock, systemMock);			
+			FactoryImpl.newSystemReferemceNamedWithinTargeting("sysRef", systemMock, systemMock);			
 		}catch(ProtoObjectCreationException e){
 			assertEquals(ErrorMessages.SYS_REF_TARGET_EQUALS_PARENT, e.getMessage());
 		}
@@ -62,11 +62,11 @@ public class SystemReferenceTest {
 	@Test
 	public void testCreateWithinModel() throws Exception{		
 		context.checking(new Expectations() {{					
-			one(modelMock).addChild(with(any(ISystemReference.class)));			
+			one(modelMock).addChild(with(any(SystemReference.class)));			
 			ignoring(systemMock);	
 		}});	
 		
-		ISystemReference sysRef = SystemReference.newNamedWithinTargeting("sysRef", modelMock, systemMock);		
+		SystemReference sysRef = SystemReferenceImpl.newNamedWithinTargeting("sysRef", modelMock, systemMock);		
 		assertEquals("sysRef", sysRef.getName());
 		assertEquals(systemMock, sysRef.getTarget());
 	}
@@ -74,14 +74,14 @@ public class SystemReferenceTest {
 	@Test
 	public void testCreateWithinSystem() throws Exception{		
 		context.checking(new Expectations() {{					
-			one(systemMock).addChild(with(any(ISystemReference.class)));
+			one(systemMock).addChild(with(any(SystemReference.class)));
 			
 			ignoring(systemMock);
 			ignoring(modelMock);
 		}});	
 		
-		ISystem targetSystem = System.newNamedWithin("target", modelMock);
-		ISystemReference sysRef = SystemReference.newNamedWithinTargeting("sysRef", systemMock, targetSystem);		
+		System targetSystem = SystemImpl.newNamedWithin("target", modelMock);
+		SystemReference sysRef = SystemReferenceImpl.newNamedWithinTargeting("sysRef", systemMock, targetSystem);		
 		assertEquals("sysRef", sysRef.getName());
 		assertEquals(targetSystem, sysRef.getTarget());
 	}

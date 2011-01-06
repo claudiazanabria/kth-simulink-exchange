@@ -14,38 +14,38 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import se.kth.md.SimulinkOOAPI.IInport;
-import se.kth.md.SimulinkOOAPI.ILibrary;
-import se.kth.md.SimulinkOOAPI.IModel;
-import se.kth.md.SimulinkOOAPI.IOutport;
-import se.kth.md.SimulinkOOAPI.IPort;
-import se.kth.md.SimulinkOOAPI.IProtoObject;
-import se.kth.md.SimulinkOOAPI.ISimulinkList;
-import se.kth.md.SimulinkOOAPI.ISystem;
+import se.kth.md.SimulinkOOAPI.Inport;
+import se.kth.md.SimulinkOOAPI.Library;
+import se.kth.md.SimulinkOOAPI.Model;
+import se.kth.md.SimulinkOOAPI.Outport;
+import se.kth.md.SimulinkOOAPI.Port;
+import se.kth.md.SimulinkOOAPI.ProtoObject;
+import se.kth.md.SimulinkOOAPI.SimulinkList;
+import se.kth.md.SimulinkOOAPI.System;
 import se.kth.md.SimulinkOOAPI.exceptions.AddChildException;
 import se.kth.md.SimulinkOOAPI.exceptions.ProtoObjectCreationException;
 
 @RunWith(JMock.class)
 public class SystemTest {
 	Mockery context = new JUnit4Mockery();	
-	IModel modelMock = context.mock(IModel.class);
-	IPort portMock = context.mock(IPort.class);
-	ISystem systemMock = context.mock(ISystem.class);
-	ILibrary libraryMock = context.mock(ILibrary.class);
-	IInport inportMock = context.mock(IInport.class);
-	IOutport outportMock = context.mock(IOutport.class);
+	Model modelMock = context.mock(Model.class);
+	Port portMock = context.mock(Port.class);
+	System systemMock = context.mock(System.class);
+	Library libraryMock = context.mock(Library.class);
+	Inport inportMock = context.mock(Inport.class);
+	Outport outportMock = context.mock(Outport.class);
 	@SuppressWarnings("unchecked")	
-	ISimulinkList<ISystem> listMock = context.mock(ISimulinkList.class);
-    ISystem system;    
+	SimulinkList<System> listMock = context.mock(SimulinkList.class);
+    System system;    
 	
 	@Before
 	public void setUp() throws ProtoObjectCreationException, AddChildException{
 		context.checking(new Expectations() {{
-			one(modelMock).addChild(with(any(ISystem.class)));			    
+			one(modelMock).addChild(with(any(System.class)));			    
 		}});
-		system = System.newNamedWithin("sys", modelMock);
-		Factory.newInportNamedWithin("inport", system);
-		Outport.newNamedWithin("outport", system);		
+		system = SystemImpl.newNamedWithin("sys", modelMock);
+		FactoryImpl.newInportNamedWithin("inport", system);
+		OutportImpl.newNamedWithin("outport", system);		
 	}
 	
 	//Incorrect test! Default constructor should be allowed in order not to break emf core api. 
@@ -80,11 +80,11 @@ public class SystemTest {
 		}});
 		
 		assertEquals(2, system.getNumberOfChildren());
-		system.addChild(System.newNamedWithin("sys", modelMock));
+		system.addChild(SystemImpl.newNamedWithin("sys", modelMock));
 		assertEquals(3, system.getNumberOfChildren());
 	}
 	
-	protected void testAddWrongChild(IProtoObject child) throws AddChildException{
+	protected void testAddWrongChild(ProtoObject child) throws AddChildException{
 		boolean passed = false;
 		try{
 			system.addChild(child);
@@ -96,13 +96,13 @@ public class SystemTest {
 
 	@Test
 	public void testAddLibrary() throws Exception{
-		testAddWrongChild(Library.newNamed("lib"));		
+		testAddWrongChild(LibraryImpl.newNamed("lib"));		
 	}
 	
 	@Test
 	public void testGetChildrenOfTypeGainBlock() throws ProtoObjectCreationException{
-		GainBlock.newNamedWithinWithGain("gainBlock1", system, 1);
-		GainBlock.newNamedWithinWithGain("gainBlock2", system, 1);		
+		GainBlockImpl.newNamedWithinWithGain("gainBlock1", system, 1);
+		GainBlockImpl.newNamedWithinWithGain("gainBlock2", system, 1);		
 		assertEquals(2, system.getChildrenOfTypeGainBlock().size());
 	}
 	
@@ -114,7 +114,7 @@ public class SystemTest {
 			atLeast(1).of(outportMock).getParent();
 				will(returnValue(system));								    
 		}});
-		Line.newNamedWithinFromTo("line", system, outportMock, inportMock);				
+		LineImpl.newNamedWithinFromTo("line", system, outportMock, inportMock);				
 		assertEquals(1, system.getChildrenOfTypeLine().size());
 	}
 	
@@ -135,7 +135,7 @@ public class SystemTest {
 	
 	@Test
 	public void testGetChildrenOfTypeSystem() throws ProtoObjectCreationException{
-		System.newNamedWithin("sys", system);		
+		SystemImpl.newNamedWithin("sys", system);		
 		assertEquals(1, system.getChildrenOfTypeSystem().size());
 	}
 	
@@ -145,13 +145,13 @@ public class SystemTest {
 			ignoring(systemMock);								    
 		}});
 		
-		SystemReference.newNamedWithinTargeting("sysref", system, systemMock);		
+		SystemReferenceImpl.newNamedWithinTargeting("sysref", system, systemMock);		
 		assertEquals(1, system.getChildrenOfTypeSystemReference().size());
 	}
 	
 	@Test
 	public void testIsParentOfSystem() throws ProtoObjectCreationException{
-		ISystem subsystem = Factory.newSystemNamedWithin("sub", system);		
+		System subsystem = FactoryImpl.newSystemNamedWithin("sub", system);		
 		assertTrue(system.isParentOf(subsystem));
 	}
 	
@@ -161,37 +161,37 @@ public class SystemTest {
 			ignoring(modelMock);			    
 		}});
 		
-		ISystem subsystem = Factory.newSystemNamedWithin("sub", modelMock);		
+		System subsystem = FactoryImpl.newSystemNamedWithin("sub", modelMock);		
 		assertFalse(system.isParentOf(subsystem));
 	}
 	
 	@Test
 	public void testCreateWithinModel() throws ProtoObjectCreationException, AddChildException{		
 		context.checking(new Expectations() {{					
-			one(modelMock).addChild(with(any(ISystem.class)));
+			one(modelMock).addChild(with(any(System.class)));
 		}});	
 		
-		ISystem system = System.newNamedWithin("sys", modelMock);		
+		System system = SystemImpl.newNamedWithin("sys", modelMock);		
 		assertEquals("sys", system.getName());		
 	}
 	
 	@Test
 	public void testCreateWithinSystem() throws ProtoObjectCreationException, AddChildException{		
 		context.checking(new Expectations() {{					
-			one(systemMock).addChild(with(any(ISystem.class)));
+			one(systemMock).addChild(with(any(System.class)));
 		}});	
 		
-		ISystem system = System.newNamedWithin("sys", systemMock);		
+		System system = SystemImpl.newNamedWithin("sys", systemMock);		
 		assertEquals("sys", system.getName());		
 	}
 	
 	@Test
 	public void testCreateWithinLibrary() throws ProtoObjectCreationException, AddChildException{		
 		context.checking(new Expectations() {{					
-			one(libraryMock).addChild(with(any(ISystem.class)));
+			one(libraryMock).addChild(with(any(System.class)));
 		}});	
 		
-		ISystem system = System.newNamedWithin("sys", libraryMock);		
+		System system = SystemImpl.newNamedWithin("sys", libraryMock);		
 		assertEquals("sys", system.getName());		
 	}
 	

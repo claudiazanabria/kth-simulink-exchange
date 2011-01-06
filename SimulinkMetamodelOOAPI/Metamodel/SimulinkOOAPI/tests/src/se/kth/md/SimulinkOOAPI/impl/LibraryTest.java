@@ -13,11 +13,11 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import se.kth.md.SimulinkOOAPI.IInport;
-import se.kth.md.SimulinkOOAPI.ILibrary;
-import se.kth.md.SimulinkOOAPI.IOutport;
-import se.kth.md.SimulinkOOAPI.IProtoObject;
-import se.kth.md.SimulinkOOAPI.ISystem;
+import se.kth.md.SimulinkOOAPI.Inport;
+import se.kth.md.SimulinkOOAPI.Library;
+import se.kth.md.SimulinkOOAPI.Outport;
+import se.kth.md.SimulinkOOAPI.ProtoObject;
+import se.kth.md.SimulinkOOAPI.System;
 import se.kth.md.SimulinkOOAPI.exceptions.AddChildException;
 import se.kth.md.SimulinkOOAPI.exceptions.ProtoObjectCreationException;
 
@@ -25,14 +25,14 @@ import se.kth.md.SimulinkOOAPI.exceptions.ProtoObjectCreationException;
 public class LibraryTest {
 	
 	Mockery context = new JUnit4Mockery();	
-	ISystem systemMock = context.mock(ISystem.class);	
-	IInport inportMock = context.mock(IInport.class);
-	IOutport outportMock = context.mock(IOutport.class);
-    ILibrary library;    
+	System systemMock = context.mock(System.class);	
+	Inport inportMock = context.mock(Inport.class);
+	Outport outportMock = context.mock(Outport.class);
+    Library library;    
 	
 	@Before
 	public void setUp() throws ProtoObjectCreationException{		
-		library = Factory.newLibraryNamed("library");		
+		library = FactoryImpl.newLibraryNamed("library");		
 	}
 	
 	//Incorrect test! Default constructor should be allowed in order not to break emf core api. 
@@ -56,11 +56,11 @@ public class LibraryTest {
 		}});
 		
 		assertEquals(0, library.getNumberOfChildren());
-		library.addChild(Factory.newSystemNamedWithin("sys", systemMock));
+		library.addChild(FactoryImpl.newSystemNamedWithin("sys", systemMock));
 		assertEquals(1, library.getNumberOfChildren());
 	}
 	
-	protected void testAddWrongChild(IProtoObject child) throws AddChildException{
+	protected void testAddWrongChild(ProtoObject child) throws AddChildException{
 		boolean passed = false;
 		try{
 			library.addChild(child);
@@ -72,31 +72,31 @@ public class LibraryTest {
 
 	@Test
 	public void testAddLibrary() throws Exception{
-		testAddWrongChild(Factory.newLibraryNamed("library"));		
+		testAddWrongChild(FactoryImpl.newLibraryNamed("library"));		
 	}
 	
 	@Test
 	public void testGetChildrenOfTypeGainBlock() throws Exception {
-		Factory.newGainBlockNamedWithinWithGain("gBlock1", library, 1);
-		Factory.newGainBlockNamedWithinWithGain("gBlock2", library, 1);				
+		FactoryImpl.newGainBlockNamedWithinWithGain("gBlock1", library, 1);
+		FactoryImpl.newGainBlockNamedWithinWithGain("gBlock2", library, 1);				
 		assertEquals(2, library.getChildrenOfTypeGainBlock().size());
 	}
 	
 	@Test
 	public void testGetChildrenOfTypeSystem() throws ProtoObjectCreationException{
-		Factory.newSystemNamedWithin("system", library);		
+		FactoryImpl.newSystemNamedWithin("system", library);		
 		assertEquals(1, library.getChildrenOfTypeSystem().size());
 	}
 	
 	@Test
 	public void testChildWithName() throws ProtoObjectCreationException{
-		GainBlock.newNamedWithinWithGain("gain", library, 2);
+		GainBlockImpl.newNamedWithinWithGain("gain", library, 2);
 		assertNotNull(library.childWith("gain"));		
 	}
 	
 	@Test
 	public void testChildWithUuid() throws ProtoObjectCreationException{		
-		String uuid = GainBlock.newNamedWithinWithGain("gain", library, 2).getUuid(); 
+		String uuid = GainBlockImpl.newNamedWithinWithGain("gain", library, 2).getUuid(); 
 		assertNotNull(library.childWith(uuid));		
 	}
 	

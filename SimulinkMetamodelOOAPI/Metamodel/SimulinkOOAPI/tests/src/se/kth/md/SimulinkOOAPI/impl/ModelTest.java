@@ -13,11 +13,11 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import se.kth.md.SimulinkOOAPI.IInport;
-import se.kth.md.SimulinkOOAPI.IModel;
-import se.kth.md.SimulinkOOAPI.IOutport;
-import se.kth.md.SimulinkOOAPI.IProtoObject;
-import se.kth.md.SimulinkOOAPI.ISystem;
+import se.kth.md.SimulinkOOAPI.Inport;
+import se.kth.md.SimulinkOOAPI.Model;
+import se.kth.md.SimulinkOOAPI.Outport;
+import se.kth.md.SimulinkOOAPI.ProtoObject;
+import se.kth.md.SimulinkOOAPI.System;
 import se.kth.md.SimulinkOOAPI.exceptions.AddChildException;
 import se.kth.md.SimulinkOOAPI.exceptions.ProtoObjectCreationException;
 import se.kth.md.SimulinkOOAPI.util.YorkModel;
@@ -26,19 +26,19 @@ import se.kth.md.SimulinkOOAPI.util.YorkModel;
 public class ModelTest {
 	
 	Mockery context = new JUnit4Mockery();	
-	ISystem systemMock = context.mock(ISystem.class);	
-	IInport inportMock = context.mock(IInport.class);
-	IOutport outportMock = context.mock(IOutport.class);
-    IModel model;  
+	System systemMock = context.mock(System.class);	
+	Inport inportMock = context.mock(Inport.class);
+	Outport outportMock = context.mock(Outport.class);
+    Model model;  
     String testSystem1Uuid, testSystem2Uuid;
 	
 	@Before
 	public void setUp() throws ProtoObjectCreationException{		
-		model = Model.newNamed("model");
+		model = ModelImpl.newNamed("model");
 		assertEquals("model", model.getName());
 		
-		ISystem sys1 = System.newNamedWithin("sys1", model);
-		ISystem sys2 = System.newNamedWithin("sys2", model);
+		System sys1 = SystemImpl.newNamedWithin("sys1", model);
+		System sys2 = SystemImpl.newNamedWithin("sys2", model);
 		testSystem1Uuid = sys1.getUuid();
 		testSystem2Uuid = sys2.getUuid();
 	}
@@ -63,11 +63,11 @@ public class ModelTest {
 		}});
 		
 		assertEquals(2, model.getNumberOfChildren());
-		model.addChild(Factory.newSystemNamedWithin("sys1", systemMock));
+		model.addChild(FactoryImpl.newSystemNamedWithin("sys1", systemMock));
 		assertEquals(3, model.getNumberOfChildren());
 	}
 	
-	protected void testAddWrongChild(IProtoObject child) throws AddChildException{
+	protected void testAddWrongChild(ProtoObject child) throws AddChildException{
 		boolean passed = false;
 		try{
 			model.addChild(child);
@@ -79,7 +79,7 @@ public class ModelTest {
 	
 	@Test
 	public void testAddLibrary() throws ProtoObjectCreationException, AddChildException{
-		testAddWrongChild(Factory.newLibraryNamed("library"));		
+		testAddWrongChild(FactoryImpl.newLibraryNamed("library"));		
 	}
 	
 	@Test
@@ -88,7 +88,7 @@ public class ModelTest {
 			ignoring(systemMock);
 		}});
 		
-		testAddWrongChild(Factory.newInportNamedWithin("inport", systemMock));
+		testAddWrongChild(FactoryImpl.newInportNamedWithin("inport", systemMock));
 	}
 	
 	@Test	
@@ -102,7 +102,7 @@ public class ModelTest {
 			ignoring(systemMock);			
 		}});
 		
-		Factory.newLineNameWithinFromTo("line", model, outportMock, inportMock);		
+		FactoryImpl.newLineNameWithinFromTo("line", model, outportMock, inportMock);		
 		assertEquals(1, model.getChildrenOfTypeLine().size());
 	}
 	
@@ -113,9 +113,9 @@ public class ModelTest {
 	
 	@Test
 	public void testGetChildrenOfTypeGainBlock() throws ProtoObjectCreationException{
-		GainBlock.newNamedWithinWithGain("gb1", model, 1);
-		GainBlock.newNamedWithinWithGain("gb2", model, 1);
-		GainBlock.newNamedWithinWithGain("gb3", model, 1);
+		GainBlockImpl.newNamedWithinWithGain("gb1", model, 1);
+		GainBlockImpl.newNamedWithinWithGain("gb2", model, 1);
+		GainBlockImpl.newNamedWithinWithGain("gb3", model, 1);
 		assertEquals(3, model.getChildrenOfTypeGainBlock().size());
 	}
 	
@@ -138,7 +138,7 @@ public class ModelTest {
 	
 	@Test
 	public void testSearchInModel() throws Exception{
-		IModel york = YorkModel.buildWithSimulinkOOAPI();
+		Model york = YorkModel.buildWithSimulinkOOAPI();
 		assertNotNull(york.searchInModel("RootSystem"));		
 		assertNotNull(york.searchInModel("System1"));
 		assertNull(york.searchInModel("RootSys"));

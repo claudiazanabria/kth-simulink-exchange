@@ -8,20 +8,20 @@ import org.jmock.integration.junit4.JUnit4Mockery;
 import org.junit.Before;
 import org.junit.Test;
 
-import se.kth.md.SimulinkOOAPI.IOutport;
-import se.kth.md.SimulinkOOAPI.IPort;
-import se.kth.md.SimulinkOOAPI.ISimulinkList;
-import se.kth.md.SimulinkOOAPI.ISystem;
+import se.kth.md.SimulinkOOAPI.Outport;
+import se.kth.md.SimulinkOOAPI.Port;
+import se.kth.md.SimulinkOOAPI.SimulinkList;
+import se.kth.md.SimulinkOOAPI.System;
 import se.kth.md.SimulinkOOAPI.exceptions.ProtoObjectCreationException;
 
 
 public class OutportTest {
 	
 	Mockery context = new JUnit4Mockery();
-	ISystem systemMock = context.mock(ISystem.class);
+	System systemMock = context.mock(System.class);
 	@SuppressWarnings("unchecked")	
-	ISimulinkList<IPort> listMock = context.mock(ISimulinkList.class);
-    IOutport port;
+	SimulinkList<Port> listMock = context.mock(SimulinkList.class);
+    Outport port;
 	
 	@Before
 	public void setUp() throws Exception, ProtoObjectCreationException {
@@ -29,7 +29,7 @@ public class OutportTest {
 			ignoring(systemMock);			    
 		}});
 		
-		port = Factory.newOutportNamedWithin("outport", systemMock);
+		port = FactoryImpl.newOutportNamedWithin("outport", systemMock);
 	}	
 	
 	@Test
@@ -46,10 +46,10 @@ public class OutportTest {
 	@Test
 	public void testCreateOutport() throws Exception, ProtoObjectCreationException{
 		context.checking(new Expectations() {{
-			one(systemMock).addChild(with(any(IOutport.class)));		    
+			one(systemMock).addChild(with(any(Outport.class)));		    
 		}});
 		
-		IOutport port = Outport.newNamedWithin("outport", systemMock);
+		Outport port = OutportImpl.newNamedWithin("outport", systemMock);
 		assertEquals("outport", port.getName());		
 	}
 

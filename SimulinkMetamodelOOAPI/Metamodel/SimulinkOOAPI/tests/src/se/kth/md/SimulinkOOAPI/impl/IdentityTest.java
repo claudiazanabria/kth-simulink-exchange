@@ -8,27 +8,27 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
-import se.kth.md.SimulinkOOAPI.IIdentity;
+import se.kth.md.SimulinkOOAPI.Identity;
 import se.kth.md.SimulinkOOAPI.exceptions.ProtoObjectCreationException;
 
 public class IdentityTest {
 	
-	Identity identity = new Identity();
+	IdentityImpl identity = new IdentityImpl();
 
 	@Test
 	public void testGetUids() throws Exception {
 		int ARRAY_SIZE = 100;
 
-		ArrayList<Identity> identityList = new ArrayList<Identity>(
+		ArrayList<IdentityImpl> identityList = new ArrayList<IdentityImpl>(
 				ARRAY_SIZE);
 		ArrayList<String> uuidCheckList = new ArrayList<String>(ARRAY_SIZE);
 
 		for (int i = 0; i < ARRAY_SIZE; i++) {
-			Identity identity = new Identity();
+			IdentityImpl identity = new IdentityImpl();
 			assertNotNull(identity.getUuid());
 			identityList.add(identity);
 		}
-		for (Identity identity : identityList) {
+		for (IdentityImpl identity : identityList) {
 			String uuid = identity.getUuid();
 			if (!uuidCheckList.contains(uuid))
 				uuidCheckList.add(uuid);
@@ -75,16 +75,16 @@ public class IdentityTest {
 	
 	@Test
 	public void testCreateWithValidName() throws ProtoObjectCreationException{
-		IIdentity identity = Identity.newNamed("Name");
+		Identity identity = IdentityImpl.newNamed("Name");
 		assertEquals("Name", identity.getName());
 		assertNotNull(identity.getUuid());
 	}
 	
 	@Test
 	public void testCreateWithInvalidName() throws ProtoObjectCreationException {
-		IIdentity identity = null;
+		Identity identity = null;
 		try{
-			identity = Identity.newNamed("2Name");
+			identity = IdentityImpl.newNamed("2Name");
 			assertTrue(false); //should not reach this line
 		}catch(ProtoObjectCreationException e){
 			assertTrue(identity == null);

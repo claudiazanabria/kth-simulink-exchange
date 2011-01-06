@@ -10,51 +10,51 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import se.kth.md.SimulinkOOAPI.IChildrenSupport;
-import se.kth.md.SimulinkOOAPI.IInport;
-import se.kth.md.SimulinkOOAPI.ILine;
-import se.kth.md.SimulinkOOAPI.IModel;
-import se.kth.md.SimulinkOOAPI.IOutport;
-import se.kth.md.SimulinkOOAPI.IPort;
-import se.kth.md.SimulinkOOAPI.ISystem;
+import se.kth.md.SimulinkOOAPI.ChildrenSupport;
+import se.kth.md.SimulinkOOAPI.Inport;
+import se.kth.md.SimulinkOOAPI.Line;
+import se.kth.md.SimulinkOOAPI.Model;
+import se.kth.md.SimulinkOOAPI.Outport;
+import se.kth.md.SimulinkOOAPI.Port;
+import se.kth.md.SimulinkOOAPI.System;
 
 @RunWith(JMock.class)
 public class ChildrenSupportTest {
 	
 	Mockery context = new JUnit4Mockery();
-	IModel modelMock = context.mock(IModel.class);
-	ILine lineMock = context.mock(ILine.class);
-	IPort portMock = context.mock(IPort.class);
-	IInport inportMock = context.mock(IInport.class);
-	IOutport outportMock = context.mock(IOutport.class);
-	ISystem systemMock = context.mock(ISystem.class);
-	IChildrenSupport childrenSupport;	
+	Model modelMock = context.mock(Model.class);
+	Line lineMock = context.mock(Line.class);
+	Port portMock = context.mock(Port.class);
+	Inport inportMock = context.mock(Inport.class);
+	Outport outportMock = context.mock(Outport.class);
+	System systemMock = context.mock(System.class);
+	ChildrenSupport childrenSupport;	
 	
 	@Before
 	public void setUp() throws Exception {
-		childrenSupport = new ChildrenSupport();
+		childrenSupport = new ChildrenSupportImpl();
 		assertNotNull(childrenSupport.getChildren());
 		
 		context.checking(new Expectations() {{
-			one(modelMock).addChild(with(any(System.class)));	    
+			one(modelMock).addChild(with(any(SystemImpl.class)));	    
 		}});
 		
 		//System sys1 = new Factory.Builder().named("sys1").within(modelMock).createSystem();
-		ISystem sys1 = System.newNamedWithin("sys1", modelMock);
+		System sys1 = SystemImpl.newNamedWithin("sys1", modelMock);
 		childrenSupport.addChild(sys1);
-		childrenSupport.addChild(Factory.newSystemNamedWithin("sys2", sys1));
-		childrenSupport.addChild(Factory.newGainBlockNamedWithinWithGain("gain1", sys1, 3));
-		childrenSupport.addChild(Factory.newGainBlockNamedWithinWithGain("gain2", sys1, 3));		
+		childrenSupport.addChild(FactoryImpl.newSystemNamedWithin("sys2", sys1));
+		childrenSupport.addChild(FactoryImpl.newGainBlockNamedWithinWithGain("gain1", sys1, 3));
+		childrenSupport.addChild(FactoryImpl.newGainBlockNamedWithinWithGain("gain2", sys1, 3));		
 	}
 	
 	@Test
 	public void testAddChild() throws Exception {
 		context.checking(new Expectations() {{
-			one(modelMock).addChild(with(any(System.class)));	    
+			one(modelMock).addChild(with(any(SystemImpl.class)));	    
 		}});
 		
 		assertEquals(4, childrenSupport.getNumberOfChildren());
-		childrenSupport.addChild(Factory.newSystemNamedWithin("sys1", modelMock));
+		childrenSupport.addChild(FactoryImpl.newSystemNamedWithin("sys1", modelMock));
 		assertEquals(5, childrenSupport.getNumberOfChildren());
 	}
 	
@@ -72,13 +72,13 @@ public class ChildrenSupportTest {
 			    will(returnValue(systemMock));
 		    one(outportMock).getParent();
 			    will(returnValue(systemMock));
-			one(systemMock).addChild(with(any(ILine.class)));	
+			one(systemMock).addChild(with(any(Line.class)));	
 			
 			ignoring(inportMock);
 			ignoring(outportMock);			
 		}});		
 		
-		childrenSupport.addChild(Factory.newLineNameWithinFromTo("line", systemMock, outportMock, inportMock));
+		childrenSupport.addChild(FactoryImpl.newLineNameWithinFromTo("line", systemMock, outportMock, inportMock));
 		assertEquals(1, childrenSupport.getChildrenOfTypeLine().size());
 	}
 	
@@ -88,8 +88,8 @@ public class ChildrenSupportTest {
 			ignoring(systemMock);			    
 		}});
 		
-		childrenSupport.addChild(Factory.newInportNamedWithin("port1", systemMock));
-		childrenSupport.addChild(Factory.newOutportNamedWithin("port2", systemMock));
+		childrenSupport.addChild(FactoryImpl.newInportNamedWithin("port1", systemMock));
+		childrenSupport.addChild(FactoryImpl.newOutportNamedWithin("port2", systemMock));
 		assertEquals(2, childrenSupport.getChildrenOfTypePort().size());
 	}
 	
@@ -99,7 +99,7 @@ public class ChildrenSupportTest {
 			ignoring(systemMock);			    
 		}});
 		
-		childrenSupport.addChild(Factory.newOutportNamedWithin("port", systemMock));
+		childrenSupport.addChild(FactoryImpl.newOutportNamedWithin("port", systemMock));
 		assertEquals(1, childrenSupport.getChildrenOfTypeOutport().size());
 	}
 	
@@ -109,7 +109,7 @@ public class ChildrenSupportTest {
 			ignoring(systemMock);			    
 		}});
 		
-		childrenSupport.addChild(Factory.newInportNamedWithin("port", systemMock));
+		childrenSupport.addChild(FactoryImpl.newInportNamedWithin("port", systemMock));
 		assertEquals(1, childrenSupport.getChildrenOfTypeInport().size());
 	}
 	
@@ -124,8 +124,8 @@ public class ChildrenSupportTest {
 			ignoring(systemMock);			    
 		}});
 		
-		ISystem system = Factory.newSystemNamedWithin("sys", systemMock);
-		childrenSupport.addChild(Factory.newSystemReferemceNamedWithinTargeting("sysRef", systemMock, system));
+		System system = FactoryImpl.newSystemNamedWithin("sys", systemMock);
+		childrenSupport.addChild(FactoryImpl.newSystemReferemceNamedWithinTargeting("sysRef", systemMock, system));
 		assertEquals(1, childrenSupport.getChildrenOfTypeSystemReference().size());
 	}
 

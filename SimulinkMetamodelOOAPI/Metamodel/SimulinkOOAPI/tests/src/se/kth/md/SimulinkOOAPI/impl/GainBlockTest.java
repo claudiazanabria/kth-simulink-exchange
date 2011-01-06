@@ -11,42 +11,42 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import se.kth.md.SimulinkOOAPI.IGainBlock;
-import se.kth.md.SimulinkOOAPI.IIdentity;
-import se.kth.md.SimulinkOOAPI.ILibrary;
-import se.kth.md.SimulinkOOAPI.IModel;
-import se.kth.md.SimulinkOOAPI.ISimulinkList;
-import se.kth.md.SimulinkOOAPI.ISystem;
+import se.kth.md.SimulinkOOAPI.GainBlock;
+import se.kth.md.SimulinkOOAPI.Identity;
+import se.kth.md.SimulinkOOAPI.Library;
+import se.kth.md.SimulinkOOAPI.Model;
+import se.kth.md.SimulinkOOAPI.SimulinkList;
+import se.kth.md.SimulinkOOAPI.System;
 
 
 @RunWith(JMock.class)
 public class GainBlockTest {
 	Mockery context = new JUnit4Mockery();
-	IIdentity identityMock = context.mock(IIdentity.class);
-	IModel modelMock = context.mock(IModel.class);
-	ISystem systemMock = context.mock(ISystem.class);
-	ILibrary libraryMock = context.mock(ILibrary.class);
+	Identity identityMock = context.mock(Identity.class);
+	Model modelMock = context.mock(Model.class);
+	System systemMock = context.mock(System.class);
+	Library libraryMock = context.mock(Library.class);
 	@SuppressWarnings("unchecked")	
-	ISimulinkList<IGainBlock> listMock = context.mock(ISimulinkList.class);	
-    IGainBlock gainBlock;    
+	SimulinkList<GainBlock> listMock = context.mock(SimulinkList.class);	
+    GainBlock gainBlock;    
 	
 	@Before
 	public void setUp() throws Exception{	
 		context.checking(new Expectations() {{			
-			one(systemMock).addChild(with(any(IGainBlock.class)));
+			one(systemMock).addChild(with(any(GainBlock.class)));
 		}});	
 		
-		gainBlock = Factory.newGainBlockNamedWithinWithGain("gblock", systemMock, 1);
+		gainBlock = FactoryImpl.newGainBlockNamedWithinWithGain("gblock", systemMock, 1);
 				
 	}
 	
 	@Test
 	public void testCreateGainBlockWithinModel() throws Exception {		
 		context.checking(new Expectations() {{
-			one(modelMock).addChild(with(any(IGainBlock.class)));
+			one(modelMock).addChild(with(any(GainBlock.class)));
 		}});	
 		
-		IGainBlock gBlock = GainBlock.newNamedWithinWithGain("gainBlock", modelMock , 5);
+		GainBlock gBlock = GainBlockImpl.newNamedWithinWithGain("gainBlock", modelMock , 5);
 		assertEquals(5, gBlock.getGain());
 		assertEquals("gainBlock", gBlock.getName());		
 	}
@@ -54,10 +54,10 @@ public class GainBlockTest {
 	@Test
 	public void testCreateGainBlockWithinSystem() throws Exception{
 		context.checking(new Expectations() {{			
-			one(systemMock).addChild(with(any(IGainBlock.class)));
+			one(systemMock).addChild(with(any(GainBlock.class)));
 		}});	
 		
-		IGainBlock gainBlock = GainBlock.newNamedWithinWithGain("gainBlock", systemMock , 5);
+		GainBlock gainBlock = GainBlockImpl.newNamedWithinWithGain("gainBlock", systemMock , 5);
 		assertEquals(5, gainBlock.getGain());
 		assertEquals("gainBlock", gainBlock.getName());	
 	}
@@ -65,10 +65,10 @@ public class GainBlockTest {
 	@Test
 	public void testCreateGainBlockWithinLibrary() throws Exception{
 		context.checking(new Expectations() {{			
-			one(libraryMock).addChild(with(any(IGainBlock.class)));
+			one(libraryMock).addChild(with(any(GainBlock.class)));
 		}});	
 		
-		IGainBlock gainBlock = GainBlock.newNamedWithinWithGain("gainBlock", libraryMock , 5);
+		GainBlock gainBlock = GainBlockImpl.newNamedWithinWithGain("gainBlock", libraryMock , 5);
 		assertEquals(5, gainBlock.getGain());
 		assertEquals("gainBlock", gainBlock.getName());		
 	}

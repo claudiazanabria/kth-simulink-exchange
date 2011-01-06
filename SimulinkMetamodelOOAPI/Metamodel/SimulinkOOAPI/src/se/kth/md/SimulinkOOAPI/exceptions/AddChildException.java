@@ -1,6 +1,6 @@
 package se.kth.md.SimulinkOOAPI.exceptions;
 
-import se.kth.md.SimulinkOOAPI.IProtoObject;
+import se.kth.md.SimulinkOOAPI.ProtoObject;
 
 /**
  * Exception thrown when a child of the given type cannot be added to a container of such type.
@@ -9,11 +9,11 @@ import se.kth.md.SimulinkOOAPI.IProtoObject;
 public class AddChildException extends Exception {
 	
 	private static final long serialVersionUID = 1L;
-	IProtoObject child;
+	ProtoObject child;
 	//TODO: IContainer
-	IProtoObject container;
+	ProtoObject container;
 	
-	public AddChildException(IProtoObject child, IProtoObject container){
+	public AddChildException(ProtoObject child, ProtoObject container){
 		this.child = child;
 		this.container = container;
 	}

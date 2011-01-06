@@ -10,9 +10,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import se.kth.md.SimulinkOOAPI.IProtoObject;
-import se.kth.md.SimulinkOOAPI.ISimulinkList;
-import se.kth.md.SimulinkOOAPI.ISystem;
+import se.kth.md.SimulinkOOAPI.ProtoObject;
+import se.kth.md.SimulinkOOAPI.SimulinkList;
+import se.kth.md.SimulinkOOAPI.System;
 import se.kth.md.SimulinkOOAPI.exceptions.ProtoObjectCreationException;
 
 
@@ -20,12 +20,12 @@ import se.kth.md.SimulinkOOAPI.exceptions.ProtoObjectCreationException;
 public class ReflectionListTest {
 	
 	Mockery context = new JUnit4Mockery();	
-	ISystem systemMock = context.mock(ISystem.class);
-	ISimulinkList<IProtoObject> list;	
+	System systemMock = context.mock(System.class);
+	SimulinkList<ProtoObject> list;	
 	
 	@Before
 	public void setUp(){
-		list = new SimulinkList<IProtoObject>();		
+		list = new SimulinkListImpl<ProtoObject>();		
 	}
 
 	@Test
@@ -37,15 +37,15 @@ public class ReflectionListTest {
 			ignoring(systemMock);
 		}});
 		
-		list.add(Factory.newGainBlockNamedWithinWithGain("gain", systemMock, 3));
-		ISimulinkList<IProtoObject> result = list.collect("ifGainBlockAddToList");
+		list.add(FactoryImpl.newGainBlockNamedWithinWithGain("gain", systemMock, 3));
+		SimulinkList<ProtoObject> result = list.collect("ifGainBlockAddToList");
 		assertEquals(1, result.size());
 	}
 	
 	@Test
 	public void testCollect2() throws Exception, ProtoObjectCreationException{
-		list.add(Factory.newModelNamed("model"));
-		ISimulinkList<IProtoObject> result = list.collect("ifGainBlockAddToList");
+		list.add(FactoryImpl.newModelNamed("model"));
+		SimulinkList<ProtoObject> result = list.collect("ifGainBlockAddToList");
 		assertEquals(0, result.size());
 	}
 }

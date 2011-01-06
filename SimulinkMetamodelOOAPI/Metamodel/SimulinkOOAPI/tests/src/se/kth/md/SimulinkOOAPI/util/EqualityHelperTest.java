@@ -5,9 +5,9 @@ import static org.junit.Assert.assertFalse;
 
 import org.junit.Test;
 
-import se.kth.md.SimulinkOOAPI.IModel;
+import se.kth.md.SimulinkOOAPI.Model;
 import se.kth.md.SimulinkOOAPI.exceptions.ProtoObjectCreationException;
-import se.kth.md.SimulinkOOAPI.impl.Factory;
+import se.kth.md.SimulinkOOAPI.impl.FactoryImpl;
 
 
 public class EqualityHelperTest {
@@ -16,29 +16,29 @@ public class EqualityHelperTest {
 	
 	@Test
 	public void testEmptyModelsAreEqual() throws ProtoObjectCreationException{
-		IModel modelA = Factory.newModelNamed("a");
-		IModel modelB = Factory.newModelNamed("a");
+		Model modelA = FactoryImpl.newModelNamed("a");
+		Model modelB = FactoryImpl.newModelNamed("a");
 		
 		assertTrue(helper.equals(modelA, modelB));
 	}
 	
 	@Test
 	public void testEmptyModelsAreNotEqual() throws ProtoObjectCreationException{
-		IModel modelA = Factory.newModelNamed("a");
-		IModel modelB = Factory.newModelNamed("b");
+		Model modelA = FactoryImpl.newModelNamed("a");
+		Model modelB = FactoryImpl.newModelNamed("b");
 		
 		assertFalse(helper.equals(modelA, modelB));
 	}
 	
 	@Test
 	public void testModelsAreEqual() throws ProtoObjectCreationException{
-		IModel modelA = Factory.newModelNamed("a");
-		IModel modelB = Factory.newModelNamed("a");
+		Model modelA = FactoryImpl.newModelNamed("a");
+		Model modelB = FactoryImpl.newModelNamed("a");
 		
-		Factory.newSystemNamedWithin("sysA", modelA);
-		Factory.newSystemNamedWithin("sysB", modelA);
-		Factory.newSystemNamedWithin("sysA", modelB);
-		Factory.newSystemNamedWithin("sysB", modelB);
+		FactoryImpl.newSystemNamedWithin("sysA", modelA);
+		FactoryImpl.newSystemNamedWithin("sysB", modelA);
+		FactoryImpl.newSystemNamedWithin("sysA", modelB);
+		FactoryImpl.newSystemNamedWithin("sysB", modelB);
 		
 		assertTrue(helper.equals(modelA, modelB));
 	}

@@ -13,28 +13,28 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
 
-import se.kth.md.SimulinkOOAPI.IChildrenSupport;
-import se.kth.md.SimulinkOOAPI.IContainer;
-import se.kth.md.SimulinkOOAPI.IGainBlock;
-import se.kth.md.SimulinkOOAPI.IIdentity;
-import se.kth.md.SimulinkOOAPI.IInport;
-import se.kth.md.SimulinkOOAPI.ILibrary;
-import se.kth.md.SimulinkOOAPI.ILine;
-import se.kth.md.SimulinkOOAPI.IMask;
-import se.kth.md.SimulinkOOAPI.IModel;
-import se.kth.md.SimulinkOOAPI.IOutport;
-import se.kth.md.SimulinkOOAPI.IPort;
-import se.kth.md.SimulinkOOAPI.IProtoObject;
-import se.kth.md.SimulinkOOAPI.ISimulinkOOAPIPackage;
-import se.kth.md.SimulinkOOAPI.ISystem;
-import se.kth.md.SimulinkOOAPI.ISystemReference;
+import se.kth.md.SimulinkOOAPI.ChildrenSupport;
+import se.kth.md.SimulinkOOAPI.Container;
+import se.kth.md.SimulinkOOAPI.GainBlock;
+import se.kth.md.SimulinkOOAPI.Identity;
+import se.kth.md.SimulinkOOAPI.Inport;
+import se.kth.md.SimulinkOOAPI.Library;
+import se.kth.md.SimulinkOOAPI.Line;
+import se.kth.md.SimulinkOOAPI.Mask;
+import se.kth.md.SimulinkOOAPI.Model;
+import se.kth.md.SimulinkOOAPI.Outport;
+import se.kth.md.SimulinkOOAPI.Port;
+import se.kth.md.SimulinkOOAPI.ProtoObject;
+import se.kth.md.SimulinkOOAPI.SimulinkOOAPIPackage;
+import se.kth.md.SimulinkOOAPI.System;
+import se.kth.md.SimulinkOOAPI.SystemReference;
 
 /**
  * <!-- begin-user-doc -->
  * The <b>Adapter Factory</b> for the model.
  * It provides an adapter <code>createXXX</code> method for each class of the model.
  * <!-- end-user-doc -->
- * @see se.kth.md.SimulinkOOAPI.ISimulinkOOAPIPackage
+ * @see se.kth.md.SimulinkOOAPI.SimulinkOOAPIPackage
  * @generated
  */
 public class SimulinkOOAPIAdapterFactory extends AdapterFactoryImpl {
@@ -44,7 +44,7 @@ public class SimulinkOOAPIAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static ISimulinkOOAPIPackage modelPackage;
+	protected static SimulinkOOAPIPackage modelPackage;
 
 	/**
 	 * Creates an instance of the adapter factory.
@@ -54,7 +54,7 @@ public class SimulinkOOAPIAdapterFactory extends AdapterFactoryImpl {
 	 */
 	public SimulinkOOAPIAdapterFactory() {
 		if (modelPackage == null) {
-			modelPackage = ISimulinkOOAPIPackage.eINSTANCE;
+			modelPackage = SimulinkOOAPIPackage.eINSTANCE;
 		}
 	}
 
@@ -86,59 +86,59 @@ public class SimulinkOOAPIAdapterFactory extends AdapterFactoryImpl {
 	protected SimulinkOOAPISwitch<Adapter> modelSwitch =
 		new SimulinkOOAPISwitch<Adapter>() {
 			@Override
-			public Adapter caseProtoObject(IProtoObject object) {
+			public Adapter caseProtoObject(ProtoObject object) {
 				return createProtoObjectAdapter();
 			}
 			@Override
-			public Adapter caseLibrary(ILibrary object) {
+			public Adapter caseLibrary(Library object) {
 				return createLibraryAdapter();
 			}
 			@Override
-			public Adapter caseIdentity(IIdentity object) {
+			public Adapter caseIdentity(Identity object) {
 				return createIdentityAdapter();
 			}
 			@Override
-			public Adapter caseMask(IMask object) {
+			public Adapter caseMask(Mask object) {
 				return createMaskAdapter();
 			}
 			@Override
-			public Adapter caseChildrenSupport(IChildrenSupport object) {
+			public Adapter caseChildrenSupport(ChildrenSupport object) {
 				return createChildrenSupportAdapter();
 			}
 			@Override
-			public Adapter caseGainBlock(IGainBlock object) {
+			public Adapter caseGainBlock(GainBlock object) {
 				return createGainBlockAdapter();
 			}
 			@Override
-			public Adapter casePort(IPort object) {
+			public Adapter casePort(Port object) {
 				return createPortAdapter();
 			}
 			@Override
-			public Adapter caseInport(IInport object) {
+			public Adapter caseInport(Inport object) {
 				return createInportAdapter();
 			}
 			@Override
-			public Adapter caseOutport(IOutport object) {
+			public Adapter caseOutport(Outport object) {
 				return createOutportAdapter();
 			}
 			@Override
-			public Adapter caseLine(ILine object) {
+			public Adapter caseLine(Line object) {
 				return createLineAdapter();
 			}
 			@Override
-			public Adapter caseSystem(ISystem object) {
+			public Adapter caseSystem(se.kth.md.SimulinkOOAPI.System object) {
 				return createSystemAdapter();
 			}
 			@Override
-			public Adapter caseModel(IModel object) {
+			public Adapter caseModel(Model object) {
 				return createModelAdapter();
 			}
 			@Override
-			public Adapter caseSystemReference(ISystemReference object) {
+			public Adapter caseSystemReference(SystemReference object) {
 				return createSystemReferenceAdapter();
 			}
 			@Override
-			public Adapter caseContainer(IContainer object) {
+			public Adapter caseContainer(Container object) {
 				return createContainerAdapter();
 			}
 			@Override
@@ -162,13 +162,13 @@ public class SimulinkOOAPIAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link se.kth.md.SimulinkOOAPI.IProtoObject <em>Proto Object</em>}'.
+	 * Creates a new adapter for an object of class '{@link se.kth.md.SimulinkOOAPI.ProtoObject <em>Proto Object</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see se.kth.md.SimulinkOOAPI.IProtoObject
+	 * @see se.kth.md.SimulinkOOAPI.ProtoObject
 	 * @generated
 	 */
 	public Adapter createProtoObjectAdapter() {
@@ -176,13 +176,13 @@ public class SimulinkOOAPIAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link se.kth.md.SimulinkOOAPI.ILibrary <em>Library</em>}'.
+	 * Creates a new adapter for an object of class '{@link se.kth.md.SimulinkOOAPI.Library <em>Library</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see se.kth.md.SimulinkOOAPI.ILibrary
+	 * @see se.kth.md.SimulinkOOAPI.Library
 	 * @generated
 	 */
 	public Adapter createLibraryAdapter() {
@@ -190,13 +190,13 @@ public class SimulinkOOAPIAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link se.kth.md.SimulinkOOAPI.IIdentity <em>Identity</em>}'.
+	 * Creates a new adapter for an object of class '{@link se.kth.md.SimulinkOOAPI.Identity <em>Identity</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see se.kth.md.SimulinkOOAPI.IIdentity
+	 * @see se.kth.md.SimulinkOOAPI.Identity
 	 * @generated
 	 */
 	public Adapter createIdentityAdapter() {
@@ -204,13 +204,13 @@ public class SimulinkOOAPIAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link se.kth.md.SimulinkOOAPI.IMask <em>Mask</em>}'.
+	 * Creates a new adapter for an object of class '{@link se.kth.md.SimulinkOOAPI.Mask <em>Mask</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see se.kth.md.SimulinkOOAPI.IMask
+	 * @see se.kth.md.SimulinkOOAPI.Mask
 	 * @generated
 	 */
 	public Adapter createMaskAdapter() {
@@ -218,13 +218,13 @@ public class SimulinkOOAPIAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link se.kth.md.SimulinkOOAPI.IChildrenSupport <em>Children Support</em>}'.
+	 * Creates a new adapter for an object of class '{@link se.kth.md.SimulinkOOAPI.ChildrenSupport <em>Children Support</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see se.kth.md.SimulinkOOAPI.IChildrenSupport
+	 * @see se.kth.md.SimulinkOOAPI.ChildrenSupport
 	 * @generated
 	 */
 	public Adapter createChildrenSupportAdapter() {
@@ -232,13 +232,13 @@ public class SimulinkOOAPIAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link se.kth.md.SimulinkOOAPI.IGainBlock <em>Gain Block</em>}'.
+	 * Creates a new adapter for an object of class '{@link se.kth.md.SimulinkOOAPI.GainBlock <em>Gain Block</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see se.kth.md.SimulinkOOAPI.IGainBlock
+	 * @see se.kth.md.SimulinkOOAPI.GainBlock
 	 * @generated
 	 */
 	public Adapter createGainBlockAdapter() {
@@ -246,13 +246,13 @@ public class SimulinkOOAPIAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link se.kth.md.SimulinkOOAPI.IPort <em>Port</em>}'.
+	 * Creates a new adapter for an object of class '{@link se.kth.md.SimulinkOOAPI.Port <em>Port</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see se.kth.md.SimulinkOOAPI.IPort
+	 * @see se.kth.md.SimulinkOOAPI.Port
 	 * @generated
 	 */
 	public Adapter createPortAdapter() {
@@ -260,13 +260,13 @@ public class SimulinkOOAPIAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link se.kth.md.SimulinkOOAPI.IInport <em>Inport</em>}'.
+	 * Creates a new adapter for an object of class '{@link se.kth.md.SimulinkOOAPI.Inport <em>Inport</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see se.kth.md.SimulinkOOAPI.IInport
+	 * @see se.kth.md.SimulinkOOAPI.Inport
 	 * @generated
 	 */
 	public Adapter createInportAdapter() {
@@ -274,13 +274,13 @@ public class SimulinkOOAPIAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link se.kth.md.SimulinkOOAPI.IOutport <em>Outport</em>}'.
+	 * Creates a new adapter for an object of class '{@link se.kth.md.SimulinkOOAPI.Outport <em>Outport</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see se.kth.md.SimulinkOOAPI.IOutport
+	 * @see se.kth.md.SimulinkOOAPI.Outport
 	 * @generated
 	 */
 	public Adapter createOutportAdapter() {
@@ -288,13 +288,13 @@ public class SimulinkOOAPIAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link se.kth.md.SimulinkOOAPI.ILine <em>Line</em>}'.
+	 * Creates a new adapter for an object of class '{@link se.kth.md.SimulinkOOAPI.Line <em>Line</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see se.kth.md.SimulinkOOAPI.ILine
+	 * @see se.kth.md.SimulinkOOAPI.Line
 	 * @generated
 	 */
 	public Adapter createLineAdapter() {
@@ -302,13 +302,13 @@ public class SimulinkOOAPIAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link se.kth.md.SimulinkOOAPI.ISystem <em>System</em>}'.
+	 * Creates a new adapter for an object of class '{@link se.kth.md.SimulinkOOAPI.System <em>System</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see se.kth.md.SimulinkOOAPI.ISystem
+	 * @see se.kth.md.SimulinkOOAPI.System
 	 * @generated
 	 */
 	public Adapter createSystemAdapter() {
@@ -316,13 +316,13 @@ public class SimulinkOOAPIAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link se.kth.md.SimulinkOOAPI.IModel <em>Model</em>}'.
+	 * Creates a new adapter for an object of class '{@link se.kth.md.SimulinkOOAPI.Model <em>Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see se.kth.md.SimulinkOOAPI.IModel
+	 * @see se.kth.md.SimulinkOOAPI.Model
 	 * @generated
 	 */
 	public Adapter createModelAdapter() {
@@ -330,13 +330,13 @@ public class SimulinkOOAPIAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link se.kth.md.SimulinkOOAPI.ISystemReference <em>System Reference</em>}'.
+	 * Creates a new adapter for an object of class '{@link se.kth.md.SimulinkOOAPI.SystemReference <em>System Reference</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see se.kth.md.SimulinkOOAPI.ISystemReference
+	 * @see se.kth.md.SimulinkOOAPI.SystemReference
 	 * @generated
 	 */
 	public Adapter createSystemReferenceAdapter() {
@@ -344,13 +344,13 @@ public class SimulinkOOAPIAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link se.kth.md.SimulinkOOAPI.IContainer <em>Container</em>}'.
+	 * Creates a new adapter for an object of class '{@link se.kth.md.SimulinkOOAPI.Container <em>Container</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see se.kth.md.SimulinkOOAPI.IContainer
+	 * @see se.kth.md.SimulinkOOAPI.Container
 	 * @generated
 	 */
 	public Adapter createContainerAdapter() {
