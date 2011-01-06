@@ -49,10 +49,10 @@ public class System extends Container implements ISystem {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated 
+	 * @generated
 	 */
 	protected System() {
-		super();		
+		super();
 	}	
 	
 	protected System(String name, ISystem parent) throws ProtoObjectCreationException {

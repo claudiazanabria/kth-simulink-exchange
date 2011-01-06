@@ -27,26 +27,26 @@ import se.kth.md.SimulinkOOAPI.exceptions.AddChildException;
  */
 public interface IContainer extends IProtoObject {
 	/**
-	 * Returns the value of the '<em><b>Children</b></em>' reference.
+	 * Returns the value of the '<em><b>Children</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Children</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Children</em>' reference.
+	 * @return the value of the '<em>Children</em>' containment reference.
 	 * @see #setChildren(IChildrenSupport)
 	 * @see se.kth.md.SimulinkOOAPI.ISimulinkOOAPIPackage#getContainer_Children()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	IChildrenSupport getChildren();
 
 	/**
-	 * Sets the value of the '{@link se.kth.md.SimulinkOOAPI.IContainer#getChildren <em>Children</em>}' reference.
+	 * Sets the value of the '{@link se.kth.md.SimulinkOOAPI.IContainer#getChildren <em>Children</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Children</em>' reference.
+	 * @param value the new value of the '<em>Children</em>' containment reference.
 	 * @see #getChildren()
 	 * @generated
 	 */

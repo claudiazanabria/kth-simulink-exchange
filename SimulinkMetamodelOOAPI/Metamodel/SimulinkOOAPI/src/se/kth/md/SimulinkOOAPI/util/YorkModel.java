@@ -1,5 +1,8 @@
 package se.kth.md.SimulinkOOAPI.util;
 
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+import org.eclipse.xsd.presentation.XSDEditor;
+
 import se.kth.md.SimulinkOOAPI.IInport;
 import se.kth.md.SimulinkOOAPI.ILine;
 import se.kth.md.SimulinkOOAPI.IModel;
@@ -18,8 +21,7 @@ public class YorkModel {
 	 * Builds York model with SimulinkOO API.	 
 	 *
 	 */	
-	public static IModel buildWithSimulinkOOAPI() throws ProtoObjectCreationException{
-		
+	public static IModel buildWithSimulinkOOAPI() throws ProtoObjectCreationException{		
 		IModel model = Factory.newModelNamed("model");
 		
 		ISystem rootSys = Factory.newSystemNamedWithin("RootSystem", model);

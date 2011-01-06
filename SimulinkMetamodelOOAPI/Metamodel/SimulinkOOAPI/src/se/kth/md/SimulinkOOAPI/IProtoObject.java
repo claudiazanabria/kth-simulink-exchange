@@ -28,26 +28,26 @@ import se.kth.md.SimulinkOOAPI.exceptions.AddChildException;
  */
 public interface IProtoObject extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Identity</b></em>' reference.
+	 * Returns the value of the '<em><b>Identity</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Identity</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Identity</em>' reference.
+	 * @return the value of the '<em>Identity</em>' containment reference.
 	 * @see #setIdentity(IIdentity)
 	 * @see se.kth.md.SimulinkOOAPI.ISimulinkOOAPIPackage#getProtoObject_Identity()
-	 * @model required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	IIdentity getIdentity();
 
 	/**
-	 * Sets the value of the '{@link se.kth.md.SimulinkOOAPI.IProtoObject#getIdentity <em>Identity</em>}' reference.
+	 * Sets the value of the '{@link se.kth.md.SimulinkOOAPI.IProtoObject#getIdentity <em>Identity</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Identity</em>' reference.
+	 * @param value the new value of the '<em>Identity</em>' containment reference.
 	 * @see #getIdentity()
 	 * @generated
 	 */

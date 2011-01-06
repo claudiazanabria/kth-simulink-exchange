@@ -8,6 +8,7 @@ package se.kth.md.SimulinkOOAPI.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -45,7 +46,7 @@ import se.kth.md.SimulinkOOAPI.exceptions.ProtoObjectCreationException;
  */
 public abstract class ProtoObject extends EObjectImpl implements IProtoObject {
 	/**
-	 * The cached value of the '{@link #getIdentity() <em>Identity</em>}' reference.
+	 * The cached value of the '{@link #getIdentity() <em>Identity</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getIdentity()
@@ -86,14 +87,6 @@ public abstract class ProtoObject extends EObjectImpl implements IProtoObject {
 	 * @generated
 	 */
 	public IIdentity getIdentity() {
-		if (identity != null && identity.eIsProxy()) {
-			InternalEObject oldIdentity = (InternalEObject)identity;
-			identity = (IIdentity)eResolveProxy(oldIdentity);
-			if (identity != oldIdentity) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ISimulinkOOAPIPackage.PROTO_OBJECT__IDENTITY, oldIdentity, identity));
-			}
-		}
 		return identity;
 	}
 
@@ -102,8 +95,14 @@ public abstract class ProtoObject extends EObjectImpl implements IProtoObject {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public IIdentity basicGetIdentity() {
-		return identity;
+	public NotificationChain basicSetIdentity(IIdentity newIdentity, NotificationChain msgs) {
+		IIdentity oldIdentity = identity;
+		identity = newIdentity;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ISimulinkOOAPIPackage.PROTO_OBJECT__IDENTITY, oldIdentity, newIdentity);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -112,10 +111,31 @@ public abstract class ProtoObject extends EObjectImpl implements IProtoObject {
 	 * @generated
 	 */
 	public void setIdentity(IIdentity newIdentity) {
-		IIdentity oldIdentity = identity;
-		identity = newIdentity;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ISimulinkOOAPIPackage.PROTO_OBJECT__IDENTITY, oldIdentity, identity));
+		if (newIdentity != identity) {
+			NotificationChain msgs = null;
+			if (identity != null)
+				msgs = ((InternalEObject)identity).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ISimulinkOOAPIPackage.PROTO_OBJECT__IDENTITY, null, msgs);
+			if (newIdentity != null)
+				msgs = ((InternalEObject)newIdentity).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ISimulinkOOAPIPackage.PROTO_OBJECT__IDENTITY, null, msgs);
+			msgs = basicSetIdentity(newIdentity, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ISimulinkOOAPIPackage.PROTO_OBJECT__IDENTITY, newIdentity, newIdentity));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case ISimulinkOOAPIPackage.PROTO_OBJECT__IDENTITY:
+				return basicSetIdentity(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -127,8 +147,7 @@ public abstract class ProtoObject extends EObjectImpl implements IProtoObject {
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case ISimulinkOOAPIPackage.PROTO_OBJECT__IDENTITY:
-				if (resolve) return getIdentity();
-				return basicGetIdentity();
+				return getIdentity();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

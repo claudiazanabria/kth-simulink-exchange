@@ -7,6 +7,7 @@
 package se.kth.md.SimulinkOOAPI.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -69,14 +70,6 @@ public class Container extends ProtoObject implements IContainer {
 	 * @generated
 	 */
 	public IChildrenSupport getChildren() {
-		if (children != null && children.eIsProxy()) {
-			InternalEObject oldChildren = (InternalEObject)children;
-			children = (IChildrenSupport)eResolveProxy(oldChildren);
-			if (children != oldChildren) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ISimulinkOOAPIPackage.CONTAINER__CHILDREN, oldChildren, children));
-			}
-		}
 		return children;
 	}
 
@@ -85,8 +78,14 @@ public class Container extends ProtoObject implements IContainer {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public IChildrenSupport basicGetChildren() {
-		return children;
+	public NotificationChain basicSetChildren(IChildrenSupport newChildren, NotificationChain msgs) {
+		IChildrenSupport oldChildren = children;
+		children = newChildren;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ISimulinkOOAPIPackage.CONTAINER__CHILDREN, oldChildren, newChildren);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -95,10 +94,31 @@ public class Container extends ProtoObject implements IContainer {
 	 * @generated
 	 */
 	public void setChildren(IChildrenSupport newChildren) {
-		IChildrenSupport oldChildren = children;
-		children = newChildren;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ISimulinkOOAPIPackage.CONTAINER__CHILDREN, oldChildren, children));
+		if (newChildren != children) {
+			NotificationChain msgs = null;
+			if (children != null)
+				msgs = ((InternalEObject)children).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ISimulinkOOAPIPackage.CONTAINER__CHILDREN, null, msgs);
+			if (newChildren != null)
+				msgs = ((InternalEObject)newChildren).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ISimulinkOOAPIPackage.CONTAINER__CHILDREN, null, msgs);
+			msgs = basicSetChildren(newChildren, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ISimulinkOOAPIPackage.CONTAINER__CHILDREN, newChildren, newChildren));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case ISimulinkOOAPIPackage.CONTAINER__CHILDREN:
+				return basicSetChildren(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -110,8 +130,7 @@ public class Container extends ProtoObject implements IContainer {
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case ISimulinkOOAPIPackage.CONTAINER__CHILDREN:
-				if (resolve) return getChildren();
-				return basicGetChildren();
+				return getChildren();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

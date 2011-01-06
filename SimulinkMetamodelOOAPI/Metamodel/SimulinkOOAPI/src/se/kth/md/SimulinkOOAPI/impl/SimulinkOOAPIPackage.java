@@ -510,7 +510,7 @@ public class SimulinkOOAPIPackage extends EPackageImpl implements ISimulinkOOAPI
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
+	    EcorePackageImpl theEcorePackage = (EcorePackageImpl)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
 
 		// Create type parameters
 
@@ -533,7 +533,7 @@ public class SimulinkOOAPIPackage extends EPackageImpl implements ISimulinkOOAPI
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(protoObjectEClass, IProtoObject.class, "ProtoObject", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getProtoObject_Identity(), this.getIdentity(), null, "identity", null, 1, 1, IProtoObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProtoObject_Identity(), this.getIdentity(), null, "identity", null, 1, 1, IProtoObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(libraryEClass, ILibrary.class, "Library", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -568,7 +568,7 @@ public class SimulinkOOAPIPackage extends EPackageImpl implements ISimulinkOOAPI
 		initEReference(getSystemReference_Target(), this.getSystem(), null, "target", null, 1, 1, ISystemReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(containerEClass, IContainer.class, "Container", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getContainer_Children(), this.getChildrenSupport(), null, "children", null, 0, 1, IContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getContainer_Children(), this.getChildrenSupport(), null, "children", null, 0, 1, IContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

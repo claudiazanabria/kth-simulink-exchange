@@ -71,7 +71,7 @@ public interface ISimulinkOOAPIPackage extends EPackage {
 	int PROTO_OBJECT = 0;
 
 	/**
-	 * The feature id for the '<em><b>Identity</b></em>' reference.
+	 * The feature id for the '<em><b>Identity</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -99,7 +99,7 @@ public interface ISimulinkOOAPIPackage extends EPackage {
 	int CONTAINER = 13;
 
 	/**
-	 * The feature id for the '<em><b>Identity</b></em>' reference.
+	 * The feature id for the '<em><b>Identity</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -108,7 +108,7 @@ public interface ISimulinkOOAPIPackage extends EPackage {
 	int CONTAINER__IDENTITY = PROTO_OBJECT__IDENTITY;
 
 	/**
-	 * The feature id for the '<em><b>Children</b></em>' reference.
+	 * The feature id for the '<em><b>Children</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -136,7 +136,7 @@ public interface ISimulinkOOAPIPackage extends EPackage {
 	int LIBRARY = 1;
 
 	/**
-	 * The feature id for the '<em><b>Identity</b></em>' reference.
+	 * The feature id for the '<em><b>Identity</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -145,7 +145,7 @@ public interface ISimulinkOOAPIPackage extends EPackage {
 	int LIBRARY__IDENTITY = CONTAINER__IDENTITY;
 
 	/**
-	 * The feature id for the '<em><b>Children</b></em>' reference.
+	 * The feature id for the '<em><b>Children</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -248,7 +248,7 @@ public interface ISimulinkOOAPIPackage extends EPackage {
 	int GAIN_BLOCK = 5;
 
 	/**
-	 * The feature id for the '<em><b>Identity</b></em>' reference.
+	 * The feature id for the '<em><b>Identity</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -285,7 +285,7 @@ public interface ISimulinkOOAPIPackage extends EPackage {
 	int PORT = 6;
 
 	/**
-	 * The feature id for the '<em><b>Identity</b></em>' reference.
+	 * The feature id for the '<em><b>Identity</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -322,7 +322,7 @@ public interface ISimulinkOOAPIPackage extends EPackage {
 	int INPORT = 7;
 
 	/**
-	 * The feature id for the '<em><b>Identity</b></em>' reference.
+	 * The feature id for the '<em><b>Identity</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -359,7 +359,7 @@ public interface ISimulinkOOAPIPackage extends EPackage {
 	int OUTPORT = 8;
 
 	/**
-	 * The feature id for the '<em><b>Identity</b></em>' reference.
+	 * The feature id for the '<em><b>Identity</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -396,7 +396,7 @@ public interface ISimulinkOOAPIPackage extends EPackage {
 	int LINE = 9;
 
 	/**
-	 * The feature id for the '<em><b>Identity</b></em>' reference.
+	 * The feature id for the '<em><b>Identity</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -442,7 +442,7 @@ public interface ISimulinkOOAPIPackage extends EPackage {
 	int SYSTEM = 10;
 
 	/**
-	 * The feature id for the '<em><b>Identity</b></em>' reference.
+	 * The feature id for the '<em><b>Identity</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -451,7 +451,7 @@ public interface ISimulinkOOAPIPackage extends EPackage {
 	int SYSTEM__IDENTITY = CONTAINER__IDENTITY;
 
 	/**
-	 * The feature id for the '<em><b>Children</b></em>' reference.
+	 * The feature id for the '<em><b>Children</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -488,7 +488,7 @@ public interface ISimulinkOOAPIPackage extends EPackage {
 	int MODEL = 11;
 
 	/**
-	 * The feature id for the '<em><b>Identity</b></em>' reference.
+	 * The feature id for the '<em><b>Identity</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -497,7 +497,7 @@ public interface ISimulinkOOAPIPackage extends EPackage {
 	int MODEL__IDENTITY = CONTAINER__IDENTITY;
 
 	/**
-	 * The feature id for the '<em><b>Children</b></em>' reference.
+	 * The feature id for the '<em><b>Children</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -525,7 +525,7 @@ public interface ISimulinkOOAPIPackage extends EPackage {
 	int SYSTEM_REFERENCE = 12;
 
 	/**
-	 * The feature id for the '<em><b>Identity</b></em>' reference.
+	 * The feature id for the '<em><b>Identity</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -563,10 +563,10 @@ public interface ISimulinkOOAPIPackage extends EPackage {
 	EClass getProtoObject();
 
 	/**
-	 * Returns the meta object for the reference '{@link se.kth.md.SimulinkOOAPI.IProtoObject#getIdentity <em>Identity</em>}'.
+	 * Returns the meta object for the containment reference '{@link se.kth.md.SimulinkOOAPI.IProtoObject#getIdentity <em>Identity</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Identity</em>'.
+	 * @return the meta object for the containment reference '<em>Identity</em>'.
 	 * @see se.kth.md.SimulinkOOAPI.IProtoObject#getIdentity()
 	 * @see #getProtoObject()
 	 * @generated
@@ -792,10 +792,10 @@ public interface ISimulinkOOAPIPackage extends EPackage {
 	EClass getContainer();
 
 	/**
-	 * Returns the meta object for the reference '{@link se.kth.md.SimulinkOOAPI.IContainer#getChildren <em>Children</em>}'.
+	 * Returns the meta object for the containment reference '{@link se.kth.md.SimulinkOOAPI.IContainer#getChildren <em>Children</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Children</em>'.
+	 * @return the meta object for the containment reference '<em>Children</em>'.
 	 * @see se.kth.md.SimulinkOOAPI.IContainer#getChildren()
 	 * @see #getContainer()
 	 * @generated
@@ -835,7 +835,7 @@ public interface ISimulinkOOAPIPackage extends EPackage {
 		EClass PROTO_OBJECT = eINSTANCE.getProtoObject();
 
 		/**
-		 * The meta object literal for the '<em><b>Identity</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Identity</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -1037,7 +1037,7 @@ public interface ISimulinkOOAPIPackage extends EPackage {
 		EClass CONTAINER = eINSTANCE.getContainer();
 
 		/**
-		 * The meta object literal for the '<em><b>Children</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Children</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

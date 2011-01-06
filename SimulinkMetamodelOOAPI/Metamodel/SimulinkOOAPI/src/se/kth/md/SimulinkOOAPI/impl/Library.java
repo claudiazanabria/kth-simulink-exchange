@@ -32,10 +32,10 @@ public class Library extends Container implements ILibrary {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated 
+	 * @generated
 	 */
 	protected Library() {
-		super();		
+		super();
 	}	
 	
 	/**

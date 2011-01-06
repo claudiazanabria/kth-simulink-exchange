@@ -36,7 +36,7 @@ public class Model extends Container implements IModel {
 	 * @generated
 	 */
 	protected Model() {
-		super();		
+		super();
 	}	
 	
 	protected Model(String name) throws ProtoObjectCreationException {
