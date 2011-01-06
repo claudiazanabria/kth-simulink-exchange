@@ -1,5 +1,6 @@
 package se.kth.md.SimulinkOOAPI.util;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.compare.FactoryException;
 import org.eclipse.emf.compare.match.engine.GenericMatchEngine;
 import org.eclipse.emf.ecore.EObject;
@@ -44,8 +45,8 @@ public class SimulinkModelMatcher extends GenericMatchEngine{
 	
 	private boolean areChildrenSimilar(Model obj1, Model obj2){
 		if (haveChildrenSameSize(obj1, obj2)){
-			SimulinkList<ProtoObject> children1 = obj1.getAllChildren();
-			SimulinkList<ProtoObject> children2 = obj2.getAllChildren();		
+			EList<ProtoObject> children1 = obj1.getAllChildren();
+			EList<ProtoObject> children2 = obj2.getAllChildren();		
 			if(!areChildrenSimilar(children1, children2))
 				return false;
 		
@@ -57,8 +58,8 @@ public class SimulinkModelMatcher extends GenericMatchEngine{
 	
 	private boolean areChildrenSimilar(System obj1, System obj2){
 		if (haveChildrenSameSize(obj1, obj2)){
-			SimulinkList<ProtoObject> children1 = obj1.getAllChildren();
-			SimulinkList<ProtoObject> children2 = obj2.getAllChildren();		
+			EList<ProtoObject> children1 = obj1.getAllChildren();
+			EList<ProtoObject> children2 = obj2.getAllChildren();		
 			if(!areChildrenSimilar(children1, children2))
 				return false;
 		
@@ -70,8 +71,8 @@ public class SimulinkModelMatcher extends GenericMatchEngine{
 	
 	private boolean areChildrenSimilar(Library obj1, Library obj2){
 		if (haveChildrenSameSize(obj1, obj2)){
-			SimulinkList<ProtoObject> children1 = obj1.getAllChildren();
-			SimulinkList<ProtoObject> children2 = obj2.getAllChildren();		
+			EList<ProtoObject> children1 = obj1.getAllChildren();
+			EList<ProtoObject> children2 = obj2.getAllChildren();		
 			if(!areChildrenSimilar(children1, children2))
 				return false;
 		
@@ -81,11 +82,11 @@ public class SimulinkModelMatcher extends GenericMatchEngine{
 		return false;
 	}
 	
-	private boolean areChildrenSimilar(SimulinkList<ProtoObject> children1, SimulinkList<ProtoObject> children2){
+	private boolean areChildrenSimilar(EList<ProtoObject> children1, EList<ProtoObject> children2){
 		for (ProtoObject element: children1){
-			if (!children2.doesContain(element)){
-				return false;
-			}
+			//if (!children2.doesContain(element)){
+		//		return false;
+		//	}
 		}
 		
 		return true;

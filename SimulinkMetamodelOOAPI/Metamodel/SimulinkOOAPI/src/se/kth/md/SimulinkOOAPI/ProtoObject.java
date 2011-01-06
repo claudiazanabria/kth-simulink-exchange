@@ -6,6 +6,7 @@
  */
 package se.kth.md.SimulinkOOAPI;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 import se.kth.md.SimulinkOOAPI.exceptions.AddChildException;
@@ -139,6 +140,6 @@ public interface ProtoObject extends EObject {
 	/**
 	 * Returns a list of all children for containers; empty list for non-containers.
 	 */
-	public SimulinkList<ProtoObject> getAllChildren();
+	public EList<ProtoObject> getAllChildren();
 
 } // IProtoObject

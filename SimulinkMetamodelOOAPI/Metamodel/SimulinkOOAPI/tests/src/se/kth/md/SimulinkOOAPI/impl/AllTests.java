@@ -4,8 +4,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
  
 @RunWith(Suite.class)
-@Suite.SuiteClasses({
-	ChildrenSupportTest.class,
+@Suite.SuiteClasses({	
 	GainBlockTest.class,
 	IdentityTest.class,
 	InportTest.class,

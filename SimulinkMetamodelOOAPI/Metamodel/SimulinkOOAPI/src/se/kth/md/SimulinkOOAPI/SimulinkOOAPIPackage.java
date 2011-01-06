@@ -96,7 +96,7 @@ public interface SimulinkOOAPIPackage extends EPackage {
 	 * @see se.kth.md.SimulinkOOAPI.impl.SimulinkOOAPIPackageImpl#getContainer()
 	 * @generated
 	 */
-	int CONTAINER = 13;
+	int CONTAINER = 12;
 
 	/**
 	 * The feature id for the '<em><b>Identity</b></em>' containment reference.
@@ -108,7 +108,7 @@ public interface SimulinkOOAPIPackage extends EPackage {
 	int CONTAINER__IDENTITY = PROTO_OBJECT__IDENTITY;
 
 	/**
-	 * The feature id for the '<em><b>Children</b></em>' containment reference.
+	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -145,7 +145,7 @@ public interface SimulinkOOAPIPackage extends EPackage {
 	int LIBRARY__IDENTITY = CONTAINER__IDENTITY;
 
 	/**
-	 * The feature id for the '<em><b>Children</b></em>' containment reference.
+	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -219,25 +219,6 @@ public interface SimulinkOOAPIPackage extends EPackage {
 	int MASK_FEATURE_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link se.kth.md.SimulinkOOAPI.impl.ChildrenSupportImpl <em>Children Support</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see se.kth.md.SimulinkOOAPI.impl.ChildrenSupportImpl
-	 * @see se.kth.md.SimulinkOOAPI.impl.SimulinkOOAPIPackageImpl#getChildrenSupport()
-	 * @generated
-	 */
-	int CHILDREN_SUPPORT = 4;
-
-	/**
-	 * The number of structural features of the '<em>Children Support</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CHILDREN_SUPPORT_FEATURE_COUNT = 0;
-
-	/**
 	 * The meta object id for the '{@link se.kth.md.SimulinkOOAPI.impl.GainBlockImpl <em>Gain Block</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -245,7 +226,7 @@ public interface SimulinkOOAPIPackage extends EPackage {
 	 * @see se.kth.md.SimulinkOOAPI.impl.SimulinkOOAPIPackageImpl#getGainBlock()
 	 * @generated
 	 */
-	int GAIN_BLOCK = 5;
+	int GAIN_BLOCK = 4;
 
 	/**
 	 * The feature id for the '<em><b>Identity</b></em>' containment reference.
@@ -282,7 +263,7 @@ public interface SimulinkOOAPIPackage extends EPackage {
 	 * @see se.kth.md.SimulinkOOAPI.impl.SimulinkOOAPIPackageImpl#getPort()
 	 * @generated
 	 */
-	int PORT = 6;
+	int PORT = 5;
 
 	/**
 	 * The feature id for the '<em><b>Identity</b></em>' containment reference.
@@ -319,7 +300,7 @@ public interface SimulinkOOAPIPackage extends EPackage {
 	 * @see se.kth.md.SimulinkOOAPI.impl.SimulinkOOAPIPackageImpl#getInport()
 	 * @generated
 	 */
-	int INPORT = 7;
+	int INPORT = 6;
 
 	/**
 	 * The feature id for the '<em><b>Identity</b></em>' containment reference.
@@ -356,7 +337,7 @@ public interface SimulinkOOAPIPackage extends EPackage {
 	 * @see se.kth.md.SimulinkOOAPI.impl.SimulinkOOAPIPackageImpl#getOutport()
 	 * @generated
 	 */
-	int OUTPORT = 8;
+	int OUTPORT = 7;
 
 	/**
 	 * The feature id for the '<em><b>Identity</b></em>' containment reference.
@@ -393,7 +374,7 @@ public interface SimulinkOOAPIPackage extends EPackage {
 	 * @see se.kth.md.SimulinkOOAPI.impl.SimulinkOOAPIPackageImpl#getLine()
 	 * @generated
 	 */
-	int LINE = 9;
+	int LINE = 8;
 
 	/**
 	 * The feature id for the '<em><b>Identity</b></em>' containment reference.
@@ -439,7 +420,7 @@ public interface SimulinkOOAPIPackage extends EPackage {
 	 * @see se.kth.md.SimulinkOOAPI.impl.SimulinkOOAPIPackageImpl#getSystem()
 	 * @generated
 	 */
-	int SYSTEM = 10;
+	int SYSTEM = 9;
 
 	/**
 	 * The feature id for the '<em><b>Identity</b></em>' containment reference.
@@ -451,7 +432,7 @@ public interface SimulinkOOAPIPackage extends EPackage {
 	int SYSTEM__IDENTITY = CONTAINER__IDENTITY;
 
 	/**
-	 * The feature id for the '<em><b>Children</b></em>' containment reference.
+	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -485,7 +466,7 @@ public interface SimulinkOOAPIPackage extends EPackage {
 	 * @see se.kth.md.SimulinkOOAPI.impl.SimulinkOOAPIPackageImpl#getModel()
 	 * @generated
 	 */
-	int MODEL = 11;
+	int MODEL = 10;
 
 	/**
 	 * The feature id for the '<em><b>Identity</b></em>' containment reference.
@@ -497,7 +478,7 @@ public interface SimulinkOOAPIPackage extends EPackage {
 	int MODEL__IDENTITY = CONTAINER__IDENTITY;
 
 	/**
-	 * The feature id for the '<em><b>Children</b></em>' containment reference.
+	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -522,7 +503,7 @@ public interface SimulinkOOAPIPackage extends EPackage {
 	 * @see se.kth.md.SimulinkOOAPI.impl.SimulinkOOAPIPackageImpl#getSystemReference()
 	 * @generated
 	 */
-	int SYSTEM_REFERENCE = 12;
+	int SYSTEM_REFERENCE = 11;
 
 	/**
 	 * The feature id for the '<em><b>Identity</b></em>' containment reference.
@@ -624,16 +605,6 @@ public interface SimulinkOOAPIPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getMask();
-
-	/**
-	 * Returns the meta object for class '{@link se.kth.md.SimulinkOOAPI.ChildrenSupport <em>Children Support</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Children Support</em>'.
-	 * @see se.kth.md.SimulinkOOAPI.ChildrenSupport
-	 * @generated
-	 */
-	EClass getChildrenSupport();
 
 	/**
 	 * Returns the meta object for class '{@link se.kth.md.SimulinkOOAPI.GainBlock <em>Gain Block</em>}'.
@@ -792,10 +763,10 @@ public interface SimulinkOOAPIPackage extends EPackage {
 	EClass getContainer();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link se.kth.md.SimulinkOOAPI.Container#getChildren <em>Children</em>}'.
+	 * Returns the meta object for the containment reference list '{@link se.kth.md.SimulinkOOAPI.Container#getChildren <em>Children</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Children</em>'.
+	 * @return the meta object for the containment reference list '<em>Children</em>'.
 	 * @see se.kth.md.SimulinkOOAPI.Container#getChildren()
 	 * @see #getContainer()
 	 * @generated
@@ -887,16 +858,6 @@ public interface SimulinkOOAPIPackage extends EPackage {
 		 * @generated
 		 */
 		EClass MASK = eINSTANCE.getMask();
-
-		/**
-		 * The meta object literal for the '{@link se.kth.md.SimulinkOOAPI.impl.ChildrenSupportImpl <em>Children Support</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see se.kth.md.SimulinkOOAPI.impl.ChildrenSupportImpl
-		 * @see se.kth.md.SimulinkOOAPI.impl.SimulinkOOAPIPackageImpl#getChildrenSupport()
-		 * @generated
-		 */
-		EClass CHILDREN_SUPPORT = eINSTANCE.getChildrenSupport();
 
 		/**
 		 * The meta object literal for the '{@link se.kth.md.SimulinkOOAPI.impl.GainBlockImpl <em>Gain Block</em>}' class.
@@ -1037,7 +998,7 @@ public interface SimulinkOOAPIPackage extends EPackage {
 		EClass CONTAINER = eINSTANCE.getContainer();
 
 		/**
-		 * The meta object literal for the '<em><b>Children</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Children</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

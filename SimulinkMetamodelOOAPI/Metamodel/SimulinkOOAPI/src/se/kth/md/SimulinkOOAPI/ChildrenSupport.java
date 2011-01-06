@@ -6,6 +6,7 @@
  */
 package se.kth.md.SimulinkOOAPI;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -20,6 +21,22 @@ import org.eclipse.emf.ecore.EObject;
 public interface ChildrenSupport extends EObject {
 	
 	/**
+	 * Returns the value of the '<em><b>Children List</b></em>' containment reference list.
+	 * The list contents are of type {@link se.kth.md.SimulinkOOAPI.ProtoObject}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Children List</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Children List</em>' containment reference list.
+	 * @see se.kth.md.SimulinkOOAPI.SimulinkOOAPIPackage#getChildrenSupport_ChildrenList()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<ProtoObject> getChildrenList();
+
+	/**
 	 * Adds a ProtoObject to children list.	
 	 */
 	public void addChild(ProtoObject child);
@@ -32,7 +49,7 @@ public interface ChildrenSupport extends EObject {
 	/**
 	 * Returns EList of all children.	
 	 */
-	public SimulinkList<ProtoObject> getChildren();
+//	public SimulinkList<ProtoObject> getChildren();
 	
 	/**
 	 * Returns a list of children of IGainBlock type.	

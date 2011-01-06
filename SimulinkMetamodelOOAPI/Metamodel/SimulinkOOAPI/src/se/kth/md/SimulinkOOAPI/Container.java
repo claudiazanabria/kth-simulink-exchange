@@ -6,6 +6,7 @@
  */
 package se.kth.md.SimulinkOOAPI;
 
+import org.eclipse.emf.common.util.EList;
 import se.kth.md.SimulinkOOAPI.exceptions.AddChildException;
 
 
@@ -27,31 +28,21 @@ import se.kth.md.SimulinkOOAPI.exceptions.AddChildException;
  */
 public interface Container extends ProtoObject {
 	/**
-	 * Returns the value of the '<em><b>Children</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Children</b></em>' containment reference list.
+	 * The list contents are of type {@link se.kth.md.SimulinkOOAPI.ProtoObject}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Children</em>' reference isn't clear,
+	 * If the meaning of the '<em>Children</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Children</em>' containment reference.
-	 * @see #setChildren(ChildrenSupport)
+	 * @return the value of the '<em>Children</em>' containment reference list.
 	 * @see se.kth.md.SimulinkOOAPI.SimulinkOOAPIPackage#getContainer_Children()
 	 * @model containment="true"
 	 * @generated
 	 */
-	ChildrenSupport getChildren();
+	EList<ProtoObject> getChildren();
 
-	/**
-	 * Sets the value of the '{@link se.kth.md.SimulinkOOAPI.Container#getChildren <em>Children</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Children</em>' containment reference.
-	 * @see #getChildren()
-	 * @generated
-	 */
-	void setChildren(ChildrenSupport value);
-	
 	/**
 	 * Adds a ProtoObject to children list.
 	 */
@@ -65,7 +56,7 @@ public interface Container extends ProtoObject {
 	/**
 	 * Returns a list of all children.
 	 */
-	public SimulinkList<ProtoObject> getAllChildren();
+	public EList<ProtoObject> getAllChildren();
 	
 	/**
 	 * Returns a first child met with the given name or uuid.

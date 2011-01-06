@@ -145,29 +145,6 @@ public class SimulinkOOAPIItemProviderAdapterFactory extends SimulinkOOAPIAdapte
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link se.kth.md.SimulinkOOAPI.ChildrenSupport} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ChildrenSupportItemProvider childrenSupportItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link se.kth.md.SimulinkOOAPI.ChildrenSupport}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createChildrenSupportAdapter() {
-		if (childrenSupportItemProvider == null) {
-			childrenSupportItemProvider = new ChildrenSupportItemProvider(this);
-		}
-
-		return childrenSupportItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link se.kth.md.SimulinkOOAPI.GainBlock} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -453,7 +430,6 @@ public class SimulinkOOAPIItemProviderAdapterFactory extends SimulinkOOAPIAdapte
 		if (libraryItemProvider != null) libraryItemProvider.dispose();
 		if (identityItemProvider != null) identityItemProvider.dispose();
 		if (maskItemProvider != null) maskItemProvider.dispose();
-		if (childrenSupportItemProvider != null) childrenSupportItemProvider.dispose();
 		if (gainBlockItemProvider != null) gainBlockItemProvider.dispose();
 		if (inportItemProvider != null) inportItemProvider.dispose();
 		if (outportItemProvider != null) outportItemProvider.dispose();

@@ -76,7 +76,6 @@ public class SimulinkOOAPIFactoryImpl extends EFactoryImpl implements SimulinkOO
 			case SimulinkOOAPIPackage.LIBRARY: return createLibrary();
 			case SimulinkOOAPIPackage.IDENTITY: return createIdentity();
 			case SimulinkOOAPIPackage.MASK: return createMask();
-			case SimulinkOOAPIPackage.CHILDREN_SUPPORT: return createChildrenSupport();
 			case SimulinkOOAPIPackage.GAIN_BLOCK: return createGainBlock();
 			case SimulinkOOAPIPackage.INPORT: return createInport();
 			case SimulinkOOAPIPackage.OUTPORT: return createOutport();
@@ -118,16 +117,6 @@ public class SimulinkOOAPIFactoryImpl extends EFactoryImpl implements SimulinkOO
 	public Mask createMask() {
 		MaskImpl mask = new MaskImpl();
 		return mask;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ChildrenSupport createChildrenSupport() {
-		ChildrenSupportImpl childrenSupport = new ChildrenSupportImpl();
-		return childrenSupport;
 	}
 
 	/**

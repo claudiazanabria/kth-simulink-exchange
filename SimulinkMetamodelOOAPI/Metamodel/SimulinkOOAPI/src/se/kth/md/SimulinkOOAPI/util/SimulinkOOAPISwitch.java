@@ -127,12 +127,6 @@ public class SimulinkOOAPISwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case SimulinkOOAPIPackage.CHILDREN_SUPPORT: {
-				ChildrenSupport childrenSupport = (ChildrenSupport)theEObject;
-				T result = caseChildrenSupport(childrenSupport);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case SimulinkOOAPIPackage.GAIN_BLOCK: {
 				GainBlock gainBlock = (GainBlock)theEObject;
 				T result = caseGainBlock(gainBlock);
@@ -261,21 +255,6 @@ public class SimulinkOOAPISwitch<T> {
 	 * @generated
 	 */
 	public T caseMask(Mask object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Children Support</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Children Support</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseChildrenSupport(ChildrenSupport object) {
 		return null;
 	}
 

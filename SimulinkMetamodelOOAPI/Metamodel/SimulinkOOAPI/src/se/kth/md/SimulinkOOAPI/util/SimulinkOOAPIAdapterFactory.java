@@ -102,10 +102,6 @@ public class SimulinkOOAPIAdapterFactory extends AdapterFactoryImpl {
 				return createMaskAdapter();
 			}
 			@Override
-			public Adapter caseChildrenSupport(ChildrenSupport object) {
-				return createChildrenSupportAdapter();
-			}
-			@Override
 			public Adapter caseGainBlock(GainBlock object) {
 				return createGainBlockAdapter();
 			}
@@ -214,20 +210,6 @@ public class SimulinkOOAPIAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createMaskAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link se.kth.md.SimulinkOOAPI.ChildrenSupport <em>Children Support</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see se.kth.md.SimulinkOOAPI.ChildrenSupport
-	 * @generated
-	 */
-	public Adapter createChildrenSupportAdapter() {
 		return null;
 	}
 

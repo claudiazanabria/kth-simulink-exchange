@@ -72,13 +72,6 @@ public class SimulinkOOAPIPackageImpl extends EPackageImpl implements SimulinkOO
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass childrenSupportEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass gainBlockEClass = null;
 
 	/**
@@ -266,15 +259,6 @@ public class SimulinkOOAPIPackageImpl extends EPackageImpl implements SimulinkOO
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getChildrenSupport() {
-		return childrenSupportEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getGainBlock() {
 		return gainBlockEClass;
 	}
@@ -453,8 +437,6 @@ public class SimulinkOOAPIPackageImpl extends EPackageImpl implements SimulinkOO
 
 		maskEClass = createEClass(MASK);
 
-		childrenSupportEClass = createEClass(CHILDREN_SUPPORT);
-
 		gainBlockEClass = createEClass(GAIN_BLOCK);
 		createEAttribute(gainBlockEClass, GAIN_BLOCK__GAIN);
 
@@ -532,8 +514,6 @@ public class SimulinkOOAPIPackageImpl extends EPackageImpl implements SimulinkOO
 
 		initEClass(maskEClass, Mask.class, "Mask", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(childrenSupportEClass, ChildrenSupport.class, "ChildrenSupport", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
 		initEClass(gainBlockEClass, GainBlock.class, "GainBlock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getGainBlock_Gain(), ecorePackage.getEInt(), "gain", null, 0, 1, GainBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -557,7 +537,7 @@ public class SimulinkOOAPIPackageImpl extends EPackageImpl implements SimulinkOO
 		initEReference(getSystemReference_Target(), this.getSystem(), null, "target", null, 1, 1, SystemReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(containerEClass, se.kth.md.SimulinkOOAPI.Container.class, "Container", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getContainer_Children(), this.getChildrenSupport(), null, "children", null, 0, 1, se.kth.md.SimulinkOOAPI.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getContainer_Children(), this.getProtoObject(), null, "children", null, 0, -1, se.kth.md.SimulinkOOAPI.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

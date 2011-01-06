@@ -53,15 +53,6 @@ public interface SimulinkOOAPIFactory extends EFactory {
 	Mask createMask();
 
 	/**
-	 * Returns a new object of class '<em>Children Support</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Children Support</em>'.
-	 * @generated
-	 */
-	ChildrenSupport createChildrenSupport();
-
-	/**
 	 * Returns a new object of class '<em>Gain Block</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

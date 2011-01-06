@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.EClass;
 import se.kth.md.SimulinkOOAPI.Library;
 import se.kth.md.SimulinkOOAPI.Line;
 import se.kth.md.SimulinkOOAPI.Model;
+import se.kth.md.SimulinkOOAPI.ProtoObject;
 import se.kth.md.SimulinkOOAPI.SimulinkList;
 import se.kth.md.SimulinkOOAPI.SimulinkOOAPIPackage;
 import se.kth.md.SimulinkOOAPI.System;
@@ -55,7 +56,12 @@ public class ModelImpl extends ContainerImpl implements Model {
 	
 	@Override
 	public SimulinkList<Line> getChildrenOfTypeLine() {
-		return children.getChildrenOfTypeLine();
+		SimulinkList<Line> result = new SimulinkListImpl<Line>();
+
+		for (ProtoObject child : this.children) {
+			child.ifLineAddToList(result);
+		}
+		return result;
 	}
 	
 	/**

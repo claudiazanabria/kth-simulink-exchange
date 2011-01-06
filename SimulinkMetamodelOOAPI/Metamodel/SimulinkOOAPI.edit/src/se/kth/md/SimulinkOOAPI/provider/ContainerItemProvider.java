@@ -150,7 +150,47 @@ public class ContainerItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(SimulinkOOAPIPackage.Literals.CONTAINER__CHILDREN,
-				 SimulinkOOAPIFactory.eINSTANCE.createChildrenSupport()));
+				 SimulinkOOAPIFactory.eINSTANCE.createContainer()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(SimulinkOOAPIPackage.Literals.CONTAINER__CHILDREN,
+				 SimulinkOOAPIFactory.eINSTANCE.createLibrary()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(SimulinkOOAPIPackage.Literals.CONTAINER__CHILDREN,
+				 SimulinkOOAPIFactory.eINSTANCE.createGainBlock()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(SimulinkOOAPIPackage.Literals.CONTAINER__CHILDREN,
+				 SimulinkOOAPIFactory.eINSTANCE.createInport()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(SimulinkOOAPIPackage.Literals.CONTAINER__CHILDREN,
+				 SimulinkOOAPIFactory.eINSTANCE.createOutport()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(SimulinkOOAPIPackage.Literals.CONTAINER__CHILDREN,
+				 SimulinkOOAPIFactory.eINSTANCE.createLine()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(SimulinkOOAPIPackage.Literals.CONTAINER__CHILDREN,
+				 SimulinkOOAPIFactory.eINSTANCE.createSystem()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(SimulinkOOAPIPackage.Literals.CONTAINER__CHILDREN,
+				 SimulinkOOAPIFactory.eINSTANCE.createModel()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(SimulinkOOAPIPackage.Literals.CONTAINER__CHILDREN,
+				 SimulinkOOAPIFactory.eINSTANCE.createSystemReference()));
 	}
 
 }

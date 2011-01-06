@@ -199,27 +199,53 @@ public class SystemImpl extends ContainerImpl implements se.kth.md.SimulinkOOAPI
 	
 	@Override
 	public SimulinkList<Line> getChildrenOfTypeLine() {
-		return children.getChildrenOfTypeLine();
+		SimulinkList<Line> result = new SimulinkListImpl<Line>();
+
+		for (ProtoObject child : this.children) {
+			child.ifLineAddToList(result);
+		}
+		return result;
 	}
 
 	@Override
 	public SimulinkList<Port> getChildrenOfTypePort() {
-		return children.getChildrenOfTypePort();
+		SimulinkList<Port> result = new SimulinkListImpl<Port>();
+
+		for (ProtoObject child : this.children) {
+			child.ifPortAddToList(result);
+		}
+		return result;
 	}
 	
 	@Override
 	public SimulinkList<SystemReference> getChildrenOfTypeSystemReference() {
-		return children.getChildrenOfTypeSystemReference();
+		SimulinkList<SystemReference> result = new SimulinkListImpl<SystemReference>();
+
+		for (ProtoObject child : this.children) {
+			child.ifSystemReferenceAddToList(result);
+		}
+		return result;
 	}
 	
 	@Override
 	public SimulinkList<Inport> getChildrenOfTypeInport() {
-		return children.getChildrenOfTypeInport();
+		SimulinkList<Inport> result = new SimulinkListImpl<Inport>();
+
+		for (ProtoObject child : this.children) {
+			child.ifInportAddToList(result);
+		}
+		return result;	
 	}
 
 	@Override
 	public SimulinkList<Outport> getChildrenOfTypeOutport() {		
-		return children.getChildrenOfTypeOutport();
+		SimulinkList<Outport> result = new SimulinkListImpl<Outport>();
+
+		for (ProtoObject child : this.children) {
+			child.ifOutportAddToList(result);
+		}
+		return result;	
+
 	}
 	
 	@Override
