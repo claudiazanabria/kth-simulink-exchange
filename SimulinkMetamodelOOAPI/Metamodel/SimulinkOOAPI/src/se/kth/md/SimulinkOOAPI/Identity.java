@@ -37,7 +37,7 @@ public interface Identity extends EObject {
 	 * @return the value of the '<em>Uuid</em>' attribute.
 	 * @see #setUuid(String)
 	 * @see se.kth.md.SimulinkOOAPI.SimulinkOOAPIPackage#getIdentity_Uuid()
-	 * @model volatile="true"
+	 * @model
 	 * @generated
 	 */
 	String getUuid();

@@ -36,8 +36,6 @@ import se.kth.md.SimulinkOOAPI.exceptions.ProtoObjectCreationException;
  */
 public class IdentityImpl extends EObjectImpl implements Identity {	
 	
-	private String uuid;
-	
 	/**
 	 * The default value of the '{@link #getUuid() <em>Uuid</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -47,6 +45,8 @@ public class IdentityImpl extends EObjectImpl implements Identity {
 	 * @ordered
 	 */
 	protected static final String UUID_EDEFAULT = null;
+
+	private String uuid;
 
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -112,10 +112,13 @@ public class IdentityImpl extends EObjectImpl implements Identity {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
-	public void setUuid(String newUuid) {		
-		throw new UnsupportedOperationException();
+	public void setUuid(String newUuid) {
+		String oldUuid = uuid;
+		uuid = newUuid;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, SimulinkOOAPIPackage.IDENTITY__UUID, oldUuid, uuid));
 	}
 
 	/**
@@ -206,7 +209,7 @@ public class IdentityImpl extends EObjectImpl implements Identity {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case SimulinkOOAPIPackage.IDENTITY__UUID:
-				return UUID_EDEFAULT == null ? getUuid() != null : !UUID_EDEFAULT.equals(getUuid());
+				return UUID_EDEFAULT == null ? uuid != null : !UUID_EDEFAULT.equals(uuid);
 			case SimulinkOOAPIPackage.IDENTITY__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
@@ -223,7 +226,9 @@ public class IdentityImpl extends EObjectImpl implements Identity {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (name: ");
+		result.append(" (uuid: ");
+		result.append(uuid);
+		result.append(", name: ");
 		result.append(name);
 		result.append(')');
 		return result.toString();
