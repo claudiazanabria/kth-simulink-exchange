@@ -103,12 +103,12 @@ public class GainBlockItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public String getText(Object object) {
 		GainBlock gainBlock = (GainBlock)object;
-		return getString("_UI_GainBlock_type") + " " + gainBlock.getGain();
+		return super.getText(object) + " " + gainBlock.getGain();
 	}
 
 	/**
