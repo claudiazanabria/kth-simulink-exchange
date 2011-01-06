@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id$
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="se.kth.md.SimulinkOOAPI.presentation.SimulinkOOAPIModelWizardID"
+            name="%_UI_SimulinkOOAPIModelWizard_label"
+            class="se.kth.md.SimulinkOOAPI.presentation.SimulinkOOAPIModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/SimulinkOOAPIModelFile.gif">
+         <description>%_UI_SimulinkOOAPIModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            id="se.kth.md.SimulinkOOAPI.presentation.SimulinkOOAPIEditorID"
+            name="%_UI_SimulinkOOAPIEditor_label"
+            icon="icons/full/obj16/SimulinkOOAPIModelFile.gif"
+            extensions="simulinkooapi"
+            class="se.kth.md.SimulinkOOAPI.presentation.SimulinkOOAPIEditor"
+            contributorClass="se.kth.md.SimulinkOOAPI.presentation.SimulinkOOAPIActionBarContributor">
+      </editor>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="ecore.presentation.EcoreModelWizardID"
+            name="%_UI_EcoreModelWizard_label"
+            class="ecore.presentation.EcoreModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/EcoreModelFile.gif">
+         <description>%_UI_EcoreModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            id="ecore.presentation.EcoreEditorID"
+            name="%_UI_EcoreEditor_label"
+            icon="icons/full/obj16/EcoreModelFile.gif"
+            extensions="ecore"
+            class="ecore.presentation.EcoreEditor"
+            contributorClass="ecore.presentation.EcoreActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>
