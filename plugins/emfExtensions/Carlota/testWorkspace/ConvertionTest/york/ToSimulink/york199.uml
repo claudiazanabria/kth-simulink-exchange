@@ -1,0 +1,560 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ADLTypes="http://www.papyrusuml.org/EAST-ADL2/ADLCoreConstructs/ADLTypes/1" xmlns:Blocks="http://www.papyrusuml.org/SysML/Blocks/1" xmlns:ErrorBehavior="http://www.papyrusuml.org/EAST-ADL2/Behavior/ErrorBehavior/1" xmlns:FunctionModeling="http://www.papyrusuml.org/EAST-ADL2/Structure/FunctionModeling/1" xmlns:HardwareDesignArchitecture="http://www.papyrusuml.org/EAST-ADL2/Structure/HardwareDesignArchitecture/1" xmlns:Requirements="http://www.papyrusuml.org/EAST-ADL2/Requirements/1" xmlns:SystemModel="http://www.papyrusuml.org/EAST-ADL2/Structure/SystemModel/1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" xsi:schemaLocation="http://www.papyrusuml.org/EAST-ADL2/ADLCoreConstructs/ADLTypes/1 http://www.papyrusuml.org/EAST-ADL2/1#//adlcoreconstructs/adltypes http://www.papyrusuml.org/SysML/Blocks/1 http://www.papyrusuml.org/SysML/1#//blocks http://www.papyrusuml.org/EAST-ADL2/Behavior/ErrorBehavior/1 http://www.papyrusuml.org/EAST-ADL2/1#//behavior/errorbehavior http://www.papyrusuml.org/EAST-ADL2/Structure/FunctionModeling/1 http://www.papyrusuml.org/EAST-ADL2/1#//structure/functionmodeling http://www.papyrusuml.org/EAST-ADL2/Structure/HardwareDesignArchitecture/1 http://www.papyrusuml.org/EAST-ADL2/1#//structure/hardwaredesignarchitecture http://www.papyrusuml.org/EAST-ADL2/Requirements/1 http://www.papyrusuml.org/EAST-ADL2/1#//requirements http://www.papyrusuml.org/EAST-ADL2/Structure/SystemModel/1 http://www.papyrusuml.org/EAST-ADL2/1#//structure/systemmodel">
+  <uml:Model xmi:id="_y6arIGe2Ed6sZ_u7zCLa_g" name="YorkCaseModel1">
+    <packageImport xmi:id="_y6arIWe2Ed6sZ_u7zCLa_g">
+      <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+    </packageImport>
+    <packageImport xmi:id="_MCF0YOmDEd6uJbAy1zvb0Q">
+      <importedPackage xmi:type="uml:Profile" href="../../../../plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_i-WJIDxIEdyqfK4bFJstMQ"/>
+    </packageImport>
+    <packageImport xmi:id="_MH6vkOmDEd6uJbAy1zvb0Q">
+      <importedPackage xmi:type="uml:Profile" href="../../../../plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_i-WL-TxIEdyqfK4bFJstMQ"/>
+    </packageImport>
+    <packageImport xmi:id="_MJcZkOmDEd6uJbAy1zvb0Q">
+      <importedPackage xmi:type="uml:Profile" href="../../../../plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_i-WMfzxIEdyqfK4bFJstMQ"/>
+    </packageImport>
+    <packageImport xmi:id="_MMgUoOmDEd6uJbAy1zvb0Q">
+      <importedPackage xmi:type="uml:Profile" href="../../../../plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_i-WMfjxIEdyqfK4bFJstMQ"/>
+    </packageImport>
+    <packageImport xmi:id="_MN1xYOmDEd6uJbAy1zvb0Q">
+      <importedPackage xmi:type="uml:Profile" href="../../../../plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_ZNvgwN4lEdyW6f_GAa5b1w"/>
+    </packageImport>
+    <packageImport xmi:id="_MQy-wOmDEd6uJbAy1zvb0Q">
+      <importedPackage xmi:type="uml:Profile" href="../../../../plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_Tb650N4qEdyW6f_GAa5b1w"/>
+    </packageImport>
+    <packageImport xmi:id="_MSJCkOmDEd6uJbAy1zvb0Q">
+      <importedPackage xmi:type="uml:Profile" href="../../../../plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_i-WLPzxIEdyqfK4bFJstMQ"/>
+    </packageImport>
+    <packageImport xmi:id="_MVAJUOmDEd6uJbAy1zvb0Q">
+      <importedPackage xmi:type="uml:Profile" href="../../../../plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_i-WP9DxIEdyqfK4bFJstMQ"/>
+    </packageImport>
+    <packageImport xmi:id="_MWbssOmDEd6uJbAy1zvb0Q">
+      <importedPackage xmi:type="uml:Profile" href="../../../../plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_i-f62DxIEdyqfK4bFJstMQ"/>
+    </packageImport>
+    <packageImport xmi:id="_MZTagOmDEd6uJbAy1zvb0Q">
+      <importedPackage xmi:type="uml:Profile" href="../../../../plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_i-f77zxIEdyqfK4bFJstMQ"/>
+    </packageImport>
+    <packageImport xmi:id="_Mau94OmDEd6uJbAy1zvb0Q">
+      <importedPackage xmi:type="uml:Profile" href="../../../../plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_i-f8CzxIEdyqfK4bFJstMQ"/>
+    </packageImport>
+    <packageImport xmi:id="_MdmEoOmDEd6uJbAy1zvb0Q">
+      <importedPackage xmi:type="uml:Profile" href="../../../../plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_V5LXIHJVEdyx6oOkwavytg"/>
+    </packageImport>
+    <packageImport xmi:id="_Me1awOmDEd6uJbAy1zvb0Q">
+      <importedPackage xmi:type="uml:Profile" href="../../../../plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_VtDYsNl5EdyxEqZvsyllRw"/>
+    </packageImport>
+    <packageImport xmi:id="_MhzPMOmDEd6uJbAy1zvb0Q">
+      <importedPackage xmi:type="uml:Profile" href="../../../../plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_i-WNKzxIEdyqfK4bFJstMQ"/>
+    </packageImport>
+    <packageImport xmi:id="_MjIr8OmDEd6uJbAy1zvb0Q">
+      <importedPackage xmi:type="uml:Profile" href="../../../../plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_i-WLITxIEdyqfK4bFJstMQ"/>
+    </packageImport>
+    <packageImport xmi:id="_Ml5sEOmDEd6uJbAy1zvb0Q">
+      <importedPackage xmi:type="uml:Profile" href="../../../../plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_i-WKtDxIEdyqfK4bFJstMQ"/>
+    </packageImport>
+    <packageImport xmi:id="_MniDwOmDEd6uJbAy1zvb0Q">
+      <importedPackage xmi:type="uml:Profile" href="../../../../plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_2M5XsNu0EdyN-KVwISucrA"/>
+    </packageImport>
+    <packageImport xmi:id="_MqreYOmDEd6uJbAy1zvb0Q">
+      <importedPackage xmi:type="uml:Profile" href="../../../../plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_i-WNLTxIEdyqfK4bFJstMQ"/>
+    </packageImport>
+    <packageImport xmi:id="_Mr60gOmDEd6uJbAy1zvb0Q">
+      <importedPackage xmi:type="uml:Profile" href="../../../../plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_i-WNZjxIEdyqfK4bFJstMQ"/>
+    </packageImport>
+    <packageImport xmi:id="_MusbsOmDEd6uJbAy1zvb0Q">
+      <importedPackage xmi:type="uml:Profile" href="../../../../plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_i-WNLDxIEdyqfK4bFJstMQ"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:Class" xmi:id="_y7RmwGe2Ed6sZ_u7zCLa_g" name="SystemModel"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_y7qBQWe2Ed6sZ_u7zCLa_g" name="AnalysisArchitecture"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_y72OgGe2Ed6sZ_u7zCLa_g" name="DesignArchitecture">
+      <nestedClassifier xmi:type="uml:Class" xmi:id="_SKQKQGfCEd6sZ_u7zCLa_g" name="AC1" clientDependency="_t1YNgGfCEd6sZ_u7zCLa_g"/>
+      <nestedClassifier xmi:type="uml:Class" xmi:id="_T2Xt0GfCEd6sZ_u7zCLa_g" name="AC2" clientDependency="_1FRisGfCEd6sZ_u7zCLa_g _2X_HwGfCEd6sZ_u7zCLa_g"/>
+      <nestedClassifier xmi:type="uml:Class" xmi:id="_USELUGfCEd6sZ_u7zCLa_g" name="AC3" clientDependency="_25stsGfCEd6sZ_u7zCLa_g _3kxrAGfCEd6sZ_u7zCLa_g"/>
+      <nestedClassifier xmi:type="uml:Class" xmi:id="_Uoa10GfCEd6sZ_u7zCLa_g" name="AC4" clientDependency="_4PdmwGfCEd6sZ_u7zCLa_g _4wU4IGfCEd6sZ_u7zCLa_g"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_y78VIWe2Ed6sZ_u7zCLa_g" name="ImplementationArchitecture"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_y8UvoWe2Ed6sZ_u7zCLa_g" name="FunctionalAnalysisArchitecture">
+      <ownedAttribute xmi:id="_gOCwUOmDEd6uJbAy1zvb0Q" name="pF1" type="_MYGpoGe7Ed6sZ_u7zCLa_g" aggregation="composite"/>
+      <ownedAttribute xmi:id="_i86KUOmDEd6uJbAy1zvb0Q" name="pF2" type="_OsVWEGe7Ed6sZ_u7zCLa_g" isUnique="false" aggregation="composite"/>
+      <ownedAttribute xmi:id="_Y4JrYOmEEd6uJbAy1zvb0Q" name="pF3" type="_V-swcGe7Ed6sZ_u7zCLa_g" isUnique="false" aggregation="composite"/>
+      <ownedConnector xmi:id="_47oO8OmEEd6uJbAy1zvb0Q" name="F1_OutF2_In">
+        <end xmi:id="_47oO8emEEd6uJbAy1zvb0Q" partWithPort="_gOCwUOmDEd6uJbAy1zvb0Q" role="_HDWEEGe-Ed6sZ_u7zCLa_g"/>
+        <end xmi:id="_47oO8umEEd6uJbAy1zvb0Q" partWithPort="_i86KUOmDEd6uJbAy1zvb0Q" role="_QgzH4Ge8Ed6sZ_u7zCLa_g"/>
+      </ownedConnector>
+      <ownedConnector xmi:id="_6xGi0OmEEd6uJbAy1zvb0Q" name="F2_Out1F3_In1">
+        <end xmi:id="_6xMpcOmEEd6uJbAy1zvb0Q" partWithPort="_i86KUOmDEd6uJbAy1zvb0Q" role="_HqufEGe8Ed6sZ_u7zCLa_g"/>
+        <end xmi:id="_6xMpcemEEd6uJbAy1zvb0Q" partWithPort="_Y4JrYOmEEd6uJbAy1zvb0Q" role="_6dPfMWe9Ed6sZ_u7zCLa_g"/>
+      </ownedConnector>
+      <ownedConnector xmi:id="_-jYhoOmEEd6uJbAy1zvb0Q" name="F2_Out2F3_In2">
+        <end xmi:id="_-jeoQOmEEd6uJbAy1zvb0Q" partWithPort="_i86KUOmDEd6uJbAy1zvb0Q" role="_WjFQEGfgEd62bMlBxz1Keg"/>
+        <end xmi:id="_-jeoQemEEd6uJbAy1zvb0Q" partWithPort="_Y4JrYOmEEd6uJbAy1zvb0Q" role="_TAEm4GfhEd62bMlBxz1Keg"/>
+      </ownedConnector>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_y8g84Ge2Ed6sZ_u7zCLa_g" name="FunctionalDesignArchitecture">
+      <ownedAttribute xmi:id="_mtWNIGe9Ed6sZ_u7zCLa_g" name="pF2" type="_OsVWEGe7Ed6sZ_u7zCLa_g" isUnique="false" aggregation="composite"/>
+      <ownedAttribute xmi:id="_ndrd4Ge9Ed6sZ_u7zCLa_g" name="pF3" type="_V-swcGe7Ed6sZ_u7zCLa_g" isUnique="false" aggregation="composite"/>
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_zF9MwGonEd6ctsnwzDmBQA" name="out" clientDependency="_AXUQIGpfEd6AKcAREGtDhg" type="_wzRREGe5Ed6sZ_u7zCLa_g" aggregation="composite"/>
+      <ownedAttribute xmi:id="_nD_LgGe9Ed6sZ_u7zCLa_g" name="pF1" type="_MYGpoGe7Ed6sZ_u7zCLa_g" isUnique="false" aggregation="composite"/>
+      <ownedConnector xmi:id="_d2wqIGfBEd6sZ_u7zCLa_g" name="F1_OutF2_Inconnector">
+        <end xmi:id="_d22wwGfBEd6sZ_u7zCLa_g" role="_HDWEEGe-Ed6sZ_u7zCLa_g"/>
+        <end xmi:id="_d22wwWfBEd6sZ_u7zCLa_g" partWithPort="_mtWNIGe9Ed6sZ_u7zCLa_g" role="_QgzH4Ge8Ed6sZ_u7zCLa_g"/>
+      </ownedConnector>
+      <ownedConnector xmi:id="_ez4ZsGfBEd6sZ_u7zCLa_g" name="F2_OutF3_In1connector">
+        <end xmi:id="_ez-gUGfBEd6sZ_u7zCLa_g" partWithPort="_mtWNIGe9Ed6sZ_u7zCLa_g" role="_HqufEGe8Ed6sZ_u7zCLa_g"/>
+        <end xmi:id="_ez-gUWfBEd6sZ_u7zCLa_g" partWithPort="_ndrd4Ge9Ed6sZ_u7zCLa_g" role="_6dPfMWe9Ed6sZ_u7zCLa_g"/>
+      </ownedConnector>
+      <ownedConnector xmi:id="_oY0GEGfhEd62bMlBxz1Keg" name="F2_Out2F3_In2connector">
+        <end xmi:id="_oZATUGfhEd62bMlBxz1Keg" partWithPort="_mtWNIGe9Ed6sZ_u7zCLa_g" role="_WjFQEGfgEd62bMlBxz1Keg"/>
+        <end xmi:id="_oZATUWfhEd62bMlBxz1Keg" partWithPort="_ndrd4Ge9Ed6sZ_u7zCLa_g" role="_TAEm4GfhEd62bMlBxz1Keg"/>
+      </ownedConnector>
+      <ownedConnector xmi:id="_05zI8GonEd6ctsnwzDmBQA" name="F3_OutPort_0connector">
+        <end xmi:id="_05_WMGonEd6ctsnwzDmBQA" partWithPort="_ndrd4Ge9Ed6sZ_u7zCLa_g" role="_6dPfMGe9Ed6sZ_u7zCLa_g"/>
+        <end xmi:id="_05_WMWonEd6ctsnwzDmBQA" role="_zF9MwGonEd6ctsnwzDmBQA"/>
+      </ownedConnector>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_y8nDgWe2Ed6sZ_u7zCLa_g" name="HardwareDesignArchitecture">
+      <ownedAttribute xmi:id="_tmO7EGe-Ed6sZ_u7zCLa_g" name="pECU1" type="_iMRZMGe-Ed6sZ_u7zCLa_g" isUnique="false" aggregation="composite"/>
+      <ownedAttribute xmi:id="_uAHasGe-Ed6sZ_u7zCLa_g" name="pECU2" type="_iMRZMGe-Ed6sZ_u7zCLa_g" isUnique="false" aggregation="composite"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_RJwssGe5Ed6sZ_u7zCLa_g" name="Def_DesignArchitecture">
+      <packagedElement xmi:type="uml:Package" xmi:id="_nsc2gGe5Ed6sZ_u7zCLa_g" name="Package_Data">
+        <packagedElement xmi:type="uml:DataType" xmi:id="_wzRREGe5Ed6sZ_u7zCLa_g" name="SomeDataType"/>
+        <packagedElement xmi:type="uml:DataType" xmi:id="_1LsC0Ge5Ed6sZ_u7zCLa_g" name="SomeLogicalDeviation"/>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_5-qCkGe5Ed6sZ_u7zCLa_g" name="LogicalFailureMode"/>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="__Qw1YGe5Ed6sZ_u7zCLa_g" name="LogicalDimension"/>
+        <packagedElement xmi:type="uml:DataType" xmi:id="__lR6kGe-Ed6sZ_u7zCLa_g" name="SomePhysicalFlow"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_qYlEkGfEEd62bMlBxz1Keg" name="F1_Failed"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_q8Y8QGfEEd62bMlBxz1Keg" name="F21_Failed"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_rOcVkGfEEd62bMlBxz1Keg" name="F22_Failed"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_rgZBMGfEEd62bMlBxz1Keg" name="F3_Failed"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_sGBd0GfEEd62bMlBxz1Keg" name="ECU_Failed"/>
+        <packagedElement xmi:type="uml:DataType" xmi:id="_BYPo0GfGEd62bMlBxz1Keg" name="SomePhysicalDeviation"/>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_BYPo0WfGEd62bMlBxz1Keg" name="PhysicalFailureMode"/>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_BYPo0mfGEd62bMlBxz1Keg" name="PhysicalDimension"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_qA4XQGe5Ed6sZ_u7zCLa_g" name="Package_Application">
+        <packagedElement xmi:type="uml:Class" xmi:id="_MYGpoGe7Ed6sZ_u7zCLa_g" name="F1">
+          <ownedAttribute xmi:type="uml:Port" xmi:id="_HDWEEGe-Ed6sZ_u7zCLa_g" name="F1_Out" type="_wzRREGe5Ed6sZ_u7zCLa_g" aggregation="composite"/>
+          <ownedAttribute xmi:type="uml:Port" xmi:id="_UElWsGfHEd62bMlBxz1Keg" name="appPltfErr_In" type="_1LsC0Ge5Ed6sZ_u7zCLa_g" aggregation="composite"/>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_3y5KEGfDEd62bMlBxz1Keg" name="ErrBehavior_F1"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_OsVWEGe7Ed6sZ_u7zCLa_g" name="F2">
+          <ownedAttribute xmi:id="_2tqhAGe7Ed6sZ_u7zCLa_g" name="pF21" type="_w4OXoGe7Ed6sZ_u7zCLa_g" isUnique="false" aggregation="composite"/>
+          <ownedAttribute xmi:id="_3HD4cGe7Ed6sZ_u7zCLa_g" name="pF22" type="_SI3HUGe7Ed6sZ_u7zCLa_g" isUnique="false" aggregation="composite"/>
+          <ownedAttribute xmi:type="uml:Port" xmi:id="_HqufEGe8Ed6sZ_u7zCLa_g" name="F2_Out1" type="_wzRREGe5Ed6sZ_u7zCLa_g" aggregation="composite"/>
+          <ownedAttribute xmi:type="uml:Port" xmi:id="_QgzH4Ge8Ed6sZ_u7zCLa_g" name="F2_In" type="_wzRREGe5Ed6sZ_u7zCLa_g" aggregation="composite"/>
+          <ownedAttribute xmi:type="uml:Port" xmi:id="_WjFQEGfgEd62bMlBxz1Keg" name="F2_Out2" type="_wzRREGe5Ed6sZ_u7zCLa_g" aggregation="composite"/>
+          <ownedConnector xmi:id="_M4uYgGe9Ed6sZ_u7zCLa_g" name="F2_InF21_Inconnector">
+            <end xmi:id="_M40fIGe9Ed6sZ_u7zCLa_g" role="_QgzH4Ge8Ed6sZ_u7zCLa_g"/>
+            <end xmi:id="_M40fIWe9Ed6sZ_u7zCLa_g" partWithPort="_2tqhAGe7Ed6sZ_u7zCLa_g" role="_OhGhAGe8Ed6sZ_u7zCLa_g"/>
+          </ownedConnector>
+          <ownedConnector xmi:id="_OlUdMGe9Ed6sZ_u7zCLa_g" name="F2_InF22_In2connector">
+            <end xmi:id="_Olaj0Ge9Ed6sZ_u7zCLa_g" role="_QgzH4Ge8Ed6sZ_u7zCLa_g"/>
+            <end xmi:id="_Olaj0We9Ed6sZ_u7zCLa_g" partWithPort="_3HD4cGe7Ed6sZ_u7zCLa_g" role="_PaUA8Ge8Ed6sZ_u7zCLa_g"/>
+          </ownedConnector>
+          <ownedConnector xmi:id="_Pg6iwGe9Ed6sZ_u7zCLa_g" name="F21_OutF2_Out1connector">
+            <end xmi:id="_PhApYGe9Ed6sZ_u7zCLa_g" partWithPort="_2tqhAGe7Ed6sZ_u7zCLa_g" role="_N_3cMGe8Ed6sZ_u7zCLa_g"/>
+            <end xmi:id="_PhApYWe9Ed6sZ_u7zCLa_g" role="_HqufEGe8Ed6sZ_u7zCLa_g"/>
+          </ownedConnector>
+          <ownedConnector xmi:id="_QhqOEGe9Ed6sZ_u7zCLa_g" name="F21_OutF22_In1connector">
+            <end xmi:id="_QhqOEWe9Ed6sZ_u7zCLa_g" partWithPort="_2tqhAGe7Ed6sZ_u7zCLa_g" role="_N_3cMGe8Ed6sZ_u7zCLa_g"/>
+            <end xmi:id="_QhwUsGe9Ed6sZ_u7zCLa_g" partWithPort="_3HD4cGe7Ed6sZ_u7zCLa_g" role="_O9wAwGe8Ed6sZ_u7zCLa_g"/>
+          </ownedConnector>
+          <ownedConnector xmi:id="_RlTvsGf6Ed6IKv65eiVddw" name="F22_OutF2_Out2connector">
+            <end xmi:id="_RlZ2UGf6Ed6IKv65eiVddw" partWithPort="_3HD4cGe7Ed6sZ_u7zCLa_g" role="_M3eQwGe8Ed6sZ_u7zCLa_g"/>
+            <end xmi:id="_RlZ2UWf6Ed6IKv65eiVddw" role="_WjFQEGfgEd62bMlBxz1Keg"/>
+          </ownedConnector>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_SI3HUGe7Ed6sZ_u7zCLa_g" name="F22">
+          <ownedAttribute xmi:type="uml:Port" xmi:id="_M3eQwGe8Ed6sZ_u7zCLa_g" name="F22_Out" type="_wzRREGe5Ed6sZ_u7zCLa_g" aggregation="composite"/>
+          <ownedAttribute xmi:type="uml:Port" xmi:id="_O9wAwGe8Ed6sZ_u7zCLa_g" name="F22_In1" type="_wzRREGe5Ed6sZ_u7zCLa_g" aggregation="composite"/>
+          <ownedAttribute xmi:type="uml:Port" xmi:id="_PaUA8Ge8Ed6sZ_u7zCLa_g" name="F22_In2" type="_wzRREGe5Ed6sZ_u7zCLa_g" aggregation="composite"/>
+          <ownedAttribute xmi:type="uml:Port" xmi:id="_VpPnYGfHEd62bMlBxz1Keg" name="appPltfErr_In" type="_1LsC0Ge5Ed6sZ_u7zCLa_g" aggregation="composite"/>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_-Ydv4GfDEd62bMlBxz1Keg" name="ErrBehavior_F22"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_V-swcGe7Ed6sZ_u7zCLa_g" name="F3">
+          <ownedAttribute xmi:type="uml:Port" xmi:id="_6dPfMGe9Ed6sZ_u7zCLa_g" name="F3_Out" type="_wzRREGe5Ed6sZ_u7zCLa_g" aggregation="composite"/>
+          <ownedAttribute xmi:type="uml:Port" xmi:id="_6dPfMWe9Ed6sZ_u7zCLa_g" name="F3_In1" type="_wzRREGe5Ed6sZ_u7zCLa_g" aggregation="composite">
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VxuPIWfhEd62bMlBxz1Keg" value="1"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VxuPIGfhEd62bMlBxz1Keg" value="1"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Port" xmi:id="_WOlwIGfHEd62bMlBxz1Keg" name="appPltfErr_In" type="_1LsC0Ge5Ed6sZ_u7zCLa_g" aggregation="composite"/>
+          <ownedAttribute xmi:type="uml:Port" xmi:id="_TAEm4GfhEd62bMlBxz1Keg" name="F3_In2" type="_wzRREGe5Ed6sZ_u7zCLa_g" aggregation="composite"/>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_-4EdAGfDEd62bMlBxz1Keg" name="ErrBehavior_F3"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_w4OXoGe7Ed6sZ_u7zCLa_g" name="F21">
+          <ownedAttribute xmi:type="uml:Port" xmi:id="_N_3cMGe8Ed6sZ_u7zCLa_g" name="F21_Out" type="_wzRREGe5Ed6sZ_u7zCLa_g" aggregation="composite"/>
+          <ownedAttribute xmi:type="uml:Port" xmi:id="_OhGhAGe8Ed6sZ_u7zCLa_g" name="F21_In" type="_wzRREGe5Ed6sZ_u7zCLa_g" aggregation="composite"/>
+          <ownedAttribute xmi:type="uml:Port" xmi:id="_sDWc8GfHEd62bMlBxz1Keg" name="appPltfErr_In" type="_1LsC0Ge5Ed6sZ_u7zCLa_g" aggregation="composite"/>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="__M_kIGfDEd62bMlBxz1Keg" name="ErrBehavior_F21"/>
+        </packagedElement>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_Y7ETkGe-Ed6sZ_u7zCLa_g" name="Package_HA">
+        <packagedElement xmi:type="uml:Class" xmi:id="_iMRZMGe-Ed6sZ_u7zCLa_g" name="ECU">
+          <ownedAttribute xmi:type="uml:Port" xmi:id="_3fuvwGe-Ed6sZ_u7zCLa_g" name="CANPort" type="__lR6kGe-Ed6sZ_u7zCLa_g" aggregation="composite"/>
+          <ownedAttribute xmi:type="uml:Port" xmi:id="_tnoTIGfHEd62bMlBxz1Keg" name="appPltfErr_Out" type="_1LsC0Ge5Ed6sZ_u7zCLa_g" aggregation="composite">
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_vpCKMWfHEd62bMlBxz1Keg" value="1"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_vpCKMGfHEd62bMlBxz1Keg" value="1"/>
+          </ownedAttribute>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="__m-KYGfDEd62bMlBxz1Keg" name="ErrBehavior_ECU"/>
+        </packagedElement>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_b6R2sGe-Ed6sZ_u7zCLa_g" name="Package_ErrDef">
+        <ownedComment xmi:id="_HBD4MGfWEd62bMlBxz1Keg">
+          <body>{L_Omission, L_Commission, L_ValueErr, L_TimingErr}&#xD;
+{P_Omission, P_Commission, P_ValueErr, P_TimingErr}</body>
+        </ownedComment>
+        <packagedElement xmi:type="uml:Class" xmi:id="_GOmJMGfFEd62bMlBxz1Keg" name="F1_ErrLogic">
+          <ownedAttribute xmi:id="_X5TBoGfLEd62bMlBxz1Keg" name="description" visibility="public" isUnique="false" aggregation="composite">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FCU6oGfWEd62bMlBxz1Keg" value="1"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FCO0AGfWEd62bMlBxz1Keg" value="1"/>
+            <defaultValue xmi:type="uml:LiteralString" xmi:id="_W7O14GfWEd62bMlBxz1Keg" value="{&quot;O-F1_Out = F1_Failed or O-appPltfErr_In&quot;&quot;}"/>
+          </ownedAttribute>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_GyzCcGfFEd62bMlBxz1Keg" name="F21_ErrLogic">
+          <ownedAttribute xmi:id="_iaa3AGfLEd62bMlBxz1Keg" name="description" isUnique="false" aggregation="composite">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_G4qUsWfXEd62bMlBxz1Keg" value="1"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_G4qUsGfXEd62bMlBxz1Keg" value="1"/>
+            <defaultValue xmi:type="uml:LiteralString" xmi:id="_8vOmkGfWEd62bMlBxz1Keg" value="{&quot;O-F21_Out = O-F21_In or F21_Failed or O-appPltfErr_In&quot;}"/>
+          </ownedAttribute>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_HCXIcGfFEd62bMlBxz1Keg" name="F22_ErrLogic">
+          <ownedAttribute xmi:id="_cfkLsGfXEd62bMlBxz1Keg" name="description" isUnique="false" aggregation="composite">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_cfkLsWfXEd62bMlBxz1Keg" value="1"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_cfkLsmfXEd62bMlBxz1Keg" value="1"/>
+            <defaultValue xmi:type="uml:LiteralString" xmi:id="_Gq6XIGfYEd62bMlBxz1Keg" value="{&quot;O-F22_Out =(O-F22_In1 and ( F22_Failed or O-F22_In2)) or O-appPltfErr_In&quot;}"/>
+          </ownedAttribute>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_HSHbsGfFEd62bMlBxz1Keg" name="F3_ErrLogic">
+          <ownedAttribute xmi:id="_O1xDQGfZEd62bMlBxz1Keg" name="description" isUnique="false" aggregation="composite">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_gk9T8Wf8Ed6IKv65eiVddw" value="1"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_gk9T8Gf8Ed6IKv65eiVddw" value="1"/>
+            <defaultValue xmi:type="uml:LiteralString" xmi:id="_O1xDQ2fZEd62bMlBxz1Keg" value="{&quot;O-F3_Out =(O-F3_In1 and O-F3_In2) or F3_Failed or O-appPltfErr_In&quot;}"/>
+          </ownedAttribute>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_Hw964GfFEd62bMlBxz1Keg" name="ECU_ErrLogic">
+          <ownedAttribute xmi:id="_jQeVQGfLEd62bMlBxz1Keg" name="description" isUnique="false" aggregation="composite">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            <defaultValue xmi:type="uml:LiteralString" xmi:id="_kMk94GfbEd62bMlBxz1Keg" value="{&quot;L_Omission.appPltfErr_Out = ECU_Failed&quot;}"/>
+          </ownedAttribute>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_R0yeUGo4Ed6ctsnwzDmBQA" name="SysHazard" clientDependency="_FEJA4Go5Ed6ctsnwzDmBQA"/>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_t1YNgGfCEd6sZ_u7zCLa_g" name="FromAC1topECU1" supplier="_tmO7EGe-Ed6sZ_u7zCLa_g" client="_SKQKQGfCEd6sZ_u7zCLa_g"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_1FRisGfCEd6sZ_u7zCLa_g" name="FromAC2topF21" supplier="_2tqhAGe7Ed6sZ_u7zCLa_g" client="_T2Xt0GfCEd6sZ_u7zCLa_g"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_2X_HwGfCEd6sZ_u7zCLa_g" name="FromAC2topECU1" supplier="_tmO7EGe-Ed6sZ_u7zCLa_g" client="_T2Xt0GfCEd6sZ_u7zCLa_g"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_25stsGfCEd6sZ_u7zCLa_g" name="FromAC3topF22" supplier="_3HD4cGe7Ed6sZ_u7zCLa_g" client="_USELUGfCEd6sZ_u7zCLa_g"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_3kxrAGfCEd6sZ_u7zCLa_g" name="FromAC3topECU2" supplier="_uAHasGe-Ed6sZ_u7zCLa_g" client="_USELUGfCEd6sZ_u7zCLa_g"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_4PdmwGfCEd6sZ_u7zCLa_g" name="FromAC4topECU2" supplier="_uAHasGe-Ed6sZ_u7zCLa_g" client="_Uoa10GfCEd6sZ_u7zCLa_g"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_4wU4IGfCEd6sZ_u7zCLa_g" name="FromAC4topF3" supplier="_ndrd4Ge9Ed6sZ_u7zCLa_g" client="_Uoa10GfCEd6sZ_u7zCLa_g"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_FEJA4Go5Ed6ctsnwzDmBQA" name="FromSysHazardtosysPort" supplier="_zF9MwGonEd6ctsnwzDmBQA" client="_R0yeUGo4Ed6ctsnwzDmBQA"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_AXUQIGpfEd6AKcAREGtDhg" name="FromsysPorttoSysHazard" supplier="_R0yeUGo4Ed6ctsnwzDmBQA" client="_zF9MwGonEd6ctsnwzDmBQA"/>
+    <profileApplication xmi:id="_y6arIme2Ed6sZ_u7zCLa_g">
+      <eAnnotations xmi:id="_y6arI2e2Ed6sZ_u7zCLa_g" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/uml2/schemas/Standard/1#/"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
+    </profileApplication>
+    <profileApplication xmi:id="_y6arJGe2Ed6sZ_u7zCLa_g">
+      <eAnnotations xmi:id="_y6arJWe2Ed6sZ_u7zCLa_g" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.papyrusuml.org/EAST-ADL2/1#//variability"/>
+      </eAnnotations>
+      <appliedProfile href="../../../plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_i-WL-TxIEdyqfK4bFJstMQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_y6arJme2Ed6sZ_u7zCLa_g">
+      <eAnnotations xmi:id="_y6arJ2e2Ed6sZ_u7zCLa_g" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.papyrusuml.org/EAST-ADL2/1#//behavior"/>
+      </eAnnotations>
+      <appliedProfile href="../../../plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_i-WMfjxIEdyqfK4bFJstMQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_y6arKGe2Ed6sZ_u7zCLa_g">
+      <eAnnotations xmi:id="_y6arKWe2Ed6sZ_u7zCLa_g" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.papyrusuml.org/EAST-ADL2/1#//behavior/errorbehavior"/>
+      </eAnnotations>
+      <appliedProfile href="../../../plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_i-WMfzxIEdyqfK4bFJstMQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_y6arKme2Ed6sZ_u7zCLa_g">
+      <eAnnotations xmi:id="_y6arK2e2Ed6sZ_u7zCLa_g" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.papyrusuml.org/EAST-ADL2/1#//requirements"/>
+      </eAnnotations>
+      <appliedProfile href="../../../plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_i-WLPzxIEdyqfK4bFJstMQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_y6arLGe2Ed6sZ_u7zCLa_g">
+      <eAnnotations xmi:id="_y6arLWe2Ed6sZ_u7zCLa_g" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.papyrusuml.org/EAST-ADL2/1#//requirements/safetyrequirement"/>
+      </eAnnotations>
+      <appliedProfile href="../../../plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_ZNvgwN4lEdyW6f_GAa5b1w"/>
+    </profileApplication>
+    <profileApplication xmi:id="_y6arLme2Ed6sZ_u7zCLa_g">
+      <eAnnotations xmi:id="_y6arL2e2Ed6sZ_u7zCLa_g" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.papyrusuml.org/EAST-ADL2/1#//requirements/safetycase"/>
+      </eAnnotations>
+      <appliedProfile href="../../../plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_Tb650N4qEdyW6f_GAa5b1w"/>
+    </profileApplication>
+    <profileApplication xmi:id="_y6arMGe2Ed6sZ_u7zCLa_g">
+      <eAnnotations xmi:id="_y6arMWe2Ed6sZ_u7zCLa_g" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.papyrusuml.org/EAST-ADL2/1#//structure/functionmodeling"/>
+      </eAnnotations>
+      <appliedProfile href="../../../plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_i-WP9DxIEdyqfK4bFJstMQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_y6arMme2Ed6sZ_u7zCLa_g">
+      <eAnnotations xmi:id="_y6arM2e2Ed6sZ_u7zCLa_g" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.papyrusuml.org/EAST-ADL2/1#//structure/featuremodeling"/>
+      </eAnnotations>
+      <appliedProfile href="../../../plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_i-f62DxIEdyqfK4bFJstMQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_y6arNGe2Ed6sZ_u7zCLa_g">
+      <eAnnotations xmi:id="_y6arNWe2Ed6sZ_u7zCLa_g" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.papyrusuml.org/EAST-ADL2/1#//structure/environmentmodeling"/>
+      </eAnnotations>
+      <appliedProfile href="../../../plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_i-f77zxIEdyqfK4bFJstMQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_y6arNme2Ed6sZ_u7zCLa_g">
+      <eAnnotations xmi:id="_y6arN2e2Ed6sZ_u7zCLa_g" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.papyrusuml.org/EAST-ADL2/1#//structure/systemmodel"/>
+      </eAnnotations>
+      <appliedProfile href="../../../plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_i-f8CzxIEdyqfK4bFJstMQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_y6arOGe2Ed6sZ_u7zCLa_g">
+      <eAnnotations xmi:id="_y6arOWe2Ed6sZ_u7zCLa_g" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.papyrusuml.org/EAST-ADL2/1#//structure/hardwaredesignarchitecture"/>
+      </eAnnotations>
+      <appliedProfile href="../../../plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_V5LXIHJVEdyx6oOkwavytg"/>
+    </profileApplication>
+    <profileApplication xmi:id="_y6arOme2Ed6sZ_u7zCLa_g">
+      <eAnnotations xmi:id="_y6arO2e2Ed6sZ_u7zCLa_g" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.papyrusuml.org/EAST-ADL2/1#//structure/vehiclefeaturemodeling"/>
+      </eAnnotations>
+      <appliedProfile href="../../../plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_VtDYsNl5EdyxEqZvsyllRw"/>
+    </profileApplication>
+    <profileApplication xmi:id="_y6arPGe2Ed6sZ_u7zCLa_g">
+      <eAnnotations xmi:id="_y6arPWe2Ed6sZ_u7zCLa_g" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.papyrusuml.org/EAST-ADL2/1#//support"/>
+      </eAnnotations>
+      <appliedProfile href="../../../plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_i-WLITxIEdyqfK4bFJstMQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_y6arPme2Ed6sZ_u7zCLa_g">
+      <eAnnotations xmi:id="_y6arP2e2Ed6sZ_u7zCLa_g" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.papyrusuml.org/EAST-ADL2/1#//verificationvalidation"/>
+      </eAnnotations>
+      <appliedProfile href="../../../plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_i-WKtDxIEdyqfK4bFJstMQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_y6arQGe2Ed6sZ_u7zCLa_g">
+      <eAnnotations xmi:id="_y6arQWe2Ed6sZ_u7zCLa_g" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.papyrusuml.org/EAST-ADL2/1#//userattributes"/>
+      </eAnnotations>
+      <appliedProfile href="../../../plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_2M5XsNu0EdyN-KVwISucrA"/>
+    </profileApplication>
+    <profileApplication xmi:id="_y6arQme2Ed6sZ_u7zCLa_g">
+      <eAnnotations xmi:id="_y6arQ2e2Ed6sZ_u7zCLa_g" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.papyrusuml.org/EAST-ADL2/1#//adlcoreconstructs"/>
+      </eAnnotations>
+      <appliedProfile href="../../../plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_i-WNLDxIEdyqfK4bFJstMQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_y6arRGe2Ed6sZ_u7zCLa_g">
+      <eAnnotations xmi:id="_y6arRWe2Ed6sZ_u7zCLa_g" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.papyrusuml.org/EAST-ADL2/1#//adlcoreconstructs/adltypes"/>
+      </eAnnotations>
+      <appliedProfile href="../../../plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_i-WNLTxIEdyqfK4bFJstMQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_y6arRme2Ed6sZ_u7zCLa_g">
+      <eAnnotations xmi:id="_y6arR2e2Ed6sZ_u7zCLa_g" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.papyrusuml.org/EAST-ADL2/1#//adlcoreconstructs/adlrelationshipmodeling"/>
+      </eAnnotations>
+      <appliedProfile href="../../../plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_i-WNZjxIEdyqfK4bFJstMQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_y6arSGe2Ed6sZ_u7zCLa_g">
+      <eAnnotations xmi:id="_y6arSWe2Ed6sZ_u7zCLa_g" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.papyrusuml.org/SysML/1#//blocks"/>
+      </eAnnotations>
+      <appliedProfile href="../../../plugin/com.cea.papyrus.uml4sysml.extension/model/SysML.profile.uml#_fSw28LX7EduFmqQsrNB9lw"/>
+    </profileApplication>
+    <profileApplication xmi:id="_tH8a8OmDEd6uJbAy1zvb0Q">
+      <eAnnotations xmi:id="_tLSC0OmDEd6uJbAy1zvb0Q" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.papyrusuml.org/EAST-ADL2/1#/"/>
+      </eAnnotations>
+      <appliedProfile href="../../../../plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_i-WJIDxIEdyqfK4bFJstMQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_tLYJcOmDEd6uJbAy1zvb0Q">
+      <eAnnotations xmi:id="_tMoGoOmDEd6uJbAy1zvb0Q" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.papyrusuml.org/EAST-ADL2/1#//variability"/>
+      </eAnnotations>
+      <appliedProfile href="../../../../plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_i-WL-TxIEdyqfK4bFJstMQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_tMuNQOmDEd6uJbAy1zvb0Q">
+      <eAnnotations xmi:id="_tP3n4OmDEd6uJbAy1zvb0Q" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.papyrusuml.org/EAST-ADL2/1#//behavior/errorbehavior"/>
+      </eAnnotations>
+      <appliedProfile href="../../../../plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_i-WMfzxIEdyqfK4bFJstMQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_weDbIOmDEd6uJbAy1zvb0Q">
+      <eAnnotations xmi:id="_wfTYUOmDEd6uJbAy1zvb0Q" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.papyrusuml.org/EAST-ADL2/1#//structure/functionmodeling"/>
+      </eAnnotations>
+      <appliedProfile href="../../../../plugin/com.cea.papyrus.uml4eastadl.extension/model/eastadl.profile.uml#_i-WP9DxIEdyqfK4bFJstMQ"/>
+    </profileApplication>
+  </uml:Model>
+  <SystemModel:ADLSystemModel xmi:id="_y7qBQGe2Ed6sZ_u7zCLa_g" base_Class="_y7RmwGe2Ed6sZ_u7zCLa_g">
+    <analysisArchitecture xmi:id="_y7wH4Ge2Ed6sZ_u7zCLa_g" base_Class="_y7qBQWe2Ed6sZ_u7zCLa_g">
+      <functionAnalysisArchitecture xmi:id="_y8a2QGe2Ed6sZ_u7zCLa_g" base_Class="_y8UvoWe2Ed6sZ_u7zCLa_g"/>
+    </analysisArchitecture>
+    <designArchitecture xmi:id="_y78VIGe2Ed6sZ_u7zCLa_g" base_Class="_y72OgGe2Ed6sZ_u7zCLa_g">
+      <functionalDesignArchitecture xmi:id="_y8nDgGe2Ed6sZ_u7zCLa_g" base_Class="_y8g84Ge2Ed6sZ_u7zCLa_g"/>
+      <hardwareDesignArchitecture xmi:id="_y8tKIGe2Ed6sZ_u7zCLa_g" base_Class="_y8nDgWe2Ed6sZ_u7zCLa_g"/>
+    </designArchitecture>
+    <implementationArchitecture xmi:id="_y8UvoGe2Ed6sZ_u7zCLa_g" base_Class="_y78VIWe2Ed6sZ_u7zCLa_g"/>
+  </SystemModel:ADLSystemModel>
+  <ADLTypes:ADLDesignDataType xmi:id="_wzjk8Ge5Ed6sZ_u7zCLa_g" base_DataType="_wzRREGe5Ed6sZ_u7zCLa_g"/>
+  <ADLTypes:ADLDesignDataType xmi:id="_1L-WsGe5Ed6sZ_u7zCLa_g" base_DataType="_1LsC0Ge5Ed6sZ_u7zCLa_g" unit="_5-2P0Ge5Ed6sZ_u7zCLa_g" dimension="__Q28AGe5Ed6sZ_u7zCLa_g" resolution="{O, C, V, T}"/>
+  <Blocks:Unit xmi:id="_5-2P0Ge5Ed6sZ_u7zCLa_g" base_InstanceSpecification="_5-qCkGe5Ed6sZ_u7zCLa_g" dimension="__Q28AGe5Ed6sZ_u7zCLa_g"/>
+  <Blocks:Dimension xmi:id="__Q28AGe5Ed6sZ_u7zCLa_g" base_InstanceSpecification="__Qw1YGe5Ed6sZ_u7zCLa_g"/>
+  <FunctionModeling:ADLConnectorPrototype xmi:id="_galrEGe8Ed6sZ_u7zCLa_g"/>
+  <FunctionModeling:ADLConnectorPrototype xmi:id="_hVU1AGe8Ed6sZ_u7zCLa_g"/>
+  <FunctionModeling:ADLConnectorPrototype xmi:id="_sVk2YGe8Ed6sZ_u7zCLa_g"/>
+  <FunctionModeling:ADLConnectorPrototype xmi:id="_tXqlgGe8Ed6sZ_u7zCLa_g"/>
+  <FunctionModeling:ADLConnectorPrototype xmi:id="_t-WLAGe8Ed6sZ_u7zCLa_g"/>
+  <FunctionModeling:ADLConnectorPrototype xmi:id="_P6YWMGe-Ed6sZ_u7zCLa_g"/>
+  <FunctionModeling:ADLConnectorPrototype xmi:id="_QoOToGe-Ed6sZ_u7zCLa_g"/>
+  <ADLTypes:ADLDesignDataType xmi:id="__leH0Ge-Ed6sZ_u7zCLa_g" base_DataType="__lR6kGe-Ed6sZ_u7zCLa_g"/>
+  <Requirements:AllocationConstraint xmi:id="_SKcXgGfCEd6sZ_u7zCLa_g" base_Class="_SKQKQGfCEd6sZ_u7zCLa_g" target="_tmbvYGe-Ed6sZ_u7zCLa_g"/>
+  <Requirements:AllocationConstraint xmi:id="_T2j7EGfCEd6sZ_u7zCLa_g" base_Class="_T2Xt0GfCEd6sZ_u7zCLa_g" allocatedElement="_2tqhAGe7Ed6sZ_u7zCLa_g" target="_tmbvYGe-Ed6sZ_u7zCLa_g"/>
+  <Requirements:AllocationConstraint xmi:id="_USQYkGfCEd6sZ_u7zCLa_g" base_Class="_USELUGfCEd6sZ_u7zCLa_g" allocatedElement="_3HD4cGe7Ed6sZ_u7zCLa_g" target="_uATn8Ge-Ed6sZ_u7zCLa_g"/>
+  <Requirements:AllocationConstraint xmi:id="_UonDEGfCEd6sZ_u7zCLa_g" base_Class="_Uoa10GfCEd6sZ_u7zCLa_g" allocatedElement="_ndrd4Ge9Ed6sZ_u7zCLa_g" target="_uATn8Ge-Ed6sZ_u7zCLa_g"/>
+  <FunctionModeling:ADLFunctionType xmi:id="_MYS24Ge7Ed6sZ_u7zCLa_g" base_Class="_MYGpoGe7Ed6sZ_u7zCLa_g"/>
+  <ErrorBehavior:ErrorModelType xmi:id="_ephR4GfDEd62bMlBxz1Keg" description="" base_Class="_MYGpoGe7Ed6sZ_u7zCLa_g" genericDescription="{&quot;L_Omission.F1_Out = F1_Failed OR L_Omission.appPltfErr_In&quot;}">
+    <errorBehaviorDescription xmi:type="ErrorBehavior:ExternalErrorBehavior" xmi:id="_69LUwGfDEd62bMlBxz1Keg" base_Behavior="_3y5KEGfDEd62bMlBxz1Keg" failureLogic="_LFFXAGfFEd62bMlBxz1Keg">
+      <internalErrorEvent xmi:id="_qY3YcGfEEd62bMlBxz1Keg" base_Class="_qYlEkGfEEd62bMlBxz1Keg"/>
+    </errorBehaviorDescription>
+  </ErrorBehavior:ErrorModelType>
+  <FunctionModeling:ADLFunctionType xmi:id="_OshjUGe7Ed6sZ_u7zCLa_g" base_Class="_OsVWEGe7Ed6sZ_u7zCLa_g"/>
+  <ErrorBehavior:ErrorModelType xmi:id="_iqz9EGfDEd62bMlBxz1Keg" base_Class="_OsVWEGe7Ed6sZ_u7zCLa_g"/>
+  <FunctionModeling:ADLFunctionType xmi:id="_SJDUkGe7Ed6sZ_u7zCLa_g" base_Class="_SI3HUGe7Ed6sZ_u7zCLa_g"/>
+  <ErrorBehavior:ErrorModelType xmi:id="_kNLuwGfDEd62bMlBxz1Keg" base_Class="_SI3HUGe7Ed6sZ_u7zCLa_g" genericDescription="{&quot;L_Omission.F22_Out = (L_Omission.F22_In1 AND ( F22_Failed OR L_Omission.F22_In2)) OR L_Omission.appPltfErr_In&quot;}">
+    <errorBehaviorDescription xmi:type="ErrorBehavior:ExternalErrorBehavior" xmi:id="_fhrzgGfEEd62bMlBxz1Keg" base_Behavior="_-Ydv4GfDEd62bMlBxz1Keg" failureLogic="_PX8TUGfFEd62bMlBxz1Keg">
+      <internalErrorEvent xmi:id="_rO0wEGfEEd62bMlBxz1Keg" base_Class="_rOcVkGfEEd62bMlBxz1Keg"/>
+    </errorBehaviorDescription>
+  </ErrorBehavior:ErrorModelType>
+  <FunctionModeling:ADLFunctionType xmi:id="_V-49sGe7Ed6sZ_u7zCLa_g" base_Class="_V-swcGe7Ed6sZ_u7zCLa_g"/>
+  <ErrorBehavior:ErrorModelType xmi:id="_lVSmUGfDEd62bMlBxz1Keg" base_Class="_V-swcGe7Ed6sZ_u7zCLa_g" genericDescription="{&quot;L_Omission.F3_Out =( L_Omission.F3_In1 AND L_Omission.F3_In2) OR F3_Failed OR L_Omission.appPltfErr_In&quot;}">
+    <errorBehaviorDescription xmi:type="ErrorBehavior:ExternalErrorBehavior" xmi:id="_gp-4UGfEEd62bMlBxz1Keg" base_Behavior="_-4EdAGfDEd62bMlBxz1Keg" failureLogic="_Qc5wQGfFEd62bMlBxz1Keg">
+      <internalErrorEvent xmi:id="_rgrVEGfEEd62bMlBxz1Keg" base_Class="_rgZBMGfEEd62bMlBxz1Keg"/>
+    </errorBehaviorDescription>
+  </ErrorBehavior:ErrorModelType>
+  <FunctionModeling:ADLFunctionType xmi:id="_w4ak4Ge7Ed6sZ_u7zCLa_g" base_Class="_w4OXoGe7Ed6sZ_u7zCLa_g"/>
+  <ErrorBehavior:ErrorModelType xmi:id="_ma6KkGfDEd62bMlBxz1Keg" base_Class="_w4OXoGe7Ed6sZ_u7zCLa_g" genericDescription="{&quot;L_Omission.F21_Out = L_Omission.F21_In OR F21_Failed OR L_Omission.appPltfErr_In&quot;}">
+    <errorBehaviorDescription xmi:type="ErrorBehavior:ExternalErrorBehavior" xmi:id="_htN28GfEEd62bMlBxz1Keg" base_Behavior="__M_kIGfDEd62bMlBxz1Keg" failureLogic="_OWoAQGfFEd62bMlBxz1Keg">
+      <internalErrorEvent xmi:id="_q8rQIGfEEd62bMlBxz1Keg" base_Class="_q8Y8QGfEEd62bMlBxz1Keg"/>
+    </errorBehaviorDescription>
+  </ErrorBehavior:ErrorModelType>
+  <ErrorBehavior:ErrorModelType xmi:id="_rHpmgGfDEd62bMlBxz1Keg" base_Class="_y8nDgWe2Ed6sZ_u7zCLa_g"/>
+  <ErrorBehavior:ErrorModelType xmi:id="_tBVE8GfDEd62bMlBxz1Keg" base_Class="_y8g84Ge2Ed6sZ_u7zCLa_g"/>
+  <FunctionModeling:ADLFunctionPrototype xmi:id="_mtiaYGe9Ed6sZ_u7zCLa_g" base_Property="_mtWNIGe9Ed6sZ_u7zCLa_g"/>
+  <ErrorBehavior:ErrorModelPrototype xmi:id="_uL0iIGfDEd62bMlBxz1Keg" base_Property="_mtWNIGe9Ed6sZ_u7zCLa_g"/>
+  <HardwareDesignArchitecture:ECU xmi:id="_iMeNgGe-Ed6sZ_u7zCLa_g" base_Class="_iMRZMGe-Ed6sZ_u7zCLa_g"/>
+  <ErrorBehavior:ErrorModelType xmi:id="_xJTm8GfDEd62bMlBxz1Keg" base_Class="_iMRZMGe-Ed6sZ_u7zCLa_g" genericDescription="{&quot;L_Omission.appPltfErr_Out = ECU_Failed&quot;}">
+    <errorBehaviorDescription xmi:type="ErrorBehavior:ExternalErrorBehavior" xmi:id="_izN1sGfEEd62bMlBxz1Keg" base_Behavior="__m-KYGfDEd62bMlBxz1Keg" failureLogic="_SP-3cGfFEd62bMlBxz1Keg">
+      <internalErrorEvent xmi:id="_sGZ4UGfEEd62bMlBxz1Keg" base_Class="_sGBd0GfEEd62bMlBxz1Keg"/>
+    </errorBehaviorDescription>
+  </ErrorBehavior:ErrorModelType>
+  <HardwareDesignArchitecture:ADLHwElementPrototype xmi:id="_tmbvYGe-Ed6sZ_u7zCLa_g" base_Property="_tmO7EGe-Ed6sZ_u7zCLa_g"/>
+  <ErrorBehavior:ErrorModelPrototype xmi:id="_yqV74GfDEd62bMlBxz1Keg" base_Property="_tmO7EGe-Ed6sZ_u7zCLa_g"/>
+  <FunctionModeling:ADLFunctionPrototype xmi:id="_2t804Ge7Ed6sZ_u7zCLa_g" base_Property="_2tqhAGe7Ed6sZ_u7zCLa_g"/>
+  <ErrorBehavior:ErrorModelPrototype xmi:id="_QMDtUGfEEd62bMlBxz1Keg" base_Property="_2tqhAGe7Ed6sZ_u7zCLa_g"/>
+  <FunctionModeling:ADLFunctionPrototype xmi:id="_3HQswGe7Ed6sZ_u7zCLa_g" base_Property="_3HD4cGe7Ed6sZ_u7zCLa_g"/>
+  <ErrorBehavior:ErrorModelPrototype xmi:id="_RiriAGfEEd62bMlBxz1Keg" base_Property="_3HD4cGe7Ed6sZ_u7zCLa_g"/>
+  <ErrorBehavior:HIPHOPS_Format xmi:id="_LFFXAGfFEd62bMlBxz1Keg" base_Class="_GOmJMGfFEd62bMlBxz1Keg"/>
+  <ErrorBehavior:HIPHOPS_Format xmi:id="_OWoAQGfFEd62bMlBxz1Keg" base_Class="_GyzCcGfFEd62bMlBxz1Keg"/>
+  <ErrorBehavior:HIPHOPS_Format xmi:id="_PX8TUGfFEd62bMlBxz1Keg" base_Class="_HCXIcGfFEd62bMlBxz1Keg"/>
+  <ErrorBehavior:HIPHOPS_Format xmi:id="_Qc5wQGfFEd62bMlBxz1Keg" base_Class="_HSHbsGfFEd62bMlBxz1Keg"/>
+  <ErrorBehavior:HIPHOPS_Format xmi:id="_SP-3cGfFEd62bMlBxz1Keg" base_Class="_Hw964GfFEd62bMlBxz1Keg"/>
+  <FunctionModeling:ADLOutFlowPort xmi:id="_JXAIwGe-Ed6sZ_u7zCLa_g" base_Port="_HDWEEGe-Ed6sZ_u7zCLa_g"/>
+  <ErrorBehavior:ErrorPort xmi:id="_jC-6kGfFEd62bMlBxz1Keg" base_Port="_HDWEEGe-Ed6sZ_u7zCLa_g" errorType="_1L-WsGe5Ed6sZ_u7zCLa_g"/>
+  <FunctionModeling:ADLInFlowPort xmi:id="_QhFbwGe8Ed6sZ_u7zCLa_g" base_Port="_QgzH4Ge8Ed6sZ_u7zCLa_g"/>
+  <ErrorBehavior:ErrorPort xmi:id="_nOTrgGfFEd62bMlBxz1Keg" base_Port="_QgzH4Ge8Ed6sZ_u7zCLa_g" errorType="_1L-WsGe5Ed6sZ_u7zCLa_g"/>
+  <FunctionModeling:ADLInFlowPort xmi:id="_OhY04Ge8Ed6sZ_u7zCLa_g" base_Port="_OhGhAGe8Ed6sZ_u7zCLa_g"/>
+  <ErrorBehavior:ErrorPort xmi:id="_pk0P4GfFEd62bMlBxz1Keg" base_Port="_OhGhAGe8Ed6sZ_u7zCLa_g" errorType="_1L-WsGe5Ed6sZ_u7zCLa_g"/>
+  <FunctionModeling:ADLOutFlowPort xmi:id="_OADpcGe8Ed6sZ_u7zCLa_g" base_Port="_N_3cMGe8Ed6sZ_u7zCLa_g"/>
+  <ErrorBehavior:ErrorPort xmi:id="_r7z8cGfFEd62bMlBxz1Keg" base_Port="_N_3cMGe8Ed6sZ_u7zCLa_g" errorType="_1L-WsGe5Ed6sZ_u7zCLa_g"/>
+  <FunctionModeling:ADLInFlowPort xmi:id="_O98OAGe8Ed6sZ_u7zCLa_g" base_Port="_O9wAwGe8Ed6sZ_u7zCLa_g"/>
+  <ErrorBehavior:ErrorPort xmi:id="_t5yFAGfFEd62bMlBxz1Keg" base_Port="_O9wAwGe8Ed6sZ_u7zCLa_g" errorType="_1L-WsGe5Ed6sZ_u7zCLa_g"/>
+  <FunctionModeling:ADLInFlowPort xmi:id="_PamU0Ge8Ed6sZ_u7zCLa_g" base_Port="_PaUA8Ge8Ed6sZ_u7zCLa_g"/>
+  <ErrorBehavior:ErrorPort xmi:id="_wYUkAGfFEd62bMlBxz1Keg" base_Port="_PaUA8Ge8Ed6sZ_u7zCLa_g" errorType="_1L-WsGe5Ed6sZ_u7zCLa_g"/>
+  <FunctionModeling:ADLOutFlowPort xmi:id="_M3qeAGe8Ed6sZ_u7zCLa_g" base_Port="_M3eQwGe8Ed6sZ_u7zCLa_g"/>
+  <ErrorBehavior:ErrorPort xmi:id="_yYxY0GfFEd62bMlBxz1Keg" base_Port="_M3eQwGe8Ed6sZ_u7zCLa_g" errorType="_1L-WsGe5Ed6sZ_u7zCLa_g"/>
+  <FunctionModeling:ADLOutFlowPort xmi:id="_HrAy8Ge8Ed6sZ_u7zCLa_g" base_Port="_HqufEGe8Ed6sZ_u7zCLa_g"/>
+  <ErrorBehavior:ErrorPort xmi:id="_0xxQgGfFEd62bMlBxz1Keg" base_Port="_HqufEGe8Ed6sZ_u7zCLa_g" errorType="_1L-WsGe5Ed6sZ_u7zCLa_g"/>
+  <FunctionModeling:ADLInFlowPort xmi:id="__Nb3wGe9Ed6sZ_u7zCLa_g" base_Port="_6dPfMWe9Ed6sZ_u7zCLa_g"/>
+  <ErrorBehavior:ErrorPort xmi:id="_2yhAQGfFEd62bMlBxz1Keg" base_Port="_6dPfMWe9Ed6sZ_u7zCLa_g" errorType="_1L-WsGe5Ed6sZ_u7zCLa_g"/>
+  <FunctionModeling:ADLOutFlowPort xmi:id="_-hmFcGe9Ed6sZ_u7zCLa_g" base_Port="_6dPfMGe9Ed6sZ_u7zCLa_g"/>
+  <ErrorBehavior:ErrorPort xmi:id="_5HTtYGfFEd62bMlBxz1Keg" base_Port="_6dPfMGe9Ed6sZ_u7zCLa_g" errorType="_1L-WsGe5Ed6sZ_u7zCLa_g"/>
+  <ADLTypes:ADLDesignDataType xmi:id="_J4o8kGfGEd62bMlBxz1Keg" base_DataType="_BYPo0GfGEd62bMlBxz1Keg" unit="_McVoYGfGEd62bMlBxz1Keg" dimension="_NQfCIGfGEd62bMlBxz1Keg" resolution="{O, C, V, T}"/>
+  <Blocks:Unit xmi:id="_McVoYGfGEd62bMlBxz1Keg" base_InstanceSpecification="_BYPo0WfGEd62bMlBxz1Keg" dimension="_NQfCIGfGEd62bMlBxz1Keg"/>
+  <Blocks:Dimension xmi:id="_NQfCIGfGEd62bMlBxz1Keg" base_InstanceSpecification="_BYPo0mfGEd62bMlBxz1Keg"/>
+  <HardwareDesignArchitecture:CommunicationHwPort xmi:id="_3gBDoGe-Ed6sZ_u7zCLa_g" base_Port="_3fuvwGe-Ed6sZ_u7zCLa_g"/>
+  <ErrorBehavior:ErrorPort xmi:id="_i6sEwGfGEd62bMlBxz1Keg" base_Port="_3fuvwGe-Ed6sZ_u7zCLa_g" errorType="_J4o8kGfGEd62bMlBxz1Keg"/>
+  <ErrorBehavior:ErrorPort xmi:id="_UE9xMGfHEd62bMlBxz1Keg" base_Port="_UElWsGfHEd62bMlBxz1Keg"/>
+  <ErrorBehavior:ErrorPort xmi:id="_VKl8gGfHEd62bMlBxz1Keg"/>
+  <ErrorBehavior:ErrorPort xmi:id="_VpoB4GfHEd62bMlBxz1Keg" base_Port="_VpPnYGfHEd62bMlBxz1Keg"/>
+  <ErrorBehavior:ErrorPort xmi:id="_WO4EAGfHEd62bMlBxz1Keg" base_Port="_WOlwIGfHEd62bMlBxz1Keg"/>
+  <ErrorBehavior:ErrorPort xmi:id="_XK2kEGfHEd62bMlBxz1Keg"/>
+  <ErrorBehavior:ErrorPort xmi:id="_sDu3cGfHEd62bMlBxz1Keg" base_Port="_sDWc8GfHEd62bMlBxz1Keg"/>
+  <ErrorBehavior:ErrorPort xmi:id="_toAtoGfHEd62bMlBxz1Keg" base_Port="_tnoTIGfHEd62bMlBxz1Keg"/>
+  <ErrorBehavior:ErrorPort xmi:id="_wVEJwGfHEd62bMlBxz1Keg"/>
+  <FunctionModeling:ADLFunctionPrototype xmi:id="_nELYwGe9Ed6sZ_u7zCLa_g"/>
+  <ErrorBehavior:ErrorModelPrototype xmi:id="_MDj_MGfKEd62bMlBxz1Keg"/>
+  <FunctionModeling:ADLFunctionPrototype xmi:id="_nd3rIGe9Ed6sZ_u7zCLa_g" base_Property="_ndrd4Ge9Ed6sZ_u7zCLa_g"/>
+  <ErrorBehavior:ErrorModelPrototype xmi:id="_N_ti0GfKEd62bMlBxz1Keg" base_Property="_ndrd4Ge9Ed6sZ_u7zCLa_g"/>
+  <HardwareDesignArchitecture:ADLHwElementPrototype xmi:id="_uATn8Ge-Ed6sZ_u7zCLa_g" base_Property="_uAHasGe-Ed6sZ_u7zCLa_g"/>
+  <ErrorBehavior:ErrorModelPrototype xmi:id="_RlHjQGfKEd62bMlBxz1Keg" base_Property="_uAHasGe-Ed6sZ_u7zCLa_g"/>
+  <FunctionModeling:ADLConnectorPrototype xmi:id="_d3JEoGfBEd6sZ_u7zCLa_g" base_Connector="_d2wqIGfBEd6sZ_u7zCLa_g"/>
+  <ErrorBehavior:ErrorPropagationLink xmi:id="_TC5v4GfKEd62bMlBxz1Keg" base_Connector="_d2wqIGfBEd6sZ_u7zCLa_g"/>
+  <FunctionModeling:ADLConnectorPrototype xmi:id="_M46lwGe9Ed6sZ_u7zCLa_g" base_Connector="_M4uYgGe9Ed6sZ_u7zCLa_g"/>
+  <ErrorBehavior:ErrorPropagationLink xmi:id="_U-lZcGfKEd62bMlBxz1Keg" base_Connector="_M4uYgGe9Ed6sZ_u7zCLa_g"/>
+  <FunctionModeling:ADLConnectorPrototype xmi:id="_Ols3sGe9Ed6sZ_u7zCLa_g" base_Connector="_OlUdMGe9Ed6sZ_u7zCLa_g"/>
+  <ErrorBehavior:ErrorPropagationLink xmi:id="_WRMQ0GfKEd62bMlBxz1Keg" base_Connector="_OlUdMGe9Ed6sZ_u7zCLa_g"/>
+  <FunctionModeling:ADLConnectorPrototype xmi:id="_QiDPoGe9Ed6sZ_u7zCLa_g" base_Connector="_QhqOEGe9Ed6sZ_u7zCLa_g"/>
+  <ErrorBehavior:ErrorPropagationLink xmi:id="_XH6dcGfKEd62bMlBxz1Keg" base_Connector="_QhqOEGe9Ed6sZ_u7zCLa_g"/>
+  <FunctionModeling:ADLConnectorPrototype xmi:id="_PhM2oGe9Ed6sZ_u7zCLa_g" base_Connector="_Pg6iwGe9Ed6sZ_u7zCLa_g"/>
+  <ErrorBehavior:ErrorPropagationLink xmi:id="_YCdaIGfKEd62bMlBxz1Keg" base_Connector="_Pg6iwGe9Ed6sZ_u7zCLa_g"/>
+  <FunctionModeling:ADLConnectorPrototype xmi:id="_RRa3EGe9Ed6sZ_u7zCLa_g"/>
+  <ErrorBehavior:ErrorPropagationLink xmi:id="_Y5MN0GfKEd62bMlBxz1Keg"/>
+  <FunctionModeling:ADLConnectorPrototype xmi:id="_e0W60GfBEd6sZ_u7zCLa_g" base_Connector="_ez4ZsGfBEd6sZ_u7zCLa_g"/>
+  <ErrorBehavior:ErrorPropagationLink xmi:id="_ZyrakGfKEd62bMlBxz1Keg" base_Connector="_ez4ZsGfBEd6sZ_u7zCLa_g"/>
+  <HardwareDesignArchitecture:SystemBusConnector xmi:id="_MWJlAGe_Ed6sZ_u7zCLa_g"/>
+  <ErrorBehavior:ErrorPropagationLink xmi:id="_bdWzsGfKEd62bMlBxz1Keg"/>
+  <ADLTypes:ADLDesignDataType xmi:id="_uKg2YGfKEd62bMlBxz1Keg" unit="_5-2P0Ge5Ed6sZ_u7zCLa_g" dimension="__Q28AGe5Ed6sZ_u7zCLa_g" resolution="S_Omission, S_Commission, S_ValueErr, S_TimingErr"/>
+  <FunctionModeling:ADLOutFlowPort xmi:id="_ayB8wGfgEd62bMlBxz1Keg" base_Port="_WjFQEGfgEd62bMlBxz1Keg"/>
+  <ErrorBehavior:ErrorPort xmi:id="_3O8pUGfgEd62bMlBxz1Keg" base_Port="_WjFQEGfgEd62bMlBxz1Keg"/>
+  <FunctionModeling:ADLConnectorPrototype xmi:id="_7saTIGfgEd62bMlBxz1Keg"/>
+  <ErrorBehavior:ErrorPropagationLink xmi:id="_DCnEoGfhEd62bMlBxz1Keg"/>
+  <FunctionModeling:ADLInFlowPort xmi:id="_XpY7YGfhEd62bMlBxz1Keg" base_Port="_TAEm4GfhEd62bMlBxz1Keg"/>
+  <ErrorBehavior:ErrorPort xmi:id="_XpY7YWfhEd62bMlBxz1Keg" base_Port="_TAEm4GfhEd62bMlBxz1Keg"/>
+  <FunctionModeling:ADLConnectorPrototype xmi:id="_oZrBsGfhEd62bMlBxz1Keg" base_Connector="_oY0GEGfhEd62bMlBxz1Keg"/>
+  <ErrorBehavior:ErrorPropagationLink xmi:id="_qPJVkGfhEd62bMlBxz1Keg" base_Connector="_oY0GEGfhEd62bMlBxz1Keg"/>
+  <FunctionModeling:ADLConnectorPrototype xmi:id="_Rl4XcGf6Ed6IKv65eiVddw" base_Connector="_RlTvsGf6Ed6IKv65eiVddw"/>
+  <ErrorBehavior:ErrorPropagationLink xmi:id="_XedUYGf6Ed6IKv65eiVddw" base_Connector="_RlTvsGf6Ed6IKv65eiVddw"/>
+  <FunctionModeling:ADLConnectorPrototype xmi:id="_wBa3YGf7Ed6IKv65eiVddw"/>
+  <ErrorBehavior:ErrorPropagationLink xmi:id="_x4g74Gf7Ed6IKv65eiVddw"/>
+  <ErrorBehavior:HIPHOPS_Format xmi:id="_DXEL4GhIEd6pC_XOq1W_lw"/>
+  <FunctionModeling:ADLOutFlowPort xmi:id="_zGn7IGonEd6ctsnwzDmBQA" base_Port="_zF9MwGonEd6ctsnwzDmBQA"/>
+  <ErrorBehavior:ErrorPort xmi:id="_4o8UMGonEd6ctsnwzDmBQA" base_Port="_zF9MwGonEd6ctsnwzDmBQA" errorType="_1L-WsGe5Ed6sZ_u7zCLa_g"/>
+  <FunctionModeling:ADLInFlowPort xmi:id="_-xql8GonEd6ctsnwzDmBQA"/>
+  <ErrorBehavior:ErrorPort xmi:id="_CmoFUGooEd6ctsnwzDmBQA"/>
+  <ErrorBehavior:Hazard xmi:id="_TfqEsGo4Ed6ctsnwzDmBQA" base_Class="_R0yeUGo4Ed6ctsnwzDmBQA" hazardClassification="ASILD"/>
+  <ErrorBehavior:HazardCause xmi:id="_GnwIsGo5Ed6ctsnwzDmBQA" base_Dependency="_FEJA4Go5Ed6ctsnwzDmBQA"/>
+  <FunctionModeling:ADLConnectorPrototype xmi:id="_06wLMGonEd6ctsnwzDmBQA" base_Connector="_05zI8GonEd6ctsnwzDmBQA"/>
+  <ErrorBehavior:ErrorPropagationLink xmi:id="_JlnA8Go5Ed6ctsnwzDmBQA" base_Connector="_05zI8GonEd6ctsnwzDmBQA"/>
+  <ErrorBehavior:HazardCause xmi:id="_gMa1wGo5Ed6ctsnwzDmBQA"/>
+  <ErrorBehavior:HazardCause xmi:id="_CepJAGpfEd6AKcAREGtDhg" base_Dependency="_AXUQIGpfEd6AKcAREGtDhg"/>
+  <FunctionModeling:ADLFunctionPrototype xmi:id="_z6eesOmDEd6uJbAy1zvb0Q" base_Property="_i86KUOmDEd6uJbAy1zvb0Q"/>
+  <FunctionModeling:ADLFunctionPrototype xmi:id="_0_51sOmDEd6uJbAy1zvb0Q" base_Property="_gOCwUOmDEd6uJbAy1zvb0Q"/>
+  <FunctionModeling:ADLFunctionPrototype xmi:id="_Y4PyAOmEEd6uJbAy1zvb0Q" base_Property="_Y4JrYOmEEd6uJbAy1zvb0Q"/>
+  <FunctionModeling:ADLConnectorPrototype xmi:id="_470cMOmEEd6uJbAy1zvb0Q" base_Connector="_47oO8OmEEd6uJbAy1zvb0Q"/>
+  <FunctionModeling:ADLConnectorPrototype xmi:id="_6xY2sOmEEd6uJbAy1zvb0Q" base_Connector="_6xGi0OmEEd6uJbAy1zvb0Q"/>
+  <FunctionModeling:ADLConnectorPrototype xmi:id="_-jq1gOmEEd6uJbAy1zvb0Q" base_Connector="_-jYhoOmEEd6uJbAy1zvb0Q"/>
+</xmi:XMI>

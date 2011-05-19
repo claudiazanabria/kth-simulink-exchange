@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sim:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:sim="http:///se.kth.md.attest2/Simulink/3.0" name="york" root="//@parts.0">
+  <parts name="yorkS">
+    <children name="Carlos" target="//@parts.1"/>
+    <children name="Juan" target="//@parts.2"/>
+    <children name="Maria" target="//@parts.3"/>
+    <children name="Jose" target="//@parts.5"/>
+    <lines name="L1" source="//@parts.1/@outports.0" destination="//@parts.2/@inports.0"/>
+    <lines name="L2" simulinkName="" source="//@parts.2/@outports.0" destination="//@parts.3/@inports.0"/>
+  </parts>
+  <parts name="F1">
+    <outports name="F1_Out" connections="//@parts.0/@lines.0"/>
+  </parts>
+  <parts name="F2">
+    <children name="Pedro" target="//@parts.5"/>
+    <children name="Pablo" target="//@parts.4"/>
+    <lines name="L3" source="//@parts.5/@outports.0" destination="//@parts.4/@inports.0"/>
+    <lines name="L4" source="//@parts.5/@outports.0" destination="//@parts.4/@inports.1"/>
+    <lines name="L5" source="//@parts.2/@inports.0" destination="//@parts.5/@inports.0"/>
+    <lines name="L6" source="//@parts.4/@outports.0" destination="//@parts.2/@outports.0"/>
+    <inports name="F2_In" connections="//@parts.2/@lines.2"/>
+    <outports name="F2_Out" connections="//@parts.0/@lines.1"/>
+  </parts>
+  <parts name="F3">
+    <inports name="F3_In"/>
+  </parts>
+  <parts name="F22">
+    <inports name="F22_InA"/>
+    <inports name="F22_InB"/>
+    <outports name="F22_Out" connections="//@parts.2/@lines.3"/>
+  </parts>
+  <parts name="F21">
+    <inports name="F21_In"/>
+    <outports name="F21_Out" connections="//@parts.2/@lines.0 //@parts.2/@lines.1"/>
+  </parts>
+</sim:Model>

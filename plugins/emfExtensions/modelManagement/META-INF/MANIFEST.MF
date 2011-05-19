@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Simulink Excahnge Model Management
+Bundle-SymbolicName: se.kth.md.simulinkExchange.modelManagement
+Bundle-Version: 3.5.1
+Export-Package: se.kth.md.simulinkExchange.modelManagement;uses:="org.eclipse.emf.ecore.resource,org.eclipse.emf.ecore,org.eclipse.emf.common.util",
+ se.kth.md.simulinkExchange.modelManagement.east;uses:="se.kth.md.simulinkExchange.modelManagement,org.eclipse.emf.common.util,com.cea.papyrus.uml4eastadl.eastadl",
+ se.kth.md.simulinkExchange.modelManagement.exceptions,
+ se.kth.md.simulinkExchange.modelManagement.simulink;uses:="se.kth.md.simulinkExchange.modelManagement,org.eclipse.emf.common.util,Simulink"
+Bundle-Vendor: KTH Mechatronics
+Require-Bundle: org.junit4,
+ org.eclipse.emf.ecore.xmi,
+ se.kth.md.simulinkExchange.metamodel.Simulink;bundle-version="3.2.2",
+ apache.commons.io;bundle-version="1.0.0",
+ org.eclipse.papyrus.eastadl;bundle-version="2.1.8"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6

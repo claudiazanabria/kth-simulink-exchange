@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<attest2:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:attest2="http:///se.kth.md/attest2/metamodels" Name="SystemModel" Version="99.99">
+  <RootSystem Name="FunctionalAnalysisArchitecture">
+    <Lines Name="F1_OutF2_In" SrcPort="//@RootSystem/@Blocks.0/@Ports.0" DstPort="//@RootSystem/@Blocks.1/@Ports.1" SrcBlock="//@RootSystem/@Blocks.0"/>
+    <Lines Name="F2_Out1F3_In1" SrcPort="//@RootSystem/@Blocks.1/@Ports.0" DstPort="//@RootSystem/@Blocks.2/@Ports.1"/>
+    <Lines Name="F2_Out2F3_In2" SrcPort="//@RootSystem/@Blocks.1/@Ports.2" DstPort="//@RootSystem/@Blocks.2/@Ports.2"/>
+    <Blocks Name="pF1" BlockType="SubSystem">
+      <System Name="F1"/>
+      <Ports Name="F1_Out" PortNumber="1" PortType="Outport"/>
+      <Link>none</Link>
+    </Blocks>
+    <Blocks Name="pF2" BlockType="SubSystem">
+      <System Name="F2">
+        <Lines Name="F2_InF21_Inconnector" SrcPort="//@RootSystem/@Blocks.1/@Ports.1" DstPort="//@RootSystem/@Blocks.1/@System/@Blocks.0/@Ports.1" DstBlock="//@RootSystem/@Blocks.1/@System/@Blocks.0"/>
+        <Lines Name="F2_InF22_In2connector" SrcPort="//@RootSystem/@Blocks.1/@Ports.1" DstPort="//@RootSystem/@Blocks.1/@System/@Blocks.1/@Ports.2" DstBlock="//@RootSystem/@Blocks.1/@System/@Blocks.1"/>
+        <Lines Name="F21_OutF2_Out1connector" SrcPort="//@RootSystem/@Blocks.1/@System/@Blocks.0/@Ports.0" DstPort="//@RootSystem/@Blocks.1/@Ports.0" SrcBlock="//@RootSystem/@Blocks.1/@System/@Blocks.0"/>
+        <Lines Name="F21_OutF22_In1connector" SrcPort="//@RootSystem/@Blocks.1/@System/@Blocks.0/@Ports.0" DstPort="//@RootSystem/@Blocks.1/@System/@Blocks.1/@Ports.1" SrcBlock="//@RootSystem/@Blocks.1/@System/@Blocks.0" DstBlock="//@RootSystem/@Blocks.1/@System/@Blocks.1"/>
+        <Lines Name="F22_OutF2_Out2connector" SrcPort="//@RootSystem/@Blocks.1/@System/@Blocks.1/@Ports.0" DstPort="//@RootSystem/@Blocks.1/@Ports.2" SrcBlock="//@RootSystem/@Blocks.1/@System/@Blocks.1"/>
+        <Blocks Name="pF21" BlockType="SubSystem">
+          <System Name="F21"/>
+          <Ports Name="F21_Out" PortNumber="1" PortType="Outport"/>
+          <Ports Name="F21_In" PortNumber="1" PortType="Inport"/>
+          <Link>none</Link>
+        </Blocks>
+        <Blocks Name="pF22" BlockType="SubSystem">
+          <System Name="F22"/>
+          <Ports Name="F22_Out" PortNumber="1" PortType="Outport"/>
+          <Ports Name="F22_In1" PortNumber="1" PortType="Inport"/>
+          <Ports Name="F22_In2" PortNumber="2" PortType="Inport"/>
+          <Link>none</Link>
+        </Blocks>
+      </System>
+      <Ports Name="F2_Out1" PortNumber="1" PortType="Outport"/>
+      <Ports Name="F2_In" PortNumber="1" PortType="Inport"/>
+      <Ports Name="F2_Out2" PortNumber="2" PortType="Outport"/>
+      <Link>none</Link>
+    </Blocks>
+    <Blocks Name="pF3" BlockType="SubSystem">
+      <System Name="F3"/>
+      <Ports Name="F3_Out" PortNumber="1" PortType="Outport"/>
+      <Ports Name="F3_In1" PortNumber="1" PortType="Inport"/>
+      <Ports Name="F3_In2" PortNumber="2" PortType="Inport"/>
+      <Link>none</Link>
+    </Blocks>
+  </RootSystem>
+</attest2:Model>
